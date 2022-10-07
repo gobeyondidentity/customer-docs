@@ -147,7 +147,7 @@ Each user that will be signing Git commits must be added to a specific group wit
 To allow individual users to sign commits, you must have Git commit signing already enabled for your tenant. Contact a Beyond Identity team member if you do not already have it enabled.
 :::
 
-1. From the **Groups** page, select **Add Group**:
+<!-- 1. From the **Groups** page, select **Add Group**:
 2. In the **Add Group** dialog, provide:
 	*   The Group Name. The name must be **BI_SDO_GPG_Key_Creation**.
 	*   An optional Description
@@ -160,7 +160,7 @@ To allow individual users to sign commits, you must have Git commit signing alre
 7.	As each user is added, the credential associated with the user is displayed in the dialog.
 	![](/images/git-commit/add_users_git_commit_id.png)
 8.	Click **Add users to group**. The users are displayed under the **Members** section.
-	![](/images/git-commit/add-user-john.png)
+	![](/images/git-commit/add-user-john.png) -->
 
 Setting Up the Beyond Identity Authenticator
 --------------------------------------------
