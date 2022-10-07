@@ -9,10 +9,10 @@ Adding and Deleting Users
 Adding Users
 ------------
 
-To allow your workforce to utilize Beyond Identity, each user must be added within your Tenant.  To add a user:
+To allow your workforce to utilize Beyond Identity, each user must be added within your Tenant.  To add a user:
 
-1.  Select **Users** from the left menu of the [Admin Console](/docs/secure-work/workforce-settings/admin-console/admin-console-login).
-2.  The Users page displays the list of users currently in your tenant.  Click **Add Tenant**.
+1.  Select **Users** from the left menu of the [Admin Console](/docs/secure-work/workforce-settings/admin-console/admin-console-login).
+2.  The Users page displays the list of users currently in your tenant.  Click **Add Tenant**.
 3.  From the Add User dialog, provide the following information, and then click **Save Changes**:
     1.  External ID
     2.  Email address
@@ -24,12 +24,12 @@ To allow your workforce to utilize Beyond Identity, each user must be added wi
 Deleting Users
 --------------
 
-When a user is deleted from your tenant, they longer have access to and cannot authenticate to your apps using Beyond Identity. To delete a user:
+When a user is deleted from your tenant, they longer have access to and cannot authenticate to your apps using Beyond Identity. To delete a user:
 
-1.  Select **Users** from the left menu of the [Admin Console](/docs/secure-work/workforce-settings/admin-console/admin-console-login).
-2.  From the Users page, search for the user. Use the **Search** field to easily find the user based on the **name**, **email**, or **ID**.  
+1.  Select **Users** from the left menu of the [Admin Console](/docs/secure-work/workforce-settings/admin-console/admin-console-login).
+2.  From the Users page, search for the user. Use the **Search** field to easily find the user based on the **name**, **email**, or **ID**.  
     ![](/images/users/search_user.PNG)
-3.  Once the user is located and selected, click **Delete User**.  
+3.  Once the user is located and selected, click **Delete User**.  
     ![](/images/users/delete_user_john_racer.PNG)
 4.  A dialog is displayed asking if you want to delete the user. Click **Delete**.  
     ![](/images/users/delete_user_prompt.PNG)

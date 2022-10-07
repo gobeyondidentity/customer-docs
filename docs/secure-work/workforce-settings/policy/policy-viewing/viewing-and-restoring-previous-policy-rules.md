@@ -9,15 +9,15 @@ Viewing and Restoring Previous Policy Rules
 You can view a list of all previous published rules and also restore a specific set of rules. When a set of rules is restored, those rules become the current set and immediately take effect. To view a list of all previously published rule sets:
 
 1.  From the [Admin Console](/docs/secure-work/workforce-settings/admin-console/admin-console-login), select the **Policy** tab.
-2.  From the [Policy page](/docs/secure-work/workforce-settings/policy/policy-writing/writing-policy#creating-rules), click the **Last published** link at the top page.  
+2.  From the [Policy page](/docs/secure-work/workforce-settings/policy/policy-writing/writing-policy#creating-rules), click the **Last published** link at the top page.  
     ![](/images/pol_restore_previous_rules.png)
 3.  A list of all previously created rules as well as the current rule set is displayed on the right of the page along with the date they were last published.  
     ![](/images/pol_version_history.png)
 4.  Clicking on any of the previous rule sets will display those rules on the page. For example, clicking on the previous rule set directly beneath the current rule set will display the policy rules defined for that set.  
     ![](/images/pol_previous_rules.png)
-5.  To restore this rule set as the current set of rules, click **I want to restore this version** located in the upper-right corner of the page.  
+5.  To restore this rule set as the current set of rules, click **I want to restore this version** located in the upper-right corner of the page.  
     ![](/images/pol_restore_this_version.png)
-6.  The set of rules is previewed on the Edit Policy page. Click **Restore**.   
+6.  The set of rules is previewed on the Edit Policy page. Click **Restore**.   
     ![](/images/pol_restore_version.png)
 7.  A prompt is displayed asking if you want to publish this set of rules and update the policy. Click **Yes, publish changes**.  
     ![](/images/pol_publish_changes.png)  

@@ -10,7 +10,7 @@ This article assumes that you have already received a welcome registration email
 
 #### Step 1. Download the Authenticator
 
-From the email, select **View Download Options**.  
+From the email, select **View Download Options**.  
   
 ![](/images/install/install.png)
 
@@ -18,7 +18,7 @@ From the Downloads page, select Downloads for Windows.
 
 ![](/images/install/download_windows.PNG)
 
-Once you tap **Download for Windows**, the file will be downloaded to your **Downloads** folder on your system.
+Once you tap **Download for Windows**, the file will be downloaded to your **Downloads** folder on your system.
 
 #### 2\. Register your Credential
 

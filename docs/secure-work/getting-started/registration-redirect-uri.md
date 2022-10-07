@@ -4,7 +4,7 @@ sidebar_position: 4
 ---  
 
 
-This URI lets us know where to redirect new users when they register using an email. Whenever a new user registers using Beyond Identity, we send out an email to verify their identity. By default, the link in that email redirects a user to our [Native Platform Authenticator](/docs/v0/web-sdks/platform-authenticator). In order to redirect to your own iOS/Android application, you will need to specify this URI to be either an app scheme or a universal url / app link.
+This URI lets us know where to redirect new users when they register using an email. Whenever a new user registers using Beyond Identity, we send out an email to verify their identity. By default, the link in that email redirects a user to our [Native Platform Authenticator]<!-- (/docs/v0/web-sdks/platform-authenticator) -->. In order to redirect to your own iOS/Android application, you will need to specify this URI to be either an app scheme or a universal url / app link.
 
 ### iOS Setup Instructions
 

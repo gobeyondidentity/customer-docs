@@ -11,13 +11,13 @@ Beyond Identity's Secureworkforce safeguards company resources and closes data b
 How it Works
 ------------
 
-Beyond Identity authenticates users and their devices by cryptographically binding users to devices, providing complete control over who and what devices can access your SaaS apps and cloud infrastructure. This is possible today because devices have native biometrics and a built-in chipset that securely stores private keys and performs high-trust cryptographic functions. The Beyond Identity Authenticator generates an immovable private key on each user's device and stores the public key in the Beyond Identity cloud providing the most secure and easy-to-use multi-factor authentication available.
+Beyond Identity authenticates users and their devices by cryptographically binding users to devices, providing complete control over who and what devices can access your SaaS apps and cloud infrastructure. This is possible today because devices have native biometrics and a built-in chipset that securely stores private keys and performs high-trust cryptographic functions. The Beyond Identity Authenticator generates an immovable private key on each user's device and stores the public key in the Beyond Identity cloud providing the most secure and easy-to-use multi-factor authentication available.
 
-Users are added to Beyond Identity's cloud-based directory via SCIM or API. A lightweight authenticator that enables users to add new devices is available in the following ways: 
+Users are added to Beyond Identity's cloud-based directory via SCIM or API. A lightweight authenticator that enables users to add new devices is available in the following ways: 
 
 *   Downloaded from the app store
 *   Deployed via MDM
-*   Integrated into a native application for a streamlined consumer-facing deployment
+*   Integrated into a native application for a streamlined consumer-facing deployment
 
 Policies control which and how many devices are permitted. The Beyond Identity Authenticator shows the user all the data that is collected from the device to avoid privacy concerns.
 

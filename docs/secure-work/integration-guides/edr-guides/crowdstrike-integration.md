@@ -6,7 +6,7 @@ sidebar_position: 1
 CrowdStrike Integration
 =======================
 
-This guide provides instructions to enhance Beyond Identity policies with information obtained from an integration with CrowdStrike that results in making policy decisions for a CrowdStrike-configured device that assesses the risk of a device based on:
+This guide provides instructions to enhance Beyond Identity policies with information obtained from an integration with CrowdStrike that results in making policy decisions for a CrowdStrike-configured device that assesses the risk of a device based on:
 
 *   the device found in CrowdStrike
     
@@ -33,7 +33,7 @@ Beyond Identity uses the CrowdStrike Agent ID to retrieve details of the host fr
         **Hosts Read:** `Beyond Identity Device Found Attribute`  
         **Hosts Write:** `Beyond Identity Crowdstrike Quarantine Action`  
         **Zero Trust Assessment Read:** `Beyond Identity ZTA Attribute`
-4.  The API client created dialog is displayed containing the Client ID, Secret, and Base URL.  Copy the `CLIENT ID`, `SECRET`, and `BASE URL`. These will be needed in **Step 2. Install Beyond Identity**.
+4.  The API client created dialog is displayed containing the Client ID, Secret, and Base URL.  Copy the `CLIENT ID`, `SECRET`, and `BASE URL`. These will be needed in **Step 2. Install Beyond Identity**.
 5.  Click **DONE**.  
     ![](/images/Integrations/crowdstrike_falcon/cs_falcon_add_new_api_clientCreated.PNG)
 6.  The API Clients and Keys screen is updated to reflect that CrowdStrike Falcon is connected.  
@@ -80,7 +80,7 @@ To write a policy to ensure only devices integrated with CrowdStrike Falcon are 
 4.  Click **Add**.  
     ![](/images/Integrations/crowdstrike_falcon/cs_falcon_device_found_no_deny.PNG)
 
-#### Step 3.3 Write a quarantine action policy
+#### Step 3.3 Write a quarantine action policy
 
 You can write policy to allow or deny a device to authenticate and/or add devices. In the following example, write a policy to ensure only devices integrated with CrowdStrike Falcon are allowed to authenticate and/or add devices.
 
@@ -96,4 +96,4 @@ You can write policy to allow or deny a device to authenticate and/or add device
 
 See Also
 
-[Writing Policy](../Secure_Work/Admin_Functions/Policy/Defining_Policy.htm)
+<!-- [Writing Policy](defining-policy) -->

@@ -1,9 +1,9 @@
 ---
-title: Viewing Event Details
+title: Viewing Event Details
 sidebar_position: 4
 ---   
 
-Viewing Event Details
+Viewing Event Details
 =====================
 
 Detailed event information can be viewed by clicking on a user in the **PRINCIPAL ACTOR** column. Once clicked the **Event Details** are displayed on the right of the **Events** page.

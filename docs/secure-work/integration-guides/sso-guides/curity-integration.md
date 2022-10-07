@@ -6,14 +6,14 @@ sidebar_position: 1
 Curity Integration
 ==================
 
-This guide provides details on how to configure Beyond Identity as an Identity Provider on a Curity Identity Server.
+This guide provides details on how to configure Beyond Identity as an Identity Provider on a Curity Identity Server.
 
 Prerequisites
 -------------
 
 Before configuring Beyond Identity as an IdP, make sure sure you have:
 
-*   Installed the Curity Identity Server. Refer to the [Getting Started Guide](https://curity.io/resources/getting-started/) for information on installing the server.
+*   Installed the Curity Identity Server. Refer to the [Getting Started Guide](https://curity.io/resources/getting-started/) for information on installing the server.
     
 *   Access to a Beyond Identity Tenant and have configured an [OIDC client](https://developer.beyondidentity.com/docs/oidc-configuration). Make sure to note the Client ID & Client Secret. Request a tenant here if you do not already have access.
     
@@ -27,7 +27,7 @@ Configuration is performed on both the Beyond Identity and the Curity Identity S
 
 ### Beyond Identity
 
-Other than the prerequisites mentioned above, the only configuration needed on the Beyond Identity side is to make sure an appropriate `redirect_uri` is configured in the OIDC client that is going to be used. For example: `https://idsvr.example.com/authn/authentication/beyond/ callback`
+Other than the prerequisites mentioned above, the only configuration needed on the Beyond Identity side is to make sure an appropriate `redirect_uri` is configured in the OIDC client that is going to be used. For example: `https://idsvr.example.com/authn/authentication/beyond/ callback`
 
 *   `https://idsvr.example.com` is the baseURL configured in the Curity Identity Server
 *   `/authn/authentication` is the default authentication endpoint
@@ -36,7 +36,7 @@ Other than the prerequisites mentioned above, the only configuration needed on 
 
 ### The Curity Identity Server
 
-After following the Getting Started Guide, an OAuth client should now be configured. A new Authenticator needs to be configured.
+After following the Getting Started Guide, an OAuth client should now be configured. A new Authenticator needs to be configured.
 
 1.  Navigate to Profiles>Authentication Service>Authenticators and choose New Authenticator.
 2.  Give it a name ( for example, beyond), choose OIDC as the type, and click Next.

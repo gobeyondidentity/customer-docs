@@ -6,7 +6,7 @@ sidebar_position: 1
 Managing the Authenticator Versions Allowed on Devices
 ====================================================================
 
-To ensure that users' devices are running a version or versions consistent with your organization's requirements, system administrators can create policy to:
+To ensure that users' devices are running a version or versions consistent with your organization's requirements, system administrators can create policy to:
 
 *   [Specify a range of Authenticator versions that can be installed on devices without the need to update.](/docs/secure-work/workforce-settings/version-control/specifying-a-range-of-allowable-versions-that-can-be-installed-on-devices)
 
@@ -30,7 +30,7 @@ To create policy to manage the versions that can be installed on users' devices:
 3.  Clicking the **Add version control** button, displays the Add version control dialog.  
     ![](/images/version-control/add_version_control.png)
     
-4.  Refer to the appropriate section listed in the **Related Topics** below to set up version control policy that suits your organization’s needs.
+4.  Refer to the appropriate section listed in the **Related Topics** below to set up version control policy that suits your organization’s needs.
     
 
 #### Related Topics

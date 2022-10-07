@@ -10,20 +10,20 @@ Writing a Security Software Policy
 This functionality is currently available on macOS and Windows platforms.
 :::
 
-You can write policy to detect whether or not security software such as CrowdSrike or Jamf is running on a device when attempting to authenticate and/or requesting permission to be added and write the appropriate rule allowing or denying the device.  To write a security software policy:
+You can write policy to detect whether or not security software such as CrowdSrike or Jamf is running on a device when attempting to authenticate and/or requesting permission to be added and write the appropriate rule allowing or denying the device.  To write a security software policy:
 
 1.  From the [Admin Console](/docs/secure-work/workforce-settings/admin-console/admin-console-login), select the **Policy** tab.
-2.  From the [Policy page](/docs/secure-work/workforce-settings/policy/policy-writing/writing-policy#creating-rules), click **Edit Policy**.
-3.  From the **Add Rule** dialog, click **Add attribute** next to **device platform** and select the appropriate platform from the drop-down menu.  
+2.  From the [Policy page](/docs/secure-work/workforce-settings/policy/policy-writing/writing-policy#creating-rules), click **Edit Policy**.
+3.  From the **Add Rule** dialog, click **Add attribute** next to **device platform** and select the appropriate platform from the drop-down menu.  
     ![](/images/policy/pol_device_platform_macos.PNG)
-4.  Click the second **Add attribute** button that appears. By default, the `Antivirus` attribute is displayed in the field.
-5.  Click the drop-down menu to select the `Installed Security Software` attribute.
-6.  Select the appropriate attribute from the second drop-down menu.
+4.  Click the second **Add attribute** button that appears. By default, the `Antivirus` attribute is displayed in the field.
+5.  Click the drop-down menu to select the `Installed Security Software` attribute.
+6.  Select the appropriate attribute from the second drop-down menu.
 7.  Set any other applicable attributes.
 8.  Under **Then**, select the appropriate permissions action (`Allow`, `Deny`, or `Monitor`) from the drop-down menu.
 9.  Click **Add**.  
     ![](/images/policy/device_platform_macos_sec_software_crowstrike.PNG)
-10.  The rule is added to the **Edit Policy** page. Create additional rules as needed or click [Publish Rule](/docs/secure-work/workforce-settings/policy/policy-publish-rules/publishing-rules) to permanently save it.  
+10.  The rule is added to the **Edit Policy** page. Create additional rules as needed or click [Publish Rule](/docs/secure-work/workforce-settings/policy/policy-publish-rules/publishing-rules) to permanently save it.  
     ![](/images/policy/security_sw_macos_allow_edit_screen.PNG)
 
 #### Related Topics

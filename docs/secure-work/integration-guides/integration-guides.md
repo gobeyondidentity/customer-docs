@@ -10,23 +10,23 @@ These guides detail the steps required to configure Beyond Identity as a passwor
 SSO Guides
 ----------
 
-[ADFS Integration Prep Guide](ADFS_Integration_Prep_Guide.htm)
+<!-- [ADFS Integration Prep Guide](ADFS_Integration_Prep_Guide)
 
-[ADFS Integration](ADFS_Integration.htm)
+[ADFS Integration](ADFS_Integration)
 
-[Auth0 Integration](Auth0_Integration.htm)
+[Auth0 Integration](Auth0_Integration)
 
-[Curity Integration](Curity_Integration.htm)
+[Curity Integration](Curity_Integration)
 
-[Google Workspace Integration Guide](Google_Workspace_Integration_Guide.htm)
+[Google Workspace Integration Guide](Google_Workspace_Integration_Guide)
 
-[Okta Integration Guide for OIDC](Okta_Integration_Guide_for_OIDC.htm)
+[Okta Integration Guide for OIDC](Okta_Integration_Guide_for_OIDC)
 
-[Shibboleth IDP Integration](Shibboleth_IDP_Integration.htm)
+[Shibboleth IDP Integration](Shibboleth_IDP_Integration) -->
 
 MDM Guides
 ----------
 
-[Jamf Integration Guide](Jamf_Integration_Guide.htm)
+<!-- [Jamf Integration Guide](Jamf_Integration_Guide)
 
-[Microsoft Intune Integration Prep Guide](Microsoft_Intune_Integration_Guide.htm)
+[Microsoft Intune Integration Prep Guide](Microsoft_Intune_Integration_Guide) -->

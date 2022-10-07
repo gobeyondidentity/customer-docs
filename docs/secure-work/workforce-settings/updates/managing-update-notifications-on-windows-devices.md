@@ -1,17 +1,17 @@
 ---
-title: Managing Updates and Notifications on Windows Devices
+title: Managing Updates and Notifications on Windows Devices
 sidebar_position: 2
 ---   
 
-Managing Updates and Notifications on Windows Devices
+Managing Updates and Notifications on Windows Devices
 =====================================================
 
-By default, update notifications are enabled. To disable update notifications and remove the menu option to check for updates, changes must be made to the Registry.
+By default, update notifications are enabled. To disable update notifications and remove the menu option to check for updates, changes must be made to the Registry.
 
 1.  Open the Registry Editor and navigate to `HKEY_LOCAL_MACHINE\SOFTWARE\Policies`.
 2.  Add the following sub keys: `BeyondIdentity\Authenticator`
-3.  Add the `DisableUpdates` value to the `Authenticator` key. The Authenticator only looks for the presence of `DisableUpdates` so the value can be any type (such as a string or DWORD).  
-4.  After closing the Registry, restart the Authenticator application for the change to take effect. If another instance of the Authenticator is running in the application tray located in the bottom-right of  the screen, also restart that application.  
+3.  Add the `DisableUpdates` value to the `Authenticator` key. The Authenticator only looks for the presence of `DisableUpdates` so the value can be any type (such as a string or DWORD).  
+4.  After closing the Registry, restart the Authenticator application for the change to take effect. If another instance of the Authenticator is running in the application tray located in the bottom-right of  the screen, also restart that application.  
     ![](/images/updates/disable_updates_windows.PNG)
 
 Once restarted, users will not receive notification updates and the **Check for Updates** menu item is no longer displayed.

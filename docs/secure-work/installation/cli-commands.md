@@ -15,7 +15,7 @@ The following table provides a list of common commands:
 |-----|------|
 | View the installed authenticator version |`beyond-identity --version` |
 | Import existing credential | `beyond-identity credential import <IMPORT-CODE>` |
-| View registered/imported credentials | `beyond-identity credentials` |
+| View registered/imported credentials | `beyond-identity credentials` |
 | Export credential | `beyond-identity credential export <HANDLE (tenant name)>` |
 | Delete credential | `beyond-identity credential delete <HANDLE (tenant name)>` |
 

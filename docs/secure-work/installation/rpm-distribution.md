@@ -21,7 +21,7 @@ To quickly set up the repository automatically:
 
 ``` `` `cURL` `` ```
 
-`` `curl -1sLf \     'https://packages.beyondidentity.com/public/linux-authenticator/setup.rpm.sh' \     | sudo -E bash` ``
+`` `curl -1sLf \     'https://packages.beyondidentity.com/public/linux-authenticator/setup.rpm.sh' \     | sudo -E bash` ``
 
 Specific Distribution, Release/Version, or Architecture
 -------------------------------------------------------
@@ -30,7 +30,7 @@ If your system is compatible but not identical, you can force a specific distrib
 
 ``` `` `cURL` `` ```
 
-`` `curl -1sLf \     'https://packages.beyondidentity.com/public/linux-authenticator/setup.rpm.sh' \     | sudo -E distro=some-distro codename=some-codename arch=some-arch bash` ``
+`` `curl -1sLf \     'https://packages.beyondidentity.com/public/linux-authenticator/setup.rpm.sh' \     | sudo -E distro=some-distro codename=some-codename arch=some-arch bash` ``
 
 Manual
 ------
@@ -73,8 +73,8 @@ To uninstall the Authenticator package, issue the following command:
 
 #### Related Topics
 
-[Installing the Authenticator on a Linux Device](Installing_the_Linux_Authenticator.htm)
+[Installing the Authenticator on a Linux Device](installing-the-authenticator-on-a-linux-device)
 
-[Debian Distribution](Debian_Distribution_Linux.htm)
+[Debian Distribution](debian-distribution)
 
-[CLI Commands](CLI_Commands.htm)
+[CLI Commands](cli-commands)

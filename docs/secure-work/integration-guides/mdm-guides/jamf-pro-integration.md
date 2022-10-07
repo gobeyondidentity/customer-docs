@@ -20,7 +20,7 @@ Before beginning, make sure the following requirements have been met:
 *   Active Beyond Identity Subscription
     
 
-#### Step 1. Configure Jamf Settings
+#### Step 1. Configure Jamf Settings
 
 1.  Log in to the Jamf Pro Admin Console.
     
@@ -65,9 +65,9 @@ Before beginning, make sure the following requirements have been met:
 
 1.  Log into the Beyond Identity Admin Console and select **Integrations** from the left pane.
     
-2.  From the Integrations page, select **ENDPOINT MANAGEMENT**.
+2.  From the Integrations page, select **ENDPOINT MANAGEMENT**.
     
-3.  Click the **Install this service** icon that appears when hovering to the right of the JAMF row.  
+3.  Click the **Install this service** icon that appears when hovering to the right of the JAMF row.  
     ![](/images/Integrations/jamf/jamf_install_service.png)
     
 4.  Enter the information obtained from Jamf Pro Admin UI in the Install JAMF dialog:
@@ -92,11 +92,11 @@ Before beginning, make sure the following requirements have been met:
 4.  Create a rule to deny authentication if the device is not in a “managed state.”  
     ![](/images/policy/jamf_not_managed_deny.PNG)
 5.  Click Add. The rule is added to the Policy Rules list.
-6.  To permanently save the rule, click [Publish Rule](../Secure_Work/Admin_Functions/Policy/Publishing_Rules.htm).
+6.  To permanently save the rule, click [Publish Rule]<!-- (../Secure_Work/Admin_Functions/Policy/Publishing_Rules) -->.
 
 #### Step 4. Test the MDM Authentication Policy
 
-1.  Log into the Beyond Identity Admin Console from a computer that is enrolled in Jamf Pro and then from a computer that is not enrolled in Jamf Pro.
+1.  Log into the Beyond Identity Admin Console from a computer that is enrolled in Jamf Pro and then from a computer that is not enrolled in Jamf Pro.
     
 2.  Confirm that the policy behavior is as expected.
     
