@@ -6,11 +6,11 @@ sidebar_position: 1
 Writing Policy
 ==============
 
-Beyond Identity provides an extensive rule-based decision policy engine that allows you to customize access decisions based on a variety of attributes from various sources, such as user, device, event, and from third party integrations.
+Beyond Identity provides an extensive rule-based decision policy engine that allows you to customize access decisions based on a variety of attributes from various sources, such as user, device, event, and from third party integrations.
 
-To allow or restrict access to devices and apps, you write policy rules. Policy rules can be configured to allow or restrict access based on user, device, and event behavior. This ensures that users attempting a specific transaction, such as authenticating to web apps or adding a device, must meet the policy rule requirements that have been defined to gain access. Policy can be leveraged for a variety of use cases. For example, a company may enforce a policy that requires a firewall turned on, management software installed, or a specific operating system installed on devices to authenticate and allow access.
+To allow or restrict access to devices and apps, you write policy rules. Policy rules can be configured to allow or restrict access based on user, device, and event behavior. This ensures that users attempting a specific transaction, such as authenticating to web apps or adding a device, must meet the policy rule requirements that have been defined to gain access. Policy can be leveraged for a variety of use cases. For example, a company may enforce a policy that requires a firewall turned on, management software installed, or a specific operating system installed on devices to authenticate and allow access.
 
-You can create rules that apply to all transactions that occur or for a specific transaction type. Transaction types include:
+You can create rules that apply to all transactions that occur or for a specific transaction type. Transaction types include:
 
 *   Authentication
     
@@ -41,10 +41,10 @@ For example, a rule has been defined allowing access when authenticating from a 
 
 To create a rule:
 
-1.  Log into the [Admin console](../Admin_Console.htm) and from the Home screen, select the **Policy** tab.
-2.  The [Policy page](#policy-page) displays a list of current rules that have been configured. Click **Edit Policy.**  
+1.  Log into the [Admin console]<!-- (../Admin_Console) --> and from the Home screen, select the **Policy** tab.
+2.  The [Policy page](#policy-page) displays a list of current rules that have been configured. Click **Edit Policy.**  
     ![](/images/policy/policy_rule_order_5_rules.png)
-3.  From the **Edit Policy** page, click **Add Rule**.  
+3.  From the **Edit Policy** page, click **Add Rule**.  
     ![](/images/policy/policy_rules_add_rule_allow.PNG)
 4.  The **Add Rule** dialog is displayed.  
     ![](/images/policy/add_rule_dialog.PNG)  
@@ -98,11 +98,11 @@ This example creates a rule to allow access to users that are part of the Admin 
         
     3.  The **device platform** is `Android`.
         
-    4.  The **integration** type is `registered` with `Intune`.
+    4.  The **integration** type is `registered` with `Intune`.
         
     5.  The **Authentication version** is `greater than 2.49.0`.
         
-2.  To select the attributes, click the `Add attribute` button associated with the desired attribute and select or type in a value as follows:
+2.  To select the attributes, click the `Add attribute` button associated with the desired attribute and select or type in a value as follows:
     1.  For **transaction**, select `Authentication` from the drop-down menu.
         
     2.  For **user**, select `is in user group` and `Admin Console Access` from the drop-down menus.
@@ -126,7 +126,7 @@ Multiple rules can be defined before publishing them.
 
 #### Example 2: Creating a Device Transaction Rule
 
-1.  After logging into the Admin console and opening the Add Rule dialog, select the attributes that are required to allow users to add devices. In this example, we are selecting the following attributes:
+1.  After logging into the Admin console and opening the Add Rule dialog, select the attributes that are required to allow users to add devices. In this example, we are selecting the following attributes:
     1.  The **Transaction** type is `Device`.
         
     2.  The **user** is `any user`.
@@ -135,20 +135,20 @@ Multiple rules can be defined before publishing them.
         
     4.  The **integration** is `JAMF** **Connection` set to `Available`.
         
-    5.  The **authenticator version** is `greater than or equal to 2.51.0`.
+    5.  The **authenticator version** is `greater than or equal to 2.51.0`.
         
 2.  To select the attributes, click the **Add attribute** button associated with the desired attribute and select or type in a value as follows:
     1.  For **transaction**, select `Add Device` from the drop-down menu.
     2.  For **user**, leave the default setting. (Defaults to `any user`)
     3.  For **device platform:**
-        1.  Select `iOS` from the drop-down menu.
-        2.  Click **Add attribute** and select `Device Jailbreak is` and `Not Detected` from the drop-down menus.
+        1.  Select `iOS` from the drop-down menu.
+        2.  Click **Add attribute** and select `Device Jailbreak is` and `Not Detected` from the drop-down menus.
     4.  For **integration**, select `JAMF**, **Connection is`, and `Available` from the drop-down menus.
     5.  For **authenticator version**:
         1.  Select `is greater than or equal to` from the drop-down menu.
         2.  Type in `2.51.0`.
 3.  Leave the default `Allow` setting.  
-    ![](/images/policy/add_rule_allow_device_example.PNG) 
+    ![](/images/policy/add_rule_allow_device_example.PNG) 
 4.  Click **Add** when done. The rule is added to the Policy Rules list.  
     ![](/images/policy/policy_rules_device_example_added.PNG)
 
@@ -170,9 +170,9 @@ This example creates a rule that denies users from the QA Group attempting to au
         
     2.  The **user** is in the `QA Group`.
         
-    3.  The **authenticator** **version** is `less than 2.49.0`.
+    3.  The **authenticator** **version** is `less than 2.49.0`.
         
-2.  To select the attributes, click the **Add attribute** button associated with the desired attribute and select or type in a value as follows:
+2.  To select the attributes, click the **Add attribute** button associated with the desired attribute and select or type in a value as follows:
     1.  For **user**, select `QA Group` from the drop-down menu.
     2.  For **authenticator version**:
         1.  Select `is less than` from the drop-down menu.

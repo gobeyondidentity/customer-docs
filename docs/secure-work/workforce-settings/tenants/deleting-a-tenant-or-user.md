@@ -3,10 +3,10 @@ title: Deleting a Tenant or User
 sidebar_position: 2
 ---  
 
-Deleting a Tenant or User
+Deleting a Tenant or User
 =========================
 
-Once a user is deleted, they no longer have log in access. Note: Before requesting a tenant to be deleted, make sure users can authenticate using another method.
+Once a user is deleted, they no longer have log in access. Note: Before requesting a tenant to be deleted, make sure users can authenticate using another method.
 
 ### Step 1: Delete or Deactivate a User or Tenant
 
@@ -22,19 +22,19 @@ Once a user is deleted, they no longer have log in access. Note: Before request
 
 ### Step 2: Create a Delete Request
 
-To request a tenant or specific user to be deleted, do one of the following: 
+To request a tenant or specific user to be deleted, do one of the following: 
 
 #### **Step 2A**
 
-1.  Open a [Delete Request](https://beyondidentity.atlassian.net/servicedesk/customer/portal/5/user/login?destination=portal%2F5%2Fgroup%2F16%2Fcreate%2F127) via the Customer Support Portal.
+1.  Open a [Delete Request](https://beyondidentity.atlassian.net/servicedesk/customer/portal/5/user/login?destination=portal%2F5%2Fgroup%2F16%2Fcreate%2F127) via the Customer Support Portal.
 2.  From the **Customer Support** dialog:
-    1.   Make sure the **Delete Request** option is selected.
+    1.   Make sure the **Delete Request** option is selected.
     2.  Provide the `Tenant ID` or `User ID` in the **Summary** field.
     3.  Add a brief description of the reason for the request. (Optional)
 
 #### **Step 2B**
 
-1.  Send an email to [support@beyondidentity.com](https://beyondidentity.atlassian.net/wiki/spaces/CS/pages/2187395076/Tenant+or+User+Deletion#b)-Send-Delete-Request-to-support%40beyondidentity.com)  containing the following information:
+1.  Send an email to [support@beyondidentity.com](https://beyondidentity.atlassian.net/wiki/spaces/CS/pages/2187395076/Tenant+or+User+Deletion#b)-Send-Delete-Request-to-support%40beyondidentity.com)  containing the following information:
     1.  **Subject:** Delete Request for <`TENANT_ID` or `USER_ID`\>
     2.  **Message:** Brief description if needed
 
@@ -50,6 +50,6 @@ The Beyond Identity team will delete the tenant/user from the platform. Once the
 
 [Creating a Tenant](/docs/secure-work/getting-started/create-tenant)
 
-[Requesting Access to Tenant or User Data](../Access/Requesting_Access_to_Tenant_or_User_Data.htm)
+[Requesting Access to Tenant or User Data]<!-- (../Access/Requesting_Access_to_Tenant_or_User_Data) -->
 
-[Customizing Tenant Info](Customizing_Tenant_Info.htm)
+[Customizing Tenant Info]<!-- (Customizing_Tenant_Info) -->

@@ -6,7 +6,7 @@ sidebar_position: 4
 Installing the Authenticator on a Linux Device
 ==============================================
 
-A download and registration email will be sent from your IT department to download Beyond Identity and register your device. The dialogs displayed below may vary depending on your OS version.
+A download and registration email will be sent from your IT department to download Beyond Identity and register your device. The dialogs displayed below may vary depending on your OS version.
 
 1.  Navigate to the download site at [https://app.byndid.com/downloads.](https://app.byndid.com/downloads "https://app.byndid.com/downloads")
 2.  From the Downloads page, select **Linux**. You will be directed to the information described here.

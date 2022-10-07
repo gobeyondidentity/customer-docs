@@ -5,7 +5,7 @@ sidebar_position: 2
 Specifying a Range of Allowable Versions that can be Installed on Devices
 =========================================================
 
-You can specify a range of allowable Authenticator versions that can be installed on devices. After configuring the policy, the administrator can apply the Version Control ID that is generated for the policy in the Authenticator app. Whenever the Authenticator performs an authentication, a request is sent to validate the version on the device. When configured, the administrator can then set the policy ID associated with the specified versions in the Authenticator app. Whenever the Authenticator performs an authentication, a request is sent to validate the version on the device.
+You can specify a range of allowable Authenticator versions that can be installed on devices. After configuring the policy, the administrator can apply the Version Control ID that is generated for the policy in the Authenticator app. Whenever the Authenticator performs an authentication, a request is sent to validate the version on the device. When configured, the administrator can then set the policy ID associated with the specified versions in the Authenticator app. Whenever the Authenticator performs an authentication, a request is sent to validate the version on the device.
 
 *   If the installed version is within the range configured by the policy, no update is needed and no message indicating that the installed version must be installed.
     

@@ -33,7 +33,7 @@ Ensure that you a Google Administrator account to:
 Beyond Identity Configuration
 -----------------------------
 
-The following table lists the information you need to provide to the Beyond Identity team.
+The following table lists the information you need to provide to the Beyond Identity team.
 
  
 
@@ -41,7 +41,7 @@ Information to provide to Beyond Identity
 
 Your Company Name
 
- 
+ 
 
 Beyond Identity Admin Console Credentials
 
@@ -74,7 +74,7 @@ The following information will be supplied by the Beyond Identity Field Team.
 
 Information Supplied by Beyond Identity
 
- 
+ 
 
 Beyond Identity Admin Console URLs:
 
@@ -182,7 +182,7 @@ Beyond Identity service assignment is required for IT Admin and end users. The f
 2.  Configure the following fields for User Console Authentication.
     1.  Click **Add SAML SSO**.
         1.  Click **Upload XML** or populate the following fields as shown below:Name: Google SSO
-        2.  IdP Url: https://accounts.google.com/o/saml2/idp?idpid=xxxxx  (Provided by the customer as **SSO URL**)
+        2.  IdP Url: https://accounts.google.com/o/saml2/idp?idpid=xxxxx  (Provided by the customer as **SSO URL**)
         3.  IdP Entity Id: https://accounts.google.com/o/saml2?idpid=xxxx (Provided by the customer as **Entity ID**)
         4.  Name ID Format: emailAddress (select from the pull-down menu)
         5.  Subject User Attribute: UserName
@@ -276,23 +276,23 @@ To set up test user, perform the following:
     ![] (/images/google-workspace/bi_get_auth_reg_cred.png)
 4.  Each enrolled user will be asked to perform the steps below:
     *   **Step 1: Download the Beyond Identity Authenticator to their device.**  
-        When the user clicks “View Download Options”, the Beyond Identity Authenticator downloads page will open in a browser with all supported platforms displayed. The user should download and install the Beyond Identity Authenticator on their device if they have not already. Once the Authenticator is installed on the device, proceed to Step 2 as there is not yet a user credential associated with the Authenticator on that device.
+        When the user clicks “View Download Options”, the Beyond Identity Authenticator downloads page will open in a browser with all supported platforms displayed. The user should download and install the Beyond Identity Authenticator on their device if they have not already. Once the Authenticator is installed on the device, proceed to Step 2 as there is not yet a user credential associated with the Authenticator on that device.
     *   **Step 2: Register their Credential in the Beyond Identity IdP.**  
-        By clicking on Step 2 “**Register New Credential**”, the user’s credential will get enrolled in the Beyond Identity service on the back-end. On the front-end, users who click Step 2 will be taken to the Beyond Identity Authenticator where they will see the progress of their credential registration. Once completed, the user will see the credentials in the Authenticator.   
+        By clicking on Step 2 “**Register New Credential**”, the user’s credential will get enrolled in the Beyond Identity service on the back-end. On the front-end, users who click Step 2 will be taken to the Beyond Identity Authenticator where they will see the progress of their credential registration. Once completed, the user will see the credentials in the Authenticator.   
         ![] (/images/google-workspace/bi_credential.png)
 
 ##### 10.2 User Authentication (Signing In)
 
-1.  Each enrolled user can visit any application supported by your SSO to sign into their corporate applications. 
+1.  Each enrolled user can visit any application supported by your SSO to sign into their corporate applications. 
     
-2.  The SSO-supported application will ask the user to enter their username. 
+2.  The SSO-supported application will ask the user to enter their username. 
     
 3.  Once the username is submitted, a prompt to use or open the Beyond Identity app for authentication will display for the user.
     
 4.  The user should click affirmatively on the prompt to be signed into their application, without the use of a password. The Beyond Identity app along with a success notification will display.
     
 
-##### 10.3 User Deprovisioning
+##### 10.3 User Deprovisioning
 
 1.  To deprovision a user from the Beyond Identity experience, remove the user from the “BI\_Users” Group.
     1.  Click **Directory > Groups**.

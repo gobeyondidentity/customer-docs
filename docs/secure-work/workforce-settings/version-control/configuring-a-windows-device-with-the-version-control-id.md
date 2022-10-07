@@ -6,7 +6,7 @@ sidebar_position: 6
 Configuring a Windows Device with the Version Control ID
 ========================================================
 
-Once the version contol ID has been created, it can be applied to devices. The version control ID is generated when the version control policy is created. It references the local Platform Authenticator to the appropriate policy allowing you to have more than one version control policy associated with different sets of Platform Authenticators. To apply the version control ID:
+Once the version contol ID has been created, it can be applied to devices. The version control ID is generated when the version control policy is created. It references the local Platform Authenticator to the appropriate policy allowing you to have more than one version control policy associated with different sets of Platform Authenticators. To apply the version control ID:
 
 1.  Open the Registry Editor and navigate to **HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Policies**.
     

@@ -10,7 +10,7 @@ This article assumes that you have already received a welcome registration email
 
 #### Step 1. Download the Authenticator
 
-From the email you can tap the “View Download Options”, which will then allow you to tap “Download for Android”.
+From the email you can tap the “View Download Options”, which will then allow you to tap “Download for Android”.
 
  
 ![](/images/install/install.png)

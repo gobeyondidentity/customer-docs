@@ -8,7 +8,7 @@ Setting up and Managing Automatic Git Commit Signing
 
 The Beyond Identity Secure DevOps product provides an efficient and easy mechanism to ensure that all Git commits are sourced from trusted macOS, Windows, and Linux devices. The product is comprised of two components:
 
-*   The Beyond Identity Authorization API, when integrated to your CI/CD pipeline, can be used to enforce that only commits signed by the Beyond Identity Authenticator can be merged into your main branch. Beyond Identity has created a GitHub Action that integrates directly with the Beyond Identity Authorization API. We recommend that GitHub and GitLab administrators use the Beyond Identity GitHub Action overwriting custom code to work with the Authorization API. 
+*   The Beyond Identity Authorization API, when integrated to your CI/CD pipeline, can be used to enforce that only commits signed by the Beyond Identity Authenticator can be merged into your main branch. Beyond Identity has created a GitHub Action that integrates directly with the Beyond Identity Authorization API. We recommend that GitHub and GitLab administrators use the Beyond Identity GitHub Action overwriting custom code to work with the Authorization API. 
 *   The Beyond Identity Authenticator signing the Git commits on each developer’s machine.
 
 The following illustration shows the commit signature verification flow.
@@ -56,12 +56,12 @@ The Beyond Identity Authorization API will return an error for any unauthorized 
   
 # Beyond Identity GitHub Action
 
-The Beyond Identity GitHub Action is for authorizing a Beyond Identity user to sign git commits and verifying those git commit signatures. The action enforces that all commits are signed by authorized users in your organization’s Beyond Identity directory. Because the Beyond Identity GitHub Action makes API calls to the Authorization API, you will need a Beyond Identity API Key. 
+The Beyond Identity GitHub Action is for authorizing a Beyond Identity user to sign git commits and verifying those git commit signatures. The action enforces that all commits are signed by authorized users in your organization’s Beyond Identity directory. Because the Beyond Identity GitHub Action makes API calls to the Authorization API, you will need a Beyond Identity API Key. 
 
 ## Setting Up Integration with GitHub
 
 
-The following information provides the necessary steps for a GitHub administrator to integrate the Beyond Identity GitHub action into their CI/CD pipeline. 
+The following information provides the necessary steps for a GitHub administrator to integrate the Beyond Identity GitHub action into their CI/CD pipeline. 
 
 #### Step 1. Add Beyond Identity to your CI/CD pipeline (GitHub)
 
@@ -130,7 +130,7 @@ steps:
 - run: echo "Integration tests passed"
 ```
 	    
-3.  Create a new secret for your GitHub repository. The secret must be named `BYNDID_KEY_MGMT_API_TOKEN`.  A Beyond Identity Sales Engineer will provide this token to you.
+3.  Create a new secret for your GitHub repository. The secret must be named `BYNDID_KEY_MGMT_API_TOKEN`.  A Beyond Identity Sales Engineer will provide this token to you.
 
 #### Step 2. Configure branch protection rules
 
@@ -147,20 +147,20 @@ Each user that will be signing Git commits must be added to a specific group wit
 To allow individual users to sign commits, you must have Git commit signing already enabled for your tenant. Contact a Beyond Identity team member if you do not already have it enabled.
 :::
 
-1. From the **Groups** page, select **Add Group**:
-2. In the **Add Group** dialog, provide:
+<!-- 1. From the **Groups** page, select **Add Group**:
+2. In the **Add Group** dialog, provide:
 	*   The Group Name. The name must be **BI_SDO_GPG_Key_Creation**.
 	*   An optional Description
 	![](/images/git-commit/git_commit_add_group_dialog.png)
 3.	Select **Save Changes**. The group is added to the **Group** list.
 4.	Locate and open the new-created group.
-5.	From the **BI_SDO_GPG_Key_Creation** group page, select **Add Users**.
+5.	From the **BI_SDO_GPG_Key_Creation** group page, select **Add Users**.
 6.	From the **Add User** dialog, select each user you want to add from the drop-down menu.
 	![](/images/git-commit/add-user-john.png)
 7.	As each user is added, the credential associated with the user is displayed in the dialog.
 	![](/images/git-commit/add_users_git_commit_id.png)
 8.	Click **Add users to group**. The users are displayed under the **Members** section.
-	![](/images/git-commit/add-user-john.png)
+	![](/images/git-commit/add-user-john.png) -->
 
 Setting Up the Beyond Identity Authenticator
 --------------------------------------------
@@ -176,9 +176,9 @@ The following information provides your company’s developers with the necessar
 
 1.  Update your Authenticator to the latest version.  
     ![](/images/auth_check_for_updates.png)
-2. Select the appropriate credential and click **GPG Keys** to open the GPG key management screen. If there are no keys, **+ Create GPG Keys** is displayed in place of **GPG Keys** in the credential.    
+2. Select the appropriate credential and click **GPG Keys** to open the GPG key management screen. If there are no keys, **+ Create GPG Keys** is displayed in place of **GPG Keys** in the credential.    
     ![](/images/gpg_keys.png)
-3.  Click **+Create GPG key**. **Note:** The wording of the button may be slightly different depending on the platform you are using.  
+3.  Click **+Create GPG key**. **Note:** The wording of the button may be slightly different depending on the platform you are using.  
     ![](/images/git-commit/create-gpg-key-button.png)  
           
 4.  Provide a name and email address of the developer generating the key, and optionally, a key comment and expiration date for the key.  

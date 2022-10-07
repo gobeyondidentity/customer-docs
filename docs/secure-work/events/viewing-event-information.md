@@ -6,14 +6,14 @@ sidebar_position: 1
 Viewing Event Information
 =========================
 
-The **Events** page provides information on various types of events associated with user and/or device activity. To view event details:
+The **Events** page provides information on various types of events associated with user and/or device activity. To view event details:
 
-1.  From the [Admin Console](/docs/secure-work/workforce-settings/admin-console/admin-console-login), select the **Events** tab.
-2.  The **Events** page displays the following information:
+1.  From the [Admin Console](/docs/secure-work/workforce-settings/admin-console/admin-console-login), select the **Events** tab.
+2.  The **Events** page displays the following information:
     1.  Date and time the event occurred (**Date & Time**)
-    2.  The name of the user associated with the event (**Principal Actor**)
+    2.  The name of the user associated with the event (**Principal Actor**)
     3.  The type of event that occurred (**Event**)
-    4.  The ID associated with the event (**Correlation ID**)  
+    4.  The ID associated with the event (**Correlation ID**)  
         ![](/images/events/events_match_count1.PNG)
 3.  Various options can be performed from this page. You can:
     1.  View the profile and devices associated with a [specific user](/docs/secure-work/events/view-user-profile).
@@ -23,7 +23,7 @@ The **Events** page provides information on various types of events associated w
     5.  Export [event data](/docs/secure-work/events/exporting-event-data).
 
 :::note
-Clicking on the **DATE & TIME** column allows events to be displayed in ascending or descending order.
+Clicking on the **DATE & TIME** column allows events to be displayed in ascending or descending order.
 :::
 
 #### Related Topics
