@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="generator" content="Adobe RoboHelp 2020" />
+  <title>Writing Policy</title>
+  <meta name="topic-status" content="Draft" />
+  <meta name="template" content="../../../assets/masterpages/beyond.htt" />
+  <link rel="stylesheet" type="text/css" href="../../../assets/css/beyond-identity1.css" />
+  <link rel="stylesheet" type="text/css" href="../../../assets/css/beyond-identity2.css" />
+</head>
+<body>
+  <h1 style="margin-top: 0.5pt;margin-right: 0.5pt;margin-bottom: 12.5pt;margin-left: 0.5pt">Writing Policy</h1>
+  <p data-renderer-start-pos="1">Beyond Identity provides an extensive rule-based decision policy engine that allows you to customize access decisions based on a variety of attributes from various sources, such as user, device, event, and from third party integrations.</p>
+  <p data-renderer-start-pos="241">To allow or restrict access to devices and apps, you write policy rules. Policy rules can be configured to allow or restrict access based on user, device, and event behavior. This ensures that users attempting a specific transaction, such as authenticating to web apps or adding a device, must meet the policy rule requirements that have been defined to gain access. Policy can be leveraged for a variety of use cases. For example, a company may enforce a policy that requires a firewall turned on, management software installed, or a specific operating system installed on devices to authenticate and allow access.</p>
+  <p data-renderer-start-pos="886">You can create rules that apply to all transactions that occur or for a specific transaction type. Transaction types include:</p>
+  <ul class="Disc">
+    <li>
+      <p data-renderer-start-pos="972">Authentication</p>
+    </li>
+    <li>
+      <p data-renderer-start-pos="990">Device Add</p>
+    </li>
+  </ul>
+  <p data-renderer-start-pos="1004">Authentication transactions include rules to authenticate to web apps or SSO providers integrated with Beyond Identity. Device Add transactions include rules related to end users’ ability to add additional devices. Rules can be written for a specific transaction type as well as across transaction types.</p>
+  <p data-renderer-start-pos="1310">Until a rule allowing access is defined, access is denied. Any number of rules can be added. A single rule can consist of any number of transaction-based attributes related to the following:</p>
+  <ul class="Disc">
+    <li>
+      <p data-renderer-start-pos="1504">User</p>
+    </li>
+    <li>
+      <p data-renderer-start-pos="1512">Device</p>
+    </li>
+    <li>
+      <p data-renderer-start-pos="1522">Integration</p>
+    </li>
+    <li>
+      <p data-renderer-start-pos="1537">Authentication version</p>
+    </li>
+  </ul>
+  <p data-renderer-start-pos="1563">When a transaction is initiated, each defined rule is evaluated in numerical order. Once an exact rule is found, access is allowed or restricted based on the criteria defined in the rule. No further searching through the remaining rules is necessary. If a match is not found after searching through all rules, the default deny rule is matched and access is denied.</p>
+  <p data-renderer-start-pos="1944">For example, a rule has been defined allowing access when authenticating from a macOS device that has a firewall turned on. The Policy engine searches through the rules starting with Rule 1 and when it finds a match, it stops searching and allows access. In this example, a match is found in Rule 3. The Policy engine does not need to continue searching through the remainder of the rules.</p>
+  <p data-renderer-start-pos="1944"><img data-thumbnail="800 591" height="591" src="../../../assets/images/policy/policy_rule_order.png" style="cursor: nwse-resize;" width="802" /></p>
+  <h2 data-renderer-start-pos="2338" id="Creating-Rules"><a id="policy_creating_rules"></a>Creating Rules</h2>
+  <p>To create a rule:</p>
+  <ol class="Decimal_1">
+    <li>Log into the <a href="../Admin_Console.htm">Admin console</a> and from the Home screen, select the <strong data-renderer-mark="true">Policy</strong> tab.</li>
+    <li>The <a id="Policy_page" height="0" width="0"></a><a href="#Policy_page">Policy page</a> displays a list of current rules that have been configured. Click <strong>Edit Policy.</strong><br />
+      <img data-thumbnail="990 591" height="591" src="../../../assets/images/policy/policy_rule_order_5_rules.png" width="990" />
+    </li>
+    <li>From the <strong>Edit Policy</strong> page, click <strong>Add Rule</strong>.<br />
+      <img data-thumbnail="990 546" height="546" src="../../../assets/images/policy/policy_rules_add_rule_allow.PNG" width="946" />
+    </li>
+    <li>The <strong>Add Rule</strong> dialog is displayed.<br />
+      <img data-thumbnail="706 906" height="1200" src="../../../assets/images/policy/add_rule_dialog.PNG" width="990" /><br />
+      The Add Rule dialog provides attributes for setting policy related to:
+      <ul class="Disc">
+        <li>
+          <p data-renderer-start-pos="2592">The type of transaction</p>
+        </li>
+        <li>
+          <p data-renderer-start-pos="2592">The user attempting to authenticate</p>
+        </li>
+        <li>
+          <p data-renderer-start-pos="2592">The platform on the device</p>
+        </li>
+        <li>
+          <p data-renderer-start-pos="2592">The type of integration</p>
+        </li>
+        <li>
+          <p data-renderer-start-pos="2592">The Beyond Identity Authentication version installed</p>
+        </li>
+      </ul>
+    </li>
+  </ol>
+  <p class="tip1"><strong data-renderer-mark="true">Note:</strong><span> </span>The <strong data-renderer-mark="true">user</strong>, <strong data-renderer-mark="true">device platform</strong>, and <strong data-renderer-mark="true">integration</strong> attributes can be defined with additional sub attributes<span></span></p>
+  <p>Keep the following points in mind when creating rules:</p>
+  <ul class="Disc">
+    <li>
+      <p data-renderer-start-pos="3019">Policy rules can be edited and deleted, however, the last remaining policy rule in a set cannot be deleted. It can only be edited.</p>
+    </li>
+    <li>
+      <p data-renderer-start-pos="3153">The default rule denying authentication and device add cannot be deleted.</p>
+    </li>
+    <li>
+      <p data-renderer-start-pos="3230">Only attributes and options applicable to the specific item you select are available. For example, Android attributes and options are not available when you are defining a rule for a Mac device.</p>
+    </li>
+    <li>
+      <p data-renderer-start-pos="3428">The following sections provide examples for creating:</p>
+    </li>
+    <li>
+      <p data-renderer-start-pos="3485">Rules that apply to a specific transaction type</p>
+    </li>
+    <li>
+      <p data-renderer-start-pos="3536">Rules that apply to all transaction types</p>
+    </li>
+  </ul>
+  <h3 data-renderer-start-pos="3581" id="Transaction-Specific-Rules">Transaction-Specific Rules</h3>
+  <p>The following section provides examples for writing:</p>
+  <ul class="Disc">
+    <li>
+      <p data-renderer-start-pos="3665">An authentication transaction rule</p>
+    </li>
+    <li>
+      <p data-renderer-start-pos="3703">A device transaction rule</p>
+    </li>
+  </ul>
+  <h4 data-renderer-start-pos="3732" id="Example-1:-Creating-an-Authentication-Transaction-Rule">Example 1: Creating an Authentication Transaction Rule</h4>
+  <p>This example creates a rule to allow access to users that are part of the Admin Group and are authenticating from an Android device that is registered with Intune and running an Authenticator version greater than version 2.49.0.</p>
+  <ol class="Decimal_1">
+    <li>After logging into the Admin console and opening the Add Rule dialog, select the attributes that are required for authentication for your organization. In this example, we are selecting the following attributes to allow authentication:
+      <ol>
+        <li>The <strong>Transaction</strong> type is <code class="code"><strong data-renderer-mark="true">Authentication</strong></code>.</li>
+        <li>
+          <p data-renderer-start-pos="4303">The <strong>user</strong> is the <code class="code"><strong data-renderer-mark="true">Admin Console Access</strong></code> in the user group.</p>
+        </li>
+        <li>
+          <p data-renderer-start-pos="4353">The <strong>device platform</strong> is <code class="code"><strong data-renderer-mark="true">Android</strong></code>.</p>
+        </li>
+        <li>
+          <p data-renderer-start-pos="4388">The <strong>integration</strong> type is <code class="code">registered</code> with <code class="code">Intune</code>.</p>
+        </li>
+        <li>
+          <p data-renderer-start-pos="4446">The <strong>Authentication version</strong> is <code class="code">greater than 2.49.0</code>.</p>
+        </li>
+      </ol>
+    </li>
+    <li>To select the attributes, click the <strong>Add attribute</strong> button associated with the desired attribute and select or type in a value as follows:
+      <ol>
+        <li>
+          <p data-renderer-start-pos="4631">For <strong data-renderer-mark="true">transaction</strong>, select<strong data-renderer-mark="true"> <code class="code">Authentication</code></strong> from the drop-down menu.</p>
+        </li>
+        <li>
+          <p data-renderer-start-pos="4698">For <strong data-renderer-mark="true">user</strong>, select<strong data-renderer-mark="true"> <code class="code">is in user group</code></strong> and <code class="code"><strong data-renderer-mark="true">Admin Console Access</strong></code> from the drop-down menus.</p>
+        </li>
+        <li>
+          <p data-renderer-start-pos="4771">For <strong data-renderer-mark="true">device platform</strong>, select <code class="code"><strong data-renderer-mark="true">Android</strong></code> from the drop-down menu.</p>
+        </li>
+        <li>
+          <p data-renderer-start-pos="4835">For <strong data-renderer-mark="true">integration</strong>, select <code class="code"><strong data-renderer-mark="true">Intune Registration is Registered</strong></code> from the drop-down menus.</p>
+        </li>
+        <li>
+          <p data-renderer-start-pos="4922">For <strong data-renderer-mark="true">authenticator version</strong>, select <code class="code"><strong>is greater than</strong> </code>from the drop-down menu and then type in<strong data-renderer-mark="true"> <code class="code">2.49.0</code></strong>.</p>
+        </li>
+      </ol>
+    </li>
+    <li>Leave the default <code class="code"><strong data-renderer-mark="true">Allow</strong></code> setting.<br />
+      <img data-thumbnail="722 1200" height="1200" src="../../../assets/images/policy/add_rule_allow_authentication_example.PNG" width="990" />
+    </li>
+    <li>Click <strong data-renderer-mark="true">Add</strong> when done. The rule is added to the Policy Rules list.<br />
+      <img data-thumbnail="990 591" height="591" src="../../../assets/images/policy/policy_rules_authetication_example_added.PNG" width="990" />
+    </li>
+    <li>Create additional rules as needed.</li>
+  </ol>
+  <p class="tip1" data-renderer-start-pos="4922"><strong>Notes:</strong><br />
+    For the rule to be preserved upon exiting the Admin Console, the rule must be published. See <a href="Publishing_Rules.htm">Publishing Rules</a>.<br />
+    Multiple rules can be defined before publishing them.<strong data-renderer-mark="true"></strong></p>
+  <h4 data-renderer-start-pos="6871" id="All-Transaction-Type-Rules">Example 2: Creating a Device Transaction Rule</h4>
+  <ol class="Decimal_1">
+    <li>After logging into the Admin console and opening the Add Rule dialog, select the attributes that are required to allow users to add devices. In this example, we are selecting the following attributes:
+      <ol>
+        <li>
+          <p data-renderer-start-pos="5674">The <strong>Transaction</strong> type is<code class="code"> <strong data-renderer-mark="true">Device</strong></code>.</p>
+        </li>
+        <li>
+          <p data-renderer-start-pos="5709">The <strong>user</strong> is <code class="code"><strong data-renderer-mark="true">any user</strong></code>.</p>
+        </li>
+        <li>
+          <p data-renderer-start-pos="5734">The <strong>device platform </strong>is <code class="code"><strong data-renderer-mark="true">iOS</strong></code> with<strong data-renderer-mark="true"> <code class="code">Device Jailbreak</code></strong> set to <code class="code"><strong data-renderer-mark="true">Not Detected</strong></code>.</p>
+        </li>
+        <li>
+          <p data-renderer-start-pos="5807">The <strong>integration</strong> is <code class="code"><strong data-renderer-mark="true">JAMF</strong> <strong data-renderer-mark="true">Connection</strong></code> set to<code class="code"> <strong data-renderer-mark="true">Available</strong></code>.</p>
+        </li>
+        <li>
+          <p data-renderer-start-pos="5863">The <strong>authenticator version</strong> is <code class="code">greater than or equal to 2.51.0</code>.</p>
+        </li>
+      </ol>
+    </li>
+    <li>To select the attributes, click the <strong data-renderer-mark="true">Add attribute </strong>button associated with the desired attribute and select or type in a value as follows:
+      <ol>
+        <li>For <strong data-renderer-mark="true">transaction</strong>, select<strong data-renderer-mark="true"> <code class="code">Add Device</code></strong> from the drop-down menu.</li>
+        <li>For <strong data-renderer-mark="true">user</strong>, leave the default setting. (Defaults to <code class="code">any user</code>)</li>
+        <li>For <strong data-renderer-mark="true">device platform:</strong>
+          <ol>
+            <li>Select <code class="code"><strong data-renderer-mark="true">iOS</strong></code> from the drop-down menu.</li>
+            <li>Click <strong data-renderer-mark="true">Add attribute</strong> and select <code class="code"><strong data-renderer-mark="true">Device Jailbreak is</strong></code> and <code class="code"><strong data-renderer-mark="true">Not Detected</strong></code> from the drop-down menus.</li>
+          </ol>
+        </li>
+        <li>For <strong>integration</strong>, select <code class="code"><strong data-renderer-mark="true">JAMF</strong>, <strong data-renderer-mark="true">Connection is</strong></code>, and <code class="code"><strong data-renderer-mark="true">Available</strong></code> from the drop-down menus.</li>
+        <li>For <strong data-renderer-mark="true">authenticator version</strong>:
+          <ol>
+            <li>Select <code class="code"><strong data-renderer-mark="true">is greater than or equal to</strong></code> from the drop-down menu.</li>
+            <li>Type in<code class="code"><strong data-renderer-mark="true"> 2.51.0</strong></code>.</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li>Leave the default <code class="code"><strong data-renderer-mark="true">Allow</strong></code> setting.<br />
+      <img data-thumbnail="706 1200" height="1200" src="../../../assets/images/policy/add_rule_allow_device_example.PNG" width="990" /> 
+    </li>
+    <li>Click <strong data-renderer-mark="true">Add</strong> when done. The rule is added to the Policy Rules list.<br />
+      <img data-thumbnail="804 500" height="570" src="../../../assets/images/policy/policy_rules_device_example_added.PNG" width="990" />
+    </li>
+  </ol>
+  <p class="tip1" data-renderer-start-pos="6058"><strong data-renderer-mark="true">Note:</strong> For the rule to be preserved upon exiting the Admin Console, the rule must be published. See <a href="Publishing_Rules.htm"><strong data-renderer-mark="true">Publishing Rules</strong></a>.<br />
+    Multiple rules can be defined before publishing them.</p>
+  <h3 data-renderer-start-pos="6871" id="All-Transaction-Type-Rules">All Transaction Type Rules</h3>
+  <p>In addition to setting policy for a specific transaction type, you can set policy that applies for all transaction types. The following provides an example that writes a policy that denies authentication for any transaction type that matches the criteria set in the policy.</p>
+  <h3 data-renderer-start-pos="7174" id="Example:-Creating-a-Rule-to-Deny-Authentication">Example: Creating a Rule to Deny Authentication</h3>
+  <p>This example creates a rule that denies users from the QA Group attempting to authenticate or add a device that is installed with an Authenticator version less than 2.49.0.</p>
+  <ol class="Decimal_1">
+    <li>After logging into the Admin console and opening the Add Rule dialog, select the attributes that deny authentication or the ability to add devices that match your requirements. In this example, we are selecting the following attributes:
+      <ol>
+        <li>
+          <p data-renderer-start-pos="7641">The <strong>Transaction</strong> type is <code class="code"><strong data-renderer-mark="true">Any</strong></code>. (Does not need to be specified. Default value of <code class="code"><strong data-renderer-mark="true">Any</strong></code> is implied.)</p>
+        </li>
+        <li>
+          <p data-renderer-start-pos="7739">The <strong>user</strong> is in the <code class="code"><strong data-renderer-mark="true">QA Group</strong></code>.</p>
+        </li>
+        <li>
+          <p data-renderer-start-pos="7771">The <strong>authenticator</strong><strong> version</strong> is <code class="code">less than 2.49.0</code>.</p>
+        </li>
+      </ol>
+    </li>
+    <li>To select the attributes, click the <strong>Add attribute</strong> button associated with the desired attribute and select or type in a value as follows:
+      <ol>
+        <li>For <strong data-renderer-mark="true">user</strong>, select <code class="code">QA Group</code> from the drop-down menu.</li>
+        <li>For <strong data-renderer-mark="true">authenticator version</strong>:
+          <ol>
+            <li>Select <code class="code"><strong data-renderer-mark="true">is less than</strong></code> from the drop-down menu.</li>
+            <li>Type in<strong data-renderer-mark="true"> <code class="code">2.49.0</code></strong>.</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li>For <strong data-renderer-mark="true">Then</strong>, select <code class="code"><strong data-renderer-mark="true">Deny</strong></code> from the drop-down menu.</li>
+    <li>Add an optional message in the <strong data-renderer-mark="true">Customized notification </strong>box that is displayed to inform the user why the authentication or device add function was denied. For example, &quot;The Authenticator version installed on the device is below the minimum allowed. Please upgrade your Authenticator version to 2.49.0 or greater.”<br />
+      <img data-thumbnail="826 1200" height="1017" src="../../../assets/images/policy/add_rule_deny_auth_device_example.PNG" style="cursor: nwse-resize;" width="990" />
+    </li>
+    <li>Click <strong data-renderer-mark="true">Add</strong> when done. The rule is added to the Policy Rules list.<br />
+        <img data-thumbnail="802 570" height="570" src="../../../assets/images/policy/policy_rules_example_deny.PNG" style="cursor: nwse-resize;" width="802" /></li>
+    <li>Create additional rules as needed.</li>
+  </ol>
+  <p class="tip1" data-renderer-start-pos="7951"><strong data-renderer-mark="true">Note:</strong> For the rule to be preserved upon exiting the Admin Console, the rule must be published. See <a href="Publishing_Rules.htm"><strong data-renderer-mark="true">Publishing Rules</strong></a>.<br />
+    Multiple rules can be defined before publishing them.</p>
+  <p data-renderer-start-pos="7951"><br />
+     </p>
+</body>
+</html>
