@@ -16,7 +16,7 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'gobeyondidentitybeyond', // Usually your GitHub org/user name.
+  organizationName: 'gobeyondidentity', // Usually your GitHub org/user name.
   projectName: 'customer-docs', // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
@@ -95,6 +95,30 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+      },
+      algolia: {
+        // The application ID provided by Algolia
+        appId: 'XZP75YM30R',
+
+        // Public API key: it is safe to commit it
+        apiKey: '0da744ea79043b7da815e536ffe39f99',
+
+        indexName: 'docs_beyondidentity',
+
+        // Optional: see doc section below
+        contextualSearch: false,
+
+        // // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+        // externalUrlRegex: 'external\\.com|domain\\.com',
+
+        // // Optional: Algolia search parameters
+        searchParameters: {
+          facetFilters: [],
+        },
+
+        // // Optional: path for search page that enabled by default (`false` to disable it)
+        // searchPagePath: 'search',
+
       },
     }),
 };
