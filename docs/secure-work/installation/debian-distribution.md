@@ -20,22 +20,19 @@ Automatic
 
 To quickly set up the repository automatically:
 
-`cURL
-
-`` `curl -1sLf \     'https://packages.beyondidentity.com/public/linux-authenticator/setup.deb.sh' \     | sudo -E bash` ``
+							
+`curl -1sLf \     'https://packages.beyondidentity.com/public/linux-authenticator/setup.deb.sh' \     | sudo -E bash`
 
 ### Specific Distribution, Release/Version, or Architecture
 
-``` `` `cURL` `` ```
-
-`` `curl -1sLf \     'https://packages.beyondidentity.com/public/linux-authenticator/setup.deb.sh' \     | sudo -E distro=some-distro codename=some-codename arch=some-arch bash` ``
+`curl -1sLf \     'https://packages.beyondidentity.com/public/linux-authenticator/setup.deb.sh' \     | sudo -E distro=some-distro codename=some-codename arch=some-arch bash`
 
 ### Manual
 
 To provide more control of the distribution, use the following method before installing packages:
 
   
-`` `apt-get install -y debian-keyring  # debian only   apt-get install -y debian-archive-keyring  # debian only   apt-get install -y apt-transport-https   curl -1sLf 'https://packages.beyondidentity.com/public/linux-authenticator/gpg.878C21C541554254.key' | apt-key add -   curl -1sLf 'https://packages.beyondidentity.com/public/linux-authenticator/config.deb.txt?distro=ubuntu&codename=focal' > /etc/apt/sources.list.d/beyond-identity-linux-authenticator.list   apt-get update` ``
+`apt-get install -y debian-keyring  # debian only   apt-get install -y debian-archive-keyring  # debian only   apt-get install -y apt-transport-https   curl -1sLf 'https://packages.beyondidentity.com/public/linux-authenticator/gpg.878C21C541554254.key' | apt-key add -   curl -1sLf 'https://packages.beyondidentity.com/public/linux-authenticator/config.deb.txt?distro=ubuntu&codename=focal' > /etc/apt/sources.list.d/beyond-identity-linux-authenticator.list   apt-get update`
 
 :::note
 Replace **ubuntu** and **focal** above with your actual operating system (distribution and distribution release/version).

@@ -29,23 +29,23 @@ Configuration is performed on both the Beyond Identity and the Curity Identity S
 
 Other than the prerequisites mentioned above, the only configuration needed on the Beyond Identity side is to make sure an appropriate `redirect_uri` is configured in the OIDC client that is going to be used. For example: `https://idsvr.example.com/authn/authentication/beyond/ callback`
 
-*   `https://idsvr.example.com` is the baseURL configured in the Curity Identity Server
-*   `/authn/authentication` is the default authentication endpoint
-*   `/beyond` is the ID of the OpenID Authenticator configured in the Curity Identity Server
-*   `/callback` is indicating that this is the callback where the Beyond Identity Platform Authenticator should redirect back to when user authentication is completed
+*   `https://idsvr.example.com` is the baseURL configured in the Curity Identity Server.
+*   `/authn/authentication` is the default authentication endpoint.
+*   `/beyond` is the ID of the OpenID Authenticator configured in the Curity Identity Server.
+*   `/callback` is indicating that this is the callback where the Beyond Identity Platform Authenticator should redirect back to when user authentication is completed.
 
 ### The Curity Identity Server
 
 After following the Getting Started Guide, an OAuth client should now be configured. A new Authenticator needs to be configured.
 
-1.  Navigate to Profiles>Authentication Service>Authenticators and choose New Authenticator.
-2.  Give it a name ( for example, beyond), choose OIDC as the type, and click Next.
+1.  Navigate to **Profiles>Authentication Service>Authenticators** and select **New Authenticator**.
+2.  Give it a name ( for example, beyond), choose OIDC as the type, and click **Next**.
 3.  Add the the Configuration URL:  
     `https://auth.byndid.com/v2/.well-known/openid-configuration`
-4.  Add the Client ID obtained from the Beyond Identity Admin Console.
-5.  Add the Client Secret obtained from the Beyond Identity Admin Console
-6.  Set Client Authentication Method to client-secret
-7.  Enable Use HTTP Basic Authentication.
+4.  Add the `Client ID` obtained from the Beyond Identity Admin Console.
+5.  Add the `Client Secret` obtained from the Beyond Identity Admin Console.
+6.  Set **Client Authentication Method** to `client-secret`.
+7.  Enable **Use HTTP Basic Authentication**.
 
 Test using OAuth.tools
 ----------------------

@@ -8,8 +8,8 @@ Ping Federate Integration
 
 This guide provides information on how to:
 
-*   Set up passwordless authentication to your Ping Federate single sign on
-*   Set up Beyond Identity as a Delegated Identity Provider in Ping Federatee
+*   Set up passwordless authentication to your Ping Federate single sign on.
+*   Set up Beyond Identity as a Delegated Identity Provider in Ping Federate.
 
 #### Step 1. Create a new OIDC connection
 
@@ -122,7 +122,7 @@ This guide provides information on how to:
     2.  Set the **JWS Algorithm** drop-down menu to `ECDSA using P-256 and SHA-256`.
     3.  Leave all other settings with their default values and select **Next**.
 4.  On the **Session Validation** tab:
-    1.  Select the >check box next to **Include Session Identifier In Access Token**.
+    1.  Select the check box next to **Include Session Identifier In Access Token**.
     2.  Select **Next**.
 5.  On the **Access Token Attribute Contract** tab:
     1.  In the **Extend the Contract** field type **sub**, and then select **add**.
@@ -212,7 +212,7 @@ This guide provides information on how to:
     9.  For **Allowed Grant Types**, select the check boxes next to **Authorization Code** and **Implicit**.
     10.  For **Default Access Token Manager**, select `BIToken` (the Access Token Manager created in Step 6).
     11.  Scroll down to the bottom of the page and select **Save**.
-3.  The user should be able to navigate to https://admin.byndid.com/login, enter in their `tenant ID`, and then be taken to a Ping Federate login page
+3.  The user should be able to navigate to https://admin.byndid.com/login, enter in their `tenant ID`, and then be taken to a Ping Federate login page.
 4.  Use the credentials created in **Step 1 part 3** to log in.
 
 #### Step 12. Create the Beyond Identity User Admin client

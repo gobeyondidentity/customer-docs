@@ -114,7 +114,7 @@ To configure Beyond Identity as the IdP in Okta, follow the steps below. Once th
 5.  Under the profile editor, you will see an action to Add Attribute.  
     ![](/images/okta_oidc_policy_editor_attriubtes.png)
     
-6.  Click on **Add Attribute**
+6.  Click **Add Attribute**
     
     1.  Select fields as listed:
         
@@ -133,7 +133,7 @@ To configure Beyond Identity as the IdP in Okta, follow the steps below. Once th
             
 7.  If you have multiple profile masters (applicable for AD mastered users), then perform the following steps:
     
-    1.  Click on the edit button for the **byndidRegistered** attribute in the Okta profile.
+    1.  Click the edit button for the **byndidRegistered** attribute in the Okta profile.
         
     2.  For the **Master Priority** field, select **Inherit from Okta** from the drop-down menu.
         
@@ -294,7 +294,7 @@ To configure Beyond Identity as the IdP in Okta, follow the steps below. Once th
     
     ![](/images/okta_oidc_add_client.png)
     
-4.  Click on the newly created **OIDC Client** configuration and copy the **Client ID** and **Client Secret** values. These values will be used in Step 9, Configure Beyond Identity as the Identity Provider.  
+4.  Click the newly created **OIDC Client** configuration and copy the **Client ID** and **Client Secret** values. These values will be used in Step 9, Configure Beyond Identity as the Identity Provider.  
     ![](/images/okta_oidc_edit_client.png)
     
 5.  From the **Integrations** tab, click **API Extensions** and then click **Install** for **Okta Registration Attribute**.  
@@ -342,7 +342,7 @@ To configure Beyond Identity as the IdP in Okta, follow the steps below. Once th
     8.  JWKS endpoint: **https://auth.byndid.com/v2/.well-known/jwks.json  
         ![](/images/okta_oidc_edit_idp.png)**
         
-5.  Click on the **Show Advanced Settings** link nd fill in the following fields:
+5.  Click the **Show Advanced Settings** link nd fill in the following fields:
     
     1.  IdP Username field: **idpuser.externalId**
         
@@ -435,7 +435,7 @@ Note:  To enroll a user in the Beyond Identity experience, assign the user to th
     
 3.  Click **Manage People**.
     
-4.  Click on **+** sign next to the user’s name in the Not Members column.  
+4.  Click **+** sign next to the user’s name in the Not Members column.  
     ![](/images/okta_add_members_User_group.png)
     
 5.  Click Save.
@@ -445,13 +445,13 @@ Note:  To enroll a user in the Beyond Identity experience, assign the user to th
 
 If, for any reason, you need to remove a user from Beyond Identity, simply remove them from the Beyond Identity user group in Okta.
 
-1.  Click on Directory>Groups.
+1.  Click Directory>Groups.
     
 2.  Select the **Beyond Identity** user group.
     
 3.  Click **Manage People**.
     
-4.  Click on the red **\-** next to the user's name to remove them from the user group.
+4.  Click the red **\-** next to the user's name to remove them from the user group.
     
 5.  Once the user is removed from the Beyond Identity user group, they will be asked for a password to sign into Okta or any applications within Okta.  
     ![](/images/okta_remove_user_from_group.png)

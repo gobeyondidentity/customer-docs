@@ -9,7 +9,9 @@ Shibboleth IdP Integration
 
 This guide provides information on how to configure Shibboleth IdP as a SAML proxy with Beyond Identity as the delegate IdP.
 
-**Note**: This guide makes no assumptions about the existing Shibboleth IdP authentication configuration or customized attributes and schemas. The examples given in the guide are based on the examples in the how-to article in Shibboleth IdP 4.1 documentation "Using SAML Proxying to Another IdP" (see [https://shibboleth.atlassian.net/wiki/spaces/KB/pages/1459979597/Using+SAML+Proxying+to+another+IdP](https://shibboleth.atlassian.net/wiki/spaces/KB/pages/1459979597/Using+SAML+Proxying+to+another+IdP)). Please refer to Shibboleth documentation for examples specific to your configuration (mileage may vary).  
+:::note
+This guide makes no assumptions about the existing Shibboleth IdP authentication configuration or customized attributes and schemas. The examples given in the guide are based on the examples in the how-to article in Shibboleth IdP 4.1 documentation "Using SAML Proxying to Another IdP" (see [https://shibboleth.atlassian.net/wiki/spaces/KB/pages/1459979597/Using+SAML+Proxying+to+another+IdP](https://shibboleth.atlassian.net/wiki/spaces/KB/pages/1459979597/Using+SAML+Proxying+to+another+IdP)). Please refer to Shibboleth documentation for examples specific to your configuration (mileage may vary).  
+:::
  
 
 Prerequisites
@@ -20,9 +22,8 @@ Prerequisites
 *   A working SP configured on the Shibboleth IdP.
 *   The Shibboleth IdP must have a data connector (LDAP or database) configured for attribute resolution. There must be a "joining" attribute shared between Shibboleth and Beyond Identity used to look up additional attributes required by the SP. This attribute must be unique and (preferably) immutable in the directory or database. All of the examples in this guide will use "uid" as the unique user directory attribute.
 *   The following table lists the information you need to provide to the Beyond Identity team.  
-     
-    
-    Information to provide to Beyond Identity
+
+##Information to provide to Beyond Identity
     
     Your Company Name
     
