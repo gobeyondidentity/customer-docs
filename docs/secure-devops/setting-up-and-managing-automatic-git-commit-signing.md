@@ -155,33 +155,7 @@ This is a test of the
 2. In the **Add Group** dialog, provide:
 	*   The Group Name. The name must be **BI_SDO_GPG_Key_Creation**.
 	*   An optional Description
-	<!---![](/images/git-commit/git_commit_add_group_dialog.png)
-3.	Select **Save Changes**. The group is added to the **Group** list.
-4.	Locate and open the new-created group.
-5.	From the **BI_SDO_GPG_Key_Creation** group page, select **Add Users**.
-6.	From the **Add User** dialog, select each user you want to add from the drop-down menu.
-	![](/images/git-commit/add-user-john.png)
-7.	As each user is added, the credential associated with the user is displayed in the dialog.
-	![](/images/git-commit/add_users_git_commit_id.png)
-8.	Click **Add users to group**. The users are displayed under the **Members** section.
-	![](/images/git-commit/add-user-john.png)
 
-
-
-<!-- 1. From the **Groups** page, select **Add Group**:
-2. In the **Add Group** dialog, provide:
-	*   The Group Name. The name must be **BI_SDO_GPG_Key_Creation**.
-	*   An optional Description
-	![](/images/git-commit/git_commit_add_group_dialog.png)
-3.	Select **Save Changes**. The group is added to the **Group** list.
-4.	Locate and open the new-created group.
-5.	From the **BI_SDO_GPG_Key_Creation** group page, select **Add Users**.
-6.	From the **Add User** dialog, select each user you want to add from the drop-down menu.
-	![](/images/git-commit/add-user-john.png)
-7.	As each user is added, the credential associated with the user is displayed in the dialog.
-	![](/images/git-commit/add_users_git_commit_id.png)
-8.	Click **Add users to group**. The users are displayed under the **Members** section.
-	![](/images/git-commit/add-user-john.png) -->
 
 Setting Up the Beyond Identity Authenticator
 --------------------------------------------
