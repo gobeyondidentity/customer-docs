@@ -146,15 +146,24 @@ Each user that will be signing Git commits must be added to a specific group wit
 :::note
 To allow individual users to sign commits, you must have Git commit signing already enabled for your tenant. Contact a Beyond Identity team member if you do not already have it enabled.
 :::
-This is a test of the
-
-1. From the **Groups** page, select **Add Group**:
-
 
 1. From the **Groups** page, select **Add Group**:
 2. In the **Add Group** dialog, provide:
 	*   The Group Name. The name must be **BI_SDO_GPG_Key_Creation**.
 	*   An optional Description
+	![](/images/git-commit/git_commit_add_group_dialog.png)
+3.	Select **Save Changes**. The group is added to the **Group** list.
+4.	Locate and open the new-created group.
+5.	From the **BI_SDO_GPG_Key_Creation** group page, select **Add Users**.
+6.	From the **Add User** dialog, select each user you want to add from the drop-down menu.
+	![](/images/git-commit/add-user-john.png)
+7.	As each user is added, the credential associated with the user is displayed in the dialog.
+	![](/images/git-commit/add_users_git_commit_id.png)
+8.	Click **Add users to group**. The users are displayed under the **Members** section.
+	![](/images/git-commit/add-user-john.png)
+
+
+
 
 
 Setting Up the Beyond Identity Authenticator
@@ -178,7 +187,7 @@ The following information provides your company’s developers with the necessar
           
 4.  Provide a name and email address of the developer generating the key, and optionally, a key comment and expiration date for the key.  
 :::note
-The email address must match your Beyond Identity User’s email address, and should also match your GitHub/GitLab email address.
+The email address must match your Beyond Identity user’s email address, and should also match your GitHub/GitLab email address.
 :::
 5.  Click **Create** and view your GPG key on the GPG Keys screen.  
     ![](/images/gpg_key_create1.png)
