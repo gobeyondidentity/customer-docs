@@ -147,7 +147,6 @@ Each user that will be signing Git commits must be added to a specific group wit
 To allow individual users to sign commits, you must have Git commit signing already enabled for your tenant. Contact a Beyond Identity team member if you do not already have it enabled.
 :::
 This is a test of the
-1.	
 
 1. From the **Groups** page, select **Add Group**:
 
