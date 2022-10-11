@@ -150,7 +150,6 @@ This is a test of the
 
 1. From the **Groups** page, select **Add Group**:
 
-![](/images/policy/policy_rule_order_5_rules.png)
 
 1. From the **Groups** page, select **Add Group**:
 2. In the **Add Group** dialog, provide:
