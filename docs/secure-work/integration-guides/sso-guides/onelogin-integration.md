@@ -24,7 +24,7 @@ Beyond Identity Configuration
 ### Information to Provide to Beyond Identity
 *	Your Companty Name
 
-*	Your Shibboleth IDP Entity ID. For example:`https://[your-domain].onelogin.com`
+*	Your Shibboleth IDP Entity ID. For example: `https://[your-domain].onelogin.com`
 
 *   Beyond Identity Admin Console Credentials
 	*   SSO Entity ID
@@ -46,7 +46,7 @@ Beyond Identity Configuration
 ### Information Supplied by Beyond Identity
 The following information will be supplied by the Beyond Identity Field Team.
 *	Beyond Identity IdP endpoint URLs:
-	*Issuer: (https://auth.byndid.com/v2)
+	* ssuer: (https://auth.byndid.com/v2)
 	* Token endpoint (https://auth.byndid.com/v2/authorize)
 	*Authorization endpoint (https://auth.byndid.com/v2/token) 
 	* Token endpoint (https://auth.byndid.com/v2/userinfo)
