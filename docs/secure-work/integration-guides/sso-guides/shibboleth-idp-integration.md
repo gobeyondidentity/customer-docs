@@ -180,40 +180,79 @@ The IdP must act as a SAML SP when operating as a SAML proxy. The following conf
     ```
 3.  Enable the SAML Authentication flow. This enables the Beyond Identity IdP to be delegated to as part of the SAML flow. The attribute filter policy must also be updated to allow the IdP to ingest the attributes from the delegate IdP.
     1.  Edit `${idp.home}/conf/authn/saml-authn-config.xml` to set the upstream Beyond Identity IDP. The `c:target` value can be obtained from the `${idp.home}/metadata/idp-beyond-identity-metadata.xml` file as the `entityID` value.
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd                              http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"                                        
+	
+	default-init-method="initialize"
+	default-destroy-method="destroy">`
         
-        `<?xml version="1.0" encoding="UTF-8"?>   <beans xmlns="http://www.springframework.org/schema/beans"          xmlns:context="http://www.springframework.org/schema/context"          xmlns:util="http://www.springframework.org/schema/util"          xmlns:p="http://www.springframework.org/schema/p"          xmlns:c="http://www.springframework.org/schema/c"          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"          xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd                              http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd                              http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"                                        default-init-method="initialize"          default-destroy-method="destroy">`
-        
-            ``**`<bean id="shibboleth.authn.SAML.discoveryFunction"             parent="shibboleth.Functions.Constant"   c:target="https://auth.byndid.com/saml/v0/abcdef01-0123-4567-89ab-cdecf0123456/sso/metadata.xml" />`**   ...   </beans>``
-        
-    2.  Enable the SAML IdP flow by adding SAML to the authentication flow.
-    3.  Update `${idp.home}/conf/attribute-filter.xml`. Add the following anywhere within the `<AttributeFilterPolicyGroup>` tag. Replace the issuer value with your Beyond Identity SAML entity ID:
-        
-        ```` ```<AttributeFilterPolicy id="saml-proxy-pass-through">       <PolicyRequirementRule `` `xsi:type=`"Issuer" value="https://auth.byndid.com/saml/v0/abcdef01-0123-4567-89ab-cdecf0123456/sso/metadata.xml" /> ``       <AttributeRule attributeID="uid" permitAny="true" />   </AttributeFilterPolicy>``` ````
+    <bean id="shibboleth.authn.SAML.discoveryFunction"
+		parent="shibboleth.Functions.Constant"
+		c:target="https://auth.byndid.com/saml/v0/abcdef01-0123-4567-89ab-cdecf0123456/sso/metadata.xml" />"
+	...
+</beans>
+```
+2.  Enable the SAML IdP flow by adding SAML to the authentication flow.
+3.  Update `${idp.home}/conf/attribute-filter.xml`. Add the following anywhere within the `<AttributeFilterPolicyGroup>` tag. Replace the issuer value with your Beyond Identity SAML entity ID:
+ 
+```
+<AttributeFilterPolicy id="saml-proxy-pass-through">
+	<PolicyRequirementRule xsi:type=`"Issuer" value="https://auth.byndid.com/saml/v0/abcdef01-0123-4567-89ab-cdecf0123456/sso/metadata.xml" /> <AttributeRule attributeID="uid" permitAny="true" />
+	</AttributeFilterPolicy>
+```
         
 4.  Subject Canonicalization must be performed after ingesting the "uid" in attribute-filter.xml. This requires a new `<AttributeDefinition>` element in `${idp.home}/conf/attribute-resolver.xml`. It also requires the attribute resolver to map in the internal attribute name, `proxied-uid` in this case, as the joining attribute. Once that is done, this attribute will be used for the Data Connector lookup defined in `attribute-resolver.xml`.  
-    **Note:** These steps do not accommodate for all of the Subject Name Identifier (NameID) combinations currently configured on your Shibboleth instance. It may be configured for transient or persistent NameID, and individual SPs may require either. These steps only apply to persistent identifiers. Mileage may vary.
+    
+	:::note
+	These steps do not accommodate for all of the Subject Name Identifier (NameID) combinations currently configured on your Shibboleth instance. It may be configured for transient or persistent NameID, and individual SPs may require either. These steps only apply to persistent identifiers. Mileage may vary.
+	:::
+	
     1.  In $`{idp.home}/conf/attribute-resolver.xml` add the following attribute definition anywhere within the `<AttributeResolver .../>` tag:
-        
-        ``` `` `<AttributeDefinition xsi:type="SubjectDerivedAttribute"` `` ```
-        
-            `` `forCanonicalization="true"           principalAttributeName="uid"       id="proxied-uid"   />` ``
+ 
+		``` 
+        <AttributeDefinition xsi:type="SubjectDerivedAttribute"	forCanonicalization="true" principalAttributeName="uid" id="proxied-uid"/>
+		```
         
     2.  In `${idp.home}/conf/c14n/subject-c14n.properties`, verify that the "joining" attribute (uid in the examples) has been added to the `idp.c14n.attribute.attributesToResolve` setting. For example:
         
         `idp.c14n.attribute.attributesToResolve = eduPersonPrincipalName,mail,uid,...`
         
     3.  This step assumes that a Data Connector of type LDAPDirectory has already been configured. If necessary, update the existing LDAP filter in `${idp.home}/conf/ldap.properties` in the setting `idp.attribute.resolver.LDAP.searchFilter`. For example:
-        
-        `` idp.attribute.resolver.LDAP.searchFilter = `(|(eduPersonPrincipalName=$resolutionContext.principal)(mail=$resolutionContext.principal)(isMemberOf=CN=Beyond Identity Users,OU=Groups,OU=People,DC=example,DC=edu)(uid=$resolutionContext.principal))` ``
+        ```
+        idp.attribute.resolver.LDAP.searchFilter = (|(eduPersonPrincipalName=$resolutionContext.principal)(mail=$resolutionContext.principal)(isMemberOf=CN=Beyond Identity Users,OU=Groups,OU=People,DC=example,DC=edu)(uid=$resolutionContext.principal))
+		```
         
     4.  In `${idp.home}/conf/c14n/subject-c14n.xml`, enable the SAML2ProxyTransform post-login canonicalization flow. This enables the IdP to map the principal directly from the incoming SAML 2.0 NameID from Beyond Identity. Add the following bean anywhere within the `<util:list id="shibboleth.PostLoginSubjectCanonicalizationFlows">` tag:
         
-        <``util:list id="shibboleth.PostLoginSubjectCanonicalizationFlows">       `<ref bean="c14n/SAML2ProxyTransform" />`      ...   </util:list>``
+		```
+        <util:list id="shibboleth.PostLoginSubjectCanonicalizationFlows">
+			<ref bean="c14n/SAML2ProxyTransform" />`
+		...
+		</util:list>
+		```
         
 5.  At this point, any SP can be wired to use a passwordless flow by assigning the SAML authentication flow in `${idp.home}/conf/relying-party.xml`. For example:
     
-    ``<bean parent="RelyingPartyByName" c:relyingPartyIds="https://sp.example.com/SAML2/SP">         <property name="profileConfigurations">             <list>               <bean                  `parent="SAML2.SSO"                             p:authenticationFlows="#{{'SAML'}}"`                 p:encryptAssertions="false"                  p:encryptNameIDs="false" />             </list>         </property>   </bean>``
-    
+	```
+    <bean parent="RelyingPartyByName" c:relyingPartyIds="https://sp.example.com/SAML2/SP">
+		<property name="profileConfigurations">
+			<list>
+				<bean parent="SAML2.SSO" p:authenticationFlows="#{{'SAML'}}" p:encryptAssertions="false" p:encryptNameIDs="false" />
+			</list>
+		</property>
+	</bean>``
+    ```
 
 SCIM Provisioning
 -----------------
@@ -239,9 +278,5 @@ Before users can utilize Beyond Identity, they must be enrolled. To enroll a use
 1.  Assign the user to the "Beyond Identity Users" LDAP group in your directory.
 2.  The enrolled user will receive an email from Beyond Identity welcoming them to the new Identity Provider.
 3.  Each user will be asked to:
-    1.  Download and install the Beyond Identity Authenticator on their device.
-    2.  Register the credential in the Beyond Identity IdP.
-
-See Also
-
-[Installing the Authenticator]<!-- (../Secure_Work/Installation/Installing_the_Authenticator) -->
+    1.  [Download and install](/docs/secure-work/installation/installing-the-authenticator) the Beyond Identity Authenticator on their device.
+    2.  [Register](/docs/secure-work/credentials/managing-credentials) the credential in the Beyond Identity IdP.
