@@ -19,12 +19,12 @@ This guide provides information on how to:
         1.  `Browser SSO profile`
         2.  **Protocol:** `OpenID Connect`
     2.  **Connection Option:**
-        1.  `Browser SSO` **(Note:** Do not select anything else)
+        1.  `Browser SSO` **(Note:** Do not select anything else.)
     3.  **General Info:**
-        1.  Issuer: https://auth.byndid.com/v2
+        1.  **Issuer:** `https://auth.byndid.com/v2`
         2.  **Connection Name:** `Beyond Identity OIDC Integration`
-        3.  **Client ID:** `<will be supplied from the Beyond Identity team>`
-        4.  **Client Secret:** `<will be supplied from the Beyond Identity team>`
+        3.  **Client ID:** `<Will be supplied from the Beyond Identity team>`
+        4.  **Client Secret:** `<Will be supplied from the Beyond Identity team>`
         5.  **Company:** **Beyond Identity Inc.**
         6.  Leave the remaining items with their default values.
     4.  Click **Load Metadata**.
@@ -42,7 +42,7 @@ This guide provides information on how to:
             2.  **AUTHENTICATION SCHEME:** `BASIC`
         9.  Select **Next**.
     7.  In the **Activation & Summary** tab, select **Save**.
-    8.  Once saved, send the **Redirect URI** to the Beyond Identity team.  
+    8.  Once saved, send the `Redirect URI` to the Beyond Identity team.  
         ![](/images/Integrations/ping_federate/idp_connections_ping_fed.png)  
         ![](/images/Integrations/ping_federate/sso_conn_ping_fed.png)
 
@@ -94,7 +94,7 @@ This guide provides information on how to:
 1.  Navigate to **Authentication > Policies > Policies> Add Policy**.
 2.  Add the following:
     1.  **Name:** `Beyond Identity`
-    2.  **Description:** leave blank
+    2.  **Description:** Leave this field blank.
     3.  **Policy:** Select `IdP Connections` from the drop-down menu, and then select the form adapter created in Step 3.
         1.  For **Fail**, select **Done**.
         2.  For **SUCCESS**, select **Policy Contracts** from the drop-down menu, and then select the policy contracted created in Step 4.
@@ -103,7 +103,7 @@ This guide provides information on how to:
                 2.  In the **Contract Fulfillment** tab for the **subject,** set the **Source** to `Adapter (FormAdapter)` and **Value** as `username`.
                 3.  Select **Next**.
                 4.  In the **Issuance Criteria** tab, select **Next**.
-                5.  In the **Summary** tab ensure your values match the screenshot below, and then select **Save**.
+                5.  In the **Summary** tab ensure your values match the screen below, and then select **Save**.
                 6.  Select **Done**.
 3.  Select the check boxes next to **IDP AUTHENTICATION POLICIES** and **SP AUTHENTICATION POLICIES**.
 4.  Select **Save**.
@@ -129,7 +129,7 @@ This guide provides information on how to:
     2.  Select **Next**.
 6.  On the **Resource URIs** tab, select **Next**.
 7.  On the **Access Control** tab, select **Next**.
-8.  On the **Summary** tab, ensure your values match the screen shot below.
+8.  On the **Summary** tab, ensure your values match the screen below.
 9.  Scroll down and select **Save**.
 
 ![](/images/ping_federate_create_acc_tok_mgmt.png)
@@ -146,7 +146,7 @@ This guide provides information on how to:
     2.  Set the **Value** for **sub** to `USER_KEY`.
     3.  Select **Next**.
 7.  On the **Issuance Criteria** tab, select **Next**.
-8.  On the **Summary** tab, make sure your values match the screen shot below, and select **Save**.
+8.  On the **Summary** tab, make sure your values match the shot below, and select **Save**.
 
 #### Step 8. Create a policy contract grant mapping
 
@@ -159,7 +159,7 @@ This guide provides information on how to:
     2.  **Value:** `subject` 
     3.  Select **Next**.
 6.  On the **Issuance Criteria** tab, select **Next**.
-7.  On the **Summary** tab, make sure your values match the screenshot below, then select **Save**.  
+7.  On the **Summary** tab, make sure your values match the screen below, then select **Save**.  
     ![](/images/ping_federate_pol_contract_map.png)
 
 #### Step 9. Create an IdP adapter grant mapping instance
@@ -172,7 +172,7 @@ This guide provides information on how to:
     2.  **Value:** `username`
     3.  Select **Next**.
 5.  On the **Issuance Criteria** tab, select **Next**.
-6.  On the **Summary** tab, make your values match the screen shot below, then select **Save**.
+6.  On the **Summary** tab, make your values match the shot below, then select **Save**.
 
 #### Step 10. Create an OpenID connect management policy
 
@@ -246,9 +246,11 @@ This guide provides information on how to:
     3.  **Username:** This must be the `username` that was used in **Step 2 part 3**.
     4.  **Display Name:** Can be anything (for example, `PingFed Admin`).
 6.  Navigate to `http://user.byndid.com/auth-user/?org_id=<TENANT_ID>` and on the Ping Federate login screen, use the `username` and `password` created in **Step 2 part 3** to log in.
-7.  Download the Beyond Identity Platform Authenticator and register your credential.
+7.  [Download and install](/docs/secure-work/installation/installing-the-authenticator) the Beyond Identity Platform Authenticator and then [register](/docs/secure-work/credentials/managing-credentials) your credential.
 
-**Note:** You will need to complete **Step 13** before you can use your credentials to authenticate into Beyond Identity
+:::note
+You will need to complete **Step 13** before you can use your credentials to authenticate into Beyond Identity.
+:::
 
 #### Step 13. Change the policy to use Beyond Identity
 
@@ -265,13 +267,13 @@ This guide provides information on how to:
                 2.  Set the **Value** as `sub`.
                 3.  Select **Next**.
 4.  On the **Issuance Criteria** tab, select **Next**.
-5.  On the **Summary** tab, make sure your values match the screen shot below and select **Save**.
+5.  On the **Summary** tab, make sure your values match the shot below and select **Save**.
 6.  Select **Save**.  
     **![](/images/ping_federate_policy.png)**
 
 #### Step 14. Create a SCIM connection
 
-**Note:** To enable SCIM, make sure:  
+To enable SCIM, make sure:
   
 1\. You have downloaded the SCIM connector (link [HERE](https://www.pingidentity.com/en/resources/downloads/pingfederate.html "https://www.pingidentity.com/en/resources/downloads/pingfederate.html")) under “Add Ons” and unzip the connector into the following folder `<pf_install>/pingfederate/server/default/deploy`.  
 2\. You set the `pf.provisioner.mode` variable in the `run.properties` file to `STANDALONE`.
