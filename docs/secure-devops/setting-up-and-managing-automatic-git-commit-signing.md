@@ -158,7 +158,7 @@ To allow individual users to sign commits, you must have Git commit signing alre
 6.	From the **Add User** dialog, select each user you want to add from the drop-down menu.
 	![](/images/git-commit/add-user-john.png)
 7.	As each user is added, the credential associated with the user is displayed in the dialog.
-	![](/images/git-commit/add_users_git_commit_id.png)
+	![](/images/git-commit/add-users-git-commit-id.png)
 8.	Click **Add users to group**. The users are displayed under the **Members** section.
 	![](/images/git-commit/add-user-john.png)
 
