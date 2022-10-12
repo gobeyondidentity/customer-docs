@@ -23,49 +23,30 @@ Prerequisites
 *   The Shibboleth IdP must have a data connector (LDAP or database) configured for attribute resolution. There must be a "joining" attribute shared between Shibboleth and Beyond Identity used to look up additional attributes required by the SP. This attribute must be unique and (preferably) immutable in the directory or database. All of the examples in this guide will use "uid" as the unique user directory attribute.
 *   The following table lists the information you need to provide to the Beyond Identity team.  
 
-##Information to provide to Beyond Identity
-    
-    Your Company Name
-    
-    Your Shibboleth IDP Entity ID. For example:  
-    `https://sso.shibboleth.example.edu`
-    
-    Beyond Identity Admin Console Credentials
-    
-    *   SSO Client Id
-        
-    *   SSO Client Secret
-        
-    
-    Beyond Identity User Console Application Credentials (This will be updated by the customer directly in Beyond Identity Admin Console.)
-    
-    *   SSO Client Id
-        
-    *   SSO Client Secret
-        
-    
-    (Optional) A logo for your corporation  
-    Logo requirements:
-    
-    *   (Optional) A logo for your corporation
-        
-        Logo requirements:
-        
-    *   300 x 150 pixels or less
-        
-    *   File size of 10kb or less
-        
-    *   File types accepted:
-        
-        *   SVG
-            
-        *   PNG
-            
-        *   JPG
-            
-        *   GIF
-            
-    
+Beyond Identity Configuration
+-----------------------------
+### Information to Provide to Beyond Identity
+*	Your Companty Name
+
+*	Your Shibboleth IDP Entity ID. For example: (https://sso.shibboleth.example.edu)
+
+*   Beyond Identity Admin Console Credentials
+	*   SSO Client Id
+	*	SSO Client Secret
+
+*	Beyond Identity User Console Requirements  (This will be updated by the customer directly in Beyond Identity Admin Console.)
+*	Application credentials
+	*   SSO Client Id
+	*   SSO Client Secret
+
+*	(Optional) A logo for your corporation. Logo requirements:
+	*   300 x 150 pixels or less
+		*   File size of 10kb or less
+		*   File types accepted:
+			*   SVG
+			*   PNG
+			*   JPG
+			*   GIF
 
 Document Conventions
 --------------------
@@ -74,6 +55,7 @@ Config Files (.xml, .properties, .props, code blocks) - monospace font in shaded
 
 **Example**
 
+```
 `#idp.service.attribute.registry.resources = shibboleth.AttributeRegistryResources`
 
 `#idp.service.attribute.registry.failFast = false`
@@ -83,11 +65,11 @@ Config Files (.xml, .properties, .props, code blocks) - monospace font in shaded
 `# Default control of whether to encode XML attribute data with xsi:type`
 
 `idp.service.attribute.registry.encodeType = false`
-
+```
 Inline code / CLI / commands / variables - monospace font over shaded background.
 
 **Example**  
-**`` `${idp.home}/bin/status.sh` ``**
+`${idp.home}/bin/status.sh`
 
 ### Important Variables
 
@@ -111,9 +93,9 @@ The following steps will create the IdP metadata for passwordless user authentic
     4.  **Subject User Attribute:** `Email` (**Note:** Any source **Subjec**t attribute may be used as long as it provides immutability and uniqueness in the target directory. This attribute will be used to lookup a unique user in the target directory.)  
         ![]/images/Integrations/shibboleth/saml_connection_add.png)
 4.  Under **Attribute Statements**, click **+Add** and configure the following settings in the fields that appear:
-    1.  **Name**: Type `**uid**`
-    2.  **Name format**: Select `**basic**` from the drop-down menu
-    3.  **Value**: Select either `**{{Email}}**` or `**{{ExternalId}}**` from the drop-down menu. The value to select depends of which of these is mapped to the `uid` in the Shibboleth directory instance.  
+    1.  **Name**: Type `uid`
+    2.  **Name format**: Select `basic` from the drop-down menu
+    3.  **Value**: Select either `{{Email}}` or `{{ExternalId}}` from the drop-down menu. The value to select depends of which of these is mapped to the `uid` in the Shibboleth directory instance.  
         ![]/images/Integrations/shibboleth/saml_connection_add_1.PNG)
 5.  Click **Save Changes**. The connection is added to the **SAML Connections** list on the **Integrations** page.
 6.  Hover over the empty space in the connection just created. Three icons are displayed. Select the **Download Metadata** button and save the metadata file to `${idp.home}/conf/idp-beyond-identity-metadata.xml` on the Shibboleth instance.  
@@ -157,30 +139,45 @@ The following section is performed on the Shibboleth side.
 The IdP must act as a SAML SP when operating as a SAML proxy. The following configuration allows Shibboleth IdP to accept the upstream IdP's SAML protocol responses.
 
 1.  Add the following example `` `<SPSSODescriptor>` `` block to `${idp.home}/conf/idp-metadata.xml` with your Shibboleth URL. Add the `<SPSSODescriptor>` block anywhere within `<EntityDescriptor>`. The signing and encryption certificates may be assigned as needed. Replace **`MY-IDP-HOSTNAME`** with your Shibboleth base URL, and `MY-SHIBBOLETH-ENTITY-ID` with the `entityID` value from your IdP metadata file.
-`    
-    <EntityDescriptor  xmlns="urn:oasis:names:tc:SAML:2.0:metadata" entityID="https://MY-SHIBBOLETH-ENTITY-ID"  
+
+```
+<EntityDescriptor  xmlns="urn:oasis:names:tc:SAML:2.0:metadata" entityID="https://MY-SHIBBOLETH-ENTITY-ID"  
      ...omitted for brevity...>
     
-      <SPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">         <KeyDescriptor use="signing">              <ds:KeyInfo>                      <ds:X509Data>                          <ds:X509Certificate>   ...<Add Signing Cert here>...                          </ds:X509Certificate>                      </ds:X509Data>              </ds:KeyInfo>` ``
+      <SPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+		<KeyDescriptor use="signing">
+			<ds:KeyInfo>
+			<ds:X509Data>
+			<ds:X509Certificate>
+	  ...<Add Signing Cert here>...
+			</ds:X509Certificate>
+			</ds:X509Data>
+			</ds:KeyInfo>` ``
     
-          </KeyDescriptor>
-    
-           <KeyDescriptor use="encryption">              <ds:KeyInfo>                      <ds:X509Data>                          <ds:X509Certificate>   ...<Add Encryption Cert here>...                          </ds:X509Certificate>                      </ds:X509Data>              </ds:KeyInfo>          </KeyDescriptor>          <AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://MY-IDP-HOSTNAME/idp/profile/Authn/SAML2/POST/SSO" index="0"/>      </SPSSODescriptor>
-    
-    **...**  
-    `</EntityDescriptor>`
-
+		</KeyDescriptor>
+            <KeyDescriptor use="encryption">
+				<ds:KeyInfo>
+				<ds:X509Data
+				<ds:X509Certificate>
+			...<Add Encryption Cert here>...
+				</ds:X509Certificate>
+				</ds:X509Data>
+				</ds:KeyInfo>
+				</KeyDescriptor>
+			<AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://MY-IDP-HOSTNAME/idp/profile/Authn/SAML2/POST/SSO" index="0"/>
+		</SPSSODescriptor>
+	...
+</EntityDescriptor>		
+```
     
 2.  Add the following to `` `${idp.home}/conf/metadata-providers.xml` `` anywhere within the `<MetadataProvider id="ShibbolethMetadata" ...>` tag:
     
-    `<AttributeFilterPolicy id="saml-proxy-pass-through">`
-    
-        ``` <PolicyRequirementRule `` `xsi:type=`"Issuer" value="https://auth.byndid.com/saml/v0/abcdef01-0123-4567-89ab-cdecf0123456/sso/metadata.xml" /> `` ```
-    
-        `<AttributeRule attributeID="uid" permitAny="true" />`
-    
-    `</AttributeFilterPolicy>`
-    
+	```
+    <AttributeFilterPolicy id="saml-proxy-pass-through">
+		<PolicyRequirementRule xsi:type= `**`"Issuer" value="https://auth.byndid.com/saml/v0/abcdef01-0123-4567-89ab-cdecf0123456/sso/metadata.xml" />`**`
+            <AttributeRule attributeID="uid" permitAny="true" />
+    </AttributeFilterPolicy>
+    ```
 3.  Enable the SAML Authentication flow. This enables the Beyond Identity IdP to be delegated to as part of the SAML flow. The attribute filter policy must also be updated to allow the IdP to ingest the attributes from the delegate IdP.
     1.  Edit `${idp.home}/conf/authn/saml-authn-config.xml` to set the upstream Beyond Identity IDP. The `c:target` value can be obtained from the `${idp.home}/metadata/idp-beyond-identity-metadata.xml` file as the `entityID` value.
         

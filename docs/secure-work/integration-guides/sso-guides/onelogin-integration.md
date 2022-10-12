@@ -18,118 +18,51 @@ Prerequisites
 
 Ensure you have a OneLogin account with “Superadmin” privileges.
 
+
 Beyond Identity Configuration
 -----------------------------
+### Information to Provide to Beyond Identity
+*	Your Companty Name
 
-Please provide the following information to the Beyond Identity Field Team.
+*	Your Shibboleth IDP Entity ID. For example:`https://[your-domain].onelogin.com`
 
+*   Beyond Identity Admin Console Credentials
+	*   SSO Entity ID
+	*   SSO X.509 Signing Certificate 
 
+*	Beyond Identity User Console Application Credentials (This will be updated by the customer directly in Beyond Identity Admin Console.)
+	*   SSO Client Id
+	*   SSO Client Secret
 
-| **Information to provide to Beyond Identity** |
-|-----|
-| Your Company Name |
-| Your Shibboleth IDP Entity ID. For example:`https://[your-domain].onelogin.com`|
-| Beyond Identity Admin Console Credentials 
-SSO Client Id
-SSO Client Secret|
-    
+*	(Optional) A logo for your corporation. Logo requirements:
+	*   300 x 150 pixels or less
+		*   File size of 10kb or less
+		*   File types accepted:
+			*   SVG
+			*   PNG
+			*   JPG
+			*   GIF
 
-Beyond Identity User Console Application Credentials (This will be updated by the customer directly in Beyond Identity Admin Console.)
-
-*   SSO Client Id
-    
-*   SSO Client Secret
-    
-
-(Optional) A logo for your corporation  
-Logo requirements:
-
-*   (Optional) A logo for your corporation
-    
-    Logo requirements:
-    
-*   300 x 150 pixels or less
-    
-*   File size of 10kb or less
-    
-*   File types accepted:
-    
-    *   SVG
-        
-    *   PNG
-        
-    *   JPG
-        
-    *   GIF
-        
-
+### Information Supplied by Beyond Identity
 The following information will be supplied by the Beyond Identity Field Team.
+*	Beyond Identity IdP endpoint URLs:
+	*Issuer: (https://auth.byndid.com/v2)
+	* Token endpoint (https://auth.byndid.com/v2/authorize)
+	*Authorization endpoint (https://auth.byndid.com/v2/token) 
+	* Token endpoint (https://auth.byndid.com/v2/userinfo)
 
-| **Type** | **Platform** |
-|-----|------|
-| *   Issuer *   Authorization endpoint *   Token endpoint *   User info endpoint | https://auth.byndid.com/v2 | https://auth.byndid.com/v2/authorize | https://auth.byndid.com/v2/token | [https://auth.byndid.com/v2/userinfo](https://auth.byndid.com/v2/userinfo) | 
+*	Client Secret:	Obtained from the Beyond Identity Console
 
+*	Client ID: Obtained from the Beyond Identity Console
 
+*	SCIM/Event Hook API Bearer Token: Obtained from the Beyond Identity SE
 
+*	Beyond Identity Org ID:	Obtained from the Beyond Identity Console
 
-| **Info Supplied by Beyond Identity** | default |
+*	Event Hook API Endpoint:	(https://api.byndid.com/okta_events)
 
+*	SCIM API Endpoint:	(https://api.byndid.com/scim/v2/Users) and (https://api.byndid.com/scim/v2/Groups)
 
-
-|-----| |-----| https://auth.byndid.com/v2
-
-https://auth.byndid.com/v2/authorize
-
-https://auth.byndid.com/v2/token
-
-[https://auth.byndid.com/v2/userinfo](https://auth.byndid.com/v2/userinfo) |
-| *   Issuer
-*   Authorization endpoint
-*   Token endpoint
-*   User info endpoint
-
- 
-
-Beyond Identity IdP endpoint URLs:
-
-*   Issuer
-*   Authorization endpoint
-*   Token endpoint
-*   User info endpoint
-
-https://auth.byndid.com/v2
-
-https://auth.byndid.com/v2/authorize
-
-https://auth.byndid.com/v2/token
-
-[https://auth.byndid.com/v2/userinfo](https://auth.byndid.com/v2/userinfo)
-
-Client Secret
-
-Obtained from the Beyond Identity Console
-
-Client ID
-
-Obtained from the Beyond Identity Console
-
-SCIM/Event Hook API Bearer Token
-
-Obtained from the Beyond Identity SE
-
-Beyond Identity Org ID
-
-Obtained from the Beyond Identity SE
-
-Event Hook API Endpoint
-
-https://api.byndid.com/okta\_events
-
-SCIM API Endpoint
-
-https://api.byndid.com/scim/v2/Users
-
-https://api.byndid.com/scim/v2/Groups
 
 OneLogin Configuration
 ----------------------
