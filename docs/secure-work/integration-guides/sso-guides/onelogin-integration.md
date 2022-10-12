@@ -30,7 +30,7 @@ Beyond Identity Configuration
 	*   SSO Entity ID
 	*   SSO X.509 Signing Certificate 
 
-*	Beyond Identity User Console Application Credentials (This will be updated by the customer directly in Beyond Identity Admin Console.)
+*	Beyond Identity User Console Application Credentials (This will be updated by the customer directly in the Beyond Identity Admin Console.)
 	*   SSO Client Id
 	*   SSO Client Secret
 
@@ -46,9 +46,9 @@ Beyond Identity Configuration
 ### Information Supplied by Beyond Identity
 The following information will be supplied by the Beyond Identity Field Team.
 *	Beyond Identity IdP endpoint URLs:
-	* ssuer: (https://auth.byndid.com/v2)
+	* Issuer: (https://auth.byndid.com/v2)
 	* Token endpoint (https://auth.byndid.com/v2/authorize)
-	*Authorization endpoint (https://auth.byndid.com/v2/token) 
+	* Authorization endpoint (https://auth.byndid.com/v2/token) 
 	* Token endpoint (https://auth.byndid.com/v2/userinfo)
 
 *	Client Secret:	Obtained from the Beyond Identity Console
@@ -79,11 +79,11 @@ To configure Beyond Identity as the IdP in OneLogin, follow the steps below. Onc
 5.  In the **Configuration** section, update following fields:
     1.  **Beyond Identity Tenant**: `<Beyond_Identity_Tenant_Name>`
     2.  **Redirect URI’s**: [https://admin.byndid.com/auth/callback](https://admin.byndid.com/auth/callback)
-6.  In the SSO section, copy the **SSO Client ID** and **Client Secret** and provide them to the Beyond Identity team.
+6.  In the **SSO** section, copy the `SSO Client ID` and `Client Secret` and provide them to the Beyond Identity team.
 
 #### Step 2. Set up the Admin Console Access
 
-1.  Provide the **Client ID** and **Client Secret** assigned to the Admin Console app in OneLogin to the Beyond Identity team. The Beyond Identity team will collect and populate those values using APIs.  
+1.  Provide the `Client ID` and `Client Secret` assigned to the Admin Console app in OneLogin to the Beyond Identity team. The Beyond Identity team will collect and populate those values using APIs.  
 2.  After these values are provisioned, log in and confirm that the admin has access to the Beyond Identity Admin Console. 
 
 #### Step 3. Set up the Beyond Identity User Console Application in OneLogin
@@ -107,7 +107,7 @@ To configure Beyond Identity as the IdP in OneLogin, follow the steps below. Onc
 2.  From the Settings page, click the **CONSOLE LOGIN** tab.
 3.  Under **User Console SSO Integrations (optional)**,  add `OIDC SSO`.
 4.  Update the `Name`, `Client ID`, and `Client Secret` (from the previous step) and `Issuer`.
-5.  Type **sub** in the **Token Field** and select `exteral\_id` from the **Token Field Lookup** drop-down menu.  
+5.  Type `sub` in the **Token Field** and select `exteral\_id` from the **Token Field Lookup** drop-down menu.  
     ![](/images/Integrations/onelogin/edit_config_onelogin.PNG)
 6.  Click **Save Changes**.
 
@@ -118,8 +118,8 @@ To configure Beyond Identity as the IdP in OneLogin, follow the steps below. Onc
 3.  In the **Add OIDC Client** dialog, type in the `Name` and `Redirect URI` in the associated fields. Leave the default value for `Token Signing Algorithm` and `Auth Method` as shown below.   
     ![](/images/Integrations/onelogin/add_oidc_client_onelogin.PNG)
 4.  Click **Save Changes**. The client is added to the **Integrations** page.
-5.  In the newly-created OIDC Client configuration, copy and paste the `Client ID` and `Client Secret` to the app/program of your choice.  Click the copy icon It will be needed in the Step 6 below.
-6.  Click the copy icon for the and write down `Client ID` and `Client Secret`. You will be using these values in the next step.  
+5.  In the newly-created OIDC Client configuration, copy and paste the `Client ID` and `Client Secret` to the app/program of your choice.
+6.  Click the copy icon associated with the `Client ID` and `Client Secret`. You will be using these values in the next step.  
     ![](/images/Integrations/onelogin/client_added_onelogin.PNG)
 
 #### Step 6. Configure Beyond Identity as the Identity Provider
