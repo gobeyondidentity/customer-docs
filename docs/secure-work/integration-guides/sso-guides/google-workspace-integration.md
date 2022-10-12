@@ -117,7 +117,7 @@ Beyond Identity service assignment is required for IT Admin and end users. The f
 
 1.  Log into the Google Workspace admin console (https://admin.google.com) as an Administrator.
 2.  On the homepage of the Google Workspace Admin console, select **Security > SSO with SAML Applications**.
-3.  Note the **SSO URL** and **Entity ID** and download the certificate or download the metadata file.  
+3.  Note the **SSO URL** and **Entity ID** and download the certificate or download the metadata file.
     ![](/images/google-workspace/g_wrkspc_create_sso_saml_sec_settings.png)
 
 #### Step 3. Set up Admin Console Access in the Beyond Identity Support Console
