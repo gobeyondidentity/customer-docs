@@ -27,7 +27,9 @@ Beyond Identity uses the Kandji API token to retrieve details of the host from t
 1.  Log into the to the Kandji console and click **Settings**.
 2.  Click the **Access** tab.
 3.  Under the **API Token** section, copy your `organization’s API URL` and store it in a safe location. This will be needed in **Step, 2 Install Kandji**. The following is an example API URL: `(https://examplecompany.clients.kandji.io/)`. Your URL will be different from the one displayed here.  
-    **Note:** Only copy the base URL. For example, if the API URL includes, `https://examplecompany.kandji.io/api/v1/` , only the base URL `(https://examplecompany.kandji.io/)` is used.![](/images/Integrations/kandji/kandji_api_token_url.PNG)
+    :::note
+	**Note:** Only copy the base URL. For example, if the API URL includes, `https://examplecompany.kandji.io/api/v1/` , only the base URL `(https://examplecompany.kandji.io/)` is used.![](/images/Integrations/kandji/kandji_api_token_url.PNG)
+	:::
 4.  Under the **API Token** section, click **Add API Token** and provide a `Name` and an optional `Description` for the token.
 5.  Click **Create**.  
     ![](/images/Integrations/kandji/kandji_add_token_beyond_identity.PNG)
