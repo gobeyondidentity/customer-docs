@@ -34,7 +34,9 @@ Beyond Identity uses the Kandji API token to retrieve details of the host from t
 6.  A dialog appears with the API Token that was just created. By default, the token is not displayed. Click the visibility symbol if you want to expose it.
 7.  Click the **Copy Token** button to copy it to the clipboard and then store it in a safe location. The token is needed in **Step 2, Install Kanji**.
 8.  Click the check box to confirm you have copied the token.  
-    **Note:** You will not be able to see the token details again once you click **Next**.
+    :::note
+	You will not be able to see the token details again once you click **Next**.
+	:::note
 9.  Click **Next**.  
     ![](/images/Integrations/kandji/kandji_copy_api_token.PNG)
 10.  From the **Manage API Permissions** dialog, click **Configure** to set the API permissions for the new token.  
@@ -83,7 +85,7 @@ You can write policy to allow, monitor, or deny access based on the connection s
 
 You can write policy to allow, monitor, or deny access based on the MDM setting configured for a device. In the following example, Kandji-connected devices not MDM enabled are denied access when attempting to authenticate.
 
-1.  From the Add Rule dialog, click **Add attribute** to the right of the **integration** attribute.
+1.  From the **Add Rule** dialog, click **Add attribute** to the right of the **integration** attribute.
 2.  Select the following from the drop-down menus:
     1.  `Kandji`
     2.  `MDM Enabled`
@@ -93,7 +95,7 @@ You can write policy to allow, monitor, or deny access based on the MDM setting 
 5.  Click **Add**.  
     ![](/images/Integrations/kandji/kandji_mem_enabled_no_deny_auth.PNG)
 
-### Step 4. Push iOS device serial number using AppConfig
+### Step 4. Push the iOS device serial number using AppConfig
 
 1.  Log into your Kandji Instance and navigate to the **Library**.
 2.  Locate and select the **Beyond Identity** app.  
