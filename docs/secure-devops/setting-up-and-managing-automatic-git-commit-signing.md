@@ -151,7 +151,7 @@ To allow individual users to sign commits, you must have Git commit signing alre
 2. In the **Add Group** dialog, provide:
 	*   The Group Name. The name must be **BI_SDO_GPG_Key_Creation**.
 	*   An optional Description
-	![](/images/git-commit/git-commit-add-group-dialog.png)
+	<!--![](/images/git-commit/git-commit-add-group-dialog.png)-->
 3.	Select **Save Changes**. The group is added to the **Group** list.
 4.	Locate and open the new-created group.
 5.	From the **BI_SDO_GPG_Key_Creation** group page, select **Add Users**.
