@@ -20,16 +20,18 @@ In addition, the CrowdStrike integration also allows for a CrowdStrike quarantin
 Beyond Identity uses the CrowdStrike Agent ID to retrieve details of the host from the CrowdStrike API. This Agent ID is obtained from the data.zta file on macOS. You must contact CrowdStrike support to have them enable the flag to deploy the `data.zta` file in your CrowdStrike environment for this integration to function.
 
 1.  Log into the Falcon UI and navigate to **Support > API Clients and Keys**.  
-    ![] (/images/Integrations/crowdstrike_falcon/cs_support_api_clients_keys.PNG)
+    ![](/images/Integrations/crowdstrike_falcon/cs_support_api_clients_keys.PNG)
 2.  From the **API Clients and Keys** screen, click **Add new API client**.  
     ![](/images/Integrations/crowdstrike_falcon/cs_falcon_add_new_api_client1.PNG)
 3.  In the **Add new API client** dialog, enter the following information:
-    1.  **Client Name:** `**Beyond Identity**`
+    1.  **Client Name:** `Beyond Identity`
     2.  `Optional description`
     3.  Apply a check mark to each scope in the **Read** column that contains a check box.
     4.  Click **Add**.  
         ![](/images/Integrations/crowdstrike_falcon/cs_falcon_add_new_api_client2.PNG)  
-        **Note:** API Key Permission requirements for Beyond Identity Integration include the following:  
+        :::note
+		API Key Permission requirements for Beyond Identity Integration include the following:
+		:::
         **Hosts Read:** `Beyond Identity Device Found Attribute`  
         **Hosts Write:** `Beyond Identity Crowdstrike Quarantine Action`  
         **Zero Trust Assessment Read:** `Beyond Identity ZTA Attribute`
@@ -72,10 +74,10 @@ To write policy to continuously validate device posture before allowing access, 
 To write a policy to ensure only devices integrated with CrowdStrike Falcon are allowed to authenticate and/or add devices:
 
 1.  Under the **Integration** attribute, click **Add attribute** and then select the following from the drop-down menus:
-    1.  `**CrowdStrike Falcon**`
-    2.  `**Device Found**`
-    3.  `**Yes**` or `**No**` (in this example, `**No**` is selected)
-2.  Under **Then**, select `**Deny**`.
+    1.  `CrowdStrike Falcon`
+    2.  `Device Found`
+    3.  `Yes` or `No` (in this example, `No` is selected)
+2.  Under **Then**, select `Deny`.
 3.  (Optional) Configure any additional attributes.
 4.  Click **Add**.  
     ![](/images/Integrations/crowdstrike_falcon/cs_falcon_device_found_no_deny.PNG)
@@ -86,14 +88,14 @@ You can write policy to allow or deny a device to authenticate and/or add device
 
 1.  (Optional) Select the appropriate **transaction** type. For all transaction types, leave the field blank.
 2.  (Optional) Add specific users. For the rule to be applied to all users, leave the field blank.
-3.  (Optional) Select the appropriate **device** platform. In this example, `**Windows**`.
+3.  (Optional) Select the appropriate **device** platform. In this example, `Windows`.
 4.  Select the appropriate **integration** type or leave the field blank.
 5.  (Optional) Select the desired **Authentication version**.
-6.  Under **Then**, select `**Deny**`.
+6.  Under **Then**, select `Deny`.
 7.  Click **Add Attribute** and select **`CrowdStrike Quarantine`** from the **AND** drop-down menu.
 8.  Click **Add**.  
     ![](/images/Integrations/crowdstrike_falcon/cs_falcon_quarantine_deny.png)
 
-See Also
+#### Related Topics
 
-<!-- [Writing Policy](defining-policy) -->
+[Writing Policy](/docs/secure-work/workforce-settings/policy/policy-writing/writing-policy)
