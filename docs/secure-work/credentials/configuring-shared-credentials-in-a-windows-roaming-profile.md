@@ -12,50 +12,30 @@ The typical use case in one in which non-persistent Windows desktops, joined to 
 
 Once configured, the credential in the roaming profile is available and viewable in the Authenticator whenever a user logs into a new non-persistent VDI Windows instance within the same Active Directory. Clicking on “About this Profile” will display information that the credential is stored in software (protected by the Windows operating system).
 
-Steps
------
-
 To allow a user to share credentials across different machines, the system administrator must perform the following steps **in order**:
 
-1.  Create a new `key/value` for Beyond Identity in the Windows Registry on each host computer.
-    1. This registry key ensures that when the User enrolls in the Platform Authenticator, the Beyond Identity credential is written by Windows to a folder in the User’s roaming profile, protected by the Windows operating system.
-	2. This registry key is set per-machine.
-	3. See the instructions in the table below for creating the registry key.
+### Step 1. Create the Registery key in the Windows Registry
+You must create a new `key/value` for Beyond Identity in the Windows Registry on each host computer. This registry key ensures that when the user enrolls in the Platform Authenticator, the Beyond Identity credential is written by Windows to a folder in the User’s roaming profile, protected by the Windows operating system. This registry key is set per-machine. To create a new key/value pair, open the Windows Registry and create the key as shown in the following table:
 
-2. Install the Windows Platform Authenticator.
+| **Item** | **Value** |
+|-----|------|
+| **Registry Key** | `HKEY\_LOCAL\_MACHINE\\SOFTWARE\Policies\BeyondIdentity\Authenticator` |
+| **Registry Key Value** | `SHARED\_PROFILES` |
+| **Type** | `DWORD` |
+| **Value** | `0 = Disables shared profiles` `Non-zero = Enables shared profiles` |
 
-3. Enroll the user.
+When **Value** is not present, the default is `Disabled`.
 
-4. Share the folders in the user’s roaming profile that contain the data and keys associated with the User’s Beyond Identity credential and configuration.
+### Step 2. Install the Windows Platform Authenticator.
+[See Installing the Authenticator on a Windows Device](/docs/secure-work/installation/installing-the-authenticator-on-a-windows-device).
 
-Create the Registry Key
------------------------
+### Step 3. Register the credential
+[See Registering a Credential on a Windows Device](/docs/secure-work/credentials/registering-a-credential-on-a-windows-device)
 
-Create the following registry key as follows:
+### Step 4. Enroll the user
 
-**Registry Key**
-
-`HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Policies\\BeyondIdentity\\Authenticator`
-
-**Registry Key Value**
-
-`SHARED\_PROFILES`
-
-**Type**
-
-DWORD
-
-**Value**
-
-0 = Disables shared profiles
-
-Non-zero = Enables shared profiles
-
-When **Value** is not present, the default is Disabled.
-
-Share the User’s Roaming Profile Folders
-----------------------------------------
-
+### Step 5. Share the User’s Roaming Profile Folders
+Share the folders in the user’s roaming profile that contain the data and keys associated with the User’s Beyond Identity credential and configuration.
 Share the following folders by right-clicking on the folder and setting the appropriate access option. See [File sharing over a network in Windows 10 (microsoft.com)](https://support.microsoft.com/en-us/windows/file-sharing-over-a-network-in-windows-10-b58704b2-f53a-4b82-7bc1-80f9994725bf) for more information on file sharing.
 
 *   `%appdata%\\Microsoft\\Crypto`
@@ -63,8 +43,7 @@ Share the following folders by right-clicking on the folder and setting the appr
 *   `%appdata%\\BeyondIdentity`
 
 
-Notes
------
+:::note
 
 *   These procedures must be performed on each installed Authenticator to enable support for roaming profiles.
 
@@ -75,3 +54,4 @@ Notes
 *   The Microsoft shared folder in the User’s roaming profile contains the User’s Beyond Identity credential.
 
 *   Enabling the User’s roaming profile in Active Directory in combination with a VDI environment is outside the scope of the Beyond Identity Platform Authenticator.
+:::
