@@ -5,7 +5,7 @@ sidebar_position: 1
 
 Beyond Identity Support Site 
 =========================
-See the [Beyond Identity Suppot site] (https://www.beyondidentity.com/support) for information on:
+See the [Beyond Identity Support site](https://www.beyondidentity.com/support) for information on:
 
 *	Creating a support ticket 
 
