@@ -12,9 +12,6 @@ The typical use case in one in which non-persistent Windows desktops, joined to 
 
 Once configured, the credential in the roaming profile is available and viewable in the Authenticator whenever a user logs into a new non-persistent VDI Windows instance within the same Active Directory. Clicking on “About this Profile” will display information that the credential is stored in software (protected by the Windows operating system).
 
-Steps
------
-
 To allow a user to share credentials across different machines, the system administrator must perform the following steps **in order**:
 
 1.  Create a new `key/value` for Beyond Identity in the Windows Registry on each host computer.
@@ -31,25 +28,14 @@ To allow a user to share credentials across different machines, the system admin
 Create the Registry Key
 -----------------------
 
-Create the following registry key as follows:
+Create the following registry key as follows: Testing
 
-**Registry Key**
-
-`HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Policies\\BeyondIdentity\\Authenticator`
-
-**Registry Key Value**
-
-`SHARED\_PROFILES`
-
-**Type**
-
-DWORD
-
-**Value**
-
-0 = Disables shared profiles
-
-Non-zero = Enables shared profiles
+| **Item** | **Value** |
+|-----|------|
+| **Registry Key** |`HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Policies\\BeyondIdentity\\Authenticator` |
+| **Registry Key Value** |`SHARED\_PROFILES` |
+| **Type** |DWORD |
+| **Value** | 0 = Disables shared profiles | Non-zero = Enables shared profiles|
 
 When **Value** is not present, the default is Disabled.
 
