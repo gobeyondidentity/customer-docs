@@ -1,9 +1,9 @@
 ---
-title: Secure Customer
+title: Secure Customers
 sidebar_position: 1
 ---
 
-Secure Customer
+Secure Customers
 ============================
 
 Beyond Identity's Secure Customer product provides your customers with zero-friction passwordless authentication. Once configured, there are no passwords, second devices, one-time codes, or push notifications needed.

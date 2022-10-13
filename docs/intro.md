@@ -2,46 +2,16 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Welcome
 
-This is a test. Let's discover **Docusaurus in less than 5 minutes**.
+Welcome to Beyond Identity's documentation resource center. Here you will find information on the various products we offer. These guides are intended to provide the information and tools needed to start a passwordless journey with Beyond Identity.
 
-## Getting Started
+## About Beyond Identity
+Beyond Identity helps customers deploy the strongest authentication primitives on the planet, eliminating shared secrets for customers at registration, login, and recovery, as well as from your database. Unique to Beyond Identity, users never have to pick up a second device to enroll or perform multi-factor authentication, passwords are never used on user flows. They can be removed from your database, and you can implement risk-based access controls using granular user and device risk captured in real-time. Backed by a cloud-native architecture, our platform was built for enterprise workloads. 
 
-Get started by **creating a new site**.
+### Beyond Identity Products
+The following table provides our current product offerings.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
-
-### What you'll need
-
-- [Node.js](https://nodejs.org/en/download/) version 16.14 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
-```
-
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+ **Secure Customers** | **Secure Workforce** | **Secure DevOps** |
+|-----|------|-----|
+[Secure Customers](/docs/secure-customer/) provides your customers with zero-friction passwordless authentication.| [Secure Workforce](/docs/secure-work/secure-workforce-overview) protects source code from malicious attacks by verifying every piece of that is committed. Every commit is signed by a verified corporate identity and their device providing for a secure and trustworthy development process. | [Secure DevOps](/docs/secure-devops/) safeguards your company resources and closes data breach vectors by ensuring that only authorized users and devices have access to cloud resources. |
