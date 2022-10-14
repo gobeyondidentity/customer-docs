@@ -60,7 +60,7 @@ Beyond Identity uses the Kandji API token to retrieve details of the host from t
         ![](/images/Integrations/kandji/kandji_edit_dialog_1.PNG)
 5.  Click **Save Changes**.
 
-### Step 3. Write policies specific to a Kanji-configured device
+### Step 3. Write policies specific to a Kandji-configured device
 
 1.  Log into the Beyond Identity Admin Console and select **Policy** from the left menu.
 2.  From the Policy page, select Edit **Policy > Add Rule**.
