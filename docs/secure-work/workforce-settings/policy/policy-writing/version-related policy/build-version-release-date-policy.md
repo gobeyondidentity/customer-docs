@@ -1,6 +1,6 @@
 ---
 title: Writing Policy Based on the Build/Version and Release Date
-sidebar_position: 5
+sidebar_position: 3
 ---  
 Writing Policy Based on the Build/Version and Release Date
 =========================

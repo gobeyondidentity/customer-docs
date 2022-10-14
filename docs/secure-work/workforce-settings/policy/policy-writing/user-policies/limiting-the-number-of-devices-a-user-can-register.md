@@ -1,6 +1,6 @@
 ---
 title: Limiting the Number of Devices a User can Register
-sidebar_position: 5
+sidebar_position: 3
 ---   
 
 Limiting the Number of Devices a User can Register

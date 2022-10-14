@@ -1,6 +1,6 @@
 ---
 title: Setting a Platform Version Policy
-sidebar_position: 5
+sidebar_position: 3
 ---
 
 Setting a Platform Version Policy
