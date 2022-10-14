@@ -1,8 +1,8 @@
 ---
-title: Writing Policy based on the Build/Version and Release Date
+title: Writing Policy Based on the Build/Version and Release Date
 sidebar_position: 3
 ---  
-Writing Policy based on the Build/Version and Release Date
+Writing Policy Based on the Build/Version and Release Date
 =========================
 
 :::note
@@ -32,7 +32,7 @@ System administrators can write policy to allow or restrict macOS and Windows us
     ![](/images/policy/version-build-release-daate-macos-is-in-last-days.PNG)
 10.  The rule is added to the **Edit Policy** page. Create additional rules as needed or click [Publish Rule](/docs/secure-work/workforce-settings/policy/policy-publish-rules/publishing-rules) to permanently save it.
 
-### Related Topics ###
+#### Related Topics
 
 [Publishing Rules](/docs/secure-work/workforce-settings/policy/policy-publish-rules/publishing-rules)
 
