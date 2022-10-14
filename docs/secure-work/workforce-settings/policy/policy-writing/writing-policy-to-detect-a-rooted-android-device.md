@@ -1,6 +1,6 @@
 ---
 title: Writing Policy to Detect a Rooted Android Device
-sidebar_position: 2
+sidebar_position: 3
 ---  
 
 Writing Policy to Detect a Rooted Android Device

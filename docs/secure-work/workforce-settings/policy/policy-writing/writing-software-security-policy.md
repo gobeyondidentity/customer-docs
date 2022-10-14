@@ -1,6 +1,6 @@
 ---
 title: Writing a Security Software Policy
-sidebar_position: 2
+sidebar_position: 3
 ---  
 
 Writing a Security Software Policy

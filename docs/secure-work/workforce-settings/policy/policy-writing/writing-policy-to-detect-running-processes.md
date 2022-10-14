@@ -1,6 +1,6 @@
 ---
 title: Writing Policy to Detect Running Processes
-sidebar_position: 2
+sidebar_position: 3
 ---  
 
 Writing Policy to Detect Running Processes (Windows, macOS, Linux) <!-- ![](/images/platform_icons/macos.PNG) ![](/images/platform_icons/windows.png) -->

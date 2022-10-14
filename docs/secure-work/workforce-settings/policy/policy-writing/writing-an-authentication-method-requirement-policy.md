@@ -1,6 +1,6 @@
 ---
 title: Writing an Authentication Method Requirement Policy
-sidebar_position: 2
+sidebar_position: 3
 ---   
 
 Writing an Authentication Method Requirement Policy
