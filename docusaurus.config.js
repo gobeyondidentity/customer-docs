@@ -13,6 +13,7 @@ const config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
   favicon: 'img/favicon.ico',
+  trailingSlash: false,
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -33,11 +34,14 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          breadcrumbs: false,
           sidebarPath: require.resolve('./sidebars.js'),
+          showLastUpdateAuthor: false,
+          showLastUpdateTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/gobeyondidentity/customer-docs/blob/main',
+          // editUrl:
+          //   'https://github.com/gobeyondidentity/customer-docs/blob/main',
         },
         blog: {
           showReadingTime: true,
@@ -61,19 +65,49 @@ const config = {
         disableSwitch: false,
         respectPrefersColorScheme: true,
       },
+      docs: {
+        sidebar: {
+          hideable: true,
+          autoCollapseCategories: true,
+        }
+      },
       navbar: {
-        title: 'Beyond Identity Docs',
+        title: 'Beyond Identity',
         logo: {
           alt: 'Beyond Identity Logo',
-          src: 'img/logo.svg',
+          src: 'img/logo.png',
         },
         items: [
           {
-            type: 'doc',
-            docId: 'intro',
-            position: 'left',
             label: 'Documentation',
+            type: 'dropdown',
+            items: [
+              {
+                to: '/secure-customer',
+                label: 'Secure Customer',
+              },
+              {
+                to: '/secure-work',
+                label: 'Secure Workforce',
+              },
+              {
+                to: '/secure-devops',
+                label: 'Secure DevOps',
+              },
+            ],
           },
+          {
+            type: 'doc',
+            position: 'left',
+            docId: 'faq',
+            label: 'FAQs',
+          }, 
+          {
+            type: 'doc',
+            position: 'left',
+            docId: 'support',
+            label: 'Support',
+          }, 
           // {to: '/blog', label: 'Blog', position: 'left'},
         ],
       },
@@ -90,13 +124,35 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()}`,
+        copyright: `Copyright © ${new Date().getFullYear()} Beyond Identity`,
       },
+      
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
     }),
+    plugins: [
+      'plugin-image-zoom'
+    ],
+  themes: [
+    '@docusaurus/theme-live-codeblock', 
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      ({
+        // ... Your options.
+        // `hashed` is recommended as long-term-cache of index file is possible.
+        hashed: true,
+        // For Docs using Chinese, The `language` is recommended to set to:
+        // ```
+        // language: ["en", "zh"],
+        // ```
+      }),
+    ],
+  ],
+
+
 };
 
 module.exports = config;
