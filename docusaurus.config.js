@@ -82,10 +82,7 @@ const config = {
             label: 'Documentation',
             type: 'dropdown',
             items: [
-              {
-                to: '/secure-customer',
-                label: 'Secure Customer',
-              },
+
               {
                 to: '/secure-work',
                 label: 'Secure Workforce',
@@ -93,6 +90,10 @@ const config = {
               {
                 to: '/secure-devops',
                 label: 'Secure DevOps',
+              },
+              {
+                to: '/secure-customer',
+                label: 'Secure Customer',
               },
             ],
           },

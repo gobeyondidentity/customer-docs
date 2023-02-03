@@ -18,17 +18,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 const ProductsList = [
-  {
-    title: 'Secure Customer',
-    alt: 'alt text for image',
-    description: (
-      <>
-        Secure Customer provides your customers with zero-friction passwordless authentication. 
-      </>
-    ),
-    href: ('https://developer.beyondidentity.com/'),
-    label: ('Learn more'),
-  },
+
   {
     title: 'Secure Workforce',
     alt: 'alt text for image',
@@ -49,6 +39,17 @@ const ProductsList = [
       </>
     ),
     href: ('/portfolio/docs/api/api-example-bflix'),
+    label: ('Learn more'),
+  },
+  {
+    title: 'Secure Customer',
+    alt: 'alt text for image',
+    description: (
+      <>
+        Secure Customer provides your customers with zero-friction passwordless authentication. 
+      </>
+    ),
+    href: ('https://developer.beyondidentity.com/'),
     label: ('Learn more'),
   },
 ];
@@ -105,7 +106,7 @@ export default function HomepageProducts() {
       <Typography variant="h5" align="center" paragraph={true} gutterBottom={true} sx={{
         fontWeight: 300,
         fontFamily: 'Overpass',
-      }} >Welcome to Beyond Identity's documentation resource center. Here you'll find information on the various products we offer. These guides are intended to provide the information and tools needed to start a passwordless journey with Beyond Identity.</Typography>
+      }} >Welcome to Beyond Identity's documentation resource center. Here you'll find information on the various products we offer. These guides are intended to provide the information and tools needed to start a passwordless journey with Beyond Identity. <a href="#" data-tooltip="A realm is a unique administrative domain within a tenant. Each realm contains a unique set of Directory, Policy, Event, Application, and Branding objects.">Realm</a></Typography>
 </div>
           {ProductsList.map((props, idx) => (
             <Product key={idx} {...props} />
