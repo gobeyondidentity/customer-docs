@@ -43,7 +43,38 @@
 }
 
 body {
-  line-height: 1.4;
+  line-height: 1.5;
+  font-family: 'Overpass', sans-serif;
+
+}
+
+h1 {
+  font-size: 36px;
+  margin-top: 20px;
+}
+
+p, li {
+  margin: 12px 0;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+[data-theme='light'] img[src$='#gh-dark-mode-only'],
+[data-theme='dark'] img[src$='#gh-light-mode-only'] {
+  display: none;
+}
+
+.markdown img { 
+  border: 1px solid #ccc; 
+  border-radius:5px;
+  max-width: 50%;
+  height: auto;
+  margin-left: 3px;
+}
+
+.markdown>table th, td {
+  margin: 6px;
+  text-align: left;
 }
 
 
