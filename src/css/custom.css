@@ -59,6 +59,13 @@ p, li {
   font-weight: 400;
 }
 
+/* nested ordered list */
+
+ol li ol li{
+  list-style-type:lower-alpha;   
+  margin-left: -15px;
+}
+
 [data-theme='light'] img[src$='#gh-dark-mode-only'],
 [data-theme='dark'] img[src$='#gh-light-mode-only'] {
   display: none;
@@ -92,6 +99,8 @@ p, li {
   color: white;
 }
 
+
+
 /* Tooltips */
 
 /* Add this attribute to the element that needs a tooltip */
@@ -122,16 +131,16 @@ p, li {
 	margin-bottom: 5px;
 	margin-left: -80px;
 	padding: 15px;
-	width: 500px;
+	width: 360px;
 	-webkit-border-radius: 6px;
 	-moz-border-radius:    6px;
 	border-radius:         6px;
-	background-color: #fff;
-	background-color: hsla(0, 0%, 90%, 1);
-	color: #000;
+	background-color: #000;
+	background-color: hsla(0, 0%, 10%, 0.9);
+	color: #fff;
 	content: attr(data-tooltip);
 	text-align: left;
-	font-size: 16px;
+	font-size: 14px;
 	line-height: 1.2;
 }
 
@@ -145,7 +154,7 @@ p, li {
 	margin-top: -5px;
 	width: 0;
 	border-bottom: 5px solid #000;
-	border-bottom: 5px solid hsla(0, 0%, 90%, 1);
+	border-bottom: 5px solid hsla(0, 0%, 10%, 0.9);
 	border-right: 5px solid transparent;
 	border-left: 5px solid transparent;
 	content: " ";
