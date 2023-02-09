@@ -1,6 +1,13 @@
 ---
 title: Debian Distribution
-sidebar_position: 5
+id: debian
+description: ''
+pagination_next: faq
+pagination_prev: null
+draft: true
+last_update: 
+   date: 02/08/2022
+   author: Patricia McPhee
 --- 
 
 Debian Distribution

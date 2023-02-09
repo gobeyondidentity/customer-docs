@@ -67,7 +67,7 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^2.3.0"
+    "@docusaurus/module-type-aliases": "^2.3.1"
   },
   "browserslist": {
     "production": [
