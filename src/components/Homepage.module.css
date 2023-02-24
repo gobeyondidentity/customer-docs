@@ -5,6 +5,10 @@
 
 @include card.core-styles;
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .products {
   display: inline;
   align-items: center;

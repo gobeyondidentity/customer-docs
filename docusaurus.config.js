@@ -84,19 +84,24 @@ const config = {
             items: [
 
               {
-                to: '/secure-work',
+                to: '/docs/secure-workforce-guides',
                 label: 'Secure Workforce',
               },
               {
-                to: '/secure-devops',
+                to: '/docs/secure-devops',
                 label: 'Secure DevOps',
               },
               {
-                to: '/secure-customer',
+                to: '/customer',
                 label: 'Secure Customer',
               },
             ],
           },
+/*          {
+            to: '/guides',
+            label: 'Guides',
+            
+          },*/
           {
             type: 'doc',
             position: 'left',
@@ -106,7 +111,7 @@ const config = {
           {
             type: 'doc',
             position: 'left',
-            docId: 'support',
+            docId: 'get-support',
             label: 'Support',
           }, 
           // {to: '/blog', label: 'Blog', position: 'left'},
@@ -114,17 +119,7 @@ const config = {
       },
       footer: {
         style: 'dark',
-        links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Documentation',
-                to: '/docs/intro',
-              },
-            ],
-          },
-        ],
+        
         copyright: `Copyright © ${new Date().getFullYear()} Beyond Identity`,
       },
       

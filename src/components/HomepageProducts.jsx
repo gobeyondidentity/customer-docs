@@ -27,7 +27,7 @@ const ProductsList = [
         Secure Workforce protects and verifies corporate identities and their devices providing for a secure and trustworthy development process.
       </>
     ),
-    href: ('https://support.beyondidentity.com/hc/en-us'),
+    href: ('/docs/secure-workforce-guides'),
     label: ('Learn more'),
   },
   {
@@ -38,7 +38,7 @@ const ProductsList = [
         Secure DevOps safeguards your company resources and closes data breach vectors by ensuring that only authorized users and devices have access to cloud resources.
       </>
     ),
-    href: ('/portfolio/docs/api/api-example-bflix'),
+    href: ('/docs/secure-devops'),
     label: ('Learn more'),
   },
   {
@@ -52,6 +52,7 @@ const ProductsList = [
     href: ('https://developer.beyondidentity.com/'),
     label: ('Learn more'),
   },
+
 ];
 
 function Product({ title, description, href }) {
@@ -59,7 +60,7 @@ function Product({ title, description, href }) {
     
     <div className={clsx('col col--4', styles.product)}>
       
-<Card sx={{minHeight: 230,  p: 2, borderRadius: 4 }} elevation={4}>
+<Card sx={{minHeight: 200,  p: 2, borderRadius: 2 }} elevation={2}>
       <CardActionArea href={href}>
         
 
@@ -67,7 +68,7 @@ function Product({ title, description, href }) {
 
     <Typography
       gutterBottom 
-      variant="h4" 
+      variant="h5" 
       component="div"
       sx={{
         fontWeight: 500,
