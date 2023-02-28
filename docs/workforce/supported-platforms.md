@@ -1,8 +1,8 @@
 ---
-title: Desktop Login overview
-id: desktop-login
+title: Supported platforms
+id: supported-platforms
 description: ''
-slug: /desktop-login 
+slug: /supported-platforms 
 keywords: 
  - faq
  - help

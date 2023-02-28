@@ -1,8 +1,8 @@
 ---
-title: Active Directory on-premises
-id: active-directory-only
+title: Reset credentials 
+id: reset-credentials
 description: ''
-slug: /active-directory-only 
+slug: /reset-credentials 
 keywords: 
  - faq
  - help

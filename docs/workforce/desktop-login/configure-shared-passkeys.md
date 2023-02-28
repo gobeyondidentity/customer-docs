@@ -1,8 +1,8 @@
 ---
-title: Desktop Login overview
-id: desktop-login
+title: Configure shared passkeys
+id: configure-shared-passkeys
 description: ''
-slug: /desktop-login 
+slug: /configure-shared-passkeys 
 keywords: 
  - faq
  - help

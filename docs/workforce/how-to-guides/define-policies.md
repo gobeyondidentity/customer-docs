@@ -1,15 +1,14 @@
 ---
-title: Desktop Login overview
-id: desktop-login
+title: Define policies
+id: define-policies
 description: ''
-slug: /desktop-login 
+slug: /define-policies 
 keywords: 
- - faq
- - help
+ - policy
 pagination_next: null
 pagination_prev: null
 last_update: 
-   date: 02/08/2022
+   date: 02/10/2022
    author: Patricia McPhee
 draft: true
 displayed_sidebar: secureWorkforceSidebar

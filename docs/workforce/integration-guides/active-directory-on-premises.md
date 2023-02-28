@@ -1,8 +1,8 @@
 ---
-title: Desktop Login overview
-id: desktop-login
+title: Active Directory on-premises
+id: active-directory-only
 description: ''
-slug: /desktop-login 
+slug: /active-directory-only 
 keywords: 
  - faq
  - help
@@ -14,3 +14,4 @@ last_update:
 draft: true
 displayed_sidebar: secureWorkforceSidebar
 ---
+

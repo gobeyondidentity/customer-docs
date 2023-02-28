@@ -30,7 +30,7 @@ Zscaler's direct integration with Beyond Identity applies to Zscaler Client Conn
 * ZIA
 
 :::info
-Zscaler's integration doesn't apply to ZIA Admin Console because it doesn't support service provider-initiated SAML flow, and Beyond Identity doesn't support the IdP-initiated SAML flow.
+Zscaler's integration doesn't apply to ZIA Admin Console because it doesn't support service provider-initiated SAML flow, and Beyond Identity doesn't support the IdP-initiated SAML flow.   
 
 ZIA and ZPA Provisioning use SCIM-supported directory or SSO while supporting Authentication directly with Beyond Identity as the IdP.
 :::
@@ -39,7 +39,7 @@ ZIA and ZPA Provisioning use SCIM-supported directory or SSO while supporting Au
 
 Ensure that you have the following:
 
-* A Zscaler account with _**Super**_ admin privileges to configure SAML IdP.
+* Zscaler account with _**Super**_ admin privileges to configure SAML IdP.
 * Zscaler Mobile APIs enabled for your tenant (mobileadmin.<_Zscaler cloud_\>.net); under the **Administration** tab, go to **Public API**.
 
 ## Configure ZPA Admin authentication

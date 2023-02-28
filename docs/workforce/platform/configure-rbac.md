@@ -1,8 +1,8 @@
 ---
-title: Desktop Login overview
-id: desktop-login
+title: Configure RBAC
+id: configure-rbac
 description: ''
-slug: /desktop-login 
+slug: /configure-rbac 
 keywords: 
  - faq
  - help

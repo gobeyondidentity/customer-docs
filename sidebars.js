@@ -23,6 +23,8 @@ const sidebars = {
         id: 'workforce/secure-workforce-guides',
       },         
       items: [ 'workforce/how-it-works', 
+      'workforce/supported-platforms',
+      'workforce/tenant-logo-requirements',
       'workforce/release-notes', 
       ],
     },
@@ -42,7 +44,11 @@ const sidebars = {
             id: 'workforce/platform/admin-console',
           },      
           items: [ 
-            'workforce/platform/authentication-rbac' ],
+            'workforce/platform/configure-rbac', 
+            'workforce/platform/revoke-access-to-device', 
+            'workforce/platform/reset-credentials',
+            'workforce/how-to-guides/define-policies',  
+          ],
         },
         {
           type: 'category',
@@ -54,6 +60,7 @@ const sidebars = {
           items: [ 
             'workforce/platform/authenticator-versions',
             'workforce/platform/manage-passkeys',
+            'workforce/platform/manage-authenticator-updates',
           ],
         },
       ],
@@ -66,6 +73,7 @@ const sidebars = {
         id: 'workforce/web-login/web-login',
       }, 
       items: [
+        
         {
           type: 'category',
           label: 'Open Integration',
@@ -82,7 +90,7 @@ const sidebars = {
                 id: 'workforce/web-login/open-integrations/oidc',
               },
               items: [
-                'workforce/web-login/open-integrations/okta-oidc',
+                
               ],
             },
             'workforce/web-login/open-integrations/saml', 
@@ -97,10 +105,8 @@ const sidebars = {
             id: 'workforce/web-login/sso-integrations/sso-integrations',
           },      
           items: [ 
-            'workforce/web-login/sso-integrations/forgerock',
-            'workforce/web-login/sso-integrations/google-workspace',
-            'workforce/web-login/sso-integrations/okta',
-            'workforce/web-login/sso-integrations/ping',
+
+
           ],
         },
       ],
@@ -112,7 +118,11 @@ const sidebars = {
         type: 'doc',
         id: 'workforce/desktop-login/desktop-login',
       },         
-      items: [ 'workforce/desktop-login/azure-ad', 'workforce/desktop-login/azure-ad-hybrid', 'workforce/desktop-login/active-directory-only' ],
+      items: [ 
+        'workforce/desktop-login/configure-shared-passkeys', 
+        'workforce/desktop-login/windows-security', 
+        'workforce/desktop-login/obtain-client-id',   
+      ],
     },
     {
       type: 'category',
@@ -122,28 +132,26 @@ const sidebars = {
         id: 'workforce/policy/policy-integrations',
       },      
       items: [ 
+        
         {
           type: 'category',
           label: 'EDR',
           link: {
             type: 'doc',
-            id: 'workforce/policy/edr/edr-integrations',
+            id: 'workforce/policy/edr-integrations',
           },      
           items: [ 
-            'workforce/policy/edr/crowdstrike', ],
+             ],
         },
         {
           type: 'category',
           label: 'UEM/MDM',
           link: {
             type: 'doc',
-            id: 'workforce/policy/mdm/mdm',
+            id: 'workforce/policy/mdm',
           },      
           items: [ 
-        'workforce/policy/mdm/microsoft-intune', 
-        'workforce/policy/mdm/jamf', 
-        'workforce/policy/mdm/kandji', 
-        'workforce/policy/mdm/vmware-airwatch' 
+
           ],
         },
         {
@@ -151,16 +159,64 @@ const sidebars = {
           label: 'Zero Trust',
           link: {
             type: 'doc',
-            id: 'workforce/policy/zero-trust/zero-trust',
+            id: 'workforce/policy/zero-trust',
           },      
           items: [ 
-		        'workforce/policy/zero-trust/zscaler' 
+		         
 	        ],
         },
 
       ],
     },
-    
+    {
+      type: 'category',
+      label: 'Data & Events',
+      link: {
+        type: 'doc',
+        id: 'workforce/data-events/data-events',
+      },         
+      items: [ 'workforce/data-events/export-windows-event-logs', 
+      'workforce/data-events/collect-local-logs-endpoints', 
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Integration Guides',
+      link: {
+        type: 'doc',
+        id: 'workforce/integration-guides/integration-guides',
+      },         
+      items: [  
+      'workforce/integration-guides/aws-cognito',
+      'workforce/integration-guides/azure-ad', 
+      'workforce/integration-guides/azure-ad-hybrid', 
+      'workforce/integration-guides/active-directory-only',
+      'workforce/integration-guides/crowdstrike', 
+      'workforce/integration-guides/forgerock',
+      'workforce/integration-guides/google-workspace',
+      'workforce/integration-guides/jamf', 
+      'workforce/integration-guides/kandji', 
+      'workforce/integration-guides/microsoft-intune', 
+      'workforce/integration-guides/okta-oidc',
+      'workforce/integration-guides/okta',
+      'workforce/integration-guides/ping',
+      'workforce/integration-guides/vmware-airwatch',
+      'workforce/integration-guides/zscaler',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'How-to\'s',
+      link: {
+        type: 'doc',
+        id: 'workforce/how-to-guides/how-to-guides',
+      },         
+      items: [  
+        
+        'workforce/how-to-guides/third-party-cookies-google',
+      ],
+    },
+
     'faq',
 
 

@@ -1,8 +1,8 @@
 ---
-title: Desktop Login overview
-id: desktop-login
+title: Export Windows event logs 
+id: export-windows-event-logs
 description: ''
-slug: /desktop-login 
+slug: /export-windows-event-logs 
 keywords: 
  - faq
  - help

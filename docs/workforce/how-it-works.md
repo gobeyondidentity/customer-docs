@@ -1,5 +1,5 @@
 ---
-title: How it works
+title: How Beyond Identity works
 id: how-it-works
 description: ''
 slug: /how-it-works 

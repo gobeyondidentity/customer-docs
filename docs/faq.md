@@ -29,3 +29,10 @@ The left image shows the **Check for Updates** item included in the drop-down 
 
 
 [Join the conversation][1]
+
+## General
+
+## Android
+
+## iOS
+

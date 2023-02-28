@@ -1,8 +1,8 @@
 ---
-title: Desktop Login overview
-id: desktop-login
+title: Manage Authenticator updates
+id: manage-authenticator-updates
 description: ''
-slug: /desktop-login 
+slug: /manage-authenticator-updates 
 keywords: 
  - faq
  - help

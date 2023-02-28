@@ -96,12 +96,11 @@ const config = {
                 label: 'Secure Customer',
               },
             ],
-          },
-/*          {
-            to: '/guides',
-            label: 'Guides',
+          },          {
+            to: '/docs/integration-guides',
+            label: 'Integration Guides',
             
-          },*/
+          },
           {
             type: 'doc',
             position: 'left',

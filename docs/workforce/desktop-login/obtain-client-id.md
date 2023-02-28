@@ -1,8 +1,8 @@
 ---
-title: Desktop Login overview
-id: desktop-login
+title: Obtain client ID
+id: obtain-client-id
 description: ''
-slug: /desktop-login 
+slug: /obtain-client-id 
 keywords: 
  - faq
  - help

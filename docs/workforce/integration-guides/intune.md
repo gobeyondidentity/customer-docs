@@ -58,25 +58,25 @@ You’ll register Beyond Identity in AAD to establish a trust relationship with 
 
 5. On the Overview pane, copy the **Application (client) ID** and **Directory (tenant) ID**.  
 
-  ![app-registration-overview.png](./images/intune/app-registration-overview.png)
+  ![app-registration-overview.png](../images/intune/app-registration-overview.png)
 
 ### Add API permissions
 
 1. Under **Manage**, select **API permissions > Add a permission > Microsoft Graph**.  
 
-   ![app-registration-api-permissions.png](./images/intune/app-registration-api-permissions.png)
+   ![app-registration-api-permissions.png](../images/intune/app-registration-api-permissions.png)
 
 2. Select **Application permissions** and under **Select permissions**, search for **DeviceManagementManagedDevices**.
 
    Then select, **DeviceManagementManagedDevices.Read.All** .
 
-   ![device-management-manged-devices-search.png](./images/intune/device-management-manged-devices-search.png)
+   ![device-management-manged-devices-search.png](../images/intune/device-management-manged-devices-search.png)
 
 3. Search for **User** and select **User.Read.All**.
 
 4. Select the **Delegated permissions** option.  
 
-   ![request-api-delegated-permissions.png](./images/intune/request-api-delegated-permissions.png)
+   ![request-api-delegated-permissions.png](../images/intune/request-api-delegated-permissions.png)
 
 5. Search for **Openid permissions** and select the following options. Then select **Add permissions**.
 
@@ -90,11 +90,11 @@ You’ll register Beyond Identity in AAD to establish a trust relationship with 
 
 6. Select **Grant admin consent for** and select **Yes** to confirm consent.  
 
-  ![app-registration-api-permissions-grant.png](./images/intune/app-registration-api-permissions-grant.png)
+  ![app-registration-api-permissions-grant.png](../images/intune/app-registration-api-permissions-grant.png)
 
 7. Under **Manage**, select **Certificates & secrets > New client secret**.  
 
-  ![app-registration-certificates-secrets-1.png](./images/intune/app-registration-certificates-secrets-1.png)
+  ![app-registration-certificates-secrets-1.png](../images/intune/app-registration-certificates-secrets-1.png)
 
 8. Enter a description for the secret, for example, **Beyond Identity Policy Engine**. Then select the duration of the section and select **Add**.
 
@@ -104,7 +104,7 @@ You’ll register Beyond Identity in AAD to establish a trust relationship with 
 
 9. Copy the secret’s **Value** for use in the Beyond Identity Admin Console in the next step. This secret value is never displayed again after you leave this page.  
 
-  ![copy-client-secret-value.png](./images/intune/copy-client-secret-value.png)
+  ![copy-client-secret-value.png](../images/intune/copy-client-secret-value.png)
 
 
 ## Step 2: Conﬁgure Intune Integration in Beyond Identity
@@ -113,7 +113,7 @@ In this step, you’ll install and configure Intune with Beyond Identity. You’
 
 1. Log in to Beyond Identity Admin Console, under Tenant, go to **Integrations >** **Endpoint Management > Microsoft Intune**. Then click **Install**.  
 
-  ![bi-admin-console-install-intune.png](./images/intune/bi-admin-console-install-intune.png)
+  ![bi-admin-console-install-intune.png](../images/intune/bi-admin-console-install-intune.png)
 
 2. Enter the information you copied and saved from the Azure Admin Portal, and then click **Save changes**.
 
@@ -143,7 +143,7 @@ In this step, you’ll create an authentication policy to determine if the test 
 
   * **Then** action is set to **Deny** the authentication.   
 
-  ![add-rule-registered-deny.png](./images/intune/add-rule-registered-deny.png)
+  ![add-rule-registered-deny.png](../images/intune/add-rule-registered-deny.png)
 
 4. From a Windows computer managed with Intune, try authenticating with the test user’s credentials. If authentication is denied, the policy works as expected.
 
@@ -167,15 +167,15 @@ You’ll configure the mobile apps in Intune to assign your managed app configur
 
 1. Sign in to the [Microsoft Endpoint Manager admin center](https://endpoint.microsoft.com/#home), select **Apps**, and under **Policy**, select **App configuration policies**.
 
-  ![ios-app-config-policy-1.png](./images/intune/ios-app-config-policy-1.png)
+  ![ios-app-config-policy-1.png](../images/intune/ios-app-config-policy-1.png)
 
 2. Click **Add > Managed devices**.
 
-  ![app-configuration-policies-managed-devices.jpg](./images/intune/app-configuration-policies-managed-devices.jpg)
+  ![app-configuration-policies-managed-devices.jpg](../images/intune/app-configuration-policies-managed-devices.jpg)
 
 3. On the **Basics** page, provide a name for the policy, select **iOS/iPadOS**, and click **Select app**
 
-  ![ios-app-config-policy-2.png](./images/intune/ios-app-config-policy-2.png)
+  ![ios-app-config-policy-2.png](../images/intune/ios-app-config-policy-2.png)
 
 4. Select the Associated app and click **Next**.
 
@@ -190,7 +190,7 @@ You’ll configure the mobile apps in Intune to assign your managed app configur
   | serialNumber  | String  | {{serialNumber}}  |
   | intuneDeviceID  | String  |  {{deviceid}} |
 
-  ![ios-app-config-policy-3.png](./images/intune/ios-app-config-policy-3.png)
+  ![ios-app-config-policy-3.png](../images/intune/ios-app-config-policy-3.png)
 
 6. Assign the policy to the desired groups or users, click **Next**, and click **Create** to add the app configuration policy to Intune.
 
@@ -199,34 +199,34 @@ You’ll configure the mobile apps in Intune to assign your managed app configur
 
 1. Sign in to the [Microsoft Endpoint Manager admin center](https://endpoint.microsoft.com/#home), select **Apps**, and under **By Platform**, select **Anroid**.
 
-  ![android-1.png](./images/intune/android-1.png)
+  ![android-1.png](../images/intune/android-1.png)
 
 2. Click **Add > Managed Google Play app > Select**.
 
-  ![android-2.png](./images/intune/android-2.png)
+  ![android-2.png](../images/intune/android-2.png)
 
 3. Search for **beyond identity** and select it.
 
-  ![android-managed-app.png](./images/intune/android-managed-app.png)
+  ![android-managed-app.png](../images/intune/android-managed-app.png)
 
 4. Click **Select** to approve it.
 
-  ![android-managed-app-approve.png](./images/intune/android-managed-app-approve.png)
+  ![android-managed-app-approve.png](../images/intune/android-managed-app-approve.png)
 
 5. Click **Apps**, under **Policy**, select **App configuration policies**.
 
-  ![android-3.png](./images/intune/android-3.png)
+  ![android-3.png](../images/intune/android-3.png)
 
 6. Click **Add > Managed devices**.
 
-  ![app-configuration-policies-managed-devices.jpg](./images/intune/app-configuration-policies-managed-devices.jpg)
+  ![app-configuration-policies-managed-devices.jpg](../images/intune/app-configuration-policies-managed-devices.jpg)
 
 7. On the **Basics** page, provide a name for the policy, select the following:
 
   * Platform: **Android Enterprise**
   * Profile Type: **Fully Managed, Dedicated, and Corporate-Owned Work Profile Only**
 
-  ![android-4.png](./images/intune/android-4.png)
+  ![android-4.png](../images/intune/android-4.png)
 
 8. Click **Select app** and for the Associated app, select **Beyond Identity**, click **OK**, and click **Next**.
 9. On the **Settings** page, select **Use configuration designer**, and click **Add**.
@@ -236,6 +236,6 @@ You’ll configure the mobile apps in Intune to assign your managed app configur
   The conﬁguration keys are case-sensitive.
   :::
 
-  ![configure-app-policy-settings-deviceid-key.png](./images/intune/configure-app-policy-settings-deviceid-key.png)
+  ![configure-app-policy-settings-deviceid-key.png](../images/intune/configure-app-policy-settings-deviceid-key.png)
 
   Assign the policy to the desired groups or users, click **Next**, and click **Create** to add the app configuration policy to Intune.

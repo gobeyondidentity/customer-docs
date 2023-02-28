@@ -1,7 +1,7 @@
 ---
 title: Okta OIDC
 id: okta-oidc
-description: ''
+description: 'Learn how to set up Okta to use Beyond Identity as an identity provider.'
 slug: /okta-oidc 
 keywords: 
  - faq

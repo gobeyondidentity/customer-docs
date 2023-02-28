@@ -1,8 +1,8 @@
 ---
-title: Desktop Login overview
-id: desktop-login
+title: Enable third-party cookies
+id: third-party-cookies-google
 description: ''
-slug: /desktop-login 
+slug: /third-party-cookies-google 
 keywords: 
  - faq
  - help

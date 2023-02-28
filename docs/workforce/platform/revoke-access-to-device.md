@@ -1,8 +1,8 @@
 ---
-title: Desktop Login overview
-id: desktop-login
+title: Revoke access to device
+id: revoke-access-to-device
 description: ''
-slug: /desktop-login 
+slug: /revoke-access-to-device 
 keywords: 
  - faq
  - help

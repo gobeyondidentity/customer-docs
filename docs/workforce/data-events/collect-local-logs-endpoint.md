@@ -1,8 +1,8 @@
 ---
-title: Desktop Login overview
-id: desktop-login
+title: Collect local logs from endpoints 
+id: collect-local-logs-endpoints
 description: ''
-slug: /desktop-login 
+slug: /collect-local-logs-endpoints 
 keywords: 
  - faq
  - help

@@ -51,6 +51,7 @@
 body {
   line-height: 1.40;
   font-family: 'Overpass', sans-serif;
+  color: #383a3e;
 }
 
 h1 {
@@ -92,37 +93,12 @@ li.no-style {
 .markdown img { 
   border: 1px solid #ccc; 
   border-radius:5px;
-  max-width: 40%;
+  max-width: 50%;
   height: auto;
   margin: 0px 0;
 }
 
-@media print {
-  h2 {font-family:georgia, times, serif;}
-  .markdown img { 
-    border: 1px solid #ccc; 
-    border-radius:5px;
-    max-width: 75%;
-    height: auto;
-    margin: 0px 0;
-  }
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 100%;
-    table-layout: fixed;
-    text-align: left;
-    margin: 0px 0;
-  }
-  tr:nth-child(even) {background-color: #f6f7fc;}
-  th, td {
-    font-size: 12px;
-    vertical-align: top;
-  }
-  p, li {
-    font-size: 12px;
-  }
-}
+
 
 .markdown>table th, td {
   margin: 6px;
@@ -240,7 +216,6 @@ th.do-not {
 }
 
 th, td {
-
   vertical-align: top;
   padding: 10 3 10 10;
 }
@@ -259,3 +234,92 @@ th {
 }
 
 /*tr:nth-child(even) {background-color: #f6f7fc;}*/
+
+
+/***** Admonition *****/
+
+.note-message {
+  color: #059;
+  background-color: #54c7ec26;
+  border-left: 4px solid #059;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+.success-msg {
+  color: #270;
+  background-color: #00a40026;
+  border-left: 4px solid #270; 
+	margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+.warning-msg {
+  color: #9F6000;
+  background-color: #ffba0026;
+  border-left: 4px solid #9F6000;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+.error-msg {
+  color: #DC2F02;
+  background-color: #fa383e26;
+  border-left: 4px solid #DC2F02;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+.div-header {
+  font-variant: titling-caps;
+  margin-top: 6px;
+}
+.note-message,
+.success-msg,
+.warning-msg,
+.error-msg p {
+  margin-top: 0.4em;
+  margin-bottom: 0;
+}
+
+
+@media print {
+  /* All your print styles go here */
+  #header,
+  #footer,
+  #nav {
+    display: none !important;
+  }
+
+  body {
+    line-height: 90%;
+  }
+  h1 {
+    font-size: 18pt;
+    padding: 0;
+  }
+  h2 {
+    font-family:georgia, times, serif;
+    font-size: 14pt;
+  }
+  .markdown img { 
+    border: 1px solid #ccc; 
+    border-radius:5px;
+    max-width: 70%;
+    height: auto;
+    margin: 0px 0;
+  }
+  p, li {
+    font-size: 12px;
+    padding: 0;
+  }
+  ol, ul {
+    margin: 0;
+  }
+  tr:nth-child(even) {background-color: #f6f7fc;}
+  th, td {
+    font-size: 12px;
+    vertical-align: top;
+  }
+
+}

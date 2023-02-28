@@ -1,8 +1,8 @@
 ---
-title: Authentication and RBAC
-id: authentication-rbac
+title: Set up Windows Security
+id: windows-security
 description: ''
-slug: /authentication-rbac 
+slug: /windows-security 
 keywords: 
  - faq
  - help
