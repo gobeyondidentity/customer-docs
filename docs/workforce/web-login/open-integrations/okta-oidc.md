@@ -178,20 +178,16 @@ Ensure that you have the following:
 
 
 ## Okta configuration
-
-
- To configure Beyond Identity as the IdP in Okta, follow the steps below. Once done, you'll be ready to enable Beyond Identity for test users.
+To configure Beyond Identity as the IdP in Okta, follow the steps below. Once done, you'll be ready to enable Beyond Identity for test users.
 
 ### Step 1: Add custom attribute to Okta user profile
 *This is doing more than navigate to the profile editor. What exactly is the end result of this section? What are they going in this step?*
 
-
-
-![image](../images/okta-oidc/image-1.png)
-
 1. Sign into the Okta portal as an administrator and, under the main Okta menu, select **Directory > Profile Editor**.
 
 2. Under **Users**, find your **Okta** profile and select **User (default)**.
+
+  ![image](../images/okta-oidc/image-1.png)
 
 3. At the bottom of the user profile editor, click **Add Attribute**.  
 
@@ -199,17 +195,41 @@ Ensure that you have the following:
 
 4. Select the fields as shown in the following image. Then click **Save**. 
 
-  - Data Type: **boolean**
-
-  - Display Name: **Beyond Identity Registration Status**
-
-  - Variable Name: **byndidRegistered**
-
-  - Description: **Beyond Identity Registration Status**
+  <table width="60%">
+    <tbody>
+      <tr>
+        <td>
+          <b>Data Type</b>
+        </td>
+        <td>boolean
+        </td>
+      </tr>
+      <tr>
+        <td><b>Display Name</b>
+        </td>
+        <td>Beyond Identity Registration Status
+        </td>
+      </tr>
+      <tr>
+        <td><b>Variable Name</b>
+        </td>
+        <td>byndidRegistered
+        </td>
+      </tr>
+      <tr>
+        <td><b>Description</b>
+        </td>
+        <td>Beyond Identity Registration Status
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
    ![image](../images/okta-oidc/image-3.png) 
 
-5. If you have multiple profile masters (applicable for AD mastered users), perform the following steps. 
+
+
+1. If you have multiple profile masters (applicable for AD mastered users), perform the following steps. 
 
    1. Edit the **byndidRegistered** attribute in Okta profile.
 
@@ -269,7 +289,7 @@ Ensure that you have the following:
 
   - Token Field: **sub**
 
-  - Token Field Lookup: **external\_id**
+  - Token Field Lookup: **external_id**
 
   After provisioning, the customer should log in and confirm that the admin has access to Beyond Identity Console.
 
@@ -345,7 +365,7 @@ Ensure that you have the following:
 
   - Token Field: **sub**
 
-  - Token Field Lookup: **external\_id**
+  - Token Field Lookup: **external_id**
 
    ![image](../images/okta-oidc/image-11.png) 
 
@@ -366,7 +386,7 @@ Ensure that you have the following:
 
   - Token Signing Algorithm: **RS256**
 
-  - Auth Method: **Client\_secret\_post**
+  - Auth Method: **Client_secret_post**
 
 3. Select the OIDC created above and copy the **Client ID** and **Client Secret** values. You'll use these values in the next step.  
 
@@ -436,7 +456,7 @@ The Event Hooks configuration is only required if you do not have SCIM capabilit
 
   - Name: **Beyond Identity Provisioning flow**
 
-  - URL: **https://api.byndid.com/okta\_events**
+  - URL: **https://api.byndid.com/okta_events**
 
   - Authentication field: **Authorization**
 
@@ -470,7 +490,7 @@ The Event Hooks configuration is only required if you do not have SCIM capabilit
 
    ![image](../images/okta-oidc/image-17.png)
 
-### Step 11: Set up Routing Rules
+### Step 6: Set up Routing Rules
 
 1. Click **Security &gt; Identity Providers &gt; Routing Rules**.  
 
@@ -547,10 +567,9 @@ Each enrolled user can visit their Okta instance or any application supported by
 
 ## User Deprovisioning
 
+You can de-provision a user from the Beyond Identity experience by removing them from the **Beyond Identity** group.
 
- You can de-provision a user from the Beyond Identity experience by removing them from the **Beyond Identity** group.
-
-1. Click **Directory &gt; Groups**.
+1. Sign into the Okta portal as an administrator and, under the main Okta menu, select **Directory > Groups**.
 
 2. Select the **Beyond Identity** group.
 
@@ -560,7 +579,7 @@ Each enrolled user can visit their Okta instance or any application supported by
 
 
 
-## Create a Token in Okta
+## Create an API Token in Okta
 
 
  The following image is an example of an administrator view in Okta and illustrates the actions listed below:

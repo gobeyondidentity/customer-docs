@@ -133,21 +133,21 @@ In this step, you’ll create an authentication policy to determine if the test 
 
 3. Select **Policy > Edit Policy > Add rule**, select the following conditions, and click **Add > Publish changes**.
 
-  * For any transaction is set to **Authentication**.
+  * **For any transaction** is set to **Authentication**.
 
-  * Any user is a member of the **Require Intune on Windows** group.
+  * **If user** is a member of the **Require Intune on Windows** group.
 
-  * Device **Platform** is set to **Windows**.
+  * **If device platform is** set to **Windows**.
 
-  * **Integration** is set to Intune and reporting the device as **Registered**.
+  * **If Integration is** set to **Intune Registration is Registered**.
 
-  * Action is set to **Deny** the authentication.   
+  * **Then** action is set to **Deny** the authentication.   
 
   ![add-rule-registered-deny.png](./images/intune/add-rule-registered-deny.png)
 
 4. From a Windows computer managed with Intune, try authenticating with the test user’s credentials. If authentication is denied, the policy works as expected.
 
-5. Go back to the policy and change the **Integration** condition to **Not Registered, Pending Enrollment**.
+5. Go back to the policy and change the **If Integration is** condition to **Intune Registration is Not Registered, Pending Enrollment**.
 
 6. With the same test user’s credentials, try authenticating again. If authentication is successful, the policy works as expected.
 

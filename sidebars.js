@@ -15,8 +15,17 @@
 const sidebars = {
   // By default, Docusaurus generates a sidebar from the docs folder structure
   secureWorkforceSidebar: [
-    'workforce/secure-workforce-guides',
-    'workforce/release-notes',
+    {
+      type: 'category',
+      label: 'Secure Workforce Guides',
+      link: {
+        type: 'doc',
+        id: 'workforce/secure-workforce-guides',
+      },         
+      items: [ 'workforce/how-it-works', 
+      'workforce/release-notes', 
+      ],
+    },
     {
       type: 'category',
       label: 'Platform',
@@ -55,17 +64,30 @@ const sidebars = {
       link: {
         type: 'doc',
         id: 'workforce/web-login/web-login',
-      },      
-      items: [ 
+      }, 
+      items: [
         {
           type: 'category',
-          label: 'Open Integrations',
+          label: 'Open Integration',
           link: {
             type: 'doc',
             id: 'workforce/web-login/open-integrations/open-integrations',
-          },      
-          items: [ 
-            'workforce/web-login/open-integrations/oidc', 'workforce/web-login/open-integrations/okta-oidc', 'workforce/web-login/open-integrations/saml', 'workforce/web-login/open-integrations/ws-fed', ],
+          },
+          items: [
+            {
+              type: 'category',
+              label: 'OIDC',
+              link: {
+                type: 'doc',
+                id: 'workforce/web-login/open-integrations/oidc',
+              },
+              items: [
+                'workforce/web-login/open-integrations/okta-oidc',
+              ],
+            },
+            'workforce/web-login/open-integrations/saml', 
+            'workforce/web-login/open-integrations/ws-fed',
+          ],
         },
         {
           type: 'category',
@@ -118,13 +140,13 @@ const sidebars = {
             id: 'workforce/policy/mdm/mdm',
           },      
           items: [ 
-		'workforce/policy/mdm/microsoft-intune', 
-		'workforce/policy/mdm/jamf', 
-		'workforce/policy/mdm/kandji', 
-		'workforce/policy/mdm/vmware-airwatch' 
-	    ],
+        'workforce/policy/mdm/microsoft-intune', 
+        'workforce/policy/mdm/jamf', 
+        'workforce/policy/mdm/kandji', 
+        'workforce/policy/mdm/vmware-airwatch' 
+          ],
         },
-{
+        {
           type: 'category',
           label: 'Zero Trust',
           link: {
@@ -132,9 +154,10 @@ const sidebars = {
             id: 'workforce/policy/zero-trust/zero-trust',
           },      
           items: [ 
-		'workforce/policy/zero-trust/zscaler' 
-	    ],
+		        'workforce/policy/zero-trust/zscaler' 
+	        ],
         },
+
       ],
     },
     
