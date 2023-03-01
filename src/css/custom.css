@@ -49,25 +49,36 @@
 }
 
 body {
-  line-height: 1.40;
+  line-height: 1.5;
   font-family: 'Overpass', sans-serif;
   color: #383a3e;
 }
 
 h1 {
-  font-size: 36px;
+  font-size: 34px;
   margin-top: 20px;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 22px;
 }
 
 h1, h2, h3, h4 {
   font-weight: 600;
+
 }
 
 p, li {
-  margin: 0px 0;
   font-size: 16px;
   font-weight: 400;
+  margin: 0;
 }
+
+
 
 /* nested ordered list */
 
@@ -96,6 +107,7 @@ li.no-style {
   max-width: 50%;
   height: auto;
   margin: 0px 0;
+
 }
 
 

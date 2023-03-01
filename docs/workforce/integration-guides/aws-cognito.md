@@ -16,12 +16,11 @@ displayed_sidebar: secureWorkforceSidebar
 ---
 
 This guide provides information on how to set up Beyond Identity as a Passwordless login provider for applications that use AWS Cognito to manage their identities.
-
 ## Prerequisites
-
 Administrator user privileges to AWS console.
+### User Pool setup
 
-## User Pool setup
+#### heading 4
 
 *Why are we not just giving them the [link](https://docs.aws.amazon.com/cognito/latest/developerguide/tutorial-create-user-pool.html) to the vendor documentation, which is always up to date, so we can focus on integrating Beyond Identity with AWS.*
 

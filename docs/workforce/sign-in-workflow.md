@@ -1,8 +1,8 @@
 ---
-title: VMware Airwatch
-id: vmware-airwatch
+title: User sign-in workflow
+id: sign-in-workflow
 description: ''
-slug: /vmware-airwatch 
+slug: /sign-in-workflow 
 keywords: 
  - faq
  - help

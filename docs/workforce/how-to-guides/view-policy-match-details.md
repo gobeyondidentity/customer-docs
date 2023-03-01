@@ -1,14 +1,15 @@
 ---
-title: Define policies
-id: define-policies
+title: View policy match details
+id: view-policy-match-details
 description: ''
-slug: /define-policies 
+slug: /view-policy-match-details
 keywords: 
- - policy
+ - faq
+ - help
 pagination_next: null
 pagination_prev: null
 last_update: 
-   date: 02/10/2022
+   date: 02/08/2022
    author: Patricia McPhee
 draft: true
 displayed_sidebar: secureWorkforceSidebar

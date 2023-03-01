@@ -17,14 +17,15 @@ const sidebars = {
   secureWorkforceSidebar: [
     {
       type: 'category',
-      label: 'Secure Workforce Guides',
+      label: 'Secure Workforce',
       link: {
         type: 'doc',
         id: 'workforce/secure-workforce-guides',
       },         
       items: [ 'workforce/how-it-works', 
+      'workforce/sign-in-workflow',
       'workforce/supported-platforms',
-      'workforce/tenant-logo-requirements',
+
       'workforce/release-notes', 
       ],
     },
@@ -47,7 +48,9 @@ const sidebars = {
             'workforce/platform/configure-rbac', 
             'workforce/platform/revoke-access-to-device', 
             'workforce/platform/reset-credentials',
-            'workforce/how-to-guides/define-policies',  
+            'workforce/how-to-guides/define-policies', 
+            'workforce/how-to-guides/view-policy-match-details', 
+            'workforce/tenant-logo-requirements',
           ],
         },
         {
