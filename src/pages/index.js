@@ -10,6 +10,7 @@ import HomepageAbout from '../components/HomepageAbout';
 import styles from './index.module.css';
 import HomepageProducts from '../components/HomepageProducts';
 
+
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   return (
@@ -33,6 +34,7 @@ export default function Home() {
         <HomepageProducts />
 
         <HomepageAbout />
+
 
         <HomepageCommunity />
       </main>

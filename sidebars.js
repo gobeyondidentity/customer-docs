@@ -25,7 +25,6 @@ const sidebars = {
       items: [ 'workforce/how-it-works', 
       'workforce/sign-in-workflow',
       'workforce/supported-platforms',
-
       'workforce/release-notes', 
       ],
     },
@@ -207,7 +206,7 @@ const sidebars = {
       'workforce/integration-guides/zscaler',
       ],
     },
-    {
+/*    {
       type: 'category',
       label: 'How-to\'s',
       link: {
@@ -219,15 +218,20 @@ const sidebars = {
         'workforce/how-to-guides/third-party-cookies-google',
       ],
     },
-
+*/
     'faq',
-
+    'glossary',
 
   ],
 
   devOpsSidebar: [
     'devops/secure-devops',
     'devops/devops-release-notes',
+    'devops/aws-commit',
+    'devops/azure-devops',
+    'devops/bitbucket',
+    'devops/github',
+    'devops/gitlab',
     'devops/devops-git-commit-signing',
 
 

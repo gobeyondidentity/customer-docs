@@ -55,16 +55,31 @@ const config = {
         },
       }),
     ],
+    [
+      'redocusaurus',
+      {
+        id: "apiv1",
+        // Plugin Options for loading OpenAPI files
+        specs: [
+          {
+            spec: 'static/api/v1.yaml',
+            url: 'api/v1.yaml',
+            route: 'api',
+          },
+        ],
+        // Theme Options for modifying how redoc renders them
+        theme: {
+          // Change with your site colors
+          primaryColor: '#5077c5',
+        },
+      },
+    ],
   ],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      colorMode: {
-        defaultMode: 'dark',
-        disableSwitch: false,
-        respectPrefersColorScheme: true,
-      },
+
       docs: {
         sidebar: {
           hideable: true,
@@ -96,24 +111,42 @@ const config = {
                 label: 'Secure Customer',
               },
             ],
-          },          {
+          },          
+          {
             to: '/docs/integration-guides',
             label: 'Integration Guides',
             
           },
+          { to: "/api/", label: "Public API", position: "left" },
           {
-            type: 'doc',
-            position: 'left',
-            docId: 'faq',
-            label: 'FAQs',
+            label: 'Resources',
+            type: 'dropdown',
+            items: [
+
+              {
+                to: '/docs/faq',
+                label: 'FAQs',
+              },
+              {
+                to: '/docs/glossary',
+                label: 'Glossary',
+              },
+              {
+                to: '/docs/get-support', //this may need to be a link to the support site instead of a doc 
+                label: 'Support Center',
+              },
+              {
+                to: '/docs/release-notes',
+                label: 'Release Notes',
+              },
+              {
+                to: '/blog', 
+                label: 'Blog'
+              },
+            ],
           }, 
-          {
-            type: 'doc',
-            position: 'left',
-            docId: 'get-support',
-            label: 'Support',
-          }, 
-          // {to: '/blog', label: 'Blog', position: 'left'},
+ 
+          // {to: '/blog', label: 'Release Notes', position: 'left'},
         ],
       },
       footer: {
@@ -128,26 +161,25 @@ const config = {
       },
     }),
     plugins: [
-      'plugin-image-zoom'
+      'plugin-image-zoom',
+      [
+        require.resolve("@easyops-cn/docusaurus-search-local"),
+        {
+          indexDocs: true,
+          indexBlog: false,
+          indexPages: true,
+          language: "en",
+          hashed: true
+        }
+      ],
     ],
   themes: [
     '@docusaurus/theme-live-codeblock', 
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
-      ({
-        // ... Your options.
-        // `hashed` is recommended as long-term-cache of index file is possible.
-        hashed: true,
-        // For Docs using Chinese, The `language` is recommended to set to:
-        // ```
-        // language: ["en", "zh"],
-        // ```
-      }),
-    ],
+    'docusaurus-theme-redoc',
   ],
 
 
 };
+
 
 module.exports = config;
