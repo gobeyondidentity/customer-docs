@@ -21,8 +21,16 @@ export default function BlogPostItemFooter() {
         'row docusaurus-mt-lg',
         isBlogPostPage && styles.blogPostFooterDetailsFull,
       )}>
+      {truncatedPost && (
+        <div
+          className={clsx('col text--left', {
+            'col--3': tagsExists,
+          })}>
+          <ReadMoreLink blogPostTitle={title} to={metadata.permalink} />
+        </div>
+      )}
       {tagsExists && (
-        <div className={clsx('col', {'col--9': truncatedPost})}>
+        <div className={clsx('col text--right', {'col--9': truncatedPost})}>
           <TagsListInline tags={tags} />
         </div>
       )}
@@ -33,14 +41,7 @@ export default function BlogPostItemFooter() {
         </div>
       )}
 
-      {truncatedPost && (
-        <div
-          className={clsx('col text--right', {
-            'col--3': tagsExists,
-          })}>
-          <ReadMoreLink blogPostTitle={title} to={metadata.permalink} />
-        </div>
-      )}
+
     </footer>
   );
 }

@@ -35,20 +35,15 @@ function Date({date, formattedDate}) {
   );
 }
 function Spacer() {
-  return <>{' · '}</>;
+  return <>{'   |   '}</>;
 }
 export default function BlogPostItemHeaderInfo({className}) {
   const {metadata} = useBlogPost();
-  const {date, formattedDate, readingTime} = metadata;
+  const {date, formattedDate} = metadata;
   return (
     <div className={clsx(styles.container, 'margin-vert--md', className)}>
       <Date date={date} formattedDate={formattedDate} />
-      {typeof readingTime !== 'undefined' && (
-        <>
-          <Spacer />
-          <ReadingTime readingTime={readingTime} />
-        </>
-      )}
+
     </div>
   );
 }

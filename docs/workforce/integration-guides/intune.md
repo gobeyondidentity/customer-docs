@@ -79,14 +79,14 @@ You’ll register Beyond Identity in AAD to establish a trust relationship with 
    ![request-api-delegated-permissions.png](../images/intune/request-api-delegated-permissions.png)
 
 5. Search for **Openid permissions** and select the following options. Then select **Add permissions**.
-
-  * email
-
-  * offline\_access
-
-  * openid
-
-  * profile
+    <div class="indent">
+    <ul>
+      <li>email</li>
+      <li>offline_access</li>
+      <li>openid</li>
+      <li>profile</li>
+    </ul>
+    </div>
 
 6. Select **Grant admin consent for** and select **Yes** to confirm consent.  
 
@@ -96,7 +96,7 @@ You’ll register Beyond Identity in AAD to establish a trust relationship with 
 
   ![app-registration-certificates-secrets-1.png](../images/intune/app-registration-certificates-secrets-1.png)
 
-8. Enter a description for the secret, for example, **Beyond Identity Policy Engine**. Then select the duration of the section and select **Add**.
+8. Enter a description for the secret, for example, **Beyond Identity Policy Engine**. Then select the duration of the section and select **Add**.  
 
    :::info Important    
    Note the expiration time because you’ll need to reset this before it expires.
@@ -117,11 +117,13 @@ In this step, you’ll install and configure Intune with Beyond Identity. You’
 
 2. Enter the information you copied and saved from the Azure Admin Portal, and then click **Save changes**.
 
-  * Azure Tenant ID
-
-  * Client ID
-
-  * Client Secret
+  <div class="indent">
+  <ul>
+    <li>Azure Tenant ID</li>
+    <li>Client ID</li>
+    <li>Client Secret</li>
+  </ul>
+  </div>
 
 ## Step 3: Conﬁgure and test MDM Authentication Policy
 
@@ -133,23 +135,23 @@ In this step, you’ll create an authentication policy to determine if the test 
 
 3. Select **Policy > Edit Policy > Add rule**, select the following conditions, and click **Add > Publish changes**.
 
-  * **For any transaction** is set to **Authentication**.
-
-  * **If user** is a member of the **Require Intune on Windows** group.
-
-  * **If device platform is** set to **Windows**.
-
-  * **If Integration is** set to **Intune Registration is Registered**.
-
-  * **Then** action is set to **Deny** the authentication.   
+  <div class="indent">
+  <ul>
+    <li><b>For any transaction</b> is set to <b>Authentication</b>.</li>
+    <li><b>If user</b> is a member of the <b>Require Intune on Windows</b> group.</li>
+    <li><b>If device platform is</b> set to <b>Windows</b>.</li>
+    <li><b>If Integration is</b> set to <b>Intune Registration is Registered</b>.</li>
+    <li><b>Then</b> action is set to <b>Deny</b> the authentication.</li>
+  </ul>
+  </div>
 
   ![add-rule-registered-deny.png](../images/intune/add-rule-registered-deny.png)
 
-4. From a Windows computer managed with Intune, try authenticating with the test user’s credentials. If authentication is denied, the policy works as expected.
+1. From a Windows computer managed with Intune, try authenticating with the test user’s credentials. If authentication is denied, the policy works as expected.
 
-5. Go back to the policy and change the **If Integration is** condition to **Intune Registration is Not Registered, Pending Enrollment**.
+2. Go back to the policy and change the **If Integration is** condition to **Intune Registration is Not Registered, Pending Enrollment**.
 
-6. With the same test user’s credentials, try authenticating again. If authentication is successful, the policy works as expected.
+3. With the same test user’s credentials, try authenticating again. If authentication is successful, the policy works as expected.
 
 :::tip Checkpoint
 At this point, you should have completed the following:
@@ -223,14 +225,18 @@ You’ll configure the mobile apps in Intune to assign your managed app configur
 
 7. On the **Basics** page, provide a name for the policy, select the following:
 
-  * Platform: **Android Enterprise**
-  * Profile Type: **Fully Managed, Dedicated, and Corporate-Owned Work Profile Only**
+  <div class="indent">
+  <ul>
+    <li>Platform: <b>Android Enterprise</b></li>
+    <li>Profile Type: <b>Fully Managed, Dedicated, and Corporate-Owned Work Profile Only</b> group</li>
+  </ul>
+  </div>
 
   ![android-4.png](../images/intune/android-4.png)
 
-8. Click **Select app** and for the Associated app, select **Beyond Identity**, click **OK**, and click **Next**.
-9. On the **Settings** page, select **Use configuration designer**, and click **Add**.
-10. Select **Intune Devide ID** click **OK**. Then enter **{{deviceid}}** for the **Configuration value** and click **Next**.  
+1. Click **Select app** and for the Associated app, select **Beyond Identity**, click **OK**, and click **Next**.
+2. On the **Settings** page, select **Use configuration designer**, and click **Add**.
+3.  Select **Intune Devide ID** click **OK**. Then enter **{{deviceid}}** for the **Configuration value** and click **Next**.  
 
   :::info    
   The conﬁguration keys are case-sensitive.

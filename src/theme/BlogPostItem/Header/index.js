@@ -7,7 +7,7 @@ export default function BlogPostItemHeader() {
     <header>
       <BlogPostItemHeaderTitle />
       <BlogPostItemHeaderInfo />
-      <BlogPostItemHeaderAuthors />
+
     </header>
   );
 }

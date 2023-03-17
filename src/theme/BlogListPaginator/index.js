@@ -9,7 +9,7 @@ export default function BlogListPaginator(props) {
       className="pagination-nav"
       aria-label={translate({
         id: 'theme.blog.paginator.navAriaLabel',
-        message: 'Blog list page navigation',
+        message: 'Release notes page navigation',
         description: 'The ARIA label for the blog pagination',
       })}>
       {previousPage && (

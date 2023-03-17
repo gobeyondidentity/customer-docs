@@ -55,7 +55,7 @@ themes: [
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          breadcrumbs: false,
+          breadcrumbs: true,
           sidebarPath: require.resolve('./sidebars.js'),
           showLastUpdateAuthor: false,
           showLastUpdateTime: true,
@@ -68,8 +68,8 @@ themes: [
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/gobeyondidentity/customer-docs/blob/main',
+          // editUrl:
+          //  'https://github.com/gobeyondidentity/customer-docs/blob/main',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -159,11 +159,11 @@ themes: [
               },
               {
                 to: '/docs/release-notes',
-                label: 'Release Notes',
+                label: 'Release Notes 1',
               },
               {
                 to: '/blog', 
-                label: 'Blog'
+                label: 'Release Notes 2'
               },
             ],
           }, 

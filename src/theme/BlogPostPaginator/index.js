@@ -8,8 +8,8 @@ export default function BlogPostPaginator(props) {
       className="pagination-nav docusaurus-mt-lg"
       aria-label={translate({
         id: 'theme.blog.post.paginator.navAriaLabel',
-        message: 'Blog post page navigation',
-        description: 'The ARIA label for the blog posts pagination',
+        message: 'Release Notes navigation',
+        description: 'The ARIA label for the release notes pagination',
       })}>
       {prevItem && (
         <PaginatorNavLink
@@ -17,8 +17,8 @@ export default function BlogPostPaginator(props) {
           subLabel={
             <Translate
               id="theme.blog.post.paginator.newerPost"
-              description="The blog post button label to navigate to the newer/previous post">
-              Newer Post
+              description="The release notes button label to navigate to the newer/previous release notes">
+              Newer 
             </Translate>
           }
         />
@@ -29,8 +29,8 @@ export default function BlogPostPaginator(props) {
           subLabel={
             <Translate
               id="theme.blog.post.paginator.olderPost"
-              description="The blog post button label to navigate to the older/next post">
-              Older Post
+              description="The release notes button label to navigate to the older/next release notes">
+              Older 
             </Translate>
           }
           isNext

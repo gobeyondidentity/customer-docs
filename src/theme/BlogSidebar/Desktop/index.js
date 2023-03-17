@@ -10,8 +10,8 @@ export default function BlogSidebarDesktop({sidebar}) {
         className={clsx(styles.sidebar, 'thin-scrollbar')}
         aria-label={translate({
           id: 'theme.blog.sidebar.navAriaLabel',
-          message: 'Blog recent posts navigation',
-          description: 'The ARIA label for recent posts in the blog sidebar',
+          message: 'Release notes navigation',
+          description: 'The ARIA label for recent release notes in the sidebar',
         })}>
         <div className={clsx(styles.sidebarItemTitle, 'margin-bottom--md')}>
           {sidebar.title}
