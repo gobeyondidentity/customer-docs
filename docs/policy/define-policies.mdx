@@ -14,10 +14,10 @@ draft: true
 displayed_sidebar: secureWorkforceSidebar
 ---
 
-import NotePolicyMustBePublished from '../../../static/includes/_note-policy-rule-must-be-published.mdx';
-import PolicyShortDescription from '../../../static/includes/_policy-short-description.mdx';
+import NotePolicyMustBePublished from '../../static/includes/_note-policy-rule-must-be-published.mdx';
+import PolicyShortDescription from '../../static/includes/_policy-short-description.mdx';
 
-<PolicyShortDescription />
+This article provides examples of creating rules that apply to a specific transaction type or all types.
 
 Keep the following in mind when creating rules:
 
@@ -27,8 +27,6 @@ Keep the following in mind when creating rules:
 
 - Only attributes and options applicable to your selected item are available. For example, Android attributes and options are not available when defining a rule for a Mac device.
 
-In this article, you'll find examples for creating rules that apply to a specific transaction type or all types.
-
 
 
 ## Create a rule
@@ -37,29 +35,27 @@ In this article, you'll find examples for creating rules that apply to a specifi
 
 2. The [Policy page](#Policy_page) displays a list of current rules that have been configured. Click **Edit Policy.**  
 
-  ![](../images/policy//policy_rule_order_5_rules.png)
+  ![](../images/policy/policy_rule_order_5_rules.png)
 
 3. From the **Edit Policy** page, click **Add Rule**. 
 
-  ![](../images/policy//policy_rules_add_rule_allow.PNG)
+  ![](../images/policy/policy_rules_add_rule_allow.PNG)
 
 4. The **Add Rule** dialog is displayed. 
 
-  ![](../images/policy//add_rule_dialog.PNG)  
+  ![](../images/policy/add_rule_dialog.PNG)  
 
-  The Add Rule dialog provides attributes for setting policy related to the:
-  
+  The Add Rule dialog provides attributes for setting policy related to the following:
+
   - Type of transaction
 
   - User attempting to authenticate
 
-  - Patform on the device
+  - Platform on the device
 
   - Type of integration
 
   - Beyond Identity Authentication version installed
-
-  *do we put an expandable here with the policy list?*
 
 :::info note
 The **user**, **device platform**, and **integration** attributes can be defined with additional sub attributes.
@@ -78,59 +74,59 @@ The following section provides examples for writing:
 
 ### Authentication transaction rule
 
-This example creates a rule to allow access to users that are part of the Admin Group and are authenticating from an Android device that is registered with Intune and running an Authenticator version greater than version 2.49.0.
+This example creates a rule allowing access to users that are part of the Admin Group and are authenticating from an Android device registered with Intune and running an Authenticator version greater than version 2.49.0.
 
 1. Log into the Admin console and select **Policy > Edit Policy**.
 
 2. Click **Add rule** and select the attributes that are required for authentication for your organization. Then click **Add**.
 
   <table width="100%">
-    <tbody>
-      <tr>
-        <td>
-          For any transaction
-        </td>
-        <td><b>Authentication</b>
-        </td>
-      </tr>
-      <tr>
-        <td>If user
-        </td>
-        <td><b>is in user group</b> <b>Admin Console Access</b>
-        </td>
-      </tr>
-      <tr>
-        <td>If device platform is
-        </td>
-        <td><b>Android</b>
-        </td>
-      </tr>
-      <tr>
-        <td>If integration is
-        </td>
-        <td><b>Intune</b> <b>Registration</b> <b>is</b> <b>Registered</b>
-        </td>
-      </tr>
-      <tr>
-        <td>If authenticator version
-        </td>
-        <td><b>is greater than</b> <b>2.49.0</b>
-        </td>
-      </tr>
-      <tr>
-        <td>Then
-        </td>
-        <td><b>Allow</b>
-        </td>
-      </tr>
-    </tbody>
+  <tbody>
+    <tr>
+      <td>
+        For any transaction
+      </td>
+      <td><b>Authentication</b>
+      </td>
+    </tr>
+    <tr>
+      <td>If user
+      </td>
+      <td><b>is in user group</b> <b>Admin Console Access</b>
+      </td>
+    </tr>
+    <tr>
+      <td>If device platform is
+      </td>
+      <td><b>Android</b>
+      </td>
+    </tr>
+    <tr>
+      <td>If integration is
+      </td>
+      <td><b>Intune</b> <b>Registration</b> <b>is</b> <b>Registered</b>
+      </td>
+    </tr>
+    <tr>
+      <td>If authenticator version
+      </td>
+      <td><b>is greater than</b> <b>2.49.0</b>
+      </td>
+    </tr>
+    <tr>
+      <td>Then
+      </td>
+      <td><b>Allow</b>
+      </td>
+    </tr>
+  </tbody>
   </table>
 
-  ![](../images/policy//add_rule_allow_authentication_example.PNG)
+  ![](../images/policy/add_rule_allow_authentication_example.PNG)
 
   The rule is added to the Policy Rules list. 
 
-  ![](../images/policy//policy_rules_authetication_example_added.PNG)
+  ![](../images/policy/policy_rules_authetication_example_added.PNG)
 
 5. Create additional rules as needed.
 
@@ -185,11 +181,11 @@ This example creates a rule to allow access to users that are part of the Admin 
     </tbody>
   </table>
 
-  ![](../images/policy//add_rule_allow_device_example.PNG) 
+  ![](../images/policy/add_rule_allow_device_example.PNG) 
 
   The rule is added to the Policy Rules list. 
   
-  ![](../images/policy//policy_rules_device_example_added.PNG)
+  ![](../images/policy/policy_rules_device_example_added.PNG)
 
 
 <NotePolicyMustBePublished />
@@ -241,11 +237,11 @@ This example creates a rule that denies users from the QA Group attempting to au
 
   For example, *The Authenticator version installed on the device is below the minimum allowed. Please upgrade your Authenticator version to 2.49.0 or greater.*  
 
-  ![](../images/policy//add_rule_deny_auth_device_example.PNG)
+  ![](../images/policy/add_rule_deny_auth_device_example.PNG)
 
 5. Click **Add** when done.  
 
-  ![](../images/policy//policy_rules_example_deny.PNG)
+  ![](../images/policy/policy_rules_example_deny.PNG)
 
 6. Create additional rules as needed.
 

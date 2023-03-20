@@ -19,7 +19,7 @@ draft: true
 displayed_sidebar: secureWorkforceSidebar
 ---
 
-In this guide, you’ll set up a Microsoft Intune environment and integrate it with a Beyond Identity tenant. You’ll also create and test authentication policies to determine if devices are registered or unregistered.
+In this guide, you'll set up a Microsoft Intune environment and integrate it with a Beyond Identity tenant. You'll also create and test authentication policies to determine if devices are registered or unregistered.
 
 ## Supported operating systems
 
@@ -30,19 +30,19 @@ The Beyond Identity integration supports Windows, macOS, [iOS](#ios), and [Andro
 The Beyond Identity Authenticator must be configured and pushed via Intune to leverage the integration for mobile devices.
 :::
 
-## Prerequisite
+## Must dos
 
 Before integrating Intune with Beyond Identity, you must have the following in place:
 
 * [Intune subscription](https://learn.microsoft.com/en-us/mem/intune/fundamentals/account-sign-up) with the administrator with full permissions to all Intune resources.
-* Intune account with the **Global administrator** or **Intune Service Administrator** (also known as Intune Administrator) account permissions in Azure AD. You’ll use this account to sign in to the [Microsoft Endpoint Manager admin center](https://endpoint.microsoft.com/#home).
-* Intune [licenses](https://learn.microsoft.com/en-us/mem/intune/fundamentals/licenses) you’ve [assigned to users](https://learn.microsoft.com/en-us/mem/intune/fundamentals/licenses-assign) so they can enroll devices in Intune.
+* Intune account with the **Global administrator** or **Intune Service Administrator** (also known as Intune Administrator) account permissions in Azure AD. You'll use this account to sign in to the [Microsoft Endpoint Manager admin center](https://endpoint.microsoft.com/#home).
+* Intune [licenses](https://learn.microsoft.com/en-us/mem/intune/fundamentals/licenses) you've [assigned to users](https://learn.microsoft.com/en-us/mem/intune/fundamentals/licenses-assign) so they can enroll devices in Intune.
 * Intune has been set up in your environment. If not, see [Deploy Intune](https://learn.microsoft.com/en-us/mem/intune/fundamentals/deployment-guide-intune-setup#deploy-intune) for details.
 * Check that your device is registered to Azure AD and your computer is listed in the [Microsoft Endpoint Manager admin center](https://endpoint.microsoft.com/#home).
 
 ## Step 1: Register Beyond Identity as an app in Intune
 
-You’ll register Beyond Identity in AAD to establish a trust relationship with the Microsoft identity platform.
+You'll register Beyond Identity in AAD to establish a trust relationship with the Microsoft identity platform.
 
 ### Register an application
 
@@ -99,17 +99,17 @@ You’ll register Beyond Identity in AAD to establish a trust relationship with 
 8. Enter a description for the secret, for example, **Beyond Identity Policy Engine**. Then select the duration of the section and select **Add**.  
 
    :::info Important    
-   Note the expiration time because you’ll need to reset this before it expires.
+   Note the expiration time because you'll need to reset this before it expires.
    :::
 
-9. Copy the secret’s **Value** for use in the Beyond Identity Admin Console in the next step. This secret value is never displayed again after you leave this page.  
+9. Copy the secret's **Value** for use in the Beyond Identity Admin Console in the next step. This secret value is never displayed again after you leave this page.  
 
   ![copy-client-secret-value.png](../images/intune/copy-client-secret-value.png)
 
 
 ## Step 2: Conﬁgure Intune Integration in Beyond Identity
 
-In this step, you’ll install and configure Intune with Beyond Identity. You’ll use the Azure client ID, tenant ID, and secret value you copied and saved earlier.
+In this step, you'll install and configure Intune with Beyond Identity. You'll use the Azure client ID, tenant ID, and secret value you copied and saved earlier.
 
 1. Log in to Beyond Identity Admin Console, under Tenant, go to **Integrations >** **Endpoint Management > Microsoft Intune**. Then click **Install**.  
 
@@ -127,7 +127,7 @@ In this step, you’ll install and configure Intune with Beyond Identity. You’
 
 ## Step 3: Conﬁgure and test MDM Authentication Policy
 
-In this step, you’ll create an authentication policy to determine if the test user has a registered and unregistered device.
+In this step, you'll create an authentication policy to determine if the test user has a registered and unregistered device.
 
 1. In the Beyond Identity Admin Console, under **Tenant**, select **Groups > Add Group**, name it **Require Intune on Windows**. Then click **Save Changes**.
 
@@ -147,11 +147,11 @@ In this step, you’ll create an authentication policy to determine if the test 
 
   ![add-rule-registered-deny.png](../images/intune/add-rule-registered-deny.png)
 
-1. From a Windows computer managed with Intune, try authenticating with the test user’s credentials. If authentication is denied, the policy works as expected.
+1. From a Windows computer managed with Intune, try authenticating with the test user's credentials. If authentication is denied, the policy works as expected.
 
 2. Go back to the policy and change the **If Integration is** condition to **Intune Registration is Not Registered, Pending Enrollment**.
 
-3. With the same test user’s credentials, try authenticating again. If authentication is successful, the policy works as expected.
+3. With the same test user's credentials, try authenticating again. If authentication is successful, the policy works as expected.
 
 :::tip Checkpoint
 At this point, you should have completed the following:
@@ -163,7 +163,7 @@ At this point, you should have completed the following:
 
 ## Step 4: Configure and push mobile apps
 
-You’ll configure the mobile apps in Intune to assign your managed app configuration policy in this step.
+You'll configure the mobile apps in Intune to assign your managed app configuration policy in this step.
 
 ### iOS
 

@@ -1,11 +1,13 @@
 .lastUpdated {
-  margin-top: 0.2rem;
-  font-style: italic;
-  font-size: smaller;
+  margin-top: -9px;
+  margin-bottom: 36px;
+  font-style: normal;
+  font-size: 12px;
+
 }
 
 @media (min-width: 997px) {
   .lastUpdated {
-    text-align: right;
+    text-align: left;
   }
 }

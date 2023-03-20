@@ -6,7 +6,9 @@ import Heading from '@theme/Heading';
 import MDXContent from '@theme/MDXContent';
 import LastUpdated from '@theme/LastUpdated';
 import styles from '../Footer/styles.module.css';
-import DocItemFooter from '../Footer/index';
+import LastUpdatedDateHeader from '../Footer/index';
+
+
 /**
  Title can be declared inside md content or declared through
  front matter and added manually. To make both cases consistent,
@@ -33,12 +35,13 @@ export default function DocItemContent({children}) {
       {syntheticTitle && (
         <header>
           <Heading as="h1">{syntheticTitle}</Heading>
-
+          <LastUpdatedDateHeader />
         </header>
         
       )}
           
       <MDXContent>{children}</MDXContent>
+
     </div>
   );
 }

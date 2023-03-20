@@ -1,4 +1,5 @@
 .sidebar {
+  content: "Releases";
   max-height: calc(100vh - (var(--ifm-navbar-height) + 2rem));
   overflow-y: auto;
   position: sticky;
@@ -8,14 +9,16 @@
 .sidebarItemTitle {
   font-size: var(--ifm-h3-font-size);
   font-weight: var(--ifm-font-weight-bold);
+  margin-top: 0.7rem;
 }
 
 .sidebarItemList {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 .sidebarItem {
   margin-top: 0.7rem;
+  font-size: 0.9rem;
 }
 
 .sidebarItemLink {

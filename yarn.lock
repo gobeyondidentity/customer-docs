@@ -5818,7 +5818,7 @@ docusaurus-lunr-search@^2.3.2:
 
 docusaurus-plugin-openapi-docs@^1.6.1:
   version "1.6.1"
-  resolved "https://registry.npmjs.org/docusaurus-plugin-openapi-docs/-/docusaurus-plugin-openapi-docs-1.6.1.tgz"
+  resolved "https://registry.yarnpkg.com/docusaurus-plugin-openapi-docs/-/docusaurus-plugin-openapi-docs-1.6.1.tgz#3be6234c878aabafe5ebc65be3c234dbbf19e970"
   integrity sha512-3zQ+s2pXXcSNLWzO39tkIAku8O5jysCQyIyaiK9mfxLMqQH8VBXge64wwVWlWYWtGzlEwNkeyu2fiFYOkfiifw==
   dependencies:
     "@apidevtools/json-schema-ref-parser" "^9.0.9"

@@ -9,7 +9,7 @@ import BlogPostPageMetadata from '@theme/BlogPostPage/Metadata';
 import TOC from '@theme/TOC';
 function BlogPostPageContent({sidebar, children}) {
   const {metadata, toc} = useBlogPost();
-  const {frontMatter} = metadata;
+  const {nextItem, prevItem, frontMatter} = metadata;
   const {
     hide_table_of_contents: hideTableOfContents,
     toc_min_heading_level: tocMinHeadingLevel,

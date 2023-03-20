@@ -15,7 +15,11 @@ draft: true
 displayed_sidebar: secureWorkforceSidebar
 ---
 
-This guide provides information on how to set up Beyond Identity as a Passwordless login provider for applications that use AWS Cognito to manage their identities.
+import awsCognitoFlow from '../images/undraw_docusaurus_mountain.svg';
+
+This guide provides information on how to set up Beyond Identity as a Passwordless login provider for applications that use AWS Cognito to manage their identities.  
+
+
 ## Prerequisites
 Administrator user privileges to AWS console.
 ### User Pool setup
@@ -71,7 +75,7 @@ Administrator user privileges to AWS console.
 
 2. Under Enabled Identity Providers select Beyond-Identity.
 
-3. Under Callback URL(s) enter your application’s redirect URL
+3. Under Callback URL(s) enter your application's redirect URL
 
   https://solemate.me/api/auth/callback/cognito
 
@@ -105,11 +109,11 @@ Administrator user privileges to AWS console.
 
 ## Provisioning
 
-For the Application the provisioning will be done using Beyond Identity API’s available at <https://developer.beyondidentity.com/>
+For the Application the provisioning will be done using Beyond Identity API's available at <https://developer.beyondidentity.com/>
 
 ## Beyond Identity Admin Console
 
-Depending upon customer’s SSO please use appropriate SSO Integration guide.
+Depending upon customer's SSO please use appropriate SSO Integration guide.
 
 ## Beyond Identity MFA with AWS Cognito
 
@@ -117,4 +121,7 @@ Beyond Identity supports MFA during initial login. AWS COGNITO does not provide 
 
 ## Sample flow with AWS Cognito
 
+<awsCognitoFlow />
+
 ![Diagram Description automatically generated](../images/aws/image10.png)
+

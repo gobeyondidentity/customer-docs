@@ -28,7 +28,7 @@ themes: [
 
 
   title: 'Beyond Identity Documentation',
-  tagline: '',
+  tagline: 'Secure Workforce protects and verifies corporate identities and their devices providing for a secure and trustworthy development process.',
   url: 'https://docs.beyondidentity.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -48,6 +48,10 @@ themes: [
     defaultLocale: 'en',
     locales: ['en'],
   },
+  customFields: {
+    // Put your custom environment here
+   
+  },
 
   presets: [
     [
@@ -57,7 +61,7 @@ themes: [
         docs: {
           breadcrumbs: true,
           sidebarPath: require.resolve('./sidebars.js'),
-          showLastUpdateAuthor: false,
+          routeBasePath: "/",
           showLastUpdateTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -115,7 +119,7 @@ themes: [
           src: 'img/logo.png',
         },
         items: [
-          {
+        /*  {
             label: 'Documentation',
             type: 'dropdown',
             items: [
@@ -133,9 +137,9 @@ themes: [
                 label: 'Developer Hub',
               },
             ],
-          },          
+          },  */        
           {
-            to: '/docs/integration-guides',
+            to: '/integration-guides',
             label: 'Integration Guides',
             
           },
@@ -146,25 +150,29 @@ themes: [
             items: [
 
               {
-                to: '/docs/faq',
+                to: '/faq',
                 label: 'FAQs',
               },
               {
-                to: '/docs/glossary',
+                to: '/glossary',
                 label: 'Glossary',
               },
               {
-                to: '/docs/get-support', //this may need to be a link to the support site instead of a doc 
+                to: '/get-support', //this may need to be a link to the support site instead of a doc 
                 label: 'Support Center',
               },
               {
-                to: '/docs/release-notes',
+                to: '/release-notes',
                 label: 'Release Notes 1',
               },
               {
                 to: '/blog', 
                 label: 'Release Notes 2'
               },
+              {
+                to: '/devops-release-notes',
+                label: 'Release Notes 3',
+              }
             ],
           }, 
  
@@ -187,7 +195,7 @@ themes: [
           useBrowserLanguage: false, // Set widget language from user's browser
           darkMode: "auto", // [light, auto]
           type: "expanded_bubble",
-          launcherTitle: "Chat with us",
+          launcherTitle: "What can I help you find?",
         }
       },
       prism: {

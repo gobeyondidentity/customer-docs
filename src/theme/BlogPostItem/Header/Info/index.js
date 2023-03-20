@@ -42,7 +42,7 @@ export default function BlogPostItemHeaderInfo({className}) {
   const {date, formattedDate} = metadata;
   return (
     <div className={clsx(styles.container, 'margin-vert--md', className)}>
-      <Date date={date} formattedDate={formattedDate} />
+     <i> Released: <Date date={date} formattedDate={formattedDate} /></i>
 
     </div>
   );

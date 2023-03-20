@@ -49,12 +49,12 @@ export default function BlogArchive({archive}) {
   const title = translate({
     id: 'theme.blog.archive.title',
     message: 'Archive',
-    description: 'The page & hero title of the release notes archive page',
+    description: 'The page & hero title of the blog archive page',
   });
   const description = translate({
     id: 'theme.blog.archive.description',
     message: 'Archive',
-    description: 'The page & hero description of the release notes archive page',
+    description: 'The page & hero description of the blog archive page',
   });
   const years = listPostsByYears(archive.blogPosts);
   return (

@@ -227,8 +227,6 @@ To configure Beyond Identity as the IdP in Okta, follow the steps below. Once do
 
    ![image](../images/okta-oidc/image-3.png) 
 
-
-
 1. If you have multiple profile masters (applicable for AD mastered users), perform the following steps. 
 
    1. Edit the **byndidRegistered** attribute in Okta profile.
@@ -548,7 +546,7 @@ You'll enroll a user in the Beyond Identity experience by assigning them to the 
 
     Now that the user has the Authenticator installed on their device, they should proceed to Step 2, as there is yet to be a user credential associated with it.
 
-  - **Step 2:** Register their Credential in the Beyond Identity IdP.  By clicking on Step 2 **Register New Credential**, the user’s credential gets enrolled in the Beyond Identity service on the back end. On the front end, when users click Step 2, it takes them to the Beyond Identity Authenticator, where they will see the progress of their credential registration. Once completed, the user will see the credentials in the Authenticator.
+  - **Step 2:** Register their Credential in the Beyond Identity IdP.  By clicking on Step 2 **Register New Credential**, the user's credential gets enrolled in the Beyond Identity service on the back end. On the front end, when users click Step 2, it takes them to the Beyond Identity Authenticator, where they will see the progress of their credential registration. Once completed, the user will see the credentials in the Authenticator.
 
     ![image](../images/okta-oidc/image-22.png) 
 
@@ -603,7 +601,7 @@ You can de-provision a user from the Beyond Identity experience by removing them
 
 ![image](../images/okta-oidc/image-24.png)
 
-1. Navigate to Okta’s Open Case Center.
+1. Navigate to Okta's Open Case Center.
 
 2. Create a case with the following information: 
 

@@ -13,21 +13,18 @@ last_update:
 draft: true
 displayed_sidebar: secureWorkforceSidebar
 ---
+For passwordless authentication, the customer may integrate Zscaler with Beyond Identity, either directly or through their existing SSO. This document describes the direct integration between Zscaler and Beyond Identity. For integration through SSO, don't hesitate to get in touch with Beyond Identity.
 
-# Zscaler Integration Guide
+Zscaler's direct integration with Beyond Identity applies to Zscaler Client Connector (ZCC) for ZPA, ZPA Admin Console, and ZIA.
 
 In this guide, you'll set up Beyond Identity:
 
 * As a passwordless authentication solution for your Zscaler Internet Access (ZIA) and Zscaler Private Access (ZPA) services.
 * To enforce corporate Zero Trust policies by using Zscaler Mobile Portal APIs.
 
-For passwordless authentication, the customer may integrate Zscaler with Beyond Identity, either directly or through their existing SSO. This document describes the direct integration between Zscaler and Beyond Identity. For integration through SSO, don't hesitate to get in touch with Beyond Identity.
 
-Zscaler's direct integration with Beyond Identity applies to Zscaler Client Connector (ZCC) for:
 
-* ZPA
-* ZPA Admin Console
-* ZIA
+
 
 :::info
 Zscaler's integration doesn't apply to ZIA Admin Console because it doesn't support service provider-initiated SAML flow, and Beyond Identity doesn't support the IdP-initiated SAML flow.   
@@ -477,7 +474,7 @@ In this procedure, you'll enable API access in the Zscaler Mobile Portal.
 
 Beyond Identity supports continuous authentication and monitors device security posture even when the user is not actively trying to authenticate. In addition, Beyond Identity uses [Zscaler Mobile APIs](#enable-api-access-zscaler-mobile) to force the Zscaler Client Connector re-authentication in case the device security posture doesn't meet enterprise policies.
 
-In this section, you’ll create a test group with a single user to test the Deny rule before configuring the policy to target all users.
+In this section, you'll create a test group with a single user to test the Deny rule before configuring the policy to target all users.
 
 :::info before you start!
 You'll need the Client ID, Client Secret, and Zscaler Mobile Portal URL, which you should have copied from the previous section.
