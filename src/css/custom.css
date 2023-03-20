@@ -38,7 +38,7 @@
   --ifm-navbar-background-color: var(--ifm-background-color);
   --ifm-navbar-shadow: none;
 
-  --ifm-container-width: 67rem;
+ --ifm-container-width: 100%; 
   --ifm-card-border-radius: calc(var(--ifm-global-radius) * 2);
 
   /* these colors need to be verified */
@@ -152,7 +152,12 @@ ul {
   margin-bottom: 0;
 }
 
-
+pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+  white-space: pre-wrap; 
+  word-break: keep-all;
+}
 
 /* nested ordered list */
 
@@ -188,7 +193,7 @@ div.indent li {
 .markdown img { 
   border: 1px solid #ccc; 
   border-radius:5px;
-  max-width: 70%;
+  max-width: 65%;
   height: auto;
   margin: 0px 0;
 

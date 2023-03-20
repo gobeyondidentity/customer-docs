@@ -18,7 +18,7 @@ const sidebars = {
     'welcome',
     {
       type: 'category',
-      label: 'Get started',  
+      label: 'Get Started',  
       link: {
         type: 'doc',
         id: 'get-started',
@@ -141,45 +141,15 @@ const sidebars = {
     {
       type: 'category',
       label: 'Policy',
-      collapsed: true,  
+      collapsed: true, 
+      collapsible: true,   
       link: {
         type: 'doc',
         id: 'policy/policy-integrations',
       },      
       items: [ 
         'policy/define-policies', 
-        {
-          type: 'category',
-          label: 'EDR',
-          link: {
-            type: 'doc',
-            id: 'policy/edr-integrations',
-          },      
-          items: [ 
-             ],
-        },
-        {
-          type: 'category',
-          label: 'UEM/MDM',
-          link: {
-            type: 'doc',
-            id: 'policy/mdm',
-          },      
-          items: [ 
-
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Zero Trust',
-          link: {
-            type: 'doc',
-            id: 'policy/zero-trust',
-          },      
-          items: [ 
-		         
-	        ],
-        },
+        
 
       ],
     },

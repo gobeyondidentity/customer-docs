@@ -13,9 +13,9 @@ last_update:
 draft: true
 displayed_sidebar: secureWorkforceSidebar
 ---
-For passwordless authentication, the customer may integrate Zscaler with Beyond Identity, either directly or through their existing SSO. This document describes the direct integration between Zscaler and Beyond Identity. For integration through SSO, don't hesitate to get in touch with Beyond Identity.
+For passwordless authentication, the customer may integrate Zscaler with Beyond Identity, either directly or through their existing SSO. 
 
-Zscaler's direct integration with Beyond Identity applies to Zscaler Client Connector (ZCC) for ZPA, ZPA Admin Console, and ZIA.
+This document describes the direct integration between Zscaler and Beyond Identity. For integration through SSO, don't hesitate to get in touch with Beyond Identity. Zscaler's direct integration with Beyond Identity applies to Zscaler Client Connector (ZCC) for ZPA, ZPA Admin Console, and ZIA.
 
 In this guide, you'll set up Beyond Identity:
 
@@ -27,8 +27,8 @@ In this guide, you'll set up Beyond Identity:
 
 
 :::info
-Zscaler's integration doesn't apply to ZIA Admin Console because it doesn't support service provider-initiated SAML flow, and Beyond Identity doesn't support the IdP-initiated SAML flow.   
-
+Zscaler's integration doesn't apply to ZIA Admin Console because it doesn't support service provider-initiated SAML flow, and Beyond Identity doesn't support the IdP-initiated SAML flow.
+<br />
 ZIA and ZPA Provisioning use SCIM-supported directory or SSO while supporting Authentication directly with Beyond Identity as the IdP.
 :::
 ## Prerequisites

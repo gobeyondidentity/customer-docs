@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import {  Container, Box, CardActionArea } from '@mui/material';
-import styles from './Homepage.module.css';
+import styles from './DocCard.module.css';
 import clsx from 'clsx';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -135,7 +135,7 @@ const GuideCategories = [
     );
   }
   
-  export default function SecureWorkforceGuides() {
+  export default function IntegrationGuides() {
     return (
       <section className={styles.products}>
         <div className="container">
