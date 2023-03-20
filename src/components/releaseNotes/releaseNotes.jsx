@@ -57,7 +57,9 @@ export default function ReleaseNotesTimeline() {
         },
       }}
     >
+
         <div>
+            <h2>What's new</h2>
 						<h4>
 							Latest release
 							<span className="flex items-center font-semibold">&nbsp;
@@ -75,14 +77,14 @@ export default function ReleaseNotesTimeline() {
                     
       <TimelineItem>
         
-        <TimelineOppositeContent color="textSecondary">
+        <TimelineOppositeContent color="textSecondary" sx={{fontFamily: 'Overpass'}}>
           2.76.0
         </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineDot color="primary" />
           <TimelineConnector />
         </TimelineSeparator>
-        <TimelineContent>Additional features and capabilities for users and businesses...<br /><br />Additional features and capabilities for users and businesses that need tighter and customizable integration ...<br /><br />Additional features and capabilities for users and businesses that need tighter and customizable integration ...</TimelineContent>
+        <TimelineContent sx={{fontFamily: 'Overpass'}}>Additional features and capabilities for users and businesses...<br /><br />Additional features and capabilities for users and businesses that need tighter and customizable integration ...<br /><br />Additional features and capabilities for users and businesses that need tighter and customizable integration ...</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="textSecondary">

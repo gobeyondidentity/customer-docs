@@ -9,7 +9,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.products {
+.topics {
   display: inline;
   align-items: center;
   padding: 2rem 0; 
@@ -17,7 +17,7 @@
 }
 
 
-.product {
+.topic {
 /* max-inline-size: 380px; */
  padding-bottom: 40px;
  margin-top: 40px;
@@ -28,23 +28,23 @@ a:link {
 }
 
 @media (max-width: 996px) {
-  .product:before {
+  .topic:before {
 
     margin: 20px;
   }
 }
 
-.productSvg {
+.topicSvg {
   height: 150px;
   width: 150px;
 }
 
-.productsRow {
+.topicsRow {
   justify-content: center;
   padding: 2rem 0;
 }
 
-.homepageSection {
+.landingPageSection {
   padding: 2rem 0;
   text-align: center;
   position: relative;

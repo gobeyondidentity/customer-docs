@@ -39,7 +39,7 @@
   --ifm-navbar-shadow: none;
 
  --ifm-container-width: 100%; 
-  --ifm-card-border-radius: calc(var(--ifm-global-radius) * 2);
+
 
   /* these colors need to be verified */
   --black: black;
@@ -101,7 +101,7 @@ article,
   padding: 1rem 1.5rem 1.5rem 1.5rem;
   background-color: var(--ifm-background-surface-color);
   border-radius: var(--ifm-card-border-radius);
-  box-shadow: var(--ifm-global-shadow-lw);
+/*  box-shadow: var(--ifm-global-shadow-lw); */
 }
 
 h1,

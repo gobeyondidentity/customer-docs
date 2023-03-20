@@ -1,7 +1,7 @@
 ---
 title: How Beyond Identity works
 id: how-it-works
-description: ''
+description: 'Beyond Identity authenticates users and their devices by cryptographically binding users to devices, providing complete control over who and what devices can access your SaaS apps and cloud infrastructure.'
 slug: /how-it-works 
 keywords: 
  - faq

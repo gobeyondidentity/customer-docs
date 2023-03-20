@@ -11,7 +11,8 @@
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids"
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "dev": "lite-server"
   },
   "dependencies": {
     "@chatwoot/docusaurus-plugin": "^1.0.1",
@@ -54,6 +55,7 @@
     "immer": "^9.0.6",
     "jarallax": "^2.0.4",
     "json5": "^2.2.3",
+    "lite-server": "^2.6.1",
     "loader-utils": "^2.0.4",
     "medium-zoom": "^1.0.6",
     "mui-image": "^1.0.7",

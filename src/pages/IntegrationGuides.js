@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
-import Layout from '@theme/Layout';
-import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
 import { Grid, Box } from '@site/src/components/Grid';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
@@ -125,24 +122,25 @@ export default function Guides() {
   return (
 
 
-        <main className="container">
+<main className="container relative">
           {categoriesFiltered.map((props, idx) => (
             <>
               <div key={idx}>
                 <div>
-                  <h3 className="text-xl lg:text-3xl font-bold mb-2">{props.title}</h3>
-                  <p className="lg:text-lg mb-6">{props.description}</p>
+                  <h3>{props.title}</h3>
+                  <p>{props.description}</p>
                 </div>
               </div>
               <Grid columns="3" className="mb-24">
                 {itemsFiltered.filter(item => item.category.includes(props.label)).map((props, idx) => (
-                /*  <Box
+                 /* <Box
                     key={idx}
                     to={props.href}
                     title={props.title}>
                     <p>{props.description}</p>
-                  </Box>*/
-                  <Card sx={{ maxWidth: 250, fontFamily: 'Overpass', }} key={idx}>
+                  </Box>
+                  */
+                  <Card sx={{ maxWidth: 345, fontFamily: 'Overpass', }} key={idx}>
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                        {props.title} 
@@ -166,7 +164,13 @@ export default function Guides() {
 
 
 
-          {itemsFiltered.length == 0 }
+          {itemsFiltered.length == 0 &&
+            <div className="">
+              <div className="w-1/2 markdown">
+                <p>Whoops! There is no guide matching matching your search. If you feel we're missing an essential guide and would like to request it, or discuss contributing the content yourself, hop over to our <Link href="https://community.netdata.cloud">community forum</Link>. Create a new topic and we'll be happy to discuss the guide with you there.</p>
+              </div>
+            </div>
+          }
         </main>
 
 
