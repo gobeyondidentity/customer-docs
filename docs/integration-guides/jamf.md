@@ -1,5 +1,5 @@
 ---
-title: Jamf
+title: Jamf Pro
 id: jamf
 description: ''
 slug: /jamf 

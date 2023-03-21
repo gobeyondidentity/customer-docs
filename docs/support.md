@@ -25,3 +25,11 @@ See the [Beyond Identity Support site](https://www.beyondidentity.com/support) f
 *	Viewing how-to and troubleshooting articles, FAQs, and release notes in our knowledge base.
 
 *	Downloading the Authenticator
+
+[Submit a request](https://support.beyondidentity.com/hc/en-us/requests/new)
+
+[View feature requests](https://support.beyondidentity.com/hc/en-us/community/topics/4410556274327-Feature-Requests)
+
+[Join the discussion](https://support.beyondidentity.com/hc/en-us/community/topics/4410556272919-General-Discussion)
+
+

@@ -170,7 +170,7 @@ themes: [
                 label: 'Release Notes 2'
               },
               {
-                to: '/devops-release-notes',
+                to: '/release-notes-main',
                 label: 'Release Notes 3',
               }
             ],

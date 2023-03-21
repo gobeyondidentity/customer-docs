@@ -31,7 +31,6 @@
     rgba(7, 0, 20, 0.25) 0px 25px 50px -12px, rgba(7, 0, 20, 0.06) 0px 50px 80px;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --doc-sidebar-width: 230px;
-
   --ifm-leading-desktop: 1;
 
   --ifm-navbar-height: 56px;
@@ -39,6 +38,21 @@
   --ifm-navbar-shadow: none;
 
  --ifm-container-width: 100%; 
+
+ --docsearch-searchbox-background: var(--ifm-border-color);
+ --docsearch-searchbox-focus-background: var(--ifm-border-color);
+ --docsearch-searchbox-shadow: var(--docsearch-primary-color) 0px -2px 0px 0px inset,
+   var(--ifm-border-color) 0px 0px 0px 1px inset;
+ --docsearch-key-gradient: var(--ifm-background-surface-color);
+ --docsearch-key-shadow: 0 0 0 1px var(--ifm-border-color) inset,
+   0 -1px 0 0 var(--ifm-border-color) inset;
+ --docsearch-modal-background: var(--docsearch-hit-background);
+ --docsearch-modal-shadow: var(--ifm-global-shadow-tl);
+ --docsearch-hit-background: #363639;
+ --docsearch-hit-shadow: none;
+ --docsearch-hit-active-color: var(--ifm-color-content);
+ --docsearch-footer-background: var(--docsearch-modal-background);
+ --docsearch-footer-shadow: 0 -1px 0 0 var(--ifm-border-color);
 
 
   /* these colors need to be verified */
@@ -78,6 +92,7 @@ body {
   font-family: 'Overpass', sans-serif;
 /*  color: #383a3e; */
   background-color: var(--ifm-background-color);
+  font-weight: 600;
 }
 
 
@@ -95,14 +110,13 @@ h3 {
   font-size: 22px;
 }
 
-article,
-.paper {
-  margin: 0 calc(var(--ifm-spacing-horizontal) * -0.5);
-  padding: 1rem 1.5rem 1.5rem 1.5rem;
-  background-color: var(--ifm-background-surface-color);
-  border-radius: var(--ifm-card-border-radius);
-/*  box-shadow: var(--ifm-global-shadow-lw); */
+h2.glossary {
+  border-bottom: 1px solid #cece;
 }
+
+
+
+
 
 h1,
 h2,
@@ -159,6 +173,38 @@ pre {
   word-break: keep-all;
 }
 
+/*
+article,
+.paper {
+  margin: 0 calc(var(--ifm-spacing-horizontal) * -0.5);*/
+/*  margin-bottom: calc(var(--ifm-paragraph-margin-bottom) * 1.5);
+  padding: 1rem 1.5rem 1.5rem 1.5rem;
+  background-color: var(--ifm-background-surface-color);
+  border-radius: var(--ifm-card-border-radius);
+  box-shadow: var(--ifm-global-shadow-lw); 
+}*/
+
+/* Glossary */
+dt {
+  font-weight: 700;
+  font-size: larger;
+  margin-left: 20px;
+}
+
+/* Breadcrumbs */
+.breadcrumbs__link {
+  display: inline-block;
+  padding: 0;
+  transition-property: none;
+  text-decoration: none;
+  background: none !important;
+}
+
+.breadcrumbs__link:hover {
+  text-decoration: var(--ifm-link-hover-decoration);
+}
+
+
 /* nested ordered list */
 
 
@@ -193,11 +239,19 @@ div.indent li {
 .markdown img { 
   border: 1px solid #ccc; 
   border-radius:5px;
-  max-width: 65%;
+  max-width: 60%;
   height: auto;
   margin: 0px 0;
 
 }
+
+div.image {
+  width:100px; /*width of your image*/
+  height:100px; /*height of your image*/
+ /* background-image:url('yourimage.file');  */
+  margin:0; /* If you want no margin */
+  padding:0; /*if your want to padding */
+}​
 
 .diagram > img {
   border: none;
@@ -304,10 +358,74 @@ div[class^="searchBox"] {
   padding-left: 0.75rem;
 }
 
+
+.DocSearch.DocSearch {
+  font-family: inherit;
+}
+.DocSearch-Button.DocSearch-Button {
+  border-radius: var(--ifm-global-radius);
+  height: 32px;
+}
+.DocSearch-Button.DocSearch-Button:active,
+.DocSearch-Button.DocSearch-Button:focus,
+.DocSearch-Button.DocSearch-Button:hover {
+  box-shadow: var(--ifm-color-content) 0px -1px 0px 0px inset,
+    var(--ifm-border-color) 0px 0px 0px 1px inset;
+}
+/* html[data-theme="dark"] .DocSearch-Button {
+  --docsearch-searchbox-background: rgba(255, 255, 255, 0.12);
+} */
+.DocSearch-Button-Placeholder.DocSearch-Button-Placeholder {
+  padding: 0 1.5rem 0 0.5rem;
+}
+.DocSearch-Button-Keys.DocSearch-Button-Keys {
+  min-width: 0;
+}
+.DocSearch-Button-Key.DocSearch-Button-Key {
+  padding-bottom: 1px;
+  top: 0;
+  margin-right: 0.125rem;
+}
+.DocSearch-Modal.DocSearch-Modal {
+  border-radius: calc(var(--ifm-global-radius) * 2);
+}
+.DocSearch-Input {
+  caret-color: var(--docsearch-primary-color);
+}
+.DocSearch-Hit-source.DocSearch-Hit-source {
+  font-family: var(--ifm-heading-font-family);
+  font-weight: var(--ifm-heading-font-weight);
+  font-size: 0.9375rem;
+  letter-spacing: 0.01786em;
+  font-feature-settings: "ss02", "ss03";
+  color: var(--ifm-font-color-base);
+
+  padding: 0.5rem 1.25rem 0;
+}
+.DocSearch-Hit.DocSearch-Hit {
+  padding-bottom: 0;
+}
+.DocSearch-Hit.DocSearch-Hit[aria-selected="true"] a {
+  background-color: rgba(7, 0, 20, 0.04);
+}
+html[data-theme="dark"] .DocSearch-Hit.DocSearch-Hit[aria-selected="true"] a {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+.DocSearch-Hit-icon {
+  padding-left: 0.125rem;
+}
+.DocSearch-Hit-content-wrapper.DocSearch-Hit-content-wrapper {
+  margin-left: 0.75rem;
+}
+
+
+
+
+
 /* Docs Sidebar */
 aside.theme-doc-sidebar-container {
   border-right: none;
-  padding-top: 10px;
+  padding-top: 18px;
 }
 .menu {
   font-weight: var(--ifm-font-weight-normal);
@@ -345,7 +463,7 @@ nav[class^="menu"] {
   cursor: default;
 }
 .theme-doc-sidebar-item-category-level-1 > .menu__list {
-  padding-left: 0;
+  padding-left: 12px;
 }
 .theme-doc-sidebar-item-link-level-2 .menu__link {
   font-size: 0.85rem;

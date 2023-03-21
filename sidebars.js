@@ -15,7 +15,7 @@
 const sidebars = {
   // By default, Docusaurus generates a sidebar from the docs folder structure
   secureWorkforceSidebar: [
-    'welcome',
+
     {
       type: 'category',
       label: 'Get Started',  
@@ -77,55 +77,6 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Web Login',
-      collapsed: true,  
-      link: {
-        type: 'doc',
-        id: 'web-login/web-login',
-      }, 
-      items: [
-        
-        {
-          type: 'category',
-          label: 'Open Integration',
-          collapsed: true,  
-          link: {
-            type: 'doc',
-            id: 'web-login/open-integrations/open-integrations',
-          },
-          items: [
-            {
-              type: 'category',
-              label: 'OIDC',
-              link: {
-                type: 'doc',
-                id: 'web-login/open-integrations/oidc',
-              },
-              items: [
-                
-              ],
-            },
-            'web-login/open-integrations/saml', 
-            'web-login/open-integrations/ws-fed',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'SSO Integrations',
-          collapsed: true,  
-          link: {
-            type: 'doc',
-            id: 'web-login/sso-integrations/sso-integrations',
-          },      
-          items: [ 
-
-
-          ],
-        },
-      ],
-    },
-    {
-      type: 'category',
       label: 'Desktop Login',
       collapsed: true,  
       link: {
@@ -172,54 +123,175 @@ const sidebars = {
       link: {
         type: 'doc',
         id: 'integration-guides/integration-guides',
+        
       },         
       items: [  
-      'integration-guides/aws-cognito',
-      'integration-guides/azure-ad', 
-      'integration-guides/azure-ad-hybrid', 
-      'integration-guides/active-directory-only',
-      'integration-guides/crowdstrike', 
-      'integration-guides/forgerock',
-      'integration-guides/google-workspace',
-      'integration-guides/jamf', 
-      'integration-guides/kandji', 
-      'integration-guides/microsoft-intune', 
-      'integration-guides/okta-oidc',
-      'integration-guides/okta',
-      'integration-guides/ping',
-      'integration-guides/vmware-airwatch',
-      'integration-guides/zscaler',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'DevOps',
-      collapsed: true, 
-      link: {
-        type: 'doc',
-        id: 'devops/secure-devops',
-      },         
-      items: [  
-        'devops/aws-commit',
-        'devops/azure-devops',
-        'devops/bitbucket',
         {
           type: 'category',
-          label: 'GitHub',
+          label: 'CIAM SSO',
           collapsed: true,  
           link: {
             type: 'doc',
-            id: 'devops/github',
+            id: 'integration-guides/ciam-sso-integrations',
+
           },      
           items: [ 
+            'integration-guides/auth0-ciam',
+            'integration-guides/aws-cognito',
+            'integration-guides/azure-b2c-ciam',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'EDR',
+          collapsed: true,  
+          link: {
+            type: 'doc',
+            id: 'integration-guides/edr-integrations',
+          },      
+          items: [ 
+            'integration-guides/crowdstrike',
+            'integration-guides/sentinelone',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'MDM',
+          collapsed: true,  
+          link: {
+            type: 'doc',
+            id: 'integration-guides/mdm-integrations',
+          },      
+          items: [ 
+            'integration-guides/jamf',
+            'integration-guides/kandji',
+            'integration-guides/microsoft-intune',
+            'integration-guides/vmware-airwatch',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'SDO',
+          collapsed: true,  
+          link: {
+            type: 'doc',
+            id: 'integration-guides/sdo-integrations',
+          },      
+          items: [ 
+            'devops/aws-codecommit',
+            'devops/azure-devops',
+            'devops/bitbucket',
+            'devops/github',
+            'devops/gitlab',
             'devops/devops-git-commit-signing',
           ],
         },
-
-        'devops/gitlab',
-
+        {
+          type: 'category',
+          label: 'SIEM',
+          collapsed: true,  
+          link: {
+            type: 'doc',
+            id: 'integration-guides/siem-integrations',
+          },      
+          items: [ 
+            'integration-guides/cloud-pub-sub',
+            'integration-guides/datadog',
+            'integration-guides/elastic',
+            'integration-guides/snowflake',
+            'integration-guides/splunk-cloud',
+            'integration-guides/splunk-enterprise',
+            'integration-guides/sumologic',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'VPN',
+          collapsed: true,  
+          link: {
+            type: 'doc',
+            id: 'integration-guides/vpn-integrations',
+          },      
+          items: [ 
+            'integration-guides/cisco-anyconnect',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'WiFi',
+          collapsed: true,  
+          link: {
+            type: 'doc',
+            id: 'integration-guides/wifi-integrations',
+          },      
+          items: [ 
+            'integration-guides/arista',
+            'integration-guides/hp-aruba-clearpeass',
+            'integration-guides/juniper-mist',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Windows Desktop Login',
+          collapsed: true,  
+          link: {
+            type: 'doc',
+            id: 'integration-guides/windows-desktop-login',
+          },      
+          items: [ 
+            'integration-guides/windows-azure-only',
+            'integration-guides/windows-hybrid',
+            'integration-guides/windows-on-premises',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Workforce SSO',
+          collapsed: true,  
+          link: {
+            type: 'doc',
+            id: 'integration-guides/sso-integrations',
+          },      
+          items: [ 
+            'integration-guides/auth0',
+            'integration-guides/aws',
+            'integration-guides/azure-ad-hybrid',
+            'integration-guides/azure-ad',
+            'integration-guides/egnyte',
+            'integration-guides/forgerock',
+            'integration-guides/google-workspace',
+            'integration-guides/idaptive',
+            'integration-guides/keycloak',
+            'integration-guides/microsoft-adfs',
+            'integration-guides/okta-classic',
+            'integration-guides/okta-mfa-classic',
+            'integration-guides/okta-oie',
+            'integration-guides/okta-oie-mfa',
+            'integration-guides/okta-persistant-enrollment',
+            'integration-guides/onelogin',
+            'integration-guides/ping',
+            'integration-guides/ping-scim-server',
+            'integration-guides/ping-mfa',
+            'integration-guides/shibboleth',
+            'integration-guides/vmware-access-manager',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Zero Trust (ZTA)',
+          collapsed: true,  
+          link: {
+            type: 'doc',
+            id: 'integration-guides/zero-trust',
+          },      
+          items: [ 
+            'integration-guides/palo-alto-prisma-access',
+            'integration-guides/zscaler',
+          ],
+        },
       ],
     },
+
 /*    {
       type: 'category',
       label: 'How-to\'s',
@@ -243,7 +315,7 @@ const sidebars = {
       label: 'Releases',  
       link: {
         type: 'doc',
-        id: 'release-notes/devops-release-notes',
+        id: 'release-notes/release-notes-main',
       },
       collapsible: false,    
       items: [ 

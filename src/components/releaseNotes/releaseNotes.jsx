@@ -70,8 +70,21 @@ export default function ReleaseNotesTimeline() {
 								</time>
 							</span>
 						</h4>
-
-						
+            <p>
+							Read the{' '}
+							<Link
+                to='/release-notes-main'			
+							>
+								release notes
+							</Link>{' '}
+							or{' '}
+							<Link to={`https://app.byndid.com/downloads`}>
+								{' '}
+								update now
+							</Link>
+							.
+						</p>
+						<p>&nbsp;</p>
 					</div>
 
                     
@@ -87,23 +100,23 @@ export default function ReleaseNotesTimeline() {
         <TimelineContent sx={{fontFamily: 'Overpass'}}>Additional features and capabilities for users and businesses...<br /><br />Additional features and capabilities for users and businesses that need tighter and customizable integration ...<br /><br />Additional features and capabilities for users and businesses that need tighter and customizable integration ...</TimelineContent>
       </TimelineItem>
       <TimelineItem>
-        <TimelineOppositeContent color="textSecondary">
+        <TimelineOppositeContent color="textSecondary" sx={{fontFamily: 'Overpass'}}>
           2.75.0
         </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineDot color="primary" />
           <TimelineConnector />
         </TimelineSeparator>
-        <TimelineContent>Additional features and capabilities for users and businesses that need tighter and customizable integration ...</TimelineContent>
+        <TimelineContent sx={{fontFamily: 'Overpass'}}>Additional features and capabilities for users and businesses that need tighter and customizable integration ...</TimelineContent>
       </TimelineItem>
       <TimelineItem>
-        <TimelineOppositeContent color="textSecondary">
+        <TimelineOppositeContent color="textSecondary" sx={{fontFamily: 'Overpass'}}>
           2.75.3
         </TimelineOppositeContent>
         <TimelineSeparator>
         <TimelineDot color="primary" />
         </TimelineSeparator>
-        <TimelineContent>Additional features and capabilities for users and businesses that need tighter and customizable integration ...</TimelineContent>
+        <TimelineContent sx={{fontFamily: 'Overpass'}}>Additional features and capabilities for users and businesses that need tighter and customizable integration ...</TimelineContent>
       </TimelineItem>
     </Timeline>
     

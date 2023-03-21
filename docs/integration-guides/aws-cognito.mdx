@@ -1,7 +1,7 @@
 ---
 title: AWS Cognito
 id: aws-cognito
-description: 'Set up Beyond Identity for your applications that use AWS Cognito to manage their identities.'
+description: 'Set up Beyond Identity as a Passwordless login provider for applications that use AWS Cognito to manage their identities. '
 slug: /aws-cognito 
 keywords: 
  - faq
@@ -15,7 +15,10 @@ draft: true
 displayed_sidebar: secureWorkforceSidebar
 ---
 
-import awsCognitoFlow from '../images/undraw_docusaurus_mountain.svg';
+
+import awsCognitoFlow from '../images/aws/aws-diagram.svg';
+
+
 
 This guide provides information on how to set up Beyond Identity as a Passwordless login provider for applications that use AWS Cognito to manage their identities.  
 
@@ -24,8 +27,11 @@ This guide provides information on how to set up Beyond Identity as a Passwordle
 Administrator user privileges to AWS console.
 
 
+
+
 ## User Pool setup
 
+<awsCognitoFlow />
 
 <!-- 
 Why are we not just giving them the [link](https://docs.aws.amazon.com/cognito/latest/developerguide/tutorial-create-user-pool.html) to the vendor documentation, which is always up to date, so we can focus on integrating Beyond Identity with AWS.
@@ -128,3 +134,6 @@ Beyond Identity supports MFA during initial login. AWS COGNITO does not provide 
 
 ![Diagram Description automatically generated](../images/aws/image10.png)
 
+import awsDiagramFlow from '../images/aws/aws-diagram.svg';
+
+<awsDiagramFlow />

@@ -1,8 +1,8 @@
 ---
-title: AWS CodeCommit
-id: aws-codecommit
+title: Okta (classic)
+id: okta-classic
 description: ''
-slug: /aws-codecommit 
+slug: /okta-classic
 keywords: 
  - faq
  - help
