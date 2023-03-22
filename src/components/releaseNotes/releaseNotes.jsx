@@ -91,13 +91,20 @@ export default function ReleaseNotesTimeline() {
       <TimelineItem>
         
         <TimelineOppositeContent color="textSecondary" sx={{fontFamily: 'Overpass'}}>
-          2.76.0
+			<a href="/v2-76-0">
+          2.76.0</a>
         </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineDot color="primary" />
           <TimelineConnector />
         </TimelineSeparator>
-        <TimelineContent sx={{fontFamily: 'Overpass'}}>Additional features and capabilities for users and businesses...<br /><br />Additional features and capabilities for users and businesses that need tighter and customizable integration ...<br /><br />Additional features and capabilities for users and businesses that need tighter and customizable integration ...</TimelineContent>
+        <TimelineContent sx={{fontFamily: 'Overpass'}}>
+			<ul>
+				<li><span className="changelog-tag" data-tag="Improved">Improved</span>
+				Additional features and capabilities for users and businesses.
+				</li>
+			</ul>
+			</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="textSecondary" sx={{fontFamily: 'Overpass'}}>
