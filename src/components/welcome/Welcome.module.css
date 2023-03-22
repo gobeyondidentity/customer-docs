@@ -9,7 +9,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.products {
+.articles {
   display: inline;
   align-items: center;
   padding: 2rem 0; 
@@ -17,7 +17,7 @@
 }
 
 
-.product {
+.article {
 /* max-inline-size: 380px; */
  padding-bottom: 40px;
  margin-top: 40px;
@@ -28,18 +28,18 @@ a:link {
 }
 
 @media (max-width: 996px) {
-  .product:before {
+  .article:before {
 
     margin: 20px;
   }
 }
 
-.productSvg {
+.articleSvg {
   height: 150px;
   width: 150px;
 }
 
-.productsRow {
+.articlesRow {
   justify-content: center;
   padding: 2rem 0;
 }

@@ -29,7 +29,7 @@ const sidebars = {
         'how-it-works', 
         'sign-in-workflow',
         'supported-platforms',
-        'release-notes', 
+        'release-notes/release-notes-main', 
         'faq',
         'glossary',
       ],
@@ -312,7 +312,7 @@ const sidebars = {
   releaseNotesSidebar: [
     {
       type: 'category',
-      label: 'Releases',  
+      label: 'Release Notes',  
       link: {
         type: 'doc',
         id: 'release-notes/release-notes-main',

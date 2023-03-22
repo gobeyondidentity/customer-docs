@@ -30,14 +30,13 @@
   --ifm-global-shadow-tl: rgba(7, 0, 20, 0.08) 0px 0px 0px 1px,
     rgba(7, 0, 20, 0.25) 0px 25px 50px -12px, rgba(7, 0, 20, 0.06) 0px 50px 80px;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-  --doc-sidebar-width: 230px;
   --ifm-leading-desktop: 1;
 
   --ifm-navbar-height: 56px;
   --ifm-navbar-background-color: var(--ifm-background-color);
   --ifm-navbar-shadow: none;
 
- --ifm-container-width: 100%; 
+
 
  --docsearch-searchbox-background: var(--ifm-border-color);
  --docsearch-searchbox-focus-background: var(--ifm-border-color);
@@ -54,6 +53,12 @@
  --docsearch-footer-background: var(--docsearch-modal-background);
  --docsearch-footer-shadow: 0 -1px 0 0 var(--ifm-border-color);
 
+ --docusaurus-tag-list-border: var(--ifm-color-emphasis-300);
+
+ --ifm-card-background-color: var(--ifm-background-surface-color);
+    --ifm-card-border-radius: calc(var(--ifm-global-radius)*2);
+    --ifm-card-horizontal-spacing: var(--ifm-global-spacing);
+    --ifm-card-vertical-spacing: var(--ifm-global-spacing);
 
   /* these colors need to be verified */
   --black: black;
@@ -92,7 +97,7 @@ body {
   font-family: 'Overpass', sans-serif;
 /*  color: #383a3e; */
   background-color: var(--ifm-background-color);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 
@@ -111,7 +116,7 @@ h3 {
 }
 
 h2.glossary {
-  border-bottom: 1px solid #cece;
+  border-bottom: 1px solid #cecece;
 }
 
 
@@ -136,9 +141,11 @@ h6 {
 }
 .markdown h2 {
   --ifm-h2-font-size: 1.618rem;
+
 }
 .markdown h3 {
   --ifm-h3-font-size: 1.25rem;
+
 }
 
 
@@ -456,7 +463,7 @@ nav[class^="menu"] {
   > .menu__link {
   font-family: var(--ifm-heading-font-family);
   font-weight: var(--ifm-heading-font-weight);
-  font-size: 0.9375rem;
+  font-size: 1rem;
   letter-spacing: 0.01786em;
   font-feature-settings: "ss02", "ss03";
   color: var(--ifm-font-color-base);
@@ -466,7 +473,7 @@ nav[class^="menu"] {
   padding-left: 12px;
 }
 .theme-doc-sidebar-item-link-level-2 .menu__link {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: var(--ifm-font-weight-normal);
 }
 .theme-doc-sidebar-item-link-level-3 .menu__link {

@@ -113,7 +113,7 @@ themes: [
         }
       },
       navbar: {
-        title: 'Beyond Identity',
+        title: '',
         logo: {
           alt: 'Beyond Identity Logo',
           src: 'img/logo.png',
@@ -162,7 +162,7 @@ themes: [
                 label: 'Support Center',
               },
               {
-                to: '/release-notes',
+                to: '/release-notes-main',
                 label: 'Release Notes 1',
               },
               {
@@ -170,7 +170,7 @@ themes: [
                 label: 'Release Notes 2'
               },
               {
-                to: '/release-notes-main',
+                to: '/release-notes',
                 label: 'Release Notes 3',
               }
             ],
