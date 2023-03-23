@@ -113,7 +113,7 @@ themes: [
         }
       },
       navbar: {
-        title: '',
+        title: 'Secure Workforce',
         logo: {
           alt: 'Beyond Identity Logo',
           src: 'img/logo.png',

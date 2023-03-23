@@ -20,7 +20,67 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const GetStartedList = [
   {
-    title: 'Error messages',
+    title: 'Get Started',
+//    Svg: require('@site/static/img/Details-page-02.svg').default,
+    alt: 'alt text for image',
+    description: (
+      <>
+        Find out what Beyond Identity is all about, like, how it works and the user sign-in flow.  You'll all find the Release Notes and supported operating systems. 
+      </>
+    ),
+    href: ('/get-started'),
+    label: ('Learn more'),
+  },
+  {
+    title: 'Left nav category',
+//    Svg: require('@site/static/img/Details-page-02.svg').default,
+    alt: 'alt text for image',
+    description: (
+      <>
+        Writing error messages can be challenging because you want them to be short but have enough information to help the user. Your overall goal is to guide the user to prevent dead ends. 
+      </>
+    ),
+    href: ('/docs/get-started'),
+    label: ('Learn more'),
+  },
+  {
+    title: 'Left nav category',
+//    Svg: require('@site/static/img/Details-page-02.svg').default,
+    alt: 'alt text for image',
+    description: (
+      <>
+        Writing error messages can be challenging because you want them to be short but have enough information to help the user. Your overall goal is to guide the user to prevent dead ends. 
+      </>
+    ),
+    href: ('/docs/get-started'),
+    label: ('Learn more'),
+  },
+  {
+    title: 'Left nav category',
+//    Svg: require('@site/static/img/Details-page-02.svg').default,
+    alt: 'alt text for image',
+    description: (
+      <>
+        Writing error messages can be challenging because you want them to be short but have enough information to help the user. Your overall goal is to guide the user to prevent dead ends. 
+      </>
+    ),
+    href: ('/docs/get-started'),
+    label: ('Learn more'),
+  },
+  {
+    title: 'Left nav category',
+//    Svg: require('@site/static/img/Details-page-02.svg').default,
+    alt: 'alt text for image',
+    description: (
+      <>
+        Writing error messages can be challenging because you want them to be short but have enough information to help the user. Your overall goal is to guide the user to prevent dead ends. 
+      </>
+    ),
+    href: ('/docs/get-started'),
+    label: ('Learn more'),
+  },
+  {
+    title: 'Left nav category',
 //    Svg: require('@site/static/img/Details-page-02.svg').default,
     alt: 'alt text for image',
     description: (
@@ -33,61 +93,47 @@ const GetStartedList = [
   },
 ];
 
-function Topic({ Svg, title, description, href }) {
+function Topic({ title, description, href }) {
   return (
     
-    <div className={clsx('col col--4', styles. topic)}>
-<Card sx={{ minHeight: 370, p: 2, borderRadius: 4 }} elevation={9}>
+  <div className={clsx('col col--6', styles. topic)}>
+  <Card sx={{ minHeight: 'auto', p: 2, borderRadius: 4 }} elevation={2}>
       <CardActionArea href={href}>
-        
-
-      <div className="text--center">
-        <Svg className={styles. topicSvg} alt={title} />
-      </div>
-
-      
-
-
-      <CardContent>
-
-    <Typography
-      gutterBottom 
-      variant="h4" 
-      component="div"
-      sx={{
-        fontWeight: 500,
-        fontFamily: 'NTR',
-      }} 
-    >
-          {title} 
-        </Typography>
-
-      
-
-        <Typography variant="body2">
-          {description}
-        </Typography>
+        <CardContent>
+          <Typography
+              gutterBottom 
+              variant="h6" 
+              component="div"
+              sx={{
+                fontWeight: 500,
+                fontFamily: 'Overpass',
+                textAlign: 'left',
+                color: '#3e5fb8',
+              }} 
+            >
+            {title} 
+          </Typography>
+          <Typography variant="body2" sx={{ fontFamily: 'Overpass', lineHeight: 1.3 }}>
+            {description}
+          </Typography>
       </CardContent>
-
-
-</CardActionArea>
-</Card>
-    </div>
-    
+    </CardActionArea>
+  </Card>
+  </div>
   );
 }
 
 export default function DiscoverBi() {
   return (
     <section className={styles. topics}>
-      <div className="container">
-        
+      <Container sx={{ marginLeft: 0, marginTop: -1 }}>
         <div className={clsx('row', styles. topicsRow)}>
           {GetStartedList.map((props, idx) => (
             <Topic key={idx} {...props} />
           ))}
         </div>
-      </div>
+      
+      </Container>
     </section>
   );
 }

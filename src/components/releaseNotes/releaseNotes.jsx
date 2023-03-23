@@ -54,22 +54,24 @@ export default function ReleaseNotesTimeline() {
       sx={{
         [`& .${timelineOppositeContentClasses.root}`]: {
           flex: 0.1,
-        }, marginLeft: -2,
+        }, 
+        marginLeft: -2,
       }}
     >
 
         <div>
-            <h2>What's new</h2>
-						<h4>
+
+						<h3>
 							Latest release
-							<span className="flex items-center font-semibold">&nbsp;
+							<span className="text-base text-gray-500 font-medium uppercase dark:text-gray-400">&nbsp;
 								<code className="text-base">{ReleaseVersion}</code>
 								<span className="text-base mx-2"> • </span>
 								<time className="text-base text-gray-500 font-medium uppercase dark:text-gray-400">
 									{ReleaseDate}
 								</time>
 							</span>
-						</h4>
+						</h3>
+
             <p>
 							Read the{' '}
 							<Link
@@ -80,7 +82,7 @@ export default function ReleaseNotesTimeline() {
 							or{' '}
 							<Link to={`https://app.byndid.com/downloads`}>
 								{' '}
-								update now
+								update to the latest version
 							</Link>
 							.
 						</p>
@@ -108,7 +110,8 @@ export default function ReleaseNotesTimeline() {
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="textSecondary" sx={{fontFamily: 'Overpass'}}>
-          2.75.0
+        <a href="/v2-75-0">
+          2.75.0</a>
         </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineDot color="primary" />

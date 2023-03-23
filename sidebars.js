@@ -320,6 +320,7 @@ const sidebars = {
       collapsible: false,    
       items: [ 
         'release-notes/v2-76-0',
+        'release-notes/v2-75-0',
       ],
     },    
   ],
