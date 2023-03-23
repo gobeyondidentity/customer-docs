@@ -8,6 +8,7 @@ import Grid from '@mui/material/Grid';
 import {  Container, Box, CardActionArea } from '@mui/material';
 import styles from './LandingPage.module.css';
 import clsx from 'clsx';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -18,77 +19,77 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 
-const GetStartedList = [
+const DiscoverList = [
   {
-    title: 'Get Started',
+    title: 'Get started',
 //    Svg: require('@site/static/img/Details-page-02.svg').default,
     alt: 'alt text for image',
     description: (
       <>
-        Find out what Beyond Identity is all about, like, how it works and the user sign-in flow.  You'll all find the Release Notes and supported operating systems. 
+        Find out what Beyond Identity is all about, and how it works.  You'll all find the Release Notes, FAQs, and supported operating systems. 
       </>
     ),
     href: ('/get-started'),
     label: ('Learn more'),
   },
   {
-    title: 'Left nav category',
+    title: 'Integration guides',
 //    Svg: require('@site/static/img/Details-page-02.svg').default,
     alt: 'alt text for image',
     description: (
       <>
-        Writing error messages can be challenging because you want them to be short but have enough information to help the user. Your overall goal is to guide the user to prevent dead ends. 
+         
       </>
     ),
-    href: ('/docs/get-started'),
+    href: ('/integration-guides'),
     label: ('Learn more'),
   },
   {
-    title: 'Left nav category',
+    title: 'Rules & policies',
 //    Svg: require('@site/static/img/Details-page-02.svg').default,
     alt: 'alt text for image',
     description: (
       <>
-        Writing error messages can be challenging because you want them to be short but have enough information to help the user. Your overall goal is to guide the user to prevent dead ends. 
+         
       </>
     ),
-    href: ('/docs/get-started'),
+    href: ('/policy'),
     label: ('Learn more'),
   },
   {
-    title: 'Left nav category',
+    title: 'Monitoring',
 //    Svg: require('@site/static/img/Details-page-02.svg').default,
     alt: 'alt text for image',
     description: (
       <>
-        Writing error messages can be challenging because you want them to be short but have enough information to help the user. Your overall goal is to guide the user to prevent dead ends. 
+         
       </>
     ),
-    href: ('/docs/get-started'),
+    href: ('/data-events'),
     label: ('Learn more'),
   },
   {
-    title: 'Left nav category',
+    title: 'Admin console',
 //    Svg: require('@site/static/img/Details-page-02.svg').default,
     alt: 'alt text for image',
     description: (
       <>
-        Writing error messages can be challenging because you want them to be short but have enough information to help the user. Your overall goal is to guide the user to prevent dead ends. 
+         
       </>
     ),
-    href: ('/docs/get-started'),
+    href: ('/admin-console'),
     label: ('Learn more'),
   },
   {
-    title: 'Left nav category',
+    title: 'Platform authenticators',
 //    Svg: require('@site/static/img/Details-page-02.svg').default,
     alt: 'alt text for image',
     description: (
       <>
-        Writing error messages can be challenging because you want them to be short but have enough information to help the user. Your overall goal is to guide the user to prevent dead ends. 
+         
       </>
     ),
-    href: ('/docs/get-started'),
+    href: ('/platform-authenticator'),
     label: ('Learn more'),
   },
 ];
@@ -97,7 +98,7 @@ function Topic({ title, description, href }) {
   return (
     
   <div className={clsx('col col--6', styles. topic)}>
-  <Card sx={{ minHeight: 'auto', p: 2, borderRadius: 4 }} elevation={2}>
+  <Card sx={{ minHeight: 'auto', p: 3, borderRadius: 4 }} elevation={2}>
       <CardActionArea href={href}>
         <CardContent>
           <Typography
@@ -125,10 +126,10 @@ function Topic({ title, description, href }) {
 
 export default function DiscoverBi() {
   return (
-    <section className={styles. topics}>
+    <section className={styles.topics}>
       <Container sx={{ marginLeft: 0, marginTop: -1 }}>
-        <div className={clsx('row', styles. topicsRow)}>
-          {GetStartedList.map((props, idx) => (
+        <div className={clsx('row', styles.topicsRow)}>
+          {DiscoverList.map((props, idx) => (
             <Topic key={idx} {...props} />
           ))}
         </div>

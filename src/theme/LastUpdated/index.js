@@ -42,7 +42,7 @@ export default function LastUpdated({
             ),
           
         }}>
-        {'Updated{atDate}'}
+        {'Last update:{atDate}'}
       </Translate>
       {process.env.NODE_ENV === 'development' && (
         <div>

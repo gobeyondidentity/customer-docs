@@ -1,8 +1,8 @@
 ---
 title: Policy
-id: policy-integrations
+id: policy
 description: ''
-slug: /policy-integrations 
+slug: /policy 
 keywords: 
  - policy
 pagination_next: null

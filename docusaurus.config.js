@@ -155,7 +155,7 @@ themes: [
               },
               {
                 to: '/glossary',
-                label: 'Glossary',
+                label: 'Terminology',
               },
               {
                 to: '/get-support', //this may need to be a link to the support site instead of a doc 

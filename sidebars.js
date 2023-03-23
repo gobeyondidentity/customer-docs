@@ -96,7 +96,7 @@ const sidebars = {
       collapsible: true,   
       link: {
         type: 'doc',
-        id: 'policy/policy-integrations',
+        id: 'policy/policy',
       },      
       items: [ 
         'policy/define-policies', 
@@ -120,12 +120,14 @@ const sidebars = {
       type: 'category',
       label: 'Integration Guides',
       collapsed: true, 
+      collapsible: true,
       link: {
         type: 'doc',
         id: 'integration-guides/integration-guides',
         
       },         
       items: [  
+        'integration-guides/okta-oidc',
         {
           type: 'category',
           label: 'CIAM SSO',
@@ -289,7 +291,9 @@ const sidebars = {
             'integration-guides/zscaler',
           ],
         },
+
       ],
+      
     },
 
 /*    {

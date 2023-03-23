@@ -20,66 +20,91 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const List = [
   {
+    title: 'Jamf Pro',
+//    Svg: require('@site/static/img/Details-page-02.svg').default,
+    alt: 'alt text for image',
+    description: (
+      <>
+         
+      </>
+    ),
+    href: ('/jamf'),
+    label: ('Learn more'),
+  },
+  {
+    title: 'Kandji',
+//    Svg: require('@site/static/img/Details-page-02.svg').default,
+    alt: 'alt text for image',
+    description: (
+      <>
+         
+      </>
+    ),
+    href: ('/kandji'),
+    label: ('Learn more'),
+  },
+  {
     title: 'Microsoft Intune',
 //    Svg: require('@site/static/img/Details-page-02.svg').default,
     alt: 'alt text for image',
     description: (
       <>
-        Set up and integrate Microsoft Intune environment with a Beyond Identity tenant. 
+        Set up and integrate Microsoft Intune environment with your Beyond Identity tenant. 
       </>
     ),
     href: ('/microsoft-intune'),
     label: ('Learn more'),
   },
   {
-    title: 'Left nav category',
-//    Svg: require('@site/static/img/Details-page-02.svg').default,
+    title: 'VMware Airwatch',
+    Svg: require('@site/static/img/vmware.svg').default,
     alt: 'alt text for image',
     description: (
       <>
-        Writing error messages can be challenging because you want them to be short but have enough information to help the user. Your overall goal is to guide the user to prevent dead ends. 
+        
       </>
     ),
-    href: ('/docs/get-started'),
+    href: ('/vmware-airwatch'),
     label: ('Learn more'),
   },
 ];
 
-function Mdm({ title, description, href }) {
+function Mdm({ Svg, title, description, href }) {
   return (
     
-  <div className={clsx('col col--6', styles. topic)}>
-  <Card sx={{ minHeight: 'auto', p: 2, borderRadius: 4, width: '100%' }} elevation={2}>
-      <CardActionArea href={href}>
-        <CardContent>
-          <Typography
-              gutterBottom 
-              variant="h6" 
-              component="div"
-              sx={{
-                fontWeight: 500,
-                fontFamily: 'Overpass',
-                textAlign: 'left',
-                color: '#3e5fb8',
-              }} 
-            >
-            {title} 
-          </Typography>
-          <Typography variant="body2" sx={{ fontFamily: 'Overpass', lineHeight: 1.3 }}>
-            {description}
-          </Typography>
-      </CardContent>
-    </CardActionArea>
-  </Card>
-  </div>
-  );
+    <div className={clsx('col col--6', styles.topic)}>
+  <Card sx={{ minHeight: 'auto', p: 2, borderRadius: 4, width: '100%' }} elevation={4}>
+        <CardActionArea href={href}>
+
+          <CardContent>
+            <Typography
+                gutterBottom 
+                variant="h6" 
+                component="div"
+                sx={{
+                  fontWeight: 500,
+                  fontFamily: 'Overpass',
+                  textAlign: 'left',
+                  color: '#3e5fb8',
+                }} 
+              >
+              {title} 
+            </Typography>
+            <Typography variant="body2" sx={{ fontFamily: 'Overpass', lineHeight: 1.3 }}>
+              {description}
+            </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
+    </div>
+    );
 }
 
 export default function MdmGuides() {
   return (
-    <section className={styles. topics}>
-      <Container sx={{ marginLeft: 0, marginTop: -1 }}>
-        <div className={clsx('row', styles. topicsRow)}>
+    <section className={styles.topics}>
+      <Container sx={{ marginLeft: 0, marginTop: 0 }}>
+        <div className={clsx('row', styles.topicsRow)}>
           {List.map((props, idx) => (
             <Mdm key={idx} {...props} />
           ))}

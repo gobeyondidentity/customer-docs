@@ -18,9 +18,13 @@
 
 
 .topic {
-/* max-inline-size: 380px; */
- padding-bottom: 20px;
+ padding: 10px;
  margin-top: 0px;
+}
+
+.topicSvg {
+  height: 150px;
+  width: 150px;
 }
 
 a:link {
@@ -30,15 +34,14 @@ a:link {
 @media (max-width: 996px) {
   .topic:before {
 
-    margin: 20px;
+    margin: 10px 0;
   }
 }
 
 
 
 .topicsRow {
-  justify-content: center;
-  padding: 1rem 0;
+  padding: 0rem 0;
 }
 
 

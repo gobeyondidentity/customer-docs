@@ -98,6 +98,9 @@ body {
 /*  color: #383a3e; */
   background-color: var(--ifm-background-color);
   font-weight: 500;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
 }
 
 
