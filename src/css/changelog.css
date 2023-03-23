@@ -81,6 +81,10 @@ html[data-theme="dark"] .changelog-version {
   text-align: center;
 }
 
+.changelog-tab ul {
+  list-style-type: none;
+}
+
 .changelog-tag[data-tag="New"] {
   background-color: #d3eacf;
   color: #005911;

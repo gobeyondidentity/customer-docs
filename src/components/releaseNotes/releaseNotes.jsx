@@ -106,7 +106,9 @@ export default function ReleaseNotesTimeline() {
             fontWeight: 'bold',
             mx: 0.5,
             fontSize: 14,
-          }}>We resolved the issue when switching between policy rules.</p><p>We made the Windows Authenticator application more consistent with the Mac version.</p></TimelineContent>
+          }}>
+            Additional features and capabilities for users and businesses that need tighter and customizable integration ...
+            </p></TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="textSecondary" sx={{fontFamily: 'Overpass'}}>
