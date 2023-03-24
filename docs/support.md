@@ -1,10 +1,21 @@
 ---
-title: Beyond Identity Support Site 
-sidebar_position: 1
----   
+title: Support
+id: get-support
+description: ''
+slug: /get-support 
+keywords: 
+ - faq
+ - help
+pagination_next: null
+pagination_prev: null
+last_update: 
+   date: 02/08/2022
+   author: Patricia McPhee
+draft: true
+displayed_sidebar: secureWorkforceSidebar
+---
 
-Beyond Identity Support Site 
-=========================
+
 See the [Beyond Identity Support site](https://www.beyondidentity.com/support) for information on:
 
 *	Creating a support ticket 
@@ -14,3 +25,11 @@ See the [Beyond Identity Support site](https://www.beyondidentity.com/support) f
 *	Viewing how-to and troubleshooting articles, FAQs, and release notes in our knowledge base.
 
 *	Downloading the Authenticator
+
+[Submit a request](https://support.beyondidentity.com/hc/en-us/requests/new)
+
+[View feature requests](https://support.beyondidentity.com/hc/en-us/community/topics/4410556274327-Feature-Requests)
+
+[Join the discussion](https://support.beyondidentity.com/hc/en-us/community/topics/4410556272919-General-Discussion)
+
+
