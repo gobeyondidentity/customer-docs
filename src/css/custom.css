@@ -55,10 +55,10 @@
 
  --docusaurus-tag-list-border: var(--ifm-color-emphasis-300);
 
- --ifm-card-background-color: var(--ifm-background-surface-color);
-    --ifm-card-border-radius: calc(var(--ifm-global-radius)*2);
+  /*--ifm-card-background-color: var(--ifm-background-surface-color);
+   --ifm-card-border-radius: calc(var(--ifm-global-radius)*2);
     --ifm-card-horizontal-spacing: var(--ifm-global-spacing);
-    --ifm-card-vertical-spacing: var(--ifm-global-spacing);
+    --ifm-card-vertical-spacing: var(--ifm-global-spacing);*/
 
   /* these colors need to be verified */
   --black: black;
@@ -116,6 +116,10 @@ h2 {
 
 h3 {
   font-size: 22px;
+}
+
+h4 {
+  font-size: 18px;
 }
 
 h2.glossary {

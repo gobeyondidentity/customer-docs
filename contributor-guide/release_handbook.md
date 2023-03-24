@@ -1,17 +1,23 @@
 # Release handbook
 
+<!-- is this Versioning? I believe it is -->
+
 Learn how to handle the documentation for Zowe releases.
 
-- [Release communication](#release-communication)
-- [Preparing documentation for a new release](#preparing-documentation-for-a-new-release)
+- [Release handbook](#release-handbook)
+  - [Release schedule](#release-schedule)
+  - [Preparing documentation for a new release](#preparing-documentation-for-a-new-release)
     - [Before you begin](#before-you-begin)
     - [Part 1: Archive the previous release doc](#part-1-archive-the-previous-release-doc)
     - [Part 2: Bump the release version](#part-2-bump-the-release-version)
     - [Part 3: Prepare new release files](#part-3-prepare-new-release-files)
     - [What to do next](#what-to-do-next)
-- [Sycn changes between releases](#sycn-changes-between-releases)
-- [Publish documentation for a new release](#publish-documentation-for-a-new-release)
-- [Remove archived version](#remove-archived-version)
+  - [Sycn changes between releases](#sycn-changes-between-releases)
+  - [Publish documentation for a new release](#publish-documentation-for-a-new-release)
+    - [Release checklist](#release-checklist)
+  - [Removing archived version](#removing-archived-version)
+  - [Update web help and type doc](#update-web-help-and-type-doc)
+  - [Updating TPSR](#updating-tpsr)
 
 ## Release schedule 
 
@@ -258,7 +264,8 @@ Removing archived version is necessary once two new versions are released to red
    },
   ```
 
-## Zowe CLI: Update web help and type doc
+<!-- I think I can rewrite this for final publishing steps. But writing a script might speed up the publishing process.  Let me think on this.  -->
+## Update web help and type doc
 
 Note: Instructions use Visual Studio Code and GitHub Desktop. Replace version numbers in examples with the correct version.
 

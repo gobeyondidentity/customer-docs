@@ -8,6 +8,9 @@ import {
 import isInternalUrl from '@docusaurus/isInternalUrl';
 import {translate} from '@docusaurus/Translate';
 import styles from './styles.module.css';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+
 function CardContainer({ href, children, className }) {
   return (
     <Link
@@ -20,6 +23,7 @@ function CardContainer({ href, children, className }) {
 }
 function CardLayout({ href, icon, title, description, className }) {
   return (
+    <Card>
     <CardContainer href={href} className={className}>
       {className?.includes("api-method") ? null : (
         <div className={styles.cardIcon}></div>
@@ -38,6 +42,7 @@ function CardLayout({ href, icon, title, description, className }) {
         )}
       </div>
     </CardContainer>
+    </Card>
   )
 }
 function CardCategory({item}) {

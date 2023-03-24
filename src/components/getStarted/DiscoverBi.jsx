@@ -127,14 +127,14 @@ function Topic({ title, description, href }) {
 export default function DiscoverBi() {
   return (
     <section className={styles.topics}>
-      <Container sx={{ marginLeft: 0, marginTop: -1 }}>
+      <div sx={{ marginLeft: 0, marginTop: -1 }}>
         <div className={clsx('row', styles.topicsRow)}>
           {DiscoverList.map((props, idx) => (
             <Topic key={idx} {...props} />
           ))}
         </div>
       
-      </Container>
+      </div>
     </section>
   );
 }

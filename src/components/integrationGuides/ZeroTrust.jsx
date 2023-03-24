@@ -49,7 +49,7 @@ function ZeroTrust({ title, description, href }) {
   return (
     
   <div className={clsx('col col--6', styles.topic)}>
-  <Card sx={{ minHeight: 'auto', p: 2, borderRadius: 4, width: '100%' }} elevation={4}>
+  <Card sx={{ minHeight: 'auto', p: 2, borderRadius: 4, width: '100%' }} elevation={2}>
       <CardActionArea href={href}>
         <CardContent>
           <Typography
@@ -78,14 +78,14 @@ function ZeroTrust({ title, description, href }) {
 export default function ZeroTrustGuides() {
   return (
     <section className={styles.topics}>
-      <Container sx={{ marginLeft: 0, marginTop: 0 }}>
+      <div sx={{ marginLeft: 0, marginTop: 0 }}>
         <div className={clsx('row', styles.topicsRow)}>
           {List.map((props, idx) => (
             <ZeroTrust key={idx} {...props} />
           ))}
         </div>
       
-      </Container>
+      </div>
     </section>
   );
 }

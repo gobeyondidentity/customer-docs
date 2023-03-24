@@ -5,6 +5,8 @@ import {
   import DocCardList from "@theme/DocCardList";
   import GithubSlugger from "github-slugger";
   import React from "react";
+  import Card from '@mui/material/Card';
+  import CardContent from '@mui/material/CardContent';
 
 
   function SectionedDocCardListForCurrentSidebarCategory({ className }) {
@@ -26,6 +28,7 @@ import {
         <DocCardList
           items={filteredItems.filter(item => item.type !== "category")}
           className={className}
+          
         />
         {filteredItems.map((item, index) =>
           item.type === "category" ? (

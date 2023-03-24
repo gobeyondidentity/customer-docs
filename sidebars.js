@@ -99,9 +99,10 @@ const sidebars = {
         id: 'policy/policy',
       },      
       items: [ 
-        'policy/define-policies', 
-        
-
+        'policy/define-policy', 
+        'policy/policy-attribute-library',
+        'policy/import-policy',
+        'policy/export-policy',
       ],
     },
     {
@@ -294,6 +295,18 @@ const sidebars = {
 
       ],
       
+    },
+    {
+      type: 'category',
+      label: 'DevOps',
+      collapsed: true,  
+      link: {
+        type: 'doc',
+        id: 'devops/secure-devops',
+      },         
+      items: [ 
+        'devops/ssh-support',
+      ],
     },
 
 /*    {

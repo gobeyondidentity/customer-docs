@@ -1,4 +1,4 @@
-# Maintainer handbook
+# Doc site maintainer handbook
 
 ## Building the docs for production
 

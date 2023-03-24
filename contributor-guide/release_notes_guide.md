@@ -1,53 +1,50 @@
-# Zowe release notes guide
+# Release notes guide
 
-Learn how Zowe release notes are constructed, how to generate and submit release notes. 
+Learn how Secure Workforce release notes are constructed, how to generate and submit them. 
 
 ## Release notes template
 
-Zowe release notes follow a similar pattern for each release. The following template takes v2.3.0 as an example. 
+The release notes follow a similar pattern for each release. The following template takes v2.76.0 as an example. 
 
 ```
-# Version 2.3.0 (September 2022)
+## Cloud
 
-Welcome to the Zowe Version 2.3.0 release!
+We resolved the issue when switching between policy rules, the policy attributes with multiple fields didn't immediately update the values. Instead, showing the values from the previously selected rule.  
 
-See [New features and enhancements](#new-features-and-enhancements) for a full list of changes to the functionality. See [Bug fixes](#bug-fixes) for a list of issues addressed in this release.
+## Authenticators
 
-**Download v2.3.0 build**: Want to try new features as soon as possible? You can download the v2.3.0 build from [Zowe.org](https://www.zowe.org/download.html).
+:::info Operating systems supported
 
-## New features and enhancements
+The Beyond Identity Authenticator is supported on the following platforms:
 
-Zowe Version 2.3.0 contains the enhancements that are described in the following topics.
+- macOS 10.15 (Catalina) or later
 
-### Zowe installation and packaging
+- Windows 10 build 19041 and later or Windows 11
+:::
 
-### Zowe Application Framework
+We made the Windows Authenticator application more consistent with the Mac version. Windows users tend to close the application more often than Mac users, which has significantly impacted their authentication performance.
 
-### Zowe API Mediation Layer
+Here are the changes we made:
 
-### Zowe CLI
+- Renamed **Exit** under the **File** menu of the Authenticator to **Close Beyond Identity**. Selecting this menu item minimizes the Authenticator application to the Windows Task Tray. Likewise, closing the window from the upper right (X) or selecting Close from the Authenticator's system menu minimizes the Authenticator application to the task tray.
 
-### Zowe Explorer
+  ![app-registration-overview.png](../images/authenticator-file-close-bi.png)
 
-## Bug fixes
+- Renamed **Exit Beyond Identity** to **Shutdown Beyond Identity** in the Windows Task Tray context menu. Right-clicking the application icon in the task tray is now the only way to completely shut down the Windows PA.
 
-Zowe Version 2.3.0 contains the bug fixes that are described in the following topics.
+  ![app-registration-overview.png](../images/authenticator-task-tray-shutdown-bi.png)
 
-### Zowe installation and packaging
+- Changed the message displayed when shutting down the application from the task tray, warning the user that this action may impact authentication.
 
-### Zowe Application Framework
+  ![app-registration-overview.png](../images/authenticator-task-tray-shutdown-bi-2.png)
 
-### Zowe API Mediation Layer
+## Desktop Login
 
-### Zowe CLI
 
-### Zowe Explorer
 
-### Vulnerabilities fixed
+## API
 
-Zowe discloses fixed vulnerabilities in a timely manner giving you sufficient time to plan your upgrades. Zowe does not disclose the vulnerabilities fixed in the latest release as we respect the need for at least 45 days to decide when and how you upgrade Zowe. When a new release is published, Zowe publishes the vulnerabilities fixed in the previous release. For more information about the Zowe security policy, see the [Security page](https://www.zowe.org/security.html) on the Zowe website.
 
-The following security issues were fixed by the Zowe security group in version 2.2.
 
 ```
 
@@ -61,85 +58,7 @@ The following security issues were fixed by the Zowe security group in version 2
 
 ## How to update the release notes
 
-Zowe release notes build on its components' CHANGELOGs. Each component or area maintains a CHANGELOGs in the GitHub repo. Zowe V1 and V2 tracks a separate set of CHANGELOGs. The following list shows all V2 release CHANGELOGs (keeps updating). 
 
-For recommendations about CHANGELOGs, see [CHANGELOG recommendations](#changelog-recommendations)
-
-- Install and packaging
-  > Pull updates in the section that matches Zowe release number like 2.6.0.
-  - https://github.com/zowe/zowe-install-packaging/blob/v2.x/rc/CHANGELOG.md    
-    
-- App Framework
-  > Pull updates in the section that matches Zowe release number.
-  - https://github.com/zowe/zlux-app-server/blob/v2.x/staging/CHANGELOG.md
-  - https://github.com/zowe/zss/blob/v2.x/staging/CHANGELOG.md
-  - https://github.com/zowe/zowe-common-c/blob/v2.x/staging/CHANGELOG.md
-  - https://github.com/zowe/zlux-app-manager/blob/v2.x/staging/CHANGELOG.md
-  - https://github.com/zowe/zlux-server-framework/blob/v2.x/staging/CHANGELOG.md
- 
-  > Based on change history timestamp, pull updates after last release.
-  - https://github.com/zowe/zlux-editor/blob/v2.x/staging/CHANGELOG.md
-  - https://github.com/zowe/tn3270-ng2/blob/v2.x/staging/CHANGELOG.md
-  - https://github.com/zowe/vt-ng2/blob/v2.x/staging/CHANGELOG.md
-  - https://github.com/zowe/sample-angular-app/blob/v2.x/rc/CHANGELOG.md
-  - https://github.com/zowe/explorer-uss/blob/v2.x/master/CHANGELOG.md
-  - https://github.com/zowe/explorer-mvs/blob/v2.x/master/CHANGELOG.md
-  - https://github.com/zowe/explorer-jes/blob/v2.x/master/CHANGELOG.md
-
-- APIML
-  > Pull updates in the section that matches Zowe release number.
-  - https://github.com/zowe/api-layer/blob/v2.x.x/CHANGELOG.md
-
-- CLI 
-  > Based on change history timestamp, pull updates after last release or identify CLI versions included in the release.
-  - Core: https://github.com/zowe/zowe-cli/blob/master/packages/cli/CHANGELOG.md
-  - Imperative CLI Framework: https://github.com/zowe/imperative/blob/master/CHANGELOG.md
-  - CICS plug-in: https://github.com/zowe/zowe-cli-cics-plugin/blob/master/CHANGELOG.md
-  - DB2 plug-in: https://github.com/zowe/zowe-cli-db2-plugin/blob/master/CHANGELOG.md
-  - FTP Plug-in: https://github.com/zowe/zowe-cli-ftp-plugin/blob/master/CHANGELOG.md
-
-- Zowe Explorer
-  > Pull updates in the section that matches Zowe release number.
-  - https://github.com/zowe/vscode-extension-for-zowe/blob/master/packages/zowe-explorer/CHANGELOG.md
-
-
-The following list shows all V1 release CHANGELOGs.
-
-- Install and packaging
-  
-  - https://github.com/zowe/zowe-install-packaging/blob/v1.x/staging/CHANGELOG.md
-
-- App Framework
-
-  - https://github.com/zowe/zlux-app-server/blob/v1.x/staging/CHANGELOG.md
-  - https://github.com/zowe/zss/blob/v1.x/staging/CHANGELOG.md
-  - https://github.com/zowe/zlux-editor/blob/v1.x/staging/CHANGELOG.md
-  - https://github.com/zowe/zowe-common-c/blob/v1.x/staging/CHANGELOG.md
-  - https://github.com/zowe/tn3270-ng2/blob/v1.x/staging/CHANGELOG.md
-  - https://github.com/zowe/vt-ng2/blob/v1.x/staging/CHANGELOG.md
-  - https://github.com/zowe/zlux-app-manager/blob/v1.x/staging/CHANGELOG.md
-  - https://github.com/zowe/zlux-server-framework/blob/v1.x/staging/CHANGELOG.md
-  - https://github.com/zowe/sample-angular-app/blob/v1.x/staging/CHANGELOG.md
-  - https://github.com/zowe/explorer-uss/blob/v1.x/master/CHANGELOG.md
-  - https://github.com/zowe/explorer-mvs/blob/v1.x/master/CHANGELOG.md
-  - https://github.com/zowe/explorer-jes/blob/v1.x/master/CHANGELOG.md
-
-- APIML
-
-  - https://github.com/zowe/api-layer/blob/v1.x.x/CHANGELOG.md
-
-- CLI 
-
-  - Core: https://github.com/zowe/zowe-cli/blob/zowe-v1-lts/packages/cli/CHANGELOG.md
-  - Imperative CLI Framework: https://github.com/zowe/imperative/blob/zowe-v1-lts/CHANGELOG.md
-  - CICS plug-in: https://github.com/zowe/zowe-cli-cics-plugin/blob/zowe-v1-lts/CHANGELOG.md
-  - DB2 plug-in: https://github.com/zowe/zowe-cli-db2-plugin/blob/zowe-v1-lts/CHANGELOG.md
-  - FTP Plug-in: https://github.com/zowe/zowe-cli-ftp-plugin/blob/zowe-v1-lts/CHANGELOG.md
-  - Secure Credential Store Plug-in: https://github.com/zowe/zowe-cli-scs-plugin/blob/master/CHANGELOG.md
-
-- Zowe Explorer
-
-  - https://github.com/zowe/vscode-extension-for-zowe/blob/v1-lts/packages/zowe-explorer/CHANGELOG.md
 
 ### Vulnerabilities fixed
 
@@ -152,7 +71,7 @@ Follow the steps below to fetch the list of fixes for the previous release.
 3. Locate the previous release section. Then, navigate to the **Fixed** subsection. 
 4. Copy the list of fixes and paste them in the release notes.
 
-### CHANGELOG recommendations
+### Recommendations
 
 Project repos can set up CHANGELOGs to record user-facing changes to the repo. Changelog automation aims to improve the accuracy and consistency of Zowe Release Notes and reduces the overhead for dev/doc engineers.
 
