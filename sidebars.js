@@ -186,7 +186,7 @@ const sidebars = {
             'devops/bitbucket',
             'devops/github',
             'devops/gitlab',
-            'devops/devops-git-commit-signing',
+            'devops/git-commit-signing',
           ],
         },
         {
@@ -342,22 +342,7 @@ const sidebars = {
     },    
   ],
 
-/*  devOpsSidebar: [
-    'devops/secure-devops',
-    'devops/devops-release-notes',
-    'devops/aws-commit',
-    'devops/azure-devops',
-    'devops/bitbucket',
-    'devops/github',
-    'devops/gitlab',
-    'devops/devops-git-commit-signing',
 
-
-  ],
-  */
-  customerSidebar: [
-
-  ],
 };
 
 module.exports = sidebars;
