@@ -9,17 +9,17 @@ const config = {
 
   plugins: [
     'plugin-image-zoom',
-    '@chatwoot/docusaurus-plugin',
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      {
-        indexDocs: true,
-        indexBlog: false,
-        indexPages: true,
-        language: "en",
-        hashed: true
-      }
-    ],
+//    '@chatwoot/docusaurus-plugin',
+//    [
+//      require.resolve("@easyops-cn/docusaurus-search-local"),
+//      {
+//        indexDocs: true,
+//        indexBlog: false,
+//        indexPages: true,
+//        language: "en",
+//        hashed: true
+//      }
+//    ],
   ],
 themes: [
   '@docusaurus/theme-live-codeblock', 
@@ -44,10 +44,10 @@ themes: [
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
-  },
+//  i18n: {
+//    defaultLocale: 'en',
+//    locales: ['en'],
+//  },
   customFields: {
     // Put your custom environment here
    
@@ -184,20 +184,20 @@ themes: [
         
         copyright: `Copyright © ${new Date().getFullYear()} Beyond Identity`,
       },
-      chatwoot: {
-        websiteToken: "Your website inbox token",
-        baseURL: "https://app.chatwoot.com",  // optional
-        enableInDevelopment: false,  // optional
-        chatwootSettings: {
-          hideMessageBubble: false,
-          position: "left", // This can be left or right
-          locale: "en", // Language to be set
-          useBrowserLanguage: false, // Set widget language from user's browser
-          darkMode: "auto", // [light, auto]
-          type: "expanded_bubble",
-          launcherTitle: "What can I help you find?",
-        }
-      },
+//      chatwoot: {
+//        websiteToken: "Your website inbox token",
+//        baseURL: "https://app.chatwoot.com",  // optional
+//        enableInDevelopment: false,  // optional
+//        chatwootSettings: {
+//          hideMessageBubble: false,
+//          position: "left", // This can be left or right
+//          locale: "en", // Language to be set
+//          useBrowserLanguage: false, // Set widget language from user's browser
+//          darkMode: "auto", // [light, auto]
+//          type: "expanded_bubble",
+//          launcherTitle: "What can I help you find?",
+//        }
+//      },
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
