@@ -78,7 +78,7 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^2.3.1",
+    "@docusaurus/module-type-aliases": "^2.4.0",
     "autoprefixer": "^10.2.5",
     "mdx-loader": "^3.0.2",
     "postcss-loader": "^5.2.0",
