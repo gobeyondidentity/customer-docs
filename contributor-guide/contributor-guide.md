@@ -9,7 +9,7 @@ You are welcome to contribute to the Secure Workforce documentation in many form
   - [Helpful resources](#helpful-resources)
   - [Documentation repository](#documentation-repository)
   - [Sending a GitHub Pull Request](#sending-a-github-pull-request)
-  - [Opening an issue for Beyond Identity documentation](#opening-an-issue-for-Beyond Identity-documentation)
+  - [Opening an issue for Beyond Identity documentation](#opening-an-issue-for-beyond-identity-documentation)
   - [Documentation style guide ](#documentation-style-guide-)
     - [Headings and titles](#headings-and-titles)
       - [Use sentence-style capitalization for headings](#use-sentence-style-capitalization-for-headings)
@@ -52,12 +52,12 @@ You are welcome to contribute to the Secure Workforce documentation in many form
   - [Submit a Pull Request](#submit-a-pull-request)
   - [Report security issues](#report-security-issues)
   - [Contribution guidelines](#contribution-guidelines)
-  - [Promote Beyond Identity](#promote-Beyond Identity)
+  - [Promote Beyond Identity](#promote-beyond-identity)
 
 
 
 
-You are welcome to contribute to the Beyond Identity&trade; documentation repository. Anyone can open an issue about documentation, or contribute a change with a pull request (PR) to the [Beyond Identity/docs-site GitHub repository](https://github.com/Beyond Identity/docs-site/). 
+You are welcome to contribute to the Beyond Identity documentation repository. Anyone can open an issue about documentation, or contribute a change with a pull request (PR) to the [Beyond Identity/docs-site GitHub repository](https://github.com/Beyond Identity/docs-site/). 
 
 ## Before You Get Started<a name="start"></a>
 
