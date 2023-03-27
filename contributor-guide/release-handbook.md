@@ -17,13 +17,12 @@ Learn how to handle the documentation for Beyond Identity releases.
     - [Release checklist](#release-checklist)
   - [Removing archived version](#removing-archived-version)
   - [Update web help and type doc](#update-web-help-and-type-doc)
-  - [Updating TPSR](#updating-tpsr)
 
 ## Release schedule 
 
 The Beyond Identity community communicates the release schedule in several ways. 
-- [Beyond Identity release cadence document](https://github.com/Beyond Identity/community/blob/master/Project%20Management/Schedule/Beyond Identity%20PI%20%26%20Sprint%20Cadence.md) 
-- [#Beyond Identity-release](https://openmainframeproject.slack.com/archives/G01M2C8QB3K) Slack channel (private for only release leads. Contact the CICD squad lead for invitation and access.)
+- Beyond Identity release cadence document 
+- [#Beyond Identity-release](https://beyond-id.slack.com/archives/C01JTLD5CAU) Slack channel (private for only release leads. Contact the CICD squad lead for invitation and access.)
 
 Release contacts are as follows:  
 
@@ -48,7 +47,7 @@ This information guides you to archive the documentation of the previous version
 
 ### Before you begin
 
-The vNext release documentation is hosted in the `docs-staging` branch. The `docs-staging` branch is merged to the `master` branch when a release is published. 
+The vNext release documentation is hosted in the `docs-staging` branch. The `docs-staging` branch is merged to the `main` branch when a release is published. 
 
 Once a new release rolls out, the `docs-staging` branch should be updated to get prepared for the next release. The updates include but are not limited to the following aspects:
 
@@ -60,8 +59,8 @@ The following steps takes v1.25 release prepration as an example. v1.24 was rele
 
 ### Part 1: Archive the previous release doc
 
-1. Update the `docs-staging` branch so it includes all the necessary updates made to the `master` branch. You may need to cherry pick changes to ensure the correct content is copied over to `docs-staging`.
-    - You can use GitHub Desktop to do this. Select the `Branch` menu, then the `Compare to branch` option. Select the `master` branch for comparison.
+1. Update the `docs-staging` branch so it includes all the necessary updates made to the `main` branch. You may need to cherry pick changes to ensure the correct content is copied over to `docs-staging`.
+    - You can use GitHub Desktop to do this. Select the `Branch` menu, then the `Compare to branch` option. Select the `main` branch for comparison.
 2. Go to the `docs-staging` branch.
 3. Navigate to the `/docs-site` directory.
 4. Run the following command:
@@ -204,23 +203,23 @@ Done! The site setup for the new release version is now complete.
 
 ### What to do next 
 
-Next, you must inform the squad and community that the branch for the vNext release is ready for doc changes. Post an announcement in the Slack channel [#Beyond Identity-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ). 
+Next, you must inform ??? that the branch for the vNext release is ready for doc changes. Post an announcement in the Slack channel .... 
 
 ## Sycn changes between releases
 
-Before the new release is published, you need to cherry-pick changes from the `master` branch periodically into the `docs-staging` branch to ensure that important changes are incorporated into the next release. The changes could include but are not limited to: 
+Before the new release is published, you need to cherry-pick changes from the `main` branch periodically into the `docs-staging` branch to ensure that important changes are incorporated into the next release. The changes could include but are not limited to: 
 
-- Late-coming doc changes that go to the `master` branch directly after the GA. 
+- Late-coming doc changes that go to the `main` branch directly after the GA. 
 
    For example, a feature doc for v1.24 didn't catch the GA date and two days after the v1.24 GA, the doc was published directly to master. In this case, it should be synchronized back to the docs-staging branch as these changes also apply to the next release. 
-- Doc fixes into the `master` branch, such as broken links, typos, doc editings. 
-- Doc enhancements into the `master` branch, such as refactoring, edits, new troubleshooting tips, etc. 
+- Doc fixes into the `main` branch, such as broken links, typos, doc editings. 
+- Doc enhancements into the `main` branch, such as refactoring, edits, new troubleshooting tips, etc. 
 
 ## Publish documentation for a new release
 
 The documentation for the new release is published with the build simultaneously. 
 
-Usually 1 week before the GA date of the new release, create a PR to merge the `docs-staging` branch to the `master` branch and do the following:
+Usually 1 week before the GA date of the new release, create a PR to merge the `docs-staging` branch to the `main` branch and do the following:
 
 - Add the Beyond Identity release engineer to the reviewer list. Check out the [release communication](#release-communication) section for up-to-date names. 
 - Add Beyond Identity Doc Squad maintainers to the reivewer list. 
@@ -230,14 +229,13 @@ Usually 2 days before the GA date, review the [release checklist](#release-check
 
 ### Release checklist
 
+<!-- 
+
 |Checkpoint | Due Date | Details
 |--|--|--|
-|New version doc setup               | Right after a release is published |See the [Preparing documentation for a new release](#preparing-documentation-for-a-new-release) on the `docs-staging` branch |  
+|New version doc setup               | Right after a release is published |See the Preparing documentation for a new release on the `docs-staging` branch |  
 |Relnotes: CHANGELOG update cutoff   | 3 days before GA | Doc squad to work with squads to complete review | 
 |Relnotes: Draft review              | 3 days before GA | First run of release notes. Squad leads review the draft. | 
-|Beyond Identity CLI: Update web help and type doc |  | Beyond Identity CLI squad
-|Update TPSR                         |  | Work with CICD squad. See [Updating TPSR](#updating-tpsr) for how-to. 
-|Doc freeze, PR for publish ready    | 1 day before GA | All release PRs merged. Action: Inform CI/CD squad of the doc PR number. Add CICD members as a reviewer of the PR. 
 |Doc publish                         | GA day | Work with CICD squad to merge the doc PR. 
 |Doc validation                      | 1 hour within publish | Check that the doc site has been refreshed correctly. 
 |Build and upload new release PDF file | 1 hour within publish | See [PDF generation guide](https://github.com/Beyond Identity/docs-site/blob/master/release-handbook/pdf_generation_guide.md#steps-to-manually-generate-pdf-recommended) for how-to. It's recommended that you run the manual build and then create a PR against the master branch to upload the PDF file. 
@@ -246,9 +244,11 @@ Usually 2 days before the GA date, review the [release checklist](#release-check
 |Write release blog, upload release demo video                  |  | Convert the system demo recording into a blog. 
 |Add release demo video and blog link back in the release notes | Once the video and blog is published | Go to the release notes and add the links. For example, `Release demo: Check out the Beyond Identity demo video for v1.24.0 to see a demo of what's new in this release. Release blog: Read this blog Beyond Identity 1.24 Release Highlights written by Joe Winchester for a deeper dive of the major enhancements and changes for this release.` 
 
+-->
+
 ## Removing archived version
 
-Removing archived version is necessary once two new versions are released to reduce total deploy & build time. It is advisable to keep latest **8-9 versions only** in the `master` branch to avoid build failure.
+Removing archived version is necessary once two new versions are released to reduce total deploy & build time. It is advisable to keep latest **8-9 versions only** in the `main` branch to avoid build failure.
 
 - Remove the specific version from `/versions.json` file.
 - Delete the specific complete version folder from `/versioned_docs` directory. Example: `versioned_docs/version-v1.17.x.`
@@ -288,8 +288,4 @@ Note: Instructions use Visual Studio Code and GitHub Desktop. Replace version nu
 10. In GitHub Desktop, commit your updates to your branch.
 11. Merge your branch to `docs-staging`.
 
-## Updating TPSR
 
-Pick up the latest licenses file from this location: https://Beyond Identity.jfrog.io/Beyond Identity/libs-release-local/org/Beyond Identity/licenses/. Open the release folder and download the `Beyond Identity_licenses_full.zip` file. 
-
-Extract the file and copy the content into the placeholder TPSR document for the release in the /tpsr folder.

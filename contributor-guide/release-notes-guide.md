@@ -60,17 +60,6 @@ Here are the changes we made:
 
 
 
-### Vulnerabilities fixed
-
-As described, when a new release is published, Beyond Identity publishes the vulnerabilities fixed in the **previous** release. 
-
-Follow the steps below to fetch the list of fixes for the previous release. 
-
-1. Go to the [Beyond Identity/security-reports](https://github.com/Beyond Identity/security-reports) repo. This is a private repo. Contact the security group (Nicholas Kocsis - Slack @Nick) to gain access.
-2. Open [https://github.com/Beyond Identity/security-reports/blob/master/security-vulnerabilities.md](https://github.com/Beyond Identity/security-reports/blob/master/security-vulnerabilities.md). 
-3. Locate the previous release section. Then, navigate to the **Fixed** subsection. 
-4. Copy the list of fixes and paste them in the release notes.
-
 ### Recommendations
 
 Project repos can set up CHANGELOGs to record user-facing changes to the repo. Changelog automation aims to improve the accuracy and consistency of Beyond Identity Release Notes and reduces the overhead for dev/doc engineers.
