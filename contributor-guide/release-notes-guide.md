@@ -62,18 +62,18 @@ Here are the changes we made:
 
 ### Vulnerabilities fixed
 
-As described, when a new release is published, Zowe publishes the vulnerabilities fixed in the **previous** release. 
+As described, when a new release is published, Beyond Identity publishes the vulnerabilities fixed in the **previous** release. 
 
 Follow the steps below to fetch the list of fixes for the previous release. 
 
-1. Go to the [zowe/security-reports](https://github.com/zowe/security-reports) repo. This is a private repo. Contact the security group (Nicholas Kocsis - Slack @Nick) to gain access.
-2. Open [https://github.com/zowe/security-reports/blob/master/security-vulnerabilities.md](https://github.com/zowe/security-reports/blob/master/security-vulnerabilities.md). 
+1. Go to the [Beyond Identity/security-reports](https://github.com/Beyond Identity/security-reports) repo. This is a private repo. Contact the security group (Nicholas Kocsis - Slack @Nick) to gain access.
+2. Open [https://github.com/Beyond Identity/security-reports/blob/master/security-vulnerabilities.md](https://github.com/Beyond Identity/security-reports/blob/master/security-vulnerabilities.md). 
 3. Locate the previous release section. Then, navigate to the **Fixed** subsection. 
 4. Copy the list of fixes and paste them in the release notes.
 
 ### Recommendations
 
-Project repos can set up CHANGELOGs to record user-facing changes to the repo. Changelog automation aims to improve the accuracy and consistency of Zowe Release Notes and reduces the overhead for dev/doc engineers.
+Project repos can set up CHANGELOGs to record user-facing changes to the repo. Changelog automation aims to improve the accuracy and consistency of Beyond Identity Release Notes and reduces the overhead for dev/doc engineers.
 
 If a CHANGELOG is set up, ensure that it’s properly formatted. For the doc squad to pick up the updates, the following rules MUST be met. 
 
@@ -81,7 +81,7 @@ If a CHANGELOG is set up, ensure that it’s properly formatted. For the doc squ
 
     Example: 
     ```
-    Added the validate only mode of Zowe. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. #1335 
+    Added the validate only mode of Beyond Identity. This allows you to check whether all the component validation checks of the Beyond Identity installation pass without starting any of the components. #1335 
     ```
 
 2. Indicate whether the change is a new feature/enhancement or a bug fix.  This helps users understand quickly what new enhancements are introduced and decide whether to upgrade. 
@@ -118,7 +118,7 @@ We recommend the following writing style for release notes entries:
 
     Example: 
     ```
-    Added the validate only mode of Zowe. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. #1335
+    Added the validate only mode of Beyond Identity. This allows you to check whether all the component validation checks of the Beyond Identity installation pass without starting any of the components. #1335
     ```
    - If a bug fix, state clearly what issue was resolved. 
 

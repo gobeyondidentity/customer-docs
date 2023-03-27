@@ -126,7 +126,7 @@ Use `npm run serve` command to test your build locally.
 Homepage is composed of the following sections:
 - Header
 - Banner
-  - Zowe Docs
+  - Beyond Identity Docs
   - Search Bar
 - Components
   - Popular Resources
@@ -159,18 +159,18 @@ The icons used in all the sections are stored in the `./staic/img` folder. To up
    {
       type: "Doc",
       label: "Command Reference",
-      docId: "appendix/zowe-cli-command-reference",
+      docId: "appendix/Beyond Identity-cli-command-reference",
       position: "left",
     },
    ```
 
-### Updating Banner: Zowe Docs
+### Updating Banner: Beyond Identity Docs
 
 - To update the content:
     Navigate to the `/docusaurus.config.js` directory and change the **title** field:
     ```
     module.exports = {
-      title: "Zowe Docs",
+      title: "Beyond Identity Docs",
     ```
 
 - To update the CSS:
@@ -238,20 +238,20 @@ Each component has an independent subfolder in the `/src/components` directory. 
 
 For example:
 
-To update the hyperlink to `Download Zowe` in the the **Popular Resources** section:
+To update the hyperlink to `Download Beyond Identity` in the the **Popular Resources** section:
 
 1. Navigate to the `/src/components/PopularResources` directory and locate the `PopularResources.js` file.
 
-1. Find the `title: "Download Zowe"` line to identify the right location and update its `link` variable.
+1. Find the `title: "Download Beyond Identity"` line to identify the right location and update its `link` variable.
 
 ```
 {
-    title: "Download Zowe",
-    link: "https://www.zowe.org/download.html",
-    icon: "img/download_zowe-icon.png",
+    title: "Download Beyond Identity",
+    link: "https://www.Beyond Identity.org/download.html",
+    icon: "img/download_Beyond Identity-icon.png",
     description: (
       <>
-        Zowe has both server and client components, which you can install
+        Beyond Identity has both server and client components, which you can install
         independently.
       </>
     ),
@@ -287,25 +287,25 @@ function Resource({ title, link, icon, description }) {
   );
 }
 ```
-- Update the contents and links of `Dowload Zowe` and `Try Zowe`.
+- Update the contents and links of `Dowload Beyond Identity` and `Try Beyond Identity`.
 ```
 const data = [
   {
-    title: "Download Zowe",
-    link: "https://www.zowe.org/download.html",
-    icon: "img/download_zowe-icon.png",
+    title: "Download Beyond Identity",
+    link: "https://www.Beyond Identity.org/download.html",
+    icon: "img/download_Beyond Identity-icon.png",
     description: (
       <>
-        Zowe has both server and client components, which you can install
+        Beyond Identity has both server and client components, which you can install
         independently.
       </>
     ),
   },
   {
-    title: "Try Zowe",
+    title: "Try Beyond Identity",
     link: "https://www.ibm.com/account/reg/us-en/signup?formid=urx-38870",
-    icon: "img/try_zowe-icon.png",
-    description: <>Get your hands on a Zowe trial on demand at no charge.</>,
+    icon: "img/try_Beyond Identity-icon.png",
+    description: <>Get your hands on a Beyond Identity trial on demand at no charge.</>,
   },
 ];
 ```
@@ -320,7 +320,7 @@ const data = [
   <iframe
     src="https://www.youtube.com/embed/7XpOjREP8JU"
     className={clsx(styles.responsiveIframe)}
-    title="Introduction to Zowe"
+    title="Introduction to Beyond Identity"
     frameBorder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
     allowFullScreen
@@ -329,7 +329,7 @@ const data = [
     className={clsx("margin-top--sm", styles.posAbsolute)}
     href="https://www.youtube.com/embed/7XpOjREP8JU"
   >
-    Get an overview of Zowe
+    Get an overview of Beyond Identity
   </a>
 </div>
 </div>
@@ -354,8 +354,8 @@ const firstDataRow = [
     link: "stable/getting-started/overview",
     description: (
       <>
-        Learn about Zowe™ architecture, components, and how to quickly get
-        started with Zowe. Read about what's new and changed in the Release
+        Learn about Beyond Identity™ architecture, components, and how to quickly get
+        started with Beyond Identity. Read about what's new and changed in the Release
         Notes, FAQs.
       </>
     ),
@@ -403,15 +403,15 @@ For example, to update the `Products` section, edit the variables in the followi
   items: [
     {
       label: "Download",
-      href: "https://www.zowe.org/download.html",
+      href: "https://www.Beyond Identity.org/download.html",
     },
     {
-      label: "Try Zowe",
-      href: "https://www.openmainframeproject.org/projects/zowe/ztrial",
+      label: "Try Beyond Identity",
+      href: "https://www.openmainframeproject.org/projects/Beyond Identity/ztrial",
     },
     {
       label: "Features",
-      href: "https://docs.zowe.org/stable/getting-started/overview.html",
+      href: "https://docs.Beyond Identity.org/stable/getting-started/overview.html",
     },
   ],
 },
@@ -421,9 +421,9 @@ For example, to update the `Products` section, edit the variables in the followi
 
 ### ZWE command reference
 
-The ZWE command reference guide is published under References on the doc site. It's updated automatically from the zowe-install-packaging repo by using GitHub Actions ((https://github.com/zowe/zowe-install-packaging/actions/workflows/zwe-doc-generation.yml)[https://github.com/zowe/zowe-install-packaging/actions/workflows/zwe-doc-generation.yml]). 
+The ZWE command reference guide is published under References on the doc site. It's updated automatically from the Beyond Identity-install-packaging repo by using GitHub Actions ((https://github.com/Beyond Identity/Beyond Identity-install-packaging/actions/workflows/zwe-doc-generation.yml)[https://github.com/Beyond Identity/Beyond Identity-install-packaging/actions/workflows/zwe-doc-generation.yml]). 
 
-- This action runs whenever there is a change to zowe-install-packaging (which is where zwe is defined, so any change to zwe commands will trigger this action).
-- This action generates the zwe documentation and creates a PR to the Zowe docs-site repo. If there are no changes to zwe, then no PR is created. This is an example PR that was created: https://github.com/zowe/docs-site/pull/2076. Therefore, changes will get merged into staging branch on a consistent basis for the release process.
+- This action runs whenever there is a change to Beyond Identity-install-packaging (which is where zwe is defined, so any change to zwe commands will trigger this action).
+- This action generates the zwe documentation and creates a PR to the Beyond Identity docs-site repo. If there are no changes to zwe, then no PR is created. This is an example PR that was created: https://github.com/Beyond Identity/docs-site/pull/2076. Therefore, changes will get merged into staging branch on a consistent basis for the release process.
 
-For Zowe doc maintainers, ensure that you review and merge PRs titled **Update zwe server command reference** from branch **auto-update-zwe-reference** during new release preparation.
+For Beyond Identity doc maintainers, ensure that you review and merge PRs titled **Update zwe server command reference** from branch **auto-update-zwe-reference** during new release preparation.

@@ -2,7 +2,7 @@
 
 <!-- is this Versioning? I believe it is -->
 
-Learn how to handle the documentation for Zowe releases.
+Learn how to handle the documentation for Beyond Identity releases.
 
 - [Release handbook](#release-handbook)
   - [Release schedule](#release-schedule)
@@ -21,15 +21,15 @@ Learn how to handle the documentation for Zowe releases.
 
 ## Release schedule 
 
-The Zowe community communicates the release schedule in several ways. 
-- [Zowe release cadence document](https://github.com/zowe/community/blob/master/Project%20Management/Schedule/Zowe%20PI%20%26%20Sprint%20Cadence.md) 
-- [#zowe-release](https://openmainframeproject.slack.com/archives/G01M2C8QB3K) Slack channel (private for only release leads. Contact the CICD squad lead for invitation and access.)
+The Beyond Identity community communicates the release schedule in several ways. 
+- [Beyond Identity release cadence document](https://github.com/Beyond Identity/community/blob/master/Project%20Management/Schedule/Beyond Identity%20PI%20%26%20Sprint%20Cadence.md) 
+- [#Beyond Identity-release](https://openmainframeproject.slack.com/archives/G01M2C8QB3K) Slack channel (private for only release leads. Contact the CICD squad lead for invitation and access.)
 
 Release contacts are as follows:  
 
 - Release engineer: OJ Celis (Slack @OJ Celis)
 
-For each release, Zowe documentation should define a doc delivery schedule with several key checkpoints. Code freeze date is not doc freeze date. The doc usually freezes 1 day before the GA date to allow time for doc build testing and issue fix. We also define a freeze date for release notes which is usually 3 days before the GA date to allow time for review. 
+For each release, Beyond Identity documentation should define a doc delivery schedule with several key checkpoints. Code freeze date is not doc freeze date. The doc usually freezes 1 day before the GA date to allow time for doc build testing and issue fix. We also define a freeze date for release notes which is usually 3 days before the GA date to allow time for review. 
 
 The following schedule takes release version 2.4 as an example: 
 
@@ -56,7 +56,7 @@ Once a new release rolls out, the `docs-staging` branch should be updated to get
 - Bump the release version number to vNext
 - Create placeholder files and folders for the vNext release, such as release notes document and TPSR document
 
-The following steps takes v1.25 release prepration as an example. v1.24 was released a day ago, now we will prepare the `docs-staging` branch for the v1.25 release. An example commit for the steps can be found in [this](https://github.com/zowe/docs-site/commit/7f3dc7a938609d84f15d3ad6e67198155d0de029) commit. 
+The following steps takes v1.25 release prepration as an example. v1.24 was released a day ago, now we will prepare the `docs-staging` branch for the v1.25 release. An example commit for the steps can be found in [this](https://github.com/Beyond Identity/docs-site/commit/7f3dc7a938609d84f15d3ad6e67198155d0de029) commit. 
 
 ### Part 1: Archive the previous release doc
 
@@ -100,11 +100,11 @@ The following steps takes v1.25 release prepration as an example. v1.24 was rele
    
      ![Update CLI web help](images/update-cli-web-help.png)
 
-   * Search all instaces of `<a href="/stable/CLIReference_Zowe.pdf" target="_blank">` and replace `stable` with the previous version before adding the new version. Example: `<a href="/v1.24.x/CLIReference_Zowe.pdf" target="_blank">`.
+   * Search all instaces of `<a href="/stable/CLIReference_Beyond Identity.pdf" target="_blank">` and replace `stable` with the previous version before adding the new version. Example: `<a href="/v1.24.x/CLIReference_Beyond Identity.pdf" target="_blank">`.
 
      ![Update CLI reference PDF](images/update-cli-reference.png)
 
-   * Search all instaces of `<a href="/stable/zowe_web_help.zip" target="_blank">` and replace `stable` with the previous version before adding the new version. Example: `<a href="/v1.24.x/zowe_web_help.zip" target="_blank">`. 
+   * Search all instaces of `<a href="/stable/Beyond Identity_web_help.zip" target="_blank">` and replace `stable` with the previous version before adding the new version. Example: `<a href="/v1.24.x/Beyond Identity_web_help.zip" target="_blank">`. 
 
      ![Update CLI web help ZIP](images/update-cli-help-zip.png)
 
@@ -130,7 +130,7 @@ presets: [
         docs: {
           path: "docs",
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: "https://github.com/zowe/docs-site/edit/master/",
+          editUrl: "https://github.com/Beyond Identity/docs-site/edit/master/",
           showLastUpdateAuthor: false,
           showLastUpdateTime: true,
           routeBasePath: "/",
@@ -192,7 +192,7 @@ presets: [
         {
           type: "link",
           label: "Third Party Software Requirements",
-          href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v1.25.x.md",
+          href: "https://github.com/Beyond Identity/docs-site/tree/master/tpsr/tpsr-v1.25.x.md",
         },
         ```
 
@@ -204,7 +204,7 @@ Done! The site setup for the new release version is now complete.
 
 ### What to do next 
 
-Next, you must inform the squad and community that the branch for the vNext release is ready for doc changes. Post an announcement in the Slack channel [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ). 
+Next, you must inform the squad and community that the branch for the vNext release is ready for doc changes. Post an announcement in the Slack channel [#Beyond Identity-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ). 
 
 ## Sycn changes between releases
 
@@ -222,8 +222,8 @@ The documentation for the new release is published with the build simultaneously
 
 Usually 1 week before the GA date of the new release, create a PR to merge the `docs-staging` branch to the `master` branch and do the following:
 
-- Add the Zowe release engineer to the reviewer list. Check out the [release communication](#release-communication) section for up-to-date names. 
-- Add Zowe Doc Squad maintainers to the reivewer list. 
+- Add the Beyond Identity release engineer to the reviewer list. Check out the [release communication](#release-communication) section for up-to-date names. 
+- Add Beyond Identity Doc Squad maintainers to the reivewer list. 
 - Check the build status and send build issues to the doc squad. 
 
 Usually 2 days before the GA date, review the [release checklist](#release-checklist) for the release to ensure that all items are complete. 
@@ -235,16 +235,16 @@ Usually 2 days before the GA date, review the [release checklist](#release-check
 |New version doc setup               | Right after a release is published |See the [Preparing documentation for a new release](#preparing-documentation-for-a-new-release) on the `docs-staging` branch |  
 |Relnotes: CHANGELOG update cutoff   | 3 days before GA | Doc squad to work with squads to complete review | 
 |Relnotes: Draft review              | 3 days before GA | First run of release notes. Squad leads review the draft. | 
-|Zowe CLI: Update web help and type doc |  | Zowe CLI squad
+|Beyond Identity CLI: Update web help and type doc |  | Beyond Identity CLI squad
 |Update TPSR                         |  | Work with CICD squad. See [Updating TPSR](#updating-tpsr) for how-to. 
 |Doc freeze, PR for publish ready    | 1 day before GA | All release PRs merged. Action: Inform CI/CD squad of the doc PR number. Add CICD members as a reviewer of the PR. 
 |Doc publish                         | GA day | Work with CICD squad to merge the doc PR. 
 |Doc validation                      | 1 hour within publish | Check that the doc site has been refreshed correctly. 
-|Build and upload new release PDF file | 1 hour within publish | See [PDF generation guide](https://github.com/zowe/docs-site/blob/master/release-handbook/pdf_generation_guide.md#steps-to-manually-generate-pdf-recommended) for how-to. It's recommended that you run the manual build and then create a PR against the master branch to upload the PDF file. 
+|Build and upload new release PDF file | 1 hour within publish | See [PDF generation guide](https://github.com/Beyond Identity/docs-site/blob/master/release-handbook/pdf_generation_guide.md#steps-to-manually-generate-pdf-recommended) for how-to. It's recommended that you run the manual build and then create a PR against the master branch to upload the PDF file. 
 |Release promotion                   |  | Slack, LinkedIn, Twitter, etc
-|System demo                         |  | See the [OMP Calendar](https://lists.openmainframeproject.org/g/zowe-dev/calendar) for details.  
+|System demo                         |  | See the [OMP Calendar](https://lists.openmainframeproject.org/g/Beyond Identity-dev/calendar) for details.  
 |Write release blog, upload release demo video                  |  | Convert the system demo recording into a blog. 
-|Add release demo video and blog link back in the release notes | Once the video and blog is published | Go to the release notes and add the links. For example, `Release demo: Check out the Zowe demo video for v1.24.0 to see a demo of what's new in this release. Release blog: Read this blog Zowe 1.24 Release Highlights written by Joe Winchester for a deeper dive of the major enhancements and changes for this release.` 
+|Add release demo video and blog link back in the release notes | Once the video and blog is published | Go to the release notes and add the links. For example, `Release demo: Check out the Beyond Identity demo video for v1.24.0 to see a demo of what's new in this release. Release blog: Read this blog Beyond Identity 1.24 Release Highlights written by Joe Winchester for a deeper dive of the major enhancements and changes for this release.` 
 
 ## Removing archived version
 
@@ -254,7 +254,7 @@ Removing archived version is necessary once two new versions are released to red
 - Delete the specific complete version folder from `/versioned_docs` directory. Example: `versioned_docs/version-v1.17.x.`
 - Delete the versioned sidebars JSON file from `/versioned_sidebars`. Example: `versioned_sidebars/version-v1.17.x-sidebars.json`.
 - Delete the specific version's static files from `/static` directory. Example: `static/v1.17.x`.
-- Add the specific version entry in `versionsArchived.json` file. Example: `"v1.17.x LTS": "https://zowe-archived-docs.netlify.app/v1.17.x/getting-started/overview"`.
+- Add the specific version entry in `versionsArchived.json` file. Example: `"v1.17.x LTS": "https://Beyond Identity-archived-docs.netlify.app/v1.17.x/getting-started/overview"`.
 - Navigate to the `/docusaurus.config.js` file and locate the `presets:` > `@docusaurus/preset-classic"` > `docs` > `versions`.
   Delete the definition of that version which is specified in the following format:
 
@@ -276,9 +276,9 @@ Note: Instructions use Visual Studio Code and GitHub Desktop. Replace version nu
 5. Select **Git Bash** from the Terminal **+** dropdown menu.
 6. In the Terminal, enter the command in **Line 2** of the **Editor** tab. Include everything after the colon:
 
-    `bash scripts/updateWebHelp.sh <zoweVersion> [<outputDir>]`
+    `bash scripts/updateWebHelp.sh <Beyond IdentityVersion> [<outputDir>]`
 
-7. Replace `<zoweVersion>` with the correct version in the following format:
+7. Replace `<Beyond IdentityVersion>` with the correct version in the following format:
     
     1.28.2
 8. Replace `[<outputDir>]` with the correct directory:
@@ -290,6 +290,6 @@ Note: Instructions use Visual Studio Code and GitHub Desktop. Replace version nu
 
 ## Updating TPSR
 
-Pick up the latest licenses file from this location: https://zowe.jfrog.io/zowe/libs-release-local/org/zowe/licenses/. Open the release folder and download the `zowe_licenses_full.zip` file. 
+Pick up the latest licenses file from this location: https://Beyond Identity.jfrog.io/Beyond Identity/libs-release-local/org/Beyond Identity/licenses/. Open the release folder and download the `Beyond Identity_licenses_full.zip` file. 
 
 Extract the file and copy the content into the placeholder TPSR document for the release in the /tpsr folder.
