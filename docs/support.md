@@ -12,6 +12,7 @@ last_update:
    date: 02/08/2022
    author: Patricia McPhee
 draft: true
+doc_type: reference
 displayed_sidebar: secureWorkforceSidebar
 ---
 

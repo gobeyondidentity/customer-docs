@@ -36,7 +36,7 @@ themes: [
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'throw',
   favicon: 'img/favicon.png',
-  trailingSlash: true,
+  trailingSlash: false,
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -174,6 +174,10 @@ customFields: {
                 to: '/blog', 
                 label: 'Release Notes 2'
               },
+              {
+                to: '/release-notes',
+                label: 'Release Notes 3',
+              }
             ],
           }, 
  
