@@ -4,7 +4,7 @@
 const sidebars = {
   // By default, Docusaurus generates a sidebar from the docs folder structure
   secureWorkforceSidebar: [
-
+    'welcome',
     {
       type: 'category',
       label: 'Get Started',  
@@ -42,6 +42,7 @@ const sidebars = {
           },      
           items: [ 
             'platform/configure-rbac', 
+            'platform/configure-admin-console-login-options',
             'platform/revoke-access-to-device', 
             'platform/reset-credentials',
             'view-policy-match-details', 
