@@ -1,8 +1,8 @@
 ---
 title: Automatic Git commit signing
-id: devops-git-commit-signing
+id: git-commit-signing
 description: ''
-slug: /devops-git-commit-signing 
+slug: /git-commit-signing 
 keywords: 
  - help
 pagination_next: null

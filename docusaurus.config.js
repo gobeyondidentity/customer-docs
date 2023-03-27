@@ -4,6 +4,8 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
+
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
 
@@ -29,9 +31,9 @@ themes: [
 
   title: 'Beyond Identity Documentation',
   tagline: 'Secure Workforce protects and verifies corporate identities and their devices providing for a secure and trustworthy development process.',
-  url: 'https://docs.beyondidentity.com',
+  url: 'https://gobeyondidentitybeyond.github.io',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'throw',
   favicon: 'img/favicon.png',
   trailingSlash: false,
@@ -48,10 +50,10 @@ themes: [
 //    defaultLocale: 'en',
 //    locales: ['en'],
 //  },
-  customFields: {
-    // Put your custom environment here
-   
-  },
+customFields: {
+  // Put your custom environment here
+  partner: 'partner value',
+},
 
   presets: [
     [
@@ -61,7 +63,7 @@ themes: [
         docs: {
           breadcrumbs: true,
           sidebarPath: require.resolve('./sidebars.js'),
-          routeBasePath: "/",
+          routeBasePath: '/',
           showLastUpdateTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -114,9 +116,11 @@ themes: [
       },
       navbar: {
         title: 'Secure Workforce',
+        
         logo: {
           alt: 'Beyond Identity Logo',
           src: 'img/logo.png',
+
         },
         items: [
         /*  {

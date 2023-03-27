@@ -1,21 +1,10 @@
-/**
- * Creating a sidebar enables you to:
- - create an ordered group of docs
- - render a sidebar for each doc of that group
- - provide next/previous navigation
 
- The sidebars can be generated from the filesystem, or explicitly defined here.
-
- Create as many sidebars as you want.
- */
-
-// @ts-check
 
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   // By default, Docusaurus generates a sidebar from the docs folder structure
   secureWorkforceSidebar: [
-
+    'welcome',
     {
       type: 'category',
       label: 'Get Started',  
@@ -53,6 +42,7 @@ const sidebars = {
           },      
           items: [ 
             'platform/configure-rbac', 
+            'platform/configure-admin-console-login-options',
             'platform/revoke-access-to-device', 
             'platform/reset-credentials',
             'view-policy-match-details', 
@@ -186,7 +176,7 @@ const sidebars = {
             'devops/bitbucket',
             'devops/github',
             'devops/gitlab',
-            'devops/devops-git-commit-signing',
+            'devops/git-commit-signing',
           ],
         },
         {
@@ -309,21 +299,6 @@ const sidebars = {
       ],
     },
 
-/*    {
-      type: 'category',
-      label: 'How-to\'s',
-      link: {
-        type: 'doc',
-        id: 'how-to-guides',
-      },         
-      items: [  
-        
-        'third-party-cookies-google',
-      ],
-    },
-*/
-
-
   ],
 
   releaseNotesSidebar: [
@@ -342,22 +317,7 @@ const sidebars = {
     },    
   ],
 
-/*  devOpsSidebar: [
-    'devops/secure-devops',
-    'devops/devops-release-notes',
-    'devops/aws-commit',
-    'devops/azure-devops',
-    'devops/bitbucket',
-    'devops/github',
-    'devops/gitlab',
-    'devops/devops-git-commit-signing',
 
-
-  ],
-  */
-  customerSidebar: [
-
-  ],
 };
 
 module.exports = sidebars;
