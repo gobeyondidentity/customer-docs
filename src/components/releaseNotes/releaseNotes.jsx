@@ -9,12 +9,14 @@ import TimelineOppositeContent, {
   timelineOppositeContentClasses,
 } from '@mui/lab/TimelineOppositeContent';
 import Link from '@docusaurus/Link';
+import styles from './releaseNotes.module.css';
 
 
 
-export const ReleaseVersion = '2.76.0';
 
-export const ReleaseDate = 'March 14, 2023';
+export const ReleaseVersion = '2.77.0';
+
+export const ReleaseDate = 'March 28, 2023';
 
 export const ReleaseNotes = [
 	'Improved RDP experience',
@@ -50,6 +52,7 @@ export const WhatsNew = [
 
 export default function ReleaseNotesTimeline() {
   return (
+    <section className={styles.topics}>
     <Timeline
       sx={{
         [`& .${timelineOppositeContentClasses.root}`]: {
@@ -78,8 +81,8 @@ export default function ReleaseNotesTimeline() {
                 to='/release-notes-main'			
 							>
 								release notes
-							</Link>{' '}
-							or{' '}
+							</Link> to see what we updated or fixed.{' '}
+							You can also {' '}
 							<Link to={`https://app.byndid.com/downloads`}>
 								{' '}
 								update to the latest version
@@ -89,7 +92,26 @@ export default function ReleaseNotesTimeline() {
 						<p>&nbsp;</p>
 					</div>
 
-                    
+          <TimelineItem>
+        
+        <TimelineOppositeContent  className={styles.topics} color="textSecondary" sx={{fontFamily: 'Overpass'}}>
+			<a href="/v2-77-0">
+          2.77.0</a>
+        </TimelineOppositeContent>
+        <TimelineSeparator>
+          <TimelineDot color="primary" />
+          <TimelineConnector />
+        </TimelineSeparator>
+        <TimelineContent sx={{fontFamily: 'Overpass', }}><p sx={{
+            color: 'success.dark',
+            display: 'inline',
+            fontWeight: 'bold',
+            mx: 0.5,
+            fontSize: 14,
+          }}
+          >New attributes are available in the Beyond Identity Policy Engine, including location-based attributes, egress IP address matching, and impossible travel detection.  
+            </p></TimelineContent>
+      </TimelineItem>              
       <TimelineItem>
         
         <TimelineOppositeContent color="textSecondary" sx={{fontFamily: 'Overpass'}}>
@@ -128,9 +150,11 @@ export default function ReleaseNotesTimeline() {
         <TimelineSeparator>
         <TimelineDot color="primary" />
         </TimelineSeparator>
-        <TimelineContent sx={{fontFamily: 'Overpass'}}>Additional features and capabilities for users and businesses that need tighter and customizable integration ...</TimelineContent>
+        <TimelineContent sx={{fontFamily: 'Overpass'}}>
+
+        </TimelineContent>
       </TimelineItem>
     </Timeline>
-    
+    </section>
   );
 }

@@ -19,8 +19,7 @@ const sidebars = {
         'sign-in-workflow',
         'supported-platforms',
         'release-notes/release-notes-main', 
-        'faq',
-        'glossary',
+
       ],
     },
     {
@@ -89,10 +88,35 @@ const sidebars = {
         id: 'policy/policy',
       },      
       items: [ 
-        'policy/define-policy', 
+        {
+          type: 'category',
+          label: 'Define policy',
+          collapsed: true,  
+          link: {
+            type: 'doc',
+            id: 'policy/define-policy', 
+          },      
+          items: [ 
+            'policy/build-release-policies',
+            'policy/define-antivirus-policy',
+            'policy/define-authentication-method-requirement-policy',
+            'policy/define-firewall-policy',
+            'policy/define-jailbroken-ios-policy',
+            'policy/define-rooted-android-policy',
+            'policy/define-policy-detect-running-processes',
+            'policy/define-security-software-policy',
+            'policy/limit-number-registered-devices',
+            'policy/set-platform-version-policy',
+            'policy/kandji/define-kandji-connection-policy',
+            'policy/kandji/define-kandji-mdm-policy',
+          ],
+        },
         'policy/policy-attribute-library',
         'policy/import-policy',
         'policy/export-policy',
+        'policy/view-policy-details',
+        'policy/restore-previous-policy-rules',
+
       ],
     },
     {
@@ -176,7 +200,6 @@ const sidebars = {
             'devops/bitbucket',
             'devops/github',
             'devops/gitlab',
-            'devops/git-commit-signing',
           ],
         },
         {
@@ -296,8 +319,24 @@ const sidebars = {
       },         
       items: [ 
         'devops/ssh-support',
+        'devops/git-commit-signing',
       ],
     },
+    {
+      type: 'html',
+      value: '<hr>',
+    },
+    {
+      type: 'category',
+      label: 'Resources',
+      collapsible: false,         
+      items: [ 
+        'get-support',
+        'faq',
+        'glossary',
+      ],
+    },
+
 
   ],
 
@@ -311,6 +350,7 @@ const sidebars = {
       },
       collapsible: false,    
       items: [ 
+        'release-notes/v2-77-0',
         'release-notes/v2-76-0',
         'release-notes/v2-75-0',
       ],

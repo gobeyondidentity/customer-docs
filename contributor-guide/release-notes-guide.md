@@ -4,46 +4,48 @@ Learn how Secure Workforce release notes are constructed, how to generate and su
 
 ## Release notes template
 
-The release notes follow a similar pattern for each release. The following template takes v2.76.0 as an example. 
+The release notes follow a similar pattern for each release. The following template takes v2.77.0 as an example. 
 
 ```
 ## Cloud
 
-We resolved the issue when switching between policy rules, the policy attributes with multiple fields didn't immediately update the values. Instead, showing the values from the previously selected rule.  
 
-## Authenticators
+### What's new
 
-:::info Operating systems supported
+The following attributes are available in the Beyond Identity Policy Engine:
 
-The Beyond Identity Authenticator is supported on the following platforms:
+- **Location-based** - includes Continents and Countries and is based on the source IP Address of the authenticating device. Use these attributes to permit, restrict, or monitor location-based transactions.
 
-- macOS 10.15 (Catalina) or later
+- **Egress IP Address Match Within Subnet** - use this attribute to enforce or monitor that source IP addresses of both devices in an add device transaction are within a specific range of IP addresses of each other.
 
-- Windows 10 build 19041 and later or Windows 11
-:::
+- **Impossible Travel** - use this attribute if two authentications have been performed by single user from locations not reasonable to travel between.
 
-We made the Windows Authenticator application more consistent with the Mac version. Windows users tend to close the application more often than Mac users, which has significantly impacted their authentication performance.
+### Updated
 
-Here are the changes we made:
+- Add device transaction events now include egress IP address information.
 
-- Renamed **Exit** under the **File** menu of the Authenticator to **Close Beyond Identity**. Selecting this menu item minimizes the Authenticator application to the Windows Task Tray. Likewise, closing the window from the upper right (X) or selecting Close from the Authenticator's system menu minimizes the Authenticator application to the task tray.
+- Upon saving policies with a Crowdstrike integration attribute configured, the policy engine now validates the configuration of the Crowdstrike integration and connectivity to the Crowdstrike cloud.
 
-  ![app-registration-overview.png](../images/authenticator-file-close-bi.png)
-
-- Renamed **Exit Beyond Identity** to **Shutdown Beyond Identity** in the Windows Task Tray context menu. Right-clicking the application icon in the task tray is now the only way to completely shut down the Windows PA.
-
-  ![app-registration-overview.png](../images/authenticator-task-tray-shutdown-bi.png)
-
-- Changed the message displayed when shutting down the application from the task tray, warning the user that this action may impact authentication.
-
-  ![app-registration-overview.png](../images/authenticator-task-tray-shutdown-bi-2.png)
 
 ## Desktop Login
 
+import SupportedOsAuthenticatorWindowsOnly from '../../static/includes/_supported-os-authenticator-windows-only.mdx';
 
+<SupportedOsAuthenticatorWindowsOnly />
 
-## API
+### Updated
 
+New Windows Desktop Login installations using the MSI method no longer require a reboot. For previously installed versions, v2.76.0 or earlier, you can safely bypass the Windows reboot by executing the following msiexec command when upgrading to v2.77.0:
+
+```
+msiexec.exe [install_options] <path_to_package> /norestart
+```
+
+Future Windows Desktop Login software versions will not require the `msiexec /norestart` option.
+
+### Resolved
+
+When a host \[source\] is accessing a Windows system \[destination\] through Microsoft Remote Desktop Protocol (RDP), the Windows Desktop Login will not allow enrollment on the destination machine. Disallowing enrollment from the RDP session ensures the security and integrity of the destination machine.
 
 
 ```
@@ -56,24 +58,13 @@ Here are the changes we made:
 - Send it to the community (squad leads) to review. 
 - Publish the release notes. 
 
-## How to update the release notes
+## How to create the release notes
 
-
-
-### Vulnerabilities fixed
-
-As described, when a new release is published, Zowe publishes the vulnerabilities fixed in the **previous** release. 
-
-Follow the steps below to fetch the list of fixes for the previous release. 
-
-1. Go to the [zowe/security-reports](https://github.com/zowe/security-reports) repo. This is a private repo. Contact the security group (Nicholas Kocsis - Slack @Nick) to gain access.
-2. Open [https://github.com/zowe/security-reports/blob/master/security-vulnerabilities.md](https://github.com/zowe/security-reports/blob/master/security-vulnerabilities.md). 
-3. Locate the previous release section. Then, navigate to the **Fixed** subsection. 
-4. Copy the list of fixes and paste them in the release notes.
+...steps for creating release notes...
 
 ### Recommendations
 
-Project repos can set up CHANGELOGs to record user-facing changes to the repo. Changelog automation aims to improve the accuracy and consistency of Zowe Release Notes and reduces the overhead for dev/doc engineers.
+Project repos can set up CHANGELOGs to record user-facing changes to the repo. Changelog automation aims to improve the accuracy and consistency of Beyond Identity Release Notes and reduces the overhead for dev/doc engineers.
 
 If a CHANGELOG is set up, ensure that it’s properly formatted. For the doc squad to pick up the updates, the following rules MUST be met. 
 
@@ -81,7 +72,7 @@ If a CHANGELOG is set up, ensure that it’s properly formatted. For the doc squ
 
     Example: 
     ```
-    Added the validate only mode of Zowe. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. #1335 
+    Added the validate only mode of Beyond Identity. This allows you to check whether all the component validation checks of the Beyond Identity installation pass without starting any of the components. #1335 
     ```
 
 2. Indicate whether the change is a new feature/enhancement or a bug fix.  This helps users understand quickly what new enhancements are introduced and decide whether to upgrade. 
@@ -118,7 +109,7 @@ We recommend the following writing style for release notes entries:
 
     Example: 
     ```
-    Added the validate only mode of Zowe. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. #1335
+    Added the validate only mode of Beyond Identity. This allows you to check whether all the component validation checks of the Beyond Identity installation pass without starting any of the components. #1335
     ```
    - If a bug fix, state clearly what issue was resolved. 
 
