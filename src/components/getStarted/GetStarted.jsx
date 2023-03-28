@@ -100,7 +100,7 @@ function Topic({ title, description, href }) {
   return (
     
   <div className={clsx('col col--6', styles.topic)}>
-  <Card sx={{ minHeight: 'auto', p: 2, borderRadius: 3, m: 0 }} elevation={2}>
+  <Card sx={{ minHeight: 'auto', p: 2, borderRadius: 3, m: 0 }}  elevation={1}>
       
         <CardContent>
           <Typography

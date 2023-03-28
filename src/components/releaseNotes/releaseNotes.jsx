@@ -12,9 +12,9 @@ import Link from '@docusaurus/Link';
 
 
 
-export const ReleaseVersion = '2.76.0';
+export const ReleaseVersion = '2.77.0';
 
-export const ReleaseDate = 'March 14, 2023';
+export const ReleaseDate = 'March 28, 2023';
 
 export const ReleaseNotes = [
 	'Improved RDP experience',
@@ -77,9 +77,9 @@ export default function ReleaseNotesTimeline() {
 							<Link
                 to='/release-notes-main'			
 							>
-								release notes
+								release notes to see what we updated or fixed.
 							</Link>{' '}
-							or{' '}
+							You can also {' '}
 							<Link to={`https://app.byndid.com/downloads`}>
 								{' '}
 								update to the latest version
@@ -89,7 +89,26 @@ export default function ReleaseNotesTimeline() {
 						<p>&nbsp;</p>
 					</div>
 
-                    
+          <TimelineItem>
+        
+        <TimelineOppositeContent color="textSecondary" sx={{fontFamily: 'Overpass'}}>
+			<a href="/v2-77-0">
+          2.77.0</a>
+        </TimelineOppositeContent>
+        <TimelineSeparator>
+          <TimelineDot color="primary" />
+          <TimelineConnector />
+        </TimelineSeparator>
+        <TimelineContent sx={{fontFamily: 'Overpass', }}><p sx={{
+            color: 'success.dark',
+            display: 'inline',
+            fontWeight: 'bold',
+            mx: 0.5,
+            fontSize: 14,
+          }}>
+            Additional features and capabilities for users and businesses that need tighter and customizable integration ...
+            </p></TimelineContent>
+      </TimelineItem>              
       <TimelineItem>
         
         <TimelineOppositeContent color="textSecondary" sx={{fontFamily: 'Overpass'}}>
