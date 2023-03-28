@@ -11,6 +11,7 @@ const config = {
 
   plugins: [
     'plugin-image-zoom',
+    
 //    '@chatwoot/docusaurus-plugin',
 //    [
 //      require.resolve("@easyops-cn/docusaurus-search-local"),
