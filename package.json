@@ -41,6 +41,7 @@
     "clsx": "^1.1.1",
     "decode-uri-component": "^0.2.1",
     "docusaurus-lunr-search": "^2.3.2",
+    "docusaurus-plugin-image-zoom": "^0.1.1",
     "docusaurus-plugin-openapi-docs": "^1.6.1",
     "docusaurus-theme-redoc": "^1.6.1",
     "eventsource": "^2.0.2",
