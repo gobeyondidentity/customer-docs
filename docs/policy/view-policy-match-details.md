@@ -56,7 +56,11 @@ For example, changing the policy version from the current version to a previous 
 
 
 
+<<<<<<< HEAD
 ## Next steps
+=======
+#### Related Topics
+>>>>>>> 36633339e6dfff21d9987b877f02ac21b7aafe76
 
 [Publishing Rules](/docs/secure-work/workforce-settings/policy/policy-publish-rules/publishing-rules)
 

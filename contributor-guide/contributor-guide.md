@@ -64,10 +64,10 @@ You are welcome to contribute to the Beyond Identity documentation repository. A
 Before contributing a documentation change to the repository, you should be familiar with:
 
 * Git and GitHub: To learn about git and GitHub, refer to the [Github Guides](https://guides.github.com/).
-* Slack: The Beyond Identity Documentation team communicates using the Slack application. To learn about Slack, refer to the [Slack Help Center](https://slack.com/help). The Beyond Identity team is part of the [Open Mainframe Project](https://openmainframeproject.slack.com) channel.
-* Markdown Language: The Beyond Identity documentation is written in Markdown language. To learn about Markdown, refer to  [The Markdown Guide](https://www.markdownguide.org/).
+* Slack: The Beyond Identity Documentation team communicates using the Slack application. To learn about Slack, refer to the Slack Help Center. 
+* Markdown Language: The Beyond Identity documentation is written in Markdown language. To learn about Markdown, refer to the Markdown Guide.
 
-In addition to being familiar with the Beyond Identity community and how we work together, you will need to sign the CNCF Contributor License Agreement. The Contributor License Agreement defines the terms under which you contribute to Beyond Identity documentation. Contributions to Beyond Identity documentation are reviewed before being committed to the repository. Committing changes to the Beyond Identity repository requires additional access rights. See https://github.com/Beyond Identity/community/blob/master/COMMITTERS.md. Also see Participating in Beyond Identity Documentation for more details about roles and permissions.
+In addition to being familiar with the Beyond Identity community and how we work together, you will need to sign the CNCF Contributor License Agreement. The Contributor License Agreement defines the terms under which you contribute to Beyond Identity documentation. Contributions to Beyond Identity documentation are reviewed before being committed to the repository. Committing changes to the Beyond Identity repository requires additional access rights. See ... Also see Participating in Beyond Identity Documentation for more details about roles and permissions.
 
 
 
@@ -76,21 +76,21 @@ In addition to being familiar with the Beyond Identity community and how we work
 If you are ready to get started contributing to the Beyond Identity Documentation repository:
 
 * Verify that you are familiar with the concepts in [Before You Get Started<a name="start"></a>](#before-you-get-started).
-* Familiarize yourself with the [Beyond Identity documentation repository](#the-Beyond Identity-documentation-repository).
+* Familiarize yourself with the [Beyond Identity documentation repository](#the-beyond-identity-documentation-repository).
 * Verify that you can open a [pull request and review changes](#sending-a-github-pull-request).
-* [Open an issue for Beyond Identity documentation](#opening-an-issue-for-Beyond Identity-documentation) if you find a problem.
+* [Open an issue for Beyond Identity documentation](#opening-an-issue-for-beyond-identity-documentation) if you find a problem.
 * Read the [documentation style guide](#documentation-style-guide).
 
 
 ## Helpful resources
 
-- [General code guidelines](./guidelines-code/categories)
-- [UI guidelines](./guidelines-ui/ui)
-- [Beyond Identity learning resources](../getting-started/Beyond Identity-resources)
+- General code guidelines]
+- UI guidelines
+- Beyond Identity learning resources
 
 ## Documentation repository
 
-The documentation is managed in a [GitHub repository](https://github.com/Beyond Identity/docs-site).
+The documentation is managed in a [GitHub repository](https://github.com/beyond-identity/customer-docs).
 
 * Review the site's overall organization and structure
 * Review the help files related to your planned changes or addition

@@ -164,7 +164,7 @@ The icons used in all the sections are stored in the `./staic/img` folder. To up
    {
       type: "Doc",
       label: "Command Reference",
-      docId: "appendix/beyond-identity-cli-command-reference",
+      docId: "appendix/Beyond Identity-cli-command-reference",
       position: "left",
     },
    ```
@@ -252,7 +252,7 @@ To update the hyperlink to `Download Beyond Identity` in the the **Popular Resou
 ```
 {
     title: "Download Beyond Identity",
-    link: "https://www.beyond-identity.org/download.html",
+    link: "https://www.Beyond Identity.org/download.html",
     icon: "img/download_Beyond Identity-icon.png",
     description: (
       <>
@@ -261,6 +261,140 @@ To update the hyperlink to `Download Beyond Identity` in the the **Popular Resou
       </>
     ),
   },
+```
+
+#### Updating the **Popular Resources** section
+
+**File location: `/src/components/PopularResources/PopularResources.js`.**
+
+- Update the font size of 'Popular Resources'.
+```
+<h4 className="padding-top--lg container-h4">
+  Popular resources
+</h4>
+```
+- Update the height and width of the icons. The current size is 70px*70px.
+```
+function Resource({ title, link, icon, description }) {
+  return (
+    <div className={clsx("col col--4 padding--lg", styles.posRelative)}>
+      <img
+        className="margin-left--xs"
+        alt="icons"
+        style={{ height: "70px", width: "70px" }}
+        src={useBaseUrl(icon)}
+      />
+      <p>{description}</p>
+      <a className={clsx("margin-top--sm", styles.posAbsolute)} href={link}>
+        {title}
+      </a>
+    </div>
+  );
+}
+```
+- Update the contents and links of `Dowload Beyond Identity` and `Try Beyond Identity`.
+```
+const data = [
+  {
+    title: "Download Beyond Identity",
+    link: "https://www.Beyond Identity.org/download.html",
+    icon: "img/download_Beyond Identity-icon.png",
+    description: (
+      <>
+        Beyond Identity has both server and client components, which you can install
+        independently.
+      </>
+    ),
+  },
+  {
+    title: "Try Beyond Identity",
+    link: "https://www.ibm.com/account/reg/us-en/signup?formid=urx-38870",
+    icon: "img/try_Beyond Identity-icon.png",
+    description: <>Get your hands on a Beyond Identity trial on demand at no charge.</>,
+  },
+];
+```
+- Update the overview video.
+```
+<div
+  className={clsx(
+    "col col--4 padding--lg display-flex",
+    styles.posRelative
+  )}
+>
+  <iframe
+    src="https://www.youtube.com/embed/7XpOjREP8JU"
+    className={clsx(styles.responsiveIframe)}
+    title="Introduction to Beyond Identity"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+  ></iframe>
+  <a
+    className={clsx("margin-top--sm", styles.posAbsolute)}
+    href="https://www.youtube.com/embed/7XpOjREP8JU"
+  >
+    Get an overview of Beyond Identity
+  </a>
+</div>
+</div>
+```
+
+#### Updating the Explore Content section
+
+**File location: `/src/components/ExploreContent/ExploreContent.js`**
+
+- Update the font size of 'Explore Content'.
+```
+<div className={clsx("col col--2")}>
+  <h3 className="container-h3">Explore Content</h3>
+</div>
+```
+- Update the cards of the first row in the `const firstDataRow = [ ]` code snippet.
+```
+const firstDataRow = [
+  {
+    title: "Getting Started",
+    icon: "img/get_started-icon.png",
+    link: "stable/getting-started/overview",
+    description: (
+      <>
+        Learn about Beyond Identity™ architecture, components, and how to quickly get
+        started with Beyond Identity. Read about what's new and changed in the Release
+        Notes, FAQs.
+      </>
+    ),
+  },
+  ];
+```
+- Update the cards of the second row in the `const secondDataRow = [ ]` code snippet.
+
+#### Updating the Discover your path section
+
+**File location: `/src/components/DiscoverYourPath/DiscoverYourPath.js`**
+
+The section of Discover your path is arranged in three columns. The first column is used for the `I want to...` subsection, and the second and third columns is used for the 'I'm interested in...' subsection. To change the link and content, update the following code snippet.
+```
+const firstSection = [
+];
+const secondSection = [
+];
+const thirdSection = [
+];
+```
+
+#### Updating the Featured Topics section
+
+**File location: `/src/components/FeaturedTopics/FeaturedTopics.js`**
+
+The section of Featured Topics is arranged in three rows. To change the link and content, update the following code snippet.
+```
+const firstSection = [
+];
+const secondSection = [
+];
+const thirdSection = [
+];
 ```
 
 ### Updating the footer section
@@ -274,15 +408,15 @@ For example, to update the `Products` section, edit the variables in the followi
   items: [
     {
       label: "Download",
-      href: "https://www.beyond-identity.org/download.html",
+      href: "https://www.Beyond Identity.org/download.html",
     },
     {
       label: "Try Beyond Identity",
-      href: "https://www.openmainframeproject.org/projects/beyond-identity/ztrial",
+      href: "https://www.openmainframeproject.org/projects/Beyond Identity/ztrial",
     },
     {
       label: "Features",
-      href: "https://docs.beyond-identity.org/stable/getting-started/overview.html",
+      href: "https://docs.Beyond Identity.org/stable/getting-started/overview.html",
     },
   ],
 },
@@ -292,9 +426,9 @@ For example, to update the `Products` section, edit the variables in the followi
 
 ### ZWE command reference
 
-The ZWE command reference guide is published under References on the doc site. It's updated automatically from the beyond-identity-install-packaging repo by using GitHub Actions ((https://github.com/beyond-identity/beyond-identity-install-packaging/actions/workflows/zwe-doc-generation.yml)[https://github.com/beyond-identity/beyond-identity-install-packaging/actions/workflows/zwe-doc-generation.yml]). 
+The ZWE command reference guide is published under References on the doc site. It's updated automatically from the Beyond Identity-install-packaging repo by using GitHub Actions ((https://github.com/Beyond Identity/Beyond Identity-install-packaging/actions/workflows/zwe-doc-generation.yml)[https://github.com/Beyond Identity/Beyond Identity-install-packaging/actions/workflows/zwe-doc-generation.yml]). 
 
-- This action runs whenever there is a change to beyond-identity-install-packaging (which is where zwe is defined, so any change to zwe commands will trigger this action).
-- This action generates the zwe documentation and creates a PR to the beyond-identity docs-site repo. If there are no changes to zwe, then no PR is created. This is an example PR that was created: https://github.com/beyond-identity/docs-site/pull/2076. Therefore, changes will get merged into staging branch on a consistent basis for the release process.
+- This action runs whenever there is a change to Beyond Identity-install-packaging (which is where zwe is defined, so any change to zwe commands will trigger this action).
+- This action generates the zwe documentation and creates a PR to the Beyond Identity docs-site repo. If there are no changes to zwe, then no PR is created. This is an example PR that was created: https://github.com/Beyond Identity/docs-site/pull/2076. Therefore, changes will get merged into staging branch on a consistent basis for the release process.
 
 For Beyond Identity doc maintainers, ensure that you review and merge PRs titled **Update zwe server command reference** from branch **auto-update-zwe-reference** during new release preparation.
