@@ -1,9 +1,5 @@
 ---
-<<<<<<< HEAD
-title: Define an authentication method requirement policy
-=======
 title: Authentication requirement policy
->>>>>>> parent of bbd8f72 (add more how-to topics)
 id: define-authentication-method-requirement-policy
 description: ''
 slug: /define-authentication-method-requirement-policy
