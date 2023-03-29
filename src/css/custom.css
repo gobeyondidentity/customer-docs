@@ -627,6 +627,7 @@ summary.demo {
 table {
   border-collapse: collapse;
   width: 100%;
+  overflow-y: hidden;
   table-layout: fixed;
   font-size: 0.875rem;
   text-align: left;
@@ -642,7 +643,10 @@ th {
   text-align: left;
   background-color: #f2f2f2;
   text-transform: uppercase;
+  padding: 0;
 }
+
+
 th:first-child,
 td:first-child {
   padding-left: 10;
@@ -697,26 +701,6 @@ td li {
   flex-shrink: 1;
 }
 
-
-@media (max-width: 599px) {
-  .markdown thead {
-    display: none;
-  }
-  .markdown tr {
-    flex-wrap: wrap;
-    border-bottom: 1px solid var(--ifm-table-border-color);
-    padding: 0.5rem 0;
-  }
-  .markdown tr td {
-    border: none;
-    padding: 0.125rem 0;
-  }
-  .markdown tr > :nth-child(2),
-  .markdown tr > :nth-child(3) {
-    width: 100%;
-    padding-left: 2rem;
-  }
-}
 
 
 /*tr:nth-child(even) {background-color: #f6f7fc;}*/

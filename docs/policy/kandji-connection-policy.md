@@ -1,15 +1,15 @@
 ---
-title: Define a Kandji connection policy
-id: define-kandji-connection-policy
+title: Kandji connection policy
+id: kandji-connection-policy
 description: ''
-slug: /define-kandji-connection-policy
+slug: /kandji-connection-policy
 keywords: 
  - faq
  - help
 pagination_next: null
 pagination_prev: null
 last_update: 
-   date: 02/08/2022
+   date: 03/29/2023
    author: Patricia McPhee
 draft: true
 doc_type: how-to
@@ -29,7 +29,7 @@ You can write policy to allow, monitor, or deny access based on the connection s
 4.  Click **Add**.  
     ![](/images/Integrations/kandji/kandji_connection_available_allow.PNG)
 
-#### Related Topics
+## Next steps
 
 [Publishing Rules](/docs/secure-work/workforce-settings/policy/policy-publish-rules/publishing-rules)
 

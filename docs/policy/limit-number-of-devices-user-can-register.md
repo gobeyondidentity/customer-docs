@@ -1,5 +1,5 @@
 ---
-title: Limit number of registered devices
+title: Limit number of registered devices policy
 id: limit-number-registered-devices
 description: ''
 slug: /limit-number-registered-devices
@@ -9,7 +9,7 @@ keywords:
 pagination_next: null
 pagination_prev: null
 last_update: 
-   date: 02/08/2022
+   date: 03/29/2023
    author: Patricia McPhee
 draft: true
 doc_type: how-to
@@ -32,7 +32,7 @@ System administrators can write policy to limit the number of devices a user can
     ![](/images/policy/add_rule_deny_registered_devices.PNG)
 11.  The rule is added to the **Edit Policy** page. Create additional rules as needed or click [Publish Rule](/docs/secure-work/workforce-settings/policy/policy-publish-rules/publishing-rules) to permanently save it.
 
-#### Related Topics
+## Next steps
 
 [Publishing Rules](/docs/secure-work/workforce-settings/policy/policy-publish-rules/publishing-rules)
 

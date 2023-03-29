@@ -9,7 +9,7 @@ keywords:
 pagination_next: null
 pagination_prev: null
 last_update: 
-   date: 02/08/2022
+   date: 03/29/2023
    author: Patricia McPhee
 draft: true
 doc_type: how-to
@@ -34,7 +34,7 @@ You can view a list of all previous published rules and also restore a specific 
     ![](/images/pol_publish_changes.png)  
     This set of policy rules is now in effect.
 
-#### Related Topics
+## Next steps
 
 [Publishing Rules](/docs/secure-work/workforce-settings/policy/policy-publish-rules/publishing-rules)
 

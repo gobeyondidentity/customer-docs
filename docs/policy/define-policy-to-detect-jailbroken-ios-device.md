@@ -1,15 +1,15 @@
 ---
 title: Detect Jailbroken iOS device policy
-id: define-jailbroken-ios-policy
+id: jailbroken-ios-policy
 description: ''
-slug: /define-jailbroken-ios-policy
+slug: /jailbroken-ios-policy
 keywords: 
  - faq
  - help
 pagination_next: null
 pagination_prev: null
 last_update: 
-   date: 02/08/2022
+   date: 03/29/2023
    author: Patricia McPhee
 draft: true
 doc_type: how-to
@@ -31,7 +31,7 @@ You can write a policy to detect whether or not an iOS device has been jailbroke
     ![](/images/policy/jailbreak_ios_not_detected.PNG)
 9.  The rule is added to the **Edit Policy** page. Create additional rules as needed or click [Publish Rule](/docs/secure-work/workforce-settings/policy/policy-publish-rules/publishing-rules) to permanently save it.
 
-#### Related Topics
+## Next steps
 
 [Publishing Rules](/docs/secure-work/workforce-settings/policy/policy-publish-rules/publishing-rules)
 

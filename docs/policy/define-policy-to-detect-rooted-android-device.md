@@ -1,15 +1,15 @@
 ---
 title: Detect rooted Android device policy
-id: define-rooted-android-policy
+id: rooted-android-policy
 description: ''
-slug: /define-rooted-android-policy
+slug: /rooted-android-policy
 keywords: 
  - faq
  - help
 pagination_next: null
 pagination_prev: null
 last_update: 
-   date: 02/08/2022
+   date: 03/29/2023
    author: Patricia McPhee
 draft: true
 doc_type: how-to
@@ -32,7 +32,7 @@ You can write a policy to detect whether or not an Android device has been route
     ![](/images/policy/device_rooted_android_detected_deny.PNG)
 9.  The rule is added to the **Edit Policy** page. Create additional rules as needed or click [Publish Rule](/docs/secure-work/workforce-settings/policy/policy-publish-rules/publishing-rules) to permanently save it.
 
-#### Related Topics
+## Next steps
 
 [Publishing Rules](/docs/secure-work/workforce-settings/policy/policy-publish-rules/publishing-rules)
 

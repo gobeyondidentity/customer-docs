@@ -9,17 +9,16 @@ keywords:
 pagination_next: null
 pagination_prev: null
 last_update: 
-   date: 02/08/2022
+   date: 03/29/2023
    author: Patricia McPhee
 draft: true
 doc_type: how-to
 displayed_sidebar: secureWorkforceSidebar
 ---
 
+import SupportedOsAuthenticatorWindowsOnly from '../../static/includes/_supported-os-authenticator-windows-only.mdx';
 
-:::note
-This functionality is currently available on macOS and Windows platforms.
-:::
+<SupportedOsAuthenticatorWindowsOnly />
 
 Policy can be written to detect a specific version or version range that must be met to allow or restrict a device to authenticate or a device to be added. If a device attempting to authenticate or making a request to be added does not match the version needed to authenticate, permission is not granted. If matched, authentication is granted.
 
@@ -42,7 +41,7 @@ To write policy based on platform version:
     ![](/images/policy/platform_version_greater_equal_to_macos.PNG)
 10.  The rule is added to the **Edit Policy** page. Create additional rules as needed or click [Publish Rule](/docs/secure-work/workforce-settings/policy/policy-publish-rules/publishing-rules) to permanently save it.
 
-#### Related Topics
+## Next steps
 
 
 [Publishing Rules](/docs/secure-work/workforce-settings/policy/policy-publish-rules/publishing-rules)

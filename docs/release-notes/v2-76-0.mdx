@@ -12,6 +12,7 @@ last_update:
    date: 03/14/2023
    author: Patricia McPhee
 draft: true
+doc_type: reference
 displayed_sidebar: releaseNotesSidebar
 ---
 
@@ -20,18 +21,13 @@ displayed_sidebar: releaseNotesSidebar
 
 We resolved the issue when switching between policy rules, the policy attributes with multiple fields didn't immediately update the values. Instead, showing the values from the previously selected rule.  
 
-<!--truncate-->
 
 ## Authenticators
 
-:::info Operating systems supported
+import SupportedOsAuthenticator from '../../static/includes/_supported-os-authenticator.mdx';
 
-The Beyond Identity Authenticator is supported on the following platforms:
+<SupportedOsAuthenticator />
 
-- macOS 10.15 (Catalina) or later
-
-- Windows 10 build 19041 and later or Windows 11
-:::
 
 We made the Windows Authenticator application more consistent with the Mac version. Windows users tend to close the application more often than Mac users, which has significantly impacted their authentication performance.
 
@@ -49,10 +45,39 @@ Here are the changes we made:
 
   ![app-registration-overview.png](../images/authenticator-task-tray-shutdown-bi-2.png)
 
+
 ## Desktop Login
 
+import SupportedOsAuthenticatorWindowsOnly from '../../static/includes/_supported-os-authenticator-windows-only.mdx';
+
+<SupportedOsAuthenticatorWindowsOnly />
+
+### Updated
 
 
-## API
+- Security around the usage of Recovery Keys was improved. Therefore, we advise all customers utilizing recovery keys to update to the latest version.
+
+- RDP support was improved. 
+    
+  **Caveats**
+
+  - Both host and destination machines **must** be domain joined and visible to the domain controller.
+
+  - Only **one** domain user is supported at this time. For example, _**test.user > test.user**_ is valid; however, _**test.user > test.user2**_ is invalid.
+
+  - When using AAD, Network Level Authentication (NLA) may need to be disabled on the target machine.
+    
+  **Not supported**
+    
+  - Onboarding case where a domain user still needs to log into the machine.
+  
+  - Lock within an RDP session with AAD-joined machines.
+  
+  - UPN format when using RDP within AAD environments.
+
+### Resolved
+
+
+When using RDP with Windows Desktop Login, users entered their PIN twice. Once to start the RDP session and again to login to the session.
 
 

@@ -28,7 +28,7 @@ const List = [
         
       </>
     ),
-    href: ('/auto0-ciam'),
+    href: ('/auth0-ciam'),
     label: ('Learn more'),
   },
   {

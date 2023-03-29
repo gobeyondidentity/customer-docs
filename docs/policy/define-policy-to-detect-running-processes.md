@@ -1,15 +1,15 @@
 ---
-title: Detect running processes
-id: define-policy-detect-running-processes
+title: Detect running processes policy
+id: detect-running-processes
 description: ''
-slug: /define-policy-detect-running-processes
+slug: /detect-running-processes
 keywords: 
  - faq
  - help
 pagination_next: null
 pagination_prev: null
 last_update: 
-   date: 02/08/2022
+   date: 03/29/2023
    author: Patricia McPhee
 draft: true
 doc_type: how-to
@@ -35,7 +35,7 @@ You can write policy to detect processes running on a device and make decisions 
     ![](/images/policy/device_platform_process_not_running.PNG)
 10.  The rule is added to the **Edit Policy** page. Create additional rules as needed or click [Publish Rule](/docs/secure-work/workforce-settings/policy/policy-publish-rules/publishing-rules) to permanently save it.
 
-#### Related Topics
+## Next steps
 
 [Publishing Rules](/docs/secure-work/workforce-settings/policy/policy-publish-rules/publishing-rules)
 

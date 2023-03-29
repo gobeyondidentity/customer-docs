@@ -1,15 +1,15 @@
 ---
-title: Define a Kandji MDM policy
-id: define-kandji-mdm-policy
+title: Kandji MDM policy
+id: kandji-mdm-policy
 description: ''
-slug: /define-kandji-mdm-policy
+slug: /kandji-mdm-policy
 keywords: 
  - faq
  - help
 pagination_next: null
 pagination_prev: null
 last_update: 
-   date: 02/08/2022
+   date: 03/29/2023
    author: Patricia McPhee
 draft: true
 doc_type: how-to
@@ -30,7 +30,7 @@ You can write policy to allow, monitor, or deny access based on the MDM setting 
 5.  Click **Add**.  
     ![](/images/Integrations/kandji/kandji_mem_enabled_no_deny_auth.PNG)
 
-#### Related Topics
+## Next steps
 
 [Publishing Rules](/docs/secure-work/workforce-settings/policy/policy-publish-rules/publishing-rules)
 

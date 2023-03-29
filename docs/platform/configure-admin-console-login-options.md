@@ -1,5 +1,5 @@
 ---
-title: Configure Admin Console login options
+title: Configure Admin Console login
 id: configure-admin-console-login-options
 description: ''
 slug: /configure-admin-console-login-options
@@ -9,9 +9,10 @@ keywords:
 pagination_next: null
 pagination_prev: null
 last_update: 
-   date: 02/08/2022
+   date: 03/29/2023
    author: Patricia McPhee
 draft: true
+doc_type: how-to
 displayed_sidebar: secureWorkforceSidebar
 ---
 
@@ -45,6 +46,6 @@ Although the Passwordless Login option is visible in versions earlier than 2.53.
   
 If the disabled option is grayed out and cannot be enabled, the Admin Console does not have the RBAC feature enabled. To enable RBAC, submit a ticket the Beyond Identity support staff.
 
-#### Related Topics
+## Next steps
 
 [Configuring Role-Based Access Control](/docs/secure-work/workforce-settings/access/configuring-role-based-access-control)

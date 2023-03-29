@@ -10,7 +10,12 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
 
   plugins: [
-    'plugin-image-zoom',
+
+    require.resolve("docusaurus-plugin-image-zoom"),
+
+
+
+//    'plugin-image-zoom',
 //    '@chatwoot/docusaurus-plugin',
 //    [
 //      require.resolve("@easyops-cn/docusaurus-search-local"),
@@ -206,19 +211,16 @@ customFields: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
-      imageZoom: {
-        // CSS selector to apply the plugin to, defaults to '.markdown img'
-        selector: '.markdown img',
-        // Optional medium-zoom options
-        // see: https://www.npmjs.com/package/medium-zoom#options
-        options: {
-          margin: 24,
-          background: '#BADA55',
-          scrollOffset: 0,
-          container: '#zoom-container',
-          template: '#zoom-template',
-        },
-      },
+      zoom: {
+        selector: '.markdown :not(em) > img',
+        config: {
+          // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
+          background: {
+            light: 'rgb(255, 255, 255)',
+            dark: 'rgb(50, 50, 50)'
+          }
+        }
+      }
     }),
 
 

@@ -1,5 +1,9 @@
 # Doc site maintainer handbook
 
+
+## Dependencies
+
+
 ## Building the docs for production
 
 You can build the docs with this command:
@@ -137,6 +141,7 @@ Homepage is composed of the following sections:
 - Footer
 
 The icons used in all the sections are stored in the `./staic/img` folder. To update the icons, replace with the updated icons with the same name.
+
 
 ### Updating the navigation elements in the header section
 
