@@ -1,5 +1,9 @@
 ---
+<<<<<<< HEAD
 title: Define policy to detect running processes
+=======
+title: Detect running processes
+>>>>>>> parent of bbd8f72 (add more how-to topics)
 id: define-policy-detect-running-processes
 description: ''
 slug: /define-policy-detect-running-processes

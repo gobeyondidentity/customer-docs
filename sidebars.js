@@ -90,7 +90,7 @@ const sidebars = {
       items: [ 
         {
           type: 'category',
-          label: 'Define policy',
+          label: 'Define a policy',
           collapsed: true,  
           link: {
             type: 'doc',
@@ -350,7 +350,6 @@ const sidebars = {
       },
       collapsible: false,    
       items: [ 
-        'release-notes/v2-77-0',
         'release-notes/v2-76-0',
         'release-notes/v2-75-0',
       ],

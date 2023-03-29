@@ -1,8 +1,15 @@
 ---
+<<<<<<< HEAD
 title: Define a rooted Android device detection policy
 id: define-rooted-android-detection-policy
 description: ''
 slug: /define-rooted-android-detection-policy
+=======
+title: Detect rooted Android device policy
+id: define-rooted-android-policy
+description: ''
+slug: /define-rooted-android-policy
+>>>>>>> parent of bbd8f72 (add more how-to topics)
 keywords: 
  - faq
  - help

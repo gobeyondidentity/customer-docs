@@ -1,8 +1,15 @@
 ---
+<<<<<<< HEAD
 title: Define a Jailbroken iOS device detection policy
 id: define-jailbroken-ios-detection-policy
 description: ''
 slug: /define-jailbroken-ios-detection-policy
+=======
+title: Detect Jailbroken iOS device policy
+id: define-jailbroken-ios-policy
+description: ''
+slug: /define-jailbroken-ios-policy
+>>>>>>> parent of bbd8f72 (add more how-to topics)
 keywords: 
  - faq
  - help

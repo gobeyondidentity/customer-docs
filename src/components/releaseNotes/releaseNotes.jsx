@@ -14,9 +14,9 @@ import styles from './releaseNotes.module.css';
 
 
 
-export const ReleaseVersion = '2.77.0';
+export const ReleaseVersion = '2.76.0';
 
-export const ReleaseDate = 'March 28, 2023';
+export const ReleaseDate = 'March 14, 2023';
 
 export const ReleaseNotes = [
 	'Improved RDP experience',
@@ -81,8 +81,13 @@ export default function ReleaseNotesTimeline() {
                 to='/release-notes-main'			
 							>
 								release notes
+<<<<<<< HEAD
 							</Link> to see what we updated or fixed.{' '}
 							You can also {' '}
+=======
+							</Link>{' '}
+							or{' '}
+>>>>>>> parent of bbd8f72 (add more how-to topics)
 							<Link to={`https://app.byndid.com/downloads`}>
 								{' '}
 								update to the latest version
@@ -92,6 +97,7 @@ export default function ReleaseNotesTimeline() {
 						<p>&nbsp;</p>
 					</div>
 
+<<<<<<< HEAD
           <TimelineItem>
         
         <TimelineOppositeContent  className={styles.topics} color="textSecondary" sx={{fontFamily: 'Overpass'}}>
@@ -112,6 +118,9 @@ export default function ReleaseNotesTimeline() {
           >New attributes are available in the Beyond Identity Policy Engine, including location-based attributes, egress IP address matching, and impossible travel detection.  
             </p></TimelineContent>
       </TimelineItem>              
+=======
+                    
+>>>>>>> parent of bbd8f72 (add more how-to topics)
       <TimelineItem>
         
         <TimelineOppositeContent color="textSecondary" sx={{fontFamily: 'Overpass'}}>

@@ -1,5 +1,9 @@
 ---
+<<<<<<< HEAD
 title: Define an antivirus policy
+=======
+title: Antivirus policy
+>>>>>>> parent of bbd8f72 (add more how-to topics)
 id: define-antivirus-policy
 description: ''
 slug: /define-antivirus-policy

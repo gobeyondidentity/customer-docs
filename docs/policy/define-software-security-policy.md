@@ -1,5 +1,9 @@
 ---
+<<<<<<< HEAD
 title: Define a security software policy
+=======
+title: Security software policy
+>>>>>>> parent of bbd8f72 (add more how-to topics)
 id: define-security-software-policy
 description: ''
 slug: /define-security-software-policy

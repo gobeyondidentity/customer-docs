@@ -1,5 +1,9 @@
 ---
+<<<<<<< HEAD
 title: Define a firewall policy
+=======
+title: Firewall policy
+>>>>>>> parent of bbd8f72 (add more how-to topics)
 id: define-firewall-policy
 description: ''
 slug: /define-firewall-policy
