@@ -1,15 +1,15 @@
 ---
-title: View policy details
-id: view-policy-details
+title: View policy match details
+id: view-policy-match-details
 description: ''
-slug: /view-policy-details
+slug: /view-policy-match-details
 keywords: 
  - faq
  - help
 pagination_next: null
 pagination_prev: null
 last_update: 
-   date: 02/08/2022
+   date: 03/29/2023
    author: Patricia McPhee
 draft: true
 doc_type: how-to
@@ -56,7 +56,11 @@ For example, changing the policy version from the current version to a previous 
 
 
 
+<<<<<<< HEAD
+## Next steps
+=======
 #### Related Topics
+>>>>>>> 36633339e6dfff21d9987b877f02ac21b7aafe76
 
 [Publishing Rules](/docs/secure-work/workforce-settings/policy/policy-publish-rules/publishing-rules)
 

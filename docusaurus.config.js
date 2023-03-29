@@ -10,7 +10,12 @@ const baseUrl = process.env.BASE_URL ?? '/';
 const config = {
 
   plugins: [
-    'plugin-image-zoom',
+
+    require.resolve("docusaurus-plugin-image-zoom"),
+
+
+
+//    'plugin-image-zoom',
 //    '@chatwoot/docusaurus-plugin',
 //    [
 //      require.resolve("@easyops-cn/docusaurus-search-local"),
@@ -207,6 +212,16 @@ customFields: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      zoom: {
+        selector: '.markdown :not(em) > img',
+        config: {
+          // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
+          background: {
+            light: 'rgb(255, 255, 255)',
+            dark: 'rgb(50, 50, 50)'
+          }
+        }
+      }
     }),
 
 

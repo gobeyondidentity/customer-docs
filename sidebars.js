@@ -4,13 +4,12 @@
 const sidebars = {
   // By default, Docusaurus generates a sidebar from the docs folder structure
   secureWorkforceSidebar: [
-
     {
       type: 'category',
-      label: 'Get Started',  
+      label: 'Welcome',  
       link: {
         type: 'doc',
-        id: 'get-started',
+        id: 'welcome',
       },
       collapsed: true, 
       collapsible: true,      
@@ -18,8 +17,22 @@ const sidebars = {
         'how-it-works', 
         'sign-in-workflow',
         'supported-platforms',
-        'release-notes/release-notes-main', 
-
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Get Started',  
+      link: {
+        type: 'doc',
+        id: 'get-started/get-started',
+      },
+      collapsed: true, 
+      collapsible: true,      
+      items: [ 
+        'get-started/create-tenant',
+        'get-started/configure-account',
+        'get-started/configure-oidc-connection',
+        'get-started/set-redirect-uri',
       ],
     },
     {
@@ -44,8 +57,8 @@ const sidebars = {
             'platform/configure-admin-console-login-options',
             'platform/revoke-access-to-device', 
             'platform/reset-credentials',
-            'view-policy-match-details', 
             'tenant-logo-requirements',
+
           ],
         },
         {
@@ -90,31 +103,33 @@ const sidebars = {
       items: [ 
         {
           type: 'category',
-          label: 'Define policy',
+          label: 'Define a policy',
           collapsed: true,  
           link: {
             type: 'doc',
             id: 'policy/define-policy', 
           },      
           items: [ 
-            'policy/build-release-policies',
-            'policy/define-antivirus-policy',
-            'policy/define-authentication-method-requirement-policy',
-            'policy/define-firewall-policy',
-            'policy/define-jailbroken-ios-policy',
-            'policy/define-rooted-android-policy',
-            'policy/define-policy-detect-running-processes',
-            'policy/define-security-software-policy',
+            'policy/authentication-requirement-policy',
+            'policy/antivirus-policy',
+            'policy/build-release-policies',   
+            'policy/detect-running-processes',      
+            'policy/firewall-policy',
+            'policy/jailbroken-ios-policy',
             'policy/limit-number-registered-devices',
+
+            'policy/rooted-android-policy',
+            'policy/security-software-policy',
+
             'policy/set-platform-version-policy',
-            'policy/kandji/define-kandji-connection-policy',
-            'policy/kandji/define-kandji-mdm-policy',
+            'policy/kandji-connection-policy',
+            'policy/kandji-mdm-policy',
           ],
         },
         'policy/policy-attribute-library',
         'policy/import-policy',
         'policy/export-policy',
-        'policy/view-policy-details',
+        'policy/view-policy-match-details',
         'policy/restore-previous-policy-rules',
 
       ],
@@ -331,9 +346,10 @@ const sidebars = {
       label: 'Resources',
       collapsible: false,         
       items: [ 
-        'get-support',
+        'release-notes/release-notes-main', 
         'faq',
         'glossary',
+        'get-support',
       ],
     },
 

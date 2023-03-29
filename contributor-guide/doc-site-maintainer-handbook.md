@@ -1,5 +1,9 @@
 # Doc site maintainer handbook
 
+
+## Dependencies
+
+
 ## Building the docs for production
 
 You can build the docs with this command:
@@ -22,9 +26,7 @@ npm run serve
 
 Now you will be able to visit `http://localhost:3000/` to check the content.
 
-## Checking broken links
-
-To check the broken links that your changes might introduce, use the `npm run build` command. When this command is run, it will report an exhaustive list of broken links that must be fixed before you submit the changes. 
+**NOTE.** Broken links get checked during the build. It reports an exhaustive list of broken links that must be fixed before you submit the changes.
 
 Here is an example: 
 ```
@@ -121,6 +123,8 @@ Use `npm run serve` command to test your build locally.
 
 ## How to update the homepage?
 
+...steps for updating the index (default homepage)...
+
 ### About this task
 
 Homepage is composed of the following sections:
@@ -137,6 +141,7 @@ Homepage is composed of the following sections:
 - Footer
 
 The icons used in all the sections are stored in the `./staic/img` folder. To update the icons, replace with the updated icons with the same name.
+
 
 ### Updating the navigation elements in the header section
 
