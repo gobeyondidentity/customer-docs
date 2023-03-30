@@ -89,7 +89,6 @@ const sidebars = {
                 'installation/install-authenticator-on-macos',
                 'installation/install-authenticator-on-windows',
                 'installation/install-authenticator-on-linux',
-                'installation/cli-commands',
               ],
             },
           ],
