@@ -1,5 +1,5 @@
 ---
-title: Platform overview
+title: Platform
 id: platform
 description: ''
 slug: /platform 

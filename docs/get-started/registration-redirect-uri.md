@@ -1,5 +1,5 @@
 ---
-title: 4. Register redirect URI
+title: 4. Register the redirect URI
 id: set-redirect-uri
 description: ''
 slug: /set-redirect-uri
@@ -11,7 +11,7 @@ last_update:
    date: 03/29/2023
    author: Patricia McPhee
 draft: true
-doc_type: how-to
+doc_type: get-started
 displayed_sidebar: secureWorkforceSidebar
 ---
 
