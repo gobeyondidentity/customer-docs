@@ -11,7 +11,7 @@ last_update:
    date: 03/29/2023
    author: Patricia McPhee
 draft: true
-doc_type: how-to
+doc_type: get-started
 displayed_sidebar: secureWorkforceSidebar
 ---
 
@@ -29,12 +29,12 @@ You can create a OIDC client within the Admin portal or via our API. The rest of
 
 To create an OIDC client, you will need to issue an `HTTP POST` to `https://api.byndid.com/v0/oidc/clients` with the following fields:
 
-| Name								| Type		|Description	|
-|------------------------------ 	|-----------|---------------|
-| **name**							| String	|**Required.** This is the name of the OIDC client you are creating. Typically this will be the same as or similar to the name of the application you are building.|
-| **redirect_uris**					| [String]	|**Required.** The redirect URIs that you will want the authorization code routed to. This can either be a url to a page in your web application, a universal url/app link to a page in your native app, or directly to a server.|
-| **id_token_signed_response_alg**	| String	|**Required.** The algorithm used to sign the JWT that authenticates the client. This can be either `ES256` or `RS256`.|
-| **token_endpoint_auth_method**	| String	|**Required.** The request client authentication method when used to request an access token. Values supported here are `client_secret_basic`, `client_secret_post` and `none` (only supported on public clients).|
+| Name | Type |Description |
+| --- | --- | --- |
+| **name** | String |**Required.** This is the name of the OIDC client you are creating. Typically this will be the same as or similar to the name of the application you are building.|
+| **redirect_uris** | [String] |**Required.** The redirect URIs that you will want the authorization code routed to. This can either be a url to a page in your web application, a universal url/app link to a page in your native app, or directly to a server.|
+| **id_token_signed_response_alg** | String |**Required.** The algorithm used to sign the JWT that authenticates the client. This can be either `ES256` or `RS256`.|
+| **token_endpoint_auth_method** | String |**Required.** The request client authentication method when used to request an access token. Values supported here are `client_secret_basic`, `client_secret_post` and `none` (only supported on public clients).|
 
 Example Request
 
@@ -58,14 +58,14 @@ Even though we only allow one value for both `id_token_signed_response_alg` and 
 
 The response to this API call is a JSON object consisting of the following fields:
 
-| Name 								| Type 		| Description 	|
-| ----------------------------- 	| ---------	| ------------- |
-|**id** 							| String	| The OIDC client's unique identifier. This is not the same as the `client_id`.| 
-|**redirect_uris**					| [String]	| The same array of redirect URIs you used to configure your OIDC client.|
-|**id_token_signed_response_alg**	| String	| The algorithm used to sign the JWT that authenticates the client. This can be either `ES256` or `RS256`.|
-|**token_endpoint_auth_method**		| String	| The request client authentication method when used to request an access token. Values supported here are `client_secret_basic`, `client_secret_post` and `none`.|
-|**client_id**						| String	| The id of the client that is used when making requests to the `/authorize` and `/token` endpoints.||client_secret|String|The secret that is used when making a request to the `/token` endpoint from a confidential client.|
-|**date_created**					| String	| The date that specifies when the OIDC client was created. Formatted as [RFC 3339](https://tools.ietf.org/html/rfc3339).||date_modified|String|The date that specifies when the OIDC client was updated. Formatted as  [RFC 3339](https://tools.ietf.org/html/rfc3339).|
+| Name | Type | Description |
+| ---	| ---	| --- |
+|**id** | String	| The OIDC client's unique identifier. This is not the same as the `client_id`.| 
+|**redirect_uris**| [String]	| The same array of redirect URIs you used to configure your OIDC client.|
+|**id_token_signed_response_alg** | String	| The algorithm used to sign the JWT that authenticates the client. This can be either `ES256` or `RS256`.|
+|**token_endpoint_auth_method** | String	| The request client authentication method when used to request an access token. Values supported here are `client_secret_basic`, `client_secret_post` and `none`.|
+|**client_id** | String	| The id of the client that is used when making requests to the `/authorize` and `/token` endpoints.||client_secret|String|The secret that is used when making a request to the `/token` endpoint from a confidential client.|
+|**date_created** | String	| The date that specifies when the OIDC client was created. Formatted as [RFC 3339](https://tools.ietf.org/html/rfc3339).||date_modified|String|The date that specifies when the OIDC client was updated. Formatted as  [RFC 3339](https://tools.ietf.org/html/rfc3339).|
 
 Example Response
 

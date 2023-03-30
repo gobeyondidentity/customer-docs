@@ -54,10 +54,14 @@ const sidebars = {
           },      
           items: [ 
             'platform/configure-rbac', 
+
+            'platform/configure-identity-providers',
+            'platform/configure-shared-credentials-windows-roaming-profile',
             'platform/configure-admin-console-login-options',
             'platform/revoke-access-to-device', 
             'platform/reset-credentials',
-            'tenant-logo-requirements',
+            'platform/customize-tenant',
+
 
           ],
         },
@@ -73,8 +77,24 @@ const sidebars = {
             'platform/authenticator-versions',
             'platform/manage-passkeys',
             'platform/manage-authenticator-updates',
+            {
+              type: 'category',
+              label: 'Installation',
+              collapsed: true,  
+              link: {
+                type: 'doc',
+                id: 'installation/install-platform-authenticator',
+              },      
+              items: [ 
+                'installation/install-authenticator-on-macos',
+                'installation/install-authenticator-on-windows',
+                'installation/install-authenticator-on-linux',
+                'installation/cli-commands',
+              ],
+            },
           ],
         },
+
       ],
     },
     {

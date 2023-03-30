@@ -101,11 +101,7 @@ export default function ReleaseNotesTimeline() {
             mx: 0.5,
             fontSize: 14,
           }}>
-<<<<<<< HEAD
             New attributes are available in the Beyond Identity Policy Engine, including location-based attributes, egress IP address matching, and impossible travel detection. 
-=======
-            Additional features and capabilities for users and businesses that need tighter and customizable integration ...
->>>>>>> 36633339e6dfff21d9987b877f02ac21b7aafe76
             </p></TimelineContent>
       </TimelineItem>              
       <TimelineItem>

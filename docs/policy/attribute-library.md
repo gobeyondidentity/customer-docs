@@ -278,7 +278,7 @@ Use these to ...
 
 <table>
   <tbody>
-        <tr>
+    <tr>
       <th>Type</th>
       <th>Platform</th>
       <th>Name</th>

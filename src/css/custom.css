@@ -16,7 +16,7 @@
   --ifm-color-primary-lighter: #5574c6;
   --ifm-color-primary-lightest: #718acf;
   --ifm-color-hero-primary: #5474c2;
-  --ifm-code-font-size: 95%;
+  --ifm-code-font-size: 90%;
   --ifm-color-secondary: #faf9fb;
   --ifm-color-content: rgba(7, 0, 20, 0.87);
   --ifm-color-content-secondary: rgba(7, 0, 20, 0.6);
@@ -126,7 +126,9 @@ h2.glossary {
   border-bottom: 1px solid #cecece;
 }
 
-
+code {
+  vertical-align: baseline;  
+}
 
 
 
@@ -156,7 +158,6 @@ h6 {
 }
 
 
-
 @media (min-width: 997px) {
   .markdown header:first-child h1 {
     margin-top: -0.5rem;
@@ -182,9 +183,10 @@ ul {
 
 pre {
   font-family: monospace, monospace;
-  font-size: 1em;
-  white-space: pre-wrap; 
-  word-break: keep-all;
+  font-size: 0.9em;
+  white-space:pre-line;
+  word-wrap: normal;
+  width: 100%;
 }
 
 /*
@@ -273,27 +275,6 @@ div.image {
   height: auto;
   margin: 0;
 }
-
-
-
-.theme-doc-sidebar-item-link.theme-doc-sidebar-item-link-level-3 a {
-  color: var(--ifm-font-color-secondary);
-}
-
-.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2 ul.menu__list {
-  border-left: 1px solid #ccc;
-  padding-left: 0px;
-  margin-left: 16px;
-  margin-bottom: 4px;
-}
-
-.theme-doc-sidebar-item-link.theme-doc-sidebar-item-link-level-3.menu__list-item a.menu__link {
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
-}
-
-
-
 
 .footer {
   background-color: var(--adam-blue);
@@ -434,6 +415,29 @@ html[data-theme="dark"] .DocSearch-Hit.DocSearch-Hit[aria-selected="true"] a {
 
 
 
+.theme-doc-sidebar-item-link.theme-doc-sidebar-item-link-level-3 a {
+  color: var(--ifm-font-color-secondary);
+}
+
+.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2 ul.menu__list {
+  border-left: 1px solid #ccc;
+  padding-left: 0px;
+  margin-left: 16px;
+  margin-bottom: 4px;
+}
+
+.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-3 ul.menu__list {
+  border-left: 0px solid #ccc;
+  padding-left: 0px;
+  margin-left: 16px;
+  margin-bottom: 4px;
+}
+
+.theme-doc-sidebar-item-link.theme-doc-sidebar-item-link-level-3.menu__list-item a.menu__link {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
 
 
 /* Docs Sidebar */
@@ -487,6 +491,11 @@ nav[class^="menu"] {
   font-size: 0.85rem;
   font-weight: var(--ifm-font-weight-normal);
 }
+.theme-doc-sidebar-item-link-level-4 .menu__link {
+  font-size: 0.85rem;
+  font-weight: var(--ifm-font-weight-normal);
+}
+
 .menu__list .menu__list {
   margin-top: 0;
   margin-bottom: 0.1rem;
@@ -627,12 +636,12 @@ summary.demo {
 table {
   border-collapse: collapse;
   width: 100%;
-  overflow-y: hidden;
   table-layout: fixed;
   font-size: 0.875rem;
   text-align: left;
   margin: 4px 0;
 }
+
 
 
 table tr,
@@ -660,6 +669,7 @@ table td {
   border-left: 0;
   border-right: 0;
   border-top: 0;
+  line-height: 1.5;
 }
 
 
