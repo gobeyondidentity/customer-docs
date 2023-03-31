@@ -1,5 +1,5 @@
 ---
-title: 4. Register the redirect URI
+title: Step 4. Register the redirect URI
 id: set-redirect-uri
 description: ''
 slug: /set-redirect-uri
@@ -15,12 +15,9 @@ doc_type: get-started
 displayed_sidebar: secureWorkforceSidebar
 ---
 
+This URI lets us know where to redirect new users when they register using an email. Whenever a new user registers using Beyond Identity, we send out an email to verify their identity. 
 
-# Step 4. Register redirect URI
-
-
-
-This URI lets us know where to redirect new users when they register using an email. Whenever a new user registers using Beyond Identity, we send out an email to verify their identity. By default, the link in that email redirects a user to our [Native Platform Authenticator]<!-- (/docs/v0/web-sdks/platform-authenticator) -->. In order to redirect to your own iOS/Android application, you will need to specify this URI to be either an app scheme or a universal url / app link.
+By default, the link in that email redirects a user to our [Native Platform Authenticator]<!-- (/docs/v0/web-sdks/platform-authenticator) -->. In order to redirect to your own iOS/Android application, you will need to specify this URI to be either an app scheme or a universal url / app link.
 
 ### iOS Setup Instructions
 

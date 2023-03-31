@@ -7,7 +7,7 @@ keywords:
  - installation
  - authenticator
  - windows
-pagination_next: installation/cli-commands
+pagination_next: null
 pagination_prev: installation/install-platform-authenticator
 last_update: 
    date: 03/30/2022

@@ -67,16 +67,17 @@ const sidebars = {
         },
         {
           type: 'category',
-          label: 'Platform Authenticator',
+          label: 'Authenticator',
           collapsed: true,  
           link: {
             type: 'doc',
             id: 'platform/platform-authenticator',
           },      
           items: [ 
-            'platform/authenticator-versions',
             'platform/manage-passkeys',
-            'platform/manage-authenticator-updates',
+           // 'platform/manage-authenticator-updates',  what's the difference between this topic and the next one (Manage updates and notifications)?
+            'platform/manage-updates-notifications',
+            'platform/manage-roaming-authentication',
             {
               type: 'category',
               label: 'Installation',
@@ -89,7 +90,6 @@ const sidebars = {
                 'installation/install-authenticator-on-macos',
                 'installation/install-authenticator-on-windows',
                 'installation/install-authenticator-on-linux',
-                'installation/cli-commands',
               ],
             },
           ],
@@ -162,8 +162,11 @@ const sidebars = {
         type: 'doc',
         id: 'data-events/data-events',
       },         
-      items: [ 'data-events/export-windows-event-logs', 
-      'data-events/collect-local-logs-endpoints', 
+      items: [ 
+        'data-events/export-windows-event-logs', 
+        'data-events/collect-local-logs-endpoints', 
+        'data-events/view-event-details',
+        'data-events/request-access-to-tenant-or-user-data',
       ],
     },
     {

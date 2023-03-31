@@ -28,7 +28,9 @@ The following attributes are available in the Beyond Identity Policy Engine:
 
 - **Egress IP Address Match Within Subnet** - leverage this attribute to enforce or monitor that source IP addresses of both devices in an add device transaction are within a specific range of IP addresses of each other.
 
-- **Impossible Travel** - leverage this attribute if two authentications have been performed by single user from locations not reasonable to travel between.
+- **Impossible Travel** - leverage this attribute if a single user performs two authentications from locations not reasonable to travel between. We leverage the latitude/longitude of an authentication and compare it to the subsequent authentication. If the distance exceeds the speed of air travel (500 m/h), we flag it as **Travel**. 
+
+  The Impossible Travel attribute is an '*is it*' or '*isn't it*' fast travel attribute in that there is no ability to alter travel speed on the user's end. When flagging authentication for fast Travel, you can write the rules to monitor or allow/deny. 
 
 
 ### Updated

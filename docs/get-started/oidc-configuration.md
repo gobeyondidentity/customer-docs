@@ -1,5 +1,5 @@
 ---
-title: 3. Configure an OIDC connection
+title: Step 3. Configure OIDC connection
 id: configure-oidc-connection
 description: ''
 slug: /configure-oidc-connection
@@ -14,11 +14,6 @@ draft: true
 doc_type: get-started
 displayed_sidebar: secureWorkforceSidebar
 ---
-
-
-# Step 3. Configure an OIDC connection
-
-
 
 Before you can use Beyond Identity to authenticate users, you will need to create an OpenID Connect (OIDC) client. OIDC is an identity layer built on top of OAuth2.0 that enables:
 
@@ -36,7 +31,7 @@ To create an OIDC client, you will need to issue an `HTTP POST` to `https://api.
 | **id_token_signed_response_alg** | String |**Required.** The algorithm used to sign the JWT that authenticates the client. This can be either `ES256` or `RS256`.|
 | **token_endpoint_auth_method** | String |**Required.** The request client authentication method when used to request an access token. Values supported here are `client_secret_basic`, `client_secret_post` and `none` (only supported on public clients).|
 
-Example Request
+## Example Request
 
 ```bash
 curl -X POST "https://api.byndid.com/v0/oidc/clients" \
@@ -67,7 +62,7 @@ The response to this API call is a JSON object consisting of the following field
 |**client_id** | String	| The id of the client that is used when making requests to the `/authorize` and `/token` endpoints.||client_secret|String|The secret that is used when making a request to the `/token` endpoint from a confidential client.|
 |**date_created** | String	| The date that specifies when the OIDC client was created. Formatted as [RFC 3339](https://tools.ietf.org/html/rfc3339).||date_modified|String|The date that specifies when the OIDC client was updated. Formatted as  [RFC 3339](https://tools.ietf.org/html/rfc3339).|
 
-Example Response
+## Example Response
 
 ```json
 {

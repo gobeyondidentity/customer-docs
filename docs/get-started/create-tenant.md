@@ -1,5 +1,5 @@
 ---
-title: 1. Create a tenant
+title: Step 1. Create a tenant
 id: create-tenant
 description: ''
 slug: /create-tenant
@@ -15,7 +15,6 @@ doc_type: get-started
 displayed_sidebar: secureWorkforceSidebar
 ---
 
-# Step 1. Create a tenant
 
 A tenant provides a way to group users who share similar privileges. The process to create a tenant account for your workforce is currently performed by a Beyond Identity team member. Click [request a tenant](https://forms.gle/3BvBsthE8ga4ohSd7) to fill out the request form.
 
