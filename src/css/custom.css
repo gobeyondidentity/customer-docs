@@ -231,7 +231,8 @@ ol li ol li{
 
 li.no-style {
   list-style-type: none;
-  margin-left: -22px;
+  margin-left: -32px;
+
 }
 
 div.indent {
@@ -646,32 +647,39 @@ table {
 
 table tr,
 table thead tr:first-child th {
-  border-top: 0;
+  border-top: 1;
 }
 th {
   text-align: left;
   background-color: #f2f2f2;
-  text-transform: uppercase;
-  padding: 0;
+  /*text-transform: uppercase;*/
+  font-variant: small-caps;
+  font-size: larger;
+  margin: 0;
 }
 
 
 th:first-child,
 td:first-child {
-  padding-left: 10;
+  padding: 3;
 }
 th:last-child,
 td:last-child {
-  padding-right: 10;
+  padding: 3;
 }
 table th,
 table td {
-  border-left: 0;
-  border-right: 0;
-  border-top: 0;
-  line-height: 1.5;
+  border: 1;
+  line-height: 1.35;
 }
 
+/*.vertical { 
+  -webkit-writing-mode:vertical-lr; 
+  transform: rotate(-180deg);
+  writing-mode: vertical-lr;
+  text-align: right;
+}
+*/
 
 table.no-border {
   border-style: 0px;
@@ -693,6 +701,7 @@ th, td {
 
 td li {
   margin-bottom: 0;
+  font-size: 0.875rem;
 }
 
 

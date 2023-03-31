@@ -25,7 +25,7 @@ A download and registration email will be sent from your IT department to downlo
 
 2. From the **Downloads** page, select **macOS** and then click **Download for macOS**. 
 
-   ![](/images/install/dowloads_macos.PNG)
+   ![](../images/install/download-macos-authenticator.png)
 
 3. The download begins. Depending on your browser, you may be prompted for the storage location. Specify the desired location.
 

@@ -27,7 +27,10 @@ const InstallationList = [
     alt: 'alt text for image',
     description: (
       <>
-       
+        <li>10.15</li>
+        <li>11</li>
+        <li>12</li>
+        <li>13 (Ventura)</li>
       </>
     ),
     href: ('/install-authenticator-on-macos'),
@@ -40,7 +43,8 @@ const InstallationList = [
     alt: 'alt text for image',
     description: (
       <>
-
+        <li>Windows 10 build 19041 and later</li>
+        <li>Windows 11</li>
       </>
     ),
     href: ('/install-authenticator-on-windows'),
@@ -53,7 +57,15 @@ const InstallationList = [
     alt: 'alt text for image',
     description: (
       <>
-         The Linux Authenticator currently supports Debian (Ubuntu) and RPM (CentOS) distributions.
+        <b>Debian</b>
+        <li>Ubuntu 18 LTS</li>
+        <li>Ubuntu 20 LTS</li>
+        <li>Ubuntu 22.04 LTS</li>
+        <br />
+       <b>RPM</b>
+        <li>CentOS 7</li>
+        <li>CentOS Stream 8</li>
+        <li>CentOS Stream 9</li>
       </>
     ),
     href: ('/install-authenticator-on-linux'),
@@ -72,7 +84,7 @@ function Topic({ title, description, versions, href }) {
           <CardContent>
             <Typography
                 gutterBottom 
-                variant="h6" 
+                variant="h5" 
                 component="div"
                 sx={{
                   fontWeight: 500,
@@ -84,7 +96,12 @@ function Topic({ title, description, versions, href }) {
               {title} 
             </Typography>
             <Typography variant="body2" sx={{ fontFamily: 'Overpass', lineHeight: 1.3 }}>
-            <b>Supported versions:</b><br />{versions}
+
+            <b>Supported versions:</b>
+          </Typography>
+          <Typography variant="body1" sx={{ fontFamily: 'Overpass', lineHeight: 1.3, margin: 2 }}>
+
+              {description}
           </Typography>
       </CardContent>
     </CardActionArea>

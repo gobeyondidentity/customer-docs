@@ -1,5 +1,5 @@
 ---
-title: Manage updates and notificatins
+title: Manage updates and notifications
 id: manage-updates-notifications
 description: ''
 slug: /manage-updates-notifications
@@ -18,7 +18,9 @@ displayed_sidebar: secureWorkforceSidebar
 
 
 
-By default, users are notified any time an update is available. Users can also check for updates at any time by selecting the **Check for Updates** drop-down menu item. These options allow users to download and install the latest functionality available.
+By default, users are notified any time an update is available. 
+
+Users can also check for updates at any time by selecting the **Check for Updates** drop-down menu item. These options allow users to download and install the latest functionality available.
 
 Since the downloading and use of the Beyond Identity software is controlled and managed by each company using the software, a company may want to manage installations and updates. There are several reasons why a company may want to manage the installation of software. These include:
 
@@ -50,8 +52,8 @@ Keep following points in mind when using the utility:
 *   The file, `/Library/Preferences/com.beyondidentity.preferences.plist`, is created when the command to enable update notifications is run. The file should contain `updatesEnabled = 1` when viewed with `defaults read /Library/Preferences/com.beyondidentity.preferences.plist`. Make sure all running instances of the Authenticator are restarted.
 *   Running the utility with any argument not listed in the following table or running the utility without any argument will simply display `Invalid Arguments`.
 
-Available Arguments
--------------------
+### Available Arguments
+
 
 The following arguments are available to use with `BIConfigure`.
 
@@ -61,8 +63,8 @@ The following arguments are available to use with `BIConfigure`.
 | BIConfigure --show-updates | Display updates |
 | BIConfigure --enable-updates | Enable updates |
 
-Examples
---------
+### Examples
+
 
 The following examples provide the output that is displayed when the command/argument combination as a root user and as a non-root user.
 
