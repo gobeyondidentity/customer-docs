@@ -13,7 +13,7 @@ keywords:
 pagination_next: null
 pagination_prev: null
 last_update: 
-   date: 02/10/2023
+   date: 04/10/2023
    author: Patricia McPhee
 draft: true
 doc_type: how-to
@@ -27,7 +27,7 @@ In this guide, you'll set up a Microsoft Intune environment and integrate it wit
 
 The Beyond Identity integration supports Windows, macOS, [iOS](#ios), and [Android](#android) devices. For more information on supported versions, see [Supported operating systems and browsers in Intune](https://learn.microsoft.com/en-us/mem/intune/fundamentals/supported-devices-browsers).
 
-:::info important
+:::note 
 The Beyond Identity Authenticator must be configured and pushed via Intune to leverage the integration for mobile devices.
 :::
 
@@ -99,7 +99,7 @@ You'll register Beyond Identity in AAD to establish a trust relationship with th
 
 8. Enter a description for the secret, for example, **Beyond Identity Policy Engine**. Then select the duration of the section and select **Add**.  
 
-   :::info Important    
+   :::note
    Note the expiration time because you'll need to reset this before it expires.
    :::
 
@@ -184,7 +184,7 @@ You'll configure the mobile apps in Intune to assign your managed app configurat
 
 5. On the **Settings** page, select **Use configuration designer**, enter the following configuration key-value pairs. Then click **Next**.
 
-  :::info note
+  :::note
   The conﬁguration keys are case-sensitive.
   :::
 
@@ -239,7 +239,7 @@ You'll configure the mobile apps in Intune to assign your managed app configurat
 2. On the **Settings** page, select **Use configuration designer**, and click **Add**.
 3.  Select **Intune Devide ID** click **OK**. Then enter **{{deviceid}}** for the **Configuration value** and click **Next**.  
 
-  :::info    
+  :::note    
   The conﬁguration keys are case-sensitive.
   :::
 

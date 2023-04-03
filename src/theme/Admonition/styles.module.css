@@ -1,6 +1,8 @@
 .admonition {
   margin-top: 0.5em;
   margin-bottom: 1em;
+/*  border: 0.025em solid #eee; */
+  border-radius: 4px;
 }
 
 .admonitionHeading {

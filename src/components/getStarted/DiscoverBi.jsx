@@ -26,7 +26,7 @@ const DiscoverList = [
     alt: 'alt text for image',
     description: (
       <>
-        Find out what Beyond Identity is all about, and how it works.  You'll all find the Release Notes, FAQs, and supported operating systems. 
+        Install and configure Beyond Identity. 
       </>
     ),
     href: ('/get-started'),

@@ -830,6 +830,9 @@ body {
   line-height: 1.4;
 }
 
+.markdown h1:first-child {
+  --ifm-h1-font-size: 1.9rem;
+}
 
   /** Setting margins      
   @page { margin: 1cm }*/  

@@ -3,13 +3,18 @@ import clsx from 'clsx';
 import {ThemeClassNames} from '@docusaurus/theme-common';
 import Translate from '@docusaurus/Translate';
 import styles from './styles.module.css';
+
+
+
+
 function NoteIcon() {
   return (
-    <svg viewBox="0 0 14 16">
-      <path
+    <svg width="24" height="24" viewBox="24 24">
+      <path 
+
         fillRule="evenodd"
-        d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"
-      />
+	      d="M 2.93359 8.5 H 13.9336 V 10.5 H 2.93359 V 8.5 Z M 2.93359 6.5 H 13.9336 V 4.5 H 2.93359 V 6.5 Z M 2.93359 14.5 H 9.93359 V 12.5 H 2.93359 V 14.5 Z M 17.9436 11.37 L 18.6536 10.66 C 19.0436 10.27 19.6736 10.27 20.0636 10.66 L 20.7736 11.37 C 21.1636 11.76 21.1636 12.39 20.7736 12.78 L 20.0636 13.49 L 17.9436 11.37 Z M 17.2336 12.08 L 11.9336 17.38 V 19.5 H 14.0536 L 19.3536 14.2 L 17.2336 12.08 Z" />
+
     </svg>
   );
 }
@@ -25,10 +30,10 @@ function TipIcon() {
 }
 function DangerIcon() {
   return (
-    <svg viewBox="0 0 12 16">
+    <svg width="24" height="24" viewBox="24 24">
       <path
         fillRule="evenodd"
-        d="M5.05.31c.81 2.17.41 3.38-.52 4.31C3.55 5.67 1.98 6.45.9 7.98c-1.45 2.05-1.7 6.53 3.53 7.7-2.2-1.16-2.67-4.52-.3-6.61-.61 2.03.53 3.33 1.94 2.86 1.39-.47 2.3.53 2.27 1.67-.02.78-.31 1.44-1.13 1.81 3.42-.59 4.78-3.42 4.78-5.56 0-2.84-2.53-3.22-1.25-5.61-1.52.13-2.03 1.13-1.89 2.75.09 1.08-1.02 1.8-1.86 1.33-.67-.41-.66-1.19-.06-1.78C8.18 5.31 8.68 2.45 5.05.32L5.03.3l.02.01z"
+        d="M 15.73 3 H 8.27 L 3 8.27 V 15.73 L 8.27 21 H 15.73 L 21 15.73 V 8.27 L 15.73 3 Z M 19 14.9 L 14.9 19 H 9.1 L 5 14.9 V 9.1 L 9.1 5 H 14.9 L 19 9.1 V 14.9 Z M 14.83 7.76 L 12 10.59 L 9.17 7.76 L 7.76 9.17 L 10.59 12 L 7.76 14.83 L 9.17 16.24 L 12 13.41 L 14.83 16.24 L 16.24 14.83 L 13.41 12 L 16.24 9.17 L 14.83 7.76 Z"
       />
     </svg>
   );
@@ -56,7 +61,7 @@ function CautionIcon() {
 // eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
 const AdmonitionConfigs = {
   note: {
-    infimaClassName: 'secondary',
+    infimaClassName: 'primary',
     iconComponent: NoteIcon,
     label: (
       <Translate
@@ -89,7 +94,7 @@ const AdmonitionConfigs = {
     ),
   },
   info: {
-    infimaClassName: 'info',
+    infimaClassName: 'secondary',
     iconComponent: InfoIcon,
     label: (
       <Translate
