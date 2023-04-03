@@ -132,7 +132,7 @@ const sidebars = {
           items: [ 
             'policy/authentication-requirement-policy',
             'policy/antivirus-policy',
-            'policy/build-release-policies',   
+            'policy/build-release-policy',   
             'policy/detect-running-processes',      
             'policy/firewall-policy',
             'policy/jailbroken-ios-policy',
@@ -149,9 +149,8 @@ const sidebars = {
         'policy/policy-attribute-library',
         'policy/import-policy',
         'policy/export-policy',
-        'policy/view-policy-match-details',
+        'policy/view-policy-details',
         'policy/restore-previous-policy-rules',
-
       ],
     },
     {
