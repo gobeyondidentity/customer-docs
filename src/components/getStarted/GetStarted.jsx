@@ -28,7 +28,7 @@ const GetStartedList = [
     alt: 'alt text for image',
     description: (
       <>
-       A tenant provides a way to group users who share similar privileges. At this time, a Beyond Identity team member creates a tenant after you've completed the <a href="https://forms.gle/3BvBsthE8ga4ohSd7">request form</a>.
+       A tenant provides a way to group users who share similar privileges. At this time, Beyond Identity creates a tenant after you've completed the request form.
       </>
     ),
     href: ('/create-tenant'),
@@ -47,12 +47,12 @@ const GetStartedList = [
     label: ('Learn more'),
   },
   {
-    title: 'Step 3. Configure an OIDC connection',
+    title: 'Step 3. Configure OIDC connection',
 //    Svg: require('@site/static/img/Details-page-02.svg').default,
     alt: 'alt text for image',
     description: (
       <>
-         Before you can use Beyond Identity to authenticate users, you will need to create an OpenID Connect (OIDC) client. OIDC is an identity layer built on top of OAuth2.0.
+         OpenID Connect (OIDC) is an identity layer built on top of OAuth2.0, letting users authenticate into your app. 
       </>
     ),
     href: ('/configure-oidc-connection'),
@@ -64,7 +64,7 @@ const GetStartedList = [
     alt: 'alt text for image',
     description: (
       <>
-         This URI lets us know where to redirect new users when they register using an email. Whenever a new user registers using Beyond Identity, we send out an email to verify their identity.
+         The URI lets Beyond Identity know where to redirect new users to verify their identity.
       </>
     ),
     href: ('/set-redirect-uri'),
@@ -76,7 +76,7 @@ function Topic({ title, description, href }) {
   return (
     
     <div className={clsx('col col--6', styles. topic)}>
-  <Card sx={{ minHeight: 'auto', p: 3, borderRadius: 4 }} elevation={2}>
+  <Card sx={{ minHeight: 'auto', p: 2, borderRadius: 4 }} elevation={1}>
       <CardActionArea href={href}>
         <CardContent>
           <Typography

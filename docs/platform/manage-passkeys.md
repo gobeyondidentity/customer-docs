@@ -1,5 +1,5 @@
 ---
-title: Manage passkeys
+title: Passkey management
 id: manage-passkeys
 description: ''
 slug: /manage-passkeys 

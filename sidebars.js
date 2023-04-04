@@ -53,16 +53,16 @@ const sidebars = {
             id: 'platform/admin-console',
           },      
           items: [ 
-            'platform/configure-rbac', 
 
-            'platform/configure-identity-providers',
-            'platform/configure-shared-credentials-windows-roaming-profile',
+            'platform/customize-tenant',
+            'platform/manage-roaming-authentication',
             'platform/configure-admin-console-login-options',
+            'platform/configure-identity-providers',
+            'platform/configure-rbac', 
+            'platform/manage-passkeys',
             'platform/revoke-access-to-device', 
             'platform/reset-credentials',
-            'platform/customize-tenant',
-
-
+            'platform/delete-tenant',
           ],
         },
         {
@@ -74,10 +74,10 @@ const sidebars = {
             id: 'platform/platform-authenticator',
           },      
           items: [ 
-            'platform/manage-passkeys',
-           // 'platform/manage-authenticator-updates',  what's the difference between this topic and the next one (Manage updates and notifications)?
+
+           // 'platform/manage-authenticator-updates',  what's the difference between this topic and the next one (Manage updates and notifications)?  There is no difference. The next topic is missing A LOT of information, but they are the same. 
             'platform/manage-updates-notifications',
-            'platform/manage-roaming-authentication',
+            'platform/configure-shared-credentials-windows-roaming-profile',
             {
               type: 'category',
               label: 'Installation',
@@ -113,7 +113,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Policy',
+      label: 'Policies',
       collapsed: true, 
       collapsible: true,   
       link: {
@@ -130,8 +130,9 @@ const sidebars = {
             id: 'policy/define-policy', 
           },      
           items: [ 
-            'policy/authentication-requirement-policy',
             'policy/antivirus-policy',
+            'policy/authentication-requirement-policy',
+
             'policy/build-release-policy',   
             'policy/detect-running-processes',      
             'policy/firewall-policy',
@@ -140,7 +141,7 @@ const sidebars = {
 
             'policy/rooted-android-policy',
             'policy/security-software-policy',
-
+            'policy/threat-signals',
             'policy/set-platform-version-policy',
             'policy/kandji-connection-policy',
             'policy/kandji-mdm-policy',
@@ -155,7 +156,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Data & Events',
+      label: 'Date & Events',
       collapsed: true,  
       link: {
         type: 'doc',
@@ -166,6 +167,8 @@ const sidebars = {
         'data-events/collect-local-logs-endpoints', 
         'data-events/view-event-details',
         'data-events/request-access-to-tenant-or-user-data',
+        'data-events/risk-reporting',
+        'data-events/customer-health-analysis',
       ],
     },
     {
@@ -388,9 +391,18 @@ const sidebars = {
       },
       collapsible: false,    
       items: [ 
+        'release-notes/v2-78-0',
+
         'release-notes/v2-77-0',
         'release-notes/v2-76-0',
         'release-notes/v2-75-0',
+        'release-notes/v2-74-0', 
+        'release-notes/v2-73-1',
+        'release-notes/v2-73-0',
+        'release-notes/v2-72-3',
+        'release-notes/v2-72-2',
+        'release-notes/v2-72-0',
+        'release-notes/v2-71-0',
       ],
     },    
   ],

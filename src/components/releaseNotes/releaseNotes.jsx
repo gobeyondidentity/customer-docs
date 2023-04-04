@@ -12,9 +12,9 @@ import Link from '@docusaurus/Link';
 
 
 
-export const ReleaseVersion = '2.77.0';
+export const ReleaseVersion = '2.78.0';
 
-export const ReleaseDate = 'March 28, 2023';
+export const ReleaseDate = 'April 11, 2023';
 
 export const ReleaseNotes = [
 	'Improved RDP experience',
@@ -83,7 +83,26 @@ export default function ReleaseNotesTimeline() {
 						</p>
 						<p>&nbsp;</p>
 					</div>
-
+          <TimelineItem>
+        
+        <TimelineOppositeContent color="textSecondary" sx={{fontFamily: 'Overpass'}}>
+			<a href="/v2-78-0">
+          2.78.0</a>
+        </TimelineOppositeContent>
+        <TimelineSeparator>
+          <TimelineDot color="primary" />
+          <TimelineConnector />
+        </TimelineSeparator>
+        <TimelineContent sx={{fontFamily: 'Overpass', }}><p sx={{
+            color: 'success.dark',
+            display: 'inline',
+            fontWeight: 'bold',
+            mx: 0.5,
+            fontSize: 14,
+          }}>
+            ... Additional features and capabilities for users and businesses that need tighter and customizable integration ... 
+            </p></TimelineContent>
+      </TimelineItem>  
           <TimelineItem>
         
         <TimelineOppositeContent color="textSecondary" sx={{fontFamily: 'Overpass'}}>
@@ -121,7 +140,7 @@ export default function ReleaseNotesTimeline() {
             mx: 0.5,
             fontSize: 14,
           }}>
-            Additional features and capabilities for users and businesses that need tighter and customizable integration ...
+            ... Additional features and capabilities for users and businesses that need tighter and customizable integration ...
             </p></TimelineContent>
       </TimelineItem>
       <TimelineItem>
@@ -133,7 +152,7 @@ export default function ReleaseNotesTimeline() {
           <TimelineDot color="primary" />
           <TimelineConnector />
         </TimelineSeparator>
-        <TimelineContent sx={{fontFamily: 'Overpass'}}>Additional features and capabilities for users and businesses that need tighter and customizable integration ...</TimelineContent>
+        <TimelineContent sx={{fontFamily: 'Overpass'}}>... Additional features and capabilities for users and businesses that need tighter and customizable integration ...</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent color="textSecondary" sx={{fontFamily: 'Overpass'}}>
@@ -142,7 +161,7 @@ export default function ReleaseNotesTimeline() {
         <TimelineSeparator>
         <TimelineDot color="primary" />
         </TimelineSeparator>
-        <TimelineContent sx={{fontFamily: 'Overpass'}}>Additional features and capabilities for users and businesses that need tighter and customizable integration ...</TimelineContent>
+        <TimelineContent sx={{fontFamily: 'Overpass'}}>... Additional features and capabilities for users and businesses that need tighter and customizable integration ...</TimelineContent>
       </TimelineItem>
     </Timeline>
     
