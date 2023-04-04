@@ -15,14 +15,18 @@ doc_type: get-started
 displayed_sidebar: secureWorkforceSidebar
 ---
 
-Before you can use Beyond Identity to authenticate users, you will need to create an OpenID Connect (OIDC) client. OIDC is an identity layer built on top of OAuth2.0 that enables:
+OpenID Connect (OIDC) is an identity layer built on top of OAuth2.0. 
+
+The OIDC client lets:
 
 * Your users to authenticate into your app
-* You, as the developer of the app to receive basic information about the user
+* You, as the developer of the app, to receive basic information about the user
 
-You can create a OIDC client within the Admin portal or via our API. The rest of this guide documents how to create an OIDC client via API.
+Alternatively, you can create it within the Admin portal, but this step walks you through creating an OIDC client through the API.
 
-To create an OIDC client, you will need to issue an `HTTP POST` to `https://api.byndid.com/v0/oidc/clients` with the following fields:
+[Do we have the Admin Portal steps?]
+
+Issue an **HTTP POST** to **https://api.byndid.com/v0/oidc/clients** with the following fields:
 
 | Name | Type |Description |
 | --- | --- | --- |

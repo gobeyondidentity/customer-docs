@@ -16,7 +16,9 @@ displayed_sidebar: secureWorkforceSidebar
 ---
 
 
-Once your account has been created with Beyond Identity, you'll be able to configure a few values specific to your account. In order to configure your account, you will need to issue an `HTTP POST` to `https://api.byndid.com/v0/configs/profile` with the following fields:
+Once your account has been created with Beyond Identity, you'll be able to configure a few values specific to your account. 
+
+Issue an **HTTP POST** to **https://api.byndid.com/v0/configs/profile** with the following fields:
 
 | Name | Type | Description	|
 | --- | --- | --- |

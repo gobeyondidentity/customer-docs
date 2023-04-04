@@ -1,11 +1,11 @@
 ---
 title: Step 4. Register the redirect URI
 id: set-redirect-uri
-description: ''
+description: 'The URI lets Beyond Identity know where to redirect new users to verify their identity.'
 slug: /set-redirect-uri
 keywords: 
  - get started
-pagination_next: null
+pagination_next: platform/admin-console
 pagination_prev: get-started/configure-oidc-connection
 last_update: 
    date: 03/29/2023
@@ -15,7 +15,7 @@ doc_type: get-started
 displayed_sidebar: secureWorkforceSidebar
 ---
 
-This URI lets us know where to redirect new users when they register using an email. Whenever a new user registers using Beyond Identity, we send out an email to verify their identity. 
+The URI lets Beyond Identity know where to redirect new users to verify their identity.
 
 By default, the link in that email redirects a user to our [Native Platform Authenticator]<!-- (/docs/v0/web-sdks/platform-authenticator) -->. In order to redirect to your own iOS/Android application, you will need to specify this URI to be either an app scheme or a universal url / app link.
 
