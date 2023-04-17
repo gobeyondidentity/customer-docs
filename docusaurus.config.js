@@ -3,15 +3,19 @@
 
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
-
+const baseUrl = process.env.BASE_URL ?? '/';
 
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
 
   plugins: [
-    'plugin-image-zoom',
-    
+
+    require.resolve("docusaurus-plugin-image-zoom"),
+
+
+
+//    'plugin-image-zoom',
 //    '@chatwoot/docusaurus-plugin',
 //    [
 //      require.resolve("@easyops-cn/docusaurus-search-local"),
@@ -44,13 +48,14 @@ themes: [
   organizationName: 'gobeyondidentitybeyond', // Usually your GitHub org/user name.
   projectName: 'customer-docs', // Usually your repo name.
 
+
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
-//  i18n: {
-//    defaultLocale: 'en',
-//    locales: ['en'],
-//  },
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en'],
+ },
 customFields: {
   // Put your custom environment here
   partner: 'partner value',
@@ -207,6 +212,16 @@ customFields: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      zoom: {
+        selector: '.markdown :not(em) > img',
+        config: {
+          // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
+          background: {
+            light: 'rgb(255, 255, 255)',
+            dark: 'rgb(50, 50, 50)'
+          }
+        }
+      }
     }),
 
 

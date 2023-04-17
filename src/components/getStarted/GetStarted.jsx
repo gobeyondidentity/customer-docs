@@ -23,75 +23,51 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const GetStartedList = [
   {
-    title: 'How Beyond Identity works',
+    title: 'Step 1. Create your tenant',
 //    Svg: require('@site/static/img/Details-page-02.svg').default,
     alt: 'alt text for image',
     description: (
       <>
-        Learn how Beyond Identity authenticates users and their devices, controlling who and what devices can access your SaaS apps and cloud infrastructure.
+       A tenant provides a way to group users who share similar privileges. At this time, Beyond Identity creates a tenant after you've completed the request form.
       </>
     ),
-    href: ('/how-it-works'),
+    href: ('/create-tenant'),
     label: ('Learn more'),
   },
   {
-    title: 'User sign-in flow',
+    title: 'Step 2. Configure Beyond Identity account',
 //    Svg: require('@site/static/img/Details-page-02.svg').default,
     alt: 'alt text for image',
     description: (
       <>
-        Learn more about how Beyond Identity works and the user sign-in workflow.  
+         Once your account has been created with Beyond Identity, you'll be able to configure a few values specific to your account. 
       </>
     ),
-    href: ('/sign-in-workflow'),
+    href: ('/configure-account'),
     label: ('Learn more'),
   },
   {
-    title: 'Supported operating systems',
+    title: 'Step 3. Configure OIDC connection',
 //    Svg: require('@site/static/img/Details-page-02.svg').default,
     alt: 'alt text for image',
     description: (
       <>
-        Find out what operating systems versions Beyond Identity supports.  We support Windows, macOS, Linux, Android, and iOS/iPadOS. 
+         OpenID Connect (OIDC) is an identity layer built on top of OAuth2.0, letting users authenticate into your app. 
       </>
     ),
-    href: ('/supported-platforms'),
+    href: ('/configure-oidc-connection'),
     label: ('Learn more'),
   },
   {
-    title: 'Release notes',
+    title: 'Step 4. Register redirect URI',
 //    Svg: require('@site/static/img/Details-page-02.svg').default,
     alt: 'alt text for image',
     description: (
       <>
-        If you deployed Beyond Identity Cloud, Platform Authenticators, and Desktop Login, you'll receive the latest updates as we release them. 
+         The URI lets Beyond Identity know where to redirect new users to verify their identity.
       </>
     ),
-    href: ('/release-notes-main'),
-    label: ('Learn more'),
-  },
-  {
-    title: 'FAQs',
-//    Svg: require('@site/static/img/Details-page-02.svg').default,
-    alt: 'alt text for image',
-    description: (
-      <>
-        Discover common questions a customer asks or would ask about using and troubleshooting the product.   
-      </>
-    ),
-    href: ('/faq'),
-    label: ('Learn more'),
-  },
-  {
-    title: 'Terminology',
-//    Svg: require('@site/static/img/Details-page-02.svg').default,
-    alt: 'alt text for image',
-    description: (
-      <>
-        Learn about the terms Beyond Identity uses.  
-      </>
-    ),
-    href: ('/glossary'),
+    href: ('/set-redirect-uri'),
     label: ('Learn more'),
   },
 ];
@@ -99,9 +75,9 @@ const GetStartedList = [
 function Topic({ title, description, href }) {
   return (
     
-  <div className={clsx('col col--6', styles.topic)}>
-  <Card sx={{ minHeight: 'auto', p: 2, borderRadius: 3, m: 0 }} elevation={2}>
-      
+    <div className={clsx('col col--6', styles. topic)}>
+  <Card sx={{ minHeight: 'auto', p: 2, borderRadius: 4 }} elevation={1}>
+      <CardActionArea href={href}>
         <CardContent>
           <Typography
               gutterBottom 
@@ -112,6 +88,7 @@ function Topic({ title, description, href }) {
                 fontFamily: 'Overpass',
                 textAlign: 'left',
                 color: '#3e5fb8',
+                lineHeight: '1.2',
               }} 
             >
             {title} 
@@ -120,14 +97,7 @@ function Topic({ title, description, href }) {
             {description}
           </Typography>
       </CardContent>
-
-      <CardActions>
-
-        <Button href={href} sx={{ textAlign: 'right', color: '#3e5fb8'}}>Learn More</Button>
-
-      
-      </CardActions>
-
+    </CardActionArea>
   </Card>
   </div>
   );

@@ -4,13 +4,12 @@
 const sidebars = {
   // By default, Docusaurus generates a sidebar from the docs folder structure
   secureWorkforceSidebar: [
-    'welcome',
     {
       type: 'category',
-      label: 'Get Started',  
+      label: 'Welcome',  
       link: {
         type: 'doc',
-        id: 'get-started',
+        id: 'welcome',
       },
       collapsed: true, 
       collapsible: true,      
@@ -18,9 +17,22 @@ const sidebars = {
         'how-it-works', 
         'sign-in-workflow',
         'supported-platforms',
-        'release-notes/release-notes-main', 
-        'faq',
-        'glossary',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Get Started',  
+      link: {
+        type: 'doc',
+        id: 'get-started/get-started',
+      },
+      collapsed: true, 
+      collapsible: true,      
+      items: [ 
+        'get-started/create-tenant',
+        'get-started/configure-account',
+        'get-started/configure-oidc-connection',
+        'get-started/set-redirect-uri',
       ],
     },
     {
@@ -41,28 +53,48 @@ const sidebars = {
             id: 'platform/admin-console',
           },      
           items: [ 
-            'platform/configure-rbac', 
+
+            'platform/customize-tenant',
+            'platform/manage-roaming-authentication',
             'platform/configure-admin-console-login-options',
+            'platform/configure-identity-providers',
+            'platform/configure-rbac', 
+            'platform/manage-passkeys',
             'platform/revoke-access-to-device', 
             'platform/reset-credentials',
-            'view-policy-match-details', 
-            'tenant-logo-requirements',
+            'platform/delete-tenant',
           ],
         },
         {
           type: 'category',
-          label: 'Platform Authenticator',
+          label: 'Authenticator',
           collapsed: true,  
           link: {
             type: 'doc',
             id: 'platform/platform-authenticator',
           },      
           items: [ 
-            'platform/authenticator-versions',
-            'platform/manage-passkeys',
-            'platform/manage-authenticator-updates',
+
+           // 'platform/manage-authenticator-updates',  what's the difference between this topic and the next one (Manage updates and notifications)?  There is no difference. The next topic is missing A LOT of information, but they are the same. 
+            'platform/manage-updates-notifications',
+            'platform/configure-shared-credentials-windows-roaming-profile',
+            {
+              type: 'category',
+              label: 'Installation',
+              collapsed: true,  
+              link: {
+                type: 'doc',
+                id: 'installation/install-platform-authenticator',
+              },      
+              items: [ 
+                'installation/install-authenticator-on-macos',
+                'installation/install-authenticator-on-windows',
+                'installation/install-authenticator-on-linux',
+              ],
+            },
           ],
         },
+
       ],
     },
     {
@@ -81,7 +113,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Policy',
+      label: 'Policies',
       collapsed: true, 
       collapsible: true,   
       link: {
@@ -89,22 +121,54 @@ const sidebars = {
         id: 'policy/policy',
       },      
       items: [ 
-        'policy/define-policy', 
+        {
+          type: 'category',
+          label: 'Define a policy',
+          collapsed: true,  
+          link: {
+            type: 'doc',
+            id: 'policy/define-policy', 
+          },      
+          items: [ 
+            'policy/antivirus-policy',
+            'policy/authentication-requirement-policy',
+
+            'policy/build-release-policy',   
+            'policy/detect-running-processes',      
+            'policy/firewall-policy',
+            'policy/jailbroken-ios-policy',
+            'policy/limit-number-registered-devices',
+
+            'policy/rooted-android-policy',
+            'policy/security-software-policy',
+            'policy/threat-signals',
+            'policy/set-platform-version-policy',
+            'policy/kandji-connection-policy',
+            'policy/kandji-mdm-policy',
+          ],
+        },
         'policy/policy-attribute-library',
         'policy/import-policy',
         'policy/export-policy',
+        'policy/view-policy-details',
+        'policy/restore-previous-policy-rules',
       ],
     },
     {
       type: 'category',
-      label: 'Data & Events',
+      label: 'Date & Events',
       collapsed: true,  
       link: {
         type: 'doc',
         id: 'data-events/data-events',
       },         
-      items: [ 'data-events/export-windows-event-logs', 
-      'data-events/collect-local-logs-endpoints', 
+      items: [ 
+        'data-events/export-windows-event-logs', 
+        'data-events/collect-local-logs-endpoints', 
+        'data-events/view-event-details',
+        'data-events/request-access-to-tenant-or-user-data',
+        'data-events/risk-reporting',
+        'data-events/customer-health-analysis',
       ],
     },
     {
@@ -176,7 +240,6 @@ const sidebars = {
             'devops/bitbucket',
             'devops/github',
             'devops/gitlab',
-            'devops/git-commit-signing',
           ],
         },
         {
@@ -296,8 +359,25 @@ const sidebars = {
       },         
       items: [ 
         'devops/ssh-support',
+        'devops/git-commit-signing',
       ],
     },
+    {
+      type: 'html',
+      value: '<hr>',
+    },
+    {
+      type: 'category',
+      label: 'Resources',
+      collapsible: false,         
+      items: [ 
+        'release-notes/release-notes-main', 
+        'faq',
+        'glossary',
+        'get-support',
+      ],
+    },
+
 
   ],
 
@@ -311,8 +391,18 @@ const sidebars = {
       },
       collapsible: false,    
       items: [ 
+        'release-notes/v2-78-0',
+
+        'release-notes/v2-77-0',
         'release-notes/v2-76-0',
         'release-notes/v2-75-0',
+        'release-notes/v2-74-0', 
+        'release-notes/v2-73-1',
+        'release-notes/v2-73-0',
+        'release-notes/v2-72-3',
+        'release-notes/v2-72-2',
+        'release-notes/v2-72-0',
+        'release-notes/v2-71-0',
       ],
     },    
   ],

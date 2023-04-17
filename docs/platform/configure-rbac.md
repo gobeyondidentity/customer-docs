@@ -9,13 +9,16 @@ keywords:
 pagination_next: null
 pagination_prev: null
 last_update: 
-   date: 02/08/2022
+   date: 03/29/2023
    author: Patricia McPhee
 draft: true
+doc_type: how-to
 displayed_sidebar: secureWorkforceSidebar
 ---
 
-Role-based access control (RBAC) allows a tenant administrator to grant access to certain Admin Console features to different users based on predefined roles. When configured, users will have access privileges to perform tasks associated with the group. For example, users can be added to a group that provides them the ability to perform all administrative tasks or to a group that only provides them with the ability to view information (for example, to view policy configuration). A user can be added to more than one group.
+Role-based access control (RBAC) allows a tenant administrator to grant access to certain Admin Console features to different users based on predefined roles. 
+
+When configured, users will have access privileges to perform tasks associated with the group. For example, users can be added to a group that provides them the ability to perform all administrative tasks or to a group that only provides them with the ability to view information (for example, to view policy configuration). A user can be added to more than one group.
 
 **Note:**  At least one user must be configured as a **Super Administrator** to be able to access and perform all Admin functions. The initial Super Administrator is set up during the account and tenant creating process with a Beyond Identity team member. Other users can then be added to that group by the initial Super Administrator.
 

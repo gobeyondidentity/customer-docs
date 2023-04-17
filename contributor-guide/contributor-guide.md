@@ -9,7 +9,7 @@ You are welcome to contribute to the Secure Workforce documentation in many form
   - [Helpful resources](#helpful-resources)
   - [Documentation repository](#documentation-repository)
   - [Sending a GitHub Pull Request](#sending-a-github-pull-request)
-  - [Opening an issue for Zowe documentation](#opening-an-issue-for-zowe-documentation)
+  - [Opening an issue for Beyond Identity documentation](#opening-an-issue-for-beyond-identity-documentation)
   - [Documentation style guide ](#documentation-style-guide-)
     - [Headings and titles](#headings-and-titles)
       - [Use sentence-style capitalization for headings](#use-sentence-style-capitalization-for-headings)
@@ -52,52 +52,52 @@ You are welcome to contribute to the Secure Workforce documentation in many form
   - [Submit a Pull Request](#submit-a-pull-request)
   - [Report security issues](#report-security-issues)
   - [Contribution guidelines](#contribution-guidelines)
-  - [Promote Zowe](#promote-zowe)
+  - [Promote Beyond Identity](#promote-beyond-identity)
 
 
 
 
-You are welcome to contribute to the Zowe&trade; documentation repository. Anyone can open an issue about documentation, or contribute a change with a pull request (PR) to the [zowe/docs-site GitHub repository](https://github.com/zowe/docs-site/). 
+You are welcome to contribute to the Beyond Identity documentation repository. Anyone can open an issue about documentation, or contribute a change with a pull request (PR) to the [Beyond Identity/docs-site GitHub repository](https://github.com/Beyond Identity/docs-site/). 
 
 ## Before You Get Started<a name="start"></a>
 
 Before contributing a documentation change to the repository, you should be familiar with:
 
 * Git and GitHub: To learn about git and GitHub, refer to the [Github Guides](https://guides.github.com/).
-* Slack: The Zowe Documentation team communicates using the Slack application. To learn about Slack, refer to the [Slack Help Center](https://slack.com/help). The Zowe team is part of the [Open Mainframe Project](https://openmainframeproject.slack.com) channel.
-* Markdown Language: The Zowe documentation is written in Markdown language. To learn about Markdown, refer to  [The Markdown Guide](https://www.markdownguide.org/).
+* Slack: The Beyond Identity Documentation team communicates using the Slack application. To learn about Slack, refer to the Slack Help Center. 
+* Markdown Language: The Beyond Identity documentation is written in Markdown language. To learn about Markdown, refer to the Markdown Guide.
 
-In addition to being familiar with the Zowe community and how we work together, you will need to sign the CNCF Contributor License Agreement. The Contributor License Agreement defines the terms under which you contribute to Zowe documentation. Contributions to Zowe documentation are reviewed before being committed to the repository. Committing changes to the Zowe repository requires additional access rights. See https://github.com/zowe/community/blob/master/COMMITTERS.md. Also see Participating in Zowe Documentation for more details about roles and permissions.
+In addition to being familiar with the Beyond Identity community and how we work together, you will need to sign the CNCF Contributor License Agreement. The Contributor License Agreement defines the terms under which you contribute to Beyond Identity documentation. Contributions to Beyond Identity documentation are reviewed before being committed to the repository. Committing changes to the Beyond Identity repository requires additional access rights. See ... Also see Participating in Beyond Identity Documentation for more details about roles and permissions.
 
 
 
 ## Getting started checklist
 
-If you are ready to get started contributing to the Zowe Documentation repository:
+If you are ready to get started contributing to the Beyond Identity Documentation repository:
 
 * Verify that you are familiar with the concepts in [Before You Get Started<a name="start"></a>](#before-you-get-started).
-* Familiarize yourself with the [Zowe documentation repository](#the-zowe-documentation-repository).
+* Familiarize yourself with the [Beyond Identity documentation repository](#the-beyond-identity-documentation-repository).
 * Verify that you can open a [pull request and review changes](#sending-a-github-pull-request).
-* [Open an issue for Zowe documentation](#opening-an-issue-for-zowe-documentation) if you find a problem.
+* [Open an issue for Beyond Identity documentation](#opening-an-issue-for-beyond-identity-documentation) if you find a problem.
 * Read the [documentation style guide](#documentation-style-guide).
 
 
 ## Helpful resources
 
-- [General code guidelines](./guidelines-code/categories)
-- [UI guidelines](./guidelines-ui/ui)
-- [Zowe learning resources](../getting-started/zowe-resources)
+- General code guidelines]
+- UI guidelines
+- Beyond Identity learning resources
 
 ## Documentation repository
 
-The documentation is managed in a [GitHub repository](https://github.com/zowe/docs-site).
+The documentation is managed in a [GitHub repository](https://github.com/beyond-identity/customer-docs).
 
 * Review the site's overall organization and structure
 * Review the help files related to your planned changes or addition
 
 ## Sending a GitHub Pull Request
 
-You can provide suggested edit to any documentation page by using the **Edit this page** link on top of each page. After you make the changes, you submit updates in a pull request for the Zowe documentation team to review and merge.
+You can provide suggested edit to any documentation page by using the **Edit this page** link on top of each page. After you make the changes, you submit updates in a pull request for the Beyond Identity documentation team to review and merge.
 
 Follow these steps:
 
@@ -108,9 +108,9 @@ Follow these steps:
 6. Select **Propose file change**.
 7. Select **Create pull request**.
 
-## Opening an issue for Zowe documentation
+## Opening an issue for Beyond Identity documentation
 
-You can request the documentation to be improved or clarified, report an error, or submit suggestions and ideas by opening an issue in GitHub for the Zowe documentation team to address. The team tracks the issues and works to address your feedback.
+You can request the documentation to be improved or clarified, report an error, or submit suggestions and ideas by opening an issue in GitHub for the Beyond Identity documentation team to address. The team tracks the issues and works to address your feedback.
 
 Follow these steps:
 
@@ -120,7 +120,7 @@ Follow these steps:
 
 ## Documentation style guide <a name="style"></a>
 
-This section gives writing style guidelines for the Zowe documentation.
+This section gives writing style guidelines for the Beyond Identity documentation.
 
 ### Headings and titles<a name="headings"></a>
 
@@ -215,7 +215,7 @@ Example:
 
 Style: Monospace
 
-Example: In the Search field, enter `Zowe`.
+Example: In the Search field, enter `Beyond Identity`.
 
 #### Citations that are not links
 
@@ -308,7 +308,7 @@ For whatever list or steps we are introducing, the word "following" should prece
 Example:
 - Before a procedure, use "Follow these steps:"
 - The <component_name> supports the following use cases:
-- Before you install Zowe, review the following prerequisite installation tasks:
+- Before you install Beyond Identity, review the following prerequisite installation tasks:
 
 Avoid ending the sentence with "following".
 
@@ -414,48 +414,48 @@ zLUX  | ZLUX <br/> zLux
 
 ## Report bugs and enhancements
 
-- Report bugs: Download and try one of the latest Zowe builds. Report any bugs you find by [creating a Zowe bug report in GitHub](https://github.com/zowe/community/issues/new?assignees=&labels=bug&template=bug_report.md&title=).
-- Report enhancements: Got an idea for a feature? Or something you're already using could be improved? [Post an enhancement request in GitHub](https://github.com/zowe/community/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=)! 
+- Report bugs: Download and try one of the latest Beyond Identity builds. Report any bugs you find by [creating a Beyond Identity bug report in GitHub](https://github.com/Beyond Identity/community/issues/new?assignees=&labels=bug&template=bug_report.md&title=).
+- Report enhancements: Got an idea for a feature? Or something you're already using could be improved? [Post an enhancement request in GitHub](https://github.com/Beyond Identity/community/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=)! 
 
 If you have an issue that is specific to a sub-project or community team, feel free to submit an issue against a specific repo.
 
 ## Fix issues
 
-- There are many issues and bugs with the label `Good first issue` in the [Zowe GitHub repositories](https://github.com/zowe/) to help you get familiar with the contribution process. Check out the following list of GitHub repos to make your contribution! 
-   - [Zowe sub-projects repositories](https://github.com/zowe/community/blob/master/README.md#zowe-sub-projects)
-   - [Zowe operations squads repositories](https://github.com/zowe/community/blob/master/README.md#zowe-operations-squads)
+- There are many issues and bugs with the label `Good first issue` in the [Beyond Identity GitHub repositories](https://github.com/Beyond Identity/) to help you get familiar with the contribution process. Check out the following list of GitHub repos to make your contribution! 
+   - [Beyond Identity sub-projects repositories](https://github.com/Beyond Identity/community/blob/master/README.md#Beyond Identity-sub-projects)
+   - [Beyond Identity operations squads repositories](https://github.com/Beyond Identity/community/blob/master/README.md#Beyond Identity-operations-squads)
    
   When you decide to work on an issue, check the comments on that issue to ensure that it's not taken by anyone. If nobody is working on it, comment on that issue to let others know that you want to work on it to avoid duplicate work. The squad can assign that issue to you and provide guidance as well. 
 
-- You can also reach out to the [Zowe squads on Slack](https://github.com/zowe/community/blob/master/README.md#slack) to check with the squads if there is any good starter issue that you can work on. 
+- You can also reach out to the [Beyond Identity squads on Slack](https://github.com/Beyond Identity/community/blob/master/README.md#slack) to check with the squads if there is any good starter issue that you can work on. 
 
 ## Submit a Pull Request 
 
-All code in Zowe aligns with the established [licensing and copyright notice guidelines](https://github.com/zowe/zlc/blob/master/process/LicenseAndCopyrightGuidance.md).
+All code in Beyond Identity aligns with the established [licensing and copyright notice guidelines](https://github.com/Beyond Identity/zlc/blob/master/process/LicenseAndCopyrightGuidance.md).
 
-Before submitting a Pull Request, review the general Zowe [Pull Request Guidelines](https://github.com/zowe/community#pull-request-guidelines) and make sure that you provide the information that is required in the Pull Request template in that specific repo. 
+Before submitting a Pull Request, review the general Beyond Identity [Pull Request Guidelines](https://github.com/Beyond Identity/community#pull-request-guidelines) and make sure that you provide the information that is required in the Pull Request template in that specific repo. 
 
-All Zowe commits need to be signed by using the [Developer’s Certificate of Origin 1.1 (DCO)](https://developercertificate.org/), which is the same mechanism that the Linux® Kernel and many other communities use to manage code contributions. You need to add a `Signed-off-by` line as a part of the commit message. Here is an example `Signed-off-by` line, which indicates that the submitter accepts the DCO:
+All Beyond Identity commits need to be signed by using the [Developer’s Certificate of Origin 1.1 (DCO)](https://developercertificate.org/), which is the same mechanism that the Linux® Kernel and many other communities use to manage code contributions. You need to add a `Signed-off-by` line as a part of the commit message. Here is an example `Signed-off-by` line, which indicates that the submitter accepts the DCO:
 
 ```Signed-off-by: John Doe <john.doe@hisdomain.com>```
 
-You can find more information about DCO signoff in the [zlc repo](https://github.com/zowe/zlc/edit/master/CONTRIBUTING.md). 
+You can find more information about DCO signoff in the [zlc repo](https://github.com/Beyond Identity/zlc/edit/master/CONTRIBUTING.md). 
 
 ## Report security issues
 
-Please direct all security issues to `zowe-security@lists.openmainframeproject.org`. A member of the security team will reply to acknowledge receipt of the vulnerability and coordinate remediation with the affected project.
+Please direct all security issues to `Beyond Identity-security@lists.openmainframeproject.org`. A member of the security team will reply to acknowledge receipt of the vulnerability and coordinate remediation with the affected project.
 
 ## Contribution guidelines 
 
 Check out the contribution guidelines for different components and squads to learn how to participate.
-  - [Zowe CLI](https://github.com/zowe/zowe-cli/blob/master/CONTRIBUTING.md)
-  - [Zowe API Mediation Layer](https://github.com/zowe/api-layer/blob/master/CONTRIBUTING.md)
-  - [Zowe Application Framework](https://github.com/zowe/zlux)  
-  - [Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CONTRIBUTING.md)
-  - [Zowe Client SDKs](https://github.com/zowe/zowe-cli/blob/master/docs/SDKGuidelines.md)
-  - [Zowe Docs](./contributing)
+  - [Beyond Identity CLI](https://github.com/Beyond Identity/Beyond Identity-cli/blob/master/CONTRIBUTING.md)
+  - [Beyond Identity API Mediation Layer](https://github.com/Beyond Identity/api-layer/blob/master/CONTRIBUTING.md)
+  - [Beyond Identity Application Framework](https://github.com/Beyond Identity/zlux)  
+  - [Beyond Identity Explorer](https://github.com/Beyond Identity/vscode-extension-for-Beyond Identity/blob/master/CONTRIBUTING.md)
+  - [Beyond Identity Client SDKs](https://github.com/Beyond Identity/Beyond Identity-cli/blob/master/docs/SDKGuidelines.md)
+  - [Beyond Identity Docs](./contributing)
 
-## Promote Zowe
+## Promote Beyond Identity
 
-- Contribute a blog about Zowe. Read the [Zowe blog guidelines](https://github.com/zowe/community/blob/master/blogging/blog_guidelines.md) to get started. 
-- Present Zowe on conferences and social channels
+- Contribute a blog about Beyond Identity. Read the [Beyond Identity blog guidelines](https://github.com/Beyond Identity/community/blob/master/blogging/blog_guidelines.md) to get started. 
+- Present Beyond Identity on conferences and social channels

@@ -49,7 +49,7 @@ function Edr({ title, description, href }) {
   return (
     
     <div className={clsx('col col--6', styles.topic)}>
-  <Card sx={{ minHeight: 'auto', p: 2, borderRadius: 4, width: '100%' }} elevation={2}>
+  <Card sx={{ minHeight: 'auto', p: 2, borderRadius: 4, width: '100%' }}  elevation={1}>
         <CardActionArea href={href}>
           <CardContent>
             <Typography

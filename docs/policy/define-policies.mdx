@@ -8,9 +8,10 @@ keywords:
 pagination_next: null
 pagination_prev: null
 last_update: 
-   date: 02/10/2022
+   date: 02/10/2023
    author: Patricia McPhee
 draft: true
+doc_type: overview
 displayed_sidebar: secureWorkforceSidebar
 ---
 
@@ -41,37 +42,29 @@ Keep the following in mind when creating rules:
 
 ## Create a rule
 
-1. Log into the [Admin console](../Admin_Console.htm) and from the Home screen, select the **Policy** tab.
+...some messaging here about the basic steps to create a rule; also add in here links to the specific use cases...
 
-2. The [Policy page](#Policy_page) displays a list of current rules that have been configured. Click **Edit Policy.**  
 
-  ![](../images/policy/policy_rule_order_5_rules.png)
 
-3. From the **Edit Policy** page, click **Add Rule**. 
 
-  ![](../images/policy/policy_rules_add_rule_allow.PNG)
+You can set the rule attributes to the following:
 
-4. The **Add Rule** dialog is displayed. 
+<ul>
+  <li>Type of transaction</li>
+  <li>User attempting to authenticate</li>
+  <li>Platform on the device</li>
+  <li>Type of integration</li>
+  <li>Beyond Identity Authentication version installed</li>
+</ul>
 
-  ![](../images/policy/add_rule_dialog.PNG)  
-
-  The Add Rule dialog provides attributes for setting policy related to the following:
-
-  - Type of transaction
-
-  - User attempting to authenticate
-
-  - Platform on the device
-
-  - Type of integration
-
-  - Beyond Identity Authentication version installed
 
 :::info note
 The **user**, **device platform**, and **integration** attributes can be defined with additional sub attributes.
 :::
 
+import CreateRule from '../../static/includes/_create-rule.mdx';
 
+<CreateRule />
 
 ## Transaction-specific rules
 
