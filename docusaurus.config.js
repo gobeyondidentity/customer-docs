@@ -128,33 +128,15 @@ customFields: {
           src: 'img/logo.png',
 
         },
-        items: [
-        /*  {
-            label: 'Documentation',
-            type: 'dropdown',
-            items: [
-
-              {
-                to: '/docs/secure-workforce-guides',
-                label: 'Secure Workforce',
-              },
-              {
-                to: '/docs/secure-devops',
-                label: 'Secure DevOps',
-              },
-              {
-                to: '/customer',
-                label: 'Developer Hub',
-              },
-            ],
-          },  */        
-          {
+        items: [    
+/*          {
             to: '/integration-guides',
             label: 'Integration Guides',
             
           },
+*/
           { to: "/api/", label: "Public API", position: "left" },
-          {
+/*          {
             label: 'Resources',
             type: 'dropdown',
             items: [
@@ -185,7 +167,7 @@ customFields: {
               }
             ],
           }, 
- 
+*/ 
           // {to: '/blog', label: 'Release Notes', position: 'left'},
         ],
       },
