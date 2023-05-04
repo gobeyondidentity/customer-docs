@@ -36,7 +36,7 @@ themes: [
 
   title: 'Beyond Identity Documentation',
   tagline: 'Secure Workforce protects and verifies corporate identities and their devices providing for a secure and trustworthy development process.',
-  url: 'https://gobeyondidentitybeyond.github.io',
+  url: 'https://gobeyondidentity.github.io',
   baseUrl: '/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'throw',
@@ -45,17 +45,17 @@ themes: [
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'gobeyondidentitybeyond', // Usually your GitHub org/user name.
+  organizationName: 'gobeyondidentity', // Usually your GitHub org/user name.
   projectName: 'customer-docs', // Usually your repo name.
 
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
- },
+//  i18n: {
+//    defaultLocale: 'en',
+//    locales: ['en'],
+// },
 customFields: {
   // Put your custom environment here
   partner: 'partner value',
