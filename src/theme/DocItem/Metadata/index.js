@@ -10,6 +10,7 @@ export default function DocItemMetadata() {
       keywords={frontMatter.keywords}
       image={assets.image ?? frontMatter.image}
       doc_type={metadata.docType}
+      product={metadata.product}
     />
   );
 }

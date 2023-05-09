@@ -4,9 +4,11 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
-import { CardActionArea } from '@mui/material';
+import Grid from '@mui/material/Grid';
+import {  Container, Box, CardActionArea } from '@mui/material';
 import styles from './LandingPage.module.css';
 import clsx from 'clsx';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -24,7 +26,7 @@ const DiscoverList = [
     alt: 'alt text for image',
     description: (
       <>
-        <b>New to Beyond Identity?</b> Get started by requesting to have your tenant created. Then you can configure and customize it.  
+        Install and configure Beyond Identity. 
       </>
     ),
     href: ('/get-started'),
@@ -36,7 +38,7 @@ const DiscoverList = [
     alt: 'alt text for image',
     description: (
       <>
-         <b>Want to integrate with a third-party platform?</b> Find instructions for the third-party platforms we support.
+         
       </>
     ),
     href: ('/integration-guides'),
@@ -48,19 +50,19 @@ const DiscoverList = [
     alt: 'alt text for image',
     description: (
       <>
-          Customize access decisions based on various attributes from various sources.
+         
       </>
     ),
     href: ('/policy'),
     label: ('Learn more'),
   },
   {
-    title: 'Date & Insights',
+    title: 'Monitoring',
 //    Svg: require('@site/static/img/Details-page-02.svg').default,
     alt: 'alt text for image',
     description: (
       <>
-         View information of events associated with user or device activity.
+         
       </>
     ),
     href: ('/data-events'),
@@ -72,7 +74,7 @@ const DiscoverList = [
     alt: 'alt text for image',
     description: (
       <>
-         View authentications, new device setups, and newly registered users.
+         
       </>
     ),
     href: ('/admin-console'),
@@ -84,7 +86,7 @@ const DiscoverList = [
     alt: 'alt text for image',
     description: (
       <>
-         Install and manage updates and notifications for the native branded authenticator app.
+         
       </>
     ),
     href: ('/platform-authenticator'),

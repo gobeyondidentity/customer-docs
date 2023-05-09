@@ -4,7 +4,7 @@ import {translate} from '@docusaurus/Translate';
 import {useThemeConfig} from '@docusaurus/theme-common';
 import Link from '@docusaurus/Link';
 import styles from './styles.module.css';
-import LastUpdated from '../LastUpdated';
+
 
 export default function Heading({as: As, id, ...props}) {
   const {
@@ -43,7 +43,8 @@ export default function Heading({as: As, id, ...props}) {
         title={anchorTitle}>
         &#8203;
       </Link>
-
+      
     </As>
+     
   );
 }

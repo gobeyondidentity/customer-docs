@@ -3,9 +3,6 @@ import clsx from 'clsx';
 import {translate} from '@docusaurus/Translate';
 import IconArrow from '@theme/Icon/Arrow';
 import styles from './styles.module.css';
-import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-
 export default function CollapseButton({onClick}) {
   return (
     <button
@@ -25,7 +22,7 @@ export default function CollapseButton({onClick}) {
         styles.collapseSidebarButton,
       )}
       onClick={onClick}>
-      <NavigateNextIcon className={styles.collapseSidebarButtonIcon} />
+      <IconArrow className={styles.collapseSidebarButtonIcon} />
     </button>
   );
 }

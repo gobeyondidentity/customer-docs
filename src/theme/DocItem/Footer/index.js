@@ -4,34 +4,39 @@ import {ThemeClassNames} from '@docusaurus/theme-common';
 import {useDoc} from '@docusaurus/theme-common/internal';
 import LastUpdated from '@theme/LastUpdated';
 import EditThisPage from '@theme/EditThisPage';
-import TagsListInline from '@theme/TagsListInline';
 import styles from './styles.module.css';
 
 function EditMetaRow({
   lastUpdatedAt,
-  lastUpdatedBy,
   formattedLastUpdatedAt,
+  editUrl, 
+  ...props
 }) {
   return (
     <div className={clsx(ThemeClassNames.docs.docFooterEditMetaRow, 'row')}>
 
       <div className={clsx('col', styles.lastUpdated)}>
-        {(lastUpdatedAt || lastUpdatedBy) && (
+        {(lastUpdatedAt || editUrl) && (
           <LastUpdated
             lastUpdatedAt={lastUpdatedAt}
             formattedLastUpdatedAt={formattedLastUpdatedAt}
-            lastUpdatedBy={lastUpdatedBy}
+            editUrl={editUrl}
+           
           />
+          
         )}
+
       </div>
+      <div className={clsx(styles.editThisPage)}>{editUrl && <EditThisPage editUrl={editUrl} />}</div>
     </div>
   );
 }
 export default function LastUpdatedDateHeader() {
+  
   const {metadata} = useDoc();
-  const {lastUpdatedAt, formattedLastUpdatedAt, lastUpdatedBy} =
+  const {lastUpdatedAt, formattedLastUpdatedAt, editUrl} =
     metadata;
-  const canDisplayEditMetaRow = !!( lastUpdatedAt || lastUpdatedBy);
+  const canDisplayEditMetaRow = !!( lastUpdatedAt || editUrl);
   const canDisplayFooter = canDisplayEditMetaRow;
   if (!canDisplayFooter) {
     return null;
@@ -43,10 +48,11 @@ export default function LastUpdatedDateHeader() {
       {canDisplayEditMetaRow && (
         <EditMetaRow
           lastUpdatedAt={lastUpdatedAt}
-          lastUpdatedBy={lastUpdatedBy}
           formattedLastUpdatedAt={formattedLastUpdatedAt}
+          editUrl={editUrl}
         />
       )}
     </div>
+    
   );
 }

@@ -5,7 +5,6 @@ const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const baseUrl = process.env.BASE_URL ?? '/';
 
-
 /** @type {import('@docusaurus/types').Config} */
 const config = {
 
@@ -28,38 +27,36 @@ const config = {
 //      }
 //    ],
   ],
+  markdown: {
+    mermaid: true,
+  },
 themes: [
+  '@docusaurus/theme-mermaid',
   '@docusaurus/theme-live-codeblock', 
   'docusaurus-theme-redoc',
 ],
 
 
-  title: 'Beyond Identity Documentation',
-  tagline: 'Secure Workforce protects and verifies corporate identities and their devices providing for a secure and trustworthy development process.',
+  title: 'Beyond Identity',
+  tagline: 'Secure Customer ...',
   url: 'https://gobeyondidentity.github.io',
-  baseUrl: '/',
-  onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'throw',
+  baseUrl: '/customer-docs',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.png',
-  trailingSlash: false,
-
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'gobeyondidentity', // Usually your GitHub org/user name.
   projectName: 'customer-docs', // Usually your repo name.
-
+  trailingSlash: false,
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
-//  i18n: {
-//    defaultLocale: 'en',
-//    locales: ['en'],
-// },
-customFields: {
-  // Put your custom environment here
-  partner: 'partner value',
-},
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en'],
+  },
 
   presets: [
     [
@@ -71,18 +68,16 @@ customFields: {
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: '/',
           showLastUpdateTime: true,
+      //    editUrl:
+      //      'https://github.com/obeyondidentity/next-dev-docs/edit/main/',
+        },
+     //   blog: {
+     //     showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          // editUrl:
-          //   'https://github.com/gobeyondidentity/customer-docs/blob/main',
-        },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          // editUrl:
-          //  'https://github.com/gobeyondidentity/customer-docs/blob/main',
-        },
+         // editUrl:
+          //  'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+    //    },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -91,12 +86,12 @@ customFields: {
     [
       'redocusaurus',
       {
-        id: "apiv1",
+        id: "apiv2",
         // Plugin Options for loading OpenAPI files
         specs: [
           {
-            spec: 'static/api/v1.yaml',
-            url: 'api/v1.yaml',
+            spec: 'static/api/v2.yaml',
+            url: 'api/v2.yaml',
             route: 'api',
           },
         ],
@@ -110,83 +105,53 @@ customFields: {
   ],
 
   themeConfig:
-  
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-
+      // Replace with your project's social card
       docs: {
         sidebar: {
-          hideable: true,
-          autoCollapseCategories: true,
+          hideable: false,
+          autoCollapseCategories: false,
+
         }
       },
       navbar: {
         title: 'Secure Workforce',
-        
         logo: {
           alt: 'Beyond Identity Logo',
           src: 'img/logo.png',
-
         },
-        items: [
-        /*  {
-            label: 'Documentation',
+        items: [ 
+         { to: "/api/", label: "Public API", position: "left" },
+/*
+           {
+            label: 'Support',
             type: 'dropdown',
+            position: 'left',
             items: [
-
               {
-                to: '/docs/secure-workforce-guides',
-                label: 'Secure Workforce',
-              },
-              {
-                to: '/docs/secure-devops',
-                label: 'Secure DevOps',
-              },
-              {
-                to: '/customer',
-                label: 'Developer Hub',
-              },
-            ],
-          },  */        
-          {
-            to: '/integration-guides',
-            label: 'Integration Guides',
-            
-          },
-          { to: "/api/", label: "Public API", position: "left" },
-          {
-            label: 'Resources',
-            type: 'dropdown',
-            items: [
-
-              {
-                to: '/faq',
-                label: 'FAQs',
-              },
-              {
-                to: '/glossary',
-                label: 'Terminology',
-              },
-              {
-                to: '/get-support', //this may need to be a link to the support site instead of a doc 
-                label: 'Support Center',
-              },
-              {
-                to: '/release-notes-main',
-                label: 'Release Notes 1',
-              },
-              {
-                to: '/blog', 
-                label: 'Release Notes 2'
-              },
-              {
-                to: '/release-notes',
-                label: 'Release Notes 3',
-              }
+                to: 'https://github.com/gobeyondidentity',
+                label: 'GitHub',
+               },
+               {
+                to: 'https://stackoverflow.com/questions/tagged/beyondidentity',
+                label: 'Stack Overflow',
+               },
+               {
+                to: 'https://join.slack.com/t/byndid/shared_invite/zt-1anns8n83-NQX4JvW7coi9dksADxgeBQ',
+                label: 'Slack',
+               },
+               {
+                to: 'https://twitter.com/BI_Developers',
+                label: 'Twitter',
+               },
+               {
+                to: 'https://dev.to/beyondidentity',
+                label: 'DevTo',
+               },
             ],
           }, 
- 
-          // {to: '/blog', label: 'Release Notes', position: 'left'},
+*/
         ],
       },
       footer: {
@@ -194,20 +159,6 @@ customFields: {
         
         copyright: `Copyright © ${new Date().getFullYear()} Beyond Identity`,
       },
-//      chatwoot: {
-//        websiteToken: "Your website inbox token",
-//        baseURL: "https://app.chatwoot.com",  // optional
-//        enableInDevelopment: false,  // optional
-//        chatwootSettings: {
-//          hideMessageBubble: false,
-//          position: "left", // This can be left or right
-//          locale: "en", // Language to be set
-//          useBrowserLanguage: false, // Set widget language from user's browser
-//          darkMode: "auto", // [light, auto]
-//          type: "expanded_bubble",
-//          launcherTitle: "What can I help you find?",
-//        }
-//      },
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
@@ -223,10 +174,6 @@ customFields: {
         }
       }
     }),
-
-
-
 };
-
 
 module.exports = config;
