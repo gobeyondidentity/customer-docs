@@ -78,7 +78,42 @@ function FeedbackForm(){
           value={formData.thumb}
         />
 
-        
+        <div className="flex mt-6">
+          <button
+            aria-label="Happy"
+            className="group px-4"
+            name="thumbsup"
+            type="button"
+            onClick={(e) =>
+              setFormData((prevFormData) => ({
+                ...prevFormData,
+                thumb: 'Happy',
+              }))
+            }
+          >
+            <GoThumbsup
+              className={`w-6 h-6 flex-1 justify-items-auto fill-current text-green-lighter transform transition group-hover:scale-125 group-active:scale-125 ${formData.thumb === 'Happy' && 'scale-125'
+                }`}
+            />
+          </button>
+          <button
+            aria-label="Unhappy"
+            className="group px-4"
+            name="thumbsdown"
+            type="button"
+            onClick={(e) =>
+              setFormData((prevFormData) => ({
+                ...prevFormData,
+                thumb: 'Unhappy',
+              }))
+            }
+          >
+            <GoThumbsdown
+              className={`w-6 h-6 flex-1 justify-items-auto fill-current text-red transform transition group-hover:scale-125 group-active:scale-125 ${formData.thumb === 'Unhappy' && 'scale-125'
+                }`}
+            />
+          </button>
+        </div>
 
        
       </form>

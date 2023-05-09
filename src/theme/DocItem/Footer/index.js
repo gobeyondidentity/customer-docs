@@ -27,7 +27,7 @@ function EditMetaRow({
         )}
 
       </div>
-      <div className={clsx(styles.editThisPage)}>{editUrl && <EditThisPage editUrl={editUrl} />}</div>
+
     </div>
   );
 }

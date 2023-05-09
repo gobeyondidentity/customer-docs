@@ -68,16 +68,16 @@ themes: [
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: '/',
           showLastUpdateTime: true,
-      //    editUrl:
-      //      'https://github.com/obeyondidentity/next-dev-docs/edit/main/',
+          editUrl:
+            'https://github.com/obeyondidentity/next-dev-docs/edit/main/',
         },
-     //   blog: {
-     //     showReadingTime: true,
+        blog: {
+          showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
          // editUrl:
           //  'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-    //    },
+        },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
