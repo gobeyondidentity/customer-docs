@@ -7,37 +7,56 @@ info:
   description: |
     ## Introduction
 
-    The Beyond Identity Secure Workforce Admin API defines methods for administrative duties for your Beyond Identity tenant.<br /><br />
+    The Beyond Identity Secure Workforce Admin API defines methods for administrative duties 
+    for your Beyond Identity tenant.<br /><br />
 
-    This API is currently in the early-access stage with limited endpoints implemented. We encourage feedback and suggestions through [support@beyondidentity.com](mailto:support@beyondidentity.com).
+    This API is currently in the early-access stage with limited endpoints implemented. We 
+    encourage feedback and suggestions through [support@beyondidentity.com](mailto:support@beyondidentity.com).
+    <br /><br />
 
     ## Authentication
-    All Beyond Identity API endpoints require authentication using an access token. The access token is generated through OAuth 2.0 using the client credentials flow. The simplest way to acquire an access token is through the Beyond Identity Secure Workforce Admin Console. <br /><br />
 
-    1. Under the **Settings** tab in the side panel, select the **API Access** tab and create a set of client credentials. 
-    2. Next, select the created client credentials, navigate to the **Tokens** tab, and click **Create token**.
-    3. After you've obtained a set of client credentials, use the following cURL command to exchange the client credentials for an access token.
+    All Beyond Identity API endpoints require authentication using an access
+    token. The access token is generated through OAuth 2.0, using the client 
+    credentials flow. Obtaining a set of client credentials is done via the
+    Secure Workforce Admin Console. Under the "Settings" tab in the sidepanel,
+    you can select the "API Access" tab and create a set of client credentials.
+    <br /><br />
 
-       ```
-       curl https://api.byndid.com/v2/oauth2/token \
-         -X POST \
-         -u "$CLIENT_ID:$CLIENT_SECRET" --basic \
-         -H "Content-Type: application/x-www-form-urlencoded" \
-         -d "grant_type=client_credentials"
-       ```
+    Once obtaining a set of client credentials, you can use the following cURL 
+    command to exchange the client credentials for an access token.
 
-       Alternatively, you can generate an access token via the Admin Console.  Once you create the client credentials, click into the row, navigate to the **Tokens** tab, and then click **Create token**.
+    ```
+    curl https://api.byndid.com/v2/oauth2/token \
+      -X POST \
+      -u "$CLIENT_ID:$CLIENT_SECRET" --basic \
+      -H "Content-Type: application/x-www-form-urlencoded" \
+      -d "grant_type=client_credentials"
+    ```
 
-    4. Once you've obtained the access token, you must provide it in the `Authorization` header of any API request.
+    Alternatively, an access token may also be generated via the Admin Console. 
+    Once you create the client credentials, click into the row, navigate to the
+    "Tokens" tab, and then click "Create token".
 
-       ```
-       curl https://api.byndid.com/v2/... \
-         -X $HTTP_METHOD -H "Authorization: Bearer $TOKEN"
-       ```
+    Once the access token is obtained, it must be provided in the `Authorization` header 
+    of any API request.
+
+    ```
+    curl https://api.byndid.com/v2/... \
+      -X $HTTP_METHOD -H "Authorization: Bearer $TOKEN"
+    ```
+
+    ## Authorization
+
+    Each method will have associated scopes. See the `Authorizations` portion within each
+    method to see the scopes.
+
+    The access token used must contain all scopes for the method to be able to access the endpoint.
 
     ## Requests and Responses
 
-    When interacting with the Beyond Identity Secure Workforce Admin API, all requests must be made over HTTPS.<br /><br />
+    When interacting with the Beyond Identity Secure Workforce Admin API, all requests 
+    must be made over HTTPS.<br /><br />
 
     The Beyond Identity API is structured as a resource-oriented API.
     Resources are represented as JSON objects and are used as both inputs to
@@ -51,20 +70,25 @@ info:
 
     ### Create a new resource
 
-    Create requests use the `POST` method and include the necessary attributes to create a new resource. Create operations return the created resource in the response.<br /><br />
+    Create requests use the `POST` method and include the necessary attributes to create a new 
+    resource. Create operations return the created resource in the response.<br /><br />
 
     ### Retrieve resources
 
-    Retrieve requests use the `GET` method. You can retrieve a single resource or a collection of resources. When retrieving a collection of resources, the response includes an array of JSON objects keyed on the plural name of the requested resource.<br /><br />
+    Retrieve requests use the `GET` method. You can retrieve a single resource or a collection of 
+    resources. When retrieving a collection of resources, the response includes an array of JSON objects 
+    keyed on the plural name of the requested resource.<br /><br />
 
     ### Update resources
 
-    Update requests use the `PATCH` method. Update operations support partial updating, so you can specify only the attributes you want to update. Update operations return the updated resource in the response.<br /><br />
-
+    Update requests use the 'PATCH` method. Update operations support partial updating, so you can 
+    specify only the attributes you want to update. Update operations return the updated resource 
+    in the response.<br /><br />
 
     ### Delete resources
 
-    Delete requests use the `DELETE` method, which returns an empty response instead of returning the resource in the response.<br /><br />
+    Delete requests use the 'DELETE` method, which returns an empty response instead of returning 
+    the resource in the response.<br /><br />
 
     ### Example response for a user
 
@@ -127,12 +151,14 @@ info:
     - `code` has a human-readable name for the HTTP status code, and 
     - `message` has a high-level description of the error. 
 
-    The error can also have additional details that the client can use to determine the exact cause of the error. Refer to each API method's examples to determine the specific error detail types supported for that method.<br /><br />
+    The error can also have additional details that the client can use to determine the exact cause of the 
+    error. Refer to each API method's examples to determine the specific error detail types supported for that method.<br /><br />
 
     ### Invalid access token example
 
-    If the provided access token is invalid, you will receive a 401 error.
-    This error indicates that the token is not recognized or was not generated by Beyond Identity.
+    If the provided access token is invalid, you will receive a **401** error.
+    This error indicates that the token is not recognized or was not generated
+    by Beyond Identity.
 
     ```
     HTTP/1.1 401 Unauthorized
@@ -145,7 +171,10 @@ info:
 
     ### Permission denied example
 
-    If the provided access token does not have access to the requested resource, you'll receive a **403** error. Access tokens are scoped at a minimum to your tenant. Any request for resources outside of your tenant results in this error.
+    If the provided access token does not have access to the requested resource,
+    you will receive a **403** error. Access tokens are scoped at a minimum to your
+    tenant. Any request for resources outside of your tenant will result in this
+    error.
 
     ```
     HTTP/1.1 403 Forbidden
@@ -154,11 +183,11 @@ info:
       "message": "forbidden"
     }
     ```
-    <br />
 
     ### Missing resource example
 
-    If the requested resource doesn't exist, you'll receive a **404** error. The specific API method may return additional details about the missing
+    If the requested resource does not exist, you'll receive a **404** error. The
+    specific API method may return additional details about the missing
     resource.
 
     ```
@@ -218,11 +247,15 @@ paths:
       description: |
         To list all users for a tenant, send a GET request to `/v2/users`.
 
-        The response will have up to 1000 items. The response will be empty if the page size is not specified (i.e., the default). By default, the list is in ascending order by `create_time`. The maximum and default page sizes are subject to change. 
+        The response will have up to 1000 items. The response will be empty if the page size 
+        is not specified (i.e., the default). By default, the list is in ascending order by 
+        `create_time`. The maximum and default page sizes are subject to change. 
 
         When paginating, use the `skip` parameter as the offset.
 
-        When filtering, the response will only show users that satisfy this filter. The syntax follows the SCIM grammar from [RFC7644 Section 3.4.2.2](https:datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2).
+        When filtering, the response will only show users that satisfy this filter. 
+        The syntax follows the SCIM grammar from 
+        [RFC7644 Section 3.4.2.2](https:datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2).
 
         The supported operations are:
           - pr (present)
@@ -247,7 +280,8 @@ paths:
           - last_auth_time (pr, eq, ne, gt, lt, ge, le)
           - has_active_passkey (eq, ne)
 
-        When sorting, use the `order_by` paramter. It's a comma-delimited list of attributes.  Currently, the following fields are supported:
+        When sorting, use the `order_by` parameter. It's a comma-delimited list of attributes. 
+        Currently, the following fields are supported:
 
           - display_name
           - username
@@ -256,7 +290,8 @@ paths:
           - source
           - last_auth_time
 
-        The default sorting order per attribute is ascending. Therefore, if you want descending order, append the " desc" suffix to the attribute name.
+        The default sorting order per attribute is ascending. Therefore, if you want descending
+        order, append the " desc" suffix to the attribute name.
       security:
         - BearerAuth:
             - 'users:read'
@@ -268,9 +303,11 @@ paths:
       responses:
         '200':
           description: |
-            The response is a JSON object with `users` and `total_size` keys.  <br />
-            - `users` is set to an array of user objects containing standard user attributes.  
-            - `total_size` is set to the total number of items matched by the list request. If  more items are to be returned by the requested query, make another request using  the `skip` query parameter.
+            The response is a JSON object with `users` and `total_size` keys. <br />
+              - `users` is set to an array of user objects containing standard user attributes. 
+              - `total_size` is set to the total number of items matched by the list request. If 
+              more items are to be returned by the requested query, make another request using 
+              the `skip` query parameter.
           content:
             application/json:
               schema:
@@ -382,7 +419,8 @@ components:
       description: |
         Filter query for responses.
 
-        The syntax follows the SCIM grammar from [RFC7644 Section 3.4.2.2](https:datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2).
+        The syntax follows the SCIM grammar from 
+        [RFC7644 Section 3.4.2.2](https:datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2).
 
         The supported operations are:
           - pr (present)
@@ -407,7 +445,8 @@ components:
       description: |
         A comma-delimited list of attributes to sort results.
 
-        The default sorting order per attribute is ascending. Therefore, if you want descending order, append the " desc" suffix to the attribute name.
+        The default sorting order per attribute is ascending. Therefore, if you want 
+        descending order, append the " desc" suffix to the attribute name.
 
         Ex. name desc
       schema:
@@ -474,7 +513,7 @@ components:
         state:
           type: string
           description: |
-            State of the user that gets updated automatically when the user is updated.  This field is read-only.
+            State of the user that gets updated automatically when the user is updated. This field is read-only.
           enum:
             - ACTIVE
             - SUSPENDED
