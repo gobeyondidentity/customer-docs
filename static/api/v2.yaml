@@ -89,7 +89,7 @@ info:
 
     ### Update resources
 
-    Update requests use the 'PATCH` method. Update operations support partial updating, so you can 
+    Update requests use the `PATCH` method. Update operations support partial updating, so you can 
     specify only the attributes you want to update. Update operations return the updated resource 
     in the response.<br /><br />
 
