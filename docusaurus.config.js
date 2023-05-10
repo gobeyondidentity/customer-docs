@@ -157,7 +157,7 @@ themes: [
       footer: {
         style: 'dark',
         
-        copyright: `Copyright © ${new Date().getFullYear()} Beyond Identity`,
+        copyright: `© ${new Date().getFullYear()} Beyond Identity`,
       },
       prism: {
         theme: lightCodeTheme,
