@@ -135,7 +135,7 @@ function FeedbackForm(){
               <li><a href="https://support.beyondidentity.com/hc/en-us/community/topics/4410556274327-Feature-Requests">Viewing feature requests</a></li>
               <li><a href="https://support.beyondidentity.com/hc/en-us/sections/6746957130007-Troubleshooting">Viewing troubleshooting articles in our knowledgebase</a></li>
               <li><a href="https://support.beyondidentity.com/hc/en-us/community/topics/4410556272919-General-Discussion">Joining the discussion</a></li>
-              <li><a href="https://app.byndid.com/downloads">Downloading the last Authenticator</a></li>
+              <li><a href="https://app.byndid.com/downloads">Downloading the lastest Authenticator</a></li>
             </ul>
           </div>
         </div>

@@ -87,7 +87,7 @@ info:
 
     ### Delete resources
 
-    Delete requests use the 'DELETE` method, which returns an empty response instead of returning 
+    Delete requests use the `DELETE` method, which returns an empty response instead of returning 
     the resource in the response.<br /><br />
 
     ### Example response for a user
