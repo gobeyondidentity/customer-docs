@@ -8,7 +8,7 @@ info:
     ## Introduction
 
     The Beyond Identity Secure Workforce Admin API defines methods for administrative duties 
-    for your Beyond Identity tenant.<br /><br />
+    for your Beyond Identity tenant.
 
     This API is currently in the early-access stage with limited endpoints implemented. We 
     encourage feedback and suggestions through [support@beyondidentity.com](mailto:support@beyondidentity.com).
@@ -18,13 +18,13 @@ info:
 
     All Beyond Identity API endpoints require authentication using an access
     token. The access token is generated through OAuth 2.0, using the client 
-    credentials flow. Obtaining a set of client credentials is done via the
-    Secure Workforce Admin Console. Under the "Settings" tab in the sidepanel,
-    you can select the "API Access" tab and create a set of client credentials.
-    <br /><br />
+    credentials flow. Follow these steps:
 
-    Once obtaining a set of client credentials, you can use the following cURL 
-    command to exchange the client credentials for an access token.
+    1. Navigate to the Beyond Identity Secure Workforce Admin Console.
+    2. Under the **Settings** tab in the side panel, select the **API Access** 
+    tab and create a set of client credentials.
+    3. Use the client ID and client secret to exchange the client credentials
+    for an access token. You can use the following cURL call below:
 
     ```
     curl https://api.byndid.com/v2/oauth2/token \
@@ -34,9 +34,13 @@ info:
       -d "grant_type=client_credentials"
     ```
 
-    Alternatively, an access token may also be generated via the Admin Console. 
-    Once you create the client credentials, click into the row, navigate to the
-    "Tokens" tab, and then click "Create token".
+    Alternatively, an access token may also be generated via the Admin Console.
+
+    1. Navigate to the Beyond Identity Secure Workforce Admin Console.
+    2. Under the **Settings** tab in the side panel, select the **API Access** 
+    tab and create a set of client credentials.
+    3. Next, select the created client credentials, navigate to the **Tokens** tab,
+    and click **Create token**.
 
     Once the access token is obtained, it must be provided in the `Authorization` header 
     of any API request.
@@ -45,28 +49,32 @@ info:
     curl https://api.byndid.com/v2/... \
       -X $HTTP_METHOD -H "Authorization: Bearer $TOKEN"
     ```
+    <br />
 
     ## Authorization
 
     Each method will have associated scopes. See the `Authorizations` portion within each
     method to see the scopes.
 
-    The access token used must contain all scopes for the method to be able to access the endpoint.
+    The access token used must contain all scopes for the method to be able to access the
+    endpoint.<br /><br />
 
     ## Requests and Responses
 
     When interacting with the Beyond Identity Secure Workforce Admin API, all requests 
-    must be made over HTTPS.<br /><br />
+    must be made over HTTPS.
 
     The Beyond Identity API is structured as a resource-oriented API.
     Resources are represented as JSON objects and are used as both inputs to
-    and outputs from API methods.<br /><br />
+    and outputs from API methods.
 
     Resource fields can be read-only and immutable. For example, system-generated IDs are 
     both read-only and immutable.
 
     - A **read-only** field is provided only in the response. 
     - An **immutable** field is assigned only once and cannot be changed. 
+
+    <br />
 
     ### Create a new resource
 
@@ -103,6 +111,7 @@ info:
       ...
     }
     ```
+    <br />
 
     ### Example response for a collection of users
 
@@ -122,6 +131,7 @@ info:
       "total_size": 1
     }
     ```
+    <br />
 
     ## HTTP statuses
 
@@ -183,6 +193,7 @@ info:
       "message": "forbidden"
     }
     ```
+    <br />
 
     ### Missing resource example
 
