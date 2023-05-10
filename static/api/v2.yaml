@@ -42,7 +42,7 @@ info:
     3. Next, select the created client credentials, navigate to the **Tokens** tab,
     and click **Create token**.
 
-    Once the access token is obtained, it must be provided in the `Authorization` header 
+    Once you've obtained the access token, you must provide it in the `Authorization` header 
     of any API request.
 
     ```
