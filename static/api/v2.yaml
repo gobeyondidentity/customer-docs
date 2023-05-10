@@ -247,7 +247,7 @@ paths:
           - last_auth_time (pr, eq, ne, gt, lt, ge, le)
           - has_active_passkey (eq, ne)
 
-        When sorting, use the `order_by` paramter. It is a comma-delimited list of attributes.  Currently, the following fields are supported:
+        When sorting, use the `order_by` paramter. It's a comma-delimited list of attributes.  Currently, the following fields are supported:
 
           - display_name
           - username
