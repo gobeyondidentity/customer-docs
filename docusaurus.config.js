@@ -40,7 +40,7 @@ themes: [
   title: 'Beyond Identity',
   tagline: 'Secure Customer ...',
   url: 'https://gobeyondidentity.github.io',
-  baseUrl: '/customer-docs',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.png',
