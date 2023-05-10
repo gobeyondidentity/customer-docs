@@ -2,203 +2,18 @@
     border: 0px;
 }
 
-
-h2 { border-bottom:solid 0px #ccc; margin:2rem auto 1rem;padding:0; }
-.grid { display: grid; margin:0; padding:1rem; }
-
-.grid > p {
-    text-align: left;
+.card-horizontal {
+    display: flex;
+    padding: 10px;
+    width: 100%;
 }
-
-/* ENTIRE GRID ALIGNMENTs:
- * CONTENT: 
- * align (vertical, Y) and justify (horizontal, X) the position of the entire grid
- * NOTE: grid must be smaller than parent container to work correctly
- * Horizontal = justify-content: start | end | center | stretch | space-around | space-between | space-evenly;	
- * Vertical = align-content: start | end | center | stretch | space-around | space-between | space-evenly;	*/
-.grid.X__grid--start { justify-content: start; }
-.grid.X__grid--center { justify-content: center; }
-.grid.X__grid--end { justify-content: end; }
-.grid.X__grid--stretch { justify-content: stretch; } /** default if undeclared **/
-.grid.X__grid--spaceAround { justify-content: space-around; }
-.grid.X__grid--spaceBetween { justify-content: space-between; }
-.grid.X__grid--spaceEvenly { justify-content: space-evenly; }
-
-.grid.Y__grid--start { align-content: start; }
-.grid.Y__grid--center { align-content: center; }
-.grid.Y__grid--end { align-content: end; }
-.grid.Y__grid--stretch { align-content: stretch; } /** default if undeclared **/
-.grid.Y__grid--spaceAround { align-content: space-around; }
-.grid.Y__grid--spaceBetween { align-content: space-between; }
-.grid.Y__grid--spaceEvenly { align-content: space--evenly; }
-/* COMBINED ENTIRE GRID Horizontal (X, justify) & Vertical (Y, align) ALIGNMENTS */
-.grid.XY__grid--start { place-content: start start; }
-.grid.XY__grid--center { place-content: center center; }
-.grid.XY__grid--end { place-content: end end; }
-.grid.XY__grid--stretch { place-content: stretch stretch; }
-.grid.XY__grid--spaceAround { place-content: space-around space-around; }
-.grid.XY__grid--spaceBetween { place-content: space-between space-between; }
-.grid.XY__grid--spaceEvenly { place-content: space--evenly space-evenly; }
-
-/* FULL ROW & COLUMN ALIGNMENTS:
- * ITEMS:
- * align (vertical, Y) and justify (horizontal, X) the position of entire rows and columns
- * Horizontal = justify-items: start | end | center | stretch;
- * Vertical = align-items: start | end | center | stretch; */
-.grid.X__cols--start { justify-items: start; }
-.grid.X__cols--center { justify-items: center; }
-.grid.X__cols--end { justify-items: end; }
-.grid.X__cols--stretch { justify-items: stretch; }
-.grid.X__cols--spaceAround { justify-items: space-around; }
-.grid.X__cols--spaceBetween { justify-items: space-between; }
-.grid.X__cols--spaceEvenly { justify-items: space-evenly; }
-
-.grid.Y__rows--start { align-items: start; }
-.grid.Y__rows--center { align-items: center; }
-.grid.Y__rows--end { align-items: end; }
-.grid.Y__rows--stretch { align-items: stretch; }
-.grid.Y__rows--spaceAround { align-content: space-around; }
-.grid.Y__rows--spaceBetween { align-content: space-between; }
-.grid.Y__rows--spaceEvenly { align-content: space-evenly; }
-
-/* COMBINED ROW & COLUMN Horizontal (X, justify) & Vertical (Y, align) ALIGNMENTS
- * place-items sets both the align-items and justify-items properties in a single declaration. */
-.grid.XY--center { place-content: center center; }/* Just "center" won't work in Edge */
-.grid.XY--start { place-content: start start; }/** default if undeclared **/
-.grid.XY--end { place-content: end end; }
-.grid.XY--stretch { place-content: stretch stretch; }
-.grid.XY--spaceAround { place-content: space-around space-around; }
-.grid.XY--spaceBetween { place-content: space-between space-between; }
-.grid.XY--spaceEvenly { place-content: space-evenly space-evenly; }
-
-
-
-/* SELF: 
- * INDIVIDUAL CELL ALIGNMENTS */
-.grid .X__cell--start { justify-self: start }
-.grid .X__cell--center { justify-self: center }
-.grid .X__cell--end { justify-self: end }
-.grid .X__cell--stretch { justify-self: stretch }
-
-.grid .Y__cell--start { align-self: start }
-.grid .Y__cell--center { align-self: center }
-.grid .Y__cell--end { align-self: end }
-.grid .Y__cell--stretch { align-self: stretch }
-
-/* Combined Horizontal & Vertical Cell Alignments */
-.grid .XY__cell--start { place-self: start start; }
-.grid .XY__cell--center { place-self: center center; }
-.grid .XY__cell--end { place-self: end end; }
-.grid .XY__cell--stretch { place-self: stretch stretch; }
-
-
-  /** Mapped Columns **/
-.grid > main { grid-area: a; } /** Page Main Content Area */
-.grid > aside.leftSidebar { grid-area: b; } /** Left Sidebar **/
-.grid > aside.rightSidebar { grid-area: c; } /** Right Sidebar **/
-.grid > .blankRow { grid-area: d; } /** Full-Width Row for whatev's **/
-
-/** Auto Rows */
-.grid.autoRows,
-  .grid.oneCol, .grid.twoCol, .grid.threeCol, .grid.fourCol, .grid.fiveCol, .grid.sixCol { grid-template-rows: auto; }
-/* Grid Gaps / Gutters */
-.grid.oneCol, .grid.twoCol, .grid.threeCol, .grid.fourCol, .grid.fiveCol, .grid.sixCol { grid-gap:1rem;gap:1rem; }
-
-@media all and (orientation:portrait){
-  /**** GRIDS: Portrait ****
- * 1 ROW, Multiple Column Options */
-.grid.oneCol { grid-template-columns: repeat(1, auto); }
-.grid.twoCol { grid-template-columns: repeat(2, auto); }
-.grid.threeCol { grid-template-columns: repeat(3, auto); }
-.grid.fourCol { grid-template-columns: repeat(4, auto); }
-.grid.fiveCol { grid-template-columns: repeat(5, auto); }
-.grid.sixCol { grid-template-columns: repeat(6, auto); }
-  
-  .grid.sixCol.sidebar--L {grid-template-areas: "a a" "b b"; }
-  .grid.sixCol.sidebar--R {grid-template-areas: "a a a a a a" "c c c c c c"; }
-  .grid.sixCol.sidebar--LR {grid-template-areas: "a a a a a a" "b b b b b b" "c c c c c c" "d d d d d d"; }
-}
-@media all and (orientation:landscape){
-  /**** GRIDS: Landscape ****
- * 1 ROW, Multiple Column Options */
-.grid.oneCol { grid-template-columns: repeat(1, auto); }
-.grid.twoCol { grid-template-columns: repeat(2, auto); }
-.grid.threeCol { grid-template-columns: repeat(3, auto); }
-.grid.fourCol { grid-template-columns: repeat(4, auto); }
-.grid.fiveCol { grid-template-columns: repeat(5, auto); }
-.grid.sixCol { grid-template-columns: repeat(6, auto); }
-  
-  .grid.sixCol.sidebar--L {grid-template-areas: "b a"; }
-  .grid.sixCol.sidebar--R {grid-template-areas: "a a a a a c"; }
-  .grid.sixCol.sidebar--LR {grid-template-areas: "b a a a a c" "d d d d d d"; }
-}
-
-/** Example Mapped Columns **/
-.grid > .col1 { grid-area: a; }  
-.grid > .col2 { grid-area: b; } 
-.grid > .col3 { grid-area: c; } 
-.grid > .col4 { grid-area: d; } 
-.grid > .col5 { grid-area: e; } 
-.grid > .col6 { grid-area: f; }
-
-.grid.example.sidebar--L { 
-  /**
-   * Using named grid-areas to map columns
-   * Use a . (period) to denote a white-space cell
-   */
-  grid-template-areas:
-    "a b b b b b"
-    "c c d d e e"
-    ". f f f f f";
-}
-
-
-
-
-/** GRID EXAMPLE STYLES **/
-#grid2--layoutAreas .cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 20px;/* new syntax */gap: 20px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-#grid2--layoutAreas .cards {
-  /**
-   * Alt layout method targeting named grid-areas
-   * Use a . (period) to denote a white-space cell
-   */
-  grid-template-areas:
-    "f a b"
-    ". d d" /* . (period) denotes white-space cell */
-    "c . e";
-  
-  writing-direction:rtl;
-}
-#grid2--layoutAreas .cards li {
-  background-color: #333;
-  border: 1px solid #111;
-  border-radius: 5px;
-  color:#fff;
-  padding: 10px;
-}
-/** Give the area a name, target by name later */
-#grid2--layoutAreas .card1 { grid-area: a; }
-#grid2--layoutAreas .card2 { grid-area: b; }
-#grid2--layoutAreas .card3 { grid-area: c; }
-#grid2--layoutAreas .card4 { grid-area: d; }
-#grid2--layoutAreas .card5 { grid-area: e; }
-#grid2--layoutAreas .card6 { grid-area: f; }
-
 
 
 /* changelog.css */
 
 .changelog-tag {
     position: relative;
-    top: -1px;
+    top: -1.5px;
     border-radius: 16px;
     display: inline-block;
     width: 80px;
@@ -258,7 +73,7 @@ h2 { border-bottom:solid 0px #ccc; margin:2rem auto 1rem;padding:0; }
   .changelog {
     background-color: #fff;
     border-radius: 4px;
-    box-shadow: 0 1px 8px 0 rgba(0,0,0,.16), 0 3px 4px 0 rgba(0,0,0,.14), 0 3px 3px -2px rgba(0,0,0,.12);
+    box-shadow: 0 1px 8px 0 rgba(0,0,0,.0), 0 3px 4px 0 rgba(0,0,0,.0), 0 3px 3px -2px rgba(0,0,0,.0);
     color: #757575;
     padding: 10px;
     position: relative;

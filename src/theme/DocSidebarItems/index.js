@@ -27,7 +27,7 @@ export default function DocSidebarItemsWrapper(props) {
             "margin-left--sm"
           )}
         >
-          <Chip label="Version: v2.80.0" size="small" className="sidebar-version" sx={{ fontWeight: 800}} />
+          <Chip label="Version: 2.80.0" size="small" className="sidebar-version" sx={{ fontWeight: 700}} />
 
         </li>
       ) : null}

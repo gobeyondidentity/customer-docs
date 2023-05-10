@@ -9,10 +9,10 @@ const sidebars = {
       label: 'Release Notes',  
       collapsed: false, 
       collapsible: false,  
-      link: {
+/*      link: {
         type: 'doc',
         id: 'release-notes/release-notes-main',
-      }, 
+      }, */
       items: [ 
         'release-notes/v2-80-0',
         'release-notes/v2-79-0',
