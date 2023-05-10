@@ -15,9 +15,11 @@ doc_type: reference
 displayed_sidebar: secureWorkforceSidebar
 ---
 
-
+import styles from  '../../src/css/release-notes.css';
 
 ## Cloud
+
+<span className="changelog-tag" data-tag="New">New!</span>
 
 You can now manage all passkeys across your tenant in one central location. For example, quickly identify how many passkeys a user has and which ones are stale (not authenticated in 60+ days). 
 
@@ -49,22 +51,31 @@ import SupportedOsAuthenticator from '../../static/includes/_supported-os-versio
 
 <SupportedOsAuthenticator />
 
-We updated how Android users of the Beyond Identity Platform Authenticator. They are now required to **Allow Notifications** on their Android devices.  
 
+
+<div class="grid sixCol sidebar--L">
+  <aside class="leftSidebar"><span className="changelog-tag" data-tag="Improved">Improved!</span></aside>
+  <main><p>We updated how Android users of the Beyond Identity Platform Authenticator. They are now required to <b>Allow Notifications</b> on their Android devices.  </p></main>
+</div>
 
 
 ## Desktop Login
 
 <SupportedOsAuthenticator />
 
-### What's new
 
-Users can now use the Beyond Identity Windows Desktop Login with Microsoft Windows Roaming Profile. For installation instructions and supported configurations, see the implementation guide. 
 
-### Improved
+<div class="grid sixCol sidebar--L">
+  <aside class="leftSidebar"><span className="changelog-tag" data-tag="New">New!</span></aside>
+  <main><p>Users can now use the Beyond Identity Windows Desktop Login with Microsoft Windows Roaming Profile. For installation instructions and supported configurations, see the implementation guide.</p></main>
+</div>
 
-Users must now specify a Tenant ID with Beyond Identity Active Directory Connector. An Active Directory Admin typically performs this action.
+<div class="grid sixCol sidebar--L">
+  <aside class="leftSidebar"><span className="changelog-tag" data-tag="Improved">Improved!</span></aside>
+  <main><p>Users must now specify a Tenant ID with Beyond Identity Active Directory Connector. An Active Directory Admin typically performs this action.</p></main>
+</div>
 
-### Resolved
-
-When logged into a remote system through Windows Remote Desktop and the session locks, the user can now provide their Beyond Identity Windows Desktop Login PIN to unlock the system. 
+<div class="grid sixCol sidebar--L">
+  <aside class="leftSidebar"><span className="changelog-tag" data-tag="Removed">Resolved!</span></aside>
+  <main><p>When logged into a remote system through Windows Remote Desktop and the session locks, the user can now provide their Beyond Identity Windows Desktop Login PIN to unlock the system. </p></main>
+</div>

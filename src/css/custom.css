@@ -148,6 +148,10 @@ h6 {
   margin-bottom: calc(var(--ifm-leading) * 1);
 }
 
+.icons {
+  vertical-align: sub;
+}
+
 p,
 li {
   font-size: 16px;
@@ -205,7 +209,7 @@ ul li ol li{
 
 li.no-style {
   list-style-type: none;
-  margin-left: -12px;
+  margin-left: -32px;
 
 }
 
@@ -605,6 +609,8 @@ table td {
 table.no-border {
   border-style: 0px;
 }
+
+
 
 
 th.do {
@@ -1074,60 +1080,6 @@ html[data-theme='dark'] .intro-card h3 a {
 
 /* end of landing page */
 
-.changelog-tag {
-  display: block;
-  box-sizing: border-box;
-  flex-shrink: 0;
-  width: fit-content;
-  padding: 0.15rem;
-  margin: 0 0.2rem 0 0;
-  border-radius: 9px;
-  background-color: var(--ifm-border-color);
-
-  font-weight: var(--ifm-font-weight-bold);
-  font-size: 0.75em;
-  text-align: center;
-}
-
-.changelog-tab ul {
-  list-style-type: none;
-}
-
-.changelog-tag[data-tag="New"] {
-  background-color: #d3eacf;
-  color: #005911;
-}
-html[data-theme="dark"] .changelog-tag[data-tag="New"] {
-  background-color: #005911;
-  color: #d3eacf;
-}
-
-.changelog-tag[data-tag="Improved"] {
-  background-color: #c9e9fe;
-  color: var(--ifm-color-primary-darkest);
-}
-html[data-theme="dark"] .changelog-tag[data-tag="Improved"] {
-  background-color: #015371;
-  color: #c9e9fe;
-}
-
-.changelog-tag[data-tag="Deprecated"] {
-  background-color: #f8dfc9;
-  color: #723f00;
-}
-html[data-theme="dark"] .changelog-tag[data-tag="Deprecated"] {
-  background-color: #723f00;
-  color: #f8dfc9;
-}
-
-.changelog-tag[data-tag="Removed"] {
-  background-color: #ffdcd4;
-  color: #9b010c;
-}
-html[data-theme="dark"] .changelog-tag[data-tag="Removed"] {
-  background-color: #9b010c;
-  color: #ffdcd4;
-}
 
 
 

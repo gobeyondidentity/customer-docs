@@ -7,8 +7,12 @@ const sidebars = {
     {
       type: 'category',
       label: 'Release Notes',  
-      collapsed: true, 
-      collapsible: true,   
+      collapsed: false, 
+      collapsible: false,  
+      link: {
+        type: 'doc',
+        id: 'release-notes/release-notes-main',
+      }, 
       items: [ 
         'release-notes/v2-80-0',
         'release-notes/v2-79-0',

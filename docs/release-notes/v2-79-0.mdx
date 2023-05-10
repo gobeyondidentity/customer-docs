@@ -65,13 +65,14 @@ Beyond Identity administrators can now enforce users to leverage biometrics as a
 
 ### DataDog SIEM Integration Enhancement
 
-<span className="changelog-tag" data-tag="New">New!</span>
+<span className="changelog-tag" data-tag="New">New!</span> 
 
 Because Datadog offers independent sites based on data governance regulations, you must select the proper site parameter to properly connect to our event HTTP listener. We’ve added a new field that allows you to do so. The default example corresponds to the US1 location. However, you can now modify this according to the site corresponding to your data's location. For more information about DataDog site parameters, see [Getting Started with Datadog Sites](https://docs.datadoghq.com/getting_started/site/).
 
 ![DataDog SIEM Integration Enhancement](../images/datadog-siem-integration-enhancement.png)
 
 ## Desktop Login
+
 <span className="changelog-tag" data-tag="Improved">Improved!</span>
 
 We improved the **Password Change/Reset in Windows Desktop Login**. WDL now detects when the user changes their password and automatically re-caches the BI credentials without needing the user to unlock or re-login while offline. Previously, login credentials were automatically re-cached whenever the user logins or locks and unlocks via WDL.
@@ -117,7 +118,7 @@ In this explainer video, we cover how to set the Group Policy.
 
 ### Password change user session log
 
-In this explainer vide, we go over the initial problems with the old solution and why we went with the new solution.
+In this explainer video, we go over the initial problems with the old solution and why we went with the new solution.
 
 <ReactPlayer
    url={userSessionLog}
