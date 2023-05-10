@@ -8,7 +8,7 @@ info:
     ## Introduction
 
     The Beyond Identity Secure Workforce Admin API defines methods for administrative duties 
-    for your Beyond Identity tenant.
+    for your Beyond Identity tenant.<br /><br />
 
     This API is currently in the early-access stage with limited endpoints implemented. We 
     encourage feedback and suggestions through [support@beyondidentity.com](mailto:support@beyondidentity.com).
@@ -54,7 +54,7 @@ info:
     ## Authorization
 
     Each method will have associated scopes. See the `Authorizations` portion within each
-    method to see the scopes.
+    method to see the scopes.<br /><br />
 
     The access token used must contain all scopes for the method to be able to access the
     endpoint.<br /><br />
