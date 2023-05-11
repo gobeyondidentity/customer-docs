@@ -73,7 +73,7 @@
   .changelog {
     background-color: #fff;
     border-radius: 4px;
-    box-shadow: 0 1px 8px 0 rgba(0,0,0,.0), 0 3px 4px 0 rgba(0,0,0,.0), 0 3px 3px -2px rgba(0,0,0,.0);
+  /*  box-shadow: 0 1px 8px 0 rgba(0,0,0,.0), 0 3px 4px 0 rgba(0,0,0,.0), 0 3px 3px -2px rgba(0,0,0,.0);*/
     color: #757575;
     padding: 10px;
     position: relative;
