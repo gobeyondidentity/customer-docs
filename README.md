@@ -24,7 +24,7 @@ You can request the documentation to be improved or clarified, report an error, 
 
 ## Contribute to the docs
 
-Refer to the [contributor's guide](./contributor-guide.md) for details on how to submit edits or additions to the website/documentation.
+Refer to the [contributor's guide](./contributor-guide/contributor-guide.md) for details on how to submit edits or additions to the website/documentation.
 
 
 
