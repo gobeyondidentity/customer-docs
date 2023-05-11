@@ -11,7 +11,7 @@ pagination_prev: null
 last_update: 
    date: 02/08/2022
    author: Patricia McPhee
-draft: true
+draft: false
 doc_type: how-to
 displayed_sidebar: secureWorkforceSidebar
 ---
@@ -21,7 +21,7 @@ Once a user is deleted, they no longer have log in access. Note: Before requesti
 
 ### Step 1: Delete or Deactivate a User or Tenant
 
-1.  From the [Admin Console]<!-- (../Admin_Console) -->, select the **Users** tab.
+1.  From the Admin Console, select the **Users** tab.
 2.  Locate the appropriate user by one of the following methods:
     1.  Typing the `name`, `email`, or `ID` in the search box.
     2.  Scrolling through the list.
@@ -56,11 +56,3 @@ Beyond Identity will confirm from the named account contact person for deletion.
 ### Step 4: Beyond Identity Will Confirm Delete Request Processed
 
 The Beyond Identity team will delete the tenant/user from the platform. Once the data deletion is complete, the support team will confirm the request processed. This process will take 5 business days.
-
-See Also
-
-<!-- [Creating a Tenant](../../Getting_Started/Create_a_Tenant)
-
-[Requesting Access to Tenant or User Data](../Access/Requesting_Access_to_Tenant_or_User_Data)
-
-[Customizing Tenant Info](Customizing_Tenant_Info) -->

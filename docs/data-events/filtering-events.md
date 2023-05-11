@@ -11,7 +11,7 @@ pagination_prev: null
 last_update: 
    date: 03/29/2023
    author: Patricia McPhee
-draft: true
+draft: false
 doc_type: reference
 displayed_sidebar: secureWorkforceSidebar
 --- 
@@ -65,14 +65,3 @@ Events can be filtered on a specific policy version. To display events associate
 
 ![](/images/admin/events/events_policy_version.PNG)
 
-#### Related Topics
-
-[Seach Events](/docs/secure-work/events/search-events)
-
-[Viewing Event Information](/docs/secure-work/events/viewing-event-information)
-
-[Viewing Events Details](/docs/secure-work/events/viewing-events-details)
-
-[View a User's Profile](/docs/secure-work/events/view-user-profile)
-
-[Exporting Event Data](/docs/secure-work/events/exporting-event-data)

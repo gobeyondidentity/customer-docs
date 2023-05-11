@@ -11,7 +11,7 @@ pagination_prev: null
 last_update: 
    date: 03/29/2023
    author: Patricia McPhee
-draft: true
+draft: false
 doc_type: how-to
 displayed_sidebar: secureWorkforceSidebar
 ---
@@ -23,13 +23,13 @@ In addition, the policy history lets you view the rules that were in effect duri
 
 ## Policy event
 
-1. From the [Admin Console](/docs/secure-work/workforce-settings/admin-console/admin-console-login), select the **Events** tab.
+1. From the Admin Console, select the **Events** tab.
 
 2. From the **Events** page, select `Policy` from the **Event** filter drop-down menu. 
 
    ![](/images/events/policy_event_filter.PNG)
 
-3. To reduce the number of events displayed, you can apply additional filters such as the **Date Range** and **Policy Version History**. See [Viewing Event Information](/docs/secure-work/events/viewing-event-information) for additional information.
+3. To reduce the number of events displayed, you can apply additional filters such as the **Date Range** and **Policy Version History**. See Viewing Event Information for additional information.
 
 4. From the **Events** column, locate and select the  event you want to view the event details for. 
 
@@ -68,13 +68,3 @@ For example, changing the policy version from the current version to a previous 
 3. To view match count details for this version, click **I want to restore this version**, otherwise, click **Close**.
 
 
-
-## Next steps
-
-[Publishing Rules](/docs/secure-work/workforce-settings/policy/policy-publish-rules/publishing-rules)
-
-[Policy Attributes](/docs/secure-work/workforce-settings/policy/policy-writing/policy-attributes)
-
-[Writing Policy](/docs/secure-work/workforce-settings/policy/policy-writing/writing-policy)
-
-[Viewing Event Information](/docs/secure-work/events/viewing-event-information)

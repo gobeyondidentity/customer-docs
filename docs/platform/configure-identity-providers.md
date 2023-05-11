@@ -11,7 +11,7 @@ pagination_prev: null
 last_update: 
    date: 02/08/2022
    author: Patricia McPhee
-draft: true
+draft: false
 doc_type: how-to
 displayed_sidebar: secureWorkforceSidebar
 ---  
@@ -37,7 +37,7 @@ Allows access to the Admin Console directly from the Beyond Identity Authenticat
 
 To set the appropriate Identity Provider type for your organization.
 
-1.  Log into the [Admin Console]<!-- (../Admin_Console) --> and from the **Home** screen, select the **Settings** tab.
+1.  Log into the Admin Console and from the **Home** screen, select the **Settings** tab.
 2.  From the **Settings** page, click **Console Login**.
 3.  Do one of the following:
     1.  To restrict your organization to log into the Admin Console using only the SSO option:
@@ -52,7 +52,7 @@ To set the appropriate Identity Provider type for your organization.
 
 To set the appropriate Identity Provider type for your organization.
 
-1.  Log into the [Admin console]<!-- (../Admin_Console) --> and from the Home screen, select the **Settings** tab.
+1.  Log into the Admin console and from the Home screen, select the **Settings** tab.
 2.  From the **Settings** page, click **Console Login**.
 3.  Do one of the following:
     1.  To restrict your organization to log into the Admin Console using the Single Sign-On option, disable the **Console Passwordless Login** option.

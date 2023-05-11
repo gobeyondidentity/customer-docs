@@ -11,7 +11,7 @@ pagination_prev: null
 last_update: 
    date: 02/08/2022
    author: Patricia McPhee
-draft: true
+draft: false
 doc_type: how-to
 displayed_sidebar: secureWorkforceSidebar
 ---  
@@ -52,12 +52,3 @@ The Version Control ID can now be applied to devices. Clicking on the copy icon 
 Multiple version control polices can be generated.
 :::
 
-#### Related Topics
-
-[Require Devices to use a Specific Authenticator Version](/docs/secure-work/workforce-settings/version-control/require-devices-to-use-a-specific-authenticator-version)
-
-[Require Devices to Always use the Latest Version](/docs/secure-work/workforce-settings/version-control/require-devices-to-always-use-the-latest-authenticator-version)
-
-[Configuring a macOS device with the Version Control ID](/docs/secure-work/workforce-settings/version-control/configuring-a-macos-device-with-the-version-control-id)
-
-[Configuring a Windows Device with the Version Control ID](/docs/secure-work/workforce-settings/version-control/configuring-a-windows-device-with-the-version-control-id)

@@ -15,7 +15,7 @@ pagination_prev: null
 last_update: 
    date: 04/10/2023
    author: Patricia McPhee
-draft: true
+draft: false
 doc_type: how-to
 displayed_sidebar: secureWorkforceSidebar
 ---

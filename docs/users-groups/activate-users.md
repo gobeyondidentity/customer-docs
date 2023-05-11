@@ -11,7 +11,7 @@ pagination_prev: null
 last_update: 
    date: 02/08/2022
    author: Patricia McPhee
-draft: true
+draft: false
 doc_type: how-to
 displayed_sidebar: secureWorkforceSidebar
 ---
@@ -20,7 +20,7 @@ displayed_sidebar: secureWorkforceSidebar
 
 Once activated, the user's previous access privileges are restored.  To reactivate a user who has been suspended:
 
-1.  Select **Users** from the left menu of the [Admin Console](/docs/secure-work/workforce-settings/admin-console/admin-console-login).
+1.  Select **Users** from the left menu of the Admin Console.
 2.  From the Users page, search for the user. Use the **Search** field to easily find the user based on the **name**, **email**, or **ID**.  
     ![](/images/users/search_user.PNG)
 3.  Once the user is located and selected, click **Activate User**.  

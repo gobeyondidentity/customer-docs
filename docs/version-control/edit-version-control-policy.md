@@ -11,7 +11,7 @@ pagination_prev: null
 last_update: 
    date: 02/08/2022
    author: Patricia McPhee
-draft: true
+draft: false
 doc_type: how-to
 displayed_sidebar: secureWorkforceSidebar
 ---  
@@ -28,12 +28,3 @@ You can edit an existing policy at any time. To edit a version control policy:
 3.  The dialog closes and the updated version control policy is displayed on the page.
     
 
-#### Related Topics
-
-[Specifying a Range of Allowable Versions that can be installed on devices](/docs/secure-work/workforce-settings/version-control/specifying-a-range-of-allowable-versions-that-can-be-installed-on-devices)
-
-[Require Devices to use a Specific Authenticator Version](/docs/secure-work/workforce-settings/version-control/require-devices-to-use-a-specific-authenticator-version)
-
-[Require Devices to use a Specific Authenticator Version ](/docs/secure-work/workforce-settings/version-control/require-devices-to-always-use-the-latest-authenticator-version)
-
-[Deleting a Version Control Policy](/docs/secure-work/workforce-settings/version-control/deleting-a-version-control-policy)

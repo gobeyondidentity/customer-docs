@@ -11,7 +11,7 @@ pagination_prev: null
 last_update: 
    date: 03/29/2023
    author: Patricia McPhee
-draft: true
+draft: false
 doc_type: how-to
 displayed_sidebar: secureWorkforceSidebar
 ---
@@ -25,7 +25,7 @@ When configured, users will have access privileges to perform tasks associated w
   
 To configure role-based access control:
 
-1.  From the [Admin Console](/docs/secure-work/workforce-settings/admin-console/admin-console-login), select the **Settings** tab.
+1.  From the [Admin Console](./admin-console.md), select the **Settings** tab.
 2.  From the **Settings** page, click **Console Access Console**. The nine pre-defined groups are displayed.  
     ![](/images/access/console_access_control.png)  
     The following table provides information about each group. A user can be in multiple groups. 

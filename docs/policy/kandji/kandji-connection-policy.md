@@ -11,7 +11,7 @@ pagination_prev: null
 last_update: 
    date: 02/08/2022
    author: Patricia McPhee
-draft: true
+draft: false
 doc_type: how-to
 displayed_sidebar: secureWorkforceSidebar
 ---
@@ -29,10 +29,3 @@ You can write policy to allow, monitor, or deny access based on the connection s
 4.  Click **Add**.  
     ![](/images/Integrations/kandji/kandji_connection_available_allow.PNG)
 
-#### Related Topics
-
-[Publishing Rules](/docs/secure-work/workforce-settings/policy/policy-publish-rules/publishing-rules)
-
-[Policy Attributes](/docs/secure-work/workforce-settings/policy/policy-writing/policy-attributes)
-
-[Writing Policy](/docs/secure-work/workforce-settings/policy/policy-writing/writing-policy)

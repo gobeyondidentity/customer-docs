@@ -11,7 +11,7 @@ pagination_prev: null
 last_update: 
    date: 02/08/2022
    author: Patricia McPhee
-draft: true
+draft: false
 doc_type: how-to
 displayed_sidebar: secureWorkforceSidebar
 ---
@@ -20,7 +20,7 @@ displayed_sidebar: secureWorkforceSidebar
 
 When a user is deactivated, they are still in the tenant but lose all access and cannot authenticate. To deactivate a user:
 
-1.  Select **Users** from the left menu of the [Admin Console](/docs/secure-work/workforce-settings/admin-console/admin-console-login).
+1.  Select **Users** from the left menu of the Admin Console.
 2.  From the Users page, search for the user. Use the **Search** field to easily find the user based on the **name**, **email**, or **ID**.  
     ![](/images/users/search_user.PNG)
 3.  Once the user is located and selected, click **Deactivate User**.  
@@ -31,6 +31,3 @@ When a user is deactivated, they are still in the tenant but lose all access and
     ![](/images/users/users_list_suspended_jracer.PNG)
 
 
-
-#### Related Topics
-[Adding and Deleting Users](/docs/secure-work/workforce-settings/users/adding-deleting-users)

@@ -10,7 +10,7 @@ pagination_prev: get-started/configure-oidc-connection
 last_update: 
    date: 03/29/2023
    author: Patricia McPhee
-draft: true
+draft: false
 doc_type: get-started
 displayed_sidebar: secureWorkforceSidebar
 ---
@@ -51,7 +51,7 @@ In order to support registration on both iOS and Android, there are a couple of 
 
 ### Updating Registration Redirect URI
 
-See [Configurating your Account](/docs/secure-work/getting-started/account-configuration) to update the registration redirect URI once you've gone through the above steps.
+See [Configurating your Account](../get-started/account-configuration.md) to update the registration redirect URI once you've gone through the above steps.
 
 ### Debugging
 

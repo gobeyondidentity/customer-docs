@@ -11,7 +11,7 @@ pagination_prev: null
 last_update: 
    date: 03/29/2023
    author: Patricia McPhee
-draft: true
+draft: false
 doc_type: how-to
 displayed_sidebar: secureWorkforceSidebar
 ---
@@ -29,7 +29,7 @@ Beyond Identity provides two login option types for access to the Admin Console.
 
 To set the appropriate login options for your organization.
 
-1.  From the [Admin Console](/docs/secure-work/workforce-settings/admin-console/admin-console-login), select the **Settings** tab.
+1.  From the [Admin Console](./admin-console.md), select the **Settings** tab.
 2.  From the **Settings** page, click **Console Login**.
 3.  Click the **Edit** icon that appears when you hover next to **Enabled**.   
     ![](/images/admin/console_login_edit_enabled.PNG)
@@ -45,7 +45,3 @@ To set the appropriate login options for your organization.
 Although the Passwordless Login option is visible in versions earlier than 2.53.0, it is disabled by default. The Tenant administrator can enable the button from the Admin Console. To check your version, open your credential and click/tap the **About this credential**, and scroll down to locate the **App Version** number.  
   
 If the disabled option is grayed out and cannot be enabled, the Admin Console does not have the RBAC feature enabled. To enable RBAC, submit a ticket the Beyond Identity support staff.
-
-## Next steps
-
-[Configuring Role-Based Access Control](/docs/secure-work/workforce-settings/access/configuring-role-based-access-control)

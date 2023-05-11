@@ -10,7 +10,7 @@ pagination_prev: get-started/configure-account
 last_update: 
    date: 03/29/2023
    author: Patricia McPhee
-draft: true
+draft: false
 doc_type: get-started
 displayed_sidebar: secureWorkforceSidebar
 ---

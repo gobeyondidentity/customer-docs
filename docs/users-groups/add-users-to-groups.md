@@ -11,7 +11,7 @@ pagination_prev: null
 last_update: 
    date: 02/08/2022
    author: Patricia McPhee
-draft: true
+draft: false
 doc_type: how-to
 displayed_sidebar: secureWorkforceSidebar
 ---
@@ -19,7 +19,7 @@ displayed_sidebar: secureWorkforceSidebar
 
 Users can be added to one or more groups. To add a user to a group:
 
-1.  Log into the [Admin console](/docs/secure-work/workforce-settings/admin-console/admin-console-login) and from the Home screen, select the **Groups** tab.
+1.  Log into the Admin console and from the Home screen, select the **Groups** tab.
 2.  The Groups page displays the list of groups currently in your tenant. 
 3.  Locate and then click on the desired group. For example, **Require** **Intune on Windows**.  
     ![](/images/groups/select_group_microsoft_intune.PNG)
@@ -31,6 +31,3 @@ Users can be added to one or more groups. To add a user to a group:
     The **Members** section is updated to include the user or users just added.  
     ![](/images/groups/users_added_to_group_intune_trex.PNG)
 
-#### Related Topics
-
-[Removing Users from Groups](/docs/secure-work/workforce-settings/groups/removing-users-from-groups)

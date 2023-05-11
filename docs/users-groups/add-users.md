@@ -11,7 +11,7 @@ pagination_prev: null
 last_update: 
    date: 02/08/2022
    author: Patricia McPhee
-draft: true
+draft: false
 doc_type: how-to
 displayed_sidebar: secureWorkforceSidebar
 ---
@@ -19,7 +19,7 @@ displayed_sidebar: secureWorkforceSidebar
 
 To allow your workforce to utilize Beyond Identity, each user must be added within your Tenant.  To add a user:
 
-1.  Select **Users** from the left menu of the [Admin Console](/docs/secure-work/workforce-settings/admin-console/admin-console-login).
+1.  Select **Users** from the left menu of the Admin Console.
 2.  The Users page displays the list of users currently in your tenant.  Click **Add Tenant**.
 3.  From the Add User dialog, provide the following information, and then click **Save Changes**:
     1.  External ID
@@ -30,7 +30,3 @@ To allow your workforce to utilize Beyond Identity, each user must be added with
 4.  The user is added to the end of the list on the Users page.
 
 
-
-#### Related Topics
-
-[Deactivating and Activating Users](/docs/secure-work/workforce-settings/users/deactivating-reactivating-users)

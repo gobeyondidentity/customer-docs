@@ -12,7 +12,7 @@ pagination_prev: installation/install-platform-authenticator
 last_update: 
    date: 03/30/2022
    author: Patricia McPhee
-draft: true
+draft: false
 doc_type: reference
 displayed_sidebar: secureWorkforceSidebar
 ---
@@ -39,8 +39,5 @@ A download and registration email will be sent from your IT department to downlo
 
    ![](/images/Credential/no_credentials_on_device_add_credential.png)
 
-7. You can [add/register a new credential](/docs/secure-work/credentials/registering-a-credential-on-a-windows-device) or migrate your existing one from another device.
+7. You can add/register a new credential or migrate your existing one from another device.
 
-#### Next steps
-
-[Register a Credential on a Windows Device](/docs/secure-work/credentials/registering-a-credential-on-a-windows-device)

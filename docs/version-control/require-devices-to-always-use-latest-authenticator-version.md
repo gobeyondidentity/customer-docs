@@ -11,7 +11,7 @@ pagination_prev: null
 last_update: 
    date: 02/08/2022
    author: Patricia McPhee
-draft: true
+draft: false
 doc_type: how-to
 displayed_sidebar: secureWorkforceSidebar
 ---  
@@ -30,9 +30,3 @@ To ensure devices are always using the latest version:
     ![](/images/version-control/version_control_test_group_latest_version_windows_added.png)
     
 
-#### Related Topics
-
-
-[Configuring a macOS device with the Version Control ID](/docs/secure-work/workforce-settings/version-control/configuring-a-macos-device-with-the-version-control-id)
-
-[Configuring a Windows Device with the Version Control ID](/docs/secure-work/workforce-settings/version-control/configuring-a-windows-device-with-the-version-control-id)

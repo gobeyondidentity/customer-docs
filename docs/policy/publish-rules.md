@@ -11,7 +11,7 @@ pagination_prev: null
 last_update: 
    date: 03/29/2023
    author: Patricia McPhee
-draft: true
+draft: false
 doc_type: how-to
 displayed_sidebar: secureWorkforceSidebar
 ---
@@ -25,8 +25,5 @@ To publish a rule, click **Publish changes** located in the upper-right corner o
 
 The rules list is updated with the latest set of rules.
 
-In addition to the current set of rules, you can view a list of all previously saved sets of rules, and restore one as the current set. See [Viewing and Restoring Previous Policy Rules](/docs/secure-work/workforce-settings/policy/policy-viewing/viewing-and-restoring-previous-policy-rules).
+In addition to the current set of rules, you can view a list of all previously saved sets of rules, and restore one as the current set. See Viewing and Restoring Previous Policy Rules.
 
-## Next steps
-
-[Writing Policy](/docs/secure-work/workforce-settings/policy/policy-writing/writing-policy)

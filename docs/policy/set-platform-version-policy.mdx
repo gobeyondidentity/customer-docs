@@ -11,7 +11,7 @@ pagination_prev: null
 last_update: 
    date: 03/29/2023
    author: Patricia McPhee
-draft: true
+draft: false
 doc_type: how-to
 displayed_sidebar: secureWorkforceSidebar
 ---
@@ -24,8 +24,8 @@ Policy can be written to detect a specific version or version range that must be
 
 To write policy based on platform version:
 
-1.  From the [Admin Console](/docs/secure-work/workforce-settings/admin-console/admin-console-login), select the **Policy** tab.
-2.  From the [Policy page](/docs/secure-work/workforce-settings/policy/policy-writing/writing-policy#creating-rules), click **Edit Policy**. 
+1.  From the Admin Console, select the **Policy** tab.
+2.  From the Policy page, click **Edit Policy**. 
 3.  From the **Add Rule** dialog, click **Add attribute** next to **device platform** and select the appropriate platform from the drop-down menu.  
     ![](/images/policy/device_platform_macos.PNG)
 4.  Click the second **Add attribute** button that appears. By default, the `**Antivirus**` attribute is displayed in the first field.
@@ -39,13 +39,5 @@ To write policy based on platform version:
 8.  Under **Then**, select the appropriate permissions action (`Allow`, `Deny`, or `Monitor`) from the drop-down menu.
 9.  Click **Add** when done.  
     ![](/images/policy/platform_version_greater_equal_to_macos.PNG)
-10.  The rule is added to the **Edit Policy** page. Create additional rules as needed or click [Publish Rule](/docs/secure-work/workforce-settings/policy/policy-publish-rules/publishing-rules) to permanently save it.
+10.  The rule is added to the **Edit Policy** page. Create additional rules as needed or click Publish Rule to permanently save it.
 
-## Next steps
-
-
-[Publishing Rules](/docs/secure-work/workforce-settings/policy/policy-publish-rules/publishing-rules)
-
-[Policy Attributes](/docs/secure-work/workforce-settings/policy/policy-writing/policy-attributes)
-
-[Writing Policy](/docs/secure-work/workforce-settings/policy/policy-writing/writing-policy)

@@ -12,7 +12,7 @@ pagination_prev: installation/install-platform-authenticator
 last_update: 
    date: 03/30/2022
    author: Patricia McPhee
-draft: true
+draft: false
 doc_type: reference
 displayed_sidebar: secureWorkforceSidebar
 ---

@@ -11,7 +11,7 @@ pagination_prev: null
 last_update: 
    date: 02/08/2022
    author: Patricia McPhee
-draft: true
+draft: false
 doc_type: how-to
 displayed_sidebar: secureWorkforceSidebar
 ---
@@ -29,7 +29,7 @@ Once the version contol ID has been created, it can be applied to devices. The v
     
     `VERSION_CONTROL_ID = string value`  
       
-    The value of this string must be the **Version Control Id** from [Version Control policy](/docs/secure-work/workforce-settings/version-control/managing-the-authenticator-versions-allowed-on-devices) you created in the Admin Console.
+    The value of this string must be the **Version Control Id** from Version Control policy you created in the Admin Console.
     
     ![](/images/version-control/version_control_id_windows_registry.png)
     
@@ -38,8 +38,3 @@ Once the version contol ID has been created, it can be applied to devices. The v
 For customers whose Beyond Identity data center is hosted outside the United States, there is an additional registry entry which must be configured named **VERSION\_CONTROL\_URL**. Please contact Beyond Identity Support for usage instructions.
 :::
 
-#### Related Topics
-
-[Configuring a macOS device with the Version Control ID](/docs/secure-work/workforce-settings/version-control/configuring-a-macos-device-with-the-version-control-id)
-
-[Managing the Authenticator Versions that can be Installed on Devices](/docs/secure-work/workforce-settings/version-control/managing-the-authenticator-versions-allowed-on-devices)

@@ -11,13 +11,13 @@ pagination_prev: null
 last_update: 
    date: 02/08/2022
    author: Patricia McPhee
-draft: true
+draft: false
 doc_type: how-to
 displayed_sidebar: secureWorkforceSidebar
 ---
 
 
-Once the version control ID has been created, it can be applied to devices. The version control ID is generated when the [version control policy](/docs/secure-work/workforce-settings/version-control/managing-the-authenticator-versions-allowed-on-devices) is created. It references the local Platform Authenticator to the appropriate policy allowing you to have more than one version control policy associated with different sets of Platform Authenticators.
+Once the version control ID has been created, it can be applied to devices. The version control ID is generated when the version control policy is created. It references the local Platform Authenticator to the appropriate policy allowing you to have more than one version control policy associated with different sets of Platform Authenticators.
 
 To configure the device with the version control ID, run the `BIConfigure` command line utility (via MDM). This command can also be used get the version control ID and to clear version control restrictions.
 
@@ -52,8 +52,3 @@ To clear version control restrictions for the device, run the following:
 Which returns the following:  
 `No Version Control ID set`
 
-#### Related Topics
-
-[Configuring a Windows Device with the Version Control ID](/docs/secure-work/workforce-settings/version-control/configuring-a-windows-device-with-the-version-control-id)
-
-[Managing the Authenticator Versions that can be Installed on Devices](/docs/secure-work/workforce-settings/version-control/managing-the-authenticator-versions-allowed-on-devices)

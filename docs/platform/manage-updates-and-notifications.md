@@ -11,7 +11,7 @@ pagination_prev: null
 last_update: 
    date: 02/08/2022
    author: Patricia McPhee
-draft: true
+draft: false
 doc_type: overview
 displayed_sidebar: secureWorkforceSidebar
 ---
@@ -32,10 +32,10 @@ Depending on the company’s policy regarding downloading software, automatic no
 
 ![](/images/updates/updates.png)
 
-The method to disable update notifications and to check for updates depends on the platform. See [Managing Update Notifications on Windows Devices](/docs/secure-work/workforce-settings/updates/managing-update-notifications-on-windows-devices) and [Managing Update Notifications on macOS Devices](/docs/secure-work/workforce-settings/updates/managing-update-notifications-on-macos-devices).
+The method to disable update notifications and to check for updates depends on the platform. 
 
 :::note
-To require users to use a specific version or range of versions when attempting to authenticate or add devices, see [Managing the Authenticator Versions that can be Installed on Devices](/docs/secure-work/workforce-settings/version-control/managing-the-authenticator-versions-allowed-on-devices).
+To require users to use a specific version or range of versions when attempting to authenticate or add devices, ...
 :::
 
 ## macOS
@@ -100,7 +100,7 @@ The following examples provide the output that is displayed when the command/arg
 `$ ./BIConfigure --invalid   Invalid arguments`
 
 :::note
-In addition to managing updates, system administrators can also create policy to [manage the the Authenticator versions](/docs/secure-work/workforce-settings/policy/policy-writing/setting-a-platform-version-policy) that can be installed on devices.
+In addition to managing updates, system administrators can also create policy to [manage the the Authenticator versions](../policy/set-platform-version-policy.mdx) that can be installed on devices.
 :::
 
 ## Windows
@@ -118,5 +118,5 @@ Once restarted, users will not receive notification updates and the **Check for 
 To re-enable notification updates and add the Check for Updates menu item back to the Policy drop-down menu, remove the DisableUpdates key.
 
 :::note
-In addition to managing updates, system administrators can also create policy to [manage the the Authenticator versions](/docs/secure-work/workforce-settings/policy/policy-writing/setting-a-platform-version-policy) that can be installed on devices.
+In addition to managing updates, system administrators can also create policy to ... that can be installed on devices.
 :::

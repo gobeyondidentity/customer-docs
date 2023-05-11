@@ -11,7 +11,7 @@ pagination_prev: null
 last_update: 
    date: 02/08/2022
    author: Patricia McPhee
-draft: true
+draft: false
 doc_type: how-to
 displayed_sidebar: secureWorkforceSidebar
 ---  
@@ -23,7 +23,7 @@ To do this, you'll create a profile containing a shared passkey that can roam be
 
 
 
-1. From the [Admin Console](/docs/secure-work/workforce-settings/admin-console/admin-console-login), select the **Settings** tab.
+1. From the [Admin Console](./admin-console.md), select the **Settings** tab.
 
 2. From the **Settings** page, click the **AUTHENTICATIONS OPTIONS** edit icon under the **TENANT INFO** tab. 
 

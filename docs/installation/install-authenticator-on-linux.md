@@ -16,7 +16,7 @@ pagination_prev: installation/install-platform-authenticator
 last_update: 
    date: 03/30/2022
    author: Patricia McPhee
-draft: true
+draft: false
 doc_type: how-to
 displayed_sidebar: secureWorkforceSidebar
 ---
@@ -30,10 +30,9 @@ A download and registration email will be sent from your IT department to downlo
 
 Refer to the appropriate section for information on distributing and installing the Linux Authenticator package. The Linux Authenticator currently supports the following Linux packages:
 
-*   [Debian (ubuntu)](/docs/secure-work/installation/debian-distribution)
+*   [Debian (ubuntu)](#debian-ubuntu)
     
-*   [RPM (CentOS)](/docs/secure-work/installation/rpm-distribution)
-
+*   [RPM (CentOS)](#rpm-centos)
 
 
 ## Debian (Ubuntu)
