@@ -1,0 +1,30 @@
+---
+title: Secure DevOps guides
+id: sdo-integrations
+description: ''
+slug: /sdo-integrations 
+keywords: 
+ - faq
+ - help
+pagination_next: null
+pagination_prev: null
+last_update: 
+   date: 03/29/2023
+   author: Patricia McPhee
+draft: true
+doc_type: how-to
+displayed_sidebar: secureWorkforceSidebar
+---
+
+
+Attackers continue to exploit vulnerabilities in distributed, cloud-based Git environments. Git is great at helping with public, community-developed code, but they’re not focused on enterprise-grade security. 
+
+Recent attacks like Solarwinds, Kaseya, and NotPetya have revealed that even mature, security-focused companies have enormous supply chain blindspots. These attacks not only impact your production applications, it also directly affects your infrastructure-as-code. They have shown that it’s not only costly to remedy a breach of assets and third party tooling, credential theft, and key sprawl—it also erodes fundamental trust with the company and their intellectual property. Many times, that trust is irrecoverable. Logs and transaction records in Git are insufficient for asserting who made that change. It’s easy to impersonate someone on Git, contributors are often using their own Git accounts that are not company issued, contributors can write whatever they want in the author field, and, to top it all off, security tools often slow down software velocity, so companies avoid using them.
+
+With Secure DevOps every commit is signed by a verified corporate identity and their device. This eliminates any ambiguity regarding authorship, creating a much more secure and trustworthy development process. Secure DevOps protects source code from malicious attacks by verifying every piece of [source code that was committed](/docs/secure-devops/setting-up-and-managing-automatic-git-commit-signing). 
+
+Our author verification API is the first check in your CI/CD pipeline. It automatically checks that the key that signed the commit is tied to a corporate identity and device—and was issued and registered with the Beyond Identity Cloud.
+
+import SdoGuides from '../../src/components/IntegrationGuides/Sdo';
+
+<SdoGuides />

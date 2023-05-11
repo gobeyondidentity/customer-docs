@@ -123,6 +123,7 @@ themes: [
         },
         items: [ 
          { to: "/api/", label: "Public API", position: "left" },
+         { to: "/release-notes-main", label: "Release Notes", position: "left" },
 /*
            {
             label: 'Support',
