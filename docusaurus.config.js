@@ -38,7 +38,7 @@ themes: [
 
 
   title: 'Beyond Identity',
-  tagline: 'Secure Customer ...',
+  tagline: 'Secure Workforce',
   url: 'https://gobeyondidentity.github.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -116,7 +116,7 @@ themes: [
         }
       },
       navbar: {
-        title: 'Secure Workforce',
+        title: 'Secure Workforce Release Notes',
         logo: {
           alt: 'Beyond Identity Logo',
           src: 'img/logo.png',
