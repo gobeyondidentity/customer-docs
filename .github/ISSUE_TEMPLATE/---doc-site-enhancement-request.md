@@ -1,9 +1,9 @@
 ---
-name: "\U0001F4A1 Doc Enhancement Request"
+name: "Doc Enhancement Request"
 about: Suggest an idea for doc enhancement
 title: ''
 labels: ''
-assignees: ''
+assignees: 'patriciamcphee'
 
 ---
 

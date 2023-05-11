@@ -116,7 +116,11 @@ const sidebars = {
       link: {
         type: 'doc',
         id: 'policy/policy',
-      },      
+      },   
+      customProps: {
+        badges: ['new', 'green'],
+        featured: true,
+      },   
       items: [ 
         {
           type: 'category',
@@ -398,7 +402,7 @@ const sidebars = {
 
 
   /*
-  contributorSidebar: [
+  contributorGuideSidebar: [
     {
       type: 'category',
       label: 'Contributor's Guide',  
