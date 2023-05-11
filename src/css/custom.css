@@ -194,6 +194,11 @@ dt {
 }
 
 
+[data-theme='dark'] .sidebar-version {
+  color: white;
+  background-color: #95a8db26;
+}
+
 /* nested ordered list */
 
 
@@ -556,7 +561,7 @@ button[class*="collapseSidebarButton"] {
 
 /***** Tables *****/
 
-/*
+
 table {
   border-collapse: collapse;
   width: 100%;
@@ -565,9 +570,9 @@ table {
   text-align: left;
   margin: 4px 0;
 }
-*/
 
-/*
+
+
 table tr,
 table thead tr:first-child th {
   border-top: 1;
@@ -596,7 +601,7 @@ td:last-child {
 
 
 tr:nth-child(even) {background-color: #f6f7fc;}
-*/
+
 
 th {
   text-align: left;
@@ -607,7 +612,7 @@ th {
   margin: 0;
 }
 
-/*
+
 
 table th,
 table td {
@@ -615,7 +620,7 @@ table td {
 
 }
 
-*/
+
 
 /*.vertical { 
   -webkit-writing-mode:vertical-lr; 
