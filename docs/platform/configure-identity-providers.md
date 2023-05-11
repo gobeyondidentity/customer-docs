@@ -44,11 +44,11 @@ To set the appropriate Identity Provider type for your organization.
         1.  Click the **Edit** icon next to disable the **Console Passwordless Login** option.
         
     2.  To allow access from the Authenticator, enable the option.  
-        [![](/images/admin/console_passwordless_login_disabled.png)](/images/admin/console_passwordless_login_disabled.png)
+        ![](/images/admin/console_passwordless_login_disabled.png)
 
 **Note:**  Although the Passwordless Login option is visible in versions earlier than 2.53.0, it is disabled. The Tenant administrator can enable the button from the Admin Console. To check your version, open your credential and click/tap the **About this credential**, and scroll down to locate the **App Version** number.
 
-[![](/images/admin/passwordless_auth.png)](/images/admin/passwordless_auth.png)
+![](/images/admin/passwordless_auth.png)
 
 To set the appropriate Identity Provider type for your organization.
 
@@ -62,7 +62,7 @@ If the disabled option is grayed out and cannot be enabled, the Admin Console do
 
 Until the Passwordless Login option is enabled in the Admin Console, the following error message is displayed when attempting to log in using this option:
 
-[![](/images/admin/passwordless_login_failed.png)](/images/admin/passwordless_login_failed.png)
+![](/images/admin/passwordless_login_failed.png)
 
 If a user receives the following message when attempting to login with the “Passwordless Login” button this means the tenant has the Passwordless Login Identity Provider type disabled.
 
