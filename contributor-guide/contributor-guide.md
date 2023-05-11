@@ -33,11 +33,7 @@ displayed_sidebar: contributorGuideSidebar
     - [Best practices](#best-practices)
   - [Edit content (minor changes)](#edit-content-minor-changes)
   - [Edit content (significant changes)](#edit-content-significant-changes)
-    - [GitHub Desktop](#github-desktop)
-    - [Command line](#command-line)
   - [Add new content](#add-new-content)
-    - [GitHub Desktop](#github-desktop-1)
-    - [Command line](#command-line-1)
   - [Submit a Pull Request](#submit-a-pull-request)
   - [Release notes](#release-notes)
   - [API documentation](#api-documentation)
@@ -122,13 +118,13 @@ The acceptance criteria for contributing to Beyond Identity developer documentat
 
 - If yes, update the doc! Contribute until your heart's content. But first, determine which use case best fits your update:
 
-  - **[Minor changes:](#edit-content-minor-changes)** If you only need to fix a typo or make a clarification to a sentence or section, this option is your best choice. In this use case, you will not be able to upload files, such as an image, and you can update only one file.
+  - **[Minor changes:](#edit-content-minor-changes) (use case #1)** If you only need to fix a typo or make a clarification to a sentence or section, this option is your ideal choice. In this use case, you will not be able to upload files, such as an image, and you can update only one file.
     
-  - **[Significant changes:](#edit-content-significant-changes)** Suppose you need to make substantial changes, such as adding an image or editing multiple topics. In that case, this method is your best friend, as you'll have one pull request to manage. 
+  - **[Significant changes:](#edit-content-significant-changes) (use case #2)** Suppose you need to make substantial changes, such as adding an image or editing multiple topics. In that case, this method is your best friend, as you'll have one pull request to manage. 
 
-- If not, should it? If so, consider [adding it](#add-new-content), but don't add a topic or doc just because you can. Consult with the Sr. Technical Writer first before adding. 
+- If not, should it? If so, consider **[adding it](#add-new-content) (use case #3)**, but don't add a topic or doc just because you can. Consult with the Sr. Technical Writer first before adding.  
   
-  The reason for consulting with the Sr. Technical Writer is to maintain the highest quality of the content and reduce duplication. For example, your new topic could be added to an existing one, consolidating and clarifying the information. It's also possible that someone else is working on a similar topic. 
+  The Sr. Technical Writer helps to maintain the highest quality of the content or to reduce duplication. For example, your new topic could be added to an existing one, consolidating and clarifying the information. It's also possible that someone else is working on a similar topic. You may discover that an explainer video might help with the more complex scenarios or issues. Let's talk to strategize and deliver a great customer experience!
 
 
 ### Optional editing tools
@@ -170,9 +166,10 @@ To promote consistency, follow the guidelines below and mentioned throughout to 
 If you only need to fix a typo or clarify a sentence or section, this option is your best choice. It streamlines the process of reporting and correcting minor errors and omissions in the documentation.  
 
 Despite all efforts, small grammar and spelling errors _do_ make their way into our published documents. While you can create GitHub issues to report mistakes, creating a PR to fix the issue is faster and easier when the option is available.
-<!--
+
+<!-- this needs to be redone from the clean-deploy repo
 <details>
-<summary>**Show me how!**</summary>
+<summary>Show me how!</summary>
 <div>
 <video  width="100%" controls src="https://user-images.githubusercontent.com/88200052/199261463-899c36ad-e433-46c9-ac28-87f7e86c1f84.mp4" />
 </div>
@@ -181,11 +178,11 @@ Despite all efforts, small grammar and spelling errors _do_ make their way into 
 
 1. In the [repo][repo], navigate to the /docs folder and locate the file you want to edit. Then, select the pencil icon to edit the article. 
 
-  ![GitHub Edit file icon](./images/github-edit-file.png)
+   ![GitHub Edit file icon](./images/github-edit-file.png)
 
 2. Edit the file in the web editor. Choose the **Preview** tab to check the formatting of your changes.
 
-  ![GitHub Preview changes](./images/github-preview-changes.png)
+   ![GitHub Preview changes](./images/github-preview-changes.png)
 
 3. When you're finished editing, scroll to the bottom of the page and propose your changes. 
 
@@ -197,9 +194,9 @@ Despite all efforts, small grammar and spelling errors _do_ make their way into 
 
 4. Now that you've proposed and committed your changes, you need to ask the owners to review your changes. This is done using a pull request (PR). 
 
-  Enter a title and a description for the PR, and then select **Create pull request**. You can select **Create a draft pull request** instead. The difference is that the reviewers are notified only when the PR is *Open* rather than *Draft*.
+   Enter a title and a description for the PR, and then select **Create pull request**. You can select **Create a draft pull request** instead. The difference is that the reviewers are notified only when the PR is *Open* rather than *Draft*.
 
-  ![GitHub propose and commit changes](./images/github-open-pull-request.png)
+   ![GitHub propose and commit changes](./images/github-open-pull-request.png)
 
 
 That's it! Team members will review your PR and merge it when approved. You may get feedback requesting changes.
@@ -208,93 +205,6 @@ That's it! Team members will review your PR and merge it when approved. You may 
 ## Edit content (significant changes)
 
 If you need to make substantial changes, add an image or add a section to a topic. On the other hand, if your change is minor that doesn't involve uploading a file or making changes to multiple files, follow the [Edit content - minor change](#edit-content-minor-changes) instructions.
-
-### GitHub Desktop
-
-1. Make sure you're back on the main (default) branch so you can sync your local working branch.
-
-   1. Select the Default branch from the **Current branch** drop-down.
-
-      ![Graphical user interface, application Description automatically generated](./images/image5.png)
-
-   2. Select **Repository > Pull** to sync your local working branch with the default repo.
-
-      ![Graphical user interface, text, application, email Description automatically generated](./images/image6.png)
-
-2. Create a working branch for your proposed changes. For example, **content-dev-faqs** or **update-visual-guidelines**.
-
-   1. Select **Branch > New branch**.
-
-      ![Graphical user interface, text, application, email Description automatically generated](./images/image7.png)
-
-   2. Give your branch a name and select **Create branch**.
-
-    You'll see the new branch under Current branch.
-
-    ![](./images/image8.png)
-
-3. Navigate to /docs and locate the topic you want to change. 
- 
-4. Change the date in the metadata and ensure the title, description, and author are correct. Add any additional keywords if they are missing.
-
-   ```markdown
-   ---
-   title: Welcome to Secure Workforce
-   id: welcome
-   description: ''
-   slug: /
-   keywords: 
-    - faq
-    - help
-   pagination_next: null
-   pagination_prev: null
-   last_update: 
-      date: 03/29/2023
-      author: Patricia McPhee
-   draft: true
-   doc_type: overview
-   product: secureWorforce
-   hide_table_of_contents: false
-   displayed_sidebar: secureWorkforceSidebar
-   ---
-   ```
-
-5. Make your changes to the content and run the following command to build and review your changes.
-
-   ```
-   yarn start
-   ```
-
-   This command starts a local development server and opens a browser window. Most changes are reflected live without having to restart the server. If a browser window doesn\'t open, go to **http://localhost:3000/SCOOBY/docs-next/** to view your local changes. 
-
-6. When ready, commit and publish your changes to the main repo for merging.
-
-   1. Add a commit message, and select **Commit to {branch name}**.
-
-      ![Graphical user interface, text, application Description automatically generated](./images/image9.png)
-
-   2. Select **Publish branch** to push your changes to the upstream repo.
-
-      You might see **Publish origin** instead, which means this is not a new branch but a branch you've used before to make suggested changes by a reviewer. This could also mean you're reusing the branch that wasn't merged or deleted.
-
-      ![A screenshot of a computer Description automatically generated](./images/image10.png)
-
-   3. Select **Create Pull Request** so the content reviewers can view the changes and start collaborating.
-
-      ![](./images/image11.png)
-
-7. From the main (default) branch, select **Compare & pull request**.
-
-
-8. Provide additional information, add reviewers, and select **Create pull request**.
-
-   Alternatively, you can select **Create draft pull request**.
-
-9. After going through the review process for technical accuracy and a copy edit from a Sr. Technical Writer, enter `#sign-off` and select **Comment**.
-
-  Your changes get merged into the default branch (`main`).  After each merge, the Sr. Technical Writer reviews all merges, fixes any merge conflicts, and publishes all changes.
-
-### Command line
 
 1. Make sure you're back on the main (default) branch so you can sync your local working branch.
 
@@ -341,7 +251,8 @@ If you need to make substantial changes, add an image or add a section to a topi
    yarn start
    ```
 
-   This command starts a local development server and opens a browser window. Most changes are reflected live without having to restart the server. If a browser window doesn\'t open, go to **http://localhost:3000/SCOOBY/docs-next/** to view your local changes. 
+   This command starts a local development server and opens a browser window. Most changes are reflected live without having to restart the server. If a browser window doesn\'t open, go to **http://localhost:3000/SCOOBY/docs-next/** to view your local changes.   
+
 
 5. Add your changes.
 
@@ -375,112 +286,6 @@ If you need to make substantial changes, add an image or add a section to a topi
 
 
 ## Add new content
-
-
-
-### GitHub Desktop
-
-1. Make sure you're back on the main (default) branch so you can sync your local working branch.
-
-   1. Select the Default branch from the **Current branch** drop-down.
-
-      ![Graphical user interface, application Description automatically generated](./images/image5.png)
-
-   2. Select **Repository > Pull** to sync your local working branch with the default repo.
-
-      ![Graphical user interface, text, application, email Description automatically generated](./images/image6.png)
-
-2. Create a working branch for your proposed changes. For example, **content-dev-faqs** or **update-visual-guidelines**.
-
-   1. Select **Branch > New branch**.
-
-      ![Graphical user interface, text, application, email Description automatically generated](./images/image7.png)
-
-   2. Give your branch a name and select **Create branch**.
-
-      You'll see the new branch under Current branch.
-
-      ![](./images/image8.png)
-
-3. Navigate to `/docs` and locate the topic you want to change. 
-
-4. Add the metadata (frontmatter).
-
-   Keywords are optional but helpful. All other metadata is required.
-
-    ```markdown
-    ---
-    title: Welcome to Secure Workforce
-    id: welcome
-    description: ''
-    slug: /
-    keywords: 
-     - faq
-     - help
-    pagination_next: null
-    pagination_prev: null
-    last_update: 
-       date: 03/29/2023
-       author: Patricia McPhee
-    draft: true
-    doc_type: overview
-    product: secureWorforce
-    hide_table_of_contents: false
-    displayed_sidebar: secureWorkforceSidebar
-    ---
-    ```
-
-5. Add the new markdown file in the sidebar.js file.
-
-   ```javascript
-   {
-     type: 'category',
-     label: 'Content',
-     link: {
-       type: 'doc',
-       id: 'content/content-overview',
-     },      
-     items: [ 'content/language-inclusivity', 'content/grammar-mechanics', 'content/voice-tone-principles', 'content/in-product-word-list', 'content/writing-for-errors', 'content/writing-guidelines' ],
-   },
-   ```
-   
-   It's a best practice to add the markdown file early in the content development phase. Otherwise, you\'ll get an error when you run the command to build and review your content.
-
-6. Create your content and run the following command to build and review your changes.
-
-   ```
-   yarn start
-   ```
-
-   This command starts a local development server and opens a browser window. Most changes are reflected live without having to restart the server. If a browser window doesn\'t open, go to  **http://localhost:3000/SCOOBY/docs-next/** to view your local changes. 
-
-7. When ready, commit and publish your changes to the main repo for merging.
-
-   1. Add a commit message, and select **Commit to {branch name}**.
-
-      ![Graphical user interface, text, application Description automatically generated](./images/image9.png)
-
-   2. Select **Publish branch** to push your changes to the upstream repo.
-
-      You might see **Publish origin** instead, which means this is not a new branch but a branch you've used before to make suggested changes by a reviewer. This could also mean you're reusing the branch that wasn't merged or deleted.
-
-      ![A screenshot of a computer Description automatically generated](./images/image10.png)
-
-   3. Select **Create Pull Request** so the content reviewers can view the changes and start collaborating.
-
-      ![](./images/image11.png)
-
-8. From the main (default) branch, select **Compare & pull request**.
-
-9. Provide additional information, add reviewers, and select **Create pull request**.
-
-    Alternatively, you can select **Create draft pull request**.
-
-10. After going through the review process for technical accuracy and a copy edit from a Content Designer, enter `#sign-off` and select **Comment**.
-
-    Your changes get merged into the default branch (`main`).  After each merge, the Sr. Technical Writer reviews all merges, fixes any merge conflicts, and publishes all changes.
-
-### Command line
 
 1. Make sure you're back on the main (default) branch so you can sync your local working branch.
 
@@ -578,9 +383,9 @@ If you need to make substantial changes, add an image or add a section to a topi
 
 ## Submit a Pull Request
 
-All code in Beyond Identity aligns with the established [licensing and copyright notice guidelines](https://github.com/Beyond Identity/zlc/blob/master/process/LicenseAndCopyrightGuidance.md).
+All code in Beyond Identity aligns with the established licensing and copyright notice guidelines.
 
-Before submitting a Pull Request, review the general Beyond Identity [Pull Request Guidelines](https://github.com/Beyond Identity/community#pull-request-guidelines) and make sure that you provide the information that is required in the Pull Request template in that specific repo. 
+Before submitting a Pull Request, review the general Beyond Identity Pull Request Guidelines and make sure that you provide the information that is required in the Pull Request template in that specific repo. 
 
 
 Beyond Identity requires the use of commit signoffs for each PR. Every commit to this repo must be signed off using `#approved` by the required reviewers and `#sign-off` to trigger the merge. Otherwise, the PR could not be merged.
