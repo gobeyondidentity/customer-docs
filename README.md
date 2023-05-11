@@ -14,7 +14,7 @@ Your feedback is essential in shaping the customer content experience. There are
 
 - If you see something incorrect or confusing in the docs, or have an enhancement idea to make the docs better, you can edit a page by clicking **Edit this page** at the top of the page to [open a Pull Request](https://github.com/gobeyondidentity/customer-docs/pulls). You can also [open a GitHub issue](https://github.com/gobeyondidentity/customer-docs/issues/new) for the documentation team by clicking **Open doc issue**.
 
-- If you have a question about docs, you can [submit a GitHub issue](https://github.com/gobeyondidentity/customer-docs/issues/new) to reach out to the Beyond Identity Product team.
+- If you have a question about docs, you can [join the discussion](https://github.com/gobeyondidentity/customer-docs/discussions) to reach out to the Beyond Identity Product team.
 
 Only file issues about docs in this repository. For issues, questions, new feature requests, or enhancement ideas about a specific component or aspect of Beyond Identity, open an issue in the [corresponding code repository](https://github.com/gobeyondidentity/customer-docs/issues).
 
