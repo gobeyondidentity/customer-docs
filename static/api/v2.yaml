@@ -12,7 +12,7 @@ info:
 
     This API is currently in the early-access stage with limited endpoints implemented. We 
     encourage feedback and suggestions through [support@beyondidentity.com](mailto:support@beyondidentity.com).
-    <br /><br />
+  
 
     ## Authentication
 
@@ -37,10 +37,8 @@ info:
     Alternatively, an access token may also be generated via the Admin Console.
 
     1. Navigate to the Beyond Identity Secure Workforce Admin Console.
-    2. Under the **Settings** tab in the side panel, select the **API Access** 
-    tab and create a set of client credentials.
-    3. Next, select the created client credentials, navigate to the **Tokens** tab,
-    and click **Create token**.
+    2. Under the **Settings** tab in the side panel, select the **API Access** tab and create a set of client credentials.
+    3. Next, select the created client credentials, navigate to the **Tokens** tab, and click **Create token**.
 
     Once you've obtained the access token, you must provide it in the `Authorization` header 
     of any API request.
@@ -49,15 +47,13 @@ info:
     curl https://api.byndid.com/v2/... \
       -X $HTTP_METHOD -H "Authorization: Bearer $TOKEN"
     ```
-    <br />
+
 
     ## Authorization
 
-    Each method will have associated scopes. See the `Authorizations` portion within each
-    method to see the scopes.<br /><br />
+    Each method will have associated scopes. See the `Authorizations` portion within each method to see the scopes.<br /><br />
 
-    The access token used must contain all scopes for the method to be able to access the
-    endpoint.<br /><br />
+    The access token used must contain all scopes for the method to be able to access the endpoint.
 
     ## Requests and Responses
 
@@ -74,6 +70,14 @@ info:
     - A **read-only** field is provided only in the response. 
     - An **immutable** field is assigned only once and cannot be changed. 
 
+ 
+    You must provide the access token in the `Authorization` header 
+    of any API request.
+
+    ```
+    curl https://api.byndid.com/v2/... \
+      -X $HTTP_METHOD -H "Authorization: Bearer $TOKEN"
+    ```
     <br />
 
     ### Create a new resource
