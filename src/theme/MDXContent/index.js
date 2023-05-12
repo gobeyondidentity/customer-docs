@@ -73,29 +73,11 @@ function FeedbackForm(){
         Thanks for contributing feedback about our docs!
       </p>
     ) : (
-      <form
-        name="docs-feedback"
-        method="post"
-        netlify-honeypot="bot-field"
-        onSubmit={handleSubmit}
-      >
-        <input
-          type="hidden"
-          name="url"
-          aria-label="current url"
-          value={formData.url}
-        />
-        <input type="hidden" name="form-name" value="docs-feedback" />
-        <input
-          type="hidden"
-          name="thumb"
-          aria-label="How do you like it?"
-          value={formData.thumb}
-        />
+      
           <Space direction="horizontal">
             <Rate defaultValue={0} character={({ index }) => customIcons[index + 1]} />
           </Space>       
-      </form>
+      
     );
   };
   return (
