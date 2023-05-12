@@ -57,14 +57,6 @@ info:
     - A **read-only** field is provided only in the response. 
     - An **immutable** field is assigned only once and cannot be changed. 
 
-    You must provide the access token in the `Authorization` header 
-    of any API request.
-
-    ```
-    curl https://api.byndid.com/v2/... \
-      -X $HTTP_METHOD -H "Authorization: Bearer $TOKEN"
-    ```
-
     <br />
 
     ### Create a new resource
