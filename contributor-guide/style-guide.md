@@ -299,3 +299,13 @@ plug-in| plugin
 REXX  | Rexx
 UNIX System Services <br/> z/OS UNIX System Services  | USS
 zLUX  | ZLUX <br/> zLux
+
+## Highlight text
+
+Docusaurus supports only the `mark` HTML tag.  If you use the markdown syntax, Docusaurus doesn't recognize it. 
+
+```html
+<mark>Your tenant</mark>
+```
+Output: 
+<mark>Your tenant</mark>

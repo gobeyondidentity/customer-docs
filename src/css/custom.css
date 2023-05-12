@@ -68,6 +68,10 @@
 
 }
 
+[data-theme="dark"] .markdown img[src$='.png'] {
+  background-color: DarkGray !important;
+} 
+
 /* Full Size Sidebar -- fixes the height issue of the sidebar when the doc page is short (not scrollable) */
 .main-wrapper > div {
   flex: 1 0
@@ -1169,7 +1173,7 @@ body {
   display: none;
   }
 
-  
+
 
   /**
  * Making intergated videos disappear, and removing the iframes' whitespace to zero. 

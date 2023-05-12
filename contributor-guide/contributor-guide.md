@@ -15,22 +15,24 @@ displayed_sidebar: contributorGuideSidebar
 
 
 <!-- Reference links -->
-[issues]: https://github.com/gobeyondidentity/developer-docs/issues
+[issues]: https://github.com/gobeyondidentity/customer-docs/issues/new
+[ideas]: https://github.com/gobeyondidentity/customer-docs/discussions/new?category=ideas
 [conduct]: /docs/contributing-guide/code-of-conduct
-[repo]: https://github.com/gobeyondidentity/developer-docs.git
-[pr]: https://github.com/gobeyondidentity/developer-docs/pulls
+[repo]: https://github.com/gobeyondidentity/customer-docs.git
+[pr]: https://github.com/gobeyondidentity/customer-docs/pulls
 [style-guide]: ./style-guide.md
 [markdown]: ./markdown-reference.md
 
 - [Contributor's guide](#contributors-guide)
+  - [When to contribute](#when-to-contribute)
+    - [Does the content or doc exist?](#does-the-content-or-doc-exist)
+    - [Optional editing tools](#optional-editing-tools)
+    - [Best practices](#best-practices)
   - [Before you start](#before-you-start)
   - [Local Git repo](#local-git-repo)
     - [Prerequisites](#prerequisites)
     - [Clone the repo](#clone-the-repo)
     - [Start the development server](#start-the-development-server)
-  - [When to contribute](#when-to-contribute)
-    - [Optional editing tools](#optional-editing-tools)
-    - [Best practices](#best-practices)
   - [Edit content (minor changes)](#edit-content-minor-changes)
   - [Edit content (significant changes)](#edit-content-significant-changes)
   - [Add new content](#add-new-content)
@@ -38,38 +40,85 @@ displayed_sidebar: contributorGuideSidebar
   - [Release notes](#release-notes)
   - [API documentation](#api-documentation)
 
-<br />
+
 
 ---
 
-<br />
+
 
 # Contributor's guide
 
-Thank you for taking an interest in contributing to the Beyond Identity Developer Documentation. 
+Thank you for taking an interest in contributing to the Beyond Identity Secure Workforce documentation. 
 
-We've built the documentation with [Docusaurus](https://docusaurus.io) and you can find the source code our [developer-docs GitHub repo][repo].
+We've built the documentation with [Docusaurus](https://docusaurus.io) and you can find the source code our [customer-docs GitHub repo][repo].
 
-You're welcome to contribute to the documentation to help make it better and we want to make it possible for you to become a contributor. Additionally, anyone can open an issue about documentation or suggest a change with a [pull request (PR)][pr] to the [GitHub repository][repo]. 
+You're welcome to contribute to the documentation to help make it better and we want to make it possible for you to become a contributor. Additionally, anyone can [suggest ideas][ideas] to improve the content or open an [issue][issues] about the content. 
 
-This topic outlines the different ways that you can get involved. In addition, it provides some of the resources that are available to help you get started. All feedback is welcome. 
+This guide outlines the different ways that you can get involved. It also provides some of the resources that are available to help you get started. All feedback is welcome. 
+
+## When to contribute
+
+When relying on others to draft and review documentation, it makes sense to have a process to make it more productive and encouraging for everyone. 
+
+The acceptance criteria for contributing to Beyond Identity developer documentation is:
+
+### Does the content or doc exist?
+
+- If yes, update the doc! Contribute to your heart's content. But first, determine which use case best fits your update:
+
+  - **[Minor changes:](#edit-content-minor-changes) (use case #1)** If you only need to fix a typo or make a clarification to a sentence or section, this option is your ideal choice. However, in this use case, you cannot upload files, such as an image, and you can update only one file.
+    
+  - **[Significant changes:](#edit-content-significant-changes) (use case #2)** Suppose you need to make substantial changes, such as adding an image or editing multiple topics. In that case, this method is your best friend, as you'll have one pull request to manage. Consult with the Sr. Technical Writer first before making changes.
+
+- If not, should it? If so, consider **[adding it](#add-new-content) (use case #3)**, but don't add a topic or doc just because you can. Consult with the Sr. Technical Writer first before adding. For example, your new topic could be added to an existing one, consolidating and clarifying the information. It's also possible that someone else is working on a similar topic. 
+
+
+The Sr. Technical Writer maintains the content's quality, reduces duplication, and provides a consistent user experience. They can also strategize how to deliver complex information—for example, adding an explainer video (<90 secs) can help with complex scenarios or issues.
+
+
+### Optional editing tools
+
+If you want the WYSIWYG experience, you can install one of the VS Code extensions:
+
+- [Rich Markdown Editor](https://marketplace.visualstudio.com/items?itemName=patmood.rich-markdown-editor)
+- [Markdown Editor](https://marketplace.visualstudio.com/items?itemName=zaaack.markdown-editor)
+- [UNOTES](https://marketplace.visualstudio.com/items?itemName=ryanmcalister.Unotes)
+
+Other helpful VS Code extensions:
+
+- [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+- [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
+
+Non VS Code markdown editors:
+
+- [StackEdit](https://stackedit.io/)
+- [Dillinger](https://dillinger.io/)
+- [Pandeo MEditor.md](https://pandao.github.io/editor.md/en.html)
+
+
+
+### Best practices
+
+To promote consistency, follow the guidelines below and mentioned throughout to keep the process productive and beneficial for all involved.
+
+- [ ] Always create a *working branch* whenever you introduce a set of logically related changes. This helps you manage your changes through the workflow. We refer to it here as a working branch because it's a workspace to iterate or refine your changes until they can be integrated into the default branch. 
+
+- [ ] The in-browser editing experience is best for minor or infrequent changes. 
+
+- [ ] Always consult with the Sr. Technical Writer when adding topics or want to propose changes to the content structure. The Sr. Technical Writer maintains the content's quality, reduces duplication, and provides a consistent user experience. They can also strategize how to deliver complex information—for example, adding an explainer video (<90 secs) can help with complex scenarios or issues.
+
+- [ ] Always keep your branch up-to-date. 
 
 ## Before you start
 
-- You are familiar with Git and GitHub, and [markdown][markdown]. We use basic markdown, extended markdown, and Docusaurus-specific markdown.
-- Review the [documentation repo's][repo] organization and structure. 
-- Familiarize yourself with our [style guide][style-guide].
-- Verify that you can open a [pull request][pr] and review changes.
-- Ensure an [issue][issues] exists. 
-- If the solution you are proposing is complex, prose it anyway and wait for one of the core contributors to approve it before implementing it. This helps in shorter turnaround times in merging PRs.
-  
-If you are ready to get started contributing to the Beyond Identity Documentation repository:
+If you're ready to get started contributing to the Beyond Identity customer-docs repo:
 
-- [ ] Verify that you are familiar with the concepts in [Before You Get Started<a name= "start"></a>](#before-you-get-started).
-- [ ] Familiarize yourself with the [Beyond Identity documentation repository](#the-beyond-identity-documentation-repository).
-- [ ] Verify that you can open a [pull request and review changes](#sending-a-github-pull-request).
-- [ ] [Open an issue for Beyond Identity documentation](#opening-an-issue-for-beyond-identity-documentation) if you find a problem.
-- [ ] Read the [documentation style guide](#documentation-style-guide).
+- [ ] Ensure you're familiar with Git and GitHub, and [markdown][markdown]. We use [basic markdown](https://www.markdownguide.org/basic-syntax), [extended markdown](https://www.markdownguide.org/extended-syntax/), and [Docusaurus-specific markdown](https://docusaurus.io/docs/markdown-features).
+- [ ] Review the [customer-docs repo's][repo] organization and structure. You can learn more about the structure, see [Site organization and files](https://github.com/gobeyondidentity/customer-docs/tree/active-development#site-organization-and-files).
+- [ ] Familiarize yourself with our [style guide][style-guide].
+- [ ] Verify that you can open a [pull request](#submit-a-pull-request)  and review changes.
+- [ ] Ensure an [issue][issues] exists if you find a problem.
+- [ ] Read the [style guide][style-guide].
 
   
 ## Local Git repo
@@ -108,57 +157,7 @@ yarn start
 
 The `http://localhost:3000` opens in your browser so you can see your changes reflected live.
 
-## When to contribute
 
-When relying on others to draft and review documentation, it makes sense to have a process to make it more productive and encouraging for everyone. 
-
-The acceptance criteria for contributing to Beyond Identity developer documentation is:
-
-**Does the topic or doc exist?**
-
-- If yes, update the doc! Contribute until your heart's content. But first, determine which use case best fits your update:
-
-  - **[Minor changes:](#edit-content-minor-changes) (use case #1)** If you only need to fix a typo or make a clarification to a sentence or section, this option is your ideal choice. In this use case, you will not be able to upload files, such as an image, and you can update only one file.
-    
-  - **[Significant changes:](#edit-content-significant-changes) (use case #2)** Suppose you need to make substantial changes, such as adding an image or editing multiple topics. In that case, this method is your best friend, as you'll have one pull request to manage. 
-
-- If not, should it? If so, consider **[adding it](#add-new-content) (use case #3)**, but don't add a topic or doc just because you can. Consult with the Sr. Technical Writer first before adding.  
-  
-  The Sr. Technical Writer helps to maintain the highest quality of the content or to reduce duplication. For example, your new topic could be added to an existing one, consolidating and clarifying the information. It's also possible that someone else is working on a similar topic. You may discover that an explainer video might help with the more complex scenarios or issues. Let's talk to strategize and deliver a great customer experience!
-
-
-### Optional editing tools
-
-If you want the WYSIWYG experience, you can install one of the VS Code extensions:
-
-- [Rich Markdown Editor](https://marketplace.visualstudio.com/items?itemName=patmood.rich-markdown-editor)
-- [Markdown Editor](https://marketplace.visualstudio.com/items?itemName=zaaack.markdown-editor)
-- [UNOTES](https://marketplace.visualstudio.com/items?itemName=ryanmcalister.Unotes)
-
-Other helpful VS Code extensions:
-
-- [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
-- [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
-
-Non VS Code markdown editors:
-
-- [StackEdit](https://stackedit.io/)
-- [Dillinger](https://dillinger.io/)
-- [Pandeo MEditor.md](https://pandao.github.io/editor.md/en.html)
-
-
-
-### Best practices
-
-To promote consistency, follow the guidelines below and mentioned throughout to keep the process productive and beneficial for all involved.
-
-- [ ] Always create a *working branch* whenever you introduce a set of logically related changes. This helps you manage your changes through the workflow. We refer to it here as a working branch because it's a workspace to iterate or refine your changes until they can be integrated into the default branch. 
-
-- [ ] The in-browser editing experience is best for minor or infrequent changes. 
-
-- [ ] Always consult with the Sr. Technical Writer when adding topics or want to propose changes to the content structure.  
-
-- [ ] Always keep your branch up-to-date. 
 
 
 ## Edit content (minor changes)
