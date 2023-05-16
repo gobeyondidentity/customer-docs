@@ -25,7 +25,7 @@ displayed_sidebar: contributorGuideSidebar
 
 - [Contributor's guide](#contributors-guide)
   - [When to contribute](#when-to-contribute)
-    - [Does the content or doc exist?](#does-the-content-or-doc-exist)
+    - [Does the topic or doc exist?](#does-the-topic-or-doc-exist)
     - [Optional editing tools](#optional-editing-tools)
     - [Best practices](#best-practices)
   - [Before you start](#before-you-start)
@@ -50,7 +50,7 @@ displayed_sidebar: contributorGuideSidebar
 
 Thank you for taking an interest in contributing to the Beyond Identity Secure Workforce documentation. 
 
-We've built the documentation with [Docusaurus](https://docusaurus.io) and you can find the source code our [customer-docs GitHub repo][repo].
+We've built the documentation with [Docusaurus](https://docusaurus.io) and you can find the source code in our [customer-docs GitHub repo][repo].
 
 You're welcome to contribute to the documentation to help make it better and we want to make it possible for you to become a contributor. Additionally, anyone can [suggest ideas][ideas] to improve the content or open an [issue][issues] about the content. 
 
@@ -62,18 +62,15 @@ When relying on others to draft and review documentation, it makes sense to have
 
 The acceptance criteria for contributing to Beyond Identity developer documentation is:
 
-### Does the content or doc exist?
+### Does the topic or doc exist?
 
 - If yes, update the doc! Contribute to your heart's content. But first, determine which use case best fits your update:
 
-  - **[Minor changes:](#edit-content-minor-changes) (use case #1)** If you only need to fix a typo or make a clarification to a sentence or section, this option is your ideal choice. However, in this use case, you cannot upload files, such as an image, and you can update only one file.
+  - **[Minor changes:](#edit-content-minor-changes) (use case #1)** If you only need to fix a typo or make a clarification to a sentence or section, this option is your ideal choice. However, you cannot upload files, such as an image, in this use case, and you can update only one file.
     
-  - **[Significant changes:](#edit-content-significant-changes) (use case #2)** Suppose you need to make substantial changes, such as adding an image or editing multiple topics. In that case, this method is your best friend, as you'll have one pull request to manage. Consult with the Sr. Technical Writer first before making changes.
+  - **[Significant changes:](#edit-content-significant-changes) (use case #2)** Suppose you need to make substantial changes, such as adding an image or editing multiple topics. In that case, this method is your best friend, as you'll have one pull request to manage. 
 
-- If not, should it? If so, consider **[adding it](#add-new-content) (use case #3)**, but don't add a topic or doc just because you can. Consult with the Sr. Technical Writer first before adding. For example, your new topic could be added to an existing one, consolidating and clarifying the information. It's also possible that someone else is working on a similar topic. 
-
-
-The Sr. Technical Writer maintains the content's quality, reduces duplication, and provides a consistent user experience. They can also strategize how to deliver complex information—for example, adding an explainer video (<90 secs) can help with complex scenarios or issues.
+- If not, should it? If so, consider **[adding it](#add-new-content) (use case #3)**, but don't add a topic or doc just because you can. Consult with the Sr. Technical Writer first before adding. For example, your new topic could be added to an existing one, consolidating and clarifying the information. It's also possible that someone else is working on a similar topic. The Sr. Technical Writer maintains the content's quality, reduces duplication, and provides a consistent user experience. They can also strategize how to deliver complex information—for example, adding an explainer video (<90 secs) can help with complex scenarios or issues.
 
 
 ### Optional editing tools

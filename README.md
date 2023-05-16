@@ -94,7 +94,7 @@ yarn
 yarn start
 ```
 
-The `http://localhost:3000` opens in your browser so you can see your changes reflected live.As you make changes to the source files, the preview build will be triggered automatically, and then you can refresh your browser to see the changes.
+The `http://localhost:3000` opens in your browser so you can see your changes reflected live. As you make changes to the source files, the preview build will be triggered automatically, and then you can refresh your browser to see the changes.
 
 ## Thank you!
 

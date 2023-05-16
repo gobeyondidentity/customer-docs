@@ -1,6 +1,6 @@
 import React,{ useState, useEffect } from 'react';
 
-import { Col, Space, Row, Rate } from "antd";
+import { Col, Space, Row, Rate, Button } from "antd";
 
 const style = {
   padding: "1rem 0 0 0",
@@ -11,6 +11,7 @@ const contribute = {
 const customIcons = {
   1: <LikeOutlined style={{ fontSize: '24px', color: '#6aa84f' }} />,
   2: <DislikeOutlined style={{ fontSize: '24px', color: '#f44336' }} />,
+
 };
 
 import { LikeOutlined, DislikeOutlined } from '@ant-design/icons';
@@ -75,7 +76,9 @@ function FeedbackForm(){
     ) : (
       
           <Space direction="horizontal">
+            <Space wrap>
             <Rate defaultValue={0} character={({ index }) => customIcons[index + 1]} />
+            </Space>
           </Space>       
       
     );
