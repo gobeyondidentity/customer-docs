@@ -1,5 +1,6 @@
 import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
 
+
 import styles from  '../../src/css/release-notes.css';
 
 
@@ -10,23 +11,44 @@ import styles from  '../../src/css/release-notes.css';
 
 ### Cloud
 
-<ul>
-<li class="no-style"><span className="changelog-tag" data-tag="New">New!</span> ...</li>
-</ul>
 
-### Authenticators
-
-<ul>
-<li class="no-style"><span className="changelog-tag" data-tag="New">New!</span> ...</li>
-</ul>
-
-### Desktop Login
-
-<ul>
-<li class="no-style"><span className="changelog-tag" data-tag="Improved">Improved!</span> ... </li>
-</ul>
-
-### API 
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mt-6">
+            <div>
+                <div class="card-horizontal">
+                    <div class="img-square-wrapper">
+                        <span className="changelog-tag" data-tag="New">New!</span>
+                    </div>
+                    <div class="card-body">
+                        <h4>New <strong>Policy Attributes</strong> are available:</h4>
+                        <ul>
+      <li>
+        <strong>JAMF Mobile Device Managed State</strong>. Leverage the
+        <strong>Mobile Device Managed State</strong>&nbsp;to include JAMF
+        managed state of iOS devices in policy rules. 
+      </li>
+      <li>
+        <strong>WS-Fed Connection</strong>. Leverage this attribute to match
+        on a specific application configured to federate to Beyond Identity
+        via WS-Fed. 
+      </li>
+      <li>
+        <strong>Applications Installed &gt; Does Not Contain</strong> for
+        Windows and macOS devices.
+      </li>
+      <li>
+        <strong>Installed Security Software &gt; Does Not Contain</strong> for Windows and macOS devices.
+      </li>
+    </ul>
+                            
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <div class="container-fluid">
@@ -37,8 +59,123 @@ import styles from  '../../src/css/release-notes.css';
                     <div class="img-square-wrapper">
                         <span className="changelog-tag" data-tag="New">New!</span>
                     </div>
-                    <div>
-                        <p>The Secure Workforce Admin API allows you to ListUsers via the Admin API. </p>
+                    <div class="card-body">
+                        <p><strong>Create and manage Beyond Identity API</strong> client credentials, tokens, and scopes in the Admin Console.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mt-6">
+            <div>
+                <div class="card-horizontal">
+                    <div class="img-square-wrapper">
+                        <span className="changelog-tag" data-tag="Improved">Improved!</span>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Create and manage Beyond Identity API</strong> client credentials, tokens, and scopes in the Admin Console.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mt-6">
+            <div>
+                <div class="card-horizontal">
+                    <div class="img-square-wrapper">
+                        <span className="changelog-tag" data-tag="Resolved">Resolved!</span>
+                    </div>
+                    <div class="card-body">
+                    <p>The passkeys detail section was missing the Jailbroken/Rooted status information.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mt-6">
+            <div>
+                <div class="card-horizontal">
+                    <div class="img-square-wrapper">
+                        <span className="changelog-tag" data-tag="Resolved">Resolved!</span>
+                    </div>
+                    <div class="card-body">
+                    <p>If the user added text to the search, the selected event filters were resetting to the default values on the events grid.</p> 
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+### Desktop Login
+
+<div class="note-message">
+  <p>
+    <a href="https://app.byndid.com/downloads">Supported platforms</a>
+  </p>
+</div>
+
+<div class="container-fluid container-padding">
+    <div class="row">
+        <div class="col-12 mt-6">
+            <div>
+                <div class="card-horizontal">
+                    <div class="img-square-wrapper">
+                        <span className="changelog-tag" data-tag="New">New!</span>
+                    </div>
+                    <div class="card-body">
+                    <p> When a Domain user unenrolls in the Beyond Identity Windows Login Desktop application, an event gets generated in the Admin Console.</p> 
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mt-6">
+            <div>
+                <div class="card-horizontal">
+                    <div class="img-square-wrapper">
+                        <span className="changelog-tag" data-tag="Improved">Improved!</span>
+                    </div>
+                    <div class="card-body">
+                    <p>Users get a notification when they unenroll in the Beyond Identity Windows Login Desktop application and an event gets generated in the Admin  Console.</p> 
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mt-6">
+            <div>
+                <div class="card-horizontal">
+                    <div class="img-square-wrapper">
+                        <span className="changelog-tag" data-tag="Known">Known!</span>
+                    </div>
+                    <div class="card-body">
+                    <p>For Windows Desktop enrollment failures, see the <a href="https://support.beyondidentity.com/hc/en-us/articles/14510599143703">Windows Desktop Login Enrollment Failure</a> support article.</p> 
                     </div>
                 </div>
                 
@@ -48,7 +185,30 @@ import styles from  '../../src/css/release-notes.css';
 </div>
 
 
+### API 
 
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mt-6">
+            <div>
+                <div class="card-horizontal">
+                    <div class="img-square-wrapper">
+                        <span className="changelog-tag" data-tag="Improved">Improved!</span>
+                    </div>
+                    <div class="card-body">
+                        <p><a href="/v2-79-0#desktop-login"><b>Password Change/Reset in Windows Desktop Login</b></a>. WDL now detects when the user changes their password and automatically re-caches the BI credentials without needing the user to unlock or re-login while offline.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+---
 
 ## [Version 2.79.0](/v2-79-0) • May 4 2023
 
@@ -63,7 +223,6 @@ import styles from  '../../src/css/release-notes.css';
                         <span className="changelog-tag" data-tag="New">New!</span>
                     </div>
                     <div class="card-body">
-                        
                         <ul>
                             <li class="no-style"><a href="/v2-79-0#bulk-revoke-passkeys"><b>Bulk Revoke Passkeys</b></a>. You can now revoke multiple passkeys directly from the passkey table. </li>
                             <li class="no-style"><a href="/v2-79-0#roaming-authentication-scope"><b>Roaming Authentication Scope</b></a>. You can now scope Roaming Authentication to enable configured source IP addresses. </li>

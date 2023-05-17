@@ -730,7 +730,8 @@ div[class^="tocCollapsibleContent"] ul li {
   color: var(--ifm-color-primary-darkest);
   background-color: #b9c5e748;
   border-left: 4px solid var(--ifm-color-primary-darkest);
-  margin: 10px 0;
+  margin-top: 10px;
+  margin-bottom: 20px;
   padding: 10px;
   border-radius: 5px;
 }
