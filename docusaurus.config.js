@@ -120,6 +120,7 @@ themes: [
         logo: {
           alt: 'Beyond Identity Logo',
           src: 'img/logo.png',
+          href: '/api',
         },
         items: [ 
          { to: "/api/", label: "Public API", position: "left" },
