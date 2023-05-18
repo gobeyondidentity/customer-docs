@@ -7,24 +7,17 @@ info:
   description: |
     ## Introduction
 
-    The Beyond Identity Secure Workforce Admin API defines methods for administrative duties 
-    for your Beyond Identity tenant.<br /><br />
+    The Beyond Identity Secure Workforce Admin API defines methods for administrative duties for your Beyond Identity tenant.<br /><br />
 
-    This API is currently in the early-access stage with limited endpoints implemented. We 
-    encourage feedback and suggestions through [support@beyondidentity.com](mailto:support@beyondidentity.com).
-  
+    This API is currently in the early-access stage with limited endpoints implemented. We encourage feedback and suggestions through [support@beyondidentity.com](mailto:support@beyondidentity.com).
 
     ## Authentication
 
-    All Beyond Identity API endpoints require authentication using an access
-    token. The access token is generated through OAuth 2.0, using the client 
-    credentials flow. Follow these steps:
+    All Beyond Identity API endpoints require authentication using an access token. The access token is generated through OAuth 2.0, using the client credentials flow. Follow these steps:
 
     1. Navigate to the Beyond Identity Secure Workforce Admin Console.
-    2. Under the **Settings** tab in the side panel, select the **API Access** 
-    tab and create a set of client credentials.
-    3. Use the client ID and client secret to exchange the client credentials
-    for an access token. You can use the following cURL call below:
+    2. Under the **Settings** tab in the side panel, select the **API Access** tab and create a set of client credentials.
+    3. Use the client ID and client secret to exchange the client credentials for an access token. You can use the following cURL call below:
 
     ```
     curl https://api.byndid.com/v2/oauth2/token \
@@ -40,14 +33,12 @@ info:
     2. Under the **Settings** tab in the side panel, select the **API Access** tab and create a set of client credentials.
     3. Next, select the created client credentials, navigate to the **Tokens** tab, and click **Create token**.
 
-    Once you've obtained the access token, you must provide it in the `Authorization` header 
-    of any API request.
+    Once you've obtained the access token, you must provide it in the `Authorization` header  of any API request.
 
     ```
     curl https://api.byndid.com/v2/... \
       -X $HTTP_METHOD -H "Authorization: Bearer $TOKEN"
     ```
-
 
     ## Authorization
 
@@ -57,15 +48,11 @@ info:
 
     ## Requests and Responses
 
-    When interacting with the Beyond Identity Secure Workforce Admin API, all requests 
-    must be made over HTTPS.
+    When interacting with the Beyond Identity Secure Workforce Admin API, all requests must be made over HTTPS.
 
-    The Beyond Identity API is structured as a resource-oriented API.
-    Resources are represented as JSON objects and are used as both inputs to
-    and outputs from API methods.
+    The Beyond Identity API is structured as a resource-oriented API.    Resources are represented as JSON objects and are used as both inputs to and outputs from API methods.
 
-    Resource fields can be read-only and immutable. For example, system-generated IDs are 
-    both read-only and immutable.
+    Resource fields can be read-only and immutable. For example, system-generated IDs are both read-only and immutable.
 
     - A **read-only** field is provided only in the response. 
     - An **immutable** field is assigned only once and cannot be changed. 
@@ -74,25 +61,19 @@ info:
 
     ### Create a new resource
 
-    Create requests use the `POST` method and include the necessary attributes to create a new 
-    resource. Create operations return the created resource in the response.<br /><br />
+    Create requests use the `POST` method and include the necessary attributes to create a new resource. Create operations return the created resource in the response.
 
     ### Retrieve resources
 
-    Retrieve requests use the `GET` method. You can retrieve a single resource or a collection of 
-    resources. When retrieving a collection of resources, the response includes an array of JSON objects 
-    keyed on the plural name of the requested resource.<br /><br />
+    Retrieve requests use the `GET` method. You can retrieve a single resource or a collection of resources. When retrieving a collection of resources, the response includes an array of JSON objects keyed on the plural name of the requested resource.
 
     ### Update resources
 
-    Update requests use the `PATCH` method. Update operations support partial updating, so you can 
-    specify only the attributes you want to update. Update operations return the updated resource 
-    in the response.<br /><br />
+    Update requests use the `PATCH` method. Update operations support partial updating, so you can specify only the attributes you want to update. Update operations return the updated resource in the response.
 
     ### Delete resources
 
-    Delete requests use the `DELETE` method, which returns an empty response instead of returning 
-    the resource in the response.<br /><br />
+    Delete requests use the `DELETE` method, which returns an empty response instead of returning the resource in the response.<br /><br />
 
     ### Example response for a user
 
@@ -127,7 +108,6 @@ info:
       "total_size": 1
     }
     ```
-    <br />
 
     ## HTTP statuses
 
