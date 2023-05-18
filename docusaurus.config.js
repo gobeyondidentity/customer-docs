@@ -39,7 +39,7 @@ themes: [
 
   title: 'Beyond Identity',
   tagline: 'Secure Workforce',
-  url: 'https://gobeyondidentity.github.io',
+  url: 'https://docs.beyondidentity.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
