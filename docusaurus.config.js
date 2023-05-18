@@ -3,7 +3,7 @@
 
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
-const baseUrl = process.env.BASE_URL ?? '/';
+const baseUrl = process.env.BASE_URL ?? '/api';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -39,7 +39,7 @@ themes: [
 
   title: 'Beyond Identity',
   tagline: 'Secure Workforce',
-  url: 'https://docs.beyondidentity.com',
+  url: 'https://docs.beyondidentity.com/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -69,7 +69,7 @@ themes: [
           routeBasePath: '/',
           showLastUpdateTime: true,
           editUrl:
-            'https://github.com/obeyondidentity/next-dev-docs/edit/main/',
+            'https://github.com/obeyondidentity/customer-docs/edit/main/',
         },
         blog: {
           showReadingTime: true,
@@ -99,6 +99,7 @@ themes: [
         theme: {
           // Change with your site colors
           primaryColor: '#5077c5',
+
         },
       },
     ],
@@ -120,7 +121,7 @@ themes: [
         logo: {
           alt: 'Beyond Identity Logo',
           src: 'img/logo.png',
-          href: '/api',
+          href: '/api/',
         },
         items: [ 
 //         { to: "/api/", label: "Public API", position: "left" },

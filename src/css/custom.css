@@ -564,6 +564,7 @@ button[class*="collapseSidebarButton"] {
 
 table {
   border-collapse: collapse;
+  background-color: var(--ifm-background-color);
   width: 100%;
   table-layout: fixed;
   font-size: 0.875rem;
@@ -600,16 +601,27 @@ td:last-child {
 }
 
 
+/*
 tr:nth-child(even) {background-color: #f6f7fc;}
 
 
+*/
+
 th {
   text-align: left;
-/*  background-color: #f2f2f2;*/
+  background-color: #f2f2f2;
   text-transform: uppercase;
   font-variant: small-caps;
   font-size: small;
   margin: 0;
+}
+
+[data-theme='dark'] tr:nth-child(odd) {
+  background-color: var(--ifm-background-color);
+}
+
+[data-theme='dark'] th {
+  background-color: var(--ifm-background-color);
 }
 
 
