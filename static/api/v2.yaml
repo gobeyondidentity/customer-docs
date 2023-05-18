@@ -61,15 +61,15 @@ info:
 
     ### Create a new resource
 
-    Create requests use the `POST` method and include the necessary attributes to create a new resource. Create operations return the created resource in the response.
+    Create requests use the `POST` method and include the necessary attributes to create a new resource. Create operations return the created resource in the response.<br /><br />
 
     ### Retrieve resources
 
-    Retrieve requests use the `GET` method. You can retrieve a single resource or a collection of resources. When retrieving a collection of resources, the response includes an array of JSON objects keyed on the plural name of the requested resource.
+    Retrieve requests use the `GET` method. You can retrieve a single resource or a collection of resources. When retrieving a collection of resources, the response includes an array of JSON objects keyed on the plural name of the requested resource.<br /><br />
 
     ### Update resources
 
-    Update requests use the `PATCH` method. Update operations support partial updating, so you can specify only the attributes you want to update. Update operations return the updated resource in the response.
+    Update requests use the `PATCH` method. Update operations support partial updating, so you can specify only the attributes you want to update. Update operations return the updated resource in the response.<br /><br />
 
     ### Delete resources
 
