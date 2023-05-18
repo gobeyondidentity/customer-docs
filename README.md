@@ -4,7 +4,7 @@
 
 Welcome to the Beyond Identity customer documentation repository! This repo is the source for [https://docs.beyondidentity.com/](https://docs.beyondidentity.com/), also known as "Customer Docs"!
 
-The Beyond Identity customer documentation is completely open-source and we appreciate contributions from the community.
+The Beyond Identity customer documentation is completely open-source and we appreciate contributions.
 
 
 
@@ -12,21 +12,9 @@ The Beyond Identity customer documentation is completely open-source and we appr
 
 Your feedback is essential in shaping the customer content experience. There are several ways to provide feedback:
 
-- If you see something incorrect or confusing in the docs, or have an enhancement idea to make the docs better, you can edit a page by clicking **Edit this page** at the top of the page to [open a Pull Request](https://github.com/gobeyondidentity/customer-docs/pulls). You can also [open a GitHub issue](https://github.com/gobeyondidentity/customer-docs/issues/new) for the documentation team by clicking **Open doc issue**.
+- If you see something incorrect or confusing in the docs, or have an enhancement idea to make the docs better, you can [open a Pull Request](https://github.com/gobeyondidentity/customer-docs/pulls). You can also [open a GitHub issue](https://github.com/gobeyondidentity/customer-docs/issues/new).
 
 - If you have a question about docs, you can [join the discussion](https://github.com/gobeyondidentity/customer-docs/discussions) to reach out to the Beyond Identity Product team.
-
-Only file issues about docs in this repository. For issues, questions, new feature requests, or enhancement ideas about a specific component or aspect of Beyond Identity, open an issue in the [corresponding code repository](https://github.com/gobeyondidentity/customer-docs/issues).
-
-## Request improvements
-
-You can request the documentation to be improved or clarified, report an error, or submit suggestions and ideas by opening an issue in GitHub. The Product team tracks the issues and works to address your feedback. 
-
-## Contribute to the docs
-
-Refer to the [contributor's guide](./contributor-guide/contributor-guide.md) for details on how to submit edits or additions to the website/documentation.
-
-
 
 ## Doc branches
 
@@ -73,7 +61,7 @@ Before you get started with the authoring work, it's necessary that you understa
 
    ```bash
    git clone https://github.com/gobeyondidentity/customer-docs.git
-   cd deverloper-docs
+   cd customer-docs
    ```
 
 2. Next, create a new [branch](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell) from `main` (always give your branch a meaningful, descriptive name). 
