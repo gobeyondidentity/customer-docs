@@ -116,14 +116,14 @@ themes: [
         }
       },
       navbar: {
-        title: 'Secure Workforce',
+        title: 'Secure Workforce Public API',
         logo: {
           alt: 'Beyond Identity Logo',
           src: 'img/logo.png',
           href: '/api',
         },
         items: [ 
-         { to: "/api/", label: "Public API", position: "left" },
+//         { to: "/api/", label: "Public API", position: "left" },
 /*
            {
             label: 'Support',
