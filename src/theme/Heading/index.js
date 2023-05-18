@@ -4,8 +4,6 @@ import {translate} from '@docusaurus/Translate';
 import {useThemeConfig} from '@docusaurus/theme-common';
 import Link from '@docusaurus/Link';
 import styles from './styles.module.css';
-
-
 export default function Heading({as: As, id, ...props}) {
   const {
     navbar: {hideOnScroll},
@@ -43,8 +41,6 @@ export default function Heading({as: As, id, ...props}) {
         title={anchorTitle}>
         &#8203;
       </Link>
-      
     </As>
-     
   );
 }
