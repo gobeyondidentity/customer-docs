@@ -116,7 +116,7 @@ themes: [
         }
       },
       navbar: {
-        title: 'Secure Workforce Release Notes',
+        title: 'Secure Workforce',
         logo: {
           alt: 'Beyond Identity Logo',
           src: 'img/logo.png',
