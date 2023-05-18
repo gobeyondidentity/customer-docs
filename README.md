@@ -29,7 +29,7 @@ Before you get started with the authoring work, it's necessary that you understa
 
 * **`v<v.r>.x`** - protected branches
 
-  Docs for an archived version, where `v` indicates the version, `r` indicates the release number. For example, `v2.72.x`, `v2.72.3`.
+  Docs for an archived version, where `v` indicates the version, `r` indicates the release number. For example, `v2.72.0`, `v2.72.3`.
 
 * Branches that start with `release-` contain archived patch release documentation for historical tracking.
   
