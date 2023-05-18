@@ -11,9 +11,9 @@ pagination_prev: null
 last_update: 
    date: 03/14/2023
    author: Patricia McPhee
-draft: true
+draft: false
 doc_type: reference
-displayed_sidebar: releaseNotesSidebar
+displayed_sidebar: secureWorkforceSidebar
 ---
 
 
@@ -24,10 +24,10 @@ We resolved the issue when switching between policy rules, the policy attributes
 
 ## Authenticators
 
-import SupportedOsAuthenticator from '../../static/includes/_supported-os-authenticator.mdx';
+import SupportedOsAuthenticator from '../../static/includes/_supported-os-versions.mdx';
 
 <SupportedOsAuthenticator />
-<br />
+
 
 We made the Windows Authenticator application more consistent with the Mac version. Windows users tend to close the application more often than Mac users, which has significantly impacted their authentication performance.
 
@@ -48,9 +48,7 @@ Here are the changes we made:
 
 ## Desktop Login
 
-import SupportedOsAuthenticatorWindowsOnly from '../../static/includes/_supported-os-authenticator-windows-only.mdx';
-
-<SupportedOsAuthenticatorWindowsOnly />
+<SupportedOsAuthenticator />
 
 ### Updated
 

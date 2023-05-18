@@ -15,15 +15,26 @@ function LastUpdatedAtDate({lastUpdatedAt, formattedLastUpdatedAt}) {
           </b>
         ),
       }}>
-      {' {date}'}
+      {' on {date}'}
     </Translate>
   );
 }
-
+function LastUpdatedByUser({lastUpdatedBy}) {
+  return (
+    <Translate
+      id="theme.lastUpdated.byUser"
+      description="The words used to describe by who the page has been last updated"
+      values={{
+        user: <b>{lastUpdatedBy}</b>,
+      }}>
+      {' by {user}'}
+    </Translate>
+  );
+}
 export default function LastUpdated({
   lastUpdatedAt,
   formattedLastUpdatedAt,
-
+  lastUpdatedBy,
 }) {
   return (
     <span className={ThemeClassNames.common.lastUpdated}>
@@ -40,14 +51,18 @@ export default function LastUpdated({
             ) : (
               ''
             ),
-          
+          byUser: lastUpdatedBy ? (
+            <LastUpdatedByUser lastUpdatedBy={lastUpdatedBy} />
+          ) : (
+            ''
+          ),
         }}>
-        {'Last updated: {atDate}'}
+        {'Last updated{atDate}{byUser}'}
       </Translate>
       {process.env.NODE_ENV === 'development' && (
         <div>
           {/* eslint-disable-next-line @docusaurus/no-untranslated-text */}
-            
+          <small> (Simulated during dev for better perf)</small>
         </div>
       )}
     </span>

@@ -17,16 +17,20 @@ displayed_sidebar: secureWorkforceSidebar
 ---
 
 
-[Beyond Identity Support site](https://www.beyondidentity.com/support)
+See the [Beyond Identity Support site](https://www.beyondidentity.com/support) for information on:
 
----
+*	Creating a support ticket 
 
-[Check service status](https://status.beyondidentity.com/)
+*	Viewing service status checks
 
-[Submit a request](https://support.beyondidentity.com/hc/en-us/requests/new) - we need instructions as it's not clear when you click the link
+*	Viewing how-to and troubleshooting articles, FAQs, and release notes in our knowledge base.
 
-[View feature requests](https://support.beyondidentity.com/hc/en-us/community/topics/4410556274327-Feature-Requests) - there's obviously not a lot of activity here especially from customers
+*	Downloading the Authenticator
 
-[Join the discussion](https://support.beyondidentity.com/hc/en-us/community/topics/4410556272919-General-Discussion) - currently, there are no discussions in this channel (is the discussion in Slack instead?)
+[Submit a request](https://support.beyondidentity.com/hc/en-us/requests/new)
+
+[View feature requests](https://support.beyondidentity.com/hc/en-us/community/topics/4410556274327-Feature-Requests)
+
+[Join the discussion](https://support.beyondidentity.com/hc/en-us/community/topics/4410556272919-General-Discussion)
 
 

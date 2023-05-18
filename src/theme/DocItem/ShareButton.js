@@ -5,26 +5,26 @@ import { useLocation } from "react-router-dom";
 function ShareButton(props) {
   const location = useLocation();
   const twitterShareURL =
-    "https://twitter.com/share?url=https://docs.zowe.org" +
+    "https://twitter.com/share?url=https://developer.beyondidentity.com/" +
     `${location.pathname}` +
     "&text=Check out this article on " +
     `${props.title}` +
     ": " +
-    "&hashtags=zowe,openmainframeproject,opensource";
+    "&hashtags=beyondidentity,universalpasskeys";
   const linkedinShareURL =
-    "http://www.linkedin.com/shareArticle?mini=true&url=https://docs.zowe.org" +
+    "http://www.linkedin.com/shareArticle?mini=true&url=https://developer.beyondidentity.com/" +
     `${location.pathname}` +
-    "&source=docs.zowe.org";
+    "&source=developer.beyondidentity.com";
   const facebookShareURL =
-    "https://www.facebook.com/sharer/sharer.php?u=https://docs.zowe.org" +
+    "https://www.facebook.com/sharer/sharer.php?u=https://developer.beyondidentity.com/" +
     `${location.pathname}`;
   const emailShareURL =
     "mailto:?subject=Shared Article | " +
     `${props.title}` +
-    " | Zowe Docs " +
+    " | Beyond Identity Developer Docs " +
     "&body=Check out this article on " +
     `${props.title}` +
-    ": https://docs.zowe.org" +
+    ": https://developer.beyondidentity.com/" +
     `${location.pathname}`;
   const shareIconUrl = useBaseUrl("img/share-icon.svg");
 

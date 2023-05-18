@@ -1,0 +1,604 @@
+openapi: 3.0.1
+info:
+  title: Beyond Identity Secure Workforce Admin API
+  version: 2.0.0
+  contact:
+    email: support@beyondidentity.com
+  description: |
+    ## Introduction
+
+    The Beyond Identity Secure Workforce Admin API defines methods for administrative duties for your Beyond Identity tenant.<br /><br />
+
+    This API is currently in the early-access stage with limited endpoints implemented. We encourage feedback and suggestions through [support@beyondidentity.com](mailto:support@beyondidentity.com).
+
+    ## Authentication
+
+    All Beyond Identity API endpoints require authentication using an access token. The access token is generated through OAuth 2.0, using the client credentials flow. Follow these steps:
+
+    1. Navigate to the Beyond Identity Secure Workforce Admin Console.
+    2. Under the **Settings** tab in the side panel, select the **API Access** tab and create a set of client credentials.
+    3. Use the client ID and client secret to exchange the client credentials for an access token. You can use the following cURL call below:
+
+    ```
+    curl https://api.byndid.com/v2/oauth2/token \
+      -X POST \
+      -u "$CLIENT_ID:$CLIENT_SECRET" --basic \
+      -H "Content-Type: application/x-www-form-urlencoded" \
+      -d "grant_type=client_credentials"
+    ```
+
+    Alternatively, an access token may also be generated via the Admin Console.
+
+    1. Navigate to the Beyond Identity Secure Workforce Admin Console.
+    2. Under the **Settings** tab in the side panel, select the **API Access** tab and create a set of client credentials.
+    3. Next, select the created client credentials, navigate to the **Tokens** tab, and click **Create token**.
+
+    Once you've obtained the access token, you must provide it in the `Authorization` header  of any API request.
+
+    ```
+    curl https://api.byndid.com/v2/... \
+      -X $HTTP_METHOD -H "Authorization: Bearer $TOKEN"
+    ```
+
+    ## Authorization
+
+    Each method will have associated scopes. See the `Authorizations` portion within each method to see the scopes.<br /><br />
+
+    The access token used must contain all scopes for the method to be able to access the endpoint.
+
+    ## Requests and Responses
+
+    When interacting with the Beyond Identity Secure Workforce Admin API, all requests must be made over HTTPS.
+
+    The Beyond Identity API is structured as a resource-oriented API.    Resources are represented as JSON objects and are used as both inputs to and outputs from API methods.
+
+    Resource fields can be read-only and immutable. For example, system-generated IDs are both read-only and immutable.
+
+    - A **read-only** field is provided only in the response. 
+    - An **immutable** field is assigned only once and cannot be changed. 
+
+    <br />
+
+    ### Create a new resource
+
+    Create requests use the `POST` method and include the necessary attributes to create a new resource. Create operations return the created resource in the response.
+
+    ### Retrieve resources
+
+    Retrieve requests use the `GET` method. You can retrieve a single resource or a collection of resources. When retrieving a collection of resources, the response includes an array of JSON objects keyed on the plural name of the requested resource.
+
+    ### Update resources
+
+    Update requests use the `PATCH` method. Update operations support partial updating, so you can specify only the attributes you want to update. Update operations return the updated resource in the response.
+
+    ### Delete resources
+
+    Delete requests use the `DELETE` method, which returns an empty response instead of returning the resource in the response.<br /><br />
+
+    ### Example response for a user
+
+    ```
+    {
+      "id": "b60a8085-2508-46d8-8ef6-aba593afaac2",
+      "tenant_id": "acme-corp",
+      "username": "alice.acmecorp"
+      "display_name": "Alice Acmecorp",
+      "create_time": "2022-06-22T21:46:08.930278Z",
+      "update_time": "2022-06-22T21:46:08.930278Z",
+      ...
+    }
+    ```
+    <br />
+
+    ### Example response for a collection of users
+
+    ```
+    {
+      "users": [
+        {
+          "id": "b60a8085-2508-46d8-8ef6-aba593afaac2",
+          "tenant_id": "acme-corp",
+          "username": "alice.acmecorp"
+          "display_name": "Alice Acmecorp",
+          "create_time": "2022-06-22T21:46:08.930278Z",
+          "update_time": "2022-06-22T21:46:08.930278Z",
+          ...
+        }
+      ],
+      "total_size": 1
+    }
+    ```
+
+    ## HTTP statuses
+
+    The API returns standard HTTP statuses and error codes.
+
+    <table>
+      <tr>
+        <th>Code range</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>200</td>
+        <td>The request was fulfilled successfully with no errors.</td>
+      </tr>
+      <tr>
+        <td>400</td>
+        <td>There was an issue with the request that the client may address. For example, client errors may indicate that the request was missing proper authorization or was malformed.</td>
+      </tr>
+      <tr class="border-bottom">
+        <td>500</td>
+        <td>The server encountered an internal issue and could not fulfill the request.</td>
+      </tr>
+    </table>
+
+    All error responses include a JSON object with a `code` field and a `message` field. 
+
+    - `code` has a human-readable name for the HTTP status code, and 
+    - `message` has a high-level description of the error. 
+
+    The error can also have additional details that the client can use to determine the exact cause of the 
+    error. Refer to each API method's examples to determine the specific error detail types supported for that method.<br /><br />
+
+    ### Invalid access token example
+
+    If the provided access token is invalid, you will receive a **401** error.
+    This error indicates that the token is not recognized or was not generated
+    by Beyond Identity.
+
+    ```
+    HTTP/1.1 401 Unauthorized
+    {
+      "code": "unauthorized",
+      "message": "unauthorized"
+    }
+    ```
+    <br />
+
+    ### Permission denied example
+
+    If the provided access token does not have access to the requested resource,
+    you will receive a **403** error. Access tokens are scoped at a minimum to your
+    tenant. Any request for resources outside of your tenant will result in this
+    error.
+
+    ```
+    HTTP/1.1 403 Forbidden
+    {
+      "code": "forbidden",
+      "message": "forbidden"
+    }
+    ```
+    <br />
+
+    ### Missing resource example
+
+    If the requested resource does not exist, you'll receive a **404** error. The
+    specific API method may return additional details about the missing
+    resource.
+
+    ```
+    HTTP/1.1 404 Not Found
+    {
+      "code": "not_found",
+      "message": "user not found"
+      "details": [
+        {
+          "type": "ResourceInfo",
+          "resource_type": "User",
+          "id": "348afd29-f265-4eee-9451-1fcf71832e77",
+          "description": "user not found"
+        }
+      ],
+    }
+    ```
+    <br />
+
+    ### Invalid parameters example
+
+    If the request body contains invalid parameters, you'll receive a **400**
+    error. The specific API method may return additional details about the
+    invalid parameter.
+
+    ```
+    HTTP/1.1 400 Bad Request
+    {
+      "code": "bad_request",
+      "message": "invalid parameters"
+      "details": [
+        {
+          "type": "FieldViolations"
+          "field_violations": [
+            {
+              "description": "missing",
+              "field": "user.display_name"
+            }
+          ],
+        }
+      ],
+    }
+    ```
+servers:
+  - url: 'https://api.byndid.com'
+tags:
+  - name: Users
+    description: |
+      A user is a member of an organization using Beyond Identity.
+paths:
+  /v2/users:
+    get:
+      tags:
+        - Users
+      operationId: ListUsers
+      summary: List all users for a tenant
+      description: |
+        To list all users for a tenant, send a GET request to `/v2/users`.
+
+        The response will have up to 1000 items. The response will be empty if the page size 
+        is not specified (i.e., the default). By default, the list is in ascending order by 
+        `create_time`. The maximum and default page sizes are subject to change. 
+
+        When paginating, use the `skip` parameter as the offset.
+
+        When filtering, the response will only show users that satisfy this filter. 
+        The syntax follows the SCIM grammar from 
+        [RFC7644 Section 3.4.2.2](https:datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2).
+
+        The supported operations are:
+          - pr (present)
+          - eq (equals)
+          - ne (not equals)
+          - co (contains)
+          - sw (starts with)
+          - ew (ends with)
+          - gt (greater than)
+          - lt (less than)
+          - ge (greater than or equal to)
+          - le (less than or equal to)
+
+        The supported fields and their supported operations are:
+          - id (eq, ne, co, sw, ew)
+          - email_address (eq, ne, co, sw, ew)
+          - external_id (eq, ne, co, sw, ew)
+          - username (eq, ne, co, sw, ew)
+          - display_name (eq, ne, co, sw, ew)
+          - state (eq, ne, co, sw, ew)
+          - source (eq, ne, co, sw, ew)
+          - last_auth_time (pr, eq, ne, gt, lt, ge, le)
+          - has_active_passkey (eq, ne)
+
+        When sorting, use the `order_by` parameter. It's a comma-delimited list of attributes. 
+        Currently, the following fields are supported:
+
+          - display_name
+          - username
+          - email_address
+          - status
+          - source
+          - last_auth_time
+
+        The default sorting order per attribute is ascending. Therefore, if you want descending
+        order, append the " desc" suffix to the attribute name.
+      security:
+        - BearerAuth:
+            - 'users:read'
+      parameters:
+        - $ref: '#/components/parameters/page_size'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/order_by'
+      responses:
+        '200':
+          description: |
+            The response is a JSON object with `users` and `total_size` keys. <br />
+              - `users` is set to an array of user objects containing standard user attributes. 
+              - `total_size` is set to the total number of items matched by the list request. If 
+              more items are to be returned by the requested query, make another request using 
+              the `skip` query parameter.
+          content:
+            application/json:
+              schema:
+                title: List Users Response
+                description: Response for ListUsers.
+                type: object
+                properties:
+                  users:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+                    maxItems: 1000
+                    description: |
+                      An ordered array of users corresponding to the request. If the `order_by` query parameter is set, it follows that ordering. If not, users are ordered by ascending `create_time` by default.
+                  total_size:
+                    type: integer
+                    format: uint32
+                    description: |
+                      The total number of results returned by the operation. This value may be larger than the number of resources returned, such as when returning a single page where multiple pages are available.
+                    example: 1000
+                required:
+                  - users
+                  - total_size
+              examples:
+                Success:
+                  value:
+                    users:
+                      - id: f7277b07-4a9e-4f84-9839-cd3082a6b8c3
+                        create_time: 2022-04-12T05:53:07.119Z
+                        update_time: 2022-06-16T14:31:03.770Z
+                        last_auth_time: 2022-06-16T14:31:03.770Z
+                        tenant_id: acme-corp
+                        external_id: 0001f1f460b1ace6
+                        email_address: alice@acmecorp.com
+                        username: alice.acmecorp
+                        display_name: Alice Acmecorp
+                        state: ACTIVE
+                        source: scim
+                        has_active_passkey: true
+                    total_size: 1
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Invalid Parameters:
+                  value:
+                    code: bad_request
+                    message: invalid request
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Missing Authorization:
+                  value:
+                    code: unauthorized
+                    message: unauthorized
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Insufficient Authorization:
+                  value:
+                    code: forbidden
+                    message: forbidden
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Internal Error:
+                  value:
+                    code: internal_server_error
+                    message: internal server error
+components:
+  parameters:
+    page_size:
+      name: page_size
+      in: query
+      description: |
+        The number of items returned per page. The response may include this exact number or fewer.  If omitting this value, the response returns the default number of results the method allows. 
+      schema:
+        type: integer
+        format: uint32
+        minimum: 0
+    skip:
+      name: skip
+      in: query
+      description: |
+        Number of items to skip. This is the zero-based index of the first result.
+      schema:
+        type: integer
+        format: uint32
+        minimum: 0
+        default: 0
+    filter:
+      name: filter
+      in: query
+      description: |
+        Filter query for responses.
+
+        The syntax follows the SCIM grammar from 
+        [RFC7644 Section 3.4.2.2](https:datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2).
+
+        The supported operations are:
+          - pr (present)
+          - eq (equals)
+          - ne (not equals)
+          - co (contains)
+          - sw (starts with)
+          - ew (ends with)
+          - gt (greater than)
+          - lt (less than)
+          - ge (greater than or equal to)
+          - le (less than or equal to)
+
+        See individual methods for the supported attributes and operations. 
+
+        Ex. name co "alice"
+      schema:
+        type: string
+    order_by:
+      name: order_by
+      in: query
+      description: |
+        A comma-delimited list of attributes to sort results.
+
+        The default sorting order per attribute is ascending. Therefore, if you want 
+        descending order, append the " desc" suffix to the attribute name.
+
+        Ex. name desc
+      schema:
+        type: string
+  schemas:
+    User:
+      title: User
+      type: object
+      description: |
+        A user is a member of an organization that uses Beyond Identity.
+      properties:
+        id:
+          type: string
+          description: |
+            A unique identifier for the user within a tenant that is automatically generated on creation. This field is immutable and read-only.
+          readOnly: true
+          example: e7bb3e0b-91fd-432a-bc96-55801329adbf
+        create_time:
+          type: string
+          format: date-time
+          description: |
+            A time value in the ISO8601 combined date and time format that gets generated automatically and represents the time the user gets created.  This field is immutable and read-only.
+          readOnly: true
+          example: 2022-04-12T05:53:07.119Z
+        update_time:
+          type: string
+          format: date-time
+          description: |
+            A time value in the ISO8601 combined date and time format that gets generated automatically and represents the time the user gets updated.  This field is immutable and read-only.
+          readOnly: true
+          example: 2022-06-16T14:31:03.770Z
+        last_auth_time:
+          type: string
+          format: date-time
+          description: |
+            A time value in the ISO8601 combined date and time format that gets generated automatically and represents the time the user last authenticated. This field is immutable and read-only.
+          readOnly: true
+          example: 2022-06-16T14:31:03.770Z
+        tenant_id:
+          type: string
+          description: |
+            A unique identifier for the user's tenant that is set automatically on creation. This field is immutable and read-only.
+          readOnly: true
+          example: acme-corp
+        external_id:
+          type: string
+          description: |
+            A required unique identifier for the user within the tenant.
+          example: 0001f1f460b1ace6
+        email_address:
+          type: string
+          description: |
+            A required email address serving as primary contact for user.
+          example: alice@acmecorp.com
+        username:
+          type: string
+          description: A required username for the user.
+          example: alice.acmecorp
+        display_name:
+          type: string
+          description: |
+            A required human-readable name for the user that is used for display purposes.
+          example: Alice Acmecorp
+        state:
+          type: string
+          description: |
+            State of the user that gets updated automatically when the user is updated. This field is read-only.
+          enum:
+            - ACTIVE
+            - SUSPENDED
+            - DELETED
+          readOnly: true
+          example: ACTIVE
+        source:
+          type: string
+          description: |
+            The source that created the user. This field is immutable and read-only.
+          readOnly: true
+          example: scim
+        has_active_passkey:
+          type: boolean
+          description: |
+            A flag representing if the user has at least one device credential in an ACTIVE state. It's updated automatically when the user creates or revokes any passkeys.  This field is read-only.
+          readOnly: true
+          example: true
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: |
+            Human-readable HTTP status code name, stylized as lower snake  case, for example, bad_request.
+        message:
+          type: string
+          description: |
+            Human-readable message describing the error.
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+      required:
+        - code
+        - message
+    ErrorDetail:
+      title: Error Detail
+      description: |
+        Additional details for errors designed to support client applications.
+      type: object
+      discriminator:
+        propertyName: type
+      properties:
+        type:
+          type: string
+          description: Type of the error detail.
+      required:
+        - type
+    FieldViolations:
+      title: Field Violations
+      description: Invalid request fields.
+      allOf:
+        - $ref: '#/components/schemas/ErrorDetail'
+        - type: object
+          properties:
+            field_violations:
+              type: array
+              items:
+                type: object
+                properties:
+                  field:
+                    type: string
+                    description: The name of the field specifying an invalid value.
+                  description:
+                    type: string
+                    description: A description of the field violation.
+                required:
+                  - field
+                  - description
+              minItems: 1
+    ResourceInfo:
+      title: Resource Information
+      description: Resource information.
+      allOf:
+        - $ref: '#/components/schemas/ErrorDetail'
+        - type: object
+          properties:
+            resource_type:
+              type: string
+              description: The type of the resource.
+            id:
+              type: string
+              description: The ID of the resource.
+            description:
+              type: string
+              description: |
+                A description of the failure as it relates to this resource. For example, this may indicate that the resource is not found or that a precondition failed.
+          required:
+            - resource_type
+            - id
+            - description
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: |
+        See the [Authentication](#section/Authentication) section for details.
+security:
+  - BearerAuth: []

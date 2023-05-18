@@ -45,6 +45,7 @@ export default function DocItemLayout({children}) {
 
           </article>
           <DocItemPaginator />
+
         </div>
       </div>
       {docTOC.desktop && <div className="col col--3">{docTOC.desktop}</div>}

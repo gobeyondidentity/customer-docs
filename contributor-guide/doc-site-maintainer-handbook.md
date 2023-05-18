@@ -62,11 +62,11 @@ Note: it's possible to ignore broken links with the 'onBrokenLinks' Docusaurus c
 Exhaustive list of all broken links found:
 
 - On source page path = /stable/getting-started/user-roadmap-apiml:
-   -> linking to ../user-guide/upgrade-zos-system.md (resolved as: /v2.0.x/user-guide/upgrade-zos-system.md)
+   -> linking to ../user-guide/upgrade-system.md (resolved as: /v2.0.x/user-guide/upgrade-system.md)
 
 - On source page path = /stable/troubleshoot/troubleshooting:
-   -> linking to troubleshoot-zos.md (resolved as: /stable/troubleshoot/troubleshoot-zos.md)
-   -> linking to troubleshoot-zos-services.md (resolved as: /stable/troubleshoot/troubleshoot-zos-services.md)
+   -> linking to troubleshoot.md (resolved as: /stable/troubleshoot/troubleshoot.md)
+   -> linking to troubleshoot-services.md (resolved as: /stable/troubleshoot/troubleshoot-services.md)
    -> linking to troubleshoot-diagnostics.md (resolved as: /stable/troubleshoot/troubleshoot-diagnostics.md)
 
 Success! Generated static files in "build".
@@ -81,7 +81,7 @@ Check the **Exhaustive list of all broken links found:** section and fix all the
 
 ```
 - On source page path = /stable/troubleshoot/troubleshooting:
-   -> linking to troubleshoot-zos.md (resolved as: /stable/troubleshoot/troubleshoot-zos.md)
+   -> linking to troubleshoot.md (resolved as: /stable/troubleshoot/troubleshoot.md)
 ```
 
 means that in the `docs/troubleshoot/troubleshooting.md` file, there is a link to `troubleshoot-zos.md` which is broken. You can find the file and locate the link to `troubleshoot-zos.md` by searching it and then take action to fix it. 
@@ -422,13 +422,3 @@ For example, to update the `Products` section, edit the variables in the followi
 },
 ```
 
-## Particular assets
-
-### ZWE command reference
-
-The ZWE command reference guide is published under References on the doc site. It's updated automatically from the Beyond Identity-install-packaging repo by using GitHub Actions ((https://github.com/Beyond Identity/Beyond Identity-install-packaging/actions/workflows/zwe-doc-generation.yml)[https://github.com/Beyond Identity/Beyond Identity-install-packaging/actions/workflows/zwe-doc-generation.yml]). 
-
-- This action runs whenever there is a change to Beyond Identity-install-packaging (which is where zwe is defined, so any change to zwe commands will trigger this action).
-- This action generates the zwe documentation and creates a PR to the Beyond Identity docs-site repo. If there are no changes to zwe, then no PR is created. This is an example PR that was created: https://github.com/Beyond Identity/docs-site/pull/2076. Therefore, changes will get merged into staging branch on a consistent basis for the release process.
-
-For Beyond Identity doc maintainers, ensure that you review and merge PRs titled **Update zwe server command reference** from branch **auto-update-zwe-reference** during new release preparation.

@@ -35,3 +35,8 @@
 .sidebarLogo {
   display: none;
 }
+
+[data-theme='dark'] .sidebar-version {
+  color: white;
+  background-color: #95a8db;
+}
