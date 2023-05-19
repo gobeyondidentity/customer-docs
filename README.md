@@ -2,11 +2,9 @@
 
 # Beyond Identity Secure Workforce documentation
 
-Welcome to the Beyond Identity customer documentation repository! This repo is the source for [https://docs.beyondidentity.com/](https://docs.beyondidentity.com/), also known as "Customer Docs"!
+Welcome to the Beyond Identity customer documentation repository! This repo is the source for [https://docs.beyondidentity.com/](https://docs.beyondidentity.com/), also known as "Secure Work Docs"!  We currectly only have the Public API documentation published and we continue to work on adding end-user documentation. 
 
 The Beyond Identity customer documentation is completely open-source and we appreciate contributions.
-
-
 
 ## Provide feedback
 
@@ -15,6 +13,14 @@ Your feedback is essential in shaping the customer content experience. There are
 - If you see something incorrect or confusing in the docs, or have an enhancement idea to make the docs better, you can [open a Pull Request](https://github.com/gobeyondidentity/customer-docs/pulls). You can also [open a GitHub issue](https://github.com/gobeyondidentity/customer-docs/issues/new).
 
 - If you have a question about docs, you can [join the discussion](https://github.com/gobeyondidentity/customer-docs/discussions) to reach out to the Beyond Identity Product team.
+
+## Request improvements
+
+You can request the documentation to be [improved][ideas] or clarified, [report an error][issues] by opening an issue in GitHub. The Product team will track the issues and work to address your feedback. 
+
+## Contribute to the docs
+
+Refer to the [contributor's guide](./contributor-guide/contributor-guide.md) for details on how to submit edits or additions to the documentation.
 
 ## Doc branches
 
@@ -29,9 +35,9 @@ Before you get started with the authoring work, it's necessary that you understa
 
 * **`v<v.r>.x`** - protected branches
 
-  Docs for an archived version, where `v` indicates the version, `r` indicates the release number. For example, `v2.72.0`, `v2.72.3`.
+  Docs for an archived version, where `v` indicates the version, `r` indicates the release number, for example, `v2.72.0`, `v2.72.3`.
 
-* Branches that start with `release-` contain archived patch release documentation for historical tracking.
+* Branches that start with `release-` contain archived patch release documentation for historical tracking, for example, `release-2-80`.
   
 * You can have your own personal branch to work on content for a certain issue or feature. However, be sure to check and remove unused personal branches periodically for easy maintenance. Usually when your branch is merged, you can safely delete it.
 
@@ -84,3 +90,9 @@ The `http://localhost:3000` opens in your browser so you can see your changes re
 ## Thank you!
 
 We appreciate your contributions to our documentation!
+
+
+[issues]: https://github.com/gobeyondidentity/customer-docs/issues
+[repo]: https://github.com/gobeyondidentity/customer-docs.git
+[pr]: https://github.com/gobeyondidentity/customer-docs/pulls
+[ideas]: https://github.com/gobeyondidentity/customer-docs/discussions/categories/ideas
