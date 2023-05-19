@@ -100,17 +100,17 @@ function FeedbackForm(){
             
         </div>
         <div style={contribute}>
-        <h4>What to contribute?</h4>
+        <h4>Want to contribute?</h4>
             <ul className="text-sm">
               <li>
                 Submit a{' '}
-                <Link to="#">
+                <Link to="https://github.com/gobeyondidentity/customer-docs/issues/new?assignees=&labels=triage&projects=&template=content-issue.yml&title=%5BContent+issue%5D%3A+">
                   content issue
                 </Link>
               </li>
               <li>
                 Suggest an{' '}
-                <Link to="#">
+                <Link to="https://github.com/gobeyondidentity/customer-docs/issues/new?assignees=&labels=%F0%9F%8C%9F+enhancement&projects=&template=enhancement.yml">
                   idea for the documentation
                 </Link>
               </li>
