@@ -1,5 +1,5 @@
-name: ✨ Feature Request
-description: Suggest an idea
+name: ✨ Enhance our documentation
+description: Suggest an idea to help improve the customer experience
 labels: ['🌟 enhancement']
 body:
   - type: markdown

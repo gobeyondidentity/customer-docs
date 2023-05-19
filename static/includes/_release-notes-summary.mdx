@@ -160,7 +160,7 @@ If you deployed Beyond Identity Cloud, Platform Authenticators, and Desktop Logi
                         <span className="changelog-tag" data-tag="Known">Known!</span>
                     </div>
                     <div class="card-body">
-                    <p>For Windows Desktop enrollment failures, see the <a href="https://support.beyondidentity.com/hc/en-us/articles/14510599143703">Windows Desktop Login Enrollment Failure</a> support article.</p> 
+                    <p>We are investigating Windows Desktop enrollment failures. For more details, see the <a href="https://support.beyondidentity.com/hc/en-us/articles/14510599143703">Windows Desktop Login Enrollment Failure</a> support article.</p> 
                     </div>
                 </div>
                 
@@ -192,61 +192,5 @@ If you deployed Beyond Identity Cloud, Platform Authenticators, and Desktop Logi
         </div>
     </div>
 </div>
-
-
----
-
-## [Version 2.79.0](/v2-79-0) • May 4 2023
-
-### Cloud
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12 mt-6">
-            <div>
-                <div class="card-horizontal">
-                    <div class="img-square-wrapper">
-                        <span className="changelog-tag" data-tag="New">New!</span>
-                    </div>
-                    <div class="card-body">
-                        <ul>
-                            <li class="no-style"><a href="/v2-79-0#bulk-revoke-passkeys"><b>Bulk Revoke Passkeys</b></a>. You can now revoke multiple passkeys directly from the passkey table. </li>
-                            <li class="no-style"><a href="/v2-79-0#roaming-authentication-scope"><b>Roaming Authentication Scope</b></a>. You can now scope Roaming Authentication to enable configured source IP addresses. </li>
-                            <li class="no-style"><a href="/v2-79-0#policy-attribute-applications-installed"><b>Policy Attribute: Applications Installed</b></a>. The Applications Installed attribute now supports matching on application versions for Windows and macOS.</li>
-                            <li class="no-style"><a href="/v2-79-0#policy-action-allow-wbiometric-verification"><b>Policy Action: Allow w/Biometric Verification</b></a>. Beyond Identity administrators can now enforce users to leverage biometrics as a step up/additional factor. </li>
-                            <li class="no-style"><a href="/v2-79-0#datadog-siem-integration-enhancement"><b>DataDog SIEM Integration Enhancement</b></a>. Because Datadog offers independent sites based on data governance regulations, you must select the proper site parameter to properly connect to our event HTTP listener.</li>
-                            </ul>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-### Desktop Login
-
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12 mt-6">
-            <div>
-                <div class="card-horizontal">
-                    <div class="img-square-wrapper">
-                        <span className="changelog-tag" data-tag="Improved">Improved!</span>
-                    </div>
-                    <div class="card-body">
-                        <p><a href="/v2-79-0#desktop-login"><b>Password Change/Reset in Windows Desktop Login</b></a>. WDL now detects when the user changes their password and automatically re-caches the BI credentials without needing the user to unlock or re-login while offline.</p>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
 
 

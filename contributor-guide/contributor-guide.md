@@ -1,76 +1,66 @@
----
-title: Contributor's Guide
-id: contributor-guide
-description: ''
-slug: /contributor-guide 
-pagination_next: null
-pagination_prev: null
-last_update: 
-   date: 03/29/2023
-   author: Patricia McPhee
-draft: false
-doc_type: reference
-displayed_sidebar: contributorGuideSidebar
----
-
-
 <!-- Reference links -->
-[issues]: https://github.com/gobeyondidentity/customer-docs/issues/new
-[ideas]: https://github.com/gobeyondidentity/customer-docs/discussions/new?category=ideas
+[issues]: https://github.com/gobeyondidentity/customer-docs/issues
 [conduct]: /docs/contributing-guide/code-of-conduct
 [repo]: https://github.com/gobeyondidentity/customer-docs.git
 [pr]: https://github.com/gobeyondidentity/customer-docs/pulls
 [style-guide]: ./style-guide.md
 [markdown]: ./markdown-reference.md
+[contributor]: ./contributor-guide.md
 
 - [Contributor's guide](#contributors-guide)
-  - [When to contribute](#when-to-contribute)
-    - [Does the topic or doc exist?](#does-the-topic-or-doc-exist)
-    - [Optional editing tools](#optional-editing-tools)
-    - [Best practices](#best-practices)
+  - [Provide feedback](#provide-feedback)
   - [Before you start](#before-you-start)
   - [Local Git repo](#local-git-repo)
     - [Prerequisites](#prerequisites)
+    - [Optional editing tools](#optional-editing-tools)
     - [Clone the repo](#clone-the-repo)
     - [Start the development server](#start-the-development-server)
+  - [When to contribute](#when-to-contribute)
+    - [Best practices](#best-practices)
   - [Edit content (minor changes)](#edit-content-minor-changes)
   - [Edit content (significant changes)](#edit-content-significant-changes)
   - [Add new content](#add-new-content)
-  - [Submit a Pull Request](#submit-a-pull-request)
   - [Release notes](#release-notes)
-  - [API documentation](#api-documentation)
-
 
 
 ---
 
-
-
 # Contributor's guide
 
-Thank you for taking an interest in contributing to the Beyond Identity Secure Workforce documentation. 
+Thank you for taking an interest in contributing to the Beyond Identity Developer Documentation. 
 
-We've built the documentation with [Docusaurus](https://docusaurus.io) and you can find the source code in our [customer-docs GitHub repo][repo].
+We've built the documentation with [Docusaurus](https://docusaurus.io) and you can find the source code our [customer-docs GitHub repo][repo].
+
+You're welcome to contribute to the documentation to help make it better and we want to make it possible for you to become a contributor. Additionally, anyone can open an issue about documentation or suggest a change with a [pull request (PR)][pr] to the [GitHub repository][repo]. 
 
 You're welcome to contribute to the documentation to help make it better and we want to make it possible for you to become a contributor. Additionally, anyone can [suggest ideas][ideas] to improve the content or open an [issue][issues] about the content. 
 
-This guide outlines the different ways that you can get involved. It also provides some of the resources that are available to help you get started. All feedback is welcome. 
+## Provide feedback
 
-## When to contribute
+If you're not ready to contribute, you can provide us feedback.  Your feedback is essential in shaping the customer content experience. There are several ways to provide feedback:
 
-When relying on others to draft and review documentation, it makes sense to have a process to make it more productive and encouraging for everyone. 
+- [Submit an enhancement idea][enhancements] to make the docs better
+- [open a GitHub issue][issues] to report an issue with the content (something is incorrect or confusing)
 
-The acceptance criteria for contributing to Beyond Identity developer documentation is:
+The Product team will track these ideas and issues to address your feedback. 
 
-### Does the topic or doc exist?
+## Before you start
 
-- If yes, update the doc! Contribute to your heart's content. But first, determine which use case best fits your update:
+- You are familiar with Git and GitHub, and [markdown][markdown]. We use basic markdown, extended markdown, and Docusaurus-specific markdown.
+- Review the [documentation repo's][repo] organization and structure. 
+- Familiarize yourself with our [contributor's guide][contributor].
+- Verify that you can open a [pull request][pr] and review changes.
+- Ensure an [issue][issues] exists because someone might have reported or started work on it. 
+- If the solution you are proposing is complex, prose it anyway and wait for one of the core contributors to approve it before implementing it. This helps in shorter turnaround times in merging PRs.
+  
+## Local Git repo
 
-  - **[Minor changes:](#edit-content-minor-changes) (use case #1)** If you only need to fix a typo or make a clarification to a sentence or section, this option is your ideal choice. However, you cannot upload files, such as an image, in this use case, and you can update only one file.
-    
-  - **[Significant changes:](#edit-content-significant-changes) (use case #2)** Suppose you need to make substantial changes, such as adding an image or editing multiple topics. In that case, this method is your best friend, as you'll have one pull request to manage. 
+### Prerequisites
 
-- If not, should it? If so, consider **[adding it](#add-new-content) (use case #3)**, but don't add a topic or doc just because you can. Consult with the Sr. Technical Writer first before adding. For example, your new topic could be added to an existing one, consolidating and clarifying the information. It's also possible that someone else is working on a similar topic. The Sr. Technical Writer maintains the content's quality, reduces duplication, and provides a consistent user experience. They can also strategize how to deliver complex information—for example, adding an explainer video (<90 secs) can help with complex scenarios or issues.
+- Code editor, [VS Code](https://code.visualstudio.com) is recommended
+- [Git](https://git-scm.com)
+- [Node.js](https://nodejs.org)
+- [Yarn](https://yarnpkg.com) 
 
 
 ### Optional editing tools
@@ -93,48 +83,13 @@ Non VS Code markdown editors:
 - [Pandeo MEditor.md](https://pandao.github.io/editor.md/en.html)
 
 
-
-### Best practices
-
-To promote consistency, follow the guidelines below and mentioned throughout to keep the process productive and beneficial for all involved.
-
-- [ ] Always create a *working branch* whenever you introduce a set of logically related changes. This helps you manage your changes through the workflow. We refer to it here as a working branch because it's a workspace to iterate or refine your changes until they can be integrated into the default branch. 
-
-- [ ] The in-browser editing experience is best for minor or infrequent changes. 
-
-- [ ] Always consult with the Sr. Technical Writer when adding topics or want to propose changes to the content structure. The Sr. Technical Writer maintains the content's quality, reduces duplication, and provides a consistent user experience. They can also strategize how to deliver complex information—for example, adding an explainer video (<90 secs) can help with complex scenarios or issues.
-
-- [ ] Always keep your branch up-to-date. 
-
-## Before you start
-
-If you're ready to get started contributing to the Beyond Identity customer-docs repo:
-
-- [ ] Ensure you're familiar with Git and GitHub, and [markdown][markdown]. We use [basic markdown](https://www.markdownguide.org/basic-syntax), [extended markdown](https://www.markdownguide.org/extended-syntax/), and [Docusaurus-specific markdown](https://docusaurus.io/docs/markdown-features).
-- [ ] Review the [customer-docs repo's][repo] organization and structure. You can learn more about the structure, see [Site organization and files](https://github.com/gobeyondidentity/customer-docs/tree/active-development#site-organization-and-files).
-- [ ] Familiarize yourself with our [style guide][style-guide].
-- [ ] Verify that you can open a [pull request](#submit-a-pull-request)  and review changes.
-- [ ] Ensure an [issue][issues] exists if you find a problem.
-- [ ] Read the [style guide][style-guide].
-
-  
-## Local Git repo
-
-### Prerequisites
-
-- Code editor, [VS Code](https://code.visualstudio.com) is recommended
-- [Git](https://git-scm.com)
-- [Node.js](https://nodejs.org)
-- [Yarn](https://yarnpkg.com) 
-
-
 ### Clone the repo
 
-1. Clone the repo.  This creates a directory named `developer-docs` in your current working directory.
+1. Clone the repo.  This creates a directory named `customer-docs` in your current working directory.
 
    ```bash
-   git clone https://github.com/gobeyondidentity/developer-docs.git
-   cd deverloper-docs
+   git clone https://github.com/gobeyondidentity/customer-docs.git
+   cd customer-docs
    ```
 
 2. Next, create a new [branch](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell) from `main` (always give your branch a meaningful, descriptive name). 
@@ -154,43 +109,70 @@ yarn start
 
 The `http://localhost:3000` opens in your browser so you can see your changes reflected live.
 
+## When to contribute
+
+When relying on others to draft and review documentation, it makes sense to have a process to make it more productive and encouraging for everyone. 
+
+The acceptance criteria for contributing to Beyond Identity developer documentation is:
+
+**Does the topic or doc exist?**
+
+- If yes, update the doc! Contribute until your heart's content. But first, determine which use case best fits your update:
+
+  - **[Minor changes:](#edit-content-minor-changes)** If you only need to fix a typo or make a clarification to a sentence or section, this option is your best choice. In this use case, you will not be able to upload files, such as an image, and you can update only one file.
+    
+  - **[Significant changes:](#edit-content-significant-changes)** Suppose you need to make substantial changes, such as adding an image or editing multiple topics. In that case, this method is your best friend, as you'll have one pull request to manage. 
+
+- If not, should it? If so, consider [adding it](#add-new-content), but don't add a topic or doc just because you can. Consult with the Sr. Technical Writer first before adding. 
+  
+  The reason for consulting with the Sr. Technical Writer is to maintain the highest quality of the content and reduce duplication. For example, your new topic could be added to an existing one, consolidating and clarifying the information. It's also possible that someone else is working on a similar topic. 
 
 
+### Best practices
+
+To promote consistency, follow the guidelines below and mentioned throughout to keep the process productive and beneficial for all involved.
+
+- [ ] Always create a *working branch* whenever you introduce a set of logically related changes. This helps you manage your changes through the workflow. We refer to it here as a working branch because it's a workspace to iterate or refine your changes until they can be integrated into the default branch. 
+
+- [ ] The in-browser editing experience is best for minor or infrequent changes. 
+
+- [ ] Always consult with the Sr. Technical Writer when adding topics or want to propose changes to the content structure.  
+
+- [ ] Always keep your branch up-to-date. 
 
 ## Edit content (minor changes)
 
 If you only need to fix a typo or clarify a sentence or section, this option is your best choice. It streamlines the process of reporting and correcting minor errors and omissions in the documentation.  
 
 Despite all efforts, small grammar and spelling errors _do_ make their way into our published documents. While you can create GitHub issues to report mistakes, creating a PR to fix the issue is faster and easier when the option is available.
-
-<!-- this needs to be redone from the clean-deploy repo
+<!--
 <details>
-<summary>Show me how!</summary>
+<summary>**Show me how!**</summary>
 <div>
 <video  width="100%" controls src="https://user-images.githubusercontent.com/88200052/199261463-899c36ad-e433-46c9-ac28-87f7e86c1f84.mp4" />
 </div>
 </details>
 -->
 
-1. In the [repo][repo], navigate to the /docs folder and locate the file you want to edit. Then, select the pencil icon to edit the article. 
+1. In the [repo][repo], navigate to the /docs folder and locate the file you want to edit. Then, select the pencil icon to edit the article. <br /><br />
 
-   ![GitHub Edit file icon](./images/github-edit-file.png)
+   ![GitHub Edit file icon](./images/github-edit-file.png)<br /><br />
 
-2. Edit the file in the web editor. Choose the **Preview** tab to check the formatting of your changes.
+2. Edit the file in the web editor. Choose the **Preview** tab to check the formatting of your changes.<br /><br />
 
-   ![GitHub Preview changes](./images/github-preview-changes.png)
+   ![GitHub Preview changes](./images/github-preview-changes.png)<br /><br />
 
-3. When you're finished editing, scroll to the bottom of the page and propose your changes. 
+3. When you're finished editing, scroll to the bottom of the page and propose your changes. <br /><br />
 
-   1. In the **Commit changes** area, enter a title and an optional description for your changes. The title will be the first line of the commit message. 
+   1. In the **Commit changes** area, enter a title and an optional description for your changes. The title will be the first line of the commit message. <br /><br />
 
-   2. Select the option to create a branch and then  **Propose changes** to commit your changes.
+   2. Select the option to create a branch and then  **Propose changes** to commit your changes.<br /><br />
    
-     ![GitHub propose and commit changes](./images/github-commit-proposed-changes.png)
+     ![GitHub propose and commit changes](./images/github-commit-proposed-changes.png)<br /><br />
 
-4. Now that you've proposed and committed your changes, you need to ask the owners to review your changes. This is done using a pull request (PR). 
+4. Now that you've proposed and committed your changes, you need to ask the owners to review your changes. This is done using a pull request (PR).<br /><br />
 
-   Enter a title and a description for the PR, and then select **Create pull request**. You can select **Create a draft pull request** instead. The difference is that the reviewers are notified only when the PR is *Open* rather than *Draft*.
+   Enter a title and a description for the PR, and then select **Create pull request**. You can select **Create a draft pull request** instead. The difference is that the reviewers are notified only when the PR is *Open* rather than *Draft*.<br /><br />
 
    ![GitHub propose and commit changes](./images/github-open-pull-request.png)
 
@@ -247,8 +229,7 @@ If you need to make substantial changes, add an image or add a section to a topi
    yarn start
    ```
 
-   This command starts a local development server and opens a browser window. Most changes are reflected live without having to restart the server. If a browser window doesn\'t open, go to **http://localhost:3000/SCOOBY/docs-next/** to view your local changes.   
-
+   This command starts a local development server and opens a browser window. Most changes are reflected live without having to restart the server. If a browser window doesn\'t open, go to **http://localhost:3000/** to view your local changes. 
 
 5. Add your changes.
 
@@ -377,25 +358,10 @@ If you need to make substantial changes, add an image or add a section to a topi
 
     Your changes get merged into the default branch (`main`).  After each merge, the Sr. Technical Writer reviews all merges, fixes any merge conflicts, and publishes all changes.
 
-## Submit a Pull Request
-
-All code in Beyond Identity aligns with the established licensing and copyright notice guidelines.
-
-Before submitting a Pull Request, review the general Beyond Identity Pull Request Guidelines and make sure that you provide the information that is required in the Pull Request template in that specific repo. 
-
-
-Beyond Identity requires the use of commit signoffs for each PR. Every commit to this repo must be signed off using `#approved` by the required reviewers and `#sign-off` to trigger the merge. Otherwise, the PR could not be merged.
-
-Once you've reviewed the PR and approved it, add a Signed-off-by line to your commit message. For example, `Signed-off-by: John Doe john.doe@beyondidentity.com`.
 
 
 ## Release notes
 
-
-
-## API documentation
-
-
-
+If you want to contribute to the release notes in advance, you can follow the guidelines in [How to write effective release notes](https://beyondidentity.atlassian.net/l/cp/STZ7Sqtz).  If a template for that release has been added to **Product Documentation > Release Notes** in Confluence, feel free to add your content. If a template for a specific release hasn't been created yet, [duplicate or copy the template](https://beyondidentity.atlassian.net/wiki/spaces/PD/pages/2509406212/Template+version+Date), update the title with the release number, and publish it. 
 
 
