@@ -10,13 +10,10 @@ The Beyond Identity customer documentation is completely open-source and we appr
 
 Your feedback is essential in shaping the customer content experience. There are several ways to provide feedback:
 
-- If you see something incorrect or confusing in the docs, or have an enhancement idea to make the docs better, you can [open a Pull Request](https://github.com/gobeyondidentity/customer-docs/pulls). You can also [open a GitHub issue](https://github.com/gobeyondidentity/customer-docs/issues/new).
+- [Submit an enhancement idea][enhancements] to make the docs better
+- [open a GitHub issue][issues] to report an issue with the content (something is incorrect or confusing)
 
-- If you have a question about docs, you can [join the discussion](https://github.com/gobeyondidentity/customer-docs/discussions) to reach out to the Beyond Identity Product team.
-
-## Request improvements
-
-You can request the documentation to be [improved][ideas] or clarified, [report an error][issues] by opening an issue in GitHub. The Product team will track the issues and work to address your feedback. 
+The Product team will track these ideas and issues to address your feedback. 
 
 ## Contribute to the docs
 
@@ -92,7 +89,9 @@ The `http://localhost:3000` opens in your browser so you can see your changes re
 We appreciate your contributions to our documentation!
 
 
-[issues]: https://github.com/gobeyondidentity/customer-docs/issues
+[issues]: https://github.com/gobeyondidentity/customer-docs/issues/new?assignees=&labels=triage&projects=&template=content-issue.yml&title=%5BContent+issue%5D%3A+
 [repo]: https://github.com/gobeyondidentity/customer-docs.git
 [pr]: https://github.com/gobeyondidentity/customer-docs/pulls
+[enhancements]: https://github.com/gobeyondidentity/customer-docs/issues/new?assignees=&labels=%F0%9F%8C%9F+enhancement&projects=&template=enhancement.yml
 [ideas]: https://github.com/gobeyondidentity/customer-docs/discussions/categories/ideas
+[discussion]: https://github.com/gobeyondidentity/customer-docs/discussions
