@@ -48,7 +48,7 @@ Also, put blank lines before and after a heading.
 | **Basic link**     | `[inline](https://somecompany.com)`   |
 | **Link with tooltip**  | You can add a tool tip to the link to help users learn more about where the link will take them (to avoid click bait).<br /><br />`[have a title](https://somecompany.com "Awesome tooltip")`  |
 | **Relative link**  | `[like this](../blob/master/LICENSE.txt)`  |
-| **Reference links**  | These are best for links that are used multiple times in an article, for example, the support link.<br /><br /><pre>[1]: https://<domain>.com<br /><br />[Join our Slack community][1]</pre>**Output**<br />[Join our Slack community][1]<br /><hr>You can add a tool tip to the link to help users learn more about where the link will take them (to avoid click bait).<br /><br /><pre>[2]: https://<domain>.com "Beyond Identity Secure Workforce community"<br /><br />[Join the conversation][2]</pre> |
+| **Reference links**  | These are best for links that are used multiple times in an article, for example, the support link.<br /><br /><pre>`[1]: https://<domain>.com`<br /><br />`[Join our Slack community][1]`</pre>**Output**<br />[Join our Slack community][1]<br /><hr>You can add a tool tip to the link to help users learn more about where the link will take them (to avoid click bait).<br /><br /><pre>`[2]: https://<domain>.com "Beyond Identity Secure Workforce community"`<br /><br />`[Join the conversation][2]`</pre> |
 
 
 ## Images

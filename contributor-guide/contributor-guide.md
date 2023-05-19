@@ -8,13 +8,14 @@
 [contributor]: ./contributor-guide.md
 
 - [Contributor's guide](#contributors-guide)
+  - [Provide feedback](#provide-feedback)
   - [Before you start](#before-you-start)
   - [Local Git repo](#local-git-repo)
     - [Prerequisites](#prerequisites)
+    - [Optional editing tools](#optional-editing-tools)
     - [Clone the repo](#clone-the-repo)
     - [Start the development server](#start-the-development-server)
   - [When to contribute](#when-to-contribute)
-    - [Optional editing tools](#optional-editing-tools)
     - [Best practices](#best-practices)
   - [Edit content (minor changes)](#edit-content-minor-changes)
   - [Edit content (significant changes)](#edit-content-significant-changes)
@@ -34,6 +35,15 @@ You're welcome to contribute to the documentation to help make it better and we 
 
 This topic outlines the different ways that you can get involved. In addition, it provides some of the resources that are available to help you get started. All feedback is welcome. 
 
+## Provide feedback
+
+If you're not ready to contribute, you can provide us feedback.  Your feedback is essential in shaping the customer content experience. There are several ways to provide feedback:
+
+- [Submit an enhancement idea][enhancements] to make the docs better
+- [open a GitHub issue][issues] to report an issue with the content (something is incorrect or confusing)
+
+The Product team will track these ideas and issues to address your feedback. 
+
 ## Before you start
 
 - You are familiar with Git and GitHub, and [markdown][markdown]. We use basic markdown, extended markdown, and Docusaurus-specific markdown.
@@ -51,6 +61,26 @@ This topic outlines the different ways that you can get involved. In addition, i
 - [Git](https://git-scm.com)
 - [Node.js](https://nodejs.org)
 - [Yarn](https://yarnpkg.com) 
+
+
+### Optional editing tools
+
+If you want the WYSIWYG experience, you can install one of the VS Code extensions:
+
+- [Rich Markdown Editor](https://marketplace.visualstudio.com/items?itemName=patmood.rich-markdown-editor)
+- [Markdown Editor](https://marketplace.visualstudio.com/items?itemName=zaaack.markdown-editor)
+- [UNOTES](https://marketplace.visualstudio.com/items?itemName=ryanmcalister.Unotes)
+
+Other helpful VS Code extensions:
+
+- [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+- [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
+
+Non VS Code markdown editors:
+
+- [StackEdit](https://stackedit.io/)
+- [Dillinger](https://dillinger.io/)
+- [Pandeo MEditor.md](https://pandao.github.io/editor.md/en.html)
 
 
 ### Clone the repo
@@ -96,27 +126,6 @@ The acceptance criteria for contributing to Beyond Identity developer documentat
 - If not, should it? If so, consider [adding it](#add-new-content), but don't add a topic or doc just because you can. Consult with the Sr. Technical Writer first before adding. 
   
   The reason for consulting with the Sr. Technical Writer is to maintain the highest quality of the content and reduce duplication. For example, your new topic could be added to an existing one, consolidating and clarifying the information. It's also possible that someone else is working on a similar topic. 
-
-
-### Optional editing tools
-
-If you want the WYSIWYG experience, you can install one of the VS Code extensions:
-
-- [Rich Markdown Editor](https://marketplace.visualstudio.com/items?itemName=patmood.rich-markdown-editor)
-- [Markdown Editor](https://marketplace.visualstudio.com/items?itemName=zaaack.markdown-editor)
-- [UNOTES](https://marketplace.visualstudio.com/items?itemName=ryanmcalister.Unotes)
-
-Other helpful VS Code extensions:
-
-- [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
-- [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
-
-Non VS Code markdown editors:
-
-- [StackEdit](https://stackedit.io/)
-- [Dillinger](https://dillinger.io/)
-- [Pandeo MEditor.md](https://pandao.github.io/editor.md/en.html)
-
 
 
 ### Best practices
