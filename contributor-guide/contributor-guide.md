@@ -1,55 +1,74 @@
-[issues]: https://github.com/gobeyondidentity/developer-docs/issues
+<!-- Reference links -->
+[issues]: https://github.com/gobeyondidentity/customer-docs/issues
 [conduct]: /docs/contributing-guide/code-of-conduct
-[repo]: https://github.com/gobeyondidentity/developer-docs.git
-[pr]: https://github.com/gobeyondidentity/developer-docs/pulls
+[repo]: https://github.com/gobeyondidentity/customer-docs.git
+[pr]: https://github.com/gobeyondidentity/customer-docs/pulls
+[style-guide]: ./style-guide.md
+[markdown]: ./markdown-reference.md
+[contributor]: ./contributor-guide.md
+
+- [Contributor's guide](#contributors-guide)
+  - [Before you start](#before-you-start)
+  - [Local Git repo](#local-git-repo)
+    - [Prerequisites](#prerequisites)
+    - [Clone the repo](#clone-the-repo)
+    - [Start the development server](#start-the-development-server)
+  - [When to contribute](#when-to-contribute)
+    - [Optional editing tools](#optional-editing-tools)
+    - [Best practices](#best-practices)
+  - [Edit content (minor changes)](#edit-content-minor-changes)
+  - [Edit content (significant changes)](#edit-content-significant-changes)
+  - [Add new content](#add-new-content)
+  - [Release notes](#release-notes)
+
+
+---
 
 # Contributor's guide
 
-We've built the Beyond Identity documentation with [Docusaurus](https://docusaurus.io), a static-site generator. The source code lives in the [Dev Docs GitHub repo][repo].
+Thank you for taking an interest in contributing to the Beyond Identity Developer Documentation. 
 
-You are welcome to contribute to the Beyond Identity developer documentation to help make it better! We want to make it possible for you to become a contributor. Anyone can open an issue about documentation or suggest a change with a [pull request (PR)][pr] to the [GitHub repository][repo]. 
+We've built the documentation with [Docusaurus](https://docusaurus.io) and you can find the source code our [customer-docs GitHub repo][repo].
+
+You're welcome to contribute to the documentation to help make it better and we want to make it possible for you to become a contributor. Additionally, anyone can open an issue about documentation or suggest a change with a [pull request (PR)][pr] to the [GitHub repository][repo]. 
 
 This topic outlines the different ways that you can get involved. In addition, it provides some of the resources that are available to help you get started. All feedback is welcome. 
 
----
+## Before you start
 
-This guide will help you start contributing to Beyond Identity developer documentation! Thank you for taking an interest in contributing. Before submitting your contribution, please make sure to take a moment and read through the following guidelines:
-
-### Getting Started
-
-- Before starting your work, ensure an [issue][issues] exists. If not, feel free to create one. 
-- Add a comment on the issue and wait for it to be assigned before you start working on it. This helps to avoid multiple people working on similar issues.
-- If the solution is complex, propose it and wait for one of the core contributors to approve it before implementing it. This helps in shorter turnaround times in merging PRs.
-- For new feature requests, Provide a convincing reason to add this feature. Again, real-life business use cases will be super helpful.
-
----
-
-## Local Git Repository
+- You are familiar with Git and GitHub, and [markdown][markdown]. We use basic markdown, extended markdown, and Docusaurus-specific markdown.
+- Review the [documentation repo's][repo] organization and structure. 
+- Familiarize yourself with our [contributor's guide][contributor].
+- Verify that you can open a [pull request][pr] and review changes.
+- Ensure an [issue][issues] exists because someone might have reported or started work on it. 
+- If the solution you are proposing is complex, prose it anyway and wait for one of the core contributors to approve it before implementing it. This helps in shorter turnaround times in merging PRs.
+  
+## Local Git repo
 
 ### Prerequisites
 
-- [Git](https://git-scm.com) (the below instructions assume you are using the CLI, though [GUI clients](https://git-scm.com/downloads/guis) will also work!)
-- Code editor ([Visual Studio Code](https://code.visualstudio.com) is recommended)
+- Code editor, [VS Code](https://code.visualstudio.com) is recommended
+- [Git](https://git-scm.com)
 - [Node.js](https://nodejs.org)
-- [Yarn](https://yarnpkg.com)
+- [Yarn](https://yarnpkg.com) 
 
-### Cloning the Repository
 
-You will first need to [clone][repo] the repository.
+### Clone the repo
 
-```bash
-git clone https://github.com/gobeyondidentity/developer-docs.git
-```
+1. Clone the repo.  This creates a directory named `customer-docs` in your current working directory.
 
-This will create a directory named `developer-docs` in your current working directory.
+   ```bash
+   git clone https://github.com/gobeyondidentity/customer-docs.git
+   cd customer-docs
+   ```
 
-Next, create a new [branch](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell) from `main` (always give your branch a meaningful, descriptive name). 
+2. Next, create a new [branch](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell) from `main` (always give your branch a meaningful, descriptive name). 
 
-```bash
-git checkout -b <branch_name> main
-```
+   ```bash
+   git checkout -b <branch_name> main
+   ```
 
-### Starting the Development Server
+### Start the development server
 
 We're finally able to get to the fun stuff! Install the dependencies and start a local development server:
 
@@ -60,154 +79,281 @@ yarn start
 
 The `http://localhost:3000` opens in your browser so you can see your changes reflected live.
 
-### Push your changes
+## When to contribute
 
-When you are ready to submit your changes for review, commit them to your local repository:
+When relying on others to draft and review documentation, it makes sense to have a process to make it more productive and encouraging for everyone. 
 
-``` bash
-git add .
-```
+The acceptance criteria for contributing to Beyond Identity developer documentation is:
 
-```bash
-git commit -m
-```
+**Does the topic or doc exist?**
 
-Then, push them to your fork:
+- If yes, update the doc! Contribute until your heart's content. But first, determine which use case best fits your update:
 
-```bash
-git push origin <branch_name>
-```
+  - **[Minor changes:](#edit-content-minor-changes)** If you only need to fix a typo or make a clarification to a sentence or section, this option is your best choice. In this use case, you will not be able to upload files, such as an image, and you can update only one file.
+    
+  - **[Significant changes:](#edit-content-significant-changes)** Suppose you need to make substantial changes, such as adding an image or editing multiple topics. In that case, this method is your best friend, as you'll have one pull request to manage. 
 
-You can now [submit your pull request on GitHub][pr]! You are welcome to [open your pull request as a draft](https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests) for early feedback and review. Be sure to follow the pull request template!
-
-### Keeping Your Branch Up-to-Date
-
-If there are new commits to the `main` branch of the repository, you can update it by pulling from the 'main' remote:
-
-```bash
-git pull origin main
-```
+- If not, should it? If so, consider [adding it](#add-new-content), but don't add a topic or doc just because you can. Consult with the Sr. Technical Writer first before adding. 
+  
+  The reason for consulting with the Sr. Technical Writer is to maintain the highest quality of the content and reduce duplication. For example, your new topic could be added to an existing one, consolidating and clarifying the information. It's also possible that someone else is working on a similar topic. 
 
 
+### Optional editing tools
 
+If you want the WYSIWYG experience, you can install one of the VS Code extensions:
 
+- [Rich Markdown Editor](https://marketplace.visualstudio.com/items?itemName=patmood.rich-markdown-editor)
+- [Markdown Editor](https://marketplace.visualstudio.com/items?itemName=zaaack.markdown-editor)
+- [UNOTES](https://marketplace.visualstudio.com/items?itemName=ryanmcalister.Unotes)
 
-## Markdown reference
+Other helpful VS Code extensions:
 
+- [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+- [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
 
+Non VS Code markdown editors:
 
-
-
----
+- [StackEdit](https://stackedit.io/)
+- [Dillinger](https://dillinger.io/)
+- [Pandeo MEditor.md](https://pandao.github.io/editor.md/en.html)
 
 
 
+### Best practices
+
+To promote consistency, follow the guidelines below and mentioned throughout to keep the process productive and beneficial for all involved.
+
+- [ ] Always create a *working branch* whenever you introduce a set of logically related changes. This helps you manage your changes through the workflow. We refer to it here as a working branch because it's a workspace to iterate or refine your changes until they can be integrated into the default branch. 
+
+- [ ] The in-browser editing experience is best for minor or infrequent changes. 
+
+- [ ] Always consult with the Sr. Technical Writer when adding topics or want to propose changes to the content structure.  
+
+- [ ] Always keep your branch up-to-date. 
 
 
+## Edit content (minor changes)
 
-## Before You Get Started<a name="start"></a>
+If you only need to fix a typo or clarify a sentence or section, this option is your best choice. It streamlines the process of reporting and correcting minor errors and omissions in the documentation.  
 
-Before contributing a documentation change to the repository, you should be familiar with:
+Despite all efforts, small grammar and spelling errors _do_ make their way into our published documents. While you can create GitHub issues to report mistakes, creating a PR to fix the issue is faster and easier when the option is available.
+<!--
+<details>
+<summary>**Show me how!**</summary>
+<div>
+<video  width="100%" controls src="https://user-images.githubusercontent.com/88200052/199261463-899c36ad-e433-46c9-ac28-87f7e86c1f84.mp4" />
+</div>
+</details>
+-->
 
-- Git and GitHub: To learn about git and GitHub, refer to the [Github Guides](https://guides.github.com/).
-- Slack: The Beyond Identity Documentation team communicates using the Slack application.
-- Markdown: We write the Beyond Identity documentation in Markdown. 
+1. In the [repo][repo], navigate to the /docs folder and locate the file you want to edit. Then, select the pencil icon to edit the article. <br /><br />
 
-In addition to being familiar with the Beyond Identity community and how we work together, you will need to sign the CNCF Contributor License Agreement. The Contributor License Agreement defines the terms under which you contribute to Beyond Identity documentation. Contributions to Beyond Identity documentation are reviewed before being committed to the repository. Committing changes to the Beyond Identity repository requires additional access rights. See ... Also see Participating in Beyond Identity Documentation for more details about roles and permissions.
+   ![GitHub Edit file icon](./images/github-edit-file.png)<br /><br />
 
+2. Edit the file in the web editor. Choose the **Preview** tab to check the formatting of your changes.<br /><br />
 
+   ![GitHub Preview changes](./images/github-preview-changes.png)<br /><br />
 
-## Getting Started checklist
+3. When you're finished editing, scroll to the bottom of the page and propose your changes. <br /><br />
 
-If you are ready to get started contributing to the Beyond Identity Documentation repository:
+   1. In the **Commit changes** area, enter a title and an optional description for your changes. The title will be the first line of the commit message. <br /><br />
 
-- Verify that you are familiar with the concepts in [Before You Get Started<a name= "start"></a>](#before-you-get-started).
-- Familiarize yourself with the [Beyond Identity documentation repository](#the-beyond-identity-documentation-repository).
-- Verify that you can open a [pull request and review changes](#sending-a-github-pull-request).
-- [Open an issue for Beyond Identity documentation](#opening-an-issue-for-beyond-identity-documentation) if you find a problem.
-- Read the [documentation style guide](#documentation-style-guide).
-
-
-## Helpful resources
-
-- General code guidelines
-- UI guidelines
-- Beyond Identity learning resources
-
-## Documentation repository
-
-The documentation is managed in a [GitHub repository](https://github.com/beyond-identity/customer-docs).
-
-- Review the site's overall organization and structure
-- Review the help files related to your planned changes or addition
-
-## Submitting a GitHub Pull Request
-
-You can provide suggested edits to any documentation page. After you make the changes, you submit updates in a pull request for the Beyond Identity documentation team to review and merge.
-
-1. Make the changes to the file.
-2. Scroll to the end of the page and enter a brief description of your change.
-3. Optionally enter an extended description.
-4. Select **Propose file change**.
-5. Select **Create pull request**.
-
-## Open an issue for Beyond Identity documentation
-
-You can request the documentation to be improved or clarified, report an error, or submit suggestions and ideas by opening an issue in GitHub for the Beyond Identity documentation team to address. The team tracks the issues and works to address your feedback.
-
-
-1. Click the **Open doc issue*- link at the top of the page. 
-1. Enter the details of the issue.
-1. Click **Submit new issue**.
-
-## Documentation style guide <a name="style"></a>
-
-
-
-## Report bugs and enhancements
-
-- Report bugs: Download and try one of the latest Beyond Identity builds. Report any bugs you find by [creating a Beyond Identity bug report in GitHub](https://github.com/Beyond Identity/community/issues/new?assignees=&labels=bug&template=bug_report.md&title=).
-- Report enhancements: Got an idea for a feature? Or something you're already using could be improved? [Post an enhancement request in GitHub](https://github.com/Beyond Identity/community/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=)! 
-
-If you have an issue that is specific to a sub-project or community team, feel free to submit an issue against a specific repo.
-
-## Fix issues
-
-- There are many issues and bugs with the label `Good first issue` in the [Beyond Identity GitHub repositories](https://github.com/Beyond Identity/) to help you get familiar with the contribution process. Check out the following list of GitHub repos to make your contribution! 
-   - [Beyond Identity sub-projects repositories](https://github.com/Beyond Identity/community/blob/master/README.md#Beyond Identity-sub-projects)
-   - [Beyond Identity operations squads repositories](https://github.com/Beyond Identity/community/blob/master/README.md#Beyond Identity-operations-squads)
+   2. Select the option to create a branch and then  **Propose changes** to commit your changes.<br /><br />
    
-  When you decide to work on an issue, check the comments on that issue to ensure that it's not taken by anyone. If nobody is working on it, comment on that issue to let others know that you want to work on it to avoid duplicate work. The squad can assign that issue to you and provide guidance as well. 
+     ![GitHub propose and commit changes](./images/github-commit-proposed-changes.png)<br /><br />
 
-- You can also reach out to the [Beyond Identity squads on Slack](https://github.com/Beyond Identity/community/blob/master/README.md# Slack) to check with the squads if there is any good starter issue that you can work on. 
+4. Now that you've proposed and committed your changes, you need to ask the owners to review your changes. This is done using a pull request (PR).<br /><br />
 
-## Submit a Pull Request 
+   Enter a title and a description for the PR, and then select **Create pull request**. You can select **Create a draft pull request** instead. The difference is that the reviewers are notified only when the PR is *Open* rather than *Draft*.<br /><br />
 
-All code in Beyond Identity aligns with the established [licensing and copyright notice guidelines](https://github.com/Beyond Identity/zlc/blob/master/process/LicenseAndCopyrightGuidance.md).
+   ![GitHub propose and commit changes](./images/github-open-pull-request.png)
 
-Before submitting a Pull Request, review the general Beyond Identity [Pull Request Guidelines](https://github.com/Beyond Identity/community#pull-request-guidelines) and make sure that you provide the information that is required in the Pull Request template in that specific repo. 
 
-All Beyond Identity commits need to be signed by using the [Developer's Certificate of Origin 1.1 (DCO)](https://developercertificate.org/), which is the same mechanism that the Linux® Kernel and many other communities use to manage code contributions. You need to add a `Signed-off-by` line as a part of the commit message. Here is an example `Signed-off-by` line, which indicates that the submitter accepts the DCO:
+That's it! Team members will review your PR and merge it when approved. You may get feedback requesting changes.
 
-```Signed-off-by: John Doe <john.doe@hisdomain.com>```
 
-You can find more information about DCO signoff in the [zlc repo](https://github.com/Beyond Identity/zlc/edit/master/CONTRIBUTING.md). 
+## Edit content (significant changes)
 
-## Report security issues
+If you need to make substantial changes, add an image or add a section to a topic. On the other hand, if your change is minor that doesn't involve uploading a file or making changes to multiple files, follow the [Edit content - minor change](#edit-content-minor-changes) instructions.
 
-Please direct all security issues to `Beyond Identity-security@lists.openmainframeproject.org`. A member of the security team will reply to acknowledge receipt of the vulnerability and coordinate remediation with the affected project.
+1. Make sure you're back on the main (default) branch so you can sync your local working branch.
 
-## Contribution guidelines 
+   ```
+   git checkout main
+   git pull origin main
+   ```
 
-Check out the contribution guidelines for different components and squads to learn how to participate.
-  - [Beyond Identity CLI](https://github.com/Beyond Identity/Beyond Identity-cli/blob/master/CONTRIBUTING.md)
-  - [Beyond Identity API Mediation Layer](https://github.com/Beyond Identity/api-layer/blob/master/CONTRIBUTING.md)
-  - [Beyond Identity Application Framework](https://github.com/Beyond Identity/zlux)  
-  - [Beyond Identity Explorer](https://github.com/Beyond Identity/vscode-extension-for-Beyond Identity/blob/master/CONTRIBUTING.md)
-  - [Beyond Identity Client SDKs](https://github.com/Beyond Identity/Beyond Identity-cli/blob/master/docs/SDKGuidelines.md)
-  - [Beyond Identity Docs](./contributing)
+2. Create a working branch for your proposed changes. For example, **content-dev-faqs** or **update-visual-guidelines**.
 
-## Promote Beyond Identity
+   ```
+   git checkout -b {branch-name}
+   ```
 
-- Contribute a blog about Beyond Identity. Read the [Beyond Identity blog guidelines](https://github.com/Beyond Identity/community/blob/master/blogging/blog_guidelines.md) to get started. 
-- Present Beyond Identity on conferences and social channels
+3. Navigate to /docs and locate the topic you want to change. 
+
+4. Change the date in the metadata and ensure the title, description, and author are correct. Add any additional keywords if they are missing.
+
+   ```markdown
+   ---
+   title: Welcome to Secure Workforce
+   id: welcome
+   description: ''
+   slug: /
+   keywords: 
+    - faq
+    - help
+   pagination_next: null
+   pagination_prev: null
+   last_update: 
+      date: 03/29/2023
+      author: Patricia McPhee
+   draft: true
+   doc_type: overview
+   product: secureWorforce
+   hide_table_of_contents: false
+   displayed_sidebar: secureWorkforceSidebar
+   ---
+   ```
+
+4. Make your changes to the content and run the following command to build and review your changes.
+
+   ```
+   yarn start
+   ```
+
+   This command starts a local development server and opens a browser window. Most changes are reflected live without having to restart the server. If a browser window doesn\'t open, go to **http://localhost:3000/** to view your local changes. 
+
+5. Add your changes.
+
+   ```
+   git add --all
+   ```
+
+6. Commit your changes.
+
+   ```
+   git commit -m "short description of the change"
+   ```
+
+7. Publish, or push, your changes to the main repo for merging. 
+
+   ```
+   git push --set-upstream origin {branch name}
+   ```
+
+8. From the main (default) branch, select **Compare & pull request**.
+
+9. Provide additional information, add reviewers, and select **Create pull request**.
+
+   Alternatively, you can select **Create draft pull request**.
+
+10. After going through the review process for technical accuracy and a copy edit from a Content Designer, enter `#sign-off` and select **Comment**.
+
+   Your changes get merged into the default branch (`main`).  After each merge, the Sr. Technical Writer reviews all merges, fixes any merge conflicts, and publishes all changes.
+
+
+
+
+## Add new content
+
+1. Make sure you're back on the main (default) branch so you can sync your local working branch.
+
+   ```
+   git checkout main
+   git pull origin main
+   ```
+
+2. Create a working branch for your proposed changes. For example, **content-dev-faqs** or **update-visual-guidelines**.
+
+   ```
+   git checkout -b {branch-name}
+   ```
+
+3. Navigate to `/docs` and locate the subdirectory for your new topic.
+
+4. Add the metadata (frontmatter).
+
+   Keywords are optional but helpful. All other metadata is required.
+
+    ```markdown
+    ---
+    title: Welcome to Secure Workforce
+    id: welcome
+    description: ''
+    slug: /
+    keywords: 
+     - faq
+     - help
+    pagination_next: null
+    pagination_prev: null
+    last_update: 
+       date: 03/29/2023
+       author: Patricia McPhee
+    draft: true
+    doc_type: overview
+    product: secureWorforce
+    hide_table_of_contents: false
+    displayed_sidebar: secureWorkforceSidebar
+    ---
+    ```
+
+5. Add the new markdown file in the sidebar.js file.
+
+   ```javascript
+   {
+     type: 'category',
+     label: 'Content',
+     link: {
+       type: 'doc',
+       id: 'content/content-overview',
+     },      
+     items: [ 'content/language-inclusivity', 'content/grammar-mechanics', 'content/voice-tone-principles', 'content/in-product-word-list', 'content/writing-for-errors', 'content/writing-guidelines' ],
+   },
+   ```
+   
+   It's a best practice to add the markdown file early in the content development phase. Otherwise, you\'ll get an error when you run the command to build and review your content.
+
+6. Create your content and run the following command to build and review your changes.
+
+   ```
+   yarn start
+   ```
+
+   This command starts a local development server and opens a browser window. Most changes are reflected live without having to restart the server. If a browser window doesn't open, go to  **http://localhost:3000/SCOOBY/docs-next/** to view your local changes. 
+
+7. When ready, commit and publish your changes to the main (default) branch, add your changes.
+
+   ```
+   git add --all
+   ```
+
+8. Commit your changes with a descriptive summary, for example, *add clarity to the data table component usage examples*.
+
+   ```
+   git commit -m "short description of the change"
+   ```
+
+9. Publish, or push, your changes to the main repo for merging. 
+
+   ```
+   git push --set-upstream origin {branch name}
+   ```
+
+10. From the main (default) branch, select **Compare & pull request**.
+
+
+11. Provide additional information, add reviewers, and select **Create pull request**.
+
+    Alternatively, you can select **Create draft pull request**.
+
+12. After going through the review process for technical accuracy and a copy edit from a Content Designer, enter `#sign-off` and select **Comment**.
+
+    Your changes get merged into the default branch (`main`).  After each merge, the Sr. Technical Writer reviews all merges, fixes any merge conflicts, and publishes all changes.
+
+
+
+## Release notes
+
+If you want to contribute to the release notes in advance, you can follow the guidelines in [How to write effective release notes](https://beyondidentity.atlassian.net/l/cp/STZ7Sqtz).  If a template for that release has been added to **Product Documentation > Release Notes** in Confluence, feel free to add your content. If a template for a specific release hasn't been created yet, [duplicate or copy the template](https://beyondidentity.atlassian.net/wiki/spaces/PD/pages/2509406212/Template+version+Date), update the title with the release number, and publish it. 
+
+
