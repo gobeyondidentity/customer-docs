@@ -168,15 +168,6 @@ ul {
   margin-bottom: 0;
 }
 
-pre {
-  font-family: monospace, monospace;
-  font-size: 0.9em;
-  white-space: normal;
-/*  word-wrap: break-word;*/
-  overflow-wrap: break-word;
-  margin: 10px 0;
-}
-
 /* Glossary */
 dt {
   font-weight: 700;
@@ -416,7 +407,7 @@ nav[class^="menu"] {
   text-decoration: none;
   transition: none;
 }
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible {
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsed {
   background: none;
   margin-top: 0.25rem;
 }
