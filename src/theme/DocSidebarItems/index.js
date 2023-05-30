@@ -35,7 +35,7 @@ export default function DocSidebarItemsWrapper(props) {
           )}
         >
           <ThemeProvider theme={theme}>
-          <Chip label="Version: 2.80.0" size="small" className="sidebar-version" sx={{ fontWeight: 700}} />
+          <Chip label="Version: 2.81.0" size="small" className="sidebar-version" sx={{ fontWeight: 700}} />
           </ThemeProvider>
         </li>
       ) : null}

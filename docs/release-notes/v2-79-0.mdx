@@ -73,6 +73,10 @@ Because Datadog offers independent sites based on data governance regulations, y
 
 ## Desktop Login
 
+import SupportedOsAuthenticator from '../../static/includes/_supported-os-versions.mdx';
+
+<SupportedOsAuthenticator />
+
 <span className="changelog-tag" data-tag="Improved">Improved!</span>
 
 We improved the **Password Change/Reset in Windows Desktop Login**. WDL now detects when the user changes their password and automatically re-caches the BI credentials without needing the user to unlock or re-login while offline. Previously, login credentials were automatically re-cached whenever the user logins or locks and unlocks via WDL.
