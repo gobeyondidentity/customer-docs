@@ -125,7 +125,7 @@ themes: [
         },
         items: [ 
           {
-            to: "/release-notes-main", 
+            to: "/", 
             label: "Release Notes",
             position: "left",
           }
