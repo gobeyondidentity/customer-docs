@@ -1,6 +1,5 @@
 import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
-
-
+import SupportedOsAuthenticator from './_supported-os-versions.mdx';
 import styles from  '../../src/css/release-notes.css';
 
 If you deployed Beyond Identity Cloud, Platform Authenticators, and Desktop Login, you'll receive the latest updates as we release them.
@@ -9,7 +8,7 @@ If you deployed Beyond Identity Cloud, Platform Authenticators, and Desktop Logi
 <p><a href="https://app.byndid.com/downloads"><span class="icons"><DownloadForOfflineIcon /></span></a> Update to the <a href="https://app.byndid.com/downloads">latest version</a>.</p>
 
 
-## [Version 2.80.0](/v2-80-0) • May 16 2023
+## [Version 2.81.0](/v2-81-0) • May 31 2023
 
 ### Cloud
 
@@ -23,26 +22,64 @@ If you deployed Beyond Identity Cloud, Platform Authenticators, and Desktop Logi
                         <span className="changelog-tag" data-tag="New">New!</span>
                     </div>
                     <div class="card-body">
-                        <h4>New <strong>Policy Attributes</strong> are available:</h4>
-                        <ul>
-      <li>
-        <strong>JAMF Mobile Device Managed State</strong>. Leverage the
-        <strong>Mobile Device Managed State</strong>&nbsp;to include JAMF
-        managed state of iOS devices in policy rules. 
-      </li>
-      <li>
-        <strong>WS-Fed Connection</strong>. Leverage this attribute to match
-        on a specific application configured to federate to Beyond Identity
-        via WS-Fed. 
-      </li>
-      <li>
-        <strong>Applications Installed &gt; Does Not Contain</strong> for
-        Windows and macOS devices.
-      </li>
-      <li>
-        <strong>Installed Security Software &gt; Does Not Contain</strong> for Windows and macOS devices.
-      </li>
-    </ul>
+                        <p><b>Tenant and User Name in Console</b>: Admin console users will now see their tenant ID and user name when logged into the admin console. Clicking on the user name will reveal their user ID and email.</p>
+                            
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mt-6">
+            <div>
+                <div class="card-horizontal">
+                    <div class="img-square-wrapper">
+                        <span className="changelog-tag" data-tag="New">New!</span>
+                    </div>
+                    <div class="card-body">
+                        <p><b>Support for Custom URL as Support Contact Info</b>: the ability to enter a support URL instead of an email. Tenant administrators can add a custom URL in the support customization screen.</p>
+                            
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mt-6">
+            <div>
+                <div class="card-horizontal">
+                    <div class="img-square-wrapper">
+                        <span className="changelog-tag" data-tag="New">New!</span>
+                    </div>
+                    <div class="card-body">
+                        <p><b>Improvements to Event Details</b>: Users can now expand the JSON section with one click. The JSON blob expands all paths by clicking the <b>Expand All</b> link on the upper right side of the JSON view.</p>
+                            
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mt-6">
+            <div>
+                <div class="card-horizontal">
+                    <div class="img-square-wrapper">
+                        <span className="changelog-tag" data-tag="New">New!</span>
+                    </div>
+                    <div class="card-body">
+                        <p><b>CSV Export on Passkey Table</b>: We've added functionality to export the passkey table. The export will respect any filter applied to the table.</p>
                             
                     </div>
                 </div>
@@ -53,144 +90,7 @@ If you deployed Beyond Identity Cloud, Platform Authenticators, and Desktop Logi
 </div>
 
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12 mt-6">
-            <div>
-                <div class="card-horizontal">
-                    <div class="img-square-wrapper">
-                        <span className="changelog-tag" data-tag="New">New!</span>
-                    </div>
-                    <div class="card-body">
-                        <p><strong>Create and manage Beyond Identity API</strong> client credentials, tokens, and scopes in the Admin Console.</p>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12 mt-6">
-            <div>
-                <div class="card-horizontal">
-                    <div class="img-square-wrapper">
-                        <span className="changelog-tag" data-tag="Improved">Improved!</span>
-                    </div>
-                    <div class="card-body">
-                        <p>Full-text search on the event grid was improved, making searching for users with many events much faster.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12 mt-6">
-            <div>
-                <div class="card-horizontal">
-                    <div class="img-square-wrapper">
-                        <span className="changelog-tag" data-tag="Resolved">Resolved!</span>
-                    </div>
-                    <div class="card-body">
-                    <p>The passkeys detail section was missing the Jailbroken/Rooted status information.</p>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12 mt-6">
-            <div>
-                <div class="card-horizontal">
-                    <div class="img-square-wrapper">
-                        <span className="changelog-tag" data-tag="Resolved">Resolved!</span>
-                    </div>
-                    <div class="card-body">
-                    <p>If the user added text to the search, the selected event filters were resetting to the default values on the events grid.</p> 
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-### Desktop Login
-
-<div class="note-message">
-  <p>
-    <a href="https://app.byndid.com/downloads">Supported platforms</a>
-  </p>
-</div>
 
 
-
-<div class="container-fluid container-padding">
-    <div class="row">
-        <div class="col-12 mt-6">
-            <div>
-                <div class="card-horizontal">
-                    <div class="img-square-wrapper">
-                        <span className="changelog-tag" data-tag="Improved">Improved!</span>
-                    </div>
-                    <div class="card-body">
-                    <p>Users get a notification when they unenroll in the Beyond Identity Windows Login Desktop application and an event gets generated in the Admin  Console.</p> 
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12 mt-6">
-            <div>
-                <div class="card-horizontal">
-                    <div class="img-square-wrapper">
-                        <span className="changelog-tag" data-tag="Known">Known!</span>
-                    </div>
-                    <div class="card-body">
-                   <p>We are investigating Windows Desktop Login enrollment failures. For more details and a workaround, see our knowledgebase article: <a href="https://support.beyondidentity.com/hc/en-us/articles/14510599143703">https://support.beyondidentity.com/hc/en-us/articles/14510599143703</a>.</p> 
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-
-### API 
-
-
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12 mt-6">
-            <div>
-                <div class="card-horizontal">
-                    <div class="img-square-wrapper">
-                        <span className="changelog-tag" data-tag="New">New!</span>
-                    </div>
-                    <div class="card-body">
-                           <p>A public documentation website for the Secure Workforce Admin API at <a href="https://docs.beyondidentity.com/api">https://docs.beyondidentity.com/api</a>. With this API, you can ListUsers via the Admin API. For more details, see the <a href="/v2-80-0#beyond-identity-api-access"><strong>Beyond Identity API Access</strong></a>.
-</p>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
 
 

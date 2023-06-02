@@ -124,11 +124,11 @@ themes: [
           href: '/api/',
         },
         items: [ 
-          { 
-            to: "/release-notes-main", 
-            label: "Release Notes", 
-            position: "left" 
-          },
+          {
+            to: "/", 
+            label: "Release Notes",
+            position: "left",
+          }
 //         { to: "/api/", label: "Public API", position: "left" },
 /*
            {
