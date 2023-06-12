@@ -1,0 +1,8 @@
+{
+    "redirects": [
+      {
+        "source": "/release-notes-main",
+        "destination": "https://support.beyondidentity.com/hc/en-us/sections/4968400314775-Release-Notes"
+      }
+    ]
+  }
