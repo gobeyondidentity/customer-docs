@@ -9,7 +9,18 @@ const baseUrl = process.env.BASE_URL ?? '/api';
 const config = {
 
   plugins: [
-
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          // /docs/oldDoc -> /docs/newDoc
+          {
+            to: '/api',
+            from: '/',
+          },      
+    ],
+  },
+],
     require.resolve("docusaurus-plugin-image-zoom"),
 
 
