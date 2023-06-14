@@ -15,7 +15,7 @@ const config = {
         redirects: [
           // /docs/oldDoc -> /docs/newDoc
           {
-            to: '/api',
+            to: '/api/',
             from: '/',
           },      
     ],
