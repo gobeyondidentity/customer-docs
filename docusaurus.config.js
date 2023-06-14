@@ -9,18 +9,19 @@ const baseUrl = process.env.BASE_URL ?? '/api';
 const config = {
 
   plugins: [
-    [
+/*    [
       '@docusaurus/plugin-client-redirects',
       {
         redirects: [
           // /docs/oldDoc -> /docs/newDoc
           {
-            to: '/api/',
+            to: '/api/v2.yaml',
             from: '/',
           },      
     ],
   },
 ],
+*/
     require.resolve("docusaurus-plugin-image-zoom"),
 
 
@@ -132,40 +133,10 @@ themes: [
         logo: {
           alt: 'Beyond Identity Logo',
           src: 'img/logo.png',
-          href: '/',
         },
         items: [ 
          { to: "/api/", label: "Public API", position: "left" },
          { to: "/release-notes-main", label: "Release Notes", position: "left" },
-/*
-           {
-            label: 'Support',
-            type: 'dropdown',
-            position: 'left',
-            items: [
-              {
-                to: 'https://github.com/gobeyondidentity',
-                label: 'GitHub',
-               },
-               {
-                to: 'https://stackoverflow.com/questions/tagged/beyondidentity',
-                label: 'Stack Overflow',
-               },
-               {
-                to: 'https://join.slack.com/t/byndid/shared_invite/zt-1anns8n83-NQX4JvW7coi9dksADxgeBQ',
-                label: 'Slack',
-               },
-               {
-                to: 'https://twitter.com/BI_Developers',
-                label: 'Twitter',
-               },
-               {
-                to: 'https://dev.to/beyondidentity',
-                label: 'DevTo',
-               },
-            ],
-          }, 
-*/
         ],
       },
       footer: {
