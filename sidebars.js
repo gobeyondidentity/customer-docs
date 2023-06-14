@@ -389,6 +389,7 @@ const sidebars = {
       },
       collapsible: false,    
       items: [ 
+        'release-notes/v2-81-0',
         'release-notes/v2-80-0',
         'release-notes/v2-79-0',
         'release-notes/v2-78-0',

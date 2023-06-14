@@ -1,0 +1,16 @@
+name: ✨ Enhance our documentation
+description: Suggest an idea to help improve the customer experience
+labels: ['🌟 enhancement']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this feature request!
+
+        Use this form to give a description of what your suggestion is about.
+
+        Select or describe the audience your proposal targets in terms of readers' familiarity with Beyond Identity:
+
+        - [ ] Beyond Identity Secure Workforce users
+        - [ ] Those interested in passwordless authentication
+        - [ ] Those not aware of passwordless authentication yet

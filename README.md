@@ -1,10 +1,18 @@
-<!-- Secure Workforce documentation only -->
+<p align="center">
+   <br/>
+   <a href="https://developers.beyondidentity.com" target="_blank"><img src="https://user-images.githubusercontent.com/238738/178780350-489309c5-8fae-4121-a20b-562e8025c0ee.png" width="150px" ></a>
+   <h3 align="center">Beyond Identity</h3>
+   <p align="center">Universal Passkeys for Developers</p>
+   <p align="center">
+   All devices. Any protocol. Zero shared secrets. 
+   </p>
+</p>
 
-# Beyond Identity Secure Workforce documentation
+# Beyond Identity Secure Customer Developer documentation
 
-Welcome to the Beyond Identity customer documentation repository! This repo is the source for [https://docs.beyondidentity.com/](https://docs.beyondidentity.com/), also known as "Secure Work Docs"!  We currectly only have the Public API documentation published and we continue to work on adding end-user documentation. 
+Welcome to the Beyond Identity developer documentation repository! This repo is the source for [https://developer.beyondidentity.com/](https://developer.beyondidentity.com/), also known as "Developer Docs"! 
 
-The Beyond Identity customer documentation is completely open-source and we appreciate contributions.
+The Beyond Identity developer documentation is completely open-source and we appreciate contributions.
 
 ## Provide feedback
 
@@ -84,14 +92,20 @@ yarn start
 
 The `http://localhost:3000` opens in your browser so you can see your changes reflected live.As you make changes to the source files, the preview build will be triggered automatically, and then you can refresh your browser to see the changes.
 
+## Project Resources
+
+| Resource | Description |
+| ---| --- |
+| [CODEOWNERS](https://github.com/gobeyondidentity/developer-docs/blob/main/CODEOWNERS) | Outlines the project lead(s) |
+
 ## Thank you!
 
 We appreciate your contributions to our documentation!
 
 
-[issues]: https://github.com/gobeyondidentity/customer-docs/issues/new?assignees=&labels=triage&projects=&template=content-issue.yml&title=%5BContent+issue%5D%3A+
-[repo]: https://github.com/gobeyondidentity/customer-docs.git
-[pr]: https://github.com/gobeyondidentity/customer-docs/pulls
-[enhancements]: https://github.com/gobeyondidentity/customer-docs/issues/new?assignees=&labels=%F0%9F%8C%9F+enhancement&projects=&template=enhancement.yml
+[issues]: https://github.com/gobeyondidentity/next-dev-docs/issues/new?assignees=&labels=triage&projects=&template=content-issue.yml&title=%5BContent+issue%5D%3A+
+[repo]: https://github.com/gobeyondidentity/developer-docs
+[pr]: https://github.com/gobeyondidentity/developer-docs/pulls
+[enhancements]: https://github.com/gobeyondidentity/next-dev-docs/issues/new?assignees=&labels=%F0%9F%8C%9F+enhancement&projects=&template=enhancement.yml
 [ideas]: https://github.com/gobeyondidentity/customer-docs/discussions/categories/ideas
 [discussion]: https://github.com/gobeyondidentity/customer-docs/discussions
