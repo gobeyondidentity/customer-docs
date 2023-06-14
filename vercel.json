@@ -1,7 +1,7 @@
 {
     "redirects": [
       {
-        "source": "/release-notes-main",
+        "source": "https://docs.beyondidentity.com/",
         "destination": "https://support.beyondidentity.com/hc/en-us/sections/4968400314775-Release-Notes"
       }
     ]
