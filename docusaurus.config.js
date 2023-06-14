@@ -121,44 +121,10 @@ themes: [
         logo: {
           alt: 'Beyond Identity Logo',
           src: 'img/logo.png',
-          href: '/api/',
         },
         items: [ 
-          {
-            to: "/", 
-            label: "Release Notes",
-            position: "left",
-          }
-//         { to: "/api/", label: "Public API", position: "left" },
-/*
-           {
-            label: 'Support',
-            type: 'dropdown',
-            position: 'left',
-            items: [
-              {
-                to: 'https://github.com/gobeyondidentity',
-                label: 'GitHub',
-               },
-               {
-                to: 'https://stackoverflow.com/questions/tagged/beyondidentity',
-                label: 'Stack Overflow',
-               },
-               {
-                to: 'https://join.slack.com/t/byndid/shared_invite/zt-1anns8n83-NQX4JvW7coi9dksADxgeBQ',
-                label: 'Slack',
-               },
-               {
-                to: 'https://twitter.com/BI_Developers',
-                label: 'Twitter',
-               },
-               {
-                to: 'https://dev.to/beyondidentity',
-                label: 'DevTo',
-               },
-            ],
-          }, 
-*/
+          { to: "/api/", label: "Public API", position: "left" },
+          { href: "https://support.beyondidentity.com/hc/en-us/sections/4968400314775-Release-Notes", label: "Release Notes", position: "left" },
         ],
       },
       footer: {
