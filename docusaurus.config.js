@@ -24,6 +24,19 @@ const config = {
 */
     require.resolve("docusaurus-plugin-image-zoom"),
 
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          // /docs/oldDoc -> /docs/newDoc
+          {
+            to: '/api',
+            from: '/',
+          },      
+    ],
+  },
+],
+
 
 
 //    'plugin-image-zoom',
@@ -133,10 +146,11 @@ themes: [
         logo: {
           alt: 'Beyond Identity Logo',
           src: 'img/logo.png',
+          href: '/api',
         },
         items: [ 
-         { to: "/api/", label: "Public API", position: "left" },
-         { href: "https://support.beyondidentity.com/hc/en-us/sections/4968400314775-Release-Notes", label: "Release Notes", position: "left" },
+          { to: "/api/", label: "Public API", position: "left" },
+          { href: "https://support.beyondidentity.com/hc/en-us/sections/4968400314775-Release-Notes", label: "Release Notes", position: "left" },
         ],
       },
       footer: {
