@@ -7,6 +7,10 @@ const sidebars = {
     {
       type: 'category',
       label: 'Welcome',  
+      link: {
+        type: 'doc',
+        id: 'intro',
+      },
       collapsed: false, 
       collapsible: false,     
       items: [ 

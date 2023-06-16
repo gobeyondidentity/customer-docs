@@ -3,8 +3,9 @@ import { ThemeClassNames } from "@docusaurus/theme-common";
 import DocSidebarItems from "@theme-original/DocSidebarItems";
 import clsx from "clsx";
 import React from "react";
+import Chip from '@mui/material/Chip';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { createTheme } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
 export default function DocSidebarItemsWrapper(props) {
@@ -33,6 +34,9 @@ export default function DocSidebarItemsWrapper(props) {
             "margin-left--sm"
           )}
         >
+          <ThemeProvider theme={theme}>
+          <Chip label="Version: 2.81.0" href="/v2-80-0" size="small" className="sidebar-version" sx={{ fontWeight: 700}} />
+          </ThemeProvider>
         </li>
       ) : null}
       <DocSidebarItems {...props} />
