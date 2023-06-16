@@ -24,21 +24,6 @@ const config = {
 */
     require.resolve("docusaurus-plugin-image-zoom"),
 
-    [
-      '@docusaurus/plugin-client-redirects',
-      {
-        redirects: [
-          // /docs/oldDoc -> /docs/newDoc
-          {
-            to: '/api',
-            from: '/',
-          },      
-    ],
-  },
-],
-
-
-
 //    'plugin-image-zoom',
 //    '@chatwoot/docusaurus-plugin',
 //    [
