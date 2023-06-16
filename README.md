@@ -32,7 +32,7 @@ Before you get started with the authoring work, it's necessary that you understa
 
 * **`active-development`** - protected branch
 
-  Docs for a forward-version that includes features not yet included in the Beyond Identity stable version. Its content is published on [https://customer-docs.vercel.app/active-development](https://customer-docs-git-active-development-beyondidentity.vercel.app/) for early validation purpose.
+  Docs for a forward-version that includes features not yet included in the Beyond Identity stable version. Its content is published on [https://[customer-docs.vercel.app/active-development](https://customer-docs-git-active-development-beyondidentity.vercel.app/)](https://customer-docs-git-active-development-beyondidentity.vercel.app/) for early validation purpose.
 
 * **`v<v.r>.x`** - protected branches
 
