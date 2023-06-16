@@ -9,19 +9,7 @@ const baseUrl = process.env.BASE_URL ?? '/api';
 const config = {
 
   plugins: [
-/*    [
-      '@docusaurus/plugin-client-redirects',
-      {
-        redirects: [
-          // /docs/oldDoc -> /docs/newDoc
-          {
-            to: '/api/v2.yaml',
-            from: '/',
-          },      
-    ],
-  },
-],
-*/
+
     require.resolve("docusaurus-plugin-image-zoom"),
 
 //    'plugin-image-zoom',
@@ -131,7 +119,7 @@ themes: [
         logo: {
           alt: 'Beyond Identity Logo',
           src: 'img/logo.png',
-          href: '/api',
+          href: '/',
         },
         items: [ 
           { to: "/api/", label: "Public API", position: "left" },
