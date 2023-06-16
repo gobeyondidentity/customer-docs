@@ -394,7 +394,7 @@ div[class^="searchBox"] {
 /* Docs Sidebar */
 aside.theme-doc-sidebar-container {
   border-right: none;
-  padding-top: 18px;
+  padding-top: 4px; 
 }
 .menu {
   font-weight: var(--ifm-font-weight-normal);
