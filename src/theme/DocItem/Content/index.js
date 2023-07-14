@@ -51,7 +51,7 @@ export default function DocItemContent({children}) {
       )}
           
       <MDXContent>{children}</MDXContent>
-
+      
     </div>
   );
 }

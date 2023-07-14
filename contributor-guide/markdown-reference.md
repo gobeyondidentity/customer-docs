@@ -87,6 +87,22 @@ Use this method for articles that have the same image in multiple places. For ex
 [![alt text](imageurl)](linkurl)
 ```
 
+### Other methods
+
+```javascript
+<img
+  id="diagrams"
+  src={require('../images/passkey-workflow-diagram.png').default}
+  alt="Example banner"
+/>
+```
+
+```javascript
+import AuthenticationRequestDiagram from '../images/passkey-workflow-diagram.png';
+
+<img src={AuthenticationRequestDiagram} id="diagrams" alt="Example banner" />;
+```
+
 ## Lists
 
 Lists are made by using indentation and a beginning-of-line marker to indicate a list item. 
@@ -398,4 +414,6 @@ To indent text to align with a preceding paragraph or an item in a numbered or b
 - This is a second-level bullet (indented two spaces, with one space after the bullet before the letter T).
     This sentence is indented four spaces.
     > This quote block is indented four spaces.
+
+## Docusaurus specific markdown
 

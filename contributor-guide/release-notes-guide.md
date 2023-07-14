@@ -1,3 +1,18 @@
+---
+title: Release Notes Guide
+id: release-notes-guide
+description: ''
+slug: /release-notes-guide
+pagination_next: null
+pagination_prev: null
+last_update: 
+   date: 03/29/2023
+   author: Patricia McPhee
+draft: false
+doc_type: reference
+displayed_sidebar: contributorGuideSidebar
+---
+
 # Release notes guide
 
 Learn how Secure Workforce release notes are constructed, how to generate and submit them. 
@@ -37,9 +52,9 @@ import SupportedOsAuthenticatorWindowsOnly from '../../static/includes/_supporte
 
 New Windows Desktop Login installations using the MSI method no longer require a reboot. For previously installed versions, v2.76.0 or earlier, you can safely bypass the Windows reboot by executing the following msiexec command when upgrading to v2.77.0:
 
-```
-msiexec.exe [install_options] <path_to_package> /norestart
-```
+    ```
+    msiexec.exe [install_options] <path_to_package> /norestart
+    ```
 
 Future Windows Desktop Login software versions will not require the `msiexec /norestart` option.
 
@@ -51,3 +66,5 @@ When a host \[source\] is accessing a Windows system \[destination\] through Mic
 ```
 
 ## Release notes process
+
+--WIP--
