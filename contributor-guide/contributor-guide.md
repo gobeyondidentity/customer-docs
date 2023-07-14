@@ -2,11 +2,11 @@
 [style-guide]: ./style-guide.md
 [markdown]: ./markdown-reference.md
 [contributor]: ./contributor-guide.md
-[site]: https://next-dev-docs.vercel.app/
-[issues]: https://github.com/gobeyondidentity/next-dev-docs/issues/new?assignees=&labels=triage&projects=&template=content-issue.yml&title=%5BContent+issue%5D%3A+
-[repo]: https://github.com/gobeyondidentity/next-dev-docs
-[pr]: https://github.com/gobeyondidentity/next-dev-docs/pulls
-[enhancements]: https://github.com/gobeyondidentity/next-dev-docs/issues/new?assignees=&labels=%F0%9F%8C%9F+enhancement&projects=&template=enhancement.yml
+[site]: https://docs.beyondidentity.com/
+[issues]: https://github.com/gobeyondidentity/customer-docs/issues/new?assignees=&labels=triage&projects=&template=content-issue.yml&title=%5BContent+issue%5D%3A+
+[repo]: https://github.com/gobeyondidentity/customer-docs
+[pr]: https://github.com/gobeyondidentity/customer-docs/pulls
+[enhancements]: https://github.com/gobeyondidentity/customer-docs/issues/new?assignees=&labels=%F0%9F%8C%9F+enhancement&projects=&template=enhancement.yml
 
 - [Contributor's guide](#contributors-guide)
   - [Provide feedback](#provide-feedback)
@@ -37,7 +37,7 @@
 
 Thank you for taking an interest in contributing to the Beyond Identity Developer Documentation. 
 
-We've built the documentation with [Docusaurus](https://docusaurus.io) and you can find the source code our [next-dev-docs GitHub repo][repo].
+We've built the documentation with [Docusaurus](https://docusaurus.io) and you can find the source code our [customer-docs GitHub repo][repo].
 
 You're welcome to contribute to the documentation to help make it better and we want to make it possible for you to become a contributor. Additionally, anyone can open an issue about documentation or suggest a change with a [pull request (PR)][pr] to the [GitHub repository][repo]. 
 
@@ -96,11 +96,11 @@ Non VS Code markdown editors:
 
 1. Go to the [main page of the repository][repo]. 
 
-1. Clone the repo.  This creates a directory named `next-dev-docs` in your current working directory.
+1. Clone the repo.  This creates a directory named `customer-docs` in your current working directory.
 
    ```bash
-   git clone https://github.com/gobeyondidentity/next-dev-docs.git
-   cd next-dev-docs
+   git clone https://github.com/gobeyondidentity/customer-docs.git
+   cd customer-docs
    ```
 
 2. Next, create a new [branch](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell) from `main` (always give your branch a meaningful, descriptive name). 
@@ -127,7 +127,7 @@ The `http://localhost:3000` opens in your browser so you can see your changes re
 Before you get started with the authoring work, it's necessary that you understand the different branches to work on.
 * **`main`** -  protected branch
 
-  Docs for [https://next-dev-docs.vercel.app/][site]. This branch contains the most recent stable release content.
+  Docs for [https://docs.beyondidentity.com/][site]. This branch contains the most recent stable release content.
 
 * **`docs-staging`** - protected branch
 
@@ -135,7 +135,7 @@ Before you get started with the authoring work, it's necessary that you understa
 
 * **`active-development`** - protected branch (currently used for front-end development)
 
-  Docs for a forward-version that includes features not yet included in the Beyond Identity stable version. Its content is published on [https://next-dev-docs-git-active-development-beyondidentity.vercel.app/](https://next-dev-docs-git-active-development-beyondidentity.vercel.app/) for early validation purpose.
+  Docs for a forward-version that includes features not yet included in the Beyond Identity stable version. Its content is published on [https://customer-docs-git-active-development-beyondidentity.vercel.app/](https://customer-docs-git-active-development-beyondidentity.vercel.app/) for early validation purpose.
 
 * Branches that start with `release-` contain archived release documentation for historical tracking, for example, `release-xx`.
   
@@ -460,7 +460,7 @@ A few things to keep in mind when creating your pull request:
 | If | Then |
 | --- | --- |
 | PR relates to issues you found in the docs  | add **inaccurate**, **typo** or **missing information** keywords in the description and use the default base branch, **main**  |
-| PR relates to GitHub issues you've addressed for `next-dev-docs`  | provide links to related GitHub issues and use the default base branch, **main**  |
+| PR relates to GitHub issues you've addressed for `customer-docs`  | provide links to related GitHub issues and use the default base branch, **main**  |
 |  PR is part of the current release | use the default base branch, **main**  |
 | PR is part of the next future release  | make it against the **docs-staging** branch  |
 |  PR is part of front-end development | make it against the **active-development** branch  |
