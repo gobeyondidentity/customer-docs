@@ -52,9 +52,9 @@ import SupportedOsAuthenticatorWindowsOnly from '../../static/includes/_supporte
 
 New Windows Desktop Login installations using the MSI method no longer require a reboot. For previously installed versions, v2.76.0 or earlier, you can safely bypass the Windows reboot by executing the following msiexec command when upgrading to v2.77.0:
 
-```
-msiexec.exe [install_options] <path_to_package> /norestart
-```
+    ```
+    msiexec.exe [install_options] <path_to_package> /norestart
+    ```
 
 Future Windows Desktop Login software versions will not require the `msiexec /norestart` option.
 
