@@ -12,6 +12,7 @@ const sidebars = {
       collapsible: false,        
       items: [ 
         'platform/architecture',
+        'new-top',
         
 
       ],
