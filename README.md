@@ -17,7 +17,7 @@
 </div>
 
 
-Welcome to the Beyond Identity developer documentation repository! This repo is the source for [https://developer.beyondidentity.com/][site], also known as "Next Dev Docs"! 
+Welcome to the Beyond Identity developer documentation repository! This repo is the source for [https://docs.beyondidentity.com/][site], also known as "Next Dev Docs"! 
 
 The Beyond Identity developer documentation is completely open-source and we appreciate contributions.
 
