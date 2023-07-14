@@ -1,5 +1,5 @@
 ---
-title: Platform
+title: Platform Overview
 id: platform
 description: ''
 slug: /platform 
@@ -12,6 +12,8 @@ last_update:
    date: 03/29/2023
    author: Patricia McPhee
 draft: false
-doc_type: how-to
+doc_type: overview
 displayed_sidebar: secureWorkforceSidebar
 ---
+
+

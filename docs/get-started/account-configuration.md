@@ -10,7 +10,7 @@ pagination_prev: get-started/create-tenant
 last_update: 
    date: 03/29/2023
    author: Patricia McPhee
-draft: false
+draft: true
 doc_type: get-started
 displayed_sidebar: secureWorkforceSidebar
 ---
