@@ -3,7 +3,7 @@
 [markdown]: ./markdown-reference.md
 [contributor]: ./contributor-guide.md
 [site]: https://docs.beyondidentity.com/
-[issues]: https://github.com/gobeyondidentity/customer-docs/issues/new?assignees=&labels=triage&projects=&template=content-issue.yml&title=%5BContent+issue%5D%3A+
+[issues]: https://github.com/gobeyondidentity/customer-docs/issues
 [repo]: https://github.com/gobeyondidentity/customer-docs
 [pr]: https://github.com/gobeyondidentity/customer-docs/pulls
 [enhancements]: https://github.com/gobeyondidentity/customer-docs/issues/new?assignees=&labels=%F0%9F%8C%9F+enhancement&projects=&template=enhancement.yml
