@@ -109,8 +109,6 @@ Non VS Code markdown editors:
    git checkout -b <branch_name>
    ```
 
-Refer to the [contributor's guide][contributor] for details on how to submit edits or additions to the documentation.
-
 ### Start the development server
 
 We're finally able to get to the fun stuff! Install the dependencies and start a local development server:
