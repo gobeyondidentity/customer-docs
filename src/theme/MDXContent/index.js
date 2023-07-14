@@ -112,11 +112,7 @@ function FeedbackForm(){
       }}
     >
       <Col className="gutter-row" span={12}>
-        <div style={style}>
-        <h3>Was this page helpful?</h3>
-        <Row style={{ marginLeft: '80px' }}>{feedbackForm(feedback)}</Row>  
-            
-        </div>
+       
         <div style={contribute}>
         <h4>Want to contribute?</h4>
             <ul className="text-sm">

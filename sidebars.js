@@ -5,22 +5,8 @@ const sidebars = {
   // By default, Docusaurus generates a sidebar from the docs folder structure
   secureWorkforceSidebar: [
     'intro',
-    {
-      type: 'category',
-      label: 'Platform Overview',
-      collapsed: false, 
-      collapsible: false,        
-      items: [ 
-        'platform/architecture',
-        'new-topic',
-        
-
-      ],
-    },
     'platform/admin-console',
-    'policy/policy',
     
-
   ],
 
   /*
