@@ -1,12 +1,23 @@
-<p align="center">
+<!-- Reference Links -->
+[site]: https://[docs.beyondidentity.com](https://developer.beyondidentity.com/)/
+[issues]: https://github.com/gobeyondidentity/customer-docs/issues/new?assignees=&labels=triage&projects=&template=content-issue.yml&title=%5BContent+issue%5D%3A+
+[repo]: https://github.com/gobeyondidentity/customer-docs
+[pr]: https://github.com/gobeyondidentity/customer-docs/pulls
+[enhancements]: https://github.com/gobeyondidentity/customer-docs/issues/new?assignees=&labels=%F0%9F%8C%9F+enhancement&projects=&template=enhancement.yml
+
+<div align="center">
    <br/>
    <a href="https://developers.beyondidentity.com" target="_blank"><img src="https://user-images.githubusercontent.com/238738/178780350-489309c5-8fae-4121-a20b-562e8025c0ee.png" width="150px" ></a>
-   <h3 align="center">Beyond Identity</h3>
-</p>
+   <h3>Beyond Identity</h3>
+   <p>Universal Passkeys for Developers</p>
+   <p>
+   All devices. Any protocol. Zero shared secrets. 
+   </p>
+   <h1>Developer documentation</h1>
+</div>
 
-# Beyond Identity Secure Customer Developer documentation
 
-Welcome to the Beyond Identity developer documentation repository! This repo is the source for [https://developer.beyondidentity.com/](https://developer.beyondidentity.com/), also known as "Developer Docs"! 
+Welcome to the Beyond Identity developer documentation repository! This repo is the source for [https://developer.beyondidentity.com/][site], also known as "Next Dev Docs"! 
 
 The Beyond Identity developer documentation is completely open-source and we appreciate contributions.
 
@@ -17,7 +28,7 @@ Your feedback is essential in shaping the customer content experience. There are
 - [Submit an enhancement idea][enhancements] to make the docs better
 - [open a GitHub issue][issues] to report an issue with the content (something is incorrect or confusing)
 
-The Product team will track these ideas and issues to address your feedback. 
+The team will track these ideas and issues to address your feedback. 
 
 ## Contribute to the docs
 
@@ -28,31 +39,44 @@ Refer to the [contributor's guide](./contributor-guide/contributor-guide.md) for
 Before you get started with the authoring work, it's necessary that you understand the different branches to work on.
 * **`main`** -  protected branch
 
-  Docs for [https://docs.beyondidentity.com/](https://docs.beyondidentity.com/). This branch contains the most recent stable release content.
+  Docs for https://developer.beyondidentity.com/. This branch contains the most recent stable release content.
 
-* **`active-development`** - protected branch
+* **`docs-staging`** - protected branch
 
-  Docs for a forward-version that includes features not yet included in the Beyond Identity stable version. Its content is published on [https://[customer-docs.vercel.app/active-development](https://customer-docs-git-active-development-beyondidentity.vercel.app/)](https://customer-docs-git-active-development-beyondidentity.vercel.app/) for early validation purpose.
+  Docs for the upcoming `vNext` release. When Secure Customer has a release, its `docs-staging` branch will be merged into `main`.
 
-* **`v<v.r>.x`** - protected branches
+* **`active-development`** - protected branch (currently used for front-end development)
 
-  Docs for an archived version, where `v` indicates the version, `r` indicates the release number, for example, `v2.72.0`, `v2.72.3`.
+  Docs for a forward-version that includes features not yet included in the Beyond Identity stable version. Its content is published on https://customer-docs-git-active-development-beyondidentity.vercel.app/ for early validation purpose.
 
-* Branches that start with `release-` contain archived patch release documentation for historical tracking, for example, `release-2-80`.
+* Branches that start with `release-` contain archived release documentation for historical tracking, for example, `release-xx`.
   
 * You can have your own personal branch to work on content for a certain issue or feature. However, be sure to check and remove unused personal branches periodically for easy maintenance. Usually when your branch is merged, you can safely delete it.
 
 ## Site organization and files
 
 - `/docs/` - Contains the Markdown files for the docs. Customize the order of the docs sidebar in `sidebars.js`. 
+  - `/docs/images` - Images used in the documentation.
+  - `/docs/includes` - Reusable content such as feature descriptions, notes, common steps, and so on.
 - `/docusaurus.config.js` - A config file containing the site configuration.
 - `/sidebar.js` - Specify the order of documents in the sidebar. If you have a new file to add to the site, modify this file.
-- `/src/` - Non-documentation files like pages or custom React components.
-  - `/src/pages` - Any files within this directory will be converted into a website page.
+- `/src/` - Non-documentation files like pages, custom React components, or 
+Docaurus native components.
+  - `/src/components` - Custom react components used for the website or included in the documentation, such as the Try It Out!
+  - `/src/pages` - Any files within this directory will be converted into a website page. Currently, we don't use this directory.
+  - `/src/theme` - Docusausus native components such as the sidebar, content page, and content page footer designs.
 - `/static/` - Static directory. Any contents inside here will be copied into the root of the final `build` directory.
+  - `/static/img` - Website images such as Beyond Identity logos and other assets.
 - `/package.json` - A Docusaurus website is a React app. You can install and use any npm packages you like in them.
+- `versioned_docs_` - 
+  - `version-v0` - 
+  - `version-v1` - 
+- `versioned_sidebars` - 
+  - `version-v0-sidebars.json` - 
+  - `version-v1-sidebars.json` -  
 
-## Run the doc site locally
+
+## Get started
 
 ### Prerequisites
 
@@ -77,6 +101,8 @@ Before you get started with the authoring work, it's necessary that you understa
    git checkout -b <branch_name> main
    ```
 
+Refer to the [contributor's guide](./contributor-guide/contributor-guide.md) for details on how to submit edits or additions to the documentation.
+
 ### Start the development server
 
 We're finally able to get to the fun stuff! Install the dependencies and start a local development server:
@@ -86,22 +112,14 @@ yarn
 yarn start
 ```
 
-The `http://localhost:3000` opens in your browser so you can see your changes reflected live.As you make changes to the source files, the preview build will be triggered automatically, and then you can refresh your browser to see the changes.
+The `http://localhost:3000` opens in your browser so you can see your changes reflected live. As you make changes to the source files, the preview build will be triggered automatically, and then you can refresh your browser to see the changes.
 
 ## Project Resources
 
 | Resource | Description |
 | ---| --- |
-| [CODEOWNERS](https://github.com/gobeyondidentity/developer-docs/blob/main/CODEOWNERS) | Outlines the project lead(s) |
+| CODEOWNERS | Outlines the project lead(s) |
 
 ## Thank you!
 
 We appreciate your contributions to our documentation!
-
-
-[issues]: https://github.com/gobeyondidentity/next-dev-docs/issues/new?assignees=&labels=triage&projects=&template=content-issue.yml&title=%5BContent+issue%5D%3A+
-[repo]: https://github.com/gobeyondidentity/developer-docs
-[pr]: https://github.com/gobeyondidentity/developer-docs/pulls
-[enhancements]: https://github.com/gobeyondidentity/next-dev-docs/issues/new?assignees=&labels=%F0%9F%8C%9F+enhancement&projects=&template=enhancement.yml
-[ideas]: https://github.com/gobeyondidentity/customer-docs/discussions/categories/ideas
-[discussion]: https://github.com/gobeyondidentity/customer-docs/discussions

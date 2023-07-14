@@ -22,6 +22,7 @@ const sidebars = {
 
   ],
 
+  /*
   releaseNotesSidebar: [
     {
       type: 'category',
@@ -42,7 +43,7 @@ const sidebars = {
       ],
     },    
   ],
-
+*/
 
   /*
   contributorGuideSidebar: [
