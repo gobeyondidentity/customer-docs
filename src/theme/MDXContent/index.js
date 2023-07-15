@@ -128,7 +128,6 @@ function FeedbackForm(){
             </ul>
             <br />
             </div>
-
       </div>
         <div class="col col--6">
         <div class="col-demo content__footer">
