@@ -1,6 +1,7 @@
 import React,{ useState, useEffect } from 'react';
 import clsx from 'clsx';
 import styles from '../DocItem/Footer/styles.module.css';
+import {ThemeClassNames} from '@docusaurus/theme-common';
 import { Col, Space, Row, Rate, Button } from "antd";
 
 const style = {
@@ -104,10 +105,12 @@ function FeedbackForm(){
   };
   return (
     <>
+    <footer
+      className={clsx(styles.li,styles.content__footer, ThemeClassNames.docs.docFooter)}>
       <div class="container">
         <div class="row">
           <div class="col col--6">
-            <div class="col-demo">
+            <div class="col-demo content__footer">
               <h4>See something not documented or want to contribute?</h4>
                   <ul className="text-sm">
                     <li>
@@ -123,13 +126,13 @@ function FeedbackForm(){
                 </Link>
               </li>
             </ul>
+            <br />
             </div>
-
       </div>
-      <div class='col'>
-        <div class="col-demo">
+        <div class="col col--6">
+        <div class="col-demo content__footer">
         <h4>See the <a href="https://www.beyondidentity.com/support">Beyond Identity Support site</a> for information on:</h4>
-        <ul className={clsx('no-style', styles.indent)}>
+        <ul className="text-sm">
               <li><a href="https://support.beyondidentity.com/hc/en-us/requests/new">Submitting a request</a></li>
               <li><a href="https://support.beyondidentity.com/hc/en-us/community/topics/4410556274327-Feature-Requests">Viewing feature requests</a></li>
               <li><a href="https://support.beyondidentity.com/hc/en-us/sections/6746957130007-Troubleshooting">Viewing troubleshooting articles in our knowledgebase</a></li>
@@ -138,8 +141,9 @@ function FeedbackForm(){
               </ul>
               </div>
           </div>
+          </div>
         </div>
-      </div>
+      </footer>
     </>
   );
 }
