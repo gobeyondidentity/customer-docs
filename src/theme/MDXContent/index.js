@@ -1,5 +1,6 @@
 import React,{ useState, useEffect } from 'react';
-
+import clsx from 'clsx';
+import styles from '../DocItem/Footer/styles.module.css';
 import { Col, Space, Row, Rate, Button } from "antd";
 
 const style = {
@@ -103,20 +104,13 @@ function FeedbackForm(){
   };
   return (
     <>
-      <Row
-      gutter={{
-        xs: 8,
-        sm: 16,
-        md: 24,
-        lg: 32
-      }}
-    >
-      <Col className="gutter-row" span={12}>
-       
-        <div style={contribute}>
-        <h4>Want to contribute?</h4>
-            <ul className="text-sm">
-              <li>
+      <div class="container">
+        <div class="row">
+          <div class="col col--6">
+            <div class="col-demo">
+              <h4>See something not documented or want to contribute?</h4>
+                  <ul className="text-sm">
+                    <li>
                 Submit a{' '}
                 <Link to="https://github.com/gobeyondidentity/customer-docs/issues/new?assignees=&labels=triage&projects=&template=content-issue.yml&title=%5BContent+issue%5D%3A+">
                   content issue
@@ -129,21 +123,23 @@ function FeedbackForm(){
                 </Link>
               </li>
             </ul>
-        </div>
-      </Col>
-      <Col className="gutter-row" span={12}>
-        <div style={style}>
+            </div>
+
+      </div>
+      <div class='col'>
+        <div class="col-demo">
         <h4>See the <a href="https://www.beyondidentity.com/support">Beyond Identity Support site</a> for information on:</h4>
-            <ul className="text-sm">
+        <ul className={clsx('no-style', styles.indent)}>
               <li><a href="https://support.beyondidentity.com/hc/en-us/requests/new">Submitting a request</a></li>
               <li><a href="https://support.beyondidentity.com/hc/en-us/community/topics/4410556274327-Feature-Requests">Viewing feature requests</a></li>
               <li><a href="https://support.beyondidentity.com/hc/en-us/sections/6746957130007-Troubleshooting">Viewing troubleshooting articles in our knowledgebase</a></li>
               <li><a href="https://support.beyondidentity.com/hc/en-us/community/topics/4410556272919-General-Discussion">Joining the discussion</a></li>
               <li><a href="https://app.byndid.com/downloads">Downloading the lastest Authenticator</a></li>
-            </ul>
+              </ul>
+              </div>
+          </div>
         </div>
-      </Col>
-    </Row>
+      </div>
     </>
   );
 }
