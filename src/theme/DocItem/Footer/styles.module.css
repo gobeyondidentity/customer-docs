@@ -5,7 +5,10 @@
   margin-bottom: 36px;
   font-style: normal;
   font-size: 12px;
+}
 
+.content__footer h4 {
+  padding-top: 10px;
 }
 
 .editThisPage {
@@ -16,6 +19,17 @@
   font-size: 12px;
   text-align: right;
 }
+
+ul.no-style {
+  list-style-type: none;
+  margin-left: 20px;
+}
+
+.indent {
+  margin-left: 10px;
+}
+
+
 
 @media (min-width: 997px) {
   .lastUpdated {
