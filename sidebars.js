@@ -32,24 +32,8 @@ const sidebars = {
   ],
 */
 
-  /*
-  contributorGuideSidebar: [
-    {
-      type: 'category',
-      label: 'Contributor's Guide',  
-      link: {
-        type: 'doc',
-        id: 'release-notes/release-notes-main',
-      },
-      collapsible: false,    
-      items: [ 
-        'release-notes/v2-77-0',
-        'release-notes/v2-76-0',
-        'release-notes/v2-75-0',
-      ],
-    },    
-  ],
-*/
+
+
 
 };
 
