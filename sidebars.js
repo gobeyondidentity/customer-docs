@@ -6,7 +6,42 @@ const sidebars = {
   secureWorkforceSidebar: [
     'intro',
     'platform/admin-console',
-    
+
+/*
+  {
+      type: 'category',
+      label: 'Platform',  
+      collapsed: false, 
+      collapsible: false,
+      link: {
+        type: 'doc',
+        id: 'platform/platform',
+      },      
+      items: [ 
+        'platform/architecture',
+        'platform/admin-console',
+      ],
+    },  
+*/    
+
+/*
+  {
+      type: 'category',
+      label: 'Desktop Login',  
+      collapsed: false, 
+      collapsible: false, 
+      link: {
+        type: 'doc',
+        id: 'desktop-login/desktop-login',
+      },      
+      items: [ 
+        'desktop-login/windows-desktop-login',
+        'desktop-login/mac-desktop-login',
+        'desktop-login/desktop-login-troubleshooting',
+      ],
+    },  
+*/    
+
   ],
 
   /*
