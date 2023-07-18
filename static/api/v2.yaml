@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: Beyond Identity Secure Workforce Admin API
-  version: 2.0.0
+  version: 2.1.0
   contact:
     email: support@beyondidentity.com
   description: |
@@ -226,6 +226,108 @@ tags:
       A user is a member of an organization using Beyond Identity.
 paths:
   /v2/users:
+    post:
+      tags:
+        - Users
+      operationId: CreateUser
+      summary: Create a new user
+      description: |
+        To create a user for a tenant, send a POST request to `/v2/users`. Values in the request body for read-only fields get ignored.
+        If the request conflicts with an existing resource, you'll receive a 409  error.
+        When the user gets created, they'll receive a Beyond Identity enrollment  email sent to the email address in the request.
+      security:
+        - BearerAuth:
+            - 'users:create'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Create User Request
+              description: Request for CreateUser.
+              type: object
+              properties:
+                user:
+                  $ref: '#/components/schemas/User'
+              required:
+                - user
+            examples:
+              Create User:
+                value:
+                  user:
+                    external_id: 0001f1f460b1ace6
+                    email_address: alice@acmecorp.com
+                    username: alice.acmecorp
+                    display_name: Alice Acmecorp
+      responses:
+        '200':
+          description: |
+            The response is a JSON object containing standard user attributes.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                Success:
+                  value:
+                    id: f7277b07-4a9e-4f84-9839-cd3082a6b8c3
+                    create_time: 2022-04-12T05:53:07.119Z
+                    update_time: 2022-06-16T14:31:03.770Z
+                    last_auth_time: 2022-06-16T14:31:03.770Z
+                    tenant_id: acme-corp
+                    external_id: 0001f1f460b1ace6
+                    email_address: alice@acmecorp.com
+                    username: alice.acmecorp
+                    display_name: Alice Acmecorp
+                    state: ACTIVE
+                    source: scim
+                    has_active_passkey: true
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Invalid Parameters:
+                  $ref: '#/paths/~1v2~1users/get/responses/400/content/application~1json/examples/Invalid%20Parameters'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Insufficient Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/403/content/application~1json/examples/Insufficient%20Authorization'
+        '409':
+          description: Conflict.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                User Already Exists:
+                  value:
+                    code: conflict
+                    message: user already exists
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1v2~1users/get/responses/500/content/application~1json/examples/Internal%20Error'
     get:
       tags:
         - Users
@@ -379,8 +481,216 @@ paths:
                   value:
                     code: internal_server_error
                     message: internal server error
+  '/v2/users/{user_id}':
+    get:
+      tags:
+        - Users
+      operationId: GetUser
+      summary: Retrieve an existing user
+      description: |
+        To retreive an existing user for a tenant, send a GET request to `/v2/users/$USER_ID`.
+      security:
+        - BearerAuth:
+            - 'users:read'
+      parameters:
+        - $ref: '#/components/parameters/user_id'
+      responses:
+        '200':
+          description: |
+            The response is a JSON object containing standard user attributes.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                Success:
+                  $ref: '#/paths/~1v2~1users/post/responses/200/content/application~1json/examples/Success'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Insufficient Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/403/content/application~1json/examples/Insufficient%20Authorization'
+        '404':
+          description: The resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                User Not Found:
+                  value:
+                    code: not_found
+                    message: user not found
+                    details:
+                      - type: ResourceInfo
+                        resource_type: User
+                        id: 24d228e9-4915-4fcd-ab32-f7300a383219
+                        description: user not found
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1v2~1users/get/responses/500/content/application~1json/examples/Internal%20Error'
+    patch:
+      tags:
+        - Users
+      operationId: UpdateUser
+      summary: Update a user
+      description: |
+        To update only specific attributes of an existing user, send a PATCH  request to `/v2/users/$USER_ID`. Values in the request body for immutable  or read-only fields get ignored. Fields omitted from the request body will  be left unchanged.
+          
+        If the request conflicts with an existing resource, you'll receive a 409  error.
+      security:
+        - BearerAuth:
+            - 'users:update'
+      parameters:
+        - $ref: '#/components/parameters/user_id'
+      responses:
+        '200':
+          description: |
+            The response is a JSON object containing standard user attributes.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                Success:
+                  $ref: '#/paths/~1v2~1users/post/responses/200/content/application~1json/examples/Success'
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Invalid Parameters:
+                  $ref: '#/paths/~1v2~1users/get/responses/400/content/application~1json/examples/Invalid%20Parameters'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Insufficient Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/403/content/application~1json/examples/Insufficient%20Authorization'
+        '404':
+          description: The resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                User Not Found:
+                  $ref: '#/paths/~1v2~1users~1%7Buser_id%7D/get/responses/404/content/application~1json/examples/User%20Not%20Found'
+        '409':
+          description: Conflict.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                External ID Taken:
+                  value:
+                    code: conflict
+                    message: user external id already taken
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1v2~1users/get/responses/500/content/application~1json/examples/Internal%20Error'
+    delete:
+      tags:
+        - Users
+      operationId: GetUser
+      summary: Delete a user
+      description: |
+        To delete an existing user for a tenant, send a DELETE request to  `/v2/users/$USER_ID`.
+        A successful request will receive a 200 status code with nothing  in the response's body. This indicates that the request was processed successfully.
+      security:
+        - BearerAuth:
+            - 'users:delete'
+      parameters:
+        - $ref: '#/components/parameters/user_id'
+      responses:
+        '200':
+          description: The action was successful and the response body is empty.
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Insufficient Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/403/content/application~1json/examples/Insufficient%20Authorization'
+        '404':
+          description: The resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                User Not Found:
+                  $ref: '#/paths/~1v2~1users~1%7Buser_id%7D/get/responses/404/content/application~1json/examples/User%20Not%20Found'
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1v2~1users/get/responses/500/content/application~1json/examples/Internal%20Error'
 components:
   parameters:
+    user_id:
+      name: user_id
+      in: path
+      description: A unique identifier for a user.
+      required: true
+      schema:
+        type: string
+        example: 25f94daf-63d8-4b40-b0ea-4843971d1d8e
     page_size:
       name: page_size
       in: query
