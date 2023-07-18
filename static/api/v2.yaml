@@ -632,7 +632,7 @@ paths:
     delete:
       tags:
         - Users
-      operationId: GetUser
+      operationId: DeleteUser
       summary: Delete a user
       description: |
         To delete an existing user for a tenant, send a DELETE request to  `/v2/users/$USER_ID`.
