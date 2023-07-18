@@ -127,7 +127,7 @@ Instead, use something like, "In this guide, you'll do XYZ (what they will accom
 
 Customers have a specific purpose in mind when they consult our documentation. Before you begin writing, clearly determine who the customer is and what task he or she is trying to do. Then, write your article to help that specific customer do that specific task.
 
-As a <customer>, I <want to> <because>.
+As a \<customer\>, I \<want to\> \<because\>.
 
 
 ### Use everyday words
@@ -149,10 +149,6 @@ Minimalism is a design philosophy that focuses on a user-centered approach. In t
 ### Avoid gerunds in headings
 
 Gerunds introduce a lot of visual repetition, which hinders skimming and causes noise.
-
-### <Principle 2>
-
-### <Principle 3>
 
 ## 💡 Tips and tricks
 
