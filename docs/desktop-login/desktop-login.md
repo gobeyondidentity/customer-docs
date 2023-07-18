@@ -1,10 +1,9 @@
 ---
-title: Windows Desktop Login
-id: windows-desktop-login
+title: Desktop Login
+id: desktop-login
 description: ''
-slug: /windows-desktop-login 
+slug: /desktop-login 
 keywords: 
- - windows
  - desktop login
 pagination_next: null
 pagination_prev: null
@@ -15,17 +14,3 @@ draft: true
 doc_type: overview
 displayed_sidebar: secureWorkforceSidebar
 ---
-
-
-
-## Supported platforms / components
-
-
-## General information
-
-
-## Requirements
-
-
-## Installation
-

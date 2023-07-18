@@ -1,9 +1,11 @@
 ---
-title: Windows Desktop Login
-id: windows-desktop-login
+title: Troubleshooting
+id: desktop-login-troubleshooting
 description: ''
-slug: /windows-desktop-login 
+slug: /desktop-login-troubleshooting 
 keywords: 
+ - mac
+ - macOS
  - windows
  - desktop login
 pagination_next: null
@@ -12,20 +14,6 @@ last_update:
    date: 07/18/2023
    author: Patricia McPhee
 draft: true
-doc_type: overview
+doc_type: troubleshooting
 displayed_sidebar: secureWorkforceSidebar
 ---
-
-
-
-## Supported platforms / components
-
-
-## General information
-
-
-## Requirements
-
-
-## Installation
-
