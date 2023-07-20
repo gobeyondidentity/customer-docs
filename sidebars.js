@@ -68,6 +68,50 @@ const sidebars = {
 */
 
 
+  contributorGuideSidebar: [
+    {
+      type: 'category',
+      label: 'Contribute',  
+      collapsible: false,  
+      collapsed: false,  
+      link: {
+        type: 'doc',
+        id: 'contribute/contribute',
+      },
+      items: [ 
+
+        'contribute/when-to-contribute',
+        'contribute/contribute-get-started',
+        'contribute/site-organization-and-files',
+        'contribute/docs-site-branches',
+        'contribute/best-practices',
+        {
+          type: 'category',
+          label: 'Edit content',
+          collapsed: true, 
+          collapsible: false,           
+           items: [    
+            {
+              type: 'doc',
+              id: 'contribute/edit-content-minor-changes',
+              label: 'Minor changes',
+            },
+            {
+              type: 'doc',
+              id: 'contribute/edit-content-significant-changes',
+              label: 'Significant changes',
+            }, 
+         ],
+        },
+        'contribute/add-new-topic',
+        'contribute/create-pull-request',        
+      ],
+    },    
+    'contribute/markdown-reference',
+    'contribute/style-guide',
+    'contribute/release-notes-guide',
+  ],
+
 
 
 };
