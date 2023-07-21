@@ -26,7 +26,7 @@ displayed_sidebar: contributorGuideSidebar
 
   - `/docs/includes` - Reusable content such as feature descriptions, notes, common steps, and so on.
 
-- `versioned_docs` - Contains the markdown files for the previous supported versions (v0 and v1).
+- `versioned_docs` - Contains the markdown files for the previous supported versions (v2.83 and v2.84).
 
 - `versioned_sidebars` - Contains the sidebar files for the previous versions.
 
