@@ -187,8 +187,7 @@ Links need to be clear and predictable. Merchants should be able to anticipate w
 
 | :white_check_mark: **DO** | :no_entry_sign: **DON'T** |
 | --- | --- |
-| Get started with the [Universal Passkeys](#). | Want to learn more about dropshipping? [Click here](#).<br /><br />
-Links should never use “click here” or “here” as link text.  |
+| Get started with the [Universal Passkeys](#). | Want to learn more about Universal Passkeys? [Click here](#).<br /><br />Links should never use “click here” or “here” as link text.  |
 
 ### Links in a sentence
 

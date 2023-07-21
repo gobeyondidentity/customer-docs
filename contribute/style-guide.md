@@ -101,6 +101,34 @@ We aspire to follow these principles when we write technical content. We might n
 
 ### Headings and titles
 
+
+```javascript title="markdown file"
+ // highlight-start
+ // Top-level heading in the metadata 
+ ---
+ title: Top-level heading
+ ...
+ ---
+ // highlight-end 
+
+ OR
+
+ // highlight-next-line
+ # Top-level heading
+
+ ---
+
+ // highlight-start
+ // Lower-level headings within the topic
+ ## Lower-level heading
+
+ ### Lower-level heading
+
+ ...
+  // highlight-end
+```
+
+
 Use sentence-style capitalization for headings. Capitalize only the initial letter of the first word in the text and other words that require capitalization, such as proper nouns. Examples of proper nouns include the names of specific people, places, companies, languages, protocols, and products.
 
 Avoid using gerunds for headings. Gerunds introduce a lot of visual repetition, which hinders skimming and causes noise.
@@ -146,8 +174,7 @@ Links need to be clear and predictable. Merchants should be able to anticipate w
 
 | :white_check_mark: **DO** | :no_entry_sign: **DON'T** |
 | --- | --- |
-| Get started with the [Universal Passkeys](#). | Want to learn more about dropshipping? [Click here](#).<br /><br />
-Links should never use “click here” or “here” as link text.  |
+| Get started with the [Universal Passkeys](#). | Want to learn more about dropshipping? [Click here](#).<br /><br />Links should never use “click here” or “here” as link text.  |
 
 ### Links in a sentence
 
