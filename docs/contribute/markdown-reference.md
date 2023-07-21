@@ -62,6 +62,53 @@ Also, put blank lines before and after a heading.
 ## Links
 
 
+### Basic links
+
+```md
+[inline](<https://somecompany.com>)
+```
+
+### Link with tooltip
+
+You can add a tool tip to the link to help users learn more about where the link will take them (to avoid click bait). 
+
+```md
+[have a title](<https://somecompany.com> "Awesome tooltip")
+```
+
+### Relative link
+
+```md
+[like this](../blob/master/LICENSE.txt)
+```
+
+### Reference links
+
+These are best for links that are used multiple times in an article, for example, the support link.
+
+```md
+[1]: https://<domain>.com
+
+<!-- usage -->
+[Join our Slack community][1]
+```
+
+<h4>Output example</h4>
+
+[Join our Slack community][1]
+
+
+:::tip
+You can add a tool tip to the link to help users learn more about where the link will take them (to avoid click bait).
+
+```md
+[2]: https://<domain>.com "Beyond Identity Secure Workforce community"
+
+<!-- usage -->
+[Join the conversation][2]
+```
+
+:::
 
 ## Images
 
@@ -75,10 +122,9 @@ This is the most common method for using images in an article once.  If you’re
 ![alt text](path to image) //inline-style
 ```
 
-**Example**   
 
 ```md
-![alt text](https://<domain>.com/images/icon48.png "Logo Title Text 1")
+![alt text](https://<domain>.com/images/icon48.png "Logo Title Text 1")  //inline-style with tooltip
 ```
 
 
@@ -131,7 +177,8 @@ Unordered lists can use an asterisk (`*`), plus (`+`), or minus (`-`) to indicat
 * Fifth item
 ```
 
-**Output**
+<h4>Output example</h4>
+
 * One item
 * Second item
 * Third item
@@ -165,7 +212,7 @@ OR
 1. Step
 ```
 
-**Output**   
+<h4>Output example</h4> 
 
 1. Step
 1. Step
@@ -185,7 +232,7 @@ Remember to pick a delimiter and stick with it.
 * And back at the main level
 ```
 
-**Output**   
+<h4>Output example</h4> 
 
 * One item
 * Another item
@@ -208,7 +255,7 @@ Remember to pick a delimiter and stick with it.
 1. Step five
 ```
 
-**Output**   
+<h4>Output example</h4> 
 
 1. Step one
 1. Step two
@@ -235,7 +282,7 @@ You can use both types of lists to nest items. In the example below, the unorder
 * And back at the main level
 ```
 
-**Output**
+<h4>Output example</h4>
 
 * One item
 * Another item
@@ -285,8 +332,7 @@ Use three backticks (<code>```</code>) with the language. This is the markdown v
   ```
 ````
 
-
-**The example renders as:**
+<h4>Output example</h4>
 
 
 ```javascript
@@ -312,7 +358,7 @@ The simplest way to create a table in Markdown is to use pipes and lines. To cre
 |it doesn't|actually   |have to line up nicely!|
 ```
 
-This renders as follows:
+<h4>Output example</h4>
 
 |This is   |a simple   |table header|
 |----------|-----------|------------|
@@ -330,7 +376,7 @@ You can align the columns by using colons:
 | $1                   | $1                   | $1              |
 ```
 
-Renders as follows:
+<h4>Output example</h4>
 
 | Fun                  | With                 | Tables          |
 | :------------------- | -------------------: |:---------------:|
@@ -362,7 +408,7 @@ A data matrix table has both a header and a weighted first column, creating a ma
 |**First column B**|Cell 1B  |Cell 2B |
 ```
 
-The example renders as:
+<h4>Output example</h4>
 
 |                  |Header 1 |Header 2|
 |------------------|---------|--------|
@@ -381,7 +427,7 @@ Blockquotes are created using the `>` character:
 > This is a blockquote. It is usually rendered indented and with a different background color.
 ```
 
-The preceding example renders as follows:
+<h4>Output example</h4>
 
 > This is a blockquote. It is usually rendered indented and with a different background color.
 
@@ -410,7 +456,7 @@ To indent text to align with a preceding paragraph or an item in a numbered or b
     > This quote block is indented four spaces.
 ```
 
-**Example 1**
+<h4>Output of Example 1</h4>
 
 1. This is a numbered list example (one space after the period before the letter T).
 
@@ -418,23 +464,23 @@ To indent text to align with a preceding paragraph or an item in a numbered or b
 
    `This code block is indented three spaces.`
 
-**Example 2**
+<h4>Output of Example 2</h4>
 
 - This is a bulleted list example (one space after the bullet before the letter T).
   This sentence is indented two spaces.
 
-**Example 3**
+<h4>Output of Example 3</h4>
+
 - This is a second-level bullet (indented two spaces, with one space after the bullet before the letter T).
     This sentence is indented four spaces.
     > This quote block is indented four spaces.
 
 ## Docusaurus specific markdown
 
-### [Admonition](https://docusaurus.io/docs/markdown-features/admonitions)
+### [Notes and warnings](https://docusaurus.io/docs/markdown-features/admonitions)
 
 In addition to the basic Markdown syntax, we have a special admonitions syntax by wrapping text with a set of 3 colons, followed by a label denoting its type.
 
-Example:
 
 ```md
 :::note
@@ -468,6 +514,8 @@ Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
 :::
 ```
 
+<h4>Output example</h4>
+
 :::note
 
 Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
@@ -498,13 +546,94 @@ Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
 
 :::
 
-### Highlighting codeblocks with comments
+### [Highlighting codeblocks with comments](https://docusaurus.io/docs/markdown-features/code-blocks#highlighting-with-comments)
 
-https://docusaurus.io/docs/markdown-features/code-blocks#highlighting-with-comments
+````md
+  ```text title=".env.local"
+  # -- Next Auth
+  NEXTAUTH_URL=http://localhost:8083
+  NEXTAUTH_SECRET= # Linux: `openssl rand -hex 32` or go to https://generate-secret.now.sh/32
 
-### Tabs
+  # -- Beyond Identity
+  // highlight-next-line
+  REGION=
 
-https://docusaurus.io/docs/markdown-features/tabs
+  TENANT_ID=
+  REALM_ID=
+  API_TOKEN=
+
+  APPLICATION_ID=
+  AUTHENTICATOR_CONFIG_ID=
+
+  APP_CLIENT_ID=
+  APP_CLIENT_SECRET=
+  ```
+````
+
+<h4>Output example</h4>
+
+```text title=".env.local"
+# -- Next Auth
+NEXTAUTH_URL=http://localhost:8083
+NEXTAUTH_SECRET= # Linux: `openssl rand -hex 32` or go to https://generate-secret.now.sh/32
+
+# -- Beyond Identity
+// highlight-next-line
+REGION=
+
+TENANT_ID=
+REALM_ID=
+API_TOKEN=
+
+APPLICATION_ID=
+AUTHENTICATOR_CONFIG_ID=
+
+APP_CLIENT_ID=
+APP_CLIENT_SECRET=
+```
+
+
+
+
+### [Tabs](https://docusaurus.io/docs/markdown-features/tabs)
+
+````md
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+  <TabItem value="apple" label="Apple" default>
+    This is an apple 🍎
+  </TabItem>
+  <TabItem value="orange" label="Orange">
+    This is an orange 🍊
+  </TabItem>
+  <TabItem value="banana" label="Banana">
+    This is a banana 🍌
+  </TabItem>
+</Tabs>
+
+````
+
+<h4>Output example</h4>
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+  <TabItem value="apple" label="Apple" default>
+    This is an apple 🍎
+  </TabItem>
+  <TabItem value="orange" label="Orange">
+    This is an orange 🍊
+  </TabItem>
+  <TabItem value="banana" label="Banana">
+    This is a banana 🍌
+  </TabItem>
+</Tabs>
+
+
+
 
 ### Details
 
@@ -528,7 +657,7 @@ Markdown can embed HTML elements, and [`details`](https://developer.mozilla.org/
 
 
 
-<h4>Example</h4>
+<h4>Output example</h4>
 
 <details className="detailsContainer">
   <summary className="summaryHeading">Toggle me!</summary>

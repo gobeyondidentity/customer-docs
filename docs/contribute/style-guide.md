@@ -18,47 +18,47 @@ displayed_sidebar: contributorGuideSidebar
 
 ## Best practices
 
-1. Consistency
+1. **Consistency**
    - Use a consistent writing style throughout the documentation.
    - Maintain consistent formatting, such as heading styles, font sizes, and code formatting.
    - Use consistent terminology and language to describe concepts and features.
 
-2. Clarity and Simplicity
+2. **Clarity and Simplicity**
    - Use clear and concise language to explain technical concepts.
    - Avoid jargon or explain technical terms when necessary.
    - Break down complex ideas into smaller, understandable sections.
    - Use examples, diagrams, and visuals to enhance clarity.
 
-3. Structure and Organization
+3. **Structure and Organization**
    - Use a logical and hierarchical structure for your documentation.
    - Provide clear and informative headings and subheadings.
    - Use bullet points or numbered lists for step-by-step instructions or procedures.
    - Group related information together for easy navigation.
 
-4. Audience Awareness
+4. **Audience Awareness**
    - Identify and understand your target audience (developers, system administrators, beginners, etc.).
    - Adapt your writing style and language to match the knowledge level of your audience.
    - Include introductory sections or tutorials for beginners.
    - Provide advanced sections or references for experienced users.
 
-5. Code Conventions
+5. **Code Conventions**
    - Follow established coding conventions and style guidelines for code snippets.
    - Use syntax highlighting for code blocks.
    - Clearly indicate placeholders or variables in code examples.
    - Include comments where necessary to explain complex code segments.
 
-6. Error Handling and Troubleshooting
+6. **Error Handling and Troubleshooting**
    - Include troubleshooting guides or FAQs to address common issues.
    - Provide error messages, error codes, and possible solutions.
    - Explain how to diagnose and debug common problems.
    - Offer tips and best practices for effective error handling.
 
-7. Use of Images and Multimedia
+7. **Use of Images and Multimedia**
    - Include relevant screenshots, diagrams, and illustrations to aid understanding.
    - Use images to illustrate complex processes or user interface elements.
    - Ensure images are clear, properly labeled, and referenced in the text.
 
-8. Collaboration and Feedback
+8. **Collaboration and Feedback**
     - Encourage user feedback and questions.
     - Regularly review and incorporate user feedback into the documentation.
     - Collaborate with subject matter experts to ensure accuracy and completeness.
@@ -190,7 +190,11 @@ Red box guidelines (this is not done consistently from the contributors --- they
 
 Begin with the type of image, for example, "Screenshot of…" or "Diagram showing…".  This will soon become a validation error in the publication build and will block the pull request.
 
-
+| Type | Guidelines |
+| --- | --- |
+| **Diagrams**  | <ul><li>Express the core idea of the image.</li><li>Don't describe the image literally. For example, "<em>Diagram of Text Analytics service usage. Lines with arrows connect the two elements and show text flowing to the service and a numeric score being returned.</em>"</li><li>Don't write in the style of a title or caption. For example, "<em>Use of the Text Analytics service</em>"</li></ul><br />**EXAMPLE**<br />_"Diagram showing a Logic App using the detect-sentiment action to invoke the Text Analytics service."_  |
+| **Screenshots of UIs**  | <ul><li>Begin with "Screenshot of"</li><li>Identify the product</li><li>Identify highlighted areas</li><li>Include the location of UI elements, state of UI controls, and any relevant values in data-entry fields</li></ul><br />**EXAMPLE:**<br />_"Screenshot of the Visual Studio Debug menu. The menu entry titled Start Without Debugging and its keyboard shortcut Ctrl+F5 are highlighted."_  |
+| **Screenshots of CLIs**  | <ul><li>Provide both alternative text and a long description</li><li>The long description should include all relevant text shown in the screenshot</li><li>The long description should differentiate between each command and the output of those commands</li></ul><br />**EXAMPLE**<br />_"Screenshot of the Azure Cloud Shell using the PowerShell environment to launch a session and execute the Get-User command." _  |
 
 
 ## Consider reusability
