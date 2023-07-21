@@ -87,15 +87,41 @@ We aspire to follow these principles when we write technical content. We might n
 
 ### Headings and titles
 
-Use sentence-style capitalization for headings. Capitalize only the initial letter of the first word in the text and other words that require capitalization, such as proper nouns. Examples of proper nouns include the names of specific people, places, companies, languages, protocols, and products.
+Headings provide both structure and visual points of reference to help readers scan content. If you can break text logically into smaller sections, the extra spacing and distinct fonts associated with headings will help readers scan content and find entry points.
 
-Avoid using gerunds for headings. Gerunds introduce a lot of visual repetition, which hinders skimming and causes noise.
+- **Top-level** headings communicate what's most important and divide content into major subjects. Make them as specific as you can to catch the reader's attention.
 
-| Content type | Examples |
-| --- | --- |
-| For tasks and procedures, start with a verb  | <ul><li>Build an API response</li><li>Set the active build configuration</li></ul>  |
-| For conceptual, overview, and reference information, use noun phrases for headings  | <ul><li>Query language</li><li>Platform and application integration</li></ul>  |
-| For titles of guides, videos, and stand-alone information units (i.e., whitepapers)  | Use headline-style capitalization. <ul><li>Installation and User's Guide</li><li>Quick Start Guides or discrete sets of product documentation</li><li></li></ul>  |
+  👉 When there's a lot to say under a top-level heading, look for two or more distinct topics, and use second-level headings (subheads) to break up the large section into more scannable chunks. If you can't find at least two distinct topics, skip the second-level headings.
+
+- Avoid having two headings in a row without text in between—that might indicate a problem with organization or that the headings are redundant. But don't insert filler text just to separate the headings.
+
+- Each new heading represents a new or more specific topic. The heading should introduce the topic in an interesting way.
+
+- Use headings judiciously. One heading level is usually plenty for a page or two of content. For long content, you might need to use additional heading levels. For example, this guide uses four heading levels.
+
+- 👉 Keep headings as short as possible, and put the most important idea at the beginning. 
+
+- Be as specific as you can, and be even more detailed with lower-level headings. For example, a second-level heading should be more specific than a first-level heading.
+
+- Focus on what matters to customers, and choose words they'd use themselves. In most cases, don't talk about products, features, or commands in headings. Concentrate on what customers can achieve or what they need to know.
+
+- Don’t use ampersands (&) or plus signs (+) in headings unless you're referring to UI that contains them or space is limited.
+
+- Avoid hyphens in headings if you can. In resized windows or mobile devices, they can result in awkward line breaks.
+
+- Use vs., not v. or versus, in headings.
+
+- Use sentence-style capitalization for headings. Capitalize only the initial letter of the first word in the text and other words that require capitalization, such as proper nouns. Examples of proper nouns include the names of specific people, places, companies, languages, protocols, and products.
+
+- Avoid using gerunds for headings. Gerunds introduce a lot of visual repetition, which hinders skimming and causes noise.
+
+- Consider the following examples for a specific content type:
+
+  | Content type | Examples |
+  | --- | --- |
+  | For tasks and procedures, start with a verb  | <ul><li>Build an API response</li><li>Set the active build configuration</li></ul>  |
+  | For conceptual, overview, and reference information, use noun phrases for headings  | <ul><li>Query language</li><li>Platform and application integration</li></ul>  |
+  | For titles of guides, videos, and stand-alone information units (i.e., whitepapers)  | Use headline-style capitalization. <ul><li>Installation and User's Guide</li><li>Quick Start Guides or discrete sets of product documentation</li></ul>  |
 
 ### Topic and section introductions
 
@@ -126,7 +152,7 @@ Categories: checkboxes, fields, icons, menu choices, menu names, buttons, radio 
 
 Style: **Bold**
 
-Example: Click the language you want to use from the **Language* menu. The default selection is **English**.
+Example: From the Admin Console, under **Directory**, select **Identities > Add identity**.
 
 ## Links
 
