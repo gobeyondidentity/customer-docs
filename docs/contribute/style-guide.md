@@ -64,7 +64,7 @@ displayed_sidebar: contributorGuideSidebar
     - Collaborate with subject matter experts to ensure accuracy and completeness.
 
 
-## 🗣  Voice and tone
+## Voice and tone
 
 We aspire to follow these principles when we write technical content. We might not always get there, but we need to keep trying!
 
@@ -82,7 +82,7 @@ We aspire to follow these principles when we write technical content. We might n
 
 
 
-## ✍ Writing principles
+## Writing principles
 
 
 ### Headings and titles
@@ -111,6 +111,8 @@ Avoid starting short descriptions with phrases such as "This topic describes..."
 | :no_entry_sign: **DON'T** |
 | --- |
 | This support article lists steps to take if you're receiving the message “The version of Beyond Identity that you are on is no longer supported”.  |
+
+<br />
 
 Instead, use something like, "In this guide, you'll do XYZ (what they will accomplish by the end of this guide)..." or “In this article, you’ll….”
 
@@ -226,29 +228,30 @@ Writing for reuse requires writing without context. These guidelines help to mak
 - **Give the precise location of related information.** Avoid the words *above* or *below* in the text as much as possible. These indicators have no meaning in a non-linear context. Instead, use *next* or *previous* if the information is contained in the same topic (article in our case).
 
 
-## 🆗 Word usage
+## Word usage
 
-#### Avoid "may"
+### Avoid "may"
 
 Use "can" to indicate ability, or use "might" to indicate possibility.
 
 **Example:**
 
 - Indicating ability:
+  
+  | :white_check_mark: **DO** | :no_entry_sign: **DON'T** |
+  | --- | --- |
+  | You can use the command line interface to update your application. |  You may use the command line interface to update your application. |
 
-    :heavy_check_mark: You can use the command line interface to update your application."
-
-    :x: "You may use the command line interface to update your application."
 
 <br />
 
 - Indicating possibility:
 
-    :heavy_check_mark: "You might need more advanced features when you are integrating with another application. "
+  | :white_check_mark: **DO** | :no_entry_sign: **DON'T** |
+  | --- | --- |
+  | You might need more advanced features when you are integrating with another application. | You may need more advanced features when you are integrating with another application. |
 
-    :x: "You may need more advanced features when you are integrating with another application."
-
-#### Use “make sure” and “confirm” for important tasks
+### Use “make sure” and “confirm” for important tasks
 
 When asking the reader to confirm something, use one of the following terms:
 
@@ -260,7 +263,7 @@ When asking the reader to confirm something, use one of the following terms:
 | --- | --- |
 |  |   |
 
-## 💡 Tips and tricks
+## Tips and tricks
 
 Use this section to suggest hints to help writers create more effective copy for this message type. For example, offer guidance on how to approach message types that appear in more than one context.
 
