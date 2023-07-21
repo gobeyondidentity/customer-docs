@@ -32,7 +32,7 @@ displayed_sidebar: contributorGuideSidebar
 
 - `/sidebar.js` - Specify the order of documents in the sidebar. If you have a new file to add to the site, modify this file.
 
-- `static/api` - Contains the API documentation for v0 and v1.
+- `static/api` - Contains the API documentation for v2.
 
 ## Site config files
 

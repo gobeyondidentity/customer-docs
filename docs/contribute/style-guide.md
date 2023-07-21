@@ -157,16 +157,10 @@ Only add a “Learn more...” sentence if the help text addresses more than one
 
 Show results of actions in the same step as the task and be clear about where in the flow the reader is. In general, omit results statements unless the result is surprising or unexpected.
 
-### Put actions and results in the same step
-
-If you need to mention the results of a user action, then do it in the same numbered step that describes that action (don’t use a separate numbered step).
-
-### Mention earlier steps to reinforce order of tasks
-You can refer to an earlier step to reinforce the order of the steps.
-
-For progress within a series of steps, use the phrase “When you’ve” or “After you’ve.” Avoid using “Once you’ve.”
-
-For progress between tasks, begin a section with “Now that you’ve” or “After you’ve” (referring back to the previous action or step).
+| What | When to use |
+| --- | --- |
+| **Put actions and results in the same step**  | If you need to mention the results of a user action, then do it in the same numbered step that describes that action (don’t use a separate numbered step).  |
+| **Mention earlier steps to reinforce order of tasks**  |  You can refer to an earlier step to reinforce the order of the steps.<br /><br />For progress within a series of steps, use the phrase “When you’ve” or “After you’ve.” Avoid using “Once you’ve.”<br /><br />For progress between tasks, begin a section with “Now that you’ve” or “After you’ve” (referring back to the previous action or step). |
 
 
 ## Images and screenshots
@@ -234,18 +228,18 @@ Writing for reuse requires writing without context. These guidelines help to mak
 
 Use "can" to indicate ability, or use "might" to indicate possibility.
 
-**Example:**
+**Example**
 
-- Indicating ability:
+- **Indicating ability**
   
   | :white_check_mark: **DO** | :no_entry_sign: **DON'T** |
   | --- | --- |
   | You can use the command line interface to update your application. |  You may use the command line interface to update your application. |
 
 
-<br />
 
-- Indicating possibility:
+
+- **Indicating possibility**
 
   | :white_check_mark: **DO** | :no_entry_sign: **DON'T** |
   | --- | --- |
@@ -274,13 +268,13 @@ Use this section to suggest hints to help writers create more effective copy for
 
 | Topic type | What is it | When to use it |
 | --- | --- | --- |
-| Overview/Intro | Required: One article explaining the service from a technical point of view.<br /><br />Optional: A  second article comparing features across related services/projects. | For new customers. To explain the service, technology, or functionality from a technical point of view. It isn't intended to define benefits or value prop; that would be in marketing content. |
-| Quickstarts | Recommended: Fundamental day-1 instructions for new customers familiar with similar products to quickly try a specific product/service. <br /><br />Customers are familiar with your product or used something similar, and they don’t want to know what to do — they want to know how they do it with your particular product.<br /><br />The focus is on getting the product/service into customers’ hands so they can use it, not documenting the procedure for setting it up. | When new customers are familiar with similar products, and you want to get the service, technology, or functionality into their hands in less than 10 minutes. <br /><br />Quickstarts are preferred but not required if no meaningful functionality can be introduced to new users in under 10 minutes. |
-| Getting started | Recommended: Intended for people unfamiliar with your product and similar products — basically, for ‘newbies’ in that field or area. <br /><br />The focus is on giving the users basic concepts, ideally — detailed setup guidelines and explanations about each step they are making and why they are doing what you’re telling them to do. | When new customers are unfamiliar with similar products, and you want to onboard them with detailed setup guidelines with explanations about each step. |
-| Concepts | Recommended: In-depth explanation of functionality related to a service(s) fundamental to understanding and use. | When you want to:<ul><li>explain what something is and define its critical functions</li><li>describe how something works or what happens when something is done</li><li>provide guidelines for completing a job task in varied situations</li></ul> |
-| How-to | Required: Procedural articles that show the customer how to accomplish a specific task. It focuses on the 'How.'<br /><br />It assumes you only care about knowing what to do to get something done. As a result, it will often provide the bare minimum level of relevant information in completing a task. | To provide the steps to help customers complete specific tasks in their environment. How-to guides include optional information, explanations, and information to help inform decisions. |
-| Troubleshooting | Recommended: Articles that help users solve a common issue. | To help resolve a specific error or problem that customers commonly run into and would search on. |
-| Reference | Recommended: Documentation for APIs, PowerShell cmdlets, CLI commands, or other types of language-based content. | To provide descriptions of things like settings, values, keywords, and configurations. These topics are where readers will go to look up a specific value. |
-| Resources | Recommended: Non-technical content customers may find useful as they use the product/service. | To provide links to supporting information like pricing, Stack Overflow, blogs, regional availability, video library. |
-| Tutorials | Optional: Learning-based procedures where the focus is first on the ‘Why’ and then the 'How.' They give more detail at each step of the process to provide an understanding of why it is that what you are doing is relevant or why it works.<br /><br />For example, a 'how to' might go something like "…pour salt and leave for 5 minutes.” In contrast, a Tutorial would be more like "…pour salt and leave for 5 minutes to allow the salt enough time to dissolve in the water completely". | To show the single best procedure for completing a top 10 customer task. |
-| FAQs | Optional: Common questions a customer asks or would ask about using the product.  These questions will come from product and support. <br /><br />These should not replace troubleshooting articles.  Instead, the FAQs can address some commonly asked questions with a short answer with a link to more details that are in the troubleshooting article. | To help customers with questions about the usage of the product.  Sometimes this is the first place a customer goes when they approach end-user documentation. |
+| **Overview/Intro** | Required: One article explaining the service from a technical point of view.<br /><br />Optional: A  second article comparing features across related services/projects. | For new customers. To explain the service, technology, or functionality from a technical point of view. It isn't intended to define benefits or value prop; that would be in marketing content. |
+| **Quickstarts** | Recommended: Fundamental day-1 instructions for new customers familiar with similar products to quickly try a specific product/service. <br /><br />Customers are familiar with your product or used something similar, and they don’t want to know what to do — they want to know how they do it with your particular product.<br /><br />The focus is on getting the product/service into customers’ hands so they can use it, not documenting the procedure for setting it up. | When new customers are familiar with similar products, and you want to get the service, technology, or functionality into their hands in less than 10 minutes. <br /><br />Quickstarts are preferred but not required if no meaningful functionality can be introduced to new users in under 10 minutes. |
+| **Getting started** | Recommended: Intended for people unfamiliar with your product and similar products — basically, for ‘newbies’ in that field or area. <br /><br />The focus is on giving the users basic concepts, ideally — detailed setup guidelines and explanations about each step they are making and why they are doing what you’re telling them to do. | When new customers are unfamiliar with similar products, and you want to onboard them with detailed setup guidelines with explanations about each step. |
+| **Concepts** | Recommended: In-depth explanation of functionality related to a service(s) fundamental to understanding and use. | When you want to:<ul><li>explain what something is and define its critical functions</li><li>describe how something works or what happens when something is done</li><li>provide guidelines for completing a job task in varied situations</li></ul> |
+| **How-to** | Required: Procedural articles that show the customer how to accomplish a specific task. It focuses on the 'How.'<br /><br />It assumes you only care about knowing what to do to get something done. As a result, it will often provide the bare minimum level of relevant information in completing a task. | To provide the steps to help customers complete specific tasks in their environment. How-to guides include optional information, explanations, and information to help inform decisions. |
+| **Troubleshooting** | Recommended: Articles that help users solve a common issue. | To help resolve a specific error or problem that customers commonly run into and would search on. |
+| **Reference** | Recommended: Documentation for APIs, PowerShell cmdlets, CLI commands, or other types of language-based content. | To provide descriptions of things like settings, values, keywords, and configurations. These topics are where readers will go to look up a specific value. |
+| **Resources** | Recommended: Non-technical content customers may find useful as they use the product/service. | To provide links to supporting information like pricing, Stack Overflow, blogs, regional availability, video library. |
+| **Tutorials** | Optional: Learning-based procedures where the focus is first on the ‘Why’ and then the 'How.' They give more detail at each step of the process to provide an understanding of why it is that what you are doing is relevant or why it works.<br /><br />For example, a 'how to' might go something like "…pour salt and leave for 5 minutes.” In contrast, a Tutorial would be more like "…pour salt and leave for 5 minutes to allow the salt enough time to dissolve in the water completely". | To show the single best procedure for completing a top 10 customer task. |
+| **FAQs** | Optional: Common questions a customer asks or would ask about using the product.  These questions will come from product and support. <br /><br />These should not replace troubleshooting articles.  Instead, the FAQs can address some commonly asked questions with a short answer with a link to more details that are in the troubleshooting article. | To help customers with questions about the usage of the product.  Sometimes this is the first place a customer goes when they approach end-user documentation. |

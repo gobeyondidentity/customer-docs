@@ -30,11 +30,11 @@ displayed_sidebar: contributorGuideSidebar
 
 Our docs are a continuous work in progress. You're welcome to contribute to the documentation to help improve it, and we want to make it possible for you to become a contributor. 
 
-If you're not ready to contribute, you can provide us feedback.  
+
 
 ## Provide us feedback 
 
-Your feedback is essential in shaping the customer content experience. The team will track these ideas and issues to address your feedback. There are several ways to provide feedback:
+If you're not ready to contribute, you can provide us feedback. Your feedback is essential in shaping the customer content experience. The team will track these ideas and issues to address your feedback. There are several ways to provide feedback:
 
 - **[Submit an enhancement idea][enhancements]** to make the docs better
 
