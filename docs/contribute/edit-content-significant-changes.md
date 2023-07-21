@@ -16,6 +16,18 @@ doc_type: overview
 displayed_sidebar: contributorGuideSidebar
 ---
 
+<!-- Reference links -->
+[style-guide]: ./style-guide.md
+[markdown]: ./markdown-reference.md
+[contributor]: ./contribute.md
+[site]: https://docs.beyondidentity.com/
+[issues]: https://github.com/gobeyondidentity/customer-docs/issues
+[repo]: https://github.com/gobeyondidentity/customer-docs
+[pr]: https://github.com/gobeyondidentity/customer-docs/pulls
+[enhancements]: https://github.com/gobeyondidentity/customer-docs/issues/new?assignees=&labels=%F0%9F%8C%9F+enhancement&projects=&template=enhancement.yml
+[get-started]: ./get-started.md
+
+
 If you need to make substantial changes, add an image or add a section to a topic. On the other hand, if your change is minor that doesn't involve uploading a file or making changes to multiple files, follow the [Edit content - minor change](./edit-content-minor-changes) instructions instead.
 
 1. Make sure you're back on the main (default) branch so you can sync your local working branch.

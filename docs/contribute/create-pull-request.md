@@ -16,6 +16,18 @@ doc_type: overview
 displayed_sidebar: contributorGuideSidebar
 ---
 
+<!-- Reference links -->
+[style-guide]: ./style-guide.md
+[markdown]: ./markdown-reference.md
+[contributor]: ./contribute.md
+[site]: https://docs.beyondidentity.com/
+[issues]: https://github.com/gobeyondidentity/customer-docs/issues
+[repo]: https://github.com/gobeyondidentity/customer-docs
+[pr]: https://github.com/gobeyondidentity/customer-docs/pulls
+[enhancements]: https://github.com/gobeyondidentity/customer-docs/issues/new?assignees=&labels=%F0%9F%8C%9F+enhancement&projects=&template=enhancement.yml
+[get-started]: ./get-started.md
+
+
 Now you're ready to create and submit a pull request to have your changes or additions reviewed. Make sure to follow the [Pull request guidelines](#pull-request-guidelines).
 
 1. Go to the [main page of the repository][repo].

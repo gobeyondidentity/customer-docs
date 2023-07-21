@@ -16,6 +16,18 @@ doc_type: overview
 displayed_sidebar: contributorGuideSidebar
 ---
 
+<!-- Reference links -->
+[style-guide]: ./style-guide.md
+[markdown]: ./markdown-reference.md
+[contributor]: ./contribute.md
+[site]: https://docs.beyondidentity.com/
+[issues]: https://github.com/gobeyondidentity/customer-docs/issues
+[repo]: https://github.com/gobeyondidentity/customer-docs
+[pr]: https://github.com/gobeyondidentity/customer-docs/pulls
+[enhancements]: https://github.com/gobeyondidentity/customer-docs/issues/new?assignees=&labels=%F0%9F%8C%9F+enhancement&projects=&template=enhancement.yml
+[get-started]: ./get-started.md
+
+
 If you only need to fix a typo or clarify a sentence or section, this option is your best choice. It streamlines the process of reporting and correcting minor errors and omissions in the documentation.  
 
 Despite all efforts, small grammar and spelling errors _do_ make their way into our published documents. While you can create GitHub issues to report mistakes, creating a PR to fix the issue is faster and easier when the option is available.
