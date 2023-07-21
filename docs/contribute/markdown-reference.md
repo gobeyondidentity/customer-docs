@@ -46,7 +46,7 @@ All heading levels (e.g., H1, H2, etc.), are marked by the hashtag (#) at the be
 ###### This is a sixth level heading (H6)
 ```
 
-### Heading best practices
+
 Always put a space between the hash tag and the heading name.
 
 | :white_check_mark: **DO** | :no_entry_sign: **DON'T** |
