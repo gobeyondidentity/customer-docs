@@ -89,23 +89,50 @@ We aspire to follow these principles when we write technical content. We might n
 
 Headings provide both structure and visual points of reference to help readers scan content. If you can break text logically into smaller sections, the extra spacing and distinct fonts associated with headings will help readers scan content and find entry points.
 
-- **Top-level** headings communicate what's most important and divide content into major subjects. Make them as specific as you can to catch the reader's attention.
+**Top-level** headings communicate what's most important and divide content into major subjects while **lower-level** headings represent specific subjects within the topic. 
 
-  👉 When there's a lot to say under a top-level heading, look for two or more distinct topics, and use second-level headings (subheads) to break up the large section into more scannable chunks. If you can't find at least two distinct topics, skip the second-level headings.
+```javascript title="markdown file"
+ // highlight-start
+ // Top-level heading in the metadata 
+ ---
+ title: Top-level heading
+ ...
+ ---
+ // highlight-end 
+
+ OR
+
+ // highlight-next-line
+ # Top-level heading
+
+ ---
+
+ // highlight-start
+ // Lower-level headings within the topic
+ ## Lower-level heading
+
+ ### Lower-level heading
+
+ ...
+  // highlight-end
+```
+
+
+- 👉 When there's a lot to say under a top-level heading, look for two or more distinct topics, and use lower-level headings (subheads) to break up the large section into more scannable chunks. If you can't find at least two distinct topics, skip the lower-level headings.
 
 - Avoid having two headings in a row without text in between—that might indicate a problem with organization or that the headings are redundant. But don't insert filler text just to separate the headings.
 
 - Each new heading represents a new or more specific topic. The heading should introduce the topic in an interesting way.
 
-- Use headings judiciously. One heading level is usually plenty for a page or two of content. For long content, you might need to use additional heading levels. For example, this guide uses four heading levels.
+- Use headings judiciously. One heading level is usually plenty for a page or two of content. For long content, you might need to use additional heading levels. 
 
 - 👉 Keep headings as short as possible, and put the most important idea at the beginning. 
 
-- Be as specific as you can, and be even more detailed with lower-level headings. For example, a second-level heading should be more specific than a first-level heading.
+- Be as specific as you can to catch the reader's attention, and be even more detailed with lower-level headings. For example, a lower-level heading should be more specific than a top-level heading.
 
 - Focus on what matters to customers, and choose words they'd use themselves. In most cases, don't talk about products, features, or commands in headings. Concentrate on what customers can achieve or what they need to know.
 
-- Don’t use ampersands (&) or plus signs (+) in headings unless you're referring to UI that contains them or space is limited.
+- Don’t use ampersands (&) or plus signs (+) in headings unless you're referring to the UI that contains them or space is limited.
 
 - Avoid hyphens in headings if you can. In resized windows or mobile devices, they can result in awkward line breaks.
 
