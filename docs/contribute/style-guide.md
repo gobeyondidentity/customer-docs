@@ -89,7 +89,7 @@ We aspire to follow these principles when we write technical content. We might n
 
 Headings provide both structure and visual points of reference to help readers scan content. If you can break text logically into smaller sections, the extra spacing and distinct fonts associated with headings will help readers scan content and find entry points.
 
-**Top-level** headings communicate what's most important and divide content into major subjects while **lower-level** headings represent specific subjects within the topic. 
+**Top-level** headings communicate what's most important and divide content into major subjects representing the **lower-level** headings. 
 
 ```javascript title="markdown file"
  // highlight-start
