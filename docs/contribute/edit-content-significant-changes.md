@@ -6,7 +6,7 @@ slug: /edit-content-significant-changes
 keywords: 
  - faq
  - help
-pagination_next: null
+pagination_next: contribute/create-pull-request
 pagination_prev: null
 last_update: 
    date: 07/18/2023
@@ -28,7 +28,9 @@ displayed_sidebar: contributorGuideSidebar
 [get-started]: ./get-started.md
 
 
-If you need to make substantial changes, add an image or add a section to a topic. On the other hand, if your change is minor that doesn't involve uploading a file or making changes to multiple files, follow the [Edit content - minor change](./edit-content-minor-changes) instructions instead.
+If you need to make substantial changes, add an image or add a section to a topic. 
+
+On the other hand, if your change is minor that doesn't involve uploading a file or making changes to multiple files, follow the [Edit content - minor change](./edit-content-minor-changes) instructions instead.
 
 1. Make sure you're back on the main (default) branch so you can sync your local working branch.
 

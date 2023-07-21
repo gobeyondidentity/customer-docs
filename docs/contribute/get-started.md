@@ -6,7 +6,7 @@ slug: /contribute-get-started
 keywords: 
  - faq
  - help
-pagination_next: null
+pagination_next: contribute/when-to-contribute
 pagination_prev: null
 last_update: 
    date: 07/14/2023
@@ -16,12 +16,22 @@ doc_type: overview
 displayed_sidebar: contributorGuideSidebar
 ---
 
+
+When you're authoring content, you're working locally. So it's important to have the right tools installed. 
+
+
+:::note
+This is a one-time setup.
+:::
+
 ## Prerequisites
 
 - Code editor, [VS Code](https://code.visualstudio.com) is recommended
 - [Git](https://git-scm.com)
 - [Node.js](https://nodejs.org)
 - [Yarn](https://yarnpkg.com) 
+  
+  You'll use the `yarn` package manager to build and view your changes in a browser window before submitting your pull request (PR).
 
 
 ## Clone the repo
