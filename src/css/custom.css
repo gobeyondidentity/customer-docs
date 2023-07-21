@@ -105,7 +105,7 @@ body {
   font-family: 'Overpass', sans-serif;
 /*  color: #383a3e; */
   background-color: var(--ifm-background-color);
-  font-weight: 400;
+  font-weight: 500;
   -webkit-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
@@ -153,7 +153,6 @@ h3,
 h4,
 h5,
 h6 {
-  font-feature-settings: "ss02", "ss03";
   letter-spacing: -0.01em;
   font-weight: 600;
 }
@@ -200,7 +199,7 @@ a {
 }
 
 a:hover {
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: none;
 }
 
@@ -211,41 +210,7 @@ dt {
   margin-left: 20px;
 }
 
-/* logos for SDKs */
 
-.logoTable {
-  border: none;
-  width: 100%;
-}
-
-.logoTr {
-  border: none;
-  width: 100%;
-}
-
-.logoTdLeft {
-  border: none;
-  width: 15%;
-  text-align: center;
-}
-
-.logoTdRight {
-  border: none;
-  width: 85%;
-}
-
-.logoWidth {
-  border: none;
-  width: 96px;
-  align-self: center;
-  margin: 0;
-}
-
-/* card header background */
-
-.card-header {
-  background-color: var(--light-gray);
-}
 
 
 /* Breadcrumbs */
@@ -269,6 +234,12 @@ ol li ol li{
   list-style-type:lower-alpha;   
   margin-left: -15px;
 }
+
+ul li ol li{
+  list-style-type:lower-alpha;   
+  margin-left: 0px;
+}
+
 
 li.no-style {
   list-style-type: none;
@@ -356,7 +327,7 @@ div.indent li {
   
   
   .footer {
-    background-color: var(--adam-blue);
+    background-color: var(--ifm-color-primary-darkest);
     padding: 10px 0px;
     text-align: center;
     font-size: 12px;
@@ -503,7 +474,7 @@ div.indent li {
     text-decoration: none;
     transition: none;
   }
-  .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsed {
+  .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible {
     background: none;
     margin-top: 0.25rem;
   }
