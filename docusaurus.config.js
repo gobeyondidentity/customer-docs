@@ -97,7 +97,6 @@ themes: [
         theme: {
           // Change with your site colors
           primaryColor: '#5077c5',
-
         },
       },
     ],
