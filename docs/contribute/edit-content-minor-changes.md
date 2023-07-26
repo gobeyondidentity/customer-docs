@@ -36,11 +36,37 @@ Despite all efforts, small grammar and spelling errors _do_ make their way into 
 
    ![GitHub Edit file icon](./images/github-edit-file.png)<br />
 
-2. Edit the file in the web editor. Choose the **Preview** tab to check the formatting of your changes.<br />
+2. Change the date in the metadata and ensure the author is correct. Add any additional keywords if they are missing.
+
+   ```markdown
+   ---
+   title: Getting Started with React
+   id: get-started-react
+   description: 'Create a free Beyond Identity developer account and connect it to our sample application. This application demonstrates common workflows, like creating realms, applications, and passkeys (public-private key pairs) for user authentication.'
+   slug: /get-started-react
+   keywords: 
+    - get started
+    - react
+   pagination_next: null
+   pagination_prev: null
+   last_update: 
+      date: 06/01/2023  // Last updated date
+      author: Patricia McPhee  // Subject matter expert
+   draft: false
+   doc_type: how-to
+   displayed_sidebar: mainSidebar
+   ---
+   ```
+
+3. Make your changes to the content and choose the **Preview** tab to view your changes.<br />
 
    ![GitHub Preview changes](./images/github-preview-changes.png)<br />
 
-3. When you're finished editing, scroll to the bottom of the page and propose your changes. <br />
+   :::note important
+   The **Preview** tab does not show any formatting. You cannot preview the formatting of your changes. 
+   :::
+
+4. When you're finished editing, scroll to the bottom of the page and propose your changes. <br />
 
    1. In the **Commit changes** area, enter a title and an optional description for your changes. The title will be the first line of the commit message. <br />
 
@@ -48,7 +74,7 @@ Despite all efforts, small grammar and spelling errors _do_ make their way into 
    
      ![GitHub propose and commit changes](./images/github-commit-proposed-changes.png)<br />
 
-4. Now that you've proposed and committed your changes, you need to ask the owners to review your changes. This is done using a pull request (PR).<br />
+5. Now that you've proposed and committed your changes, you need to ask the owners to review your changes. This is done using a pull request (PR).<br />
 
    Enter a title and a description for the PR, and then select **Create pull request**. You can select **Create a draft pull request** instead. The difference is that the reviewers are notified only when the PR is *Open* rather than *Draft*.<br />
 
