@@ -20,17 +20,33 @@ The threat dashboard provides an easy-to-use and intuitive threat intelligence a
 
 The dashboard includes interactive filters, weighting controls, and widgets displaying IDs, devices, and authentications associated with risk. Risky entities are added to low, medium, and high groups based on their score from 0-100. You can drill down into details and export or share the dashboard. 
 
-![Screenshot showing the Risk Overview](./images/risk-overview.png)
-
-![Screenshot showing the Risk Overview filtering on Risk score group.](./images/risk-overview-filter.png )
-
 - Additional information about each entity’s risk can be viewed by clicking on the associated row in the table below the bar chart.
 
 - If a user or passkey is of higher risk, you can navigate to the users profile or the passkey and revoke them.
 
 - The risk overview also helps build policy based on the vulnerabilities observed across your fleet.
 
-- View detailed integration events. Under Events, view events related to API calls made to third party integrations for enhanced visibility and troubleshooting.
+- View detailed integration events. Under **Events**, view events related to API calls made to third party integrations for enhanced visibility and troubleshooting.
+
+## Distribution of scored entities
+
+This view displays the distribution of scored entities (users, passkeys or authentications) across the fleet. We score each entity at the time of authentication, and you can adjust the authentication window to see how each entity is scored over time. 
+
+
+![Screenshot showing the distribution of scored entities (users, passkeys or authentications) across the fleet.](./images/authentication-risk-activity.png)
+
+
+The table below the bar chart represents the list of users, passkeys, or authentications summarized in the bar chart above. Clicking on any row will expand the view, providing more information about the vulnerabilities observed for each.
+
+![Screenshot showing the list of users, passkeys, or authentications summarized in the bar chart above](./images/list-of-users-passkeys-or-authentications.png)
+
+## Filtering
+
+This view shows the interactive filtering options available. 
+
+![Screenshot showing the Risk Overview filtering on Risk score group.](./images/risk-overview-filter.png )
+
+
 
 ## How it works
 

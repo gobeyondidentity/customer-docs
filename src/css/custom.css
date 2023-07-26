@@ -268,7 +268,7 @@ div.indent li {
 .markdown img { 
     border: 1px solid #ccc; 
     border-radius:5px;
-    max-width: 60%;
+    max-width: 100%;
     height: auto;
     margin: 0px 0;
   
