@@ -123,11 +123,6 @@ This is the most common method for using images in an article once.  If you’re
 ```
 
 
-```md
-![alt text](https://<domain>.com/images/icon48.png "Logo Title Text 1")  //inline-style with tooltip
-```
-
-
 ### Reference style
 
 Use this method for articles that have the same image in multiple places. For example, an integration guide might mention a couple of different methods of doing something, and those methods have the same image. Therefore, you’d want to use the reference style to reuse images.

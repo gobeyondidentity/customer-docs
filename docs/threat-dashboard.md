@@ -41,9 +41,15 @@ The table below the bar chart represents the list of users, passkeys, or authent
 
 ## Filtering
 
-This view shows the interactive filtering options available. You can choose which view you want on the right; choose between user, passkey, and authentication risk distributions. On the right, you can select the date range of authentication activity.
+This view shows the interactive filtering options available. 
 
-![Screenshot showing the Risk Overview filtering on Risk score group.](./images/risk-overview-filter.png )
+![Screenshot showing the Risk Overview filtering on Risk score group.](./images/risk-overview-filter.png)
+
+You can choose which view you want; choose between user, passkey, and authentication risk distributions. On the right, you can select the date range of authentication activity.
+
+![Screenshot showing the Risk Overview filtering on Risk score group.](./images/filtering-users-last-30-days.png)
+
+
 
 
 
