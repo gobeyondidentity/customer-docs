@@ -62,5 +62,5 @@ Beyond Identity utilizes Stouffer's method to combine Z-scores from different si
 
 As an example, consider the "Firewall Status" risk signal. It outputs a value of 1 if no firewall is detected on a device and 0 if a firewall is present. Let's say a tenant has 100 devices, and 60 lack a firewall, resulting in a SUM of signal outputs equal to 60. The model used for this signal assumes that firewalls should protect 50% of devices.
 
-By applying the risk aggregation methodology, Beyond Identity can generate meaningful and interpretable risk scores that provide insights into security risks at different levels. This enables them to better understand and address potential security threats and enhance the overall security posture for their customers.
+By applying the risk aggregation methodology, Beyond Identity can generate meaningful and interpretable risk scores that provide insights into security risks at different levels. This enables us to better understand and address potential security threats and enhance the overall security posture for our customers.
 
