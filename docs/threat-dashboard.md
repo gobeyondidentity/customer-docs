@@ -26,7 +26,6 @@ The dashboard includes interactive filters, weighting controls, and widgets disp
 
 - The risk overview also helps build policy based on the vulnerabilities observed across your fleet.
 
-- View detailed integration events. Under **Events**, view events related to API calls made to third party integrations for enhanced visibility and troubleshooting.
 
 ## Distribution of scored entities
 
@@ -42,7 +41,7 @@ The table below the bar chart represents the list of users, passkeys, or authent
 
 ## Filtering
 
-This view shows the interactive filtering options available. 
+This view shows the interactive filtering options available. You can choose which view you want on the right; choose between user, passkey and authentication risk distributions.  On the right, you can select the date range of authentication activity.
 
 ![Screenshot showing the Risk Overview filtering on Risk score group.](./images/risk-overview-filter.png )
 
