@@ -32,7 +32,7 @@ The team will track these ideas and issues to address your feedback.
 
 ## Contribute to the docs
 
-Refer to the [contributor's guide](./contributor-guide/contributor-guide.md) for details on how to submit edits or additions to the documentation.
+Refer to the [contributor's guide](./docs/contribute/contribute.md) for details on how to submit edits or additions to the documentation.
 
 ## Doc branches
 
@@ -95,7 +95,7 @@ Docaurus native components.
    git checkout -b <branch_name> main
    ```
 
-Refer to the [contributor's guide](./contributor-guide/contributor-guide.md) for details on how to submit edits or additions to the documentation.
+Refer to the [contributor's guide](./docs/contribute/contribute.md) for details on how to submit edits or additions to the documentation.
 
 ### Start the development server
 

@@ -6,7 +6,43 @@ const sidebars = {
   secureWorkforceSidebar: [
     'intro',
     'platform/admin-console',
-    
+    'threat-dashboard',
+
+/*
+  {
+      type: 'category',
+      label: 'Platform',  
+      collapsed: false, 
+      collapsible: false,
+      link: {
+        type: 'doc',
+        id: 'platform/platform',
+      },      
+      items: [ 
+        'platform/architecture',
+        'platform/admin-console',
+      ],
+    },  
+*/    
+
+/*
+  {
+      type: 'category',
+      label: 'Desktop Login',  
+      collapsed: false, 
+      collapsible: false, 
+      link: {
+        type: 'doc',
+        id: 'desktop-login/desktop-login',
+      },      
+      items: [ 
+        'desktop-login/windows-desktop-login',
+        'desktop-login/mac-desktop-login',
+        'desktop-login/desktop-login-troubleshooting',
+      ],
+    },  
+*/    
+
   ],
 
   /*
@@ -32,24 +68,52 @@ const sidebars = {
   ],
 */
 
-  /*
+
   contributorGuideSidebar: [
     {
       type: 'category',
-      label: 'Contributor's Guide',  
+      label: 'Contribute',  
+      collapsible: false,  
+      collapsed: false,  
       link: {
         type: 'doc',
-        id: 'release-notes/release-notes-main',
+        id: 'contribute/contribute',
       },
-      collapsible: false,    
       items: [ 
-        'release-notes/v2-77-0',
-        'release-notes/v2-76-0',
-        'release-notes/v2-75-0',
+        'contribute/contribute-get-started',
+        'contribute/when-to-contribute',
+
+        'contribute/site-organization-and-files',
+        'contribute/docs-site-branches',
+        'contribute/best-practices',
+        {
+          type: 'category',
+          label: 'Edit content',
+          collapsed: true, 
+          collapsible: false,           
+           items: [    
+            {
+              type: 'doc',
+              id: 'contribute/edit-content-minor-changes',
+              label: 'Minor changes',
+            },
+            {
+              type: 'doc',
+              id: 'contribute/edit-content-significant-changes',
+              label: 'Significant changes',
+            }, 
+         ],
+        },
+        'contribute/add-new-topic',
+        'contribute/create-pull-request',        
       ],
     },    
+    'contribute/markdown-reference',
+    'contribute/style-guide',
+    'contribute/release-notes-guide',
   ],
-*/
+
+
 
 };
 
