@@ -295,6 +295,13 @@ div.indent li {
     margin: 16px auto;
     max-width: 100%;
   }
+
+  #thumbnail {
+    display: block;
+    border: none;
+    margin: 16px auto;
+    max-width: 30%;
+  }
   
   #icons-24 {
     display: block;

@@ -28,18 +28,18 @@ displayed_sidebar: contributorGuideSidebar
 [get-started]: ./get-started.md
 
 
+
 Now you're ready to create and submit a pull request to have your changes or additions reviewed. Make sure to follow the [Pull request guidelines](#pull-request-guidelines).
 
 1. Go to the [main page of the repository][repo].
 
-2. Above the list of files, in the yellow banner, click **Compare & pull request** to create a pull request for the associated branch.  <br /><br />
+2. Above the list of files, in the yellow banner, click **Compare & pull request** to create a pull request for the associated branch.  <br />
+
+   ![Compare and pull request](https://docs.github.com/assets/cb-34106/mw-1440/images/help/pull_requests/pull-request-compare-pull-request.webp)
 
    :::note important  
    All pull requests should be opened against the `main` branch unless the it's for the upcoming next release. In that case, the PR should be opened against the `docs-staging` branch. 
    :::
-
-   ![Compare and pull request](https://docs.github.com/assets/cb-34106/mw-1440/images/help/pull_requests/pull-request-compare-pull-request.webp)
-
 
 1. Provide additional information and if possible add reviewers. 
 
@@ -91,10 +91,13 @@ A few things to keep in mind when creating your pull request:
 
 The ownership of the PR is on the person who creates the PR. The author's responsibility is to get it reviewed and approved for technical accuracy before submitting the PR. 
 
-
+### Content dev process - High-level overview
 
 ![Technical Writing process flow - GitHub](../../static/img/tech-writing-process-flow.png)
 
+### Content dev process - Detailed breakdown
+
+![Detailed breakdown of the content development process.](../../static/img/content-dev-process-happy-path.jpg "Detailed breakdown of the content development process.")
 
 ## Pull request template
 
