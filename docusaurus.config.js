@@ -122,7 +122,7 @@ themes: [
           href: '/',
         },
         items: [ 
-//          { to: "/api/", label: "Public API", position: "left" },
+          { to: "/api/", label: "Public API", position: "left" },
           { href: "https://support.beyondidentity.com/hc/en-us/sections/4968400314775-Release-Notes", label: "Release Notes", position: "left" },
 //          { to: "/release-notes-main", label: "Release Notes", position: "left" },
         ],
