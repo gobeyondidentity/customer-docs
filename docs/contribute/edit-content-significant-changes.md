@@ -51,22 +51,20 @@ On the other hand, if your change is minor that doesn't involve uploading a file
 
    ```markdown
    ---
-   title: Getting Started with React
-   sidebar_label: React
-   id: get-started-react
-   description: 'Create a free Beyond Identity developer account and connect it to our sample application. This application demonstrates common workflows, like creating realms, applications, and passkeys (public-private key pairs) for user authentication.'
-   slug: /get-started-react
+   title: Threat Dashboard
+   id: threat-dashboard
+   description: 'Learn how to identify users, passkeys and authentications that have displayed some degree of risk over the last 0-90 days. Risky entities are added to low, medium, and high groups based on their score from 0-100. You can filter the view of this dashboard and the accompanying table based on these groups. '
+   slug: /threat-dashboard
    keywords: 
-    - get started
-    - react
+    - threat dashboard
    pagination_next: null
    pagination_prev: null
    last_update: 
-      date: 06/01/2023
-      author: Patricia McPhee
+      date: 07/26/2023  
+      author: John Canneto  
    draft: false
-   doc_type: how-to
-   displayed_sidebar: mainSidebar
+   doc_type: overview
+   displayed_sidebar: secureWorkforceSidebar
    ---
    ```
 
