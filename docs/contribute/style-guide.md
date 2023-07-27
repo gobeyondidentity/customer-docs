@@ -17,7 +17,6 @@ displayed_sidebar: contributorGuideSidebar
 
 1. **Consistency**
    - Use a consistent writing style throughout the documentation.
-   - Maintain consistent formatting, such as heading styles, font sizes, and code formatting.
    - Use consistent terminology and language to describe concepts and features.
 
 2. **Clarity and Simplicity**
@@ -29,23 +28,23 @@ displayed_sidebar: contributorGuideSidebar
 3. **Structure and Organization**
    - Use a logical and hierarchical structure for your documentation.
    - Provide clear and informative headings and subheadings.
-   - Use bullet points or numbered lists for step-by-step instructions or procedures.
+   - Use numbered lists for step-by-step instructions or procedures.
+   - Use bullet points for lists where the order doesn't matter. 
    - Group related information together for easy navigation.
 
 4. **Audience Awareness**
    - Identify and understand your target audience (developers, system administrators, beginners, etc.).
    - Adapt your writing style and language to match the knowledge level of your audience.
-   - Include introductory sections or tutorials for beginners.
+   - Include [introductory sections (paragraph)](#topic-and-section-introductions) at the top of each topic for beginners.
    - Provide advanced sections or references for experienced users.
 
 5. **Code Conventions**
-   - Follow established coding conventions and style guidelines for code snippets.
    - Use syntax highlighting for code blocks.
    - Clearly indicate placeholders or variables in code examples.
    - Include comments where necessary to explain complex code segments.
 
 6. **Error Handling and Troubleshooting**
-   - Include troubleshooting guides or FAQs to address common issues.
+   - Include troubleshooting guides, FAQs, or in-line notes to address common issues.
    - Provide error messages, error codes, and possible solutions.
    - Explain how to diagnose and debug common problems.
    - Offer tips and best practices for effective error handling.
@@ -53,7 +52,7 @@ displayed_sidebar: contributorGuideSidebar
 7. **Use of Images and Multimedia**
    - Include relevant screenshots, diagrams, and illustrations to aid understanding.
    - Use images to illustrate complex processes or user interface elements.
-   - Ensure images are clear, properly labeled, and referenced in the text.
+   - Ensure images are clear, properly labeled, referenced in the text, and [follow the guidelines](#images-and-screenshots).
 
 8. **Collaboration and Feedback**
     - Encourage user feedback and questions.
@@ -115,15 +114,13 @@ Headings provide both structure and visual points of reference to help readers s
 ```
 
 
-- 👉 When there's a lot to say under a top-level heading, look for two or more distinct topics, and use lower-level headings (subheads) to break up the large section into more scannable chunks. If you can't find at least two distinct topics, skip the lower-level headings.
+- 👉 Keep headings as short as possible, and put the most important idea at the beginning. When there's a lot to say under a top-level heading, look for two or more distinct topics, and use lower-level headings (subheads) to break up the large section into more scannable chunks. If you can't find at least two distinct topics, skip the lower-level headings.
 
 - Avoid having two headings in a row without text in between—that might indicate a problem with organization or that the headings are redundant. But don't insert filler text just to separate the headings.
 
 - Each new heading represents a new or more specific topic. The heading should introduce the topic in an interesting way.
 
 - Use headings judiciously. One heading level is usually plenty for a page or two of content. For long content, you might need to use additional heading levels. 
-
-- 👉 Keep headings as short as possible, and put the most important idea at the beginning. 
 
 - Be as specific as you can to catch the reader's attention, and be even more detailed with lower-level headings. For example, a lower-level heading should be more specific than a top-level heading.
 
