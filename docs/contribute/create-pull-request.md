@@ -66,7 +66,7 @@ Now you're ready to create and submit a pull request to have your changes or add
 
    If the pull request is a **work in progress** and not ready to be reviewed, select the **[Create draft pull request](https://github.blog/2019-02-14-introducing-draft-pull-requests/#tag-your-work-in-progress)**.
 
-3. After going through the review process for technical accuracy and a copy edit from a Sr. Technical Writer, they will enter `#sign-off` and merge the pull request. Your changes get merged into the `main` branch. 
+3. After going through the review process for technical accuracy and a copy edit from a Sr. Technical Writer, they will enter `#approved` and merge the pull request. Your changes get merged into the `main` branch. 
 
 
 ## Pull request guidelines
