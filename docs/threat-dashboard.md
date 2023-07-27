@@ -88,7 +88,7 @@ By applying the risk aggregation methodology, Beyond Identity can generate meani
 |OS support|This signal detects whether an authenticating device uses an OS build that is no longer supported by security updates.|X of Y active devices were detected with OS versions no longer supported by their vendors.|
 |OS vulnerabilities|This signal detects whether an authenticating device uses an OS version with an anomalously high number of CVEs that have high or critical severities. Detections are made for measurements that are two or more standard deviations above the mean.|X of Y active devices were detected with OS versions that have a high number of CVE vulnerabilities.|
 |Password set|This signal detects whether an authenticating device is not password protected|X of Y active devices were detected with no password protection.|
-|TPM check|This signal detects whether an authenticating device has no TPM or secure enclave for storing credentials.|X of Y active devices were detected with no TPM or secure enclave.|
+|TEE check|This signal detects whether an authenticating device has no TEE or secure enclave for storing credentials.|X of Y active devices were detected with no TEE or secure enclave.|
 
 ### Threat indicator signals
 
