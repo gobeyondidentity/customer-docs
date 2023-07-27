@@ -3,9 +3,6 @@ title: "When to contribute"
 id: when-to-contribute
 description: ""
 slug: /when-to-contribute
-keywords: 
- - faq
- - help
 pagination_next: null
 pagination_prev: null
 last_update: 

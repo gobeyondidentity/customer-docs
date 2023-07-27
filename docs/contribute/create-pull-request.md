@@ -3,16 +3,13 @@ title: "Create Pull Request"
 id: create-pull-request
 description: ""
 slug: /create-pull-request
-keywords: 
- - faq
- - help
 pagination_next: null
 pagination_prev: null
 last_update: 
    date: 07/18/2023
    author: Patricia McPhee
 draft: false
-doc_type: overview
+doc_type: how-to
 displayed_sidebar: contributorGuideSidebar
 ---
 

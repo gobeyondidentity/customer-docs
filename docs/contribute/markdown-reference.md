@@ -3,16 +3,13 @@ title: "Markdown Reference Guide"
 id: markdown-reference
 description: ""
 slug: /markdown-reference
-keywords: 
- - faq
- - help
 pagination_next: null
 pagination_prev: null
 last_update: 
    date: 07/20/2023
    author: Patricia McPhee
 draft: false
-doc_type: overview
+doc_type: reference
 displayed_sidebar: contributorGuideSidebar
 ---
 

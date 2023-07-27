@@ -3,16 +3,13 @@ title: "Add new content"
 id: add-new-topic
 description: ""
 slug: /add-new-topic
-keywords: 
- - faq
- - help
 pagination_next: contribute/create-pull-request
 pagination_prev: null
 last_update: 
-   date: 07/18/2023
+   date: 07/26/2023
    author: Patricia McPhee
 draft: false
-doc_type: overview
+doc_type: how-to
 displayed_sidebar: contributorGuideSidebar
 ---
 
@@ -52,11 +49,15 @@ The Sr. Technical Writer maintains the content's quality, reduces duplication, a
 
    Keywords are optional but helpful. All other metadata is required.
 
+   :::note important
+   The `author` metadata value is the Subject Matter Expert (Engineer, Developer, or Product Manager) rather than the Technical Writer.
+   :::
+
    ```markdown
    ---
    title: Threat Dashboard
    id: threat-dashboard
-   description: 'Learn how to identify users, passkeys and authentications that have displayed some degree of risk over the last 0-90 days. Risky entities are added to low, medium, and high groups based on their score from 0-100. You can filter the view of this dashboard and the accompanying table based on these groups. '
+   description: 'The threat dashboard provides easy-to-use and intuitive threat intelligence analytics. This new dashboard will help you identify users, passkeys, and authentications that have displayed some risk over the last 0-90 days. Risky entities are added to low, medium, and high groups based on their score from 0-100. You can filter the view of this dashboard and the accompanying table based on these groups.'
    slug: /threat-dashboard
    keywords: 
     - threat dashboard

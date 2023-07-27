@@ -3,16 +3,13 @@ title: "Style Guide"
 id: style-guide
 description: ""
 slug: /style-guide
-keywords: 
- - faq
- - help
 pagination_next: null
 pagination_prev: null
 last_update: 
    date: 07/21/2023
    author: Patricia McPhee
 draft: false
-doc_type: overview
+doc_type: reference
 displayed_sidebar: contributorGuideSidebar
 ---
 

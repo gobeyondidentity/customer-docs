@@ -3,16 +3,13 @@ title: "Edit content (significant changes)"
 id: edit-content-significant-changes
 description: ""
 slug: /edit-content-significant-changes
-keywords: 
- - faq
- - help
 pagination_next: contribute/create-pull-request
 pagination_prev: null
 last_update: 
-   date: 07/18/2023
+   date: 07/26/2023
    author: Patricia McPhee
 draft: false
-doc_type: overview
+doc_type: how-to
 displayed_sidebar: contributorGuideSidebar
 ---
 
@@ -49,11 +46,17 @@ On the other hand, if your change is minor that doesn't involve uploading a file
 
 4. Change the date in the metadata and ensure the title, description, and author are correct. Add any additional keywords if they are missing.
 
+   Keywords are optional but helpful. All other metadata is required.
+
+   :::note important
+   The `author` metadata value is the Subject Matter Expert (Engineer, Developer, or Product Manager) rather than the Technical Writer.
+   :::
+
    ```markdown
    ---
    title: Threat Dashboard
    id: threat-dashboard
-   description: 'Learn how to identify users, passkeys and authentications that have displayed some degree of risk over the last 0-90 days. Risky entities are added to low, medium, and high groups based on their score from 0-100. You can filter the view of this dashboard and the accompanying table based on these groups. '
+   description: 'The threat dashboard provides easy-to-use and intuitive threat intelligence analytics. This new dashboard will help you identify users, passkeys, and authentications that have displayed some risk over the last 0-90 days. Risky entities are added to low, medium, and high groups based on their score from 0-100. You can filter the view of this dashboard and the accompanying table based on these groups.'
    slug: /threat-dashboard
    keywords: 
     - threat dashboard
@@ -68,30 +71,30 @@ On the other hand, if your change is minor that doesn't involve uploading a file
    ---
    ```
 
-4. Make your changes to the content and run the following command to build and review your changes.
+5. Make your changes to the content and run the following command to build and review your changes.
 
    ```bash
    yarn start
    ```
 
-   This command starts a local development server and opens a browser window. Most changes are reflected live without having to restart the server. If a browser window doesn\'t open, go to **http://localhost:3000/** to view your local changes. 
+   This command starts a local development server and opens a browser window. Most changes are reflected live without having to restart the server. If a browser window doesn't open, go to **http://localhost:3000/** to view your local changes. 
 
-1. Perform a self-review of your markdown and make sure your changes or additions follow the [style guidelines](./style-guide.md).
+6. Perform a self-review of your markdown and make sure your changes or additions follow the [style guidelines](./style-guide.md).
 
-1. Verify that the PR won't generate warnings or errors, such as broken links. If so, address them and ensure it builds without issues.
+7. Verify that the PR won't generate warnings or errors, such as broken links. If so, address them and ensure it builds without issues.
   
    ```bash
    npm run clear
    yarn build
    ```
 
-7. When you're ready to submit a pull request, add your changes.
+8. When you're ready to submit a pull request, add your changes.
 
    ```bash
    git add --all
    ```
 
-8. Commit your changes with a descriptive summary, for example, *Add clarity to the data table component usage examples*.
+9. Commit your changes with a descriptive summary, for example, *Add clarity to the data table component usage examples*.
 
    ```bash
    git commit -m "short description of the change"
@@ -103,10 +106,10 @@ On the other hand, if your change is minor that doesn't involve uploading a file
 
    ***If applied, this commit will ....***
 
-9. Publish, or push, your changes to the main repo for merging. 
+10. Publish, or push, your changes to the main repo for merging. 
 
    ```bash
    git push origin {your-branch-name}
    ```
 
-1. [Create a pull request](./create-pull-request).
+11. [Create a pull request](./create-pull-request).
