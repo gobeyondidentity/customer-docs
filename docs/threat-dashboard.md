@@ -15,8 +15,13 @@ doc_type: overview
 displayed_sidebar: secureWorkforceSidebar
 ---
 
+<div class="alert alert--primary" role="alert">
+  The <b>Threat Dashboard</b> is an early access feature and requires an entitlement. Reach out to our team for access!
+</div>
 
-The threat dashboard provides easy-to-use and intuitive threat intelligence analytics. This new dashboard will help you identify users, passkeys, and authentications that have displayed some risk over the last 0-90 days. 
+<br />
+
+It provides easy-to-use and intuitive threat intelligence analytics. This new dashboard will help you identify users, passkeys, and authentications that have displayed some risk over the last 0-90 days. 
 
 The dashboard includes interactive filters, weighting controls, and widgets displaying IDs, devices, and authentications associated with risk. Risky entities are added to low, medium, and high groups based on their score from 0-100. You can drill down into details and export or share the dashboard. 
 
@@ -64,3 +69,32 @@ As an example, consider the "Firewall Status" risk signal. It outputs a value of
 
 By applying the risk aggregation methodology, Beyond Identity can generate meaningful and interpretable risk scores that provide insights into security risks at different levels. This enables us to better understand and address potential security threats and enhance the overall security posture for our customers.
 
+### Risk categories
+
+|CATEGORY|DESCRIPTION|
+| --- | --- |
+|Baselines|This category includes risk signals that detect deviations from standard security practices, like enabling a firewall and keeping the OS up-to-date.|
+|Threat indicators|This category includes risk signals that detect indicators of compromise that could occur if an identity or device are stolen.|
+|Behavior changes|This category includes risk signals that detect anomalous behaviors. These are not smoking guns for malicious activity, but they could provide further evidence for an active threat.|
+
+### Baseline signals
+
+|SIGNAL NAME|DESCRIPTION|DETECTIONS<br /><br />In the selected time window…|
+| --- | --- | --- |
+|Antivirus status|This signal detects whether an authenticating device has antivirus software disabled.|X of Y active devices were detected with no enabled antivirus software.|
+|FileVault status|This signal detects whether an authenticating device has disabled Filevault disk encryption. This is only relevant for devices running MacOS.|X of Y active devices were detected with Filevault disabled.|
+|Firewall status|This signal detects whether an authenticating device has a disabled firewall.|X of Y active devices were detected with no enabled firewall.|
+|Jailbroken status|This signal detects whether an authenticating device is either jailbroken or rooted.|X of Y active devices were detected as either jailbroken or rooted.|
+|OS support|This signal detects whether an authenticating device uses an OS build that is no longer supported by security updates.|X of Y active devices were detected with OS versions no longer supported by their vendors.|
+|OS vulnerabilities|This signal detects whether an authenticating device uses an OS version with an anomalously high number of CVEs that have high or critical severities. Detections are made for measurements that are two or more standard deviations above the mean.|X of Y active devices were detected with OS versions that have a high number of CVE vulnerabilities.|
+|Password set|This signal detects whether an authenticating device is not password protected|X of Y active devices were detected with no password protection.|
+|TPM check|This signal detects whether an authenticating device has no TPM or secure enclave for storing credentials.|X of Y active devices were detected with no TPM or secure enclave.|
+
+### Threat indicator signals
+
+|SIGNAL NAME|DESCRIPTION|DETECTIONS<br /><br />In the selected time window…|
+| --- | --- | --- |
+|Device location|This signal detects whether an authentication occurs from a country known for high levels of malicious activity.|X of Y authentications were detected as originating from a country associated with high levels of malicious activity.|
+|Fast travel|This signal detects whether consecutive authentications from a single user imply an impossible rate of travel, greater than 500 mph.|X of Y authentications were found to imply an impossible travel rate.|
+|IP blocklists|This signal detects whether an authenticating IP has one or more matches on a set of public IP blocklists.|X of Y authentications had IPs that were matched to an IP blocklist.|
+|TOR exit|This signal detects whether an authenticating IP is a Tor exit node used to hide the true actor IP.|X of Y authentications had IPs that were matched to a Tor exit node.|
