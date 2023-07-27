@@ -3,9 +3,6 @@ title: "Get Started"
 id: contribute-get-started
 description: ""
 slug: /contribute-get-started
-keywords: 
- - faq
- - help
 pagination_next: contribute/when-to-contribute
 pagination_prev: null
 last_update: 

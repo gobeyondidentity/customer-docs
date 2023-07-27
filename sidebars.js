@@ -80,9 +80,9 @@ const sidebars = {
         id: 'contribute/contribute',
       },
       items: [ 
-        'contribute/contribute-get-started',
-        'contribute/when-to-contribute',
 
+        'contribute/when-to-contribute',
+        'contribute/contribute-get-started',
         'contribute/site-organization-and-files',
         'contribute/docs-site-branches',
         'contribute/best-practices',

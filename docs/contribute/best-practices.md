@@ -3,9 +3,6 @@ title: "Best practices"
 id: best-practices
 description: ""
 slug: /best-practices
-keywords: 
- - faq
- - help
 pagination_next: null
 pagination_prev: null
 last_update: 

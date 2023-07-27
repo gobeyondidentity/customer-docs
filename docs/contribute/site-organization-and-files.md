@@ -3,16 +3,13 @@ title: "Site organization and files"
 id: site-organization-and-files
 description: ""
 slug: /site-organization-and-files
-keywords: 
- - faq
- - help
 pagination_next: null
 pagination_prev: null
 last_update: 
    date: 07/18/2023
    author: Patricia McPhee
 draft: false
-doc_type: overview
+doc_type: reference
 displayed_sidebar: contributorGuideSidebar
 ---
 
