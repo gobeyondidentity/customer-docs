@@ -1,14 +1,14 @@
 ---
-title: Threat Dashboard
-id: threat-dashboard
-description: 'The threat dashboard provides easy-to-use and intuitive threat intelligence analytics. This new dashboard will help you identify users, passkeys, and authentications that have displayed some risk over the last 0-90 days. Risky entities are added to low, medium, and high groups based on their score from 0-100. You can filter the view of this dashboard and the accompanying table based on these groups. '
-slug: /threat-dashboard
+title: Risk Overview
+id: risk-overview
+description: 'The Risk Overview feature provides easy-to-use and intuitive threat intelligence analytics. This new feature will help you identify users, passkeys, and authentications that have displayed some risk over the last 0-90 days. Risky entities are added to low, medium, and high groups based on their score from 0-100. You can filter the view of this feature and the accompanying table based on these groups. '
+slug: /risk-overview
 keywords: 
-- threat dashboard
+- risk-overview
 pagination_next: null
 pagination_prev: null
 last_update: 
-    date: 07/27/2023  
+    date: 07/28/2023  
     author: John Canneto  
 draft: false
 doc_type: overview
@@ -16,14 +16,14 @@ displayed_sidebar: secureWorkforceSidebar
 ---
 
 <div class="alert alert--primary" role="alert">
-  The <b>Threat Dashboard</b> is an early access feature and requires an entitlement. Reach out to our team for access!
+  <b>Risk Overview</b> is an early access feature and requires an entitlement. Reach out to our team for access!
 </div>
 
 <br />
 
-The dashboard provides easy-to-use and intuitive threat intelligence analytics. This new dashboard will help you identify users, passkeys, and authentications that have displayed some risk over the last 0-90 days. 
+The Risk Overview feature provides easy-to-use and intuitive threat intelligence analytics. This new feature will help you identify users, passkeys, and authentications that have displayed some risk over the last 0-90 days. 
 
-It includes interactive filters, weighting controls, and widgets displaying IDs, devices, and authentications associated with risk. Risky entities are added to low, medium, and high groups based on their score from 0-100. You can drill down into details and export or share the dashboard. 
+It includes interactive filters, weighting controls, and widgets displaying IDs, devices, and authentications associated with risk. Risky entities are added to low, medium, and high groups based on their score from 0-100. You can drill down into details and export or share. 
 
 - Additional information about each entity's risk can be viewed by clicking on the associated row in the table below the bar chart.
 

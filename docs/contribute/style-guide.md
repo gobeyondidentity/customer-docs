@@ -61,14 +61,28 @@ We aspire to follow these principles when we write technical content. We might n
 
 ## Writing principles
 
+Content should be written and structured to help users understand and take the most important actions.
+
 
 ### Headings and titles
 
-Headings provide both structure and visual points of reference to help readers scan content. If you can break text logically into smaller sections, the extra spacing and distinct fonts associated with headings will help readers scan content and find entry points. Structuring headings in a hierarchy can make a larger topic easily scannable while helping search engines understand the context of your content.
+Headings provide structure and visual reference points to help readers scan content. Structuring headings in a hierarchy can make a larger topic easily scannable while helping search engines understand the context of your content.
 
-**Top-level** headings communicate what's most important and divide content into major subjects representing the **lower-level** headings. 
+#### Effective headings
 
-```javascript title="markdown file"
+Effective headings make it clear to readers which sections of a document are most relevant to their current tasks. The heading should directly reflect the result of any actions or summarize the content within the section.
+
+Headings also give readers a good sense of progress while moving from one task to the next.
+
+
+#### Heading levels
+
+**Top-level** headings communicate what's most important and divide content into major subjects representing the **lower-level** headings. Generally, the lower a heading is in the doc's hierarchy, the more flexible you can be with its tone. For example, low-level headings can be longer, more specific, or less formal.
+
+Maintain the heading hierarchy throughout the doc, and follow heading levels. Don't skip heading levels. For example, go directly from H1 to H2, then to H3, etc. This helps the readers know where they are in the document, whether they're going through a specific workflow or scanning.
+
+
+```javascript title=" markdown file"
  // highlight-start
  // Top-level heading in the metadata 
  ---
@@ -90,32 +104,33 @@ Headings provide both structure and visual points of reference to help readers s
 
  ### Lower-level heading
 
+ #### Lower-level heading
+
  ...
   // highlight-end
 ```
 
+#### Best practices
 
-- 👉 Keep headings as short as possible, and put the most important idea at the beginning. When there's a lot to say under a top-level heading, look for two or more distinct topics, and use lower-level headings (subheads) to break up the large section into more scannable chunks. If you can't find at least two distinct topics, skip the lower-level headings.
+- 👉 Keep headings short and place the most important idea at the beginning. If there is a lot to say, use lower-level headings to break up the section into smaller, more scannable chunks. 
 
-- Avoid having two headings in a row without text in between—that might indicate a problem with organization or that the headings are redundant. But don't insert filler text just to separate the headings.
+- Avoid having two headings in a row without text in between, as this may indicate a problem with organization or redundancy. Do not use filler text to separate headings.
 
-- Each new heading represents a new or more specific topic. The heading should introduce the topic in an interesting way.
+- Each new heading should introduce a new or more specific topic in an interesting way.
 
-- Use headings judiciously. One heading level is usually plenty for a page or two of content. For long content, you might need to use additional heading levels. 
+- Be specific to catch the reader's attention and use even more detail for lower-level headings.
 
-- Be as specific as you can to catch the reader's attention, and be even more detailed with lower-level headings. For example, a lower-level heading should be more specific than a top-level heading.
+- Focus on customer needs and use their vocabulary. Avoid talking about products, features, or commands in headings.
 
-- Focus on what matters to customers, and choose words they'd use themselves. In most cases, don't talk about products, features, or commands in headings. Concentrate on what customers can achieve or what they need to know.
+- Do not use ampersands (&) or plus signs (+) in headings unless referring to the UI or space is limited.
 
-- Don’t use ampersands (&) or plus signs (+) in headings unless you're referring to the UI that contains them or space is limited.
+- Avoid hyphens in headings when possible to prevent awkward line breaks in resized windows or mobile devices.
 
-- Avoid hyphens in headings if you can. In resized windows or mobile devices, they can result in awkward line breaks.
+- Use "vs." instead of "v." or "versus" in headings.
 
-- Use vs., not v. or versus, in headings.
+- Use sentence-style capitalization, capitalizing only the initial letter of the first word and other words that require capitalization, such as proper nouns.
 
-- Use sentence-style capitalization for headings. Capitalize only the initial letter of the first word in the text and other words that require capitalization, such as proper nouns. Examples of proper nouns include the names of specific people, places, companies, languages, protocols, and products.
-
-- Avoid using gerunds for headings. Gerunds introduce a lot of visual repetition, which hinders skimming and causes noise.
+- Avoid using gerunds in headings, as they introduce visual repetition that hinders skimming and causes noise.
 
 - Consider the following examples for a specific content type:
 
@@ -197,12 +212,17 @@ Do not use Latin abbreviations. Use the full English form: for example, use “t
 
 Show results of actions in the same step as the task and be clear about where in the flow the reader is. In general, omit results statements unless the result is surprising or unexpected.
 
-| What | When to use |
-| --- | --- |
-| **Put actions and results in the same step**  | If you need to mention the results of a user action, then do it in the same numbered step that describes that action (don’t use a separate numbered step).  |
-| **Mention earlier steps to reinforce order of tasks**  |  You can refer to an earlier step to reinforce the order of the steps.<br /><br />For progress within a series of steps, use the phrase “When you’ve” or “After you’ve.” Avoid using “Once you’ve.”<br /><br />For progress between tasks, begin a section with “Now that you’ve” or “After you’ve” (referring back to the previous action or step). |
+
+Put actions and results in the same step.  If you need to mention the results of a user action, then do it in the same numbered step that describes that action (don’t use a separate numbered step).  
 
 
+### Referring to earlier steps
+
+Mention earlier steps to reinforce order of tasks. You can refer to an earlier step to reinforce the order of the steps.
+
+- For progress within a series of steps, use the phrase “When you’ve” or “After you’ve.” Avoid using “Once you’ve.”
+
+- For progress between tasks, begin a section with “Now that you’ve” or “After you’ve” (referring back to the previous action or step).
 ### Links
 
 Links need to be clear and predictable. Merchants should be able to anticipate what will happen when they select a link. Never mislead someone by mislabeling a link.
@@ -262,9 +282,9 @@ Use "can" to indicate ability, or use "might" to indicate possibility.
   | --- | --- |
   | You might need more advanced features when you are integrating with another application. | You may need more advanced features when you are integrating with another application. |
 
-### Use “make sure” or “confirm”
+### Avoid "check that" or "verify that"
 
-When asking the reader to confirm something for important tasks, use one of the following terms:
+Use “make sure” or “confirm” instead. When asking the reader to confirm something for important tasks, use one of the following terms:
 
 - Use “make sure” in cases where there’s still a related important task.   
   
@@ -273,6 +293,15 @@ When asking the reader to confirm something for important tasks, use one of the 
   |  | instead of “check that” or “verify that”  |
 
 - Use “confirm” in cases where the reader has already been told to do something, and you’re now reminding them.
+
+
+### Avoid "Once you've"
+
+You can refer to an earlier step to reinforce the order of the steps.
+
+- For progress within a series of steps, use the phrase “When you’ve” or “After you’ve.” Avoid using “Once you’ve.”
+
+- For progress between tasks, begin a section with “Now that you’ve” or “After you’ve” (referring back to the previous action or step).
 
 ## Images and screenshots
 

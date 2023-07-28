@@ -6,7 +6,7 @@ const sidebars = {
   secureWorkforceSidebar: [
     'intro',
     'platform/admin-console',
-    'threat-dashboard',
+    'risk-overview',
 
 /*
   {
