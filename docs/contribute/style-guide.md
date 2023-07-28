@@ -6,7 +6,7 @@ slug: /style-guide
 pagination_next: null
 pagination_prev: null
 last_update: 
-   date: 07/21/2023
+   date: 07/27/2023
    author: Patricia McPhee
 draft: false
 doc_type: reference
@@ -67,7 +67,7 @@ We aspire to follow these principles when we write technical content. We might n
 
 |Principle  |Description  |
 |---------|---------|
-| **Focus on the customer’s intent**  | Customers have a specific purpose in mind when they consult our documentation. Before you begin writing, clearly determine who the customer is and what task he or she is trying to do. Then, write your article to help that specific customer do that specific task.<br /><br />*As a \<customer\>, I \<want to\> \<because\>.*        |
+| **Focus on the customer’s intent**  | Customers have a specific purpose in mind when they consult our documentation. Before you begin writing, clearly determine who the customer is and what task he or she is trying to do. Then, write your article to help that specific customer do that specific task.<br /><br />*As a &#60;customer&#62;, I &#60;want to&#62; &#60;because&#62;.*        |
 | **Use everyday words**  |   Try to use natural language, the words your customers use. Be less formal but not less technical. Provide examples that explain new concepts.      |
 | **Write concisely**  |   Don't waste words. Be affirmative and don't use extra words. Keep sentences short and concise. ***Keep your article focused*** on the scenario or goal (the customer intent). Also, keep the number of notes to a minimum. Use a screenshot when it can save words.      |
 | **Make your article easy to scan** |  Put the most important things first. Use sections to chunk long procedures into more manageable groups of steps. (Procedures with more than 12 steps are probably too long.) Use a screenshot when it adds clarity. Also, use sentence case for titles (headings) as they are easier to scan.       |
