@@ -4,6 +4,7 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const baseUrl = process.env.BASE_URL ?? '/api';
+const redirectJson = require("./redirects.json");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -11,6 +12,13 @@ const config = {
   plugins: [
 
     require.resolve("docusaurus-plugin-image-zoom"),
+
+    [
+      "@docusaurus/plugin-client-redirects",
+      {
+          redirects: redirectJson.redirects,
+      },
+    ],
 
 //    'plugin-image-zoom',
 //    '@chatwoot/docusaurus-plugin',
