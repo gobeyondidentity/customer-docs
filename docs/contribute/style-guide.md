@@ -175,6 +175,27 @@ Style: **Bold**
 
 Example: From the Admin Console, under **Directory**, select **Identities > Add identity**.
 
+## Acronyms
+
+Acronyms and abbreviations can hurt clarity, voice, and findability. Although some acronyms are widely understood and preferred to the spelled-out term, others aren't well known or are familiar only to a specific group of customers.
+
+- Only use acronyms that are familiar to your audience.
+
+- If you must use an acronym, spell it out in the first instance for clarity. In general, include the acronym in parentheses following the spelled-out term. You can use the acronym without spelling it out on subsequent mentions in the same article, page, or screen.
+
+- Don't introduce acronyms that are used just once. If an acronym will appear only once in your content, just spell out the term. Don't introduce it in parentheses after the spelled-out version.
+
+- Be careful with acronyms in titles and headings. Avoid using an acronym for the first time in a title or heading unless it's a keyword you need to place in the title or heading for SEO. If the first use of the acronym is in a title or heading, introduce the acronym (in parentheses, following the spelled-out term) in the following body text.
+
+- Lowercase all words in the spelled-out form of an acronym except for proper nouns. The names of many protocols and specifications are considered proper nouns and are capitalized when spelled out. 
+
+   **Examples**
+
+   - infrastructure as a service (IaaS)
+   
+   - dynamic-link library (DLL)
+
+
 ## Links
 
 Links need to be clear and predictable. Merchants should be able to anticipate what will happen when they select a link. Never mislead someone by mislabeling a link.
