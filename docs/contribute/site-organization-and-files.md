@@ -23,13 +23,13 @@ displayed_sidebar: contributorGuideSidebar
 
   - `/docs/includes` - Reusable content such as feature descriptions, notes, common steps, and so on.
 
-- `versioned_docs` - Contains the markdown files for the previous supported versions (v2.83 and v2.84).
+- `/versioned_docs` - Contains the markdown files for the previous supported versions (v2.83 and v2.84).
 
-- `versioned_sidebars` - Contains the sidebar files for the previous versions.
+- `/versioned_sidebars` - Contains the sidebar files for the previous versions.
 
 - `/sidebar.js` - Specify the order of documents in the sidebar. If you have a new file to add to the site, modify this file.
 
-- `static/api` - Contains the API documentation for v2.
+- `/static/api` - Contains the API documentation for v2.
 
 ## Site config files
 
@@ -49,3 +49,5 @@ Docaurus native components.
    - `/static/img` - Website images such as Beyond Identity logos and other assets.
 
 - `/package.json` - A Docusaurus website is a React app. You can install and use any npm packages you like in them.
+
+- `/redirects.json` - List of old URLs that are automatically redirected to a new URL, preventing broken links and preserving SEO value.
