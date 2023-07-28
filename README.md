@@ -36,20 +36,21 @@ Refer to the [contributor's guide](./docs/contribute/contribute.md) for details 
 
 ## Doc branches
 
-Before you get started with the authoring work, it's necessary that you understand the different branches to work on.
-* **`main`** -  protected branch
+Before starting the authoring work, you must understand the different branches to work on. You'll use your branch to work on content for a certain issue or feature, but you'll submit your Pull Request against one of the branches listed below: 
 
-  Docs for https://developer.beyondidentity.com/. This branch contains the most recent stable release content.
+- **`main`** - protected branch
+    
+    Docs for https://deverloper.beyondidentity.com/. This branch contains the most recent stable release content.
+    
+- **`docs-staging`** - protected branch
+    
+  Docs for a forward-version that includes features not yet included in the Beyond Identity stable version. When Secure Customer has a release, its `docs-staging` branch will be merged into `main`. Its content is published on https://customer-docs-git-docs-staging-beyondidentity.vercel.app/ for early validation purpose. 
+    
+- Branches starting with **`release-`** contain archived release documentation for historical tracking, such as `release-xx`.
 
-* **`docs-staging`** - protected branch
+- **`active-development`** - protected branch (used for front-end and back-end development). 
 
-  Docs for the upcoming `vNext` release. When Secure Customer has a release, its `docs-staging` branch will be merged into `main`.
-
-* **`active-development`** - protected branch (currently used for front-end development)
-
-  Docs for a forward-version that includes features not yet included in the Beyond Identity stable version. Its content is published on https://customer-docs-git-active-development-beyondidentity.vercel.app/ for early validation purpose.
-
-* Branches that start with `release-` contain archived release documentation for historical tracking, for example, `release-xx`.
+  Its content is published on https://customer-docs-git-active-development-beyondidentity.vercel.app/ for early validation purpose.
   
 * You can have your own personal branch to work on content for a certain issue or feature. However, be sure to check and remove unused personal branches periodically for easy maintenance. Usually when your branch is merged, you can safely delete it.
 
