@@ -3,8 +3,8 @@ title: "Get Started"
 id: contribute-get-started
 description: ""
 slug: /contribute-get-started
-pagination_next: contribute/when-to-contribute
-pagination_prev: null
+pagination_next: contribute/site-organization-and-files
+pagination_prev: contribute/when-to-contribute
 last_update: 
    date: 07/14/2023
    author: Patricia McPhee

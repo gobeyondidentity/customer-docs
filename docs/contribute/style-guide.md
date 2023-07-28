@@ -15,50 +15,31 @@ displayed_sidebar: contributorGuideSidebar
 
 ## Best practices
 
-1. **Consistency**
-   - Use a consistent writing style throughout the documentation.
-   - Use consistent terminology and language to describe concepts and features.
+When arranging information on a page, there are several crucial guidelines to consider that will make your content more effective and helpful to your audience.
 
-2. **Clarity and Simplicity**
-   - Use clear and concise language to explain technical concepts.
-   - Avoid jargon or explain technical terms when necessary.
-   - Break down complex ideas into smaller, understandable sections.
-   - Use examples, diagrams, and visuals to enhance clarity.
+1. **Prioritize quick reader feedback**. It's important to inform readers as quickly as possible if they cannot complete a process due to unmet requirements, ineligibility to use a feature, or if continuing an action would be unproductive. This approach values the reader's time and allows them to identify more suitable alternatives swiftly.
 
-3. **Structure and Organization**
-   - Use a logical and hierarchical structure for your documentation.
-   - Provide clear and informative headings and subheadings.
-   - Use numbered lists for step-by-step instructions or procedures.
-   - Use bullet points for lists where the order doesn't matter. 
-   - Group related information together for easy navigation.
+1. **Equip every reader with a solution or next step**. Every process you describe should conclude with a clear solution or next step for the reader. For instance, if a process entails adding a feature to a product but necessitates the latest product version, notify the user of this constraint before presenting the steps and offer a link to instructions on how to upgrade.
 
-4. **Audience Awareness**
-   - Identify and understand your target audience (developers, system administrators, beginners, etc.).
-   - Adapt your writing style and language to match the knowledge level of your audience.
-   - Include [introductory sections (paragraph)](#topic-and-section-introductions) at the top of each topic for beginners.
-   - Provide advanced sections or references for experienced users.
+1. **Stick to the facts**. To sustain trust with your readers, omit any marketing or promotional content from your help sections. While these sections can elucidate a product's or feature's advantages, they should limit their discussion to the direct benefits, carefully avoiding unfounded claims of improvements in speed, quality, or ease of use.
 
-5. **Code Conventions**
-   - Use syntax highlighting for code blocks.
-   - Clearly indicate placeholders or variables in code examples.
-   - Include comments where necessary to explain complex code segments.
+1. **Focus on the usage rather than the benefit**. It's important to frame your content regarding how a reader can utilize a product or feature, as this approach allows them to comprehend the information better and envision how it would integrate into their own circumstances.
 
-6. **Error Handling and Troubleshooting**
-   - Include troubleshooting guides, FAQs, or in-line notes to address common issues.
-   - Provide error messages, error codes, and possible solutions.
-   - Explain how to diagnose and debug common problems.
-   - Offer tips and best practices for effective error handling.
+1. **Consistency is key**. Use a consistent writing style throughout the documentation and consistent terminology and language to describe concepts and features.
 
-7. **Use of Images and Multimedia**
-   - Include relevant screenshots, diagrams, and illustrations to aid understanding.
-   - Use images to illustrate complex processes or user interface elements.
-   - Ensure images are clear, properly labeled, referenced in the text, and [follow the guidelines](#images-and-screenshots).
+1. **Clarity and simplicity are crucial**. Use clear and concise language to explain technical concepts, avoiding jargon or explaining technical terms when necessary. Break down complex ideas into smaller, understandable sections and use examples, diagrams, and visuals to enhance clarity.
 
-8. **Collaboration and Feedback**
-    - Encourage user feedback and questions.
-    - Regularly review and incorporate user feedback into the documentation.
-    - Collaborate with subject matter experts to ensure accuracy and completeness.
+1. **Structure and organization are important for easy navigation**. Use a logical and hierarchical structure for your documentation, provide clear and informative headings and subheadings, use numbered lists for step-by-step instructions or procedures, and use bullet points for lists where the order doesn't matter. Group related information together for easy navigation.
 
+1. **Be aware of your audience**. Identify and understand your target audience (developers, system administrators, beginners, etc.), and adapt your writing style and language to match the knowledge level of your audience. Include introductory sections at the top of each topic for beginners, and provide advanced sections or references for experienced users.
+
+1. **Follow code conventions**. Use syntax highlighting for code blocks, clearly indicate placeholders or variables in code examples, and include comments to explain complex code segments where necessary.
+
+1. **Provide comprehensive error handling and troubleshooting advice**. This includes troubleshooting guides, FAQs, or in-line notes to address common issues, providing error messages, error codes, and possible solutions, explaining how to diagnose and debug common problems, and offering tips and best practices for effective error handling.
+
+1. **Use images and multimedia where appropriate**. Including relevant screenshots, diagrams, and illustrations can aid understanding, particularly when illustrating complex processes or user interface elements. Ensure images are clear, properly labeled, referenced in the text, and follow the guidelines.
+
+1. **Encourage user feedback and questions**, regularly review and incorporate user feedback into the documentation, and collaborate with subject matter experts to ensure accuracy and completeness.
 
 ## Voice and tone
 
@@ -80,14 +61,28 @@ We aspire to follow these principles when we write technical content. We might n
 
 ## Writing principles
 
+Content should be written and structured to help users understand and take the most important actions.
+
 
 ### Headings and titles
 
-Headings provide both structure and visual points of reference to help readers scan content. If you can break text logically into smaller sections, the extra spacing and distinct fonts associated with headings will help readers scan content and find entry points.
+Headings provide structure and visual reference points to help readers scan content. Structuring headings in a hierarchy can make a larger topic easily scannable while helping search engines understand the context of your content.
 
-**Top-level** headings communicate what's most important and divide content into major subjects representing the **lower-level** headings. 
+#### Effective headings
 
-```javascript title="markdown file"
+Effective headings make it clear to readers which sections of a document are most relevant to their current tasks. The heading should directly reflect the result of any actions or summarize the content within the section.
+
+Headings also give readers a good sense of progress while moving from one task to the next.
+
+
+#### Heading levels
+
+**Top-level** headings communicate what's most important and divide content into major subjects representing the **lower-level** headings. Generally, the lower a heading is in the doc's hierarchy, the more flexible you can be with its tone. For example, low-level headings can be longer, more specific, or less formal.
+
+Maintain the heading hierarchy throughout the doc, and follow heading levels. Don't skip heading levels. For example, go directly from H1 to H2, then to H3, etc. This helps the readers know where they are in the document, whether they're going through a specific workflow or scanning.
+
+
+```javascript title=" markdown file"
  // highlight-start
  // Top-level heading in the metadata 
  ---
@@ -109,32 +104,33 @@ Headings provide both structure and visual points of reference to help readers s
 
  ### Lower-level heading
 
+ #### Lower-level heading
+
  ...
   // highlight-end
 ```
 
+#### Best practices
 
-- 👉 Keep headings as short as possible, and put the most important idea at the beginning. When there's a lot to say under a top-level heading, look for two or more distinct topics, and use lower-level headings (subheads) to break up the large section into more scannable chunks. If you can't find at least two distinct topics, skip the lower-level headings.
+- 👉 Keep headings short and place the most important idea at the beginning. If there is a lot to say, use lower-level headings to break up the section into smaller, more scannable chunks. 
 
-- Avoid having two headings in a row without text in between—that might indicate a problem with organization or that the headings are redundant. But don't insert filler text just to separate the headings.
+- Avoid having two headings in a row without text in between, as this may indicate a problem with organization or redundancy. Do not use filler text to separate headings.
 
-- Each new heading represents a new or more specific topic. The heading should introduce the topic in an interesting way.
+- Each new heading should introduce a new or more specific topic in an interesting way.
 
-- Use headings judiciously. One heading level is usually plenty for a page or two of content. For long content, you might need to use additional heading levels. 
+- Be specific to catch the reader's attention and use even more detail for lower-level headings.
 
-- Be as specific as you can to catch the reader's attention, and be even more detailed with lower-level headings. For example, a lower-level heading should be more specific than a top-level heading.
+- Focus on customer needs and use their vocabulary. Avoid talking about products, features, or commands in headings.
 
-- Focus on what matters to customers, and choose words they'd use themselves. In most cases, don't talk about products, features, or commands in headings. Concentrate on what customers can achieve or what they need to know.
+- Do not use ampersands (&) or plus signs (+) in headings unless referring to the UI or space is limited.
 
-- Don’t use ampersands (&) or plus signs (+) in headings unless you're referring to the UI that contains them or space is limited.
+- Avoid hyphens in headings when possible to prevent awkward line breaks in resized windows or mobile devices.
 
-- Avoid hyphens in headings if you can. In resized windows or mobile devices, they can result in awkward line breaks.
+- Use "vs." instead of "v." or "versus" in headings.
 
-- Use vs., not v. or versus, in headings.
+- Use sentence-style capitalization, capitalizing only the initial letter of the first word and other words that require capitalization, such as proper nouns.
 
-- Use sentence-style capitalization for headings. Capitalize only the initial letter of the first word in the text and other words that require capitalization, such as proper nouns. Examples of proper nouns include the names of specific people, places, companies, languages, protocols, and products.
-
-- Avoid using gerunds for headings. Gerunds introduce a lot of visual repetition, which hinders skimming and causes noise.
+- Avoid using gerunds in headings, as they introduce visual repetition that hinders skimming and causes noise.
 
 - Consider the following examples for a specific content type:
 
@@ -175,7 +171,59 @@ Style: **Bold**
 
 Example: From the Admin Console, under **Directory**, select **Identities > Add identity**.
 
-## Links
+When referring to labels of user interface items, do not include ending punctuation such as the ellipse (…) or colon (:). 
+
+Whenever possible, refer to user interface items without identifying them as any special type of element. Complex dialogs may require more specific wording.
+
+| :white_check_mark: **DO** | :no_entry_sign: **DON'T** |
+| --- | --- |
+| click OK | click the OK button  |
+
+
+### Acronyms
+
+Acronyms and abbreviations can hurt clarity, voice, and findability. Although some acronyms are widely understood and preferred to the spelled-out term, others aren't well known or are familiar only to a specific group of customers.
+
+- Only use acronyms that are familiar to your audience.
+
+- If you must use an acronym, spell it out in the first instance for clarity. In general, include the acronym in parentheses following the spelled-out term. You can use the acronym without spelling it out on subsequent mentions in the same article, page, or screen.
+
+- Don't introduce acronyms that are used just once. If an acronym will appear only once in your content, just spell out the term. Don't introduce it in parentheses after the spelled-out version.
+
+- Be careful with acronyms in titles and headings. Avoid using an acronym for the first time in a title or heading unless it's a keyword you need to place in the title or heading for SEO. If the first use of the acronym is in a title or heading, introduce the acronym (in parentheses, following the spelled-out term) in the following body text.
+
+- Lowercase all words in the spelled-out form of an acronym except for proper nouns. The names of many protocols and specifications are considered proper nouns and are capitalized when spelled out. 
+
+   **Examples**
+
+   - infrastructure as a service (IaaS)
+   
+   - dynamic-link library (DLL)
+
+| :white_check_mark: **DO** | :no_entry_sign: **DON'T** |
+| --- | --- |
+|  |   |
+
+### Abbreviations
+ 
+Do not use Latin abbreviations. Use the full English form: for example, use “that is” instead of “i.e.”. As an exception to this rule, the abbreviation etc. is allowed.
+
+### Results of actions
+
+Show results of actions in the same step as the task and be clear about where in the flow the reader is. In general, omit results statements unless the result is surprising or unexpected.
+
+
+Put actions and results in the same step.  If you need to mention the results of a user action, then do it in the same numbered step that describes that action (don’t use a separate numbered step).  
+
+
+### Referring to earlier steps
+
+Mention earlier steps to reinforce order of tasks. You can refer to an earlier step to reinforce the order of the steps.
+
+- For progress within a series of steps, use the phrase “When you’ve” or “After you’ve.” Avoid using “Once you’ve.”
+
+- For progress between tasks, begin a section with “Now that you’ve” or “After you’ve” (referring back to the previous action or step).
+### Links
 
 Links need to be clear and predictable. Merchants should be able to anticipate what will happen when they select a link. Never mislead someone by mislabeling a link.
 
@@ -183,7 +231,7 @@ Links need to be clear and predictable. Merchants should be able to anticipate w
 | --- | --- |
 | Get started with the [Universal Passkeys](#). | Want to learn more about Universal Passkeys? [Click here](#).<br /><br />Links should never use “click here” or “here” as link text.  |
 
-### Links in a sentence
+#### Links in a sentence
 
 Links in full sentences shouldn’t link the entire sentence, only the text that describes where merchants go when they select the link.
 
@@ -192,22 +240,68 @@ Links in full sentences shouldn’t link the entire sentence, only the text that
 | Create a [Resource Server](#). | [Create a Resource Server.](#)  |
 
 
-### “Learn more” links
+#### “Learn more” links
 
 When linking out to documentation from help text in the admin, link the relevant key words. In general, don’t add another sentence starting with “Learn more...”, because it’s repetitive and takes up unnecessary space.
 
 Only add a “Learn more...” sentence if the help text addresses more than one concept, each of which could be linked to their own help doc. In that situation, pick the most appropriate link and contextualize it with “Learn more...”.
 
-
-## Clarify results of actions
-
-Show results of actions in the same step as the task and be clear about where in the flow the reader is. In general, omit results statements unless the result is surprising or unexpected.
-
-| What | When to use |
+| :white_check_mark: **DO** | :no_entry_sign: **DON'T** |
 | --- | --- |
-| **Put actions and results in the same step**  | If you need to mention the results of a user action, then do it in the same numbered step that describes that action (don’t use a separate numbered step).  |
-| **Mention earlier steps to reinforce order of tasks**  |  You can refer to an earlier step to reinforce the order of the steps.<br /><br />For progress within a series of steps, use the phrase “When you’ve” or “After you’ve.” Avoid using “Once you’ve.”<br /><br />For progress between tasks, begin a section with “Now that you’ve” or “After you’ve” (referring back to the previous action or step). |
+|  |   |
 
+## Word usage
+
+### Avoid "and/or"
+
+Rewrite the sentence to clarify the meaning. Note that or can mean _either_ or _both_.
+
+**Example**
+
+You can save the document using the current name or a new name.
+
+| :white_check_mark: **DO** | :no_entry_sign: **DON'T** |
+| --- | --- |
+|  |   |
+
+### Avoid "may"
+
+Use "can" to indicate ability, or use "might" to indicate possibility.
+
+**Example**
+
+- **Indicating ability**
+  
+  | :white_check_mark: **DO** | :no_entry_sign: **DON'T** |
+  | --- | --- |
+  | You can use the command line interface to update your application. |  You may use the command line interface to update your application. |
+
+- **Indicating possibility**
+
+  | :white_check_mark: **DO** | :no_entry_sign: **DON'T** |
+  | --- | --- |
+  | You might need more advanced features when you are integrating with another application. | You may need more advanced features when you are integrating with another application. |
+
+### Avoid "check that" or "verify that"
+
+Use “make sure” or “confirm” instead. When asking the reader to confirm something for important tasks, use one of the following terms:
+
+- Use “make sure” in cases where there’s still a related important task.   
+  
+  | :white_check_mark: **DO** | :no_entry_sign: **DON'T** |
+  | --- | --- |
+  |  | instead of “check that” or “verify that”  |
+
+- Use “confirm” in cases where the reader has already been told to do something, and you’re now reminding them.
+
+
+### Avoid "Once you've"
+
+You can refer to an earlier step to reinforce the order of the steps.
+
+- For progress within a series of steps, use the phrase “When you’ve” or “After you’ve.” Avoid using “Once you’ve.”
+
+- For progress between tasks, begin a section with “Now that you’ve” or “After you’ve” (referring back to the previous action or step).
 
 ## Images and screenshots
 
@@ -268,40 +362,6 @@ Writing for reuse requires writing without context. These guidelines help to mak
 - **Give the precise location of related information.** Avoid the words *above* or *below* in the text as much as possible. These indicators have no meaning in a non-linear context. Instead, use *next* or *previous* if the information is contained in the same topic (article in our case).
 
 
-## Word usage
-
-### Avoid "may"
-
-Use "can" to indicate ability, or use "might" to indicate possibility.
-
-**Example**
-
-- **Indicating ability**
-  
-  | :white_check_mark: **DO** | :no_entry_sign: **DON'T** |
-  | --- | --- |
-  | You can use the command line interface to update your application. |  You may use the command line interface to update your application. |
-
-
-
-
-- **Indicating possibility**
-
-  | :white_check_mark: **DO** | :no_entry_sign: **DON'T** |
-  | --- | --- |
-  | You might need more advanced features when you are integrating with another application. | You may need more advanced features when you are integrating with another application. |
-
-### Use “make sure” and “confirm” for important tasks
-
-When asking the reader to confirm something, use one of the following terms:
-
-- “Make sure” in cases where there’s still a related important task (instead of “check that” or “verify that”).
-
-- “Confirm” in cases where the reader has already been told to do something, and you’re now reminding them.
-
-| :white_check_mark: **DO** | :no_entry_sign: **DON'T** |
-| --- | --- |
-|  |   |
 
 ## Tips and tricks
 

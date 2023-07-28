@@ -1,5 +1,5 @@
 <!-- Reference Links -->
-[site]: https://[docs.beyondidentity.com](https://developer.beyondidentity.com/)/
+[site]: https://[docs.beyondidentity.com](https://docs.beyondidentity.com/)/
 [issues]: https://github.com/gobeyondidentity/customer-docs/issues/new?assignees=&labels=triage&projects=&template=content-issue.yml&title=%5BContent+issue%5D%3A+
 [repo]: https://github.com/gobeyondidentity/customer-docs
 [pr]: https://github.com/gobeyondidentity/customer-docs/pulls
@@ -17,7 +17,7 @@
 </div>
 
 
-Welcome to the Beyond Identity developer documentation repository! This repo is the source for [https://docs.beyondidentity.com/][site], also known as "Next Dev Docs"! 
+Welcome to the Beyond Identity developer documentation repository! This repo is the source for [https://docs.beyondidentity.com/][site], also known as "Customer Docs"! 
 
 The Beyond Identity developer documentation is completely open-source and we appreciate contributions.
 
@@ -40,7 +40,7 @@ Before starting the authoring work, you must understand the different branches t
 
 - **`main`** - protected branch
     
-    Docs for https://deverloper.beyondidentity.com/. This branch contains the most recent stable release content.
+    Docs for https://docs.beyondidentity.com/. This branch contains the most recent stable release content.
     
 - **`docs-staging`** - protected branch
     

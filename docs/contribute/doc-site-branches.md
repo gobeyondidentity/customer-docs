@@ -6,8 +6,8 @@ slug: /docs-site-branches
 keywords: 
  - faq
  - help
-pagination_next: null
-pagination_prev: null
+pagination_next: contribute/best-practices
+pagination_prev: contribute/site-organization-and-files
 last_update: 
    date: 07/28/2023
    author: Patricia McPhee
@@ -20,7 +20,7 @@ Before starting the authoring work, you must understand the different branches t
 
 - **`main`** - protected branch
     
-    Docs for https://deverloper.beyondidentity.com/. This branch contains the most recent stable release content.
+    Docs for https://docs.beyondidentity.com/. This branch contains the most recent stable release content.
     
 - **`docs-staging`** - protected branch
     
