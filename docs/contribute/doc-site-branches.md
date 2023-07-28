@@ -20,7 +20,7 @@ Before starting the authoring work, you must understand the different branches t
 
 - **`main`** - protected branch
     
-    Docs for https://deverloper.beyondidentity.com/. This branch contains the most recent stable release content.
+    Docs for https://docs.beyondidentity.com/. This branch contains the most recent stable release content.
     
 - **`docs-staging`** - protected branch
     
