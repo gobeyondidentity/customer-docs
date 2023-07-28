@@ -83,7 +83,7 @@ We aspire to follow these principles when we write technical content. We might n
 
 ### Headings and titles
 
-Headings provide both structure and visual points of reference to help readers scan content. If you can break text logically into smaller sections, the extra spacing and distinct fonts associated with headings will help readers scan content and find entry points.
+Headings provide both structure and visual points of reference to help readers scan content. If you can break text logically into smaller sections, the extra spacing and distinct fonts associated with headings will help readers scan content and find entry points. Structuring headings in a hierarchy can make a larger topic easily scannable while helping search engines understand the context of your content.
 
 **Top-level** headings communicate what's most important and divide content into major subjects representing the **lower-level** headings. 
 

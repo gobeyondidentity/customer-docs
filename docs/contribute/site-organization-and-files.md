@@ -3,8 +3,8 @@ title: "Site organization and files"
 id: site-organization-and-files
 description: ""
 slug: /site-organization-and-files
-pagination_next: null
-pagination_prev: null
+pagination_next: contribute/docs-site-branches
+pagination_prev: contribute/when-to-contribute
 last_update: 
    date: 07/18/2023
    author: Patricia McPhee
