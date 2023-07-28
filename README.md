@@ -69,7 +69,7 @@ Docaurus native components.
 - `/static/` - Static directory. Any contents inside here will be copied into the root of the final `build` directory.
   - `/static/img` - Website images such as Beyond Identity logos and other assets.
 - `/package.json` - A Docusaurus website is a React app. You can install and use any npm packages you like in them.
-
+- `/redirects.json` - List of old URLs that are automatically redirected to a new URL, preventing broken links and preserving SEO value.
 
 ## Get started
 
