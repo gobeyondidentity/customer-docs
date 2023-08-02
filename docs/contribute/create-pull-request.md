@@ -88,15 +88,15 @@ A few things to keep in mind when creating your pull request:
 |  PR is part of front-end or back-end development | make it against the **active-development** branch  |
 
 
-## Ownership
+## Content development process
 
 The ownership of the PR is on the person who creates the PR. The author's responsibility is to get it reviewed and approved for technical accuracy before submitting the PR. 
 
-### Content dev process - High-level overview
+### High-level overview
 
 ![Technical Writing process flow - GitHub](../../static/img/tech-writing-process-flow.png)
 
-### Content dev process - Detailed breakdown
+### Detailed breakdown
 
 What's common in tech companies (software companies in particular), is the SME/author of the content will consult with the Sr. Technical Writer to get a better understanding of where the content fits in the sidebar (left nav). During the conversation, they'll determine where the content fits. They'll also want to know: 
 
