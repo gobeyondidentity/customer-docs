@@ -1,5 +1,5 @@
 ---
-title: "Create Pull Request"
+title: "Pull Requests"
 id: create-pull-request
 description: ""
 slug: /create-pull-request
@@ -26,7 +26,11 @@ displayed_sidebar: contributorGuideSidebar
 
 
 
-Now you're ready to create and submit a pull request to have your changes or additions reviewed. Make sure to follow the [Pull request guidelines](#pull-request-guidelines).
+Now you're ready to create and submit a pull request to have your changes or additions reviewed. 
+
+## Create a Pull Request
+
+👉 Make sure to follow the [Pull request guidelines](#pull-request-guidelines).
 
 1. Go to the [main page of the repository][repo].
 
@@ -93,6 +97,20 @@ The ownership of the PR is on the person who creates the PR. The author's respon
 ![Technical Writing process flow - GitHub](../../static/img/tech-writing-process-flow.png)
 
 ### Content dev process - Detailed breakdown
+
+What's common in tech companies (software companies in particular), is the SME/author of the content will consult with the Sr. Technical Writer to get a better understanding of where the content fits in the sidebar (left nav). During the conversation, they'll determine where the content fits. They'll also want to know: 
+
+- What's the topic type?  Reference, concept, how-to? In some cases, it can be a combination.
+
+- Can it be added to an existing topic to consolidate topics for clarity?  
+
+- Or does the content stand alone, like a how-to, overview, or reference topic?  
+
+It doesn't mean you don't need the Sr. Technical Writer's help between the consult and the Pull Request.  You absolutely can and should if guidance is needed.  Often, engineers will continue collaborating with them even before they submit their Pull Request.
+
+Once they get their content to the point where it's technically accurate, then they hand it off to the Technical Writer via a Pull Request. This is where the content review takes place.  If the Sr. Technical Writer has question regarding clarity of something, this is where the collaboration begins. 
+
+Some developers and product managers are comfortable with this process, but some are not.  In that case, you can provide the Sr. Technical Writer with the document (Google Docs or text file) and they can convert it to markdown using Pandoc. 
 
 ![Detailed breakdown of the content development process.](../../static/img/content-dev-process-happy-path.jpg "Detailed breakdown of the content development process.")
 

@@ -6,7 +6,7 @@ slug: /markdown-reference
 pagination_next: null
 pagination_prev: null
 last_update: 
-   date: 07/20/2023
+   date: 08/02/2023
    author: Patricia McPhee
 draft: false
 doc_type: reference
@@ -33,14 +33,17 @@ displayed_sidebar: contributorGuideSidebar
 
 All heading levels (e.g., H1, H2, etc.), are marked by the hashtag (#) at the beginning of a line.  
 
+:::note important
+Avoid using h1 (#) headings. The metadata tile represents this heading level and is automatically displayed. Always start with h2 (##), and respect the order h2 → h3 → h4. Never skip the hierarchy level, such as h2 → h4. Avoid h5 and h6 as much as possible. If you have content with h5 and h6 headers, rethink the structure of your document. Can the content be better scanned in a table or bullet list?
+:::
+
 ```markdown
-# This is a first level heading (H1)
+## This is a second level heading (h2)
 
-## This is a second level heading (H2)
+### This is a second level heading (h3)
 
-...
+#### This is a second level heading (h4)
 
-###### This is a sixth level heading (H6)
 ```
 
 
@@ -54,7 +57,7 @@ Also, put blank lines before and after a heading.
 
 | :white_check_mark: **DO** | :no_entry_sign: **DON'T** |
 | --- | --- |
-| <pre>Put a extra space (blank line) before...<br /><br /># Heading<br /><br />...and after a heading.</pre>  | <pre>Put a extra space (blank line) before...<br /># Heading<br />...and after a heading.</pre>  |
+| <pre>Put a extra space (blank line) before...<br /><br />## Heading<br /><br />...and after a heading.</pre>  | <pre>Put a extra space (blank line) before...<br />## Heading<br />...and after a heading.</pre>  |
 
 ## Links
 
@@ -162,20 +165,20 @@ Lists are made by using indentation and a beginning-of-line marker to indicate a
 Unordered lists can use an asterisk (`*`), plus (`+`), or minus (`-`) to indicate each list item. 
 
 ```md
-* One item
-* Second item
-* Third item
-* Fourth item
-* Fifth item
+- One item
+- Second item
+- Third item
+- Fourth item
+- Fifth item
 ```
 
 <h4>Output example</h4>
 
-* One item
-* Second item
-* Third item
-* Fourth item
-* Fifth item
+- One item
+- Second item
+- Third item
+- Fourth item
+- Fifth item
 
 Don’t mix and match delimiters in the same list — pick one and stick with it. 
 
@@ -216,22 +219,22 @@ OR
 Remember to pick a delimiter and stick with it. 
 
 ```md
-* One item
-* Another item
-  * A sub-item
-    * A deeper item
-  * Back in sub-item land
-* And back at the main level
+- One item
+- Another item
+  - A sub-item
+    - A deeper item
+  - Back in sub-item land
+- And back at the main level
 ```
 
 <h4>Output example</h4> 
 
-* One item
-* Another item
-  * A sub-item
-    * A deeper item
-  * Back in sub-item land
-* And back at the main level
+- One item
+- Another item
+  - A sub-item
+    - A deeper item
+  - Back in sub-item land
+- And back at the main level
 
 ### Nested ordered lists
 
@@ -264,26 +267,26 @@ Remember to pick a delimiter and stick with it.
 You can use both types of lists to nest items. In the example below, the unordered list under the second ordered list item refers to items that aren’t sequential (no need to perform a task in a specified order).
 
 ```md
-* One item
-* Another item
+- One item
+- Another item
   1. A nested ordered list
   1. This is the second item
-     * And now an unordered list as its child
-     * Another item in this list
+     - And now an unordered list as its child
+     - Another item in this list
   1. One more in the ordered list
-* And back at the main level
+- And back at the main level
 ```
 
 <h4>Output example</h4>
 
-* One item
-* Another item
+- One item
+- Another item
   1. A nested ordered list
   1. This is the second item
-     * And now an unordered list as its child
-     * Another item in this list
+     - And now an unordered list as its child
+     - Another item in this list
   1. One more in the ordered list
-* And back at the main level
+- And back at the main level
 
 
 ## Line breaks
