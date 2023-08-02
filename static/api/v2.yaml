@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: Beyond Identity Secure Workforce Admin API
-  version: 2.1.0
+  version: 2.2.0
   contact:
     email: support@beyondidentity.com
   description: |
@@ -1497,7 +1497,7 @@ paths:
   /scim/v2/Users:
     post:
       tags:
-        - Users
+        - SCIM
       operationId: CreateUser
       summary: Create a New User
       description: |
@@ -1587,7 +1587,7 @@ paths:
                   $ref: '#/paths/~1scim~1v2~1Users/get/responses/500/content/application~1json/examples/Internal%20Error'
     get:
       tags:
-        - Users
+        - SCIM
       operationId: ListUsers
       summary: List All Users
       description: |
@@ -1720,7 +1720,7 @@ paths:
   '/scim/v2/Users/{scim_user_id}':
     get:
       tags:
-        - Users
+        - SCIM
       operationId: GetUser
       summary: Retrieve an Existing User
       description: |
@@ -1779,7 +1779,7 @@ paths:
                   $ref: '#/paths/~1scim~1v2~1Users/get/responses/500/content/application~1json/examples/Internal%20Error'
     patch:
       tags:
-        - Users
+        - SCIM
       operationId: UpdateUser
       summary: Patch a User
       description: |
@@ -1872,7 +1872,7 @@ paths:
                   $ref: '#/paths/~1scim~1v2~1Users/get/responses/500/content/application~1json/examples/Internal%20Error'
     put:
       tags:
-        - Users
+        - SCIM
       operationId: ReplaceUser
       summary: Replace a User
       description: |
@@ -1958,7 +1958,7 @@ paths:
                   $ref: '#/paths/~1scim~1v2~1Users/get/responses/500/content/application~1json/examples/Internal%20Error'
     delete:
       tags:
-        - Users
+        - SCIM
       operationId: DeleteUser
       summary: Delete a User
       description: 'To delete a user, send a DELETE request to `/Users/$USER_ID`.'
@@ -2009,7 +2009,7 @@ paths:
   /scim/v2/Groups/:
     post:
       tags:
-        - Groups
+        - SCIM
       operationId: CreateGroup
       summary: Create a New Group
       description: |
@@ -2098,7 +2098,7 @@ paths:
                   $ref: '#/paths/~1scim~1v2~1Users/get/responses/500/content/application~1json/examples/Internal%20Error'
     get:
       tags:
-        - Groups
+        - SCIM
       operationId: ListGroups
       summary: List All Groups
       description: |
@@ -2222,7 +2222,7 @@ paths:
   '/scim/v2/Groups/{scim_group_id}':
     get:
       tags:
-        - Groups
+        - SCIM
       operationId: GetGroup
       summary: Retrieve an existing group
       description: |
@@ -2279,7 +2279,7 @@ paths:
                   $ref: '#/paths/~1scim~1v2~1Users/get/responses/500/content/application~1json/examples/Internal%20Error'
     patch:
       tags:
-        - Groups
+        - SCIM
       operationId: UpdateGroup
       summary: Patch a Group
       description: |
@@ -2378,7 +2378,7 @@ paths:
                   $ref: '#/paths/~1scim~1v2~1Users/get/responses/500/content/application~1json/examples/Internal%20Error'
     delete:
       tags:
-        - Groups
+        - SCIM
       operationId: DeleteGroup
       summary: Delete a Group
       description: |
@@ -2431,7 +2431,7 @@ paths:
   /scim/v2/ResourceTypes:
     get:
       tags:
-        - Configuration
+        - SCIM
       operationId: ListResourceTypes
       summary: List All Resource Types
       description: |
@@ -2521,7 +2521,7 @@ paths:
   /scim/v2/Schemas:
     get:
       tags:
-        - Configuration
+        - SCIM
       operationId: ListSchemas
       summary: List All Schemas
       description: |
@@ -2776,7 +2776,7 @@ paths:
   /scim/v2/ServiceProviderConfig:
     get:
       tags:
-        - Configuration
+        - SCIM
       operationId: GetServiceProviderConfig
       summary: Retrieve the Service Provider Configuration
       description: |
