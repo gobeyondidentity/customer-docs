@@ -36,42 +36,29 @@ Now you're ready to create and submit a pull request to have your changes or add
 
 2. Above the list of files, in the yellow banner, click **Compare & pull request** to create a pull request for the associated branch.  <br />
 
-   ![Compare and pull request](https://docs.github.com/assets/cb-34106/mw-1440/images/help/pull_requests/pull-request-compare-pull-request.webp)
+   ![Compare and pull request](./images/github-compare-and-pull-request.png)
 
-   :::note important  
-   All pull requests should be opened against the `main` branch unless the it's for the upcoming next release. In that case, the PR should be opened against the `docs-staging` branch. 
-   :::
+3. In the Open a pull request window, do the following:
 
-3. Provide additional information and if possible add reviewers. 
+   1. Select the branch.  
 
-   A pull request must be related to a JIRA issue, unless the changes are minor, for example, correcting a typo. If it is related to a JIRA issue, reference the JIRA issue in the title.
+     :::note important  
+     All pull requests should be opened against the `main` branch unless the it's for the upcoming next release. In that case, the PR should be opened against the `docs-staging` branch. 
+     :::
 
-   A description that includes:
+   1. Ensure that the summary title is short but descriptive. If it is associated with a JIRA ticket, append it to the beginning in brackets, for example, **[MD-111] mac desktop login**. 
 
-   - Links to the design files that you used
+   1. Provide a description of your changes. For more details, see [PR descriptions](#pr-descriptions).
 
-   - Relevant links to documentation outlining your work
+   1. In the **Reviewers** section, in the right panel, click the cog icon and select designated reviewers. For example, another PM, a developer, and the tehcnical writer. 
 
-   - A screenshot of a feature or fix you delivered
+   1. Assign the PR to a specific reviewer if they are the main reviewer.  
 
-   - The following are extra but highly recommended:
+   1. Select **Create pull request**.  If the pull request is a **work in progress** and not ready to be reviewed, select the **[Create draft pull request](https://github.blog/2019-02-14-introducing-draft-pull-requests/#tag-your-work-in-progress)**.
 
-     - A summary of changes and reasoning behind them
+   ![Screenshot of the Open a pull request window in GitHub highlighting a) the comparing branches selected, b) pull request summary, c) description of changes, 4) select reviwers, 5) select assignees, and 6) click the Create pull request button.](images/open-pull-request.png)
 
-     - A TODO list of missing details on large pull requests
-
-     - A list of open questions if there are any
-
-     - (Optional) A video demonstration of the feature
-
-   For more details, see [PR descriptions](#pr-descriptions).
-
-4. Select **Create pull request**.
-
-   If the pull request is a **work in progress** and not ready to be reviewed, select the **[Create draft pull request](https://github.blog/2019-02-14-introducing-draft-pull-requests/#tag-your-work-in-progress)**.
-
-5. After going through the review process for technical accuracy and a copy edit from a Sr. Technical Writer, they will enter `#approved` and merge the pull request. Your changes get merged into the `main` branch. 
-
+After the assigned reviewer reviews the content for technically accurate, they hand it off (add `#sign-off` in the comments of the PR) to the Technical Writer. This is where the content review takes place. If the Sr. Technical Writer has question regarding clarity of something, this is where the collaboration begins. After the review, the Technical Writer will `#sign-off` on the PR and merge it. For more details, see [Content development process](#content-development-process).
 
 ## Pull request guidelines
 
@@ -90,7 +77,7 @@ A few things to keep in mind when creating your pull request:
 
 ## Content development process
 
-The ownership of the PR is on the person who creates the PR. The author's responsibility is to get it reviewed and approved for technical accuracy before submitting the PR. It is the Technical Writer's responsibility to 
+The ownership of the PR is on the person who creates the PR. The author's responsibility is to get it reviewed and approved for technical accuracy before submitting the PR. It is the Technical Writer's responsibility to copyedit and ensure consistency across the customer-facing documentation.
 
 What's common in tech companies (software companies in particular), is the SME/author of the content will consult with the Sr. Technical Writer to get a better understanding of where the content fits in the sidebar (left nav). During the conversation, they'll determine where the content fits. They'll also want to know: 
 
@@ -100,7 +87,7 @@ What's common in tech companies (software companies in particular), is the SME/a
 
 - Or does the content stand alone, like a how-to, overview, or reference topic?  
 
-It doesn't mean you don't need the Sr. Technical Writer's help between the consult and the Pull Request.  You absolutely can and should if guidance is needed.  Often, engineers will continue collaborating with them even before they submit their Pull Request.
+It doesn't mean you don't need the Sr. Technical Writer's help between the consult and the Pull Request.  You absolutely can and should if guidance is needed. Often, engineers will continue collaborating with them even before they submit their Pull Request.
 
 Once they get their content to the point where it's technically accurate, then they hand it off (`#sign-off`) to the Technical Writer via a Pull Request. This is where the content review takes place.  If the Sr. Technical Writer has question regarding clarity of something, this is where the collaboration begins. After the review, the Technical Writer will `#sign-off` on the PR and merge it. 
 
@@ -123,3 +110,4 @@ The PR descriptions matter because it's an opportunity to set the reviewer up fo
 
 ## Rejected PRs
 
+--WIP---
