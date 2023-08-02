@@ -92,12 +92,6 @@ Maintain the heading hierarchy throughout the doc, and follow heading levels. Do
  ---
  // highlight-end 
 
- OR
-
- // highlight-next-line
- # Top-level heading
-
- ---
 
  // highlight-start
  // Lower-level headings within the topic
@@ -257,11 +251,9 @@ Only add a "Learn more..." sentence if the help text addresses more than one con
 
 ### Avoid "and/or"
 
-Rewrite the sentence to clarify the meaning. Note that or can mean _either_ or _both_.
+Rewrite the sentence to clarify the meaning. Note that _or_ can mean _either_ or _both_.
 
 **Example**
-
-You can save the document using the current name or a new name.
 
 | :white_check_mark: **DO** | :no_entry_sign: **DON'T** |
 | --- | --- |
@@ -271,7 +263,7 @@ You can save the document using the current name or a new name.
 
 Use "can" to indicate ability or "might" to indicate possibility.
 
-**Example**
+**Examples**
 
 - **Indicating ability**
   
@@ -284,6 +276,27 @@ Use "can" to indicate ability or "might" to indicate possibility.
   | :white_check_mark: **DO** | :no_entry_sign: **DON'T** |
   | --- | --- |
   | You might need more advanced features when integrating with another application. | You may need more advanced features when integrating with another application. |
+
+
+### Avoid "we" and "our"
+
+In general, don't use. Use "you" instead to speak directly to the user. Focus on the customer.
+
+**Example**
+
+| :white_check_mark: **DO** | :no_entry_sign: **DON'T** |
+| --- | --- |
+| Now that you've proposed and committed your changes...  |  After we propose and commit our changes...  |
+
+<br />
+
+However, it's OK to use phrasing like _we recommend_ if it helps you avoid awkward phrasing like it's recommended, but write around it if you can, as shown in the example below.
+
+**Example**
+
+| :white_check_mark: **DO** | :no_entry_sign: **DON'T** |
+| --- | --- |
+| The scheduled default setting is the easiest way to keep your computer up to date.  | We recommend that you use the scheduled default setting to keep you computer up to date.   |
 
 ### Avoid "check that" or "verify that"
 
@@ -302,7 +315,7 @@ Use "make sure" or "confirm" instead. When asking the reader to confirm somethin
 
 You can refer to an earlier step to reinforce the order of the steps.
 
-- For progress within a series of steps, use the phrase "When you've" or "After you've." Avoid using "Once you've."
+- For progress within a series of steps, use the phrase "When you've" or "After you've." 
 
 - For progress between tasks, begin a section with "Now that you've" or "After you've" (referring back to the previous action or step).
 
