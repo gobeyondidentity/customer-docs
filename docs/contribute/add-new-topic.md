@@ -6,7 +6,7 @@ slug: /add-new-topic
 pagination_next: contribute/create-pull-request
 pagination_prev: null
 last_update: 
-   date: 07/26/2023
+   date: 08/03/2023
    author: Patricia McPhee
 draft: false
 doc_type: how-to

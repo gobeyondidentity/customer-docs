@@ -6,14 +6,14 @@ slug: /best-practices
 pagination_next: null
 pagination_prev: null
 last_update: 
-   date: 07/18/2023
+   date: 08/03/2023
    author: Patricia McPhee
 draft: false
 doc_type: overview
 displayed_sidebar: contributorGuideSidebar
 ---
 
-To promote consistency, follow the guidelines below and mentioned throughout to keep the process productive and beneficial for all involved.
+To promote consistency, follow the guidelines below to keep the process productive and beneficial for all involved.
 
 ### Content development
 
@@ -23,17 +23,19 @@ To promote consistency, follow the guidelines below and mentioned throughout to 
   
 **Process:**
 
-What's worked well in the past, and what's common in tech companies (software companies in particular), is the SME/author of the content will consult with the technical writers to get a better understanding of where the content fits in the sidebar (left nav). During the conversation, they'll determine where the content fits. 
+What's common in tech companies (software companies in particular) is that the SME/author of the content will consult with the Sr. Technical Writer to understand better where the content fits in the sidebar (left nav). During the conversation, they'll determine where the content fits. They'll also want to know: 
 
-What's the topic type?  Reference, concept, how-to? In some cases, it can be a combination.
-Can it be added to an existing topic to consolidate topics for clarity?  
-Or does the content stand alone, like a how-to, overview, or reference topic?  
+- What's the topic type? Reference, concept, how-to? In some cases, it can be a combination.
 
-I'm not saying you don't need the tech writer's help between the consult and the Pull Request.  You absolutely can and should if guidance is needed.  In my experience, engineers often will continue collaborating with the tech writer even before they submit their Pull Request.
+- Can it be added to an existing topic to clarify topics?  
 
-Once they get their content to the point where it's technically accurate, then they hand it off to the Technical Writer via a Pull Request. This is where the content review takes place.  If the technical writer has question regarding clarity of something, this is where the collaboration begins. 
+- Does the content stand-alone, like a how-to, overview, or reference topic?  
 
-Some developers and product managers are comfortable with this process, but some are not.  In that case, you can provide me with the document (Google Docs or text file) and I can convert it to markdown using Pandoc. 
+You can still use the Sr. Technical Writer's help between the initial consult and the Pull Request. You absolutely can and should if guidance is needed. Often, engineers will continue collaborating with them even before they submit their Pull Request.
+
+Once they get their content to the point where it's technically accurate, they hand it off (`#sign-off`) to the Technical Writer via a Pull Request. This is where the content review takes place. If the Sr. Technical Writer has a question regarding the clarity of something, this is where the collaboration begins. After the review, the Technical Writer will `#sign-off` on the PR and merge it. 
+
+Some developers and product managers are comfortable with this process, but some are not. In that case, you can provide the Sr. Technical Writer with the document (Google Docs or text file), and they can convert it to markdown. 
 
 ### GitHub
 
