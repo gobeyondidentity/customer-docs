@@ -111,7 +111,7 @@ const sidebars = {
     },    
     'contribute/markdown-reference',
     'contribute/style-guide',
-    'contribute/release-notes-guide',
+//    'contribute/release-notes-guide',
   ],
 
 

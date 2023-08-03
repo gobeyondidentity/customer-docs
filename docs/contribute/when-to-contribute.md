@@ -3,7 +3,7 @@ title: "When to contribute"
 id: when-to-contribute
 description: ""
 slug: /when-to-contribute
-pagination_next: 'contribute/contribute-get-started'
+pagination_next: 'contribute/code-of-conduct'
 pagination_prev: null
 last_update: 
    date: 07/18/2023
