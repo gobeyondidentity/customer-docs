@@ -82,6 +82,7 @@ const sidebars = {
       items: [ 
 
         'contribute/when-to-contribute',
+        'contribute/code-of-conduct',
         'contribute/contribute-get-started',
         'contribute/site-organization-and-files',
         'contribute/docs-site-branches',

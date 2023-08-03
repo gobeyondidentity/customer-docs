@@ -1,5 +1,5 @@
 ---
-title: "Get Started"
+title: "Set up your environment"
 id: contribute-get-started
 description: ""
 slug: /contribute-get-started

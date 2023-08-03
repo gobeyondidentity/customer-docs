@@ -25,10 +25,17 @@ displayed_sidebar: contributorGuideSidebar
 [get-started]: ./get-started.md
 
 
-Make sure to consult with the Sr. Technical Writer when adding topics or want to propose changes to the content structure. 
+import CreatePullRequest from './_open-pull-request-window.mdx';
 
-The Sr. Technical Writer maintains the content's quality, reduces duplication, and provides a consistent user experience. They can also strategize how to deliver complex information—for example, adding an explainer video (<90 secs) can help with complex scenarios or issues.
+## Prerequisites
 
+- Ensure you've [set up your environment](get-started.md).
+
+- Make sure to consult with the Sr. Technical Writer when adding topics or want to propose changes to the content structure. 
+
+  The Sr. Technical Writer maintains the content's quality, reduces duplication, and provides a consistent user experience. They can also strategize how to deliver complex information—for example, adding an explainer video (<90 secs) can help with complex scenarios or issues.
+
+## 1. Propose your changes
 
 1. Make sure you're back on the main (default) branch so you can sync your local working branch.
 
@@ -95,7 +102,7 @@ The Sr. Technical Writer maintains the content's quality, reduces duplication, a
    },
    ```
    
-   It's a best practice to add the markdown file early in the content development phase. Otherwise, you\'ll get an error when you run the command to build and review your content.
+   It's a best practice to add the markdown file early in the content development phase. Otherwise, you'll get an error when you run the command to build and review your content.
 
 6. Create your content and run the following command to build and review your changes.
 
@@ -138,4 +145,6 @@ The Sr. Technical Writer maintains the content's quality, reduces duplication, a
    git push origin {your-branch-name}
    ```
 
-1. [Create a pull request](./create-pull-request).
+## 2. Create a Pull Request
+
+<CreatePullRequest />

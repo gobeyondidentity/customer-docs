@@ -33,15 +33,11 @@ At a high level, after the assigned reviewer reviews the content for technically
 
 👉 Make sure to follow the [Pull request guidelines](#pull-request-guidelines).
 
-1. Go to the [main page of the repo][repo].
-
-2. In the yellow banner Above the list of files, click **Compare & pull request** to create a pull request for the associated branch.  <br />
+1. Go to the main page of the repo, and in the yellow banner, click **Compare & pull request** to create a pull request for the associated branch.  <br />
 
    ![Compare and pull request](./images/github-compare-and-pull-request.png)
 
-1. Now that you've proposed and committed your changes, you must ask the owners to review your changes, which is done using a pull request (PR). 
-
-   In the Open a pull request window, do the following:
+1. In the Open a pull request window, do the following:
 
    1. Select the branch.  
 
@@ -65,7 +61,7 @@ At a high level, after the assigned reviewer reviews the content for technically
 
    ![Screenshot of the Open a pull request window in GitHub highlighting a) the comparing branches selected, b) pull request summary, c) description of changes, 4) select reviewers, 5) select assignees, and 6) click the Create pull request button.](./images/open-pull-request.png)
 
-That's it! Team members will review your PR and merge it when approved. You may get feedback requesting changes. 
+That's it! Team members will review your PR and merge it when approved. You may get feedback requesting changes.
 
 ## Pull request guidelines
 

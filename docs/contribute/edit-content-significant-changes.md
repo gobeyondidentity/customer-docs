@@ -29,6 +29,16 @@ If you need to make substantial changes, add an image or add a section to a topi
 
 On the other hand, if your change is minor that doesn't involve uploading a file or making changes to multiple files, follow the [Edit content - minor change](./edit-content-minor-changes) instructions instead.
 
+## Prerequisites
+
+- Ensure you've [set up your environment](get-started.md).
+
+- Make sure to consult with the Sr. Technical Writer when proposing changes. 
+
+  The Sr. Technical Writer maintains the content's quality, reduces duplication, and provides a consistent user experience. They can also strategize how to deliver complex information—for example, adding an explainer video (<90 secs) can help with complex scenarios or issues.
+
+## 1. Propose your changes
+
 1. Make sure you're back on the main (default) branch so you can sync your local working branch.
 
    ```bash
@@ -112,4 +122,36 @@ On the other hand, if your change is minor that doesn't involve uploading a file
    git push origin {your-branch-name}
    ```
 
-11. [Create a pull request](./create-pull-request).
+## 2. Create a Pull Request
+
+Now that you've proposed and committed your changes, you must ask the owners to review your changes, which is done using a pull request (PR). 
+
+1. Go to the main page of the repo, and in the yellow banner, click **Compare & pull request** to create a pull request for the associated branch.  <br />
+
+   ![Compare and pull request](./images/github-compare-and-pull-request.png)
+
+1. In the Open a pull request window, do the following:
+
+   1. Select the branch.  
+
+     :::note important  
+     Always open all pull requests against the `main` branch unless it's for the upcoming next release. In that case, the PR should be opened against the `docs-staging` branch. In our example below, the branch that you are currently in is `active-development` and you want to merge it into the `main` branch.
+     :::
+
+   1. Ensure that the summary title is short but descriptive. If it is associated with a JIRA ticket, append it to the beginning in brackets, for example, **[MD-111] mac desktop login**. 
+
+   1. Describe your changes. For more details, see [PR descriptions](./create-pull-request#pr-descriptions).
+
+   1. In the **Reviewers** section, in the right panel, click the cog icon and select designated reviewers—for example, another PM, a developer, and the technical writer. 
+
+   1. Assign the PR to a specific reviewer if they are the main reviewer.  
+
+   1. Select **Create pull request**.  
+
+     :::tip
+     If the pull request is a **work in progress** and not ready to be reviewed, select the **[Create draft pull request](https://github.blog/2019-02-14-introducing-draft-pull-requests/#tag-your-work-in-progress)**. The difference is that the reviewers only get notified when the PR is *Open* rather than *Draft*.
+     :::
+
+   ![Screenshot of the Open a pull request window in GitHub highlighting a) the comparing branches selected, b) pull request summary, c) description of changes, 4) select reviewers, 5) select assignees, and 6) click the Create pull request button.](./images/open-pull-request.png)
+
+That's it! Team members will review your PR and merge it when approved. You may get feedback requesting changes.

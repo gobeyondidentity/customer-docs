@@ -21,7 +21,6 @@ import OpenPullRequestWindow from './_open-pull-request-window.mdx';
 [contributor]: ./contribute.md
 [site]: https://docs.beyondidentity.com/
 [issues]: https://github.com/gobeyondidentity/customer-docs/issues
-[repo]: https://github.com/gobeyondidentity/customer-docs
 [pr]: https://github.com/gobeyondidentity/customer-docs/pulls
 [enhancements]: https://github.com/gobeyondidentity/customer-docs/issues/new?assignees=&labels=%F0%9F%8C%9F+enhancement&projects=&template=enhancement.yml
 [get-started]: ./get-started.md
@@ -31,11 +30,21 @@ If you only need to fix a typo or clarify a sentence or section, this option is 
 
 Despite all efforts, small grammar and spelling errors _do_ make their way into our published documents. While you can create GitHub issues to report mistakes, creating a PR to fix the issue is faster and easier when the option is available.
 
-1. In the [repo][repo], navigate to the `/docs` folder and locate the file you want to edit. Then, select the pencil icon to edit the article. <br />
+:::caution
+If you have changes other than fixing a typo or clarifying a sentence or two, it's suggested to follow the instructions for [making significant changes](edit-content-significant-changes.md).
+:::
+
+## Prerequisites
+
+A GitHub account and access to the repo.
+
+## 1. Propose your changes
+
+1. In the repo, navigate to the `/docs` folder and locate the file you want to edit. Then, select the pencil icon to edit the article. <br />
 
    ![GitHub Edit file icon](./images/github-edit-file.png)<br />
 
-1. Change the date in the metadata and ensure the author is correct. Add any additional keywords if they are missing.
+2. Change the date in the metadata and ensure the author is correct. Add any additional keywords if they are missing.
 
    Keywords are optional but helpful. All other metadata is required.
 
@@ -62,7 +71,7 @@ Despite all efforts, small grammar and spelling errors _do_ make their way into 
    ---
    ```
 
-1. Make your changes to the content and choose the **Preview** tab to view your changes.<br />
+3. Make your changes to the content and choose the **Preview** tab to view your changes.<br />
 
    ![GitHub Preview changes](./images/github-preview-changes.png)<br />
 
@@ -70,11 +79,11 @@ Despite all efforts, small grammar and spelling errors _do_ make their way into 
    The **Preview** tab does not show any formatting. You cannot preview the formatting of your changes. 
    :::
 
-1. When you're finished editing, scroll to the bottom of the page and propose your changes. <br />
+4. When you're finished editing, scroll to the bottom of the page and propose your changes. <br />
 
    1. In the **Commit changes** area, enter a title and an optional description for your changes. The title will be the first line of the commit message. <br />
 
-   1. Select the option to create a branch and then  **Propose changes** to commit your changes. 
+   2. Select the option to create a branch and then  **Propose changes** to commit your changes. 
 
      :::tip
      If you select **Create a new branch**, You can change the name of it, or you can leave the default. Leaving the default indicates where the edit came from, i.e., directly from the repo vs. working locally and pushing your changes.
@@ -82,9 +91,15 @@ Despite all efforts, small grammar and spelling errors _do_ make their way into 
    
      ![GitHub propose and commit changes](./images/github-commit-proposed-changes.png)<br />
 
-2. Now that you've proposed and committed your changes, you must ask the owners to review your changes, which is done using a pull request (PR). 
+## 2. Create a Pull Request
 
-   In the Open a pull request window, do the following:
+Now that you've proposed and committed your changes, you must ask the owners to review your changes, which is done using a pull request (PR). 
+
+1. Go to the main page of the repo, and in the yellow banner, click **Compare & pull request** to create a pull request for the associated branch.  <br />
+
+   ![Compare and pull request](./images/github-compare-and-pull-request.png)
+
+1. In the Open a pull request window, do the following:
 
    1. Select the branch.  
 
