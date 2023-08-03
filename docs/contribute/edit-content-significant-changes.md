@@ -3,7 +3,7 @@ title: "Edit content (significant changes)"
 id: edit-content-significant-changes
 description: ""
 slug: /edit-content-significant-changes
-pagination_next: contribute/create-pull-request
+pagination_next: null
 pagination_prev: null
 last_update: 
    date: 08/03/2023
