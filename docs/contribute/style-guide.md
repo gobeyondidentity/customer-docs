@@ -111,6 +111,8 @@ Maintain the heading hierarchy throughout the doc, and follow heading levels. Do
 
 - Avoid using h1 (#) headings. The metadata tile represents this heading level and is automatically displayed. Always start with h2 (##), and respect the order h2 → h3 → h4. Never skip the hierarchy level, such as h2 → h4. Avoid h5 and h6 as much as possible. If you have content with h5 and h6 headers, rethink the structure of your document. Can the content be better scanned in a table or bullet list?
 
+- Avoid using h1 (#) headings. The metadata tile represents this heading level and is automatically displayed. Always start with h2 (##), and respect the order h2 → h3 → h4. Never skip the hierarchy level, such as h2 → h4. Avoid h5 and h6 as much as possible. If you have content with h5 and h6 headers, rethink the structure of your document. Can the content be better scanned in a table or bullet list?
+
 - Avoid having two headings in a row without text in between, as this may indicate a problem with organization or redundancy. Do not use filler text to separate headings.
 
 - Each new heading should introduce a new or more specific topic in an interesting way.
@@ -259,6 +261,7 @@ Rewrite the sentence to clarify the meaning. Note that _or_ can mean _either_ or
 | --- | --- |
 | The **Events** page provides information on various events associated with user or device activity, or both.  | The **Events** page provides information on various events associated with user and/or device activity.   |
 
+
 ### Avoid "may"
 
 Use "can" to indicate ability or "might" to indicate possibility.
@@ -326,6 +329,7 @@ Use 100% zoom when capturing screenshots on adjustable apps.
 Resize the image in an editor.
 
 Image dimensions for images like the Admin Console should not exceed 1200 px. This size is great for larger images. Dialog boxes or smaller windows should be consistent throughout the article so that the sizes, when displayed in docs, are all over the place.
+
 
 ### Callouts
 
