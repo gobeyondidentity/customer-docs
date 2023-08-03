@@ -3,13 +3,10 @@ title: "Doc site branches"
 id: docs-site-branches
 description: ""
 slug: /docs-site-branches
-keywords: 
- - faq
- - help
 pagination_next: contribute/best-practices
 pagination_prev: contribute/site-organization-and-files
 last_update: 
-   date: 07/28/2023
+   date: 08/03/2023
    author: Patricia McPhee
 draft: false
 doc_type: overview
@@ -20,17 +17,29 @@ Before starting the authoring work, you must understand the different branches t
 
 - **`main`** - protected branch
     
-    Docs for https://docs.beyondidentity.com/. This branch contains the most recent stable release content.
+    Docs for the main doc site. This branch contains the most recent stable release content.
+
+    - Developer docs - https://developer.beyondidentity.com/
+
+    - Secure Workforce - https://docs.beyondidentity.com/
     
 - **`docs-staging`** - protected branch
     
-  Docs for a forward-version that includes features not yet included in the Beyond Identity stable version. When Secure Customer has a release, its `docs-staging` branch will be merged into `main`. Its content is published on https://customer-docs-git-docs-staging-beyondidentity.vercel.app/ for early validation purpose. 
+  Docs for a forward-version that includes features not yet included in the Beyond Identity stable version. When Secure Customer has a release, its `docs-staging` branch will be merged into `main`. Its content is published for early validation purpose. 
+
+  - Developer docs - https://developer-docs-git-docs-staging-beyondidentity.vercel.app/
+
+  - Secure Workforce - https://customer-docs-git-docs-staging-beyondidentity.vercel.app/
     
 - Branches starting with **`release-`** contain archived release documentation for historical tracking, such as `release-xx`.
 
 - **`active-development`** - protected branch (used for front-end and back-end development). 
 
-  Its content is published on https://customer-docs-git-active-development-beyondidentity.vercel.app/ for early validation purpose.
+  Its content is published for early validation purpose.
+
+  - Developer docs - https://developer-docs-git-active-development-beyondidentity.vercel.app/
+
+  - Secure Workforce - https://customer-docs-git-active-development-beyondidentity.vercel.app/
   
 * You can have your own personal branch to work on content for a certain issue or feature. However, be sure to check and remove unused personal branches periodically for easy maintenance. Usually when your branch is merged, you can safely delete it.
 
