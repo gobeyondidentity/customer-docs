@@ -13,7 +13,7 @@ doc_type: overview
 displayed_sidebar: contributorGuideSidebar
 ---
 
-Before starting the authoring work, you must understand the different branches to work on. You'll use your branch to work on content for a certain issue or feature, but you'll submit your Pull Request against one of the branches listed below: 
+Before you start authoring, you must understand the different branches to work on. You'll use your branch to work on content for a certain issue or feature, but you'll submit your Pull Request against one of the branches listed below: 
 
 - **`main`** - protected branch
     
