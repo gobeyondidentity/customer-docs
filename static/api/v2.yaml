@@ -39,7 +39,18 @@ info:
     curl https://api.byndid.com/v2/... \
       -X $HTTP_METHOD -H "Authorization: Bearer $TOKEN"
     ```
+    ## Rate Limiting
 
+    The Beyond Identity public API is subject to rate limiting to ensure a consistent quality of service for our customers. Rate limits are enforced per tenant, if you are experiencing
+    issues with the default rate limits provided, please refer to our [support page](https://support.beyondidentity.com/hc/en-us/articles/15689103572759-SCIM-Rate-Limits).
+
+    When a request exceeds a rate limit, our application server returns an HTTP 429 status code and RateLimit-* headers, as described in RateLimit Header Fields for HTTP. Example response:
+    ```
+    HTTP/1.1 429 Too Many Requests
+    RateLimit-Limit: 30
+    RateLimit-Remaining: 0
+    RateLimit-Reset: 7
+    ```
     ## Authorization
 
     Each method will have associated scopes. See the `Authorizations` portion within each method to see the scopes.<br /><br />
@@ -54,8 +65,8 @@ info:
 
     Resource fields can be read-only and immutable. For example, system-generated IDs are both read-only and immutable.
 
-    - A **read-only** field is provided only in the response. 
-    - An **immutable** field is assigned only once and cannot be changed. 
+    - A **read-only** field is provided only in the response.
+    - An **immutable** field is assigned only once and cannot be changed.
 
     <br />
 
@@ -132,12 +143,12 @@ info:
       </tr>
     </table>
 
-    All error responses include a JSON object with a `code` field and a `message` field. 
+    All error responses include a JSON object with a `code` field and a `message` field.
 
-    - `code` has a human-readable name for the HTTP status code, and 
-    - `message` has a high-level description of the error. 
+    - `code` has a human-readable name for the HTTP status code, and
+    - `message` has a high-level description of the error.
 
-    The error can also have additional details that the client can use to determine the exact cause of the 
+    The error can also have additional details that the client can use to determine the exact cause of the
     error. Refer to each API method's examples to determine the specific error detail types supported for that method.<br /><br />
 
     ### Invalid access token example
@@ -217,6 +228,15 @@ info:
         }
       ],
     }
+    ```
+    <br />
+
+    ### Too many requests example
+
+    If the caller has exceeded their rate limit they may receive a **429** 
+    error. This response does not include any body.
+    ```
+    HTTP/1.1 429 Too Many Requests
     ```
 servers:
   - url: 'https://api.byndid.com'
@@ -317,6 +337,24 @@ paths:
                   value:
                     code: conflict
                     message: group name already taken
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -447,6 +485,24 @@ paths:
               examples:
                 Insufficient Authorization:
                   $ref: '#/paths/~1v2~1users/get/responses/403/content/application~1json/examples/Insufficient%20Authorization'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -519,6 +575,24 @@ paths:
                         resource_type: Group
                         id: 25f94daf-63d8-4b40-b0ea-4843971d1d8e
                         description: group not found
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -624,6 +698,24 @@ paths:
               examples:
                 Name Already Taken:
                   $ref: '#/paths/~1v2~1groups/post/responses/409/content/application~1json/examples/Name%20Already%20Taken'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -682,6 +774,24 @@ paths:
               examples:
                 Group Not Found:
                   $ref: '#/paths/~1v2~1groups~1%7Bgroup_id%7D/get/responses/404/content/application~1json/examples/Group%20Not%20Found'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -841,6 +951,24 @@ paths:
               examples:
                 Group Not Found:
                   $ref: '#/paths/~1v2~1groups~1%7Bgroup_id%7D/get/responses/404/content/application~1json/examples/Group%20Not%20Found'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -934,6 +1062,24 @@ paths:
               examples:
                 Group Not Found:
                   $ref: '#/paths/~1v2~1groups~1%7Bgroup_id%7D/get/responses/404/content/application~1json/examples/Group%20Not%20Found'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -1028,6 +1174,24 @@ paths:
               examples:
                 Group Not Found:
                   $ref: '#/paths/~1v2~1groups~1%7Bgroup_id%7D/get/responses/404/content/application~1json/examples/Group%20Not%20Found'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -1131,6 +1295,24 @@ paths:
                   value:
                     code: conflict
                     message: user already exists
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -1284,6 +1466,24 @@ paths:
                   value:
                     code: forbidden
                     message: forbidden
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -1353,6 +1553,24 @@ paths:
                         resource_type: User
                         id: 24d228e9-4915-4fcd-ab32-f7300a383219
                         description: user not found
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -1433,6 +1651,24 @@ paths:
                   value:
                     code: conflict
                     message: user external id already taken
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -1485,6 +1721,110 @@ paths:
               examples:
                 User Not Found:
                   $ref: '#/paths/~1v2~1users~1%7Buser_id%7D/get/responses/404/content/application~1json/examples/User%20Not%20Found'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1v2~1users/get/responses/500/content/application~1json/examples/Internal%20Error'
+  /v2/binding-jobs:
+    post:
+      tags:
+        - BindingJobs
+      operationId: CreateBindingJob
+      summary: Create a new credential binding job
+      description: |
+        To create a binding job, send a POST request to `/v2/binding-jobs`. Values in the
+        request body for read-only attributes get ignored.
+      security:
+        - BearerAuth:
+            - 'binding-jobs:create'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Create Binding Job Request
+              description: Request for CreateBindingJob.
+              type: object
+              properties:
+                binding_job:
+                  $ref: '#/components/schemas/BindingJob'
+              required:
+                - binding_job
+            examples:
+              Create Binding Job:
+                value:
+                  binding_job:
+                    user_id: 11819414-9000-4700-af07-2743c02d68ca
+                    issuer_user_id: 4dfb7751-46a9-4bd6-a591-a5941cb24eba
+                    delivery_method: SHORT_CODE
+      responses:
+        '200':
+          description: |
+            The response is a JSON object containing standard group attributes.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BindingJob'
+              examples:
+                Success:
+                  value:
+                    id: 66d36cf5-96df-4fa3-a5d0-36d0aa8487c3
+                    tenant_id: acme-corp
+                    user_id: 11819414-9000-4700-af07-2743c02d68ca
+                    issuer_user_id: 4dfb7751-46a9-4bd6-a591-a5941cb24eba
+                    delivery_method: SHORT_CODE
+                    short_code_delivery_details:
+                      short_code: 123456789
+                      expire_time: 2022-08-12T05:53:07.119Z
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Invalid Parameters:
+                  $ref: '#/paths/~1v2~1users/get/responses/400/content/application~1json/examples/Invalid%20Parameters'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Insufficient Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/403/content/application~1json/examples/Insufficient%20Authorization'
         '500':
           description: Server error.
           content:
@@ -1576,6 +1916,24 @@ paths:
               examples:
                 Missing Authorization:
                   $ref: '#/paths/~1scim~1v2~1Users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -1705,6 +2063,24 @@ paths:
                       - 'urn:ietf:params:scim:api:messages:2.0:Error'
                     status: '401'
                     detail: The authorization header is invalid or missing.
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -1768,6 +2144,24 @@ paths:
                       - 'urn:ietf:params:scim:api:messages:2.0:Error'
                     status: '404'
                     detail: Resource 2819c223-7f76-453a-919d-413861904646 not found.
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -1861,6 +2255,24 @@ paths:
               examples:
                 User Not Found:
                   $ref: '#/paths/~1scim~1v2~1Users~1%7Bscim_user_id%7D/get/responses/404/content/application~1json/examples/User%20Not%20Found'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -1947,6 +2359,24 @@ paths:
               examples:
                 User Not Found:
                   $ref: '#/paths/~1scim~1v2~1Users~1%7Bscim_user_id%7D/get/responses/404/content/application~1json/examples/User%20Not%20Found'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -1997,6 +2427,24 @@ paths:
               examples:
                 User Not Found:
                   $ref: '#/paths/~1scim~1v2~1Users~1%7Bscim_user_id%7D/get/responses/404/content/application~1json/examples/User%20Not%20Found'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -2087,6 +2535,24 @@ paths:
               examples:
                 Missing Authorization:
                   $ref: '#/paths/~1scim~1v2~1Users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -2210,6 +2676,24 @@ paths:
               examples:
                 Missing Authorization:
                   $ref: '#/paths/~1scim~1v2~1Users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -2268,6 +2752,24 @@ paths:
               examples:
                 Group Not Found:
                   $ref: '#/paths/~1scim~1v2~1Users~1%7Bscim_user_id%7D/get/responses/404/content/application~1json/examples/User%20Not%20Found'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -2367,6 +2869,24 @@ paths:
               examples:
                 Group Not Found:
                   $ref: '#/paths/~1scim~1v2~1Users~1%7Bscim_user_id%7D/get/responses/404/content/application~1json/examples/User%20Not%20Found'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -2419,6 +2939,24 @@ paths:
               examples:
                 Group Not Found:
                   $ref: '#/paths/~1scim~1v2~1Users~1%7Bscim_user_id%7D/get/responses/404/content/application~1json/examples/User%20Not%20Found'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -2509,6 +3047,24 @@ paths:
                     itemsPerPage: 1000
                     startIndex: 1
                     totalResults: 2
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -2764,6 +3320,24 @@ paths:
                     itemsPerPage: 1000
                     startIndex: 1
                     totalResults: 3
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -2817,6 +3391,24 @@ paths:
                       supported: true
                     sort:
                       supported: false
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -3075,6 +3667,60 @@ components:
             A flag representing if the user has at least one device credential in an ACTIVE state. It's updated automatically when the user creates or revokes any passkeys.  This field is read-only.
           readOnly: true
           example: true
+    BindingJob:
+      title: BindingJob
+      type: object
+      description: |
+        A binding job tracks the process of binding a new credential for a user.
+      properties:
+        id:
+          type: string
+          description: |
+            A unique identifier for the binding job that is automatically generated on creation. This field is immutable and read-only.
+          readOnly: true
+          example: 0fa1df25-af74-41a9-80bb-9e12762657ae
+        tenant_id:
+          type: string
+          description: |
+            A unique identifier for the tenant that is set automatically on creation. This field is immutable and read-only.
+          readOnly: true
+          example: acme-corp
+        user_id:
+          type: string
+          description: |
+            ID of the user to which the credential should be bound.
+          example: 0e3b7222-5c36-4e16-af1f-c0f3be5c57d7
+        issuer_user_id:
+          type: string
+          description: |
+            ID of the user "issuing" (creating) this binding job. May be the same as `user_id`, if this binding job was created as part of a self-service flow.
+          example: 14505aae-4892-4c6c-9341-404b0a027cd1
+        delivery_method:
+          type: string
+          description: |
+            Method by which the binding job is to be delivered to the end user. The only supported method is `SHORT_CODE`. New methods may be added later. This field is immutable and read-only.
+          example: SHORT_CODE
+        state:
+          type: string
+          description: |
+            Indicates the state of the binding job. This field is read-only.
+          readOnly: true
+          example: PENDING
+        short_code_delivery_details:
+          type: object
+          description: |
+            Details about the short code. Only populated in responses if `delivery_method` is `SHORT_CODE`.
+          readOnly: true
+          properties:
+            short_code:
+              type: string
+            expire_time:
+              type: string
+              format: date-time
+              description: |
+                A time value in the ISO8601 combined date and time format that gets generated automatically and represents the time the short code will expire. This field is immutable and read-only.
+              readOnly: true
+              example: 2022-08-12T05:53:07.119Z
     SCIMUser:
       title: User
       description: |
