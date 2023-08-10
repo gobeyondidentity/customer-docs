@@ -862,6 +862,7 @@ paths:
             - 'groups:read'
             - 'users:read'
       parameters:
+        - $ref: '#/components/parameters/group_id'
         - $ref: '#/components/parameters/page_size'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/filter'
@@ -1752,7 +1753,7 @@ paths:
     post:
       tags:
         - SCIM
-      operationId: CreateUser
+      operationId: SCIMCreateUser
       summary: Create a New User
       description: |
         To create a user, send a POST request to `/Users`. Values in the request body for read-only fields will be ignored.
@@ -1860,7 +1861,7 @@ paths:
     get:
       tags:
         - SCIM
-      operationId: ListUsers
+      operationId: SCIMListUsers
       summary: List All Users
       description: |
         To list all users, send a GET request to `/Users`.
@@ -2007,11 +2008,11 @@ paths:
                     schemas:
                       - 'urn:ietf:params:scim:api:messages:2.0:Error'
                     status: '500'
-  '/scim/v2/Users/{scim_user_id}':
+  '/scim/v2/Users/{user_id}':
     get:
       tags:
         - SCIM
-      operationId: GetUser
+      operationId: SCIMGetUser
       summary: Retrieve an Existing User
       description: |
         To retrieve an existing user, send a GET request to `/Users/$USER_ID`.
@@ -2088,7 +2089,7 @@ paths:
     patch:
       tags:
         - SCIM
-      operationId: UpdateUser
+      operationId: SCIMUpdateUser
       summary: Patch a User
       description: |
         To update only specific attributes of an existing user, send a PATCH
@@ -2168,7 +2169,7 @@ paths:
                 $ref: '#/components/schemas/SCIMError'
               examples:
                 User Not Found:
-                  $ref: '#/paths/~1scim~1v2~1Users~1%7Bscim_user_id%7D/get/responses/404/content/application~1json/examples/User%20Not%20Found'
+                  $ref: '#/paths/~1scim~1v2~1Users~1%7Buser_id%7D/get/responses/404/content/application~1json/examples/User%20Not%20Found'
         '429':
           description: Rate limit exceeded.
           headers:
@@ -2199,7 +2200,7 @@ paths:
     put:
       tags:
         - SCIM
-      operationId: ReplaceUser
+      operationId: SCIMReplaceUser
       summary: Replace a User
       description: |
         To replace all attributes of an existing user, send a PUT request to `/Users/$USER_ID`. Values in the request body for immutable or read-only fields will be ignored.
@@ -2272,7 +2273,7 @@ paths:
                 $ref: '#/components/schemas/SCIMError'
               examples:
                 User Not Found:
-                  $ref: '#/paths/~1scim~1v2~1Users~1%7Bscim_user_id%7D/get/responses/404/content/application~1json/examples/User%20Not%20Found'
+                  $ref: '#/paths/~1scim~1v2~1Users~1%7Buser_id%7D/get/responses/404/content/application~1json/examples/User%20Not%20Found'
         '429':
           description: Rate limit exceeded.
           headers:
@@ -2303,7 +2304,7 @@ paths:
     delete:
       tags:
         - SCIM
-      operationId: DeleteUser
+      operationId: SCIMDeleteUser
       summary: Delete a User
       description: 'To delete a user, send a DELETE request to `/Users/$USER_ID`.'
       security:
@@ -2340,7 +2341,7 @@ paths:
                 $ref: '#/components/schemas/SCIMError'
               examples:
                 User Not Found:
-                  $ref: '#/paths/~1scim~1v2~1Users~1%7Bscim_user_id%7D/get/responses/404/content/application~1json/examples/User%20Not%20Found'
+                  $ref: '#/paths/~1scim~1v2~1Users~1%7Buser_id%7D/get/responses/404/content/application~1json/examples/User%20Not%20Found'
         '429':
           description: Rate limit exceeded.
           headers:
@@ -2372,7 +2373,7 @@ paths:
     post:
       tags:
         - SCIM
-      operationId: CreateGroup
+      operationId: SCIMCreateGroup
       summary: Create a New Group
       description: |
         To create a group, send a POST request to `/Groups`. Values in the request body for read-only fields will be ignored.
@@ -2479,7 +2480,7 @@ paths:
     get:
       tags:
         - SCIM
-      operationId: ListGroups
+      operationId: SCIMListGroups
       summary: List All Groups
       description: |
         To list all groups, send a GET request to `/Groups`.
@@ -2617,11 +2618,11 @@ paths:
               examples:
                 Internal Error:
                   $ref: '#/paths/~1scim~1v2~1Users/get/responses/500/content/application~1json/examples/Internal%20Error'
-  '/scim/v2/Groups/{scim_group_id}':
+  '/scim/v2/Groups/{group_id}':
     get:
       tags:
         - SCIM
-      operationId: GetGroup
+      operationId: SCIMGetGroup
       summary: Retrieve an existing group
       description: |
         To retrieve an existing group, send a GET request to `/Groups/$GROUP_ID`.
@@ -2665,7 +2666,7 @@ paths:
                 $ref: '#/components/schemas/SCIMError'
               examples:
                 Group Not Found:
-                  $ref: '#/paths/~1scim~1v2~1Users~1%7Bscim_user_id%7D/get/responses/404/content/application~1json/examples/User%20Not%20Found'
+                  $ref: '#/paths/~1scim~1v2~1Users~1%7Buser_id%7D/get/responses/404/content/application~1json/examples/User%20Not%20Found'
         '429':
           description: Rate limit exceeded.
           headers:
@@ -2696,7 +2697,7 @@ paths:
     patch:
       tags:
         - SCIM
-      operationId: UpdateGroup
+      operationId: SCIMUpdateGroup
       summary: Patch a Group
       description: |
         To update only specific attributes of an existing group, send a PATCH
@@ -2782,7 +2783,7 @@ paths:
                 $ref: '#/components/schemas/SCIMError'
               examples:
                 Group Not Found:
-                  $ref: '#/paths/~1scim~1v2~1Users~1%7Bscim_user_id%7D/get/responses/404/content/application~1json/examples/User%20Not%20Found'
+                  $ref: '#/paths/~1scim~1v2~1Users~1%7Buser_id%7D/get/responses/404/content/application~1json/examples/User%20Not%20Found'
         '429':
           description: Rate limit exceeded.
           headers:
@@ -2813,7 +2814,7 @@ paths:
     delete:
       tags:
         - SCIM
-      operationId: DeleteGroup
+      operationId: SCIMDeleteGroup
       summary: Delete a Group
       description: |
         To delete a group, send a DELETE request to `/Groups/$GROUP_ID`.
@@ -2852,7 +2853,7 @@ paths:
                 $ref: '#/components/schemas/SCIMError'
               examples:
                 Group Not Found:
-                  $ref: '#/paths/~1scim~1v2~1Users~1%7Bscim_user_id%7D/get/responses/404/content/application~1json/examples/User%20Not%20Found'
+                  $ref: '#/paths/~1scim~1v2~1Users~1%7Buser_id%7D/get/responses/404/content/application~1json/examples/User%20Not%20Found'
         '429':
           description: Rate limit exceeded.
           headers:
@@ -3408,7 +3409,7 @@ components:
       schema:
         type: string
     scim_user_id:
-      name: userId
+      name: user_id
       in: path
       description: ID of the user.
       required: true
@@ -3416,7 +3417,7 @@ components:
         type: string
         minLength: 1
     scim_group_id:
-      name: groupId
+      name: group_id
       in: path
       description: ID of the group.
       required: true
