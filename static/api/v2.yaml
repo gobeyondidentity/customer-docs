@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: Beyond Identity Secure Workforce Admin API
-  version: 2.1.0
+  version: 2.2.0
   contact:
     email: support@beyondidentity.com
   description: |
@@ -39,7 +39,18 @@ info:
     curl https://api.byndid.com/v2/... \
       -X $HTTP_METHOD -H "Authorization: Bearer $TOKEN"
     ```
+    ## Rate Limiting
 
+    The Beyond Identity public API is subject to rate limiting to ensure a consistent quality of service for our customers. Rate limits are enforced per tenant, if you are experiencing
+    issues with the default rate limits provided, please refer to our [support page](https://support.beyondidentity.com/hc/en-us/articles/15689103572759-SCIM-Rate-Limits).
+
+    When a request exceeds a rate limit, our application server returns an HTTP 429 status code and RateLimit-* headers, as described in RateLimit Header Fields for HTTP. Example response:
+    ```
+    HTTP/1.1 429 Too Many Requests
+    RateLimit-Limit: 30
+    RateLimit-Remaining: 0
+    RateLimit-Reset: 7
+    ```
     ## Authorization
 
     Each method will have associated scopes. See the `Authorizations` portion within each method to see the scopes.<br /><br />
@@ -54,8 +65,8 @@ info:
 
     Resource fields can be read-only and immutable. For example, system-generated IDs are both read-only and immutable.
 
-    - A **read-only** field is provided only in the response. 
-    - An **immutable** field is assigned only once and cannot be changed. 
+    - A **read-only** field is provided only in the response.
+    - An **immutable** field is assigned only once and cannot be changed.
 
     <br />
 
@@ -132,12 +143,12 @@ info:
       </tr>
     </table>
 
-    All error responses include a JSON object with a `code` field and a `message` field. 
+    All error responses include a JSON object with a `code` field and a `message` field.
 
-    - `code` has a human-readable name for the HTTP status code, and 
-    - `message` has a high-level description of the error. 
+    - `code` has a human-readable name for the HTTP status code, and
+    - `message` has a high-level description of the error.
 
-    The error can also have additional details that the client can use to determine the exact cause of the 
+    The error can also have additional details that the client can use to determine the exact cause of the
     error. Refer to each API method's examples to determine the specific error detail types supported for that method.<br /><br />
 
     ### Invalid access token example
@@ -218,6 +229,15 @@ info:
       ],
     }
     ```
+    <br />
+
+    ### Too many requests example
+
+    If the caller has exceeded their rate limit they may receive a **429** 
+    error. This response does not include any body.
+    ```
+    HTTP/1.1 429 Too Many Requests
+    ```
 servers:
   - url: 'https://api.byndid.com'
 tags:
@@ -225,6 +245,963 @@ tags:
     description: |
       A user is a member of an organization using Beyond Identity.
 paths:
+  /v2/groups:
+    post:
+      tags:
+        - Groups
+      operationId: CreateGroup
+      summary: Create a new group
+      description: |
+        To create a group, send a POST request to `/v2/groups`. Values in the
+        request body for read-only attributes get ignored.
+
+        If the requested group name is already in use, you'll receive a 409 error.
+
+        Note that this endpoint does not support creating permission groups. If the
+        request attempts to create a group with the name of a permission group, you
+        will receive a 403 error.
+      security:
+        - BearerAuth:
+            - 'groups:create'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Create Group Request
+              description: Request for CreateGroup.
+              type: object
+              properties:
+                group:
+                  $ref: '#/components/schemas/Group'
+              required:
+                - group
+            examples:
+              Create Group:
+                value:
+                  group:
+                    name: Acme Group
+                    description: Members of the Acme Group
+      responses:
+        '200':
+          description: |
+            The response is a JSON object containing standard group attributes.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+              examples:
+                Success:
+                  value:
+                    id: 25f94daf-63d8-4b40-b0ea-4843971d1d8e
+                    create_time: 2022-04-12T05:53:07.119Z
+                    update_time: 2022-06-16T14:31:03.770Z
+                    tenant_id: acme-corp
+                    name: Acme Group
+                    description: Members of the Acme Group
+                    source: scim
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Invalid Parameters:
+                  $ref: '#/paths/~1v2~1users/get/responses/400/content/application~1json/examples/Invalid%20Parameters'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Insufficient Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/403/content/application~1json/examples/Insufficient%20Authorization'
+        '409':
+          description: Conflict.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Name Already Taken:
+                  value:
+                    code: conflict
+                    message: group name already taken
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1v2~1users/get/responses/500/content/application~1json/examples/Internal%20Error'
+    get:
+      tags:
+        - Groups
+      operationId: ListGroups
+      summary: List all groups for a tenant
+      description: |
+        To list all groups for a tenant, send a GET request to `/v2/groups`. Note
+        that this endpoint excludes permission groups.
+
+        The response will have up to 1000 items. The response will be empty if the
+        page size is not specified (i.e., the default). By default, the list is in
+        ascending order by `create_time`. The maximum and default page sizes are
+        subject to change.
+
+        When paginating, use the `skip` parameter as the offset.
+
+        When filtering, the response will only show users that satisfy this filter.
+        The syntax follows the SCIM grammar from
+        [RFC7644 Section 3.4.2.2](https:datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2).
+
+        The supported operations are:
+          - eq (equals)
+          - ne (not equals)
+          - co (contains)
+          - sw (starts with)
+          - ew (ends with)
+
+        The supported fields and their supported operations are:
+          - id (eq, ne, co, sw, ew)
+          - name (eq, ne, co, sw, ew)
+          - description (eq, ne, co, sw, ew)
+          - source (eq, ne, co, sw, ew)
+
+        When sorting, use the `order_by` parameter. It's a comma-delimited list of
+        attributes. Currently, the following fields are supported:
+
+          - name
+          - source
+
+        The default sorting order per attribute is ascending. Therefore, if you
+        want descending order, append the " desc" suffix to the attribute name.
+      security:
+        - BearerAuth:
+            - 'groups:read'
+      parameters:
+        - $ref: '#/components/parameters/page_size'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/order_by'
+      responses:
+        '200':
+          description: |
+            The response is a JSON object with `groups` and `total_size` keys. <br />
+              - `groups` is set to an array of group objects containing standard
+                group attributes.
+              - `total_size` is set to the total number of items matched by the
+                list request.
+            If more items are to be returned by the requested query, make another request using the `skip` query parameter.
+          content:
+            application/json:
+              schema:
+                title: List Groups Response
+                description: Response for ListGroups.
+                type: object
+                properties:
+                  users:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Group'
+                    maxItems: 1000
+                    description: |
+                      An ordered array of groups corresponding to the request. If the `order_by` query parameter is set, it follows that ordering. If not, groups are ordered by ascending `create_time` by default.
+                  total_size:
+                    type: integer
+                    format: uint32
+                    description: |
+                      The total number of results returned by the operation. This value may be larger than the number of resources returned, such as when returning a single page where multiple pages are available.
+                    example: 1000
+                required:
+                  - groups
+                  - total_size
+              examples:
+                Success:
+                  value:
+                    groups:
+                      - id: 25f94daf-63d8-4b40-b0ea-4843971d1d8e
+                        create_time: 2022-04-12T05:53:07.119Z
+                        update_time: 2022-06-16T14:31:03.770Z
+                        tenant_id: acme-corp
+                        name: Acme Group
+                        description: Members of the Acme Group
+                        source: scim
+                        member_count: 10
+                    total_size: 1
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Invalid Parameters:
+                  $ref: '#/paths/~1v2~1users/get/responses/400/content/application~1json/examples/Invalid%20Parameters'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Insufficient Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/403/content/application~1json/examples/Insufficient%20Authorization'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1v2~1users/get/responses/500/content/application~1json/examples/Internal%20Error'
+  '/v2/groups/{group_id}':
+    get:
+      tags:
+        - Groups
+      operationId: GetGroups
+      summary: Retrieve an existing group
+      description: |
+        To retrieve an existing group, send a GET request to
+        `/v2/groups/$GROUP_ID`.
+
+        Note that this endpoint does not support access to permission groups. If
+        the request attempts to access a permission group, you'll receive a 403
+        error.
+      security:
+        - BearerAuth:
+            - 'groups:read'
+      parameters:
+        - $ref: '#/components/parameters/group_id'
+      responses:
+        '200':
+          description: |
+            The response is a JSON object containing standard group attributes.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+              examples:
+                Success:
+                  $ref: '#/paths/~1v2~1groups/post/responses/200/content/application~1json/examples/Success'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Insufficient Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/403/content/application~1json/examples/Insufficient%20Authorization'
+        '404':
+          description: The resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Group Not Found:
+                  value:
+                    code: not_found
+                    message: group not found
+                    detail:
+                      - type: ResourceInfo
+                        resource_type: Group
+                        id: 25f94daf-63d8-4b40-b0ea-4843971d1d8e
+                        description: group not found
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1v2~1users/get/responses/500/content/application~1json/examples/Internal%20Error'
+    patch:
+      tags:
+        - Groups
+      operationId: UpdateGroup
+      summary: Patch a group
+      description: |
+        To update only specific attributes of an existing group, send a PATCH
+        request to `/v2/groups/$GROUP_ID`. Values in the request body for read-only
+        attributes get ignored. Fields omitted from the request body will be left
+        unchanged.
+
+        If the updated name of the group is already in use, you'll receive a 409
+        error.
+
+        Note that this endpoint does not support updates to permission groups. If
+        the request attempts to use the name of a permission group or attempts to
+        update a permission group, you'll receive a 403 error.
+      security:
+        - BearerAuth:
+            - 'groups:update'
+      parameters:
+        - $ref: '#/components/parameters/group_id'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Update Group Request
+              description: Request for UpdateGroup.
+              type: object
+              properties:
+                group:
+                  $ref: '#/components/schemas/Group'
+              required:
+                - group
+            examples:
+              Create Group:
+                value:
+                  group:
+                    name: Acme Group
+                    description: Members of the Acme Group
+      responses:
+        '200':
+          description: |
+            The response is a JSON object containing standard group attributes.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+              examples:
+                Success:
+                  $ref: '#/paths/~1v2~1groups/post/responses/200/content/application~1json/examples/Success'
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Invalid Parameters:
+                  $ref: '#/paths/~1v2~1users/get/responses/400/content/application~1json/examples/Invalid%20Parameters'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Insufficient Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/403/content/application~1json/examples/Insufficient%20Authorization'
+        '404':
+          description: The resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Group Not Found:
+                  $ref: '#/paths/~1v2~1groups~1%7Bgroup_id%7D/get/responses/404/content/application~1json/examples/Group%20Not%20Found'
+        '409':
+          description: Conflict.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Name Already Taken:
+                  $ref: '#/paths/~1v2~1groups/post/responses/409/content/application~1json/examples/Name%20Already%20Taken'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1v2~1users/get/responses/500/content/application~1json/examples/Internal%20Error'
+    delete:
+      tags:
+        - Groups
+      operationId: DeleteGroup
+      summary: Delete a group
+      description: |
+        To delete a group, send a DELETE request to `/v2/groups/$GROUP_ID`.
+
+        A successful request will receive a 200 status code with nothing
+        in the response's body. This indicates that the request was processed
+        successfully.
+
+        Note that this endpoint does not support deleting permission groups. If the
+        request attempts to delete a permission group, you'll receive a 403 error.
+      security:
+        - BearerAuth:
+            - 'groups:delete'
+      parameters:
+        - $ref: '#/components/parameters/group_id'
+      responses:
+        '200':
+          description: The action was successful and the response body is empty.
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Insufficient Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/403/content/application~1json/examples/Insufficient%20Authorization'
+        '404':
+          description: The resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Group Not Found:
+                  $ref: '#/paths/~1v2~1groups~1%7Bgroup_id%7D/get/responses/404/content/application~1json/examples/Group%20Not%20Found'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1v2~1users/get/responses/500/content/application~1json/examples/Internal%20Error'
+  '/v2/groups/{group_id}:listUsers':
+    get:
+      tags:
+        - Groups
+      operationId: ListGroupUsers
+      summary: List all users for a group
+      description: |
+        To list all users belonging to a group, send a GET request to
+        `/v2/groups/$GROUP_ID:listUsers`.
+
+        The response will have up to 1000 items. The response will be empty if the
+        page size is not specified (i.e., the default). By default, the list is in
+        ascending order by `create_time`. The maximum and default page sizes are
+        subject to change.
+
+        When paginating, use the `skip` parameter as the offset.
+
+        When filtering, the response will only show users that satisfy this filter.
+        The syntax follows the SCIM grammar from
+        [RFC7644 Section 3.4.2.2](https:datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2).
+
+        The supported operations are:
+          - pr (present)
+          - eq (equals)
+          - ne (not equals)
+          - co (contains)
+          - sw (starts with)
+          - ew (ends with)
+          - gt (greater than)
+          - lt (less than)
+          - ge (greater than or equal to)
+          - le (less than or equal to)
+
+        The supported fields and their supported operations are:
+          - id (eq, ne, co, sw, ew)
+          - email_address (eq, ne, co, sw, ew)
+          - external_id (eq, ne, co, sw, ew)
+          - username (eq, ne, co, sw, ew)
+          - display_name (eq, ne, co, sw, ew)
+          - state (eq, ne, co, sw, ew)
+          - source (eq, ne, co, sw, ew)
+          - last_auth_time (pr, eq, ne, gt, lt, ge, le)
+          - has_active_passkey (eq, ne)
+
+        When sorting, use the `order_by` parameter. It's a comma-delimited list of
+        attributes. Currently, the following fields are supported:
+
+          - display_name
+          - username
+          - email_address
+          - status
+          - source
+          - last_auth_time
+
+        The default sorting order per attribute is ascending. Therefore, if you
+        want descending order, append the " desc" suffix to the attribute name.
+      security:
+        - BearerAuth:
+            - 'groups:read'
+            - 'users:read'
+      parameters:
+        - $ref: '#/components/parameters/group_id'
+        - $ref: '#/components/parameters/page_size'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/order_by'
+      responses:
+        '200':
+          description: |
+            The response is a JSON object with `users` and `total_size` keys. <br />
+              - `users` is set to an array of user objects containing standard user
+                attributes.
+              - `total_size` is set to the total number of items matched by the
+                list request. If more items are to be returned by the requested
+                query, make another request using the `skip` query parameter.
+          content:
+            application/json:
+              schema:
+                title: List Group Users Response
+                description: Response for ListGroupUsers.
+                type: object
+                properties:
+                  users:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+                    maxItems: 1000
+                    description: |
+                      An ordered array of users corresponding to the request. If the `order_by` query parameter is set, it follows that ordering. If not, users are ordered by ascending `create_time` by default.
+                  total_size:
+                    type: integer
+                    format: uint32
+                    description: |
+                      The total number of results returned by the operation. This value may be larger than the number of resources returned, such as when returning a single page where multiple pages are available.
+                    example: 1000
+                required:
+                  - users
+                  - total_size
+              examples:
+                Success:
+                  value:
+                    users:
+                      - id: f7277b07-4a9e-4f84-9839-cd3082a6b8c3
+                        create_time: 2022-04-12T05:53:07.119Z
+                        update_time: 2022-06-16T14:31:03.770Z
+                        last_auth_time: 2022-06-16T14:31:03.770Z
+                        tenant_id: acme-corp
+                        external_id: 0001f1f460b1ace6
+                        email_address: alice@acmecorp.com
+                        username: alice.acmecorp
+                        display_name: Alice Acmecorp
+                        state: ACTIVE
+                        source: scim
+                        has_active_passkey: true
+                    total_size: 1
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Invalid Parameters:
+                  $ref: '#/paths/~1v2~1users/get/responses/400/content/application~1json/examples/Invalid%20Parameters'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Insufficient Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/403/content/application~1json/examples/Insufficient%20Authorization'
+        '404':
+          description: The resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Group Not Found:
+                  $ref: '#/paths/~1v2~1groups~1%7Bgroup_id%7D/get/responses/404/content/application~1json/examples/Group%20Not%20Found'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1v2~1users/get/responses/500/content/application~1json/examples/Internal%20Error'
+  '/v2/groups/{group_id}:addUsers':
+    post:
+      tags:
+        - Groups
+      operationId: AddGroupUsers
+      summary: Add users to a group
+      description: |
+        To add users to a group, send a POST request to
+        `/v2/groups/$GROUP_ID:addUsers`. The request may include up to 1000 users
+        to add. Users which already belong to the group will be ignored.
+
+        Note that this endpoint does not support adding users to permission groups.
+        If the request attempts to add users to a permission group, you'll receive
+        a 403 error.
+      security:
+        - BearerAuth:
+            - 'groups:update'
+            - 'users:read'
+      parameters:
+        - $ref: '#/components/parameters/group_id'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Add Group Users Request
+              description: Request for AddGroupUsers.
+              type: object
+              properties:
+                id:
+                  description: ID of the group.
+                  type: string
+                user_ids:
+                  description: IDs of the users to be added to the group.
+                  type: array
+                  items:
+                    type: string
+                  minItems: 1
+                  maxItems: 1000
+              required:
+                - group
+            examples:
+              Add Users:
+                value:
+                  id: 25f94daf-63d8-4b40-b0ea-4843971d1d8e
+                  user_ids:
+                    - id: f7277b07-4a9e-4f84-9839-cd3082a6b8c3
+      responses:
+        '200':
+          description: |
+            The response is a JSON object containing standard group attributes.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+              examples:
+                Success:
+                  $ref: '#/paths/~1v2~1groups/post/responses/200/content/application~1json/examples/Success'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Insufficient Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/403/content/application~1json/examples/Insufficient%20Authorization'
+        '404':
+          description: The resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Group Not Found:
+                  $ref: '#/paths/~1v2~1groups~1%7Bgroup_id%7D/get/responses/404/content/application~1json/examples/Group%20Not%20Found'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1v2~1users/get/responses/500/content/application~1json/examples/Internal%20Error'
+  '/v2/groups/{group_id}:deleteUsers':
+    post:
+      tags:
+        - Groups
+      operationId: DeleteGroupUsers
+      summary: Delete users from a group
+      description: |
+        To delete users from a group, send a POST request to
+        `/v2/groups/$GROUP_ID:deleteUsers`. The request may contain up to 1000
+        users to delete. Users which already do not belong to the group will be
+        ignored.
+
+        Note that this endpoint does not support deleting users from permission
+        groups. If the request attempts to delete users from a permission group,
+        you'll receive a 403 error.
+      security:
+        - BearerAuth:
+            - 'groups:update'
+            - 'users:read'
+      parameters:
+        - $ref: '#/components/parameters/group_id'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Delete Group Users Request
+              description: Request for DeleteGroupUsers.
+              type: object
+              properties:
+                id:
+                  description: ID of the group.
+                  type: string
+                user_ids:
+                  description: IDs of the users to be deleted from the group.
+                  type: array
+                  items:
+                    type: string
+                  minItems: 1
+                  maxItems: 1000
+              required:
+                - group
+            examples:
+              Delete Users:
+                value:
+                  id: 25f94daf-63d8-4b40-b0ea-4843971d1d8e
+                  user_ids:
+                    - id: f7277b07-4a9e-4f84-9839-cd3082a6b8c3
+      responses:
+        '200':
+          description: |
+            The response is a JSON object containing standard group attributes.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+              examples:
+                Success:
+                  $ref: '#/paths/~1v2~1groups/post/responses/200/content/application~1json/examples/Success'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Insufficient Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/403/content/application~1json/examples/Insufficient%20Authorization'
+        '404':
+          description: The resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Group Not Found:
+                  $ref: '#/paths/~1v2~1groups~1%7Bgroup_id%7D/get/responses/404/content/application~1json/examples/Group%20Not%20Found'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1v2~1users/get/responses/500/content/application~1json/examples/Internal%20Error'
   /v2/users:
     post:
       tags:
@@ -232,9 +1209,9 @@ paths:
       operationId: CreateUser
       summary: Create a new user
       description: |
-        To create a user for a tenant, send a POST request to `/v2/users`. Values in the request body for read-only fields get ignored.
-        If the request conflicts with an existing resource, you'll receive a 409  error.
-        When the user gets created, they'll receive a Beyond Identity enrollment  email sent to the email address in the request.
+        To create a user, send a POST request to `/v2/users`. Values in the request body for read-only fields get ignored.
+        If the request conflicts with an existing resource, you'll receive a 409 error.
+        When the user gets created, they'll receive a Beyond Identity enrollment email sent to the email address in the request.
       security:
         - BearerAuth:
             - 'users:create'
@@ -319,6 +1296,24 @@ paths:
                   value:
                     code: conflict
                     message: user already exists
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -336,14 +1331,15 @@ paths:
       description: |
         To list all users for a tenant, send a GET request to `/v2/users`.
 
-        The response will have up to 1000 items. The response will be empty if the page size 
-        is not specified (i.e., the default). By default, the list is in ascending order by 
-        `create_time`. The maximum and default page sizes are subject to change. 
+        The response will have up to 1000 items. The response will be empty if the
+        page size is not specified (i.e., the default). By default, the list is in
+        ascending order by `create_time`. The maximum and default page sizes are
+        subject to change.
 
         When paginating, use the `skip` parameter as the offset.
 
-        When filtering, the response will only show users that satisfy this filter. 
-        The syntax follows the SCIM grammar from 
+        When filtering, the response will only show users that satisfy this filter.
+        The syntax follows the SCIM grammar from
         [RFC7644 Section 3.4.2.2](https:datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2).
 
         The supported operations are:
@@ -369,8 +1365,8 @@ paths:
           - last_auth_time (pr, eq, ne, gt, lt, ge, le)
           - has_active_passkey (eq, ne)
 
-        When sorting, use the `order_by` parameter. It's a comma-delimited list of attributes. 
-        Currently, the following fields are supported:
+        When sorting, use the `order_by` parameter. It's a comma-delimited list of
+        attributes. Currently, the following fields are supported:
 
           - display_name
           - username
@@ -379,8 +1375,8 @@ paths:
           - source
           - last_auth_time
 
-        The default sorting order per attribute is ascending. Therefore, if you want descending
-        order, append the " desc" suffix to the attribute name.
+        The default sorting order per attribute is ascending. Therefore, if you
+        want descending order, append the " desc" suffix to the attribute name.
       security:
         - BearerAuth:
             - 'users:read'
@@ -393,10 +1389,11 @@ paths:
         '200':
           description: |
             The response is a JSON object with `users` and `total_size` keys. <br />
-              - `users` is set to an array of user objects containing standard user attributes. 
-              - `total_size` is set to the total number of items matched by the list request. If 
-              more items are to be returned by the requested query, make another request using 
-              the `skip` query parameter.
+              - `users` is set to an array of user objects containing standard user
+                attributes.
+              - `total_size` is set to the total number of items matched by the
+                list request.
+            If more items are to be returned by the requested query, make another request using the `skip` query parameter.
           content:
             application/json:
               schema:
@@ -470,6 +1467,24 @@ paths:
                   value:
                     code: forbidden
                     message: forbidden
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -488,7 +1503,7 @@ paths:
       operationId: GetUser
       summary: Retrieve an existing user
       description: |
-        To retreive an existing user for a tenant, send a GET request to `/v2/users/$USER_ID`.
+        To retrieve an existing user for a tenant, send a GET request to `/v2/users/$USER_ID`.
       security:
         - BearerAuth:
             - 'users:read'
@@ -539,6 +1554,24 @@ paths:
                         resource_type: User
                         id: 24d228e9-4915-4fcd-ab32-f7300a383219
                         description: user not found
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -554,9 +1587,8 @@ paths:
       operationId: UpdateUser
       summary: Update a user
       description: |
-        To update only specific attributes of an existing user, send a PATCH  request to `/v2/users/$USER_ID`. Values in the request body for immutable  or read-only fields get ignored. Fields omitted from the request body will  be left unchanged.
-          
-        If the request conflicts with an existing resource, you'll receive a 409  error.
+        To update only specific attributes of an existing user, send a PATCH request to `/v2/users/$USER_ID`. Values in the request body for immutable or read-only fields get ignored. Fields omitted from the request body will be left unchanged.
+        If the request conflicts with an existing resource, you'll receive a 409 error.
       security:
         - BearerAuth:
             - 'users:update'
@@ -620,6 +1652,24 @@ paths:
                   value:
                     code: conflict
                     message: user external id already taken
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -635,8 +1685,8 @@ paths:
       operationId: DeleteUser
       summary: Delete a user
       description: |
-        To delete an existing user for a tenant, send a DELETE request to  `/v2/users/$USER_ID`.
-        A successful request will receive a 200 status code with nothing  in the response's body. This indicates that the request was processed successfully.
+        To delete a user for a tenant, send a DELETE request to `/v2/users/$USER_ID`.
+        A successful request will receive a 200 status code with nothing in the response's body. This indicates that the request was processed successfully.
       security:
         - BearerAuth:
             - 'users:delete'
@@ -672,6 +1722,24 @@ paths:
               examples:
                 User Not Found:
                   $ref: '#/paths/~1v2~1users~1%7Buser_id%7D/get/responses/404/content/application~1json/examples/User%20Not%20Found'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
         '500':
           description: Server error.
           content:
@@ -681,8 +1749,1600 @@ paths:
               examples:
                 Internal Error:
                   $ref: '#/paths/~1v2~1users/get/responses/500/content/application~1json/examples/Internal%20Error'
+  /scim/v2/Users:
+    post:
+      tags:
+        - SCIM
+      operationId: SCIMCreateUser
+      summary: Create a New User
+      description: |
+        To create a user, send a POST request to `/Users`. Values in the request body for read-only fields will be ignored.
+      security:
+        - BearerAuth:
+            - 'scim:users:create'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Create User Request
+              description: Request for CreateUser.
+              type: object
+              properties:
+                user:
+                  $ref: '#/components/schemas/SCIMUser'
+              required:
+                - user
+            examples:
+              Create User:
+                value:
+                  schemas:
+                    - 'urn:ietf:params:scim:schemas:core:2.0:User'
+                  id: 2819c223-7f76-453a-919d-413861904646
+                  userName: bjensen
+                  externalId: bjensen
+                  name:
+                    familyName: Jensen
+                    givenName: Barbara
+                  emails:
+                    - value: bjensen@example.com
+                      primary: true
+      responses:
+        '201':
+          description: |
+            The response will be a JSON object containing the standard attributes associated with a user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMUser'
+              examples:
+                Success:
+                  value:
+                    schemas:
+                      - 'urn:ietf:params:scim:schemas:core:2.0:User'
+                    id: 2819c223-7f76-453a-919d-413861904646
+                    externalId: bjensen
+                    userName: bjensen
+                    displayName: Ms. Barbara J Jensen III
+                    active: true
+                    emails:
+                      - primary: true
+                        value: bjensen@example.com
+                    meta:
+                      resourceType: User
+                      created: '2022-10-12T05:11:47Z'
+                      lastModified: '2023-03-30T06:00:03Z'
+                      location: Users/2819c223-7f76-453a-919d-413861904646
+                      version: W/0
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Invalid Parameters:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/400/content/application~1json/examples/Invalid%20Parameters'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/500/content/application~1json/examples/Internal%20Error'
+    get:
+      tags:
+        - SCIM
+      operationId: SCIMListUsers
+      summary: List All Users
+      description: |
+        To list all users, send a GET request to `/Users`.
+
+        Currently, filtering on users only supports the `eq` and `ne` operators and
+        the `userName` and `externalId` attributes.
+
+        The response will contain at most 1000 items. If count is not specified or
+        is zero, the response will not contain any resources. There is no defined
+        ordering of the list of users in the response. Note that the maximum page
+        size is subject to change.
+      security:
+        - BearerAuth:
+            - 'scim:users:read'
+      parameters:
+        - $ref: '#/components/parameters/scim_filter'
+        - $ref: '#/components/parameters/scim_count'
+        - $ref: '#/components/parameters/scim_start_index'
+      responses:
+        '200':
+          description: |
+            The response will be a ListResponse containing the users corresponding to the request. The `totalResults` key may be used to determine whether there are additional pages to fetch for the request.
+          content:
+            application/json:
+              schema:
+                title: List Users Response
+                description: Response for ListUsers.
+                type: object
+                properties:
+                  schemas:
+                    type: array
+                    description: |
+                      The list of schemas used to define the list response. This only contains the ListResponse schema ("urn:ietf:params:scim:api:messages:2.0:ListResponse").
+                    items:
+                      type: string
+                      example: 'urn:ietf:params:scim:api:messages:2.0:ListResponse'
+                  Resources:
+                    type: array
+                    description: |
+                      An array of users corresponding to the filter from the request.
+                    items:
+                      $ref: '#/components/schemas/SCIMUser'
+                    maxItems: 1000
+                  totalResults:
+                    type: integer
+                    format: uint32
+                    description: |
+                      Total number of results matching the request. This value may be larger than the number of resources returned, such as when returning a single page of results where multiple pages are available.
+                  startIndex:
+                    type: integer
+                    format: uint32
+                    description: |
+                      The 1-based index of the first result in the current set of list results.
+                  itemsPerPage:
+                    type: integer
+                    format: uint32
+                    description: |
+                      The number of resources returned in a list response page.
+                required:
+                  - schemas
+                  - Resources
+                  - totalResults
+                  - startIndex
+                  - itemsPerPage
+              examples:
+                Success:
+                  value:
+                    schemas:
+                      - 'urn:ietf:params:scim:api:messages:2.0:ListResponse'
+                    Resources:
+                      - schemas:
+                          - 'urn:ietf:params:scim:schemas:core:2.0:Group'
+                          - 'urn:scim:schemas:extension:byndid:1.0:Group'
+                        id: 22e7c78c-39ff-4501-8ed4-32d0479e54c1
+                        displayName: Test Group
+                        members:
+                          - display: Ms. Barbara J Jensen III
+                            value: 2819c223-7f76-453a-919d-413861904646
+                        'urn:scim:schemas:extension:byndid:1.0:Group':
+                          description: Test Group Description
+                        meta:
+                          created: '2023-04-10T06:08:28Z'
+                          lastModified: '2023-04-10T06:08:28Z'
+                          location: Groups/22e7c78c-39ff-4501-8ed4-32d0479e54c1
+                          resourceType: Group
+                          version: W/0
+                    itemsPerPage: 1000
+                    startIndex: 1
+                    totalResults: 1
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Invalid Parameters:
+                  value:
+                    schemas:
+                      - 'urn:ietf:params:scim:api:messages:2.0:Error'
+                    status: '400'
+                    scimType: invalidValue
+                    detail: 'A required value was missing, or the value specified was not compatible with the operation or attribute type, or resource schema.'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Missing Authorization:
+                  value:
+                    schemas:
+                      - 'urn:ietf:params:scim:api:messages:2.0:Error'
+                    status: '401'
+                    detail: The authorization header is invalid or missing.
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Internal Error:
+                  value:
+                    schemas:
+                      - 'urn:ietf:params:scim:api:messages:2.0:Error'
+                    status: '500'
+  '/scim/v2/Users/{user_id}':
+    get:
+      tags:
+        - SCIM
+      operationId: SCIMGetUser
+      summary: Retrieve an Existing User
+      description: |
+        To retrieve an existing user, send a GET request to `/Users/$USER_ID`.
+      security:
+        - BearerAuth:
+            - 'scim:users:read'
+      parameters:
+        - $ref: '#/components/parameters/scim_user_id'
+      responses:
+        '200':
+          description: OK.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMUser'
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Invalid Parameters:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/400/content/application~1json/examples/Invalid%20Parameters'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '404':
+          description: The resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                User Not Found:
+                  value:
+                    schemas:
+                      - 'urn:ietf:params:scim:api:messages:2.0:Error'
+                    status: '404'
+                    detail: Resource 2819c223-7f76-453a-919d-413861904646 not found.
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/500/content/application~1json/examples/Internal%20Error'
+    patch:
+      tags:
+        - SCIM
+      operationId: SCIMUpdateUser
+      summary: Patch a User
+      description: |
+        To update only specific attributes of an existing user, send a PATCH
+        request to `/Users/$USER_ID`. Values in the request body for immutable or
+        read-only fields will be ignored. Fields that are omitted from the request
+        body will be left unchanged.
+
+        Note that the Beyond Identity SCIM server currently does not support atomic
+        PATCH operations. If a request contains multiple operations, the request
+        may be partially applied.
+
+        Currently, only "add" and "replace" operations are supported for users. The
+        "add" operation may be used to assign the user's primary email. However,
+        "path" is ignored for all other PATCH operations, meaning that all other
+        operation values are expected to specify a complex value in the form of a
+        user resource.
+      security:
+        - BearerAuth:
+            - 'scim:users:update'
+      parameters:
+        - $ref: '#/components/parameters/scim_user_id'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Update User Request
+              description: Request for UpdateUser.
+              type: object
+              properties:
+                user:
+                  $ref: '#/components/schemas/SCIMUser'
+              required:
+                - user
+            examples:
+              Update Display Name:
+                value:
+                  schemas:
+                    - 'urn:ietf:params:scim:api:messages:2.0:PatchOp'
+                  Operations:
+                    - op: replace
+                      path: displayName
+                      value: Ms. Barbara J Jensen III
+      responses:
+        '200':
+          description: |
+            The response will be a JSON object containing the standard attributes associated with a user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMUser'
+              examples:
+                Success:
+                  $ref: '#/paths/~1scim~1v2~1Users/post/responses/201/content/application~1json/examples/Success'
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Invalid Parameters:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/400/content/application~1json/examples/Invalid%20Parameters'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '404':
+          description: The resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                User Not Found:
+                  $ref: '#/paths/~1scim~1v2~1Users~1%7Buser_id%7D/get/responses/404/content/application~1json/examples/User%20Not%20Found'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/500/content/application~1json/examples/Internal%20Error'
+    put:
+      tags:
+        - SCIM
+      operationId: SCIMReplaceUser
+      summary: Replace a User
+      description: |
+        To replace all attributes of an existing user, send a PUT request to `/Users/$USER_ID`. Values in the request body for immutable or read-only fields will be ignored.
+      security:
+        - BearerAuth:
+            - 'scim:users:update'
+      parameters:
+        - $ref: '#/components/parameters/scim_user_id'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Update User Request
+              description: Request for UpdateUser.
+              type: object
+              properties:
+                user:
+                  $ref: '#/components/schemas/SCIMUser'
+              required:
+                - user
+            examples:
+              Replace User:
+                value:
+                  schemas:
+                    - 'urn:ietf:params:scim:schemas:core:2.0:User'
+                  id: 2819c223-7f76-453a-919d-413861904646
+                  userName: bjensen
+                  externalId: bjensen
+                  displayName: Ms. Barbara J Jensen III
+                  name:
+                    familyName: Jensen
+                    givenName: Barbara
+                  emails:
+                    - value: bjensen@example.com
+                      primary: true
+      responses:
+        '200':
+          description: |
+            The response will be a JSON object containing the standard attributes associated with a user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMUser'
+              examples:
+                Success:
+                  $ref: '#/paths/~1scim~1v2~1Users/post/responses/201/content/application~1json/examples/Success'
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Invalid Parameters:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/400/content/application~1json/examples/Invalid%20Parameters'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '404':
+          description: The resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                User Not Found:
+                  $ref: '#/paths/~1scim~1v2~1Users~1%7Buser_id%7D/get/responses/404/content/application~1json/examples/User%20Not%20Found'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/500/content/application~1json/examples/Internal%20Error'
+    delete:
+      tags:
+        - SCIM
+      operationId: SCIMDeleteUser
+      summary: Delete a User
+      description: 'To delete a user, send a DELETE request to `/Users/$USER_ID`.'
+      security:
+        - BearerAuth:
+            - 'scim:users:delete'
+      parameters:
+        - $ref: '#/components/parameters/scim_user_id'
+      responses:
+        '204':
+          description: The action was successful and the response body is empty.
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Invalid Parameters:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/400/content/application~1json/examples/Invalid%20Parameters'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '404':
+          description: The resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                User Not Found:
+                  $ref: '#/paths/~1scim~1v2~1Users~1%7Buser_id%7D/get/responses/404/content/application~1json/examples/User%20Not%20Found'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/500/content/application~1json/examples/Internal%20Error'
+  /scim/v2/Groups/:
+    post:
+      tags:
+        - SCIM
+      operationId: SCIMCreateGroup
+      summary: Create a New Group
+      description: |
+        To create a group, send a POST request to `/Groups`. Values in the request body for read-only fields will be ignored.
+      security:
+        - BearerAuth:
+            - 'scim:groups:create'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Create Group Request
+              description: Request for CreateGroup.
+              type: object
+              properties:
+                group:
+                  $ref: '#/components/schemas/SCIMGroup'
+              required:
+                - group
+            examples:
+              Create Group:
+                value:
+                  schemas:
+                    - 'urn:ietf:params:scim:schemas:core:2.0:Group'
+                    - 'urn:scim:schemas:extension:byndid:1.0:Group'
+                  id: 22e7c78c-39ff-4501-8ed4-32d0479e54c1
+                  displayName: Test Group
+                  members:
+                    - display: Ms. Barbara J Jensen III
+                      value: 2819c223-7f76-453a-919d-413861904646
+                  'urn:scim:schemas:extension:byndid:1.0:Group':
+                    description: Test Group Description
+      responses:
+        '201':
+          description: |
+            The response will be a JSON object containing the standard attributes associated with a group.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMGroup'
+              examples:
+                Success:
+                  value:
+                    schemas:
+                      - 'urn:ietf:params:scim:schemas:core:2.0:Group'
+                      - 'urn:scim:schemas:extension:byndid:1.0:Group'
+                    id: 22e7c78c-39ff-4501-8ed4-32d0479e54c1
+                    displayName: Test Group
+                    members:
+                      - display: Ms. Barbara J Jensen III
+                        value: 2819c223-7f76-453a-919d-413861904646
+                    'urn:scim:schemas:extension:byndid:1.0:Group':
+                      description: Test Group Description
+                    meta:
+                      created: '2023-04-10T06:08:28Z'
+                      lastModified: '2023-04-10T06:08:28Z'
+                      location: Groups/22e7c78c-39ff-4501-8ed4-32d0479e54c1
+                      resourceType: Group
+                      version: W/0
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Invalid Parameters:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/400/content/application~1json/examples/Invalid%20Parameters'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/500/content/application~1json/examples/Internal%20Error'
+    get:
+      tags:
+        - SCIM
+      operationId: SCIMListGroups
+      summary: List All Groups
+      description: |
+        To list all groups, send a GET request to `/Groups`.
+
+        Currently, filtering on groups only supports the `eq` and `ne` operators
+        and the `displayName` attribute.
+
+        The response will contain at most 1000 items. If count is not specified or
+        is zero, the response will not contain any resources. There is no defined
+        ordering of the list of groups in the response. Note that the maximum page
+        size is subject to change.
+
+        Note that this method excludes RBAC permission groups used for the Admin
+        Console.
+      security:
+        - BearerAuth:
+            - 'scim:groups:read'
+      parameters:
+        - $ref: '#/components/parameters/scim_filter'
+        - $ref: '#/components/parameters/scim_count'
+        - $ref: '#/components/parameters/scim_start_index'
+      responses:
+        '200':
+          description: |
+            The response will be a ListResponse containing the groups corresponding to the request. The `totalResults` key may be used to determine whether there are additional pages to fetch for the request.
+          content:
+            application/json:
+              schema:
+                title: List Groups Response
+                description: Response for ListGroups.
+                type: object
+                properties:
+                  schemas:
+                    type: array
+                    description: |
+                      The list of schemas used to define the list response. This only contains the ListResponse schema ("urn:ietf:params:scim:api:messages:2.0:ListResponse").
+                    items:
+                      type: string
+                      example: 'urn:ietf:params:scim:api:messages:2.0:ListResponse'
+                  Resources:
+                    type: array
+                    description: |
+                      An array of groups corresponding to the filter from the request.
+                    items:
+                      $ref: '#/components/schemas/SCIMGroup'
+                    maxItems: 1000
+                  totalResults:
+                    type: integer
+                    format: uint32
+                    description: |
+                      Total number of results matching the request. This value may be larger than the number of resources returned, such as when returning a single page of results where multiple pages are available.
+                  startIndex:
+                    type: integer
+                    format: uint32
+                    description: |
+                      The 1-based index of the first result in the current set of list results.
+                  itemsPerPage:
+                    type: integer
+                    format: uint32
+                    description: |
+                      The number of resources returned in a list response page.
+                required:
+                  - schemas
+                  - Resources
+                  - totalResults
+                  - startIndex
+                  - itemsPerPage
+              examples:
+                Success:
+                  value:
+                    schemas:
+                      - 'urn:ietf:params:scim:api:messages:2.0:ListResponse'
+                    Resources:
+                      - schemas:
+                          - 'urn:ietf:params:scim:schemas:core:2.0:Group'
+                          - 'urn:scim:schemas:extension:byndid:1.0:Group'
+                        id: 22e7c78c-39ff-4501-8ed4-32d0479e54c1
+                        displayName: Test Group
+                        members:
+                          - display: Ms. Barbara J Jensen III
+                            value: 2819c223-7f76-453a-919d-413861904646
+                        'urn:scim:schemas:extension:byndid:1.0:Group':
+                          description: Test Group Description
+                        meta:
+                          created: '2023-04-10T06:08:28Z'
+                          lastModified: '2023-04-10T06:08:28Z'
+                          location: Groups/22e7c78c-39ff-4501-8ed4-32d0479e54c1
+                          resourceType: Group
+                          version: W/0
+                    itemsPerPage: 1000
+                    startIndex: 1
+                    totalResults: 1
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Invalid Parameters:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/400/content/application~1json/examples/Invalid%20Parameters'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/500/content/application~1json/examples/Internal%20Error'
+  '/scim/v2/Groups/{group_id}':
+    get:
+      tags:
+        - SCIM
+      operationId: SCIMGetGroup
+      summary: Retrieve an existing group
+      description: |
+        To retrieve an existing group, send a GET request to `/Groups/$GROUP_ID`.
+        Note that this method cannot be used to retrieve RBAC permission groups used for the Admin Console.
+      security:
+        - BearerAuth:
+            - 'scim:groups:read'
+      parameters:
+        - $ref: '#/components/parameters/scim_group_id'
+      responses:
+        '200':
+          description: |
+            The response will be a JSON object containing the standard attributes associated with a group.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMGroup'
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Invalid Parameters:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/400/content/application~1json/examples/Invalid%20Parameters'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '404':
+          description: The resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Group Not Found:
+                  $ref: '#/paths/~1scim~1v2~1Users~1%7Buser_id%7D/get/responses/404/content/application~1json/examples/User%20Not%20Found'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/500/content/application~1json/examples/Internal%20Error'
+    patch:
+      tags:
+        - SCIM
+      operationId: SCIMUpdateGroup
+      summary: Patch a Group
+      description: |
+        To update only specific attributes of an existing group, send a PATCH
+        request to `/Groups/$GROUP_ID`. Values in the request body for immutable or
+        read-only fields will be ignored. Fields that are omitted from the request
+        body will be left unchanged.
+
+        Note that the Beyond Identity SCIM server currently does not support atomic
+        PATCH operations. If a request contains multiple operations, the request
+        may be partially applied.
+
+        The Beyond Identity SCIM server also does not support modifying both a
+        group and its membership in the same operation. For example, a PATCH
+        request to update a group's display name and its membership should specify
+        two separate operations, one to update the display name and the other to
+        modify the membership.
+
+        Note that this method cannot be used to update any groups which were not
+        created by SCIM, e.g. RBAC permission groups or other groups created through
+        the Admin Console.
+      security:
+        - BearerAuth:
+            - 'scim:groups:update'
+      parameters:
+        - $ref: '#/components/parameters/scim_group_id'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Update Group Request
+              description: Request for UpdateGroup.
+              type: object
+              properties:
+                group:
+                  $ref: '#/components/schemas/SCIMGroup'
+              required:
+                - group
+            examples:
+              Add Member:
+                value:
+                  schemas:
+                    - 'urn:ietf:params:scim:api:messages:2.0:PatchOp'
+                  Operations:
+                    - op: add
+                      value:
+                        - value: null
+                          members:
+                            - 2819c223-7f76-453a-919d-413861904646
+      responses:
+        '200':
+          description: |
+            The response will be a JSON object containing the standard attributes associated with a group.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMGroup'
+              examples:
+                Success:
+                  $ref: '#/paths/~1scim~1v2~1Groups~1/post/responses/201/content/application~1json/examples/Success'
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Invalid Parameters:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/400/content/application~1json/examples/Invalid%20Parameters'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '404':
+          description: The resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Group Not Found:
+                  $ref: '#/paths/~1scim~1v2~1Users~1%7Buser_id%7D/get/responses/404/content/application~1json/examples/User%20Not%20Found'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/500/content/application~1json/examples/Internal%20Error'
+    delete:
+      tags:
+        - SCIM
+      operationId: SCIMDeleteGroup
+      summary: Delete a Group
+      description: |
+        To delete a group, send a DELETE request to `/Groups/$GROUP_ID`.
+        Note that this method cannot be used to delete any groups which were not created by SCIM, e.g. RBAC permission groups or other groups created through the Admin Console.
+      security:
+        - BearerAuth:
+            - 'scim:groups:delete'
+      parameters:
+        - $ref: '#/components/parameters/scim_group_id'
+      responses:
+        '204':
+          description: The action was successful and the response body is empty.
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Invalid Parameters:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/400/content/application~1json/examples/Invalid%20Parameters'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '404':
+          description: The resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Group Not Found:
+                  $ref: '#/paths/~1scim~1v2~1Users~1%7Buser_id%7D/get/responses/404/content/application~1json/examples/User%20Not%20Found'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/500/content/application~1json/examples/Internal%20Error'
+  /scim/v2/ResourceTypes:
+    get:
+      tags:
+        - SCIM
+      operationId: ListResourceTypes
+      summary: List All Resource Types
+      description: |
+        To list all supported resource types, send a GET request to
+        `/ResourceTypes`.
+      responses:
+        '200':
+          description: |
+            The response will be a list of JSON objects, each of which contains the standard resource type attributes.
+          content:
+            application/json:
+              schema:
+                title: List Resource Types Response
+                description: Response for ListResourceTypes.
+                type: object
+                properties:
+                  schemas:
+                    type: array
+                    description: |
+                      The list of schemas used to define the list response. This only contains the ListResponse schema ("urn:ietf:params:scim:api:messages:2.0:ListResponse").
+                    items:
+                      type: string
+                      example: 'urn:ietf:params:scim:api:messages:2.0:ListResponse'
+                  Resources:
+                    type: array
+                    description: An array of resource types corresponding to the request.
+                    items:
+                      $ref: '#/components/schemas/SCIMResourceType'
+                    maxItems: 1000
+                  totalResults:
+                    type: integer
+                    format: uint32
+                    description: |
+                      Total number of results matching the request. This value may be larger than the number of resources returned, such as when returning a single page of results where multiple pages are available.
+                  startIndex:
+                    type: integer
+                    format: uint32
+                    description: |
+                      The 1-based index of the first result in the current set of list results.
+                  itemsPerPage:
+                    type: integer
+                    format: uint32
+                    description: |
+                      The number of resources returned in a list response page.
+                required:
+                  - schemas
+                  - Resources
+                  - totalResults
+                  - startIndex
+                  - itemsPerPage
+              examples:
+                Success:
+                  value:
+                    schemas:
+                      - 'urn:ietf:params:scim:api:messages:2.0:ListResponse'
+                    Resources:
+                      - schemas:
+                          - 'urn:ietf:params:scim:schemas:core:2.0:ResourceType'
+                        id: User
+                        name: User
+                        description: User Account
+                        endpoint: /Users
+                        schema: 'urn:ietf:params:scim:schemas:core:2.0:User'
+                        schemaExtensions: []
+                      - schemas:
+                          - 'urn:ietf:params:scim:schemas:core:2.0:ResourceType'
+                        id: Group
+                        name: Group
+                        description: User Groups
+                        endpoint: /Groups
+                        schema: 'urn:ietf:params:scim:schemas:core:2.0:Group'
+                        schemaExtensions:
+                          - required: false
+                            schema: 'urn:scim:schemas:extension:byndid:1.0:Group'
+                    itemsPerPage: 1000
+                    startIndex: 1
+                    totalResults: 2
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/500/content/application~1json/examples/Internal%20Error'
+  /scim/v2/Schemas:
+    get:
+      tags:
+        - SCIM
+      operationId: ListSchemas
+      summary: List All Schemas
+      description: |
+        To list all supported resource schemas, send a GET request to `/Schemas`.
+      responses:
+        '200':
+          description: |
+            The response will be a list of JSON objects, each of which contains the standard resource schema attributes.
+          content:
+            application/json:
+              schema:
+                title: List Schemas Response
+                description: Response for ListSchemas.
+                type: object
+                properties:
+                  schemas:
+                    type: array
+                    description: |
+                      The list of schemas used to define the list response. This only contains the ListResponse schema ("urn:ietf:params:scim:api:messages:2.0:ListResponse").
+                    items:
+                      type: string
+                      example: 'urn:ietf:params:scim:api:messages:2.0:ListResponse'
+                  Resources:
+                    type: array
+                    description: An array of schemas corresponding to the request.
+                    items:
+                      $ref: '#/components/schemas/SCIMSchema'
+                    maxItems: 1000
+                  totalResults:
+                    type: integer
+                    format: uint32
+                    description: |
+                      Total number of results matching the request. This value may be larger than the number of resources returned, such as when returning a single page of results where multiple pages are available.
+                  startIndex:
+                    type: integer
+                    format: uint32
+                    description: |
+                      The 1-based index of the first result in the current set of list results.
+                  itemsPerPage:
+                    type: integer
+                    format: uint32
+                    description: |
+                      The number of resources returned in a list response page.
+                required:
+                  - schemas
+                  - Resources
+                  - totalResults
+                  - startIndex
+                  - itemsPerPage
+              examples:
+                Success:
+                  value:
+                    schemas:
+                      - 'urn:ietf:params:scim:api:messages:2.0:ListResponse'
+                    Resources:
+                      - id: 'urn:ietf:params:scim:schemas:core:2.0:User'
+                        name: User
+                        description: User resource
+                        attributes:
+                          - name: externalId
+                            type: string
+                            description: |
+                              A String that is an identifier for the resource as defined by the provisioning client.
+                            caseExact: true
+                            multiValued: false
+                            mutability: readWrite
+                            required: true
+                            returned: always
+                            uniqueness: server
+                          - name: userName
+                            type: string
+                            caseExact: true
+                            description: |
+                              The username of the user. The value of this field will be returned as the subject of a OIDC ID Token.
+                            multiValued: false
+                            mutability: readWrite
+                            required: true
+                            returned: always
+                            uniqueness: server
+                          - name: displayName
+                            type: string
+                            caseExact: true
+                            description: |
+                              The name of the User, suitable for display to end-users. The name SHOULD be the full name of the User being described, if known.
+                            multiValued: false
+                            mutability: readWrite
+                            required: true
+                            returned: always
+                            uniqueness: none
+                          - name: active
+                            type: boolean
+                            description: |
+                              A Boolean value indicating the User's administrative status within the Beyond Identity Service.
+                            multiValued: false
+                            mutability: readWrite
+                            required: true
+                            returned: always
+                          - name: name
+                            type: complex
+                            description: The components of the user's real name.
+                            multiValued: false
+                            mutability: readWrite
+                            required: false
+                            returned: request
+                            subAttributes:
+                              - name: familyName
+                                type: string
+                                description: |
+                                  The family name of the User, or last name in most Western languages (e.g., 'Jensen' given the full name 'Ms. Barbara J Jensen, III').
+                                caseExact: true
+                                multiValued: false
+                                mutability: readWrite
+                                required: true
+                                returned: request
+                                uniqueness: none
+                              - name: givenName
+                                type: string
+                                description: |
+                                  The given name of the User, or first name in most Western languages (e.g., "Barbara" given the full name "Ms. Barbara Jane Jensen, III").
+                                caseExact: true
+                                multiValued: false
+                                mutability: readWrite
+                                required: true
+                                returned: request
+                                uniqueness: none
+                          - name: emails
+                            type: complex
+                            description: |
+                              Email addresses for the User. Providing a primary is required.
+                            multiValued: true
+                            mutability: readWrite
+                            required: true
+                            returned: always
+                            subAttributes:
+                              - name: value
+                                type: string
+                                description: ''
+                                caseExact: false
+                                multiValued: false
+                                mutability: readWrite
+                                required: false
+                                returned: default
+                                uniqueness: none
+                              - name: type
+                                type: string
+                                canonicalValues:
+                                  - work
+                                  - home
+                                  - other
+                                caseExact: false
+                                description: ''
+                                multiValued: false
+                                mutability: readWrite
+                                required: false
+                                returned: default
+                                uniqueness: none
+                              - name: primary
+                                type: boolean
+                                description: ''
+                                multiValued: false
+                                mutability: readWrite
+                                required: false
+                                returned: default
+                      - id: 'urn:ietf:params:scim:schemas:core:2.0:Group'
+                        name: Group
+                        description: Group resource
+                        attributes:
+                          - name: id
+                            type: string
+                            description: group id
+                            caseExact: false
+                            multiValued: false
+                            mutability: readWrite
+                            required: false
+                            returned: default
+                            uniqueness: server
+                          - name: displayName
+                            type: string
+                            description: A human-readable name for the Group.
+                            caseExact: false
+                            multiValued: false
+                            mutability: readWrite
+                            required: false
+                            returned: default
+                            uniqueness: server
+                          - name: members
+                            type: complex
+                            description: A list of members of the group.
+                            multiValued: true
+                            mutability: readWrite
+                            required: false
+                            returned: default
+                            subAttributes:
+                              - name: value
+                                type: string
+                                description: Identifier of the member of this Group.
+                                caseExact: false
+                                multiValued: false
+                                mutability: immutable
+                                required: false
+                                returned: default
+                                uniqueness: none
+                              - name: ''
+                                type: reference
+                                description: |
+                                  The URI corresponding to a SCIM resource that is a member of this Group.
+                                caseExact: true
+                                multiValued: false
+                                mutability: immutable
+                                referenceTypes:
+                                  - User
+                                required: false
+                                returned: default
+                                uniqueness: none
+                              - name: type
+                                type: string
+                                description: A label indicating the type of resource
+                                canonicalValues:
+                                  - User
+                                  - Group
+                                caseExact: false
+                                multiValued: false
+                                mutability: immutable
+                                required: false
+                                returned: default
+                                uniqueness: none
+                      - id: 'urn:scim:schemas:extension:byndid:1.0:Group'
+                        name: byndid-group
+                        description: Group extension containing Beyond Identity fields
+                        attributes:
+                          - name: description
+                            type: string
+                            description: ''
+                            caseExact: false
+                            multiValued: false
+                            mutability: readWrite
+                            required: false
+                            returned: default
+                            uniqueness: none
+                    itemsPerPage: 1000
+                    startIndex: 1
+                    totalResults: 3
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/500/content/application~1json/examples/Internal%20Error'
+  /scim/v2/ServiceProviderConfig:
+    get:
+      tags:
+        - SCIM
+      operationId: GetServiceProviderConfig
+      summary: Retrieve the Service Provider Configuration
+      description: |
+        To retrieve the service provider configuration, send a GET request to `/ServiceProviderConfig`.
+      responses:
+        '200':
+          description: |
+            The response will be a JSON object containing the standard attributes associated with a service provider configuration.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMServiceProviderConfig'
+              examples:
+                Internal Error:
+                  value:
+                    schemas:
+                      - 'urn:ietf:params:scim:schemas:core:2.0:ServiceProviderConfig'
+                    authenticationSchemes:
+                      - name: ''
+                        description: ''
+                        documentationUri: ''
+                        primary: false
+                        specUri: ''
+                        type: oauthbearertoken
+                    bulk:
+                      maxOperations: 1000
+                      maxPayloadSize: 1048576
+                      supported: false
+                    changePassword:
+                      supported: false
+                    documentationUri: ''
+                    etag:
+                      supported: false
+                    filter:
+                      maxResults: 1000
+                      supported: true
+                    patch:
+                      supported: true
+                    sort:
+                      supported: false
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMError'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1scim~1v2~1Users/get/responses/500/content/application~1json/examples/Internal%20Error'
 components:
   parameters:
+    group_id:
+      name: group_id
+      in: path
+      description: A unique identifier for a group.
+      required: true
+      schema:
+        type: string
+        example: 25f94daf-63d8-4b40-b0ea-4843971d1d8e
     user_id:
       name: user_id
       in: path
@@ -695,7 +3355,7 @@ components:
       name: page_size
       in: query
       description: |
-        The number of items returned per page. The response may include this exact number or fewer.  If omitting this value, the response returns the default number of results the method allows. 
+        The number of items returned per page. The response may include this exact number or fewer.  If omitting this value, the response returns the default number of results the method allows.
       schema:
         type: integer
         format: uint32
@@ -748,7 +3408,100 @@ components:
         Ex. name desc
       schema:
         type: string
+    scim_user_id:
+      name: user_id
+      in: path
+      description: ID of the user.
+      required: true
+      schema:
+        type: string
+        minLength: 1
+    scim_group_id:
+      name: group_id
+      in: path
+      description: ID of the group.
+      required: true
+      schema:
+        type: string
+        minLength: 1
+    scim_filter:
+      name: filter
+      in: query
+      description: |
+        Filter for list methods.
+
+        Filters follow the SCIM grammar from
+        [RFC 7644 Section 3.4.2.2](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2).
+      schema:
+        type: string
+    scim_count:
+      name: count
+      in: query
+      description: |
+        Specifies the desired maximum number of query results per page. A negative value is treated as 0, which indicates that the response should not contain any resources. Note that the response may include fewer results than the requested count.
+      schema:
+        type: integer
+        format: uint32
+        minimum: 0
+        default: 0
+    scim_start_index:
+      name: startIndex
+      in: query
+      description: The 1-based index of the first query result.
+      schema:
+        type: integer
+        format: uint32
+        minimum: 0
+        default: 0
   schemas:
+    Group:
+      title: Group
+      type: object
+      description: |
+        A group is a collection of members within an organization that uses Beyond Identity.
+      properties:
+        id:
+          type: string
+          description: |
+            A unique identifier for the group within a tenant that is automatically generated on creation. This field is immutable and read-only.
+          readOnly: true
+          example: 25f94daf-63d8-4b40-b0ea-4843971d1d8e
+        create_time:
+          type: string
+          format: date-time
+          description: |
+            A time value in the ISO8601 combined date and time format that gets generated automatically and represents the time the group gets created. This field is immutable and read-only.
+          readOnly: true
+          example: 2022-04-12T05:53:07.119Z
+        update_time:
+          type: string
+          format: date-time
+          description: |
+            A time value in the ISO8601 combined date and time format that gets generated automatically and represents the time the group gets updated. This field is read-only.
+          readOnly: true
+          example: 2022-06-16T14:31:03.770Z
+        tenant_id:
+          type: string
+          description: |
+            A unique identifier for the group's tenant that is set automatically on creation. This field is immutable and read-only.
+          readOnly: true
+          example: acme-corp
+        name:
+          type: string
+          description: |
+            A required unique name for the group within the tenant.
+          example: Acme Group
+        description:
+          type: string
+          description: |
+            A required description for the group within the tenant.
+          example: Members of the Acme Group
+        source:
+          type: string
+          description: |
+            The source that created the group. This field is immutable and read-only.
+          readOnly: true
+          example: scim
     User:
       title: User
       type: object
@@ -829,6 +3582,598 @@ components:
             A flag representing if the user has at least one device credential in an ACTIVE state. It's updated automatically when the user creates or revokes any passkeys.  This field is read-only.
           readOnly: true
           example: true
+    SCIMUser:
+      title: User
+      description: |
+        A user represents a human entity as defined by [RFC 7643 Section 4.1](https://www.rfc-editor.org/rfc/rfc7643#section-4.1).
+      type: object
+      properties:
+        schemas:
+          type: array
+          description: |
+            The list of schemas used to define the user. This must contain only the core User schema ("urn:ietf:params:scim:schemas:core:2.0:User").
+          items:
+            type: string
+            example: 'urn:ietf:params:scim:schemas:core:2.0:User'
+        id:
+          type: string
+          description: |
+            The unique ID of the user. This is automatically generated on creation. This field is immutable and output-only.
+          minLength: 1
+          readOnly: true
+          example: ed9fcce6-ec82-458e-ae58-e2d975cfc32d
+        externalId:
+          type: string
+          description: The provisioning client's unique identifier for the resource.
+          example: external-id-abcdef
+        userName:
+          type: string
+          minLength: 1
+          description: |
+            The unique username of the user. The value of this field will be returned as the subject of an OIDC ID Token.
+          example: test_user
+        displayName:
+          type: string
+          minLength: 1
+          description: |
+            Display name of the User. This name is used for display purposes.
+          example: Test User
+        active:
+          type: boolean
+          description: |
+            Indicator for the user's administrative status. If true, the user has administrative capabilities.
+          example: true
+        emails:
+          type: array
+          description: The list containing the user's emails.
+          items:
+            type: object
+            description: Definition of an email.
+            properties:
+              primary:
+                type: boolean
+                description: |
+                  Indicator for the primary or preferred email address.
+
+                  Only the primary email address is included on the response. All
+                  other provided email addresses will be ignored.
+                example: true
+              value:
+                type: string
+                description: The email address.
+                example: test@test.com
+              type:
+                type: string
+                enum:
+                  - work
+                  - home
+                  - other
+                description: The usage of the provided email address.
+                example: work
+        name:
+          type: object
+          description: Definition of the user's name.
+          properties:
+            givenName:
+              type: string
+              description: |
+                The given name of the user, or first name in most Western languages.
+              example: Barbara
+            familyName:
+              type: string
+              description: |
+                The family name of the user, or last name in most Western languages.
+              example: Jensen
+        meta:
+          title: Meta
+          description: |
+            Resource metadata as defined in [RFC 7643 Section 3.1](https://www.rfc-editor.org/rfc/rfc7643#section-3.1). This attribute is only populated on responses and is ignored on requests.
+          type: object
+          properties:
+            resourceType:
+              type: string
+              description: The name of the resource type of the resource.
+              example: Group
+            created:
+              type: string
+              format: date-time
+              description: Timestamp of when the resource was created.
+              readOnly: true
+              example: 2022-04-07T07:23:33.000Z
+            lastModified:
+              type: string
+              format: date-time
+              description: Timestamp of when the resource was last updated.
+              readOnly: true
+              example: 2023-03-30T07:00:14.000Z
+            location:
+              type: string
+              description: The URI of the resource being returned.
+              readOnly: true
+              example: Groups/ed9fcce6-ec82-458e-ae58-e2d975cfc32d
+            version:
+              type: string
+              description: |
+                The version of the resource being returned. This is always "W/0".
+              readOnly: true
+              example: W/0
+          required:
+            - resourceType
+            - created
+            - lastModified
+            - location
+            - version
+      required:
+        - schemas
+    SCIMGroup:
+      title: Group
+      description: |
+        A group is a collection of users corresponding to [RFC 7643 Section 4.2](https://www.rfc-editor.org/rfc/rfc7643#section-4.2).
+      type: object
+      properties:
+        schemas:
+          type: array
+          description: |
+            The list of schemas used to define the group. This must contain the core Group schema ("urn:ietf:params:scim:schemas:core:2.0:Group") and may include the custom Beyond Identity Group schema extension ("urn:scim:schemas:extension:byndid:1.0:Group").
+          items:
+            type: string
+            example: 'urn:ietf:params:scim:schemas:core:2.0:Group'
+        id:
+          type: string
+          description: |
+            The unique ID of the group. This is automatically generated on creation. This field is immutable and output-only.
+          minLength: 1
+          readOnly: true
+          example: ed9fcce6-ec82-458e-ae58-e2d975cfc32d
+        displayName:
+          type: string
+          minLength: 1
+          description: |
+            The unique display name of the group. This name is used for display purposes.
+          example: Help Desk
+        members:
+          type: array
+          description: The list of the group's members.
+          items:
+            type: object
+            description: |
+              Definition of a group member.
+
+              The Beyond Identity SCIM server only supports users as group members.
+            properties:
+              display:
+                type: string
+                description: |
+                  The display name of the group member, primarily used for display purposes.
+                example: Test Display
+              value:
+                type: string
+                description: |
+                  ID of the user resource corresponding to the group member. This field is immutable.
+                example: 903a4c7e-2ce8-4eea-a186-cff804a4279d
+              $ref:
+                type: string
+                description: |
+                  The URI to another user resource that is a member of the group. This is field is only used for requests and is not returned on the response.
+                example: 'https://api.byndid.com/scim/v2/Users/903a4c7e-2ce8-4eea-a186-cff804a4279d'
+              type:
+                type: string
+                description: |
+                  The resource type of the group member. Currently, only users are
+                  supported as group members. This field is only used for requests
+                  and is not returned on the response.
+
+                  Specifying a group as a group member on a request is unsupported
+                  and will result in undefined behavior.
+                example: User
+        'urn:scim:schemas:extension:byndid:1.0:Group':
+          type: object
+          description: The Beyond Identity Group schema extension.
+          properties:
+            description:
+              type: string
+              description: Description of the group.
+              example: This group contains members of the Help Desk.
+              maxLength: 300
+              pattern: '^[^{}[\]<>;:?\\/|*^%$#=~`!]*$'
+        meta:
+          $ref: '#/components/schemas/SCIMUser/properties/meta'
+      required:
+        - schemas
+    SCIMResourceType:
+      title: ResourceType
+      description: |
+        A resource type specifies the metadata about a resource type, as defined in [RFC 7643 Section 6](https://www.rfc-editor.org/rfc/rfc7643#section-6).
+      type: object
+      properties:
+        schemas:
+          type: array
+          description: |
+            The list of schemas used to define the resource type. This only contains the core ResourceType schema ("urn:ietf:params:scim:schemas:core:2.0:ResourceType").
+          items:
+            type: string
+            example: 'urn:ietf:params:scim:schemas:core:2.0:ResourceType'
+        id:
+          type: string
+          description: |
+            ID of the resource type. This corresponds to the name of the type.
+          minLength: 1
+          readOnly: true
+          example: User
+        name:
+          type: string
+          minLength: 1
+          description: Name of the resource type.
+          readOnly: true
+          example: User
+        description:
+          type: string
+          description: Description of the resource type.
+          readOnly: true
+          example: User Account
+        endpoint:
+          type: string
+          description: The relative base URL of the resource type.
+          readOnly: true
+          example: /Users
+        schema:
+          type: string
+          description: The schema defining the resource type.
+          readOnly: true
+          example: 'urn:ietf:params:scim:schemas:core:2.0:User'
+        schemaExtensions:
+          type: array
+          description: Schema extensions for the resource type.
+          items:
+            type: object
+            properties:
+              required:
+                type: boolean
+                description: |
+                  Indicator specifying whether the extension is required for the resource type. If true, the extension is required.
+                readOnly: true
+                example: false
+              schema:
+                type: string
+                description: URN of the schema extension.
+                readOnly: true
+                example: 'urn:scim:schemas:extension:byndid:1.0:Group'
+            required:
+              - required
+              - schema
+          readOnly: true
+      required:
+        - schemas
+        - id
+        - name
+        - description
+        - endpoint
+        - schema
+        - schemaExtensions
+    SCIMSchema:
+      title: Schema
+      description: |
+        Definition of a schema which indicates what attributes are supported. This resource corresponds to [RFC 7643 Section 7](https://www.rfc-editor.org/rfc/rfc7643#section-7).
+      type: object
+      properties:
+        id:
+          type: string
+          description: |
+            ID of the schema defined as a URN.
+          minLength: 1
+          readOnly: true
+          example: 'urn:ietf:params:scim:schemas:core:2.0:User'
+        name:
+          type: string
+          minLength: 1
+          description: Name of the resource type.
+          readOnly: true
+          example: User
+        description:
+          type: string
+          description: Description of the resource type.
+          readOnly: true
+          example: User resource
+        attributes:
+          type: array
+          description: List of attributes supported for this schema.
+          items:
+            type: object
+            description: The definition of an attribute.
+            properties:
+              name:
+                type: string
+                description: The attribute's name.
+                readOnly: true
+                example: id
+              type:
+                type: string
+                description: The attribute's type.
+                enum:
+                  - string
+                  - boolean
+                  - decimal
+                  - integer
+                  - dateTime
+                  - reference
+                  - complex
+                readOnly: true
+                example: string
+              subAttributes:
+                type: array
+                description: |
+                  A list of sub-attributes. This is defined only for complex attributes. Each sub-attribute is defined with the same schema as an attribute.
+                items:
+                  type: object
+                readOnly: true
+              multiValued:
+                type: boolean
+                description: Indicator for the attribute's plurality.
+                readOnly: true
+                example: true
+              description:
+                type: string
+                description: The attribute's human-readable description.
+                readOnly: true
+                example: The display name of the user.
+              required:
+                type: boolean
+                description: Indicator for whether the attribute is required.
+                readOnly: true
+                example: true
+              caseExact:
+                type: boolean
+                description: |
+                  Indicator for whether the attribute is case-sensitive. This only applies for string attributes.
+                readOnly: true
+                example: true
+              mutability:
+                type: string
+                description: Definition of the attribute's mutability.
+                enum:
+                  - readOnly
+                  - readWrite
+                  - immutable
+                  - writeOnly
+                readOnly: true
+                example: readOnly
+              returned:
+                type: string
+                description: Definition of when the attribute is returned.
+                enum:
+                  - always
+                  - never
+                  - default
+                  - request
+                readOnly: true
+                example: default
+              uniqueness:
+                type: string
+                description: Definition of the attribute's uniqueness.
+                enum:
+                  - none
+                  - server
+                  - global
+                readOnly: true
+                example: none
+              referenceTypes:
+                type: array
+                description: |
+                  The list of types that may be referenced by this attribute. This only applies to attributes of type "reference".
+                items:
+                  type: string
+                  example: User
+                readOnly: true
+            required:
+              - name
+              - type
+              - multiValued
+              - description
+              - required
+              - mutability
+              - returned
+          readOnly: true
+      required:
+        - id
+        - name
+        - description
+        - attributes
+    SCIMServiceProviderConfig:
+      title: ServiceProviderConfig
+      description: |
+        The service provider configuration, as defined in [RFC 7643 Section 5](https://www.rfc-editor.org/rfc/rfc7643#section-5).
+      type: object
+      properties:
+        schemas:
+          type: array
+          description: |
+            The list of schemas used to define the resource type. This only contains the core ServiceProviderConfig schema ("urn:ietf:params:scim:schemas:core:2.0:ServiceProviderConfig").
+          items:
+            type: string
+            example: 'urn:ietf:params:scim:schemas:core:2.0:ServiceProviderConfig'
+        documentationUri:
+          type: string
+          description: |
+            URL pointing to the service provider's human-consumable help documentation.
+          readOnly: true
+        patch:
+          type: object
+          properties:
+            supported:
+              type: boolean
+              description: |
+                Indicator specifying whether PATCH operations are supported.
+
+                The Beyond Identity SCIM server supports PATCH operations.
+              example: true
+              readOnly: true
+          required:
+            - supported
+        bulk:
+          type: object
+          description: Configuration for bulk operations.
+          properties:
+            supported:
+              type: boolean
+              description: |
+                Indicator specifying whether PATCH operations are supported.
+
+                The Beyond Identity SCIM server does not support bulk operations.
+              example: false
+              readOnly: true
+            maxOperations:
+              type: integer
+              format: uint32
+              description: Maximum number of operations allowed per bulk operation.
+              example: 1000
+              readOnly: true
+            maxPayloadSize:
+              type: integer
+              format: uint32
+              description: Maximum payload size in bytes.
+              example: 1048576
+              readOnly: true
+          required:
+            - supported
+            - maxOperations
+            - maxPayloadSize
+        filter:
+          type: object
+          description: Configuration for query filters.
+          properties:
+            supported:
+              type: boolean
+              description: |
+                Indicator specifying whether filters are supported for querying.
+
+                The Beyond Identity SCIM server supports filters for querying.
+              example: true
+              readOnly: true
+            maxResults:
+              type: integer
+              format: uint32
+              description: Maximum number of resources returned in a response.
+              example: 1000
+              readOnly: true
+          required:
+            - supported
+            - maxResults
+        changePassword:
+          type: object
+          description: Configuration for password support.
+          properties:
+            supported:
+              type: boolean
+              description: |
+                Indicator specifying whether changing a password is supported.
+
+                The Beyond Identity SCIM server does not support passwords.
+              example: true
+              readOnly: true
+          required:
+            - supported
+        sort:
+          type: object
+          description: Configuration for sort support in queries.
+          properties:
+            supported:
+              type: boolean
+              description: |
+                Indicator specifying whether sorting is supported for querying.
+
+                The Beyond Identity SCIM server does not support sorting.
+              example: false
+              readOnly: true
+          required:
+            - supported
+        etag:
+          type: object
+          description: Configuration for ETag support.
+          properties:
+            supported:
+              type: boolean
+              description: |
+                Indicator specifying whether ETags are supported.
+
+                The Beyond Identity SCIM server does not support ETags.
+              example: true
+              readOnly: true
+          required:
+            - supported
+        authenticationSchemes:
+          type: array
+          description: Supported authentication schemes.
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                description: The authentication scheme.
+                enum:
+                  - oauth
+                  - oauth2
+                  - oauthbearertoken
+                  - httpbasic
+                  - httpdigest
+                readOnly: true
+                example: oauthbearertoken
+              name:
+                type: string
+                description: The common authentication scheme name.
+                readOnly: true
+              description:
+                type: string
+                description: A description of the authentication scheme.
+                readOnly: true
+              specUri:
+                type: string
+                description: URL pointing to the authentication scheme specification.
+                readOnly: true
+              documentationUri:
+                type: string
+                description: |
+                  URL pointing to the authentication scheme's usage documentation.
+                readOnly: true
+          required:
+            - type
+            - name
+            - description
+            - specUri
+            - documentationUri
+          readOnly: true
+      required:
+        - schemas
+        - documentationUri
+        - patch
+        - bulk
+        - filter
+        - changePassword
+        - sort
+        - etag
+        - authenticationSchemes
+    SCIMError:
+      type: object
+      properties:
+        schemas:
+          type: array
+          description: |
+            The list of schemas used to define the error. This only contains the Error schema ("urn:ietf:params:scim:api:messages:2.0:Error").
+          items:
+            type: string
+            example: 'urn:ietf:params:scim:api:messages:2.0:Error'
+        status:
+          type: string
+          description: The HTTP status code of the error expressed as a JSON string.
+        scimType:
+          type: string
+          description: |
+            A SCIM detail error keyword corresponding to [RFC 7644 Section 3.12](https://datatracker.ietf.org/doc/html/rfc7644#section-3.12).
+        detail:
+          type: string
+          description: A detailed human-readable message.
+      required:
+        - schemas
+        - status
     Error:
       type: object
       properties:
