@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: Beyond Identity Secure Workforce Admin API
-  version: 2.2.0
+  version: 2.3.0
   contact:
     email: support@beyondidentity.com
   description: |
@@ -233,7 +233,7 @@ info:
 
     ### Too many requests example
 
-    If the caller has exceeded their rate limit they may receive a **429** 
+    If the caller has exceeded their rate limit they may receive a **429**
     error. This response does not include any body.
     ```
     HTTP/1.1 429 Too Many Requests
@@ -1740,6 +1740,108 @@ paths:
                 type: integer
                 description: Number of seconds until the current rate limit window resets.
                 example: 30
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1v2~1users/get/responses/500/content/application~1json/examples/Internal%20Error'
+  /v2/binding-jobs:
+    post:
+      tags:
+        - BindingJobs
+      operationId: CreateBindingJob
+      summary: Create a new credential binding job
+      description: |
+        To create a binding job, send a POST request to `/v2/binding-jobs`. Values in the
+        request body for read-only attributes get ignored.
+      security:
+        - BearerAuth:
+            - 'binding-jobs:create'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Create Binding Job Request
+              description: Request for CreateBindingJob.
+              type: object
+              properties:
+                binding_job:
+                  $ref: '#/components/schemas/BindingJob'
+              required:
+                - binding_job
+            examples:
+              Create Binding Job:
+                value:
+                  binding_job:
+                    user_id: 11819414-9000-4700-af07-2743c02d68ca
+                    issuer_user_id: 4dfb7751-46a9-4bd6-a591-a5941cb24eba
+                    delivery_method: SHORT_CODE
+      responses:
+        '200':
+          description: |
+            The response is a JSON object containing standard group attributes.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BindingJob'
+              examples:
+                Success:
+                  value:
+                    id: 66d36cf5-96df-4fa3-a5d0-36d0aa8487c3
+                    tenant_id: acme-corp
+                    user_id: 11819414-9000-4700-af07-2743c02d68ca
+                    issuer_user_id: 4dfb7751-46a9-4bd6-a591-a5941cb24eba
+                    delivery_method: SHORT_CODE
+                    short_code_delivery_details:
+                      short_code: '123456789'
+                      expire_time: '2022-08-12T05:53:07.119Z'
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Invalid Parameters:
+                  $ref: '#/paths/~1v2~1users/get/responses/400/content/application~1json/examples/Invalid%20Parameters'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Insufficient Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/403/content/application~1json/examples/Insufficient%20Authorization'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                User Not Found:
+                  value:
+                    code: not_found
+                    message: user not found
+                    details:
+                      - type: ResourceInfo
+                        resource_type: User
+                        id: 37660157-aa4b-4e84-958f-1fdf27777e86
+                        description: user not found
         '500':
           description: Server error.
           content:
@@ -3376,7 +3478,7 @@ components:
       description: |
         Filter query for responses.
 
-        The syntax follows the SCIM grammar from 
+        The syntax follows the SCIM grammar from
         [RFC7644 Section 3.4.2.2](https:datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2).
 
         The supported operations are:
@@ -3391,7 +3493,7 @@ components:
           - ge (greater than or equal to)
           - le (less than or equal to)
 
-        See individual methods for the supported attributes and operations. 
+        See individual methods for the supported attributes and operations.
 
         Ex. name co "alice"
       schema:
@@ -3402,7 +3504,7 @@ components:
       description: |
         A comma-delimited list of attributes to sort results.
 
-        The default sorting order per attribute is ascending. Therefore, if you want 
+        The default sorting order per attribute is ascending. Therefore, if you want
         descending order, append the " desc" suffix to the attribute name.
 
         Ex. name desc
@@ -3582,6 +3684,61 @@ components:
             A flag representing if the user has at least one device credential in an ACTIVE state. It's updated automatically when the user creates or revokes any passkeys.  This field is read-only.
           readOnly: true
           example: true
+    BindingJob:
+      title: BindingJob
+      type: object
+      description: |
+        A binding job tracks the process of binding a new credential for a user.
+      properties:
+        id:
+          type: string
+          description: |
+            A unique identifier for the binding job that is automatically generated on creation. This field is immutable and read-only.
+          readOnly: true
+          example: 0fa1df25-af74-41a9-80bb-9e12762657ae
+        tenant_id:
+          type: string
+          description: |
+            A unique identifier for the tenant that is set automatically on creation. This field is immutable and read-only.
+          readOnly: true
+          example: acme-corp
+        user_id:
+          type: string
+          description: |
+            ID of the user to which the credential should be bound.
+          example: 0e3b7222-5c36-4e16-af1f-c0f3be5c57d7
+        issuer_user_id:
+          type: string
+          description: |
+            ID of the user "issuing" (creating) this binding job. May be the same as `user_id`, if this binding job was created as part of a self-service flow.
+          example: 14505aae-4892-4c6c-9341-404b0a027cd1
+        delivery_method:
+          type: string
+          description: |
+            Method by which the binding job is to be delivered to the end user. The only supported method is `SHORT_CODE`. New methods may be added later. This field is immutable and read-only.
+          example: SHORT_CODE
+        state:
+          type: string
+          description: |
+            Indicates the state of the binding job. This field is read-only.
+          readOnly: true
+          example: PENDING
+        short_code_delivery_details:
+          type: object
+          description: |
+            Details about the short code. Only present if `delivery_method` is `SHORT_CODE`.
+          properties:
+            short_code:
+              type: string
+              description: |
+                A short, human-readable code that can be used with an authenticator to bind a new credential. This should be carefully protected and only shared with the end user.
+              readOnly: true
+            expire_time:
+              type: string
+              format: date-time
+              description: |
+                A time value in the ISO8601 combined date and time format that represents the time the short code will expire. This field is immutable.
+              example: 2022-08-12T05:53:07.119Z
     SCIMUser:
       title: User
       description: |
