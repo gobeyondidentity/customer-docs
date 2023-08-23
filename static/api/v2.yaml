@@ -1797,8 +1797,8 @@ paths:
                     issuer_user_id: 4dfb7751-46a9-4bd6-a591-a5941cb24eba
                     delivery_method: SHORT_CODE
                     short_code_delivery_details:
-                      short_code: 123456789
-                      expire_time: 2022-08-12T05:53:07.119Z
+                      short_code: '123456789'
+                      expire_time: '2022-08-12T05:53:07.119Z'
         '400':
           description: Bad request.
           content:
