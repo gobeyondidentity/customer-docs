@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: Beyond Identity Secure Workforce Admin API
-  version: 2.3.0
+  version: 2.4.0
   contact:
     email: support@beyondidentity.com
   description: |
@@ -1771,6 +1771,14 @@ paths:
               properties:
                 binding_job:
                   $ref: '#/components/schemas/BindingJob'
+                ttl_seconds:
+                  type: integer
+                  format: uint32
+                  default: 60
+                  minimum: 60
+                  maximum: 900
+                  description: |
+                    Number of seconds until the binding job expires. This must be between 1 minute (60 seconds) and 15 minutes (900 seconds). This field is used only if the `expire_time` on the requested binding job is unspecified. This field defaults to 1 minute (60 seconds).
               required:
                 - binding_job
             examples:
@@ -1842,6 +1850,22 @@ paths:
                         resource_type: User
                         id: 37660157-aa4b-4e84-958f-1fdf27777e86
                         description: user not found
+        '412':
+          description: Precondition Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                User Not Active:
+                  value:
+                    code: failed_precondition
+                    message: user not active
+                    details:
+                      - type: ResourceInfo
+                        resource_type: User
+                        id: 37660157-aa4b-4e84-958f-1fdf27777e86
+                        description: user not active
         '500':
           description: Server error.
           content:
@@ -3457,7 +3481,7 @@ components:
       name: page_size
       in: query
       description: |
-        The number of items returned per page. The response may include this exact number or fewer.  If omitting this value, the response returns the default number of results the method allows.
+        The number of items returned per page. The response may include this exact number or fewer. If omitting this value, the response returns the default number of results the method allows.
       schema:
         type: integer
         format: uint32
@@ -3620,14 +3644,14 @@ components:
           type: string
           format: date-time
           description: |
-            A time value in the ISO8601 combined date and time format that gets generated automatically and represents the time the user gets created.  This field is immutable and read-only.
+            A time value in the ISO8601 combined date and time format that gets generated automatically and represents the time the user gets created. This field is immutable and read-only.
           readOnly: true
           example: 2022-04-12T05:53:07.119Z
         update_time:
           type: string
           format: date-time
           description: |
-            A time value in the ISO8601 combined date and time format that gets generated automatically and represents the time the user gets updated.  This field is immutable and read-only.
+            A time value in the ISO8601 combined date and time format that gets generated automatically and represents the time the user gets updated. This field is immutable and read-only.
           readOnly: true
           example: 2022-06-16T14:31:03.770Z
         last_auth_time:
@@ -3681,7 +3705,7 @@ components:
         has_active_passkey:
           type: boolean
           description: |
-            A flag representing if the user has at least one device credential in an ACTIVE state. It's updated automatically when the user creates or revokes any passkeys.  This field is read-only.
+            A flag representing if the user has at least one device credential in an ACTIVE state. It's updated automatically when the user creates or revokes any passkeys. This field is read-only.
           readOnly: true
           example: true
     BindingJob:
@@ -3737,7 +3761,7 @@ components:
               type: string
               format: date-time
               description: |
-                A time value in the ISO8601 combined date and time format that represents the time the short code will expire. This field is immutable.
+                A time value in the ISO8601 combined date and time format that represents the time the short code will expire. This field is immutable. The expire time is at most 15 minutes from the creation time of the binding job.
               example: 2022-08-12T05:53:07.119Z
     SCIMUser:
       title: User
@@ -4337,7 +4361,7 @@ components:
         code:
           type: string
           description: |
-            Human-readable HTTP status code name, stylized as lower snake  case, for example, bad_request.
+            Human-readable HTTP status code name, stylized as lower snake case, for example, bad_request.
         message:
           type: string
           description: |
