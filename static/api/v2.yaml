@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: Beyond Identity Secure Workforce Admin API
-  version: 2.4.0
+  version: 2.4.1
   contact:
     email: support@beyondidentity.com
   description: |
@@ -1788,6 +1788,21 @@ paths:
                     user_id: 11819414-9000-4700-af07-2743c02d68ca
                     issuer_user_id: 4dfb7751-46a9-4bd6-a591-a5941cb24eba
                     delivery_method: SHORT_CODE
+              Create Binding Job with TTL:
+                value:
+                  binding_job:
+                    user_id: 11819414-9000-4700-af07-2743c02d68ca
+                    issuer_user_id: 4dfb7751-46a9-4bd6-a591-a5941cb24eba
+                    delivery_method: SHORT_CODE
+                  ttl_seconds: 400
+              Create Binding Job with Expire Time:
+                value:
+                  binding_job:
+                    user_id: 11819414-9000-4700-af07-2743c02d68ca
+                    issuer_user_id: 4dfb7751-46a9-4bd6-a591-a5941cb24eba
+                    delivery_method: SHORT_CODE
+                    short_code_delivery_details:
+                      expire_time: '2022-08-12T05:53:07.119Z'
       responses:
         '200':
           description: |
