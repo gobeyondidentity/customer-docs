@@ -8,6 +8,9 @@ import MDXContent from '@theme/MDXContent';
 import LastUpdatedDateHeader from '../Footer/index';
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import LastUpdated from '@theme/LastUpdated';
+import DocItemHeader from './LastUpdatedDateHeader';
+import styles from './styles.module.css';
 
 
 /**
@@ -33,25 +36,21 @@ function useSyntheticTitle() {
 
 export default function DocItemContent({children}) {
   const syntheticTitle = useSyntheticTitle();
-  const { siteConfig } = useDocusaurusContext();
+
   const location = useLocation();
-  const openDocIssueURL =
-    "https://github.com/patriciamcphee/next-docs/issues/new?assignees=&labels=&template=---doc-error-report.md&title=Issue with Beyond Identity Developer Docs" +
-    `${location.pathname}`;
-  const bugIconUrl = useBaseUrl("img/bug-icon.svg");
+
 
   return (
     <div className={clsx(ThemeClassNames.docs.docMarkdown, 'markdown')}>
       {syntheticTitle && (
         <header>
           <Heading as="h1">{syntheticTitle}</Heading>
-          <LastUpdatedDateHeader />
+          <DocItemHeader />
         </header>
         
       )}
           
       <MDXContent>{children}</MDXContent>
-      
     </div>
   );
 }

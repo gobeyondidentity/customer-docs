@@ -2,58 +2,76 @@ import React from 'react';
 import clsx from 'clsx';
 import {ThemeClassNames} from '@docusaurus/theme-common';
 import {useDoc} from '@docusaurus/theme-common/internal';
-import LastUpdated from '@theme/LastUpdated';
 import EditThisPage from '@theme/EditThisPage';
 import styles from './styles.module.css';
+import Link from '@docusaurus/Link';
+
+
+
+import { FaDev, FaGithub, FaTwitter, FaStackOverflow, FaSlack } from "react-icons/fa";
 
 function EditMetaRow({
-  lastUpdatedAt,
-  formattedLastUpdatedAt,
-  editUrl, 
-  ...props
+  editUrl,
 }) {
   return (
     <div className={clsx(ThemeClassNames.docs.docFooterEditMetaRow, 'row')}>
-
-      <div className={clsx('col', styles.lastUpdated)}>
-        {(lastUpdatedAt || editUrl) && (
-          <LastUpdated
-            lastUpdatedAt={lastUpdatedAt}
-            formattedLastUpdatedAt={formattedLastUpdatedAt}
-            editUrl={editUrl}
-           
-          />
-          
-        )}
-
-      </div>
-
+      <div className="col">{editUrl && <EditThisPage editUrl={editUrl} />}</div>
     </div>
   );
 }
-export default function LastUpdatedDateHeader() {
-  
+export default function DocItemFooter() {
   const {metadata} = useDoc();
-  const {lastUpdatedAt, formattedLastUpdatedAt, editUrl} =
+  const {editUrl} =
     metadata;
-  const canDisplayEditMetaRow = !!( lastUpdatedAt || editUrl);
+  const canDisplayEditMetaRow = !!(editUrl);
   const canDisplayFooter = canDisplayEditMetaRow;
   if (!canDisplayFooter) {
     return null;
   }
   return (
-    <div
-      className={clsx(ThemeClassNames.docs.docFooter, 'docusaurus-mt-md')}>
-
-      {canDisplayEditMetaRow && (
+    <footer
+      className={clsx(styles.li, ThemeClassNames.docs.docFooter)}>
+      
+<hr />
+      <div class="container">
+        <div class="row">
+          <div class="col col--8">
+            <div class="col-demo">
+              <h4>See something not documented or want to contribute?</h4>
+                  <ul className="text-sm">
+                    <li>
+                      Submit a{' '}
+                      <Link to="https://github.com/gobeyondidentity/customer-docs/issues/new?assignees=&labels=triage&projects=&template=content-issue.yml&title=%5BContent+issue%5D%3A+">
+                        content issue
+                      </Link>
+                    </li>
+                    <li>
+                      Suggest an{' '}
+                      <Link to="https://github.com/gobeyondidentity/customer-docs/issues/new?assignees=&labels=%F0%9F%8C%9F+enhancement&projects=&template=enhancement.yml">
+                        idea for the documentation
+                      </Link>
+                    </li>
+                    <li>{canDisplayEditMetaRow && (
         <EditMetaRow
-          lastUpdatedAt={lastUpdatedAt}
-          formattedLastUpdatedAt={formattedLastUpdatedAt}
           editUrl={editUrl}
         />
-      )}
+      )}</li>
+                  </ul>
+              </div>
 
-    </div>
-    
+          </div>
+          <div class='col col--4'>
+            <div class="col-demo">
+              <h4>Join our community!</h4>
+                <ul className={clsx('no-style', styles.indent)}>
+                    <li class="no-style"><FaSlack />&nbsp;&nbsp;<a href="https://byndid.slack.com/join/shared_invite/zt-1anns8n83-NQX4JvW7coi9dksADxgeBQ#/shared-invite/email" target="_blank">Slack</a></li>
+                    <li class="no-style"><FaTwitter />&nbsp;&nbsp;<a href="https://twitter.com/beyondidentity" target="_blank">Twitter</a></li>
+                  </ul>
+              </div>
+          </div>
+        </div>
+      </div>
+
+    </footer>
   );
 }

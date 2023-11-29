@@ -1,120 +1,186 @@
-
-
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   // By default, Docusaurus generates a sidebar from the docs folder structure
-  secureWorkforceSidebar: [
-    'intro',
-    'platform/admin-console',
-    'risk-overview',
-
-/*
-  {
-      type: 'category',
-      label: 'Platform',  
-      collapsed: false, 
+  mainSidebar: [
+    {
+      type: "category",
+      label: "Architecture",
+      collapsed: false,
       collapsible: false,
       link: {
-        type: 'doc',
-        id: 'platform/platform',
-      },      
-      items: [ 
-        'platform/architecture',
-        'platform/admin-console',
-      ],
-    },  
-*/    
-
-/*
-  {
-      type: 'category',
-      label: 'Desktop Login',  
-      collapsed: false, 
-      collapsible: false, 
-      link: {
-        type: 'doc',
-        id: 'desktop-login/desktop-login',
-      },      
-      items: [ 
-        'desktop-login/windows-desktop-login',
-        'desktop-login/mac-desktop-login',
-        'desktop-login/desktop-login-troubleshooting',
-      ],
-    },  
-*/    
-
-  ],
-
-  /*
-  releaseNotesSidebar: [
-    {
-      type: 'category',
-      label: 'Release Notes',  
-      link: {
-        type: 'doc',
-        id: 'release-notes/release-notes-main',
+        type: "doc",
+        id: "architecture/architecture",
       },
-      collapsible: false,    
-      items: [ 
-        'release-notes/v2-81-0',
-        'release-notes/v2-80-0',
-        'release-notes/v2-79-0',
-        'release-notes/v2-78-0',
-        'release-notes/v2-77-0',
-        'release-notes/v2-76-0',
-        'release-notes/v2-75-0',
+      items: [
+        "architecture/overview",
       ],
-    },    
+    },
+    {
+      type: "category",
+      label: "Getting Started",
+      collapsed: true,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "getting-started/getting-started",
+      },
+      items: [
+        "getting-started/getting-started-guide",
+      ],
+    },
+    {
+      type: "category",
+      label: "Authentication",
+      collapsed: true,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "authentication/authentication",
+      },
+      items: [
+        "authentication/authentication-guide",
+      ],
+    },
+    {
+      type: "category",
+      label: "How-to Guides",
+      collapsed: false,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "how-to/how-to",
+      },
+      items: [
+        "how-to/how-to-guide",
+      ],
+    },
+    {
+      type: "category",
+      label: "Devices",
+      collapsed: false,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "devices/devices",
+      },
+      items: [
+        "devices/device-iq",
+      ],
+    },
+    {
+      type: "category",
+      label: "Integrations",
+      collapsed: false,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "integrations/integrations",
+      },
+      items: [
+        "integrations/integration-guide",
+      ],
+    },
+    {
+      type: "category",
+      label: "Reporting",
+      collapsed: false,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "reporting/reporting",
+      },
+      items: [
+        "reporting/reporting-guide",
+      ],
+    },
+    {
+      type: "category",
+      label: "Users",
+      collapsed: false,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "users/users",
+      },
+      items: [
+        "users/users-guide",
+      ],
+    },
+    {
+      type: "category",
+      label: "Security",
+      collapsed: false,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "security/security",
+      },
+      items: [
+        "security/security-guide",
+      ],
+    },
+    {
+      type: "category",
+      label: "Resources",
+      collapsed: false,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "resources",
+      },
+      items: [
+        "glossary",
+        {
+          type: "link",
+          label: "Service Status",
+          href: "https://status.beyondidentity.com/",
+        },
+      ],
+    },
   ],
-*/
-
 
   contributorGuideSidebar: [
     {
-      type: 'category',
-      label: 'Contribute',  
-      collapsible: false,  
-      collapsed: false,  
+      type: "category",
+      label: "Contribute",
+      collapsible: false,
+      collapsed: false,
       link: {
-        type: 'doc',
-        id: 'contribute/contribute',
+        type: "doc",
+        id: "contribute/contribute",
       },
-      items: [ 
-
-        'contribute/when-to-contribute',
-        'contribute/contribute-get-started',
-        'contribute/site-organization-and-files',
-        'contribute/docs-site-branches',
-        'contribute/best-practices',
+      items: [
+        "contribute/when-to-contribute",
+        "contribute/contribute-get-started",
+        "contribute/site-organization-and-files",
+        "contribute/docs-site-branches",
+        "contribute/best-practices",
         {
-          type: 'category',
-          label: 'Edit content',
-          collapsed: true, 
-          collapsible: false,           
-           items: [    
+          type: "category",
+          label: "Edit content",
+          collapsed: true,
+          collapsible: false,
+          items: [
             {
-              type: 'doc',
-              id: 'contribute/edit-content-minor-changes',
-              label: 'Minor changes',
+              type: "doc",
+              id: "contribute/edit-content-minor-changes",
+              label: "Minor changes",
             },
             {
-              type: 'doc',
-              id: 'contribute/edit-content-significant-changes',
-              label: 'Significant changes',
-            }, 
-         ],
+              type: "doc",
+              id: "contribute/edit-content-significant-changes",
+              label: "Significant changes",
+            },
+          ],
         },
-        'contribute/add-new-topic',
-        'contribute/create-pull-request',        
+        "contribute/add-new-topic",
+        "contribute/create-pull-request",
       ],
-    },    
-    'contribute/markdown-reference',
-    'contribute/style-guide',
-    'contribute/release-notes-guide',
+    },
+    "contribute/markdown-reference",
+    "contribute/style-guide",
+    "contribute/release-notes-guide",
   ],
-
-
-
 };
 
 module.exports = sidebars;
