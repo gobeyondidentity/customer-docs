@@ -161,12 +161,12 @@ const config = {
             position: 'left',
             items: [
               {
-                label: 'v0',
-                to: '/api/v0',
-              },
-              {
                 label: 'v1',
                 to: '/api/v1',
+              },
+              {
+                label: 'v0',
+                to: '/api/v0',
               },
             ],
           },
