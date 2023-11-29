@@ -143,12 +143,12 @@ const config = {
         respectPrefersColorScheme: true,
       },
       metadata: [
-        { property: 'og:description', content: 'Developer Docs for passwordless authentication' },
+        { property: 'og:description', content: 'Customer Docs for passwordless authentication' },
         { property: 'og:image', content: 'https://www.beyondidentity.com/sites/default/files/2023-02/zero-trust-announce.png' },
-        { name: 'twitter:card', content: 'Beyond Identity Developer Docs' }
+        { name: 'twitter:card', content: 'Beyond Identity Customer Docs' }
       ],
       navbar: {
-        title: 'Developer Documentation',
+        title: 'Documentation',
         logo: {
           alt: 'Beyond Identity Logo',
           src: 'img/BYD_ID-LOGO_FINAL_blue_RGB.svg',

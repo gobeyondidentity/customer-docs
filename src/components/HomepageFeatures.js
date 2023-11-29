@@ -12,7 +12,7 @@ const FeatureList1 = [
         use cases.
       </>
     ),
-    link: "/docs/get-started",
+    link: "/docs/getting-started",
   },
   {
     title: "Architecture",
