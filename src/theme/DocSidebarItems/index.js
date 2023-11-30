@@ -1,25 +1,18 @@
-
-import { ThemeClassNames } from "@docusaurus/theme-common";
-import DocSidebarItems from "@theme-original/DocSidebarItems";
-import clsx from "clsx";
-import React from "react";
+import Link from "@docusaurus/Link"
+import { ThemeClassNames } from "@docusaurus/theme-common"
+import { useDocsVersion } from "@docusaurus/theme-common/internal"
+import { Badge } from "@mui/material"
+// import latestRelease from "@site/latestRelease.json"
+import DocSidebarItems from "@theme-original/DocSidebarItems"
+import NavbarItem from "@theme-original/NavbarItem"
+import clsx from "clsx"
+import React from "react"
 import Chip from '@mui/material/Chip';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Stack from '@mui/material/Stack';
 
 
 export default function DocSidebarItemsWrapper(props) {
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-
-  const theme = React.useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode: prefersDarkMode ? 'dark' : 'light',
-        },
-      }),
-    [prefersDarkMode],
-  );
+  
 
   return (
     <>
@@ -34,9 +27,8 @@ export default function DocSidebarItemsWrapper(props) {
             "margin-left--sm"
           )}
         >
-          <ThemeProvider theme={theme}>
-          <Chip label="Version: 2.84.0" href="#" size="small" className="sidebar-version" sx={{ fontWeight: 700}} />
-          </ThemeProvider>
+
+
         </li>
       ) : null}
       <DocSidebarItems {...props} />
