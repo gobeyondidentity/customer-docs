@@ -19,7 +19,7 @@ To promote consistency, follow the guidelines below and mentioned throughout to 
 
 - Verify your content for technical accuracy before submitting your Pull Request.
 
-- Consult with the Sr. Technical Writer when adding topics or want to propose changes to the content structure. The Sr. Technical Writer maintains the content's quality, reduces duplication, and provides a consistent user experience. They can also strategize how to deliver complex information—for example, adding an explainer video (<90 secs) can help with complex scenarios or issues.
+- Consult with the Sr. Technical Writer when adding topics or want to propose changes to the content structure. The Sr. Technical Writer maintains the content's quality, reduces duplication, and provides a consistent user experience. They can also strategize how to deliver complex information—for example, adding an explainer video (&lt;90 secs) can help with complex scenarios or issues.
 
 ### GitHub
 

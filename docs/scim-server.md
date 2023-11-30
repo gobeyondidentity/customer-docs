@@ -15,9 +15,6 @@ doc_type: how-to
 displayed_sidebar: mainSidebar
 ---
 
-
-
-
 To use SCIM functionality, an access token with `scim:all` scope is required on the SCIM server, which is available by default when creating a new realm. It is recommended to use a dedicated application for SCIM operations to differentiate between API and SCIM operations in the logs.
 
 
@@ -41,11 +38,11 @@ Where **base_url** is `https://api-{{us|eu}}.beyondidentity.com/v1/tenants/{{ten
 ## Operations
 The following operations are currently supported by BI SCIM server:
 
-- Create: POST {{baseUrl}}/{{resource}}
-- Read: GET {{baseUrl}}/{{resource}}/{{id}}
-- Replace: PUT {{baseUrl}}/{{resource}}/{{id}}
-- Delete: DELETE {{baseUrl}}/{{resource}}/{{id}}
-- Search: GET {{baseUrl}}/{{resource}}?ﬁlter={{attribute}}{{op}}{{value}}
+- Create: `POST {{baseUrl}}/{{resource}}`
+- Read: `GET {{baseUrl}}/{{resource}}/{{id}}`
+- Replace: `PUT {{baseUrl}}/{{resource}}/{{id}}`
+- Delete: `DELETE {{baseUrl}}/{{resource}}/{{id}}`
+- Search: `GET {{baseUrl}}/{{resource}}?ﬁlter={{attribute}}{{op}}{{value}}`
 
 Where **base_url** is `https://api-us.beyondidentity.com/v1/tenants/{{tenant_id}}/realms/{{realm_id}}/scim/v2`, **resource** can either be `Groups` or `Users`, and 
 **id** represents the BI's unique identifier of the corresponding resource.  

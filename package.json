@@ -26,6 +26,7 @@
     "antd": "^5.5.0",
     "classnames": "^2.3.2",
     "clsx": "^1.1.1",
+    "docusaurus-mdx-checker": "^3.0.0",
     "docusaurus-plugin-hubspot": "1.0.1",
     "docusaurus-plugin-image-zoom": "^0.1.1",
     "docusaurus-preset-classic": "^2.0.0-beta.15",

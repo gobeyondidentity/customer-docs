@@ -27,7 +27,7 @@ displayed_sidebar: contributorGuideSidebar
 
 Make sure to consult with the Sr. Technical Writer when adding topics or want to propose changes to the content structure. 
 
-The Sr. Technical Writer maintains the content's quality, reduces duplication, and provides a consistent user experience. They can also strategize how to deliver complex information—for example, adding an explainer video (<90 secs) can help with complex scenarios or issues.
+The Sr. Technical Writer maintains the content's quality, reduces duplication, and provides a consistent user experience. They can also strategize how to deliver complex information—for example, adding an explainer video (&lt;90 secs) can help with complex scenarios or issues.
 
 
 1. Make sure you're back on the main (default) branch so you can sync your local working branch.
