@@ -43,7 +43,7 @@ const config = {
             'https://github.com/gobeyondidentity/customer-docs/edit/main',
           versions: {
             current: {
-              label: "v1",
+              label: "v1 (unreleased)",
               path: "",
             },
             v0: {
@@ -161,7 +161,7 @@ const config = {
             position: 'left',
             items: [
               {
-                label: 'v1',
+                label: 'v1 (unreleased)',
                 to: '/api/v1',
               },
               {
