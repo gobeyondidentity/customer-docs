@@ -144,7 +144,7 @@ const config = {
       },
       metadata: [
         { property: 'og:description', content: 'Customer Docs for passwordless authentication' },
-        { property: 'og:image', content: 'https://www.beyondidentity.com/sites/default/files/2023-02/zero-trust-announce.png' },
+        { property: 'og:image', content: '/img/og_image.jpg' },
         { name: 'twitter:card', content: 'Beyond Identity Customer Docs' }
       ],
       navbar: {
