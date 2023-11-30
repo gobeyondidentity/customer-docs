@@ -311,7 +311,7 @@ Use one backtick (\`) around the code.  This is the markdown version of the `<co
 Use inline code blocks when it's impractical to display code by reference to a code file. 
 
 
-Use three backticks (<code>```</code>) with the language. This is the markdown version of the `<pre\>` tag in HTML.
+Use three backticks (<code>```</code>) with the language. This is the markdown version of the <pre\> tag in HTML.
 
 ````md
   ```javascript
