@@ -1,0 +1,45 @@
+---
+title: Viewing device query status
+id: query-status
+description: 'View the status of queries.'
+slug: /device360
+keywords:
+  - device360
+  - live queries
+  - responding devices
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 12/5/2023
+  author: Shannon Moore
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+#Viewing device query status
+The authenticator includes a built-in version of Osquery so you can run live queries to identify misconfigurations and vulnerabilities on any devices that are online. You can then triage the results to improve your device posture and security.
+
+1. Click **Device Query** in the navigation pane to open the Device Query page. The Queries tab displays a list of all queries that are running, have ran, or are scheduled to run.
+
+   Note that until a query runs for the first time, this page will be blank.
+   ![Device Query page opened to Queries tab](<../images/devices/DQ-Queries tab.png>)
+2. To run a query, see "Running device queries."
+3. You can view the following information in the Query table:
+   | Option | Description |
+   | ----------- | ----------- |
+   | Query Name | Displays the name of the query. Click a query name in the table to view query results and begin threat hunting. For more infromation, see "Viewing Query Results". |
+   | Status     | Displays the status of a query. 
+**Note:** At this time, a total of 5 queries can run in parallel and/or be scheduled to run per tenant. If needed, locate a scheduled query and select Cancel all future runs under the Actions column or cancel a running query. |
+   | Last Run   | Displays the date and time the query last ran. |
+   | Target Devices | Displays the type of devices targeted in the query. |
+   | Responding Devices | Displays the number of devices that met the conditions in the query. |
+   | Result Rows | Displays the number of rows containing details for each result returned from this query.
+For example, if you run a query that looks for executable files stored in temp directories, a single device could have 100s of executable files in temp directories so a single device could have 100+ result rows. |
+   | Actions | Provides a set of actions available based on the status of a query:
+<ol>
+<li> **Re-run query** - Applies to queries with a status of Run Complete or Cancelled.</li>
+<li> **Cancel run** - Applies to queries with a status of Now running. </li>
+<li> **Cancel this run** - Applies to a scheduled query that is currently running. </li>
+<li> **Cancel all future runs** - Applies to queries that are scheduled to run. </li>
+<li> **Cancel this and all future runs** - Applies to a scheduled query that is currently running.  
+</li>
+</ol>|

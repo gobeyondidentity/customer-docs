@@ -1,0 +1,96 @@
+---
+title: Managing devices
+id: manage-devices
+description: 'Analyze devices for misconfigurations for vulnerabilities, outdated OS versions, and you can also add or manage devices. '
+slug: /device360
+keywords:
+  - device360
+  - devices
+  - device naming
+  - data collection interval
+  - device enrollment
+  - device misconfigurations
+  - device vulnerabilities
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 12/5/2023
+  author: Shannon Moore
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+#Managing devices
+On the Devices page, you can quickly analyze devices for misconfigurations for vulnerabilities, outdated OS versions, and you can also add or manage devices. In addition, if you downloaded and enrolled a device from the Install Authenticator page,
+
+The Device table shows the status of devices that have a passkey enrolled in Device360. Note that this is a different passkey than the one used for the Beyond Identity console and passwordless authentication.
+##Update the data collection interval
+You can specify the interval for how often device attributes on this page will be collected from devices that are online.
+1. Click **Devices** in the navigation pane.
+2. Click **Edit** beside Data collected every x.
+![Alt text](<../images/devices/Data collection.png>)
+3. Under **Frequency**, select how often you want Device360 to poll enrolled devices and return results that display in the Devices table.
+4. Click **Save Changes**. 
+
+##Device table
+The Device table shows device details and vulnerabilities from polling the device based on the data collection setting or an Osquery executed from the Device Query page.
+Click a row with a device to view details. 
+
+###Device Name
+A custom name you can set for the device when creating it using Add Device on this page.  
+
+###Device ID
+The Device ID is a value assigned by Beyond Identity and is useful to:
+- See how many passkeys are on a device
+- Ensure passkeys are sync’d between multiple devices
+- Understand which passkeys will need to be revoked If a user losses a device
+
+###Device Serial Number
+The serial number associated with the device. 
+
+###Host Name
+The label assigned to the device on network. 
+
+###Vulnerabilities
+Displays any configuration or vulnerabilities found on the device, such as a firewall that isn't enabled. 
+ 
+###OS Version
+Displays the operating system version of the device. Use this column to locate devices that are on vulnerable operating systems. 
+
+###Enrollment Status
+Displays the status of the enrollment. Statuses are:
+- Active - The device is online and available. 
+- Pending - Occurs when:
+-- The device was added recently, and initial queries associated with the table are running.
+
+-- The enrollment code\passkey hasn’t been added to the authenticator. To enroll the device:
+<ol>
+<li> Click the Edit icon under the Actions column.
+</li>
+<li> Click **Generate new enrollment code** and copy the code. 
+</li>
+<li> Click **Save changes**. 
+</li>
+<li> Open the Beyond Identity authenticator.
+</li>
+<li> Click the + button to add the new enrollment code.
+      ![Add enrollment code to authenticator](<../images/devices/Authenticator add passkey.png>)
+</li>
+<li> Paste or type the enrollment code in the Enter 9-digit code screen. Note that a cursor doesn't appear on the screen. 
+      ![Paste enrollment code into authenticator](<../images/devices/Add regenerated passkey.png>)
+</li>
+<li> Return to the Devices page. The device should have a status of Active once queries used to update the table complete.    
+</li>
+   </ol>
+
+###Last Data Collection
+The last date and time that data was collected from either the data collection setting on this page or an Osquery executed from the Device Query page.
+
+###Actions
+
+Click the Edit icon under Actions to perform the following:
+
+- Add or update the name that displays for the device.
+
+- Generate a new enrollment code to bind or re-bind a device to Device360.
+
+- Delete a device (useful when an employee leaves or a device is decommissioned).

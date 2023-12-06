@@ -1,0 +1,52 @@
+---
+title: Generating enrollment codes
+id: enrollement-code
+description: 'Generate an enrollment code to bind or rebind a device to Device360'
+slug: /device360
+keywords:
+  - device360
+  - bind device
+  - enrollment code
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 12/5/2023
+  author: Shannon Moore
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+#Generating enrollment codes
+You can rebind a device to  by generating a new enrollment code and applying it to the device. 
+**Note:** This will not impact the passkey from the  authenticator that allows users to securely sign into corporate applications without passwords.
+<ol>
+<li> Click the Edit icon under the Actions column on the Devices page. 
+![Alt text](<../images/devices/Actions col.png>)
+</li>
+<li>Click **Generate new enrollment code**.
+![Alt text](<../images/devices/Edit device.png>)
+</li>
+<li>Copy the **Enrollment code**.</li>
+<li>Click **Save changes**. </li>
+<li>Remove the current passkey from the authenticator: </li>
+<ol>
+<li>Open the Beyond Identity authenticator and select the passkey for this tenant.
+</li>
+<li>Click **About this passkey**.
+![Alt text](<../images/devices/Delete passkey.png>)
+</li>
+<li>Click **Remove passkey from computer**.
+![Alt text](<../images/devices/Delete passkey 2.png>)
+</li>
+</ol>
+<li>Add the regenerated enrollment code to bind your device to this tenant: 
+</li>
+<ol>
+<li>Click the + button to add the new enrollment code.
+![Alt text](<../images/devices/Authenticator add passkey.png>)
+</li>
+<li>Paste or type the enrollment code in the Enter 9-digit code screen. Note that a cursor doesn't appear on the screen. 
+![Alt text](<../images/devices/Add regenerated passkey.png>)
+The device will be added to the Device table with a status of Pending until internal queries complete. Once those complete, the status will change to Active. 
+</li>
+</ol>
+</ol>

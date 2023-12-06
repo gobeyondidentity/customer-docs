@@ -64,7 +64,7 @@ const sidebars = {
         id: "devices/devices",
       },
       items: [
-        "devices/device-iq",
+        "devices/device360",
       ],
     },
     {

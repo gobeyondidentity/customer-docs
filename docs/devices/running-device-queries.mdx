@@ -1,0 +1,45 @@
+---
+title: Running device queries
+id: run-queries
+description: 'Run live queries to identify misconfigurations and vulnerabilities on devices.'
+slug: /device360
+keywords:
+  - device360
+  - queries
+  - device queries
+  - device misconfigurations
+  - device vulnerabilities
+  - osquery
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 12/5/2023
+  author: Shannon Moore
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+#Running device queries
+Device360 live queries allow you to quickly and efficiently gather information from all devices in a tenant to support threat hunting, policy management and impact assessment, and asset inventory purposes. Device360 provides a number of pre-canned queries that help collect attributes that may not be accessible at the time of authentication (e.g., list running process, list installed software, list chrome extensions).
+
+<ol>
+<li>Click **Device Query** under My Project Space.
+</li>
+<li>Click the **Query Library** tab.
+docs\images\devices\DQ-Library tab.png
+</li>
+<li>Click a query card from the list to view details for it.
+docs\images\devices\DQ-card details.png
+</li>
+<li>Note the timeout for the query under **Run Query for 5 minutes**. This specifies the timeout value to account for latency, device lifecycles, etc. Queries should return results in less than 30 seconds based on the polling interval.
+</li>
+<li>(Optional) Select the drop-down beside **Run once now** if you want to schedule the query to run on a regular basis.
+docs/images/devices/DQ - card schedule runs.png
+</li>
+<li>(Optional) Click **View Full Query** if you want to see more than the first three lines of the query that will run.
+</li>
+<li>Click **Run Now**. You will be returned to the Device Query page's Query tab to view the status of the query.
+docs/images/devices/DQ-running query.png
+</li>
+<li>Click the **Query Name** to view results. You don't have to wait for the query to complete to view the results. For more information, see "Viewing query results".
+</li>
+</ol>

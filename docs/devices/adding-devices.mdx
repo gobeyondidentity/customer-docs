@@ -1,0 +1,43 @@
+---
+title: Adding devices
+id: add-device
+description: 'Add and enroll a device in Device360'
+slug: /device360
+keywords:
+  - device360
+  - add device
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 12/5/2023
+  author: Shannon Moore
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+
+#Adding a device
+To begin collecting data and running queries on a device, you must first enroll it. 
+<ol>
+<li> Click **Devices** under My Project Space.
+</li>
+<li> Click **Add Device**.
+![Add Device button](<../images/devices/Add device.png>)
+**Note:** If you already have the Beyond Identity authenticator version 2.92.0 or later installed on your device, skip to Step 5 below to add a passkey to your device to start collecting data.
+</li>
+<li> Enter a device name and click **Next**.
+![Add Device dialog](<../images/devices/Add device name.png>)
+</li>
+<li> Click the link to open the authenticator downloads page.
+![Add Device dialog with authenticator link](<../images/devices/Add device enrollment code.png>)
+</li>
+<li> Copy the Enrollment code.
+</li>
+<li> Open the authenticator and click the + button.
+![Beyond Identity Authenticator app](<../images/devices/Authenticator add passkey-pendo.png>)
+</li>
+<li> Paste or type the enrollment code in the Enter 9-digit code screen. Note that a cursor doesn't appear on the screen.
+![Authenticator - enter enrollment code](<../images/devices/Authenticator-nine digit code.png>)
+The device will be added to the Device table with a status of Pending until internal queries complete. Once those complete, the status will change to Active.
+You can now monitor and query the device.
+</li>
+</ol>
