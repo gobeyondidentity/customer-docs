@@ -86,7 +86,7 @@ Docaurus native components.
 
    ```bash
    git clone https://github.com/gobeyondidentity/customer-docs.git
-   cd developer-docs
+   cd customer-docs
    ```
 
 2. Next, create a new [branch](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell) from `main` (always give your branch a meaningful, descriptive name). 

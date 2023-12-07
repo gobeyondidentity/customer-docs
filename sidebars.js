@@ -131,6 +131,11 @@ const sidebars = {
       items: [
         "glossary",
         {
+          type: "doc",
+          id: "contribute/contribute",
+          label: "Contributor Guide",
+        },
+        {
           type: "link",
           label: "Service Status",
           href: "https://status.beyondidentity.com/",
@@ -140,6 +145,15 @@ const sidebars = {
   ],
 
   contributorGuideSidebar: [
+    {
+      type: "doc",
+      id: "welcome",
+      label: "<- Back to main docs",
+    },
+    {
+      type: "html",
+      value: "<hr>",
+    },
     {
       type: "category",
       label: "Contribute",
