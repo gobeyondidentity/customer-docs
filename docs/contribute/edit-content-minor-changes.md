@@ -84,6 +84,3 @@ Despite all efforts, small grammar and spelling errors _do_ make their way into 
 
 
 That's it! Team members will review your PR and merge it when approved. You may get feedback requesting changes.
-
-<div class="demoContainer"><iframe src="https://app.supademo.com/embed/clk7fd03gua59zgx6kvjhjj84" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen class="iframeContainer"></iframe></div>
-
