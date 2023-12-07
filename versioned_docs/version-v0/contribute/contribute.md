@@ -29,7 +29,7 @@ displayed_sidebar: contributorGuideSidebar
 [get-started]: ./get-started.md
 
 
-Thank you for taking an interest in contributing to the Beyond Identity Developer Documentation. 
+Thank you for taking an interest in contributing to the Beyond Identity Secure Workforce Documentation. 
 
 We've built the documentation with [Docusaurus](https://docusaurus.io) and you can find the source code our [customer-docs GitHub repo][repo].
 
