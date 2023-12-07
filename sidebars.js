@@ -26,6 +26,7 @@ const sidebars = {
       },
       items: [
         "getting-started/getting-started-guide",
+        "getting-started/system-requirements",
       ],
     },
     {
@@ -65,6 +66,14 @@ const sidebars = {
       },
       items: [
         "devices/device360",
+        "devices/adding-devices",
+        "devices/managing-devices",
+        "devices/generating-enrollment-code",
+        "devices/renaming-devices",
+        "devices/deleting-devices",
+        "devices/viewing-query-status",
+        "devices/running-device-queries",
+        "devices/viewing-query-results",
       ],
     },
     {
