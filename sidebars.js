@@ -95,11 +95,6 @@ const sidebars = {
         },  
         {
           type: "doc",
-          id: "devices/renaming-devices",
-          label: "Rename a device",
-        },  
-        {
-          type: "doc",
           id: "devices/deleting-devices",
           label: "Delete a device",
         },  
