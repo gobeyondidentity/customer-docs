@@ -1,5 +1,5 @@
 ---
-title: Viewing query results
+title: View query results
 id: viewing-query-results
 description: 'View query results to begin hunting threats on devices.'
 slug: /device360
@@ -15,19 +15,24 @@ last_update:
 doc_type: overview
 displayed_sidebar: mainSidebar
 ---
-# Viewing query results
+# View query results
 After running a query, you can view results and begin threat hunting.
-![Query results]("../images/devices/DQ-Query Result Success.png")
+
+![Query results]("../images/devices/DQ-Query-Result-Success.png")
 
 ## Previous Runs
+
 By default, the latest run displays on this page. You can select a previous date and time in the left pane to view previous runs of the same query as you begin threat hunting. As you resolve misconfigurations and mitigate risks, you can compare runs to track progress from where you started to where you are now. For example, your initial run of a query could return 15 devices with 100 rows of data. Later runs of the same query should result in fewer devices and rows of data as you resolve issues for those devices.
 
 ### Successes
+
 This tab displays a list of devices that provided an update for the query. If a device doesn't have a name provided, it displays as "Not Available" in this table. To add a device name, see "Renaming a device".
 
 ### Failures
+
 This tab displays a list of devices that didn't respond because they were offline or there was a query error.
 
 ### All results
+
 This tab displays a row for each result returned for a device. For example, if you run a query that looks for executable files stored in temp directories, a single device could have 100s of executable files in temp directories so one device could have 100+ rows.
-![All Results tab]("../images/devices/DQ-all results.png")
+![All Results tab]("../images/devices/DQ-all-results.png")

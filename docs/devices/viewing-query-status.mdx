@@ -1,5 +1,5 @@
 ---
-title: Viewing device query status
+title: View device query status
 id: viewing-query-status
 description: 'View the status of queries.'
 slug: /device360
@@ -15,15 +15,20 @@ last_update:
 doc_type: overview
 displayed_sidebar: mainSidebar
 ---
-# Viewing device query status
+# View device query status
+
 The authenticator includes a built-in version of Osquery so you can run live queries to identify misconfigurations and vulnerabilities on any devices that are online. You can then triage the results to improve your device posture and security.
 
 1. Click **Device Query** in the navigation pane to open the Device Query page. The Queries tab displays a list of all queries that are running, have ran, or are scheduled to run.
 
    Note that until a query runs for the first time, this page will be blank.
-   ![Device Query page opened to Queries tab]("../images/devices/DQ-Queries tab.png")
-2. To run a query, see "Running device queries."
+
+   ![Device Query page opened to Queries tab]("../images/devices/DQ-Queries-tab.png")
+
+2. To run a query, see "Run a device query."
+
 3. You can view the following information in the Query table:
+
    | Option | Description |
    | ----------- | ----------- |
    | Query Name | Displays the name of the query. Click a query name in the table to view query results and begin threat hunting. For more infromation, see "Viewing Query Results". |
@@ -35,11 +40,8 @@ The authenticator includes a built-in version of Osquery so you can run live que
    | Result Rows | Displays the number of rows containing details for each result returned from this query.
   For example, if you run a query that looks for executable files stored in temp directories, a single device could have 100s of executable files in temp directories so a single device could have 100+ result rows. |
    | Actions | Provides a set of actions available based on the status of a query:
-<ol>
-<li> **Re-run query** - Applies to queries with a status of Run Complete or Cancelled.</li>
-<li> **Cancel run** - Applies to queries with a status of Now running. </li>
-<li> **Cancel this run** - Applies to a scheduled query that is currently running. </li>
-<li> **Cancel all future runs** - Applies to queries that are scheduled to run. </li>
-<li> **Cancel this and all future runs** - Applies to a scheduled query that is currently running.  
-</li>
-</ol>|
+    - **Re-run query** - Applies to queries with a status of Run Complete or Cancelled.</li>
+    - **Cancel run** - Applies to queries with a status of Now running. </li>
+    - **Cancel this run** - Applies to a scheduled query that is currently running. </li>
+    - **Cancel all future runs** - Applies to queries that are scheduled to run. </li>
+    - **Cancel this and all future runs** - Applies to a scheduled query that is currently running.  |
