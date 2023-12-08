@@ -30,6 +30,11 @@ const sidebars = {
           id: "getting-started/getting-started-guide",
           label: "Device360 system requirements",
         },  
+        {
+          type: "doc",
+          id: "getting-started/system-requirements",
+          label: "System requirements",
+        },  
       ],
     },
     {
