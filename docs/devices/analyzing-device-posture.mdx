@@ -1,12 +1,13 @@
 ---
-title: Manage a device
-id: managing-devices
+title: Analyze device posture
+id: analyze-devices
 description: 'Analyze devices for misconfigurations for vulnerabilities, outdated OS versions, and you can also add or manage devices. '
 slug: /device360
 keywords:
   - device360
   - devices
-  - device naming
+  - device posture
+  - analyze devices
   - data collection interval
   - device enrollment
   - device misconfigurations
@@ -19,19 +20,21 @@ last_update:
 doc_type: overview
 displayed_sidebar: mainSidebar
 ---
-# Managing a device
+# Analyze device posture
 
-On the Devices page, you can quickly analyze devices for misconfigurations for vulnerabilities, outdated OS versions, and you can also add or manage devices. In addition, if you downloaded and enrolled a device from the Install Authenticator page,
+On the Devices page, you can quickly analyze enrolled devices for misconfigurations and vulnerabilities, such as firewalls that aren't enabled. You can also add or manage devices from this page.
 
-The Device table shows the status of devices that have a passkey enrolled in Device360. Note that this is a different passkey than the one used for the Beyond Identity console and passwordless authentication.
+:::note
+In order to see devices, you must first enroll the device by adding a Device360 credential to the Beyond Identity Authenticator version 2.91.1 or later. Note that this is a different passkey than the one used for the Beyond Identity console and passwordless authentication. For more information, see [Add a device]("docs/devices/adding-devices.mdx").
 
 ## Update the data collection interval
 
-You can specify the interval for how often device attributes on this page will be collected from devices that are online.
+You can specify the interval for how often device attributes in the table on this page will be collected from devices that are online.
 
 1. Click **Devices** in the navigation pane.
 
 2. Click **Edit** beside Data collected every x.
+
     ![Alt text]("../images/devices/data-collection.png")
 
 3. Under **Frequency**, select how often you want Device360 to poll enrolled devices and return results that display in the Devices table.
@@ -40,7 +43,7 @@ You can specify the interval for how often device attributes on this page will b
 
 ## Device table
 
-The Device table shows device details and vulnerabilities from polling the device based on the data collection setting or an Osquery executed from the Device Query page.
+The Device table shows device details and vulnerabilities from polling the device based on the data collection setting.
 
 Click a row with a device to view details. 
 
@@ -84,25 +87,7 @@ Displays the status of the enrollment. Statuses are:
 
     - The device was added recently, and initial queries associated with the table are running.
 
-    - The enrollment code\passkey hasn’t been added to the authenticator. To enroll the device:
-
-       1. Click the Edit icon under the Actions column.
-
-       2. Click **Generate new enrollment code** and copy the code. 
-
-       3. Click **Save changes**. 
-
-       4. Open the Beyond Identity authenticator.
-
-       5. Click the + button to add the new enrollment code.
- 
-           ![Add passkey]("../images/devices/authenticator-add-passkey.png")
-
-       6. Paste or type the enrollment code in the Enter 9-digit code screen. Note that a cursor doesn't appear on the screen. 
- 
-          ![Paste enrollment code into authenticator]("../images/devices/authenticator-code.png")
-        
-       7. Return to the Devices page. The device should have a status of Active once queries used to update the table complete.    
+    - The enrollment code\credential hasn’t been added to the authenticator. For more information, see [Enroll a device]("docs/devices/enrolling-devices.mdx")
 
 ### Last Data Collection
 

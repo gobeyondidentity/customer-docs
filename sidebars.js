@@ -25,8 +25,11 @@ const sidebars = {
         id: "getting-started/getting-started",
       },
       items: [
-        "getting-started/getting-started-guide",
-        "getting-started/system-requirements",
+        {
+          type: "doc",
+          id: "getting-started/getting-started-guide",
+          label: "Device360 system requirements",
+        },  
       ],
     },
     {
@@ -65,15 +68,56 @@ const sidebars = {
         id: "devices/devices",
       },
       items: [
-        "devices/device360",
-        "devices/adding-devices",
-        "devices/managing-devices",
-        "devices/generating-enrollment-code",
-        "devices/renaming-devices",
-        "devices/deleting-devices",
-        "devices/viewing-query-status",
-        "devices/running-device-queries",
-        "devices/viewing-query-results",
+        {
+          type: "doc",
+          id: "devices/device360",
+          label: "Device360",
+        },  
+        {
+          type: "doc",
+          id: "devices/adding-devices",
+          label: "Add a device",
+        },  
+        {
+          type: "doc",
+          id: "devices/analyze-devices",
+          label: "Analyze device posture",
+        },  
+        {
+          type: "doc",
+          id: "devices/enroll-devices",
+          label: "Enroll a device",
+        },  
+        {
+          type: "doc",
+          id: "devices/renaming-devices",
+          label: "Rename a device",
+        },  
+        {
+          type: "doc",
+          id: "devices/renaming-devices",
+          label: "Rename a device",
+        },  
+        {
+          type: "doc",
+          id: "devices/deleting-devices",
+          label: "Delete a device",
+        },  
+        {
+          type: "doc",
+          id: "devices/running-device-queries",
+          label: "Run a device query",
+        },  
+        {
+          type: "doc",
+          id: "devices/viewing-query-status",
+          label: "View query status",
+        },  
+        {
+          type: "doc",
+          id: "devices/viewing-query-results",
+          label: "View query results",
+        },  
         ],
        },
     {
