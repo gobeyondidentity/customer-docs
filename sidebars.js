@@ -58,7 +58,7 @@ const sidebars = {
     {
       type: "category",
       label: "Devices",
-      collapsed: false,
+      collapsed: true,
       collapsible: false,
       link: {
         type: "doc",
@@ -71,6 +71,14 @@ const sidebars = {
         "devices/generating-enrollment-code",
         "devices/renaming-devices",
         "devices/deleting-devices",
+      ],
+    },
+    {
+      type: "category",
+      label: "Device Queries",
+      collapsed: true,
+      collapsible: true,
+      items: [
         "devices/viewing-query-status",
         "devices/running-device-queries",
         "devices/viewing-query-results",
