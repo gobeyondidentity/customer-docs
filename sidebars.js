@@ -75,8 +75,8 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "devices/device360",
-          label: "Device360",
+          id: "devices/overview",
+          label: "Overview",
         },  
         {
           type: "doc",
