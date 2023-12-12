@@ -75,7 +75,7 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "devices/overview",
+          id: "devices/devices-overview",
           label: "Overview",
         },  
         {
