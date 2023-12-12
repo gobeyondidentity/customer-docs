@@ -1,0 +1,58 @@
+---
+title: Add a device
+id: add-device
+description: 'Add a device'
+slug: /add-device
+keywords:
+  - device360
+  - add device
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 12/5/2023
+  author: Shannon Moore
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+
+# Add a device
+
+To begin collecting data and running queries on a device, you must first enroll it. 
+
+:::note
+- If you are new to Beyond Identity, you will need to install the authenticator and add Device360 enrollment code and to the authenticator (follow all steps below).
+- If you are a Secure Workforce customer, Device360 uses the same authenticator that allows you to securely sign into corporate applications without passwords. You will just need to generate a Device360 enrollment code and and add it to your existing authenticator (start with step 5 below). This 
+credential will not impact your Secure Workforce passkey in the authenticator.
+:::
+
+1. Click **Devices** under My Project Space.
+
+2. Click **Add Device**.
+
+   ![Add Device button](../images/device/add-device.png)
+
+   :::note 
+   If you already have the Beyond Identity authenticator version 2.91.1 or later installed on your device, skip to Step 5 below to add a passkey to your device to start collecting data.
+   :::
+
+3. Enter a device name and click **Next**.
+   
+   ![Add Device dialog add name](../images/devices/device-name.png)
+
+4. Click the link to open the authenticator downloads page.
+   
+   ![Add Device dialog copy code](../images/devices/enrollment-code-copy.png)
+
+5. Copy the Enrollment code.
+
+6. Open the authenticator and click the + button.
+
+   ![Beyond Identity Authenticator app](../images/devices/authenticator-add-passkey.png)
+
+7. Paste or type the enrollment code in the Enter 9-digit code screen. Note that a cursor doesn't appear on the screen.
+
+   ![Beyond Identity Authenticator app](../images/devices/authenticator-paste-code.png)   
+
+   The device will be added to the Device table with a status of Pending until internal queries complete. Once those complete, the status will change to Active.
+   
+   You can now monitor and query the device.
