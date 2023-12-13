@@ -66,6 +66,7 @@ const sidebars = {
       items: [
         "devices/device360",
         "devices/add-device",
+        "devices/rebind-device",
         "devices/delete-device",
       ],
     },
