@@ -68,6 +68,7 @@ const sidebars = {
         "devices/add-device",
         "devices/rebind-device",
         "devices/delete-device",
+        "devices/remove-passkey",
       ],
     },
     {
