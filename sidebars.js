@@ -26,6 +26,7 @@ const sidebars = {
       },
       items: [
         "getting-started/getting-started-guide",
+        "getting-started/system-requirements",
       ],
     },
     {
