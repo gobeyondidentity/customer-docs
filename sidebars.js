@@ -72,6 +72,7 @@ const sidebars = {
         "devices/rebind-device",
         "devices/delete-device",
         "devices/remove-passkey",
+        "devices/view-query-status",
       ],
     },
     {
