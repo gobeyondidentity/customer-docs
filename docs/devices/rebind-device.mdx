@@ -36,14 +36,15 @@ If you are a Secure Workforce customer, this will not impact the passkey in the 
 
 4. Click **Save changes**. 
 
-5. Remove the current passkey from the authenticator: 
-
-   import RebindRemovePasskeyTable1 from "../includes/__rebind-remove-passkey-table1.mdx";
-
-   <RebindRemovePasskeyTable1 />
+5. Remove the current passkey from the authenticator. For more information, see _________ 
    
 6. Add the regenerated enrollment code to bind your device to this tenant: 
+  a. Click the + button to add the new enrollment code.
+
+      ![Add passkey]("../images/devices/authenticator-add-passkey.png")
+
+   b. Paste or type the enrollment code in the Enter 9-digit code screen. Note that a cursor doesn't appear on the screen. 
  
-   import RebindAddCodeTable1 from "../includes/_rebind-add-code-table2.mdx
-    
-   <RebindAddCodeTable1 />
+      ![Enrollment page]("../images/devices/authenticator-paste-code.png")
+
+      The device will be added to the Device table with a status of Pending until internal queries complete. Once those complete, the status will change to Active. 
