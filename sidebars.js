@@ -67,6 +67,7 @@ const sidebars = {
       items: [
         "devices/device360",
         "devices/add-device",
+        "devices/analyze-devices",
         "devices/rebind-device",
         "devices/delete-device",
         "devices/remove-passkey",
