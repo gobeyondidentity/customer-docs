@@ -73,6 +73,7 @@ const sidebars = {
         "devices/delete-device",
         "devices/remove-passkey",
         "devices/view-query-status",
+        "devices/run-device-query",
       ],
     },
     {

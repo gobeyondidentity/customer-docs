@@ -1,0 +1,43 @@
+---
+title: Run a device query
+id: run-device-query
+description: 'Run live queries to identify misconfigurations and vulnerabilities on devices.'
+slug: /run-device-query
+keywords:
+  - device360
+  - queries
+  - device queries
+  - device misconfigurations
+  - device vulnerabilities
+  - osquery
+  - run device queries
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 12/5/2023
+  author: Shannon Moore
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+# Run a device query
+
+Device360 live queries allow you to quickly and efficiently gather information from all devices in a tenant to support threat hunting, policy management and impact assessment, and for asset inventory purposes. Device360 provides a number of pre-canned queries that help collect attributes that may not be accessible at the time of authentication (e.g., running processes, installed third-party software, chrome extensions, etc.).
+
+1. Click **Device Query** under My Project Space.
+
+2. Click the **Query Library** tab.
+
+3. Click a query card from the list to view details for it.
+
+   Note the timeout for the query under **Run Query for 5 minutes**. This specifies the timeout value to account for latency, device lifecycles, etc. Queries should return results in less than 30 seconds based on the polling interval.
+
+4. (Optional) Select the drop-down beside **Run once now** if you want to schedule the query to run on a regular basis.
+ 
+    ![Schedule run options]("../images/devices/query-schedule-runs.png")
+
+5. (Optional) Click **View Full Query** if you want to see more than the first three lines of the query that will run.
+
+6. Click **Run Now**. You will be returned to the Device Query page's Query tab to view the status of the query.
+    ![Query tab with status]("../images/devices/query-running.png")
+
+7. When complete, click the **Query Name** to view results. You don't have to wait for the query to complete to view the results. For more information, see [View query results](https://docs.beyondidentity.com/docs/view-query-results).
