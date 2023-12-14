@@ -68,6 +68,7 @@ const sidebars = {
         "devices/device360",
         "devices/add-device",
         "devices/analyze-devices",
+        "devices/rename-device",
         "devices/rebind-device",
         "devices/delete-device",
         "devices/remove-passkey",
