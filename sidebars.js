@@ -74,6 +74,7 @@ const sidebars = {
         "devices/remove-passkey",
         "devices/view-query-status",
         "devices/run-device-query",
+        "devices/view-query-results",
       ],
     },
     {
