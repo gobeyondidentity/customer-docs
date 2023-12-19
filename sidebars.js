@@ -26,6 +26,7 @@ const sidebars = {
       },
       items: [
         "getting-started/getting-started-guide",
+        "getting-started/system-requirements",
       ],
     },
     {
@@ -64,7 +65,16 @@ const sidebars = {
         id: "devices/devices",
       },
       items: [
-        "devices/device-iq",
+        "devices/device360",
+        "devices/add-device",
+        "devices/analyze-devices",
+        "devices/rename-device",
+        "devices/rebind-device",
+        "devices/delete-device",
+        "devices/remove-passkey",
+        "devices/view-query-status",
+        "devices/run-device-query",
+        "devices/view-query-results",
       ],
     },
     {

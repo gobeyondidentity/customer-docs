@@ -1,0 +1,47 @@
+---
+title: Rebind a device
+id: rebind-device
+description: 'Rebind a device in Device360'
+slug: /rebind-device
+keywords:
+  - device360
+  - bind device
+  - enroll device
+  - add credential
+  - rebind device
+  - re-enroll device
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 12/5/2023
+  author: Shannon Moore
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+# Rebind a device
+
+You can rebind or re-enroll a device iby generating a new enrollment code and adding it to the Beyond Identity authenticator. 
+
+:::note 
+If you are a Secure Workforce customer, this will not impact the passkey in the authenticator that allows you to securely sign into corporate applications without passwords.
+:::
+
+1. Click the Edit icon under the Actions column on the Devices page. 
+
+   ![Edit icon](../images/devices/edit-icon.png)
+
+2. Click **Generate new enrollment code**.
+
+3. Copy the **Enrollment code**.
+
+4. Click **Save changes**. 
+
+5. Remove the current passkey from the authenticator. For more information, see [Remove a passkey from a device](https://docs.beyondidentity.com/docs/remove-passkey).
+   
+6. Add the regenerated enrollment code to bind your device to this tenant: 
+
+   a. Click the + button to add the new enrollment code.
+
+   b. Paste or type the enrollment code in the Enter 9-digit code screen. Note that a cursor doesn't appear on the screen. 
+ 
+      The device will be added to the Device table with a status of Pending until internal queries complete. Once those complete, the status will change to Active. For more information, see [Analyze devices](https://docs.beyondidentity.com/docs/analyze-devices).
