@@ -1760,10 +1760,11 @@ paths:
       security:
         - BearerAuth:
             - 'users:read'
+            - 'groups:read'
       parameters:
         - $ref: '#/components/parameters/user_id'
         - $ref: '#/components/parameters/page_size'
-        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/offset'
       responses:
         '200':
           description: |
@@ -1996,8 +1997,13 @@ paths:
         - Passkeys
       operationId: GetPasskeys
       summary: List Passkeys.
+      parameters:
+        - $ref: '#/components/parameters/page_size'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/order_by'
       description: |
-        write a description about passkeys
+        Returns a list of passkeys for a given tenant and realm.
 
         The supported operations are:
           - pr (present)
@@ -2053,12 +2059,7 @@ paths:
         want descending order, append the " desc" suffix to the attribute name.
       security:
         - BearerAuth:
-            - 'passkeys:get'
-      parameters:
-        - $ref: '#/components/parameters/page_size'
-        - $ref: '#/components/parameters/skip'
-        - $ref: '#/components/parameters/filter'
-        - $ref: '#/components/parameters/order_by'
+            - 'passkeys:read'
       responses:
         '200':
           description: |
@@ -2154,137 +2155,26 @@ paths:
               examples:
                 Internal Error:
                   $ref: '#/paths/~1v2~1users/get/responses/500/content/application~1json/examples/Internal%20Error'
-  /v2/passkeys/{passkey_id}:revoke:
-    post:
+  /v2/passkeys/{passkey_id}:
+    delete:
       tags:
         - Passkeys
       operationId: RevokePasskeys
-      summary: Revoke passkye Passkeys.
+      summary: |
+        deletes a passkey.
       description: |
-        write a description about passkeys
+        Deletes a passkey from the current tenant and realm.
+
+        This end point always returns 200 even if the passkey doesn't exist.
       security:
         - BearerAuth:
-            - 'passkeys:revoke'
+            - 'passkeys:delete'
       parameters:
         - $ref: '#/components/parameters/passkey_id'
       responses:
-        '201':
-          description: |
-            No response body needed as this is just a revocation.
-        '400':
-          description: Bad request.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-              examples:
-                Invalid Parameters:
-                  $ref: '#/paths/~1v2~1users/get/responses/400/content/application~1json/examples/Invalid%20Parameters'
-        '401':
-          description: Unauthorized.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-              examples:
-                Missing Authorization:
-                  $ref: '#/paths/~1v2~1users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
-        '403':
-          description: Forbidden.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-              examples:
-                Insufficient Authorization:
-                  $ref: '#/paths/~1v2~1users/get/responses/403/content/application~1json/examples/Insufficient%20Authorization'
-        '404':
-          description: Not found.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-              examples:
-                User Not Found:
-                  value:
-                    code: not_found
-                    message: user not found
-                    details:
-                      - type: ResourceInfo
-                        resource_type: User
-                        id: 37660157-aa4b-4e84-958f-1fdf27777e86
-                        description: user not found
-        '412':
-          description: Precondition Failed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-              examples:
-                User Not Active:
-                  value:
-                    code: failed_precondition
-                    message: user not active
-                    details:
-                      - type: ResourceInfo
-                        resource_type: User
-                        id: 37660157-aa4b-4e84-958f-1fdf27777e86
-                        description: user not active
-        '500':
-          description: Server error.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-              examples:
-                Internal Error:
-                  $ref: '#/paths/~1v2~1users/get/responses/500/content/application~1json/examples/Internal%20Error'
-  /v2/passkeys/tags:
-    get:
-      tags:
-        - Passkeys
-      operationId: GetTags
-      summary: Get tags associated with a tenant.
-      description: |
-        write a description about passkeys
-      security:
-        - BearerAuth:
-            - 'passkeys_tags:get'
-      parameters:
-        - $ref: '#/components/parameters/page_size'
-        - $ref: '#/components/parameters/skip'
-      responses:
         '200':
           description: |
-            The response is a JSON object containing passkeys.
-          content:
-            application/json:
-              schema:
-                title: Get Passkeys Response
-                description: Response for GetPasskeys.
-                type: object
-                properties:
-                  tags:
-                    type: array
-                    items:
-                      type: object
-                      properties: 
-                        id:
-                          type: string
-                        name:
-                          type: string
-                    maxItems: 1000
-                    description: |
-                      An ordered array of users corresponding to the request. If the `order_by` query parameter is set, it follows that ordering. If not, users are ordered by ascending `create_time` by default.
-                  total_size:
-                    type: integer
-                    format: uint32
-                    description: |
-                      The total number of results returned by the operation. This value may be larger than the number of resources returned, such as when returning a single page where multiple pages are available.
-                    example: 1000
-                required:
-                  - tags
-                  - total_size
+            No response body needed as this is just a revocation.
         '400':
           description: Bad request.
           content:
@@ -2360,18 +2250,16 @@ paths:
       operationId: GetPasskeyTags
       summary: Get tags associated with a passkey.
       description: |
-        write a description about passkeys
+        Returns a list of tags associated with a passkey.
       security:
         - BearerAuth:
-            - 'passkeys_tags:get'
+            - 'passkey-tags:read'
       parameters:
         - $ref: '#/components/parameters/passkey_id'
-        - $ref: '#/components/parameters/page_size'
-        - $ref: '#/components/parameters/skip'
       responses:
         '200':
           description: |
-            The response is a JSON object containing passkeys.
+            The response is a JSON object containing passkeys tags.
           content:
             application/json:
               schema:
@@ -2388,18 +2276,8 @@ paths:
                           type: string
                         name:
                           type: string
-                    maxItems: 1000
-                    description: |
-                      An ordered array of users corresponding to the request. If the `order_by` query parameter is set, it follows that ordering. If not, users are ordered by ascending `create_time` by default.
-                  total_size:
-                    type: integer
-                    format: uint32
-                    description: |
-                      The total number of results returned by the operation. This value may be larger than the number of resources returned, such as when returning a single page where multiple pages are available.
-                    example: 1000
                 required:
                   - tags
-                  - total_size
         '400':
           description: Bad request.
           content:
@@ -2472,20 +2350,22 @@ paths:
       tags:
         - Passkeys
       operationId: SetPasskeyTags
-      summary: List of tags to associated with a passkey. This list will replace any existing tags associated with a passkey. If a provided tag does not include an id, a new tag will be created.
+      summary: replace the tags associated with a new list of passkeys.
       description: |
-        write a description about passkeys
+        List of tags to associated with a passkey. This list will replace any
+        existing tags associated with a passkey. If a provided tag does not
+        include an id, a new tag will be created.
       security:
         - BearerAuth:
-            - 'passkeys_tags:set'
+            - 'passkey-tags:write'
       parameters:
         - $ref: '#/components/parameters/passkey_id'
       requestBody:
         content:
           application/json:
             schema:
-              title: Create User Request
-              description: Request for CreateUser.
+              title: Set tags for a passkey
+              description: Request for SetPasskeyTags.
               type: object
               properties:
                 tags:
@@ -4202,6 +4082,16 @@ components:
         minimum: 0
     skip:
       name: skip
+      in: query
+      description: |
+        Number of items to skip. This is the zero-based index of the first result.
+      schema:
+        type: integer
+        format: uint32
+        minimum: 0
+        default: 0
+    offset:
+      name: offset
       in: query
       description: |
         Number of items to skip. This is the zero-based index of the first result.
