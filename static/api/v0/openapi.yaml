@@ -2266,8 +2266,8 @@ paths:
       operationId: GetPasskeyTags
       summary: Get tags associated with a passkey
       description: |
-        Returns a list of tags, such as device name, vulnerability, OS version,
-        etc. associated with a passkey.
+        Returns a list of tags and their ID, such as device name, vulnerability,
+        OS version, etc. associated with a passkey.
       security:
         - BearerAuth:
             - 'passkey-tags:read'
