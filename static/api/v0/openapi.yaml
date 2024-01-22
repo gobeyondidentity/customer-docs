@@ -1754,7 +1754,7 @@ paths:
       tags:
         - Users
       operationId: GetUserGroups
-      summary: Retrieve an existing user groups
+      summary: Retrieve groups for a user.
       description: |
         Get a list of groups to which a user belongs.
       security:
@@ -1764,7 +1764,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/user_id'
         - $ref: '#/components/parameters/page_size'
-        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/skip'
       responses:
         '200':
           description: |
@@ -1992,20 +1992,33 @@ paths:
                 Internal Error:
                   $ref: '#/paths/~1v2~1users/get/responses/500/content/application~1json/examples/Internal%20Error'
   /v2/passkeys:
+    description: |
+      A passkey can be thought of as an X.509 certificate (in fact, it's a
+      wrapper on top of one). Each passkey contains a public/private key pair
+      where the private key is stored securely in a Trusted Execution
+      Environment (TEE). On macOS/iOS, this would be the Secure Enclave, and on
+      Windows, this would be in the Trusted Platform Module (TPM).
+
+      When a user sets up an account with Beyond Identity, the device they
+      register creates a passkey that becomes their identity. The private key
+      associated with this passkey can never be removed from the device in
+      question. However, extending the credential's chain of trust is possible
+      by creating a new passkey on a different device (mobile phone, etc.) and
+      signing it with the private key from the registered device's passkey.
     get:
       tags:
         - Passkeys
       operationId: GetPasskeys
-      summary: List Passkeys.
+      summary: List Passkeys for a tenant
       parameters:
         - $ref: '#/components/parameters/page_size'
-        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/filter'
         - $ref: '#/components/parameters/order_by'
       description: |
         Returns a list of passkeys for a given tenant and realm.
 
-        The supported operations are:
+        The supported filter operations are:
           - pr (present)
           - eq (equals)
           - ne (not equals)
@@ -2037,17 +2050,18 @@ paths:
           - vul_password (eq, ne)
           - vul_tpm (eq, ne)
           - user_name (eq, ne, co, sw, ew)
-          - device_name (eq, ne, co, sw, ew)
+          - hostname (eq, ne, co, sw, ew)
           - user_status (eq, ne, co, sw, ew)
 
-        Additionally fuzzy search is available using a "search" field, which looks at username and hostname:
+        Additionally fuzzy search is available on the "username" and
+        "hostname" fields using the "search" and the "eq" operator:
           - search (eq)
 
         When sorting, use the `order_by` parameter. It's a comma-delimited list of
         attributes. Currently, the following fields are supported:
 
           - date_last_auth
-          - device_name
+          - hostname
           - user_name
           - platform
           - sdk
@@ -2063,7 +2077,7 @@ paths:
       responses:
         '200':
           description: |
-            The response is a JSON object containing passkeys.
+            The response is a list of passkeys.
           content:
             application/json:
               schema:
@@ -2161,9 +2175,11 @@ paths:
         - Passkeys
       operationId: RevokePasskeys
       summary: |
-        deletes a passkey.
+        Deletes a passkey
       description: |
         Deletes a passkey from the current tenant and realm.
+
+        Remember don't revoke your own passkey, or you may be locked out.
 
         This end point always returns 200 even if the passkey doesn't exist.
       security:
@@ -2248,9 +2264,10 @@ paths:
       tags:
         - Passkeys
       operationId: GetPasskeyTags
-      summary: Get tags associated with a passkey.
+      summary: Get tags associated with a passkey
       description: |
-        Returns a list of tags associated with a passkey.
+        Returns a list of tags, such as device name, vulnerability, OS version,
+        etc. associated with a passkey.
       security:
         - BearerAuth:
             - 'passkey-tags:read'
@@ -2263,8 +2280,9 @@ paths:
           content:
             application/json:
               schema:
-                title: Get Passkeys Response
-                description: Response for GetPasskeys.
+                title: Get Passkey Tags Response
+                description: |
+                  Returns the tags associated with a passkey.
                 type: object
                 properties:
                   tags:
@@ -2350,11 +2368,13 @@ paths:
       tags:
         - Passkeys
       operationId: SetPasskeyTags
-      summary: replace the tags associated with a new list of passkeys.
+      summary: Replace the tags associated with a new list of passkeys
       description: |
-        List of tags to associated with a passkey. This list will replace any
-        existing tags associated with a passkey. If a provided tag does not
-        include an id, a new tag will be created.
+        Replaces the values of current tags associated with a passkey with a
+        provided set of tag values. This list will replace all existing tags
+        associated with a passkey. For example, if a provided tag does not
+        include an id, a new tag value will be created or an existing tag will
+        be used if it already exists.
       security:
         - BearerAuth:
             - 'passkey-tags:write'
@@ -2382,12 +2402,15 @@ paths:
       responses:
         '200':
           description: |
-            The response is a JSON object containing passkeys.
+            The response is list containing the passkey's new tags, and the ID's
+            for those tags.
           content:
             application/json:
               schema:
-                title: Get Passkeys Response
-                description: Response for GetPasskeys.
+                title: Put Passkeys Tags Response
+                description: |
+                  The response is list containing the passkey's new
+                  tags, and the ID's for those tags.
                 type: object
                 properties:
                   tags:
@@ -4082,16 +4105,6 @@ components:
         minimum: 0
     skip:
       name: skip
-      in: query
-      description: |
-        Number of items to skip. This is the zero-based index of the first result.
-      schema:
-        type: integer
-        format: uint32
-        minimum: 0
-        default: 0
-    offset:
-      name: offset
       in: query
       description: |
         Number of items to skip. This is the zero-based index of the first result.
