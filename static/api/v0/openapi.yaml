@@ -1754,7 +1754,7 @@ paths:
       tags:
         - Users
       operationId: GetUserGroups
-      summary: Retrieve groups for a user.
+      summary: Retrieve groups for a user
       description: |
         Get a list of groups to which a user belongs.
       security:
@@ -2175,7 +2175,7 @@ paths:
         - Passkeys
       operationId: RevokePasskeys
       summary: |
-        Deletes a passkey
+        Delete a passkey
       description: |
         Deletes a passkey from the current tenant and realm.
 
