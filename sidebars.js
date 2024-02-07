@@ -22,7 +22,8 @@ const sidebars = {
         id: "getting-started/getting-started",
       },
       items: [
-       "getting-started/system-requirements",
+        "getting-started/device360",
+        "getting-started/system-requirements",
       ],
     },
     {
@@ -35,6 +36,7 @@ const sidebars = {
         id: "inventory/inventory",
       },
       items: [
+        "inventory/device360",
         "inventory/add-device",
         "inventory/analyze-devices",
         "inventory/rename-device",
