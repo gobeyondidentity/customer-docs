@@ -14,6 +14,19 @@ const sidebars = {
     },
     {
       type: "category",
+      label: "Architecture",
+      collapsed: false,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "architecture/architecture",
+      },
+      items: [
+        "architecture/overview",
+      ],
+    },
+    {
+      type: "category",
       label: "Getting Started",
       collapsed: true,
       collapsible: false,
@@ -22,32 +35,110 @@ const sidebars = {
         id: "getting-started/getting-started",
       },
       items: [
-        "getting-started/device360",
+        "getting-started/getting-started-guide",
         "getting-started/system-requirements",
       ],
     },
     {
       type: "category",
-      label: "Inventory",
+      label: "Authentication",
+      collapsed: true,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "authentication/authentication",
+      },
+      items: [
+        "authentication/authentication-guide",
+      ],
+    },
+    {
+      type: "category",
+      label: "How-to Guides",
       collapsed: false,
       collapsible: false,
       link: {
         type: "doc",
-        id: "inventory/inventory",
+        id: "how-to/how-to",
       },
       items: [
-        "inventory/device360",
-        "inventory/add-device",
-        "inventory/analyze-devices",
-        "inventory/rename-device",
-        "inventory/rebind-device",
-        "inventory/delete-device",
-        "inventory/remove-passkey",
-        "inventory/view-query-status",
-        "inventory/run-device-query",
-        "inventory/view-query-results",
+        "how-to/how-to-guide",
       ],
-    },  
+    },
+    {
+      type: "category",
+      label: "Devices",
+      collapsed: false,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "devices/devices",
+      },
+      items: [
+        "devices/device360",
+        "devices/add-device",
+        "devices/analyze-devices",
+        "devices/rename-device",
+        "devices/rebind-device",
+        "devices/delete-device",
+        "devices/remove-passkey",
+        "devices/view-query-status",
+        "devices/run-device-query",
+        "devices/view-query-results",
+      ],
+    },
+    {
+      type: "category",
+      label: "Integrations",
+      collapsed: false,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "integrations/integrations",
+      },
+      items: [
+        "integrations/integration-guide",
+      ],
+    },
+    {
+      type: "category",
+      label: "Reporting",
+      collapsed: false,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "reporting/reporting",
+      },
+      items: [
+        "reporting/reporting-guide",
+      ],
+    },
+    {
+      type: "category",
+      label: "Users",
+      collapsed: false,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "users/users",
+      },
+      items: [
+        "users/users-guide",
+      ],
+    },
+    {
+      type: "category",
+      label: "Security",
+      collapsed: false,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "security/security",
+      },
+      items: [
+        "security/security-guide",
+      ],
+    },
     {
       type: "category",
       label: "Resources",
