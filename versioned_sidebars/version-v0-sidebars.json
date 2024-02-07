@@ -2,8 +2,18 @@
   "mainSidebar": [
     {
       "type": "link",
+      "label": "Home",
+      "href": "/docs/v0"
+    },
+    {
+      "type": "link",
       "label": "🔗 REST API",
       "href": "/api/v0"
+    },
+    {
+      "type": "link",
+      "label": "🔗 EVENTS API",
+      "href": "/api/events/v0"
     }
   ],
   "contributorGuideSidebar": [

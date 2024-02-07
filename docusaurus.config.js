@@ -81,6 +81,25 @@ const config = {
     [
       'redocusaurus',
       {
+        id: "apiv0-events",
+        // Plugin Options for loading OpenAPI files
+        specs: [
+          {
+            spec: 'static/api/v0/events.json',
+            url: 'api/v0/events.json',
+            route: 'api/events/v0',
+          },
+        ],
+        // Theme Options for modifying how redoc renders them
+        theme: {
+          // Change with your site colors
+          primaryColor: '#5077c5',
+        },
+      },
+    ],
+    [
+      'redocusaurus',
+      {
         id: "apiv1",
         // Plugin Options for loading OpenAPI files
         specs: [
