@@ -3,6 +3,16 @@ const sidebars = {
   // By default, Docusaurus generates a sidebar from the docs folder structure
   mainSidebar: [
     {
+      type: 'link',
+      label: 'Home',
+      href: '/docs',
+    },
+    {
+      type: 'link',
+      label: '🔗 REST API',
+      href: '/api/v1',
+    },
+    {
       type: "category",
       label: "Architecture",
       collapsed: false,

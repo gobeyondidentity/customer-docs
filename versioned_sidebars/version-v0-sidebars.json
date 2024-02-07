@@ -1,36 +1,9 @@
 {
   "mainSidebar": [
     {
-      "type": "category",
-      "label": "Documentation",
-      "collapsed": false,
-      "collapsible": false,
-      "link": {
-        "type": "doc",
-        "id": "v0/documentation"
-      },
-      "items": [
-        "v0/welcome-to-beyond-identity",
-        "v0/admin-console",
-        "v0/risk-overview"
-      ]
-    },
-    {
-      "type": "category",
-      "label": "Resources",
-      "collapsed": false,
-      "collapsible": false,
-      "link": {
-        "type": "doc",
-        "id": "resources"
-      },
-      "items": [
-        {
-          "type": "link",
-          "label": "Service Status",
-          "href": "https://status.beyondidentity.com/"
-        }
-      ]
+      "type": "link",
+      "label": "🔗 REST API",
+      "href": "/api/v0"
     }
   ],
   "contributorGuideSidebar": [
