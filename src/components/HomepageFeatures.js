@@ -35,7 +35,7 @@ const FeatureList2 = [
     description: (
       <>Manage resources programmatically with our API and CLI tools.</>
     ),
-    link: "/api/v0",
+    link: "/api/v1",
   },
   {
     title: "Slack ⧉",

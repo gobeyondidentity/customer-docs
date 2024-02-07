@@ -43,7 +43,7 @@ const config = {
             'https://github.com/gobeyondidentity/customer-docs/edit/main',
           versions: {
             current: {
-              label: "v1 (unreleased)",
+              label: "v1",
               path: "",
             },
             v0: {
@@ -148,28 +148,27 @@ const config = {
         { name: 'twitter:card', content: 'Beyond Identity Customer Docs' }
       ],
       navbar: {
-        title: 'Documentation',
         logo: {
           alt: 'Beyond Identity Logo',
-          src: 'img/BYD_ID-LOGO_FINAL_blue_RGB.svg',
+          src: 'img/docs-logo.svg',
           className: 'header-logo',
         },
         items: [
-          {
-            type: 'dropdown',
-            label: 'REST API',
-            position: 'left',
-            items: [
-              {
-                label: 'v1 (unreleased)',
-                to: '/api/v1',
-              },
-              {
-                label: 'v0',
-                to: '/api/v0',
-              },
-            ],
-          },
+          // {
+          //   type: 'dropdown',
+          //   label: 'REST API',
+          //   position: 'left',
+          //   items: [
+          //     {
+          //       label: 'v1 (unreleased)',
+          //       to: '/api/v1',
+          //     },
+          //     {
+          //       label: 'v0',
+          //       to: '/api/v0',
+          //     },
+          //   ],
+          // },
           { to: "https://support.beyondidentity.com/hc/en-us/sections/4968400314775-Release-Notes", label: "Release Notes", position: "left" },
           {
             type: "docsVersionDropdown",
