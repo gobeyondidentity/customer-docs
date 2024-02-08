@@ -14,15 +14,15 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Architecture",
+      label: "Quick Starts",
       collapsed: false,
       collapsible: false,
       link: {
         type: "doc",
-        id: "architecture/architecture",
+        id: "quickstarts/quickstart",
       },
       items: [
-        "architecture/overview",
+        "quickstarts/device360-qs",
       ],
     },
     {
