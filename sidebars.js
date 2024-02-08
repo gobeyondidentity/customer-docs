@@ -37,14 +37,7 @@ const sidebars = {
       items: [
         "inventory/system-requirements",
         "inventory/device-inventory",
-        "inventory/analyze-devices",
-        "inventory/rename-device",
-        "inventory/rebind-device",
-        "inventory/delete-device",
-        "inventory/remove-passkey",
-        "inventory/view-query-status",
-        "inventory/run-device-query",
-        "inventory/view-query-results",
+        "inventory/device-query",
       ],
     },
     {
