@@ -27,6 +27,46 @@ const sidebars = {
     },
     {
       type: "category",
+      label: "Getting Started",
+      collapsed: true,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "getting-started/getting-started",
+      },
+      items: [
+        "getting-started/getting-started-guide",
+        "getting-started/system-requirements",
+      ],
+    },
+    {
+      type: "category",
+      label: "Authentication",
+      collapsed: true,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "authentication/authentication",
+      },
+      items: [
+        "authentication/authentication-guide",
+      ],
+    },
+    {
+      type: "category",
+      label: "How-to Guides",
+      collapsed: false,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "how-to/how-to",
+      },
+      items: [
+        "how-to/how-to-guide",
+      ],
+    },
+    {
+      type: "category",
       label: "Inventory",
       collapsed: false,
       collapsible: false,
@@ -35,7 +75,7 @@ const sidebars = {
         id: "inventory/inventory",
       },
       items: [
-        "inventory/system-requirements",
+        "inventory/device360",
         "inventory/add-device",
         "inventory/analyze-devices",
         "inventory/rename-device",
@@ -45,6 +85,58 @@ const sidebars = {
         "inventory/view-query-status",
         "inventory/run-device-query",
         "inventory/view-query-results",
+      ],
+    },
+    {
+      type: "category",
+      label: "Integrations",
+      collapsed: false,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "integrations/integrations",
+      },
+      items: [
+        "integrations/integration-guide",
+      ],
+    },
+    {
+      type: "category",
+      label: "Reporting",
+      collapsed: false,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "reporting/reporting",
+      },
+      items: [
+        "reporting/reporting-guide",
+      ],
+    },
+    {
+      type: "category",
+      label: "Users",
+      collapsed: false,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "users/users",
+      },
+      items: [
+        "users/users-guide",
+      ],
+    },
+    {
+      type: "category",
+      label: "Security",
+      collapsed: false,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "security/security",
+      },
+      items: [
+        "security/security-guide",
       ],
     },
     {
