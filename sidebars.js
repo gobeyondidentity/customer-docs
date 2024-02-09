@@ -36,7 +36,7 @@ const sidebars = {
       },
       items: [
         "inventory/system-requirements",
-        "inventory/device-inventory",
+        "inventory/add-device",
         "inventory/analyze-devices",
         "inventory/rename-device",
         "inventory/rebind-device",
