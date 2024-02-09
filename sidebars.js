@@ -22,7 +22,7 @@ const sidebars = {
         id: "quickstarts/quickstart",
       },
       items: [
-        "quickstarts/device360-qs",
+        "quickstarts/device360",
       ],
     },
     {
