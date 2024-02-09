@@ -1,0 +1,27 @@
+---
+title: Device360 
+id: device360-guide
+description: 'Identify vulnerabilities and misconfigurations within your device inventory.'
+slug: /device360-guide
+keywords:
+  - devices
+  - device360
+  - device vulnerabilities
+  - device misconfigurations
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 08/11/2023
+  author: Ismail Mustafa
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+
+# What is Device360
+Device360 empowers security experts and novices alike with deep visibility into common security vulnerabilities and misconfigurations within your device inventory. Go beyond simple device posture configurations to identify risks on devices using a flexible library of managed threat hunting queries, or define your own to respond to emerging threats within the scope of your unique environment.
+
+You can also use Beyond Identity's Policy engine to customize access decisions based on attributes such as user, device, and event. Use policy simulation to validate and test the policies that will allow or restrict access to devices and apps before pushing them out to your fleet. Enforce device requirements to create granular access controls, ensuring devices are secure on every login and stay secure for the duration of the session.
+
+Device360 can be used with the Beyond Identity authenticator version 2.92 or later. If you have an authenticator, you will just need to generate an enrollment code using Device360 and add it to your authenticator. This binds your device to Device360. For more information, see Installing the authenticator.
+
+# Checklist
