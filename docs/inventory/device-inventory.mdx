@@ -26,14 +26,12 @@ doc_type: overview
 displayed_sidebar: mainSidebar
 ---
 
-## Add devices
+## Install the authenticator and enroll devices
 
-To begin collecting data and running queries on a device, you must first enroll it. 
+To begin collecting data and running queries on a device, you must first install the Beyond Identity authenticator on a device and enroll it. 
 
 :::note
-- If you are new to Beyond Identity, you will need to install the authenticator and add Device360 enrollment code and to the authenticator (follow all steps below).
-- If you are a Secure Workforce customer, Device360 uses the same authenticator that allows you to securely sign into corporate applications without passwords. You will just need to generate a Device360 enrollment code and and add it to your existing authenticator (start with step 5 below). This 
-credential will not impact your Secure Workforce passkey in the authenticator.
+- If you are a Secure Workforce customer, Device360 uses the same authenticator that allows you to securely sign into corporate applications without passwords. You will just need to generate a Device360 enrollment code and and add it to your existing version 2.91.1 or later authenticator. This will not impact your Secure Workforce passkey in the authenticator.
 :::
 
 1. Select **Inventory > Device Inventory** in the left nav bar. 
@@ -74,12 +72,12 @@ credential will not impact your Secure Workforce passkey in the authenticator.
 On the Devices page, you can quickly analyze enrolled devices for misconfigurations and vulnerabilities, such as firewalls that aren't enabled. You can also add or manage devices from this page.
 
 :::note
-In order to see devices, you must first enroll the device by adding a Device360 credential to the Beyond Identity Authenticator version 2.91.1 or later. Note that this is a different passkey than the one used for the Beyond Identity console and passwordless authentication. For more information, see Add devices above.
+In order to see devices, you must first enroll the device by adding a Device360 credential to the Beyond Identity Authenticator version 2.91.1 or later. Note that this is a different passkey than the one used for the Beyond Identity console and passwordless authentication. For more information, see <ins>[Install the authenticator and enroll devices](#Install-the-authenticator-and-enroll-devices)</ins> above.
 :::
 
 ![Devices table](../images/devices/device-table.png)
 
-The Device table shows device details and vulnerabilities from polling the device based on the data collection setting.
+The Device Inventory table shows device details and vulnerabilities from polling the device based on the data collection setting.
 
 Click a row with a device to view details. 
 
@@ -89,8 +87,9 @@ Click a row with a device to view details.
 |**Device ID**           | The Device ID is a value assigned by Beyond Identity and is useful to: <ul><li>See how many passkeys are on a device</li><li>Ensure passkeys are sync’d between multiple devices</li><li>Understand which passkeys will need to be revoked If a user losses a device</li></ul>  |
 |**Device Serial Number**| The serial number associated with the device.        |
 |**Host Name**           | The label assigned to the device on network.         |
-|**Vulnerabilities**     | Displays any configuration or vulnerabilities found on the device, such as a firewall that isn't enabled so you can begin remediation.  |
+|**Misconfigurations**   | Displays any misconfigurations found on the device that can cause vulnerabilities, such as a firewall that isn't enabled so you can begin remediation.  |
 |**OS Version**          | Displays the operating system version of the device. Use this column to locate devices that are on vulnerable operating systems.        |
+|**Last Response**       | The last time the authenticator responded to a device query. Available values are: <ul><li>Pending - Awaiting a response from the device.</li><li>Active - The date and time of last response to a query.</li></ul>|
 |**Actions**             | Click the Edit icon to perform the following: <ul><li>Add or update the name that displays for the device.</li><li>Generate a new enrollment code to bind or re-bind a device to Device360</li><li>Delete a device (useful when an employee leaves or a device is decommissioned).</li></ul>
 
 
@@ -135,7 +134,7 @@ If you are a Secure Workforce customer, this will not impact the passkey in the 
 
 4. Click **Save changes**. 
 
-5. Remove the current passkey from the authenticator. For more information, see Remove a passkey from a device below.
+5. Remove the current passkey from the authenticator. For more information, see <ins>[Remove passkeys from devices](#remove-passkeys-from-devices)</ins> below.
    
 6. Add the regenerated enrollment code to bind your device to this tenant: 
 

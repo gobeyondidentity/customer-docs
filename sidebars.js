@@ -62,7 +62,6 @@ const sidebars = {
         id: "inventory/inventory",
       },
       items: [
-        "inventory/install-authenticator",
         "inventory/system-requirements",
         "inventory/device-inventory",
         "inventory/device-query",
