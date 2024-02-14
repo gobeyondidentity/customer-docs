@@ -14,132 +14,33 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Architecture",
+      label: "Quick Starts",
       collapsed: false,
       collapsible: false,
       link: {
         type: "doc",
-        id: "architecture/architecture",
+        id: "quickstarts/quickstart",
       },
       items: [
-        "architecture/overview",
+        "quickstarts/device360-qs",
       ],
     },
     {
       type: "category",
-      label: "Getting Started",
-      collapsed: true,
-      collapsible: false,
-      link: {
-        type: "doc",
-        id: "getting-started/getting-started",
-      },
-      items: [
-        "getting-started/getting-started-guide",
-        "getting-started/system-requirements",
-      ],
-    },
-    {
-      type: "category",
-      label: "Authentication",
-      collapsed: true,
-      collapsible: false,
-      link: {
-        type: "doc",
-        id: "authentication/authentication",
-      },
-      items: [
-        "authentication/authentication-guide",
-      ],
-    },
-    {
-      type: "category",
-      label: "How-to Guides",
+      label: "Inventory",
       collapsed: false,
       collapsible: false,
       link: {
         type: "doc",
-        id: "how-to/how-to",
+        id: "inventory/inventory",
       },
       items: [
-        "how-to/how-to-guide",
+        "inventory/system-requirements",
+        "inventory/device-inventory",
+        "inventory/device-query",
       ],
     },
-    {
-      type: "category",
-      label: "Devices",
-      collapsed: false,
-      collapsible: false,
-      link: {
-        type: "doc",
-        id: "devices/devices",
-      },
-      items: [
-        "devices/device360",
-        "devices/add-device",
-        "devices/analyze-devices",
-        "devices/rename-device",
-        "devices/rebind-device",
-        "devices/delete-device",
-        "devices/remove-passkey",
-        "devices/view-query-status",
-        "devices/run-device-query",
-        "devices/view-query-results",
-      ],
-    },
-    {
-      type: "category",
-      label: "Integrations",
-      collapsed: false,
-      collapsible: false,
-      link: {
-        type: "doc",
-        id: "integrations/integrations",
-      },
-      items: [
-        "integrations/integration-guide",
-      ],
-    },
-    {
-      type: "category",
-      label: "Reporting",
-      collapsed: false,
-      collapsible: false,
-      link: {
-        type: "doc",
-        id: "reporting/reporting",
-      },
-      items: [
-        "reporting/reporting-guide",
-      ],
-    },
-    {
-      type: "category",
-      label: "Users",
-      collapsed: false,
-      collapsible: false,
-      link: {
-        type: "doc",
-        id: "users/users",
-      },
-      items: [
-        "users/users-guide",
-      ],
-    },
-    {
-      type: "category",
-      label: "Security",
-      collapsed: false,
-      collapsible: false,
-      link: {
-        type: "doc",
-        id: "security/security",
-      },
-      items: [
-        "security/security-guide",
-      ],
-    },
-    {
+     {
       type: "category",
       label: "Resources",
       collapsed: false,
