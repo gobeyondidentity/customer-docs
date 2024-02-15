@@ -1,5 +1,5 @@
 ---
-title: Install the authenticator and enroll devices
+title: Device360 installation
 id: install-authenticator
 description: 'Install the authenticator for Device360 and enroll devices'
 slug: /install-authenticator
@@ -14,36 +14,36 @@ keywords:
 pagination_next: null
 pagination_prev: null
 last_update:
-  date: 12/5/2023
+  date: 02/15/2024
   author: Shannon Moore
 doc_type: overview
 displayed_sidebar: mainSidebar
 ---
-#Device360 installation
+# Device360 installation
 This guide walks you through the process of downloading and installing the Beyond Identity Authenticator and enrolling devices so you can start monitoring device posture.  
 
 ## Supported operating systems
 This release supports the following operating systems. This list will be updated as additional platforms are added. 
 
-| **Operating System** | **Versions**               | 
-|------------------|--------------------------------|
-| macOS            | 12, 13, 14 (Sonoma)            |
-| Windows          | 10 (build 18363 and later), 11 |
+| **Operating System** | **Versions**                   | 
+|----------------------|--------------------------------|
+| macOS                | 12, 13, 14 (Sonoma)            |
+| Windows              | 10 (build 18363 and later), 11 |
 
 ## Supported Beyond Identity authenticator
 
-Device360 is available with version 2.94 or later of the Beyond Identity authenticator.  
+Device360 is available starting in version 2.92 or later. It is highly recommended that you update to the latest version of the Beyond Identity authenticator to ensure that you can access new features.  
 
 
 # Install the authenticator and enroll devices
 To begin collecting data and running queries on a device, you must first install the Beyond Identity authenticator on a device and enroll it. Select from the following installation options:
 
-- <ins>[New customer installation and enrollment](#new-customer-installation-and-enrollment)</ins> 
-- <ins>[Secure Workforce customer installation and enrollment](#secure-workforce-customer-installation-and-enrollment)</ins>
+- [New customer installation and enrollment](#new-customer-installation-and-enrollment)
+- [Secure Workforce customer enrollment](#secure-workforce-customer-enrollment)
 
  
 ## New customer installation and enrollment 
-If you are new to Beyond Identity, you will need to install 
+If you are new to Beyond Identity, you will need to download and install the authenticator on devices, and then provide users with an enrollment code that will enable Device360 to collect data. 
 
 1. Select **Inventory > Device Inventory** in the left nav bar. 
 
@@ -59,7 +59,7 @@ If you are new to Beyond Identity, you will need to install
    
    ![Add Device dialog copy code](../images/devices/enrollment-code-copy.png)
 
-5. Copy the Enrollment code.
+5. Copy the Enrollment code. The enrollment code will expire after 10 minutes. 
 
 6. Open the authenticator and click the + button.
 
@@ -74,10 +74,11 @@ If you are new to Beyond Identity, you will need to install
    You can now monitor and query the device.
 
 
-## Secure Workforce customer installation and enrollment
-If you are a Secure Workforce customer, Device360 uses the same authenticator that allows you to securely sign into corporate applications without passwords. You will just need to generate a Device360 enrollment code and and add it to your existing version 2.94 or later authenticator. This will not impact your Secure Workforce passkey in the authenticator.
+## Secure Workforce customer enrollment
+If you are a Secure Workforce customer, Device360 uses the same authenticator that allows you to securely sign into corporate applications without passwords. You will just need to generate a Device360 enrollment code and add it to your existing version of the authenticator (minimum version of 2.92). 
 :::note 
-For Secure Workforce customers, Beyond Identity's Windows Desktop Login is not compatible with Device360.
+- This will **not** impact your Secure Workforce passkey in the authenticator.
+- Beyond Identity's Windows Desktop Login is not compatible with Device360.
 :::
 1. Select **Inventory > Device Inventory** in the left nav bar. 
 
@@ -85,7 +86,7 @@ For Secure Workforce customers, Beyond Identity's Windows Desktop Login is not c
 
    ![Add Device button](../images/devices/add-device.png)
 
-4. Copy the Enrollment code.
+4. Copy the Enrollment code. The enrollment code will expire after 10 minutes. 
 
 5. Open the authenticator and click the + button.
 
@@ -98,3 +99,11 @@ For Secure Workforce customers, Beyond Identity's Windows Desktop Login is not c
    Once the device is enrolled by entering the 9-digit code, it will be added to the Device table.
    
    You can now monitor and query the device.
+
+## Troubleshooting installation
+
+### Unable to see data for iOS, Android, or Linux operating systems
+Currently, Device360 is supported on Windows and macOS only. 
+
+### Deleted enrollment code or passkey 
+If the enrollment code or passkey is deleted, you will need to [rebind the device](/docs/device-inventory#rebind-devices).
