@@ -27,6 +27,33 @@ const sidebars = {
     },
     {
       type: "category",
+      label: "Tools",
+      collapsed: false,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "tools/tools",
+      },
+      items: [
+        "tools/policy",
+      ],
+    },
+     {
+      type: "category",
+      label: "Installation",
+      collapsed: false,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "installation/installation",
+      },
+      items: [
+        "installation/install-authenticator",
+        "installation/update-authenticator",
+      ],
+    },
+    {
+      type: "category",
       label: "Inventory",
       collapsed: false,
       collapsible: false,
