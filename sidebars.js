@@ -62,11 +62,25 @@ const sidebars = {
         id: "inventory/inventory",
       },
       items: [
-        "inventory/system-requirements",
         "inventory/device-inventory",
         "inventory/device-query",
       ],
     },
+    {
+      type: "category",
+      label: "Release Notes",
+      collapsed: false,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "release-notes/release-notes",
+      },
+      items: [
+        "release-notes/endpoint-release-notes",
+        "release-notes/cloud-release-notes",
+      ],
+    },
+
      {
       type: "category",
       label: "Resources",
