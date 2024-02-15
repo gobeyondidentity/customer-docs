@@ -1,11 +1,10 @@
 ---
-title: Device Inventory
+title: Device inventory
 id: device-inventory
 description: 'Add a device to Device360 to analyze device posture'
 slug: /device-inventory
 keywords:
   - device360
-  - add device
   - rebind device
   - remove passkey
   - credential
@@ -20,51 +19,11 @@ keywords:
 pagination_next: null
 pagination_prev: null
 last_update:
-  date: 12/5/2023
+  date: 02/15/2024
   author: Shannon Moore
 doc_type: overview
 displayed_sidebar: mainSidebar
 ---
-
-## Install the authenticator and enroll devices
-
-To begin collecting data and running queries on a device, you must first install the Beyond Identity authenticator on a device and enroll it. 
-
-:::note
-- If you are a Secure Workforce customer, Device360 uses the same authenticator that allows you to securely sign into corporate applications without passwords. You will just need to generate a Device360 enrollment code and and add it to your existing version 2.91.1 or later authenticator. This will not impact your Secure Workforce passkey in the authenticator.
-:::
-
-1. Select **Inventory > Device Inventory** in the left nav bar. 
-
-2. Click **Add Device**.
-
-   ![Add Device button](../images/devices/add-device.png)
-
-   :::note 
-   If you already have the Beyond Identity authenticator version 2.91.1 or later installed on your device, skip to Step 5 below to add a passkey to your device to start collecting data.
-   :::
-
-3. Enter a device name and click **Next**.
-   
-   ![Add Device dialog add name](../images/devices/device-name.png)
-
-4. Click the link to open the authenticator downloads page.
-   
-   ![Add Device dialog copy code](../images/devices/enrollment-code-copy.png)
-
-5. Copy the Enrollment code.
-
-6. Open the authenticator and click the + button.
-
-   ![Beyond Identity Authenticator app](../images/devices/authenticator-add-passkey.png)
-
-7. Paste or type the enrollment code in the "Enter 9-digit code" screen to enroll the device. Note that a cursor doesn't appear on the screen.
-
-   ![Beyond Identity Authenticator app](../images/devices/authenticator-paste-code.png)   
-
-   Once the device is enrolled by entering the 9-digit code, it will be added to the Device table.
-   
-   You can now monitor and query the device.
 
 
 ## Analyze devices
@@ -72,12 +31,51 @@ To begin collecting data and running queries on a device, you must first install
 On the Devices page, you can quickly analyze enrolled devices for misconfigurations and vulnerabilities, such as firewalls that aren't enabled. You can also add or manage devices from this page.
 
 :::note
-In order to see devices, you must first enroll the device by adding a Device360 credential to the Beyond Identity Authenticator version 2.91.1 or later. Note that this is a different passkey than the one used for the Beyond Identity console and passwordless authentication. For more information, see <ins>[Install the authenticator and enroll devices](#Install-the-authenticator-and-enroll-devices)</ins> above.
+In order to see devices, you must first enroll the device by adding a Device360 credential to the Beyond Identity Authenticator version 2.92 or later. Note that this is a different passkey than the one used for the Beyond Identity console and passwordless authentication. For more information, see <ins>[Install the authenticator and enroll devices](/docs/install-authenticator)</ins>.
 :::
 
 ![Devices table](../images/devices/device-table.png)
 
-The Device Inventory table shows device details and vulnerabilities from polling the device based on the data collection setting.
+
+### Search for a device
+Use the Search bar to quickly find a device when you know the display name or serial number. 
+
+###View the enrollment status for devices
+
+
+
+
+
+
+
+
+
+#### Update the data collection interval
+
+You can specify the interval for how often device attributes in the table on this page will be collected from devices that are online.
+
+1. Click **Devices** in the navigation pane.
+
+2. Click **Edit** beside Data collected every x.
+
+![Data collected every x option](../images/devices/data-collection-option.png)
+
+3. Under **Frequency**, select how often you want Device360 to poll enrolled devices and return results that display in the Devices table.
+
+4. Click **Save Changes**. 
+
+
+### Total Devices
+
+
+
+
+### Misconfigurations
+
+
+
+### Devices table
+The Devices table shows device details and vulnerabilities from polling the device based on the data collection setting.
 
 Click a row with a device to view details. 
 
@@ -93,17 +91,7 @@ Click a row with a device to view details.
 |**Actions**             | Click the Edit icon to perform the following: <ul><li>Add or update the name that displays for the device.</li><li>Generate a new enrollment code to bind or re-bind a device to Device360</li><li>Delete a device (useful when an employee leaves or a device is decommissioned).</li></ul>
 
 
-### Update the data collection interval
 
-You can specify the interval for how often device attributes in the table on this page will be collected from devices that are online.
-
-1. Click **Devices** in the navigation pane.
-
-2. Click **Edit** beside Data collected every x.
-
-3. Under **Frequency**, select how often you want Device360 to poll enrolled devices and return results that display in the Devices table.
-
-4. Click **Save Changes**. 
 
 ## Rename devices
 
@@ -118,7 +106,7 @@ You can add a name for a device or rename a device on the Devices page. If you d
 
 ## Rebind devices
 
-You can rebind or re-enroll a device iby generating a new enrollment code and adding it to the Beyond Identity authenticator. 
+You can rebind or re-enroll a device by generating a new enrollment code and adding it to the Beyond Identity authenticator. 
 
 :::note 
 If you are a Secure Workforce customer, this will not impact the passkey in the authenticator that allows you to securely sign into corporate applications without passwords.
@@ -142,7 +130,7 @@ If you are a Secure Workforce customer, this will not impact the passkey in the 
 
    b. Paste or type the enrollment code in the Enter 9-digit code screen. Note that a cursor doesn't appear on the screen. 
  
-      The device will be added to the Device table with a status of Pending until internal queries complete. Once those complete, the status will change to Active. For more information, see Analyze devices above.
+      The device will be added to the Device table with a status of Pending until internal queries complete. Once those complete, the status will change to Active. For more information, see <ins>[Analyze devices](#analyze-devices)</ins> above.
 
 
 ## Remove passkeys from devices
