@@ -188,7 +188,7 @@ const config = {
           //     },
           //   ],
           // },
-          { to: "https://support.beyondidentity.com/hc/en-us/sections/4968400314775-Release-Notes", label: "Release Notes", position: "left" },
+          { to: "/docs/release-notes", label: "Release Notes", position: "left" },
           {
             type: "docsVersionDropdown",
             position: "right",
