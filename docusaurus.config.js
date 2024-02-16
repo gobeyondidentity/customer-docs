@@ -6,8 +6,8 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Beyond Identity Secure Workforce Docs",
-  tagline: "Secure Workforce prevents credential theft, simplifies authentication for your users and admins and proactively protects your organization.",
+  title: "Beyond Identity Next Generation Docs",
+  tagline: "Beyond Identity will be releasing a new, consolidated admin experience that incorporates our existing Secure Workforce product with two new products, Device360 and our Next Gen SSO.",
   url: "https://docs.beyondidentity.com",
   baseUrl: "/",
   onBrokenLinks: "warn",

@@ -1,5 +1,5 @@
 ---
-title: Quick Starts
+title: Getting Started
 id: quickstart
 description: ''
 slug: /quickstart
