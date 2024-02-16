@@ -14,7 +14,7 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Quick Starts",
+      label: "Getting Started",
       collapsed: false,
       collapsible: false,
       link: {
@@ -76,8 +76,7 @@ const sidebars = {
         id: "release-notes/release-notes",
       },
       items: [
-        "release-notes/endpoint-release-notes",
-        "release-notes/cloud-release-notes",
+        "release-notes/release-notes",
       ],
     },
 

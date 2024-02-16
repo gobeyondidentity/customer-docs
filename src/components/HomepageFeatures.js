@@ -12,7 +12,7 @@ const FeatureList1 = [
         use cases.
       </>
     ),
-    link: "/docs/getting-started",
+    link: "/docs/device360-qs",
   },
   {
     title: "Device360 Installation",
