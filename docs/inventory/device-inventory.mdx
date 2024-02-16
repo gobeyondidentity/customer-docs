@@ -1,5 +1,5 @@
 ---
-title: Device inventory
+title: Device Inventory
 id: device-inventory
 description: 'Add a device to Device360 to analyze device posture'
 slug: /device-inventory
@@ -31,7 +31,7 @@ displayed_sidebar: mainSidebar
 On the Devices page, you can quickly analyze enrolled devices for misconfigurations and vulnerabilities, such as firewalls that aren't enabled. You can also add or manage devices from this page.
 
 :::note
-In order to see devices, you must first enroll the device by adding a Device360 credential to the Beyond Identity Authenticator version 2.92 or later. Note that this is a different passkey than the one used for the Beyond Identity console and passwordless authentication. For more information, see <ins>[Install the authenticator and enroll devices](/docs/install-authenticator)</ins>.
+In order to see devices, you must first enroll the device by adding a Device360 credential to the latest Beyond Identity Authenticator (minimum version 2.92 or later). Note that this is a different passkey than the one used for the Beyond Identity console and passwordless authentication. For more information, see <ins>[Install the authenticator and enroll devices](/docs/install-authenticator)</ins>.
 :::
 
 ![Devices table](../images/devices/device-table.png)
@@ -40,8 +40,22 @@ In order to see devices, you must first enroll the device by adding a Device360 
 ### Search for a device
 Use the Search bar to quickly find a device when you know the display name or serial number. 
 
-###View the enrollment status for devices
+1. Select either **Display name** or **Serial number** in the Search field.
 
+2. Press **Enter** on the keyboard or click the **Search** icon. The graphs and table update to display the search results. 
+
+You can click x in the **Search** bar to clear the results. 
+
+
+### View the enrollment status for devices
+Use this filter to quickly locate devices that haven't yet added the enrollment code to begin collecting data or to find the date and time a query last ran on devices that are enrolled. In some cases, the date/time of the last query may vary based on whether the device is offline, etc. 
+Available options for this filter are: 
+
+- Active - Date and time of the last response for a query.
+
+- Pending - Device is not yet enrolled. 
+  Note: The enrollment code expires after 10 minutes so you may need to generate a new code for the device. For more information, see <ins>[Generate a new enrollment code](install-authenticator#Generate-a-new-enrollment-code)</ins>
+  
 
 
 
@@ -72,6 +86,8 @@ You can specify the interval for how often device attributes in the table on thi
 
 ### Misconfigurations
 
+ 
+
 
 
 ### Devices table
@@ -87,7 +103,7 @@ Click a row with a device to view details.
 |**Host Name**           | The label assigned to the device on network.         |
 |**Misconfigurations**   | Displays any misconfigurations found on the device that can cause vulnerabilities, such as a firewall that isn't enabled so you can begin remediation.  |
 |**OS Version**          | Displays the operating system version of the device. Use this column to locate devices that are on vulnerable operating systems.        |
-|**Last Response**       | The last time the authenticator responded to a device query. Available values are: <ul><li>Pending - Awaiting a response from the device.</li><li>Active - The date and time of last response to a query.</li></ul>|
+|**Last Response**       | The last time the authenticator responded to a device query. Available values are: <ul><li>Active - The date and time of last response to a query.</li><li>Pending - The device is not yet enrolled. The enrollment code expires after 10 minutes so you may need to generate a new code for the device (select the checkbox by the Device Name and click the Edit icon under the Actions column).</li></ul>|
 |**Actions**             | Click the Edit icon to perform the following: <ul><li>Add or update the name that displays for the device.</li><li>Generate a new enrollment code to bind or re-bind a device to Device360</li><li>Delete a device (useful when an employee leaves or a device is decommissioned).</li></ul>
 
 
