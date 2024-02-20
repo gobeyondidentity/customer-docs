@@ -16,6 +16,7 @@ keywords:
   - device enrollment
   - device misconfigurations
   - device vulnerabilities
+  - enrollment code
 pagination_next: null
 pagination_prev: null
 last_update:
@@ -31,7 +32,7 @@ displayed_sidebar: mainSidebar
 On the Devices page, you can quickly analyze enrolled devices for misconfigurations and vulnerabilities, such as firewalls that aren't enabled. You can also add or manage devices from this page.
 
 :::note
-In order to see devices, you must first enroll the device by adding a Device360 credential to the latest Beyond Identity Authenticator (minimum version 2.92 or later). Note that this is a different passkey than the one used for the Beyond Identity console and passwordless authentication. For more information, see <ins>[Install the authenticator and enroll devices](/docs/install-authenticator)</ins>.
+In order to see devices, you must first enroll the device by adding a Device360 credential to the latest Beyond Identity Authenticator (minimum version 2.92 or later). Note that this is a different passkey than the one used for the Beyond Identity console and passwordless authentication. For more information, see <ins>[Install Device360](/docs/install-authenticator)</ins>.
 :::
 
 ![Devices table](../images/devices/device-table.png)
@@ -48,23 +49,29 @@ You can click x in the **Search** bar to clear the results.
 
 
 ### View the enrollment status for devices
-Use this filter to quickly locate devices that haven't yet added the enrollment code to begin collecting data or to find the date and time a query last ran on devices that are enrolled. In some cases, the date/time of the last query may vary based on whether the device is offline, etc. 
-Available options for this filter are: 
+You can use the filter above the graphs or select an option in the Total Devices widget to quickly locate devices that haven't yet added the enrollment code to begin collecting data or to find the date and time a query last ran on devices that are enrolled. In some cases, the date/time of the last query may vary based on whether the device is offline, etc. 
+
+![Enrollment status filters](../images/devices/enrollment-status.png)
+
+Available options are: 
 
 - Active - Date and time of the last response for a query.
 
 - Pending - Device is not yet enrolled. 
-  Note: The enrollment code expires after 10 minutes so you may need to generate a new code for the device. For more information, see <ins>[Generate a new enrollment code](install-authenticator#Generate-a-new-enrollment-code)</ins>
-  
+  Note: The enrollment code expires after 10 minutes so you may need to generate a new code for the device. For more information, see <ins>[Generate a new enrollment code](install-authenticator#generate-a-new-enrollment-code)</ins>
+
+Selecting an enrollment status will update the remaining graphs on the page and the Devices table with your results. 
+
+### View misconfigurations for devices
+You can use the filter above the graphs or select an option in the Misconfigurations graph to filter for devices that contain a misconfiguration. 
+Coming soon
+
+### View OS Versions
+
+Coming soon
 
 
-
-
-
-
-
-
-#### Update the data collection interval
+### Update the data collection interval
 
 You can specify the interval for how often device attributes in the table on this page will be collected from devices that are online.
 
@@ -77,17 +84,6 @@ You can specify the interval for how often device attributes in the table on thi
 3. Under **Frequency**, select how often you want Device360 to poll enrolled devices and return results that display in the Devices table.
 
 4. Click **Save Changes**. 
-
-
-### Total Devices
-
-
-
-
-### Misconfigurations
-
- 
-
 
 
 ### Devices table
