@@ -76,7 +76,7 @@ const sidebars = {
         id: "release-notes/release-notes",
       },
       items: [
-        "release-notes/release-notes",
+        "release-notes/294-release-notes",
       ],
     },
 
