@@ -21,7 +21,7 @@ const FeatureList1 = [
     link: "/docs/install-authenticator",
   },
   {
-    title: "Device360 Release Notes ⧉",
+    title: "Device360 Release Notes",
     Svg: require("@site/static/img/reference.svg").default,
     description: <>Stay informed with the latest updates and enhancements.</>,
     link: "/docs/release-notes",
