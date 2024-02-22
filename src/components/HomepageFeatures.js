@@ -4,7 +4,7 @@ import styles from "./HomepageFeatures.module.css";
 
 const FeatureList1 = [
   {
-    title: "Getting started",
+    title: "Device360 Getting started",
     Svg: require("@site/static/img/get-started.svg").default,
     description: (
       <>
@@ -12,25 +12,25 @@ const FeatureList1 = [
         use cases.
       </>
     ),
-    link: "/docs/getting-started",
+    link: "/docs/device360-qs",
   },
   {
-    title: "Architecture",
+    title: "Device360 Installation",
     Svg: require("@site/static/img/platform.svg").default,
     description: <>A review of our platform and how to put it to good use.</>,
-    link: "/docs/overview",
+    link: "/docs/install-authenticator",
   },
   {
-    title: "Release Notes ⧉",
+    title: "Device360 Release Notes ⧉",
     Svg: require("@site/static/img/reference.svg").default,
     description: <>Stay informed with the latest updates and enhancements.</>,
-    link: "https://support.beyondidentity.com/hc/en-us/sections/4968400314775-Release-Notes",
+    link: "/docs/release-notes",
   },
 ];
 
 const FeatureList2 = [
   {
-    title: "API Reference ⧉",
+    title: "Secure Workforce API Reference ⧉",
     Svg: require("@site/static/img/reference.svg").default,
     description: (
       <>Manage resources programmatically with our API and CLI tools.</>
