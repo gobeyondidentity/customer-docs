@@ -49,7 +49,7 @@ You can click x in the **Search** bar to clear the results.
 
 
 ### View the enrollment status for devices
-You can use the filter above the graphs or select an option in the Total Devices widget to quickly locate devices that haven't yet added the enrollment code to begin collecting data or to find the date and time a query last ran on devices that are enrolled. In some cases, the date/time of the last query may vary based on whether the device is offline, etc. 
+You can use the filter above the graphs or select an option in the Total Devices widget to quickly locate devices that haven't yet added the enrollment code to begin collecting data or to find the date and time a query last ran on devices that are enrolled. 
 
 ![Enrollment status filters](../images/devices/enrollment-status.png)
 
@@ -58,17 +58,39 @@ Available options are:
 - Active - Date and time of the last response for a query.
 
 - Pending - Device is not yet enrolled. 
-  Note: The enrollment code expires after 10 minutes so you may need to generate a new code for the device. For more information, see <ins>[Generate a new enrollment code](install-authenticator#generate-a-new-enrollment-code)</ins>
+  :::note 
+  The enrollment code expires after 10 minutes so you may need to generate a new code for the device. For more information, see <ins>[Generate a new enrollment code](install-authenticator#generate-a-new-enrollment-code)</ins>
+  :::
 
 Selecting an enrollment status will update the remaining graphs on the page and the Devices table with your results. 
 
 ### View misconfigurations for devices
-You can use the filter above the graphs or select an option in the Misconfigurations graph to filter for devices that contain a misconfiguration. 
-Coming soon
+You can use the filter above the graphs or select an option in the Misconfigurations graph to view devices that contain common misconfigurations that lead to vulnerabilities. This helps you to quickly prioritize and fix misconfigurations before they become a problem. 
+
+![Misconfiguration filters](../images/devices/misconfig-status.png)
+
+- Select a misconfiguration option from the **Any misconfiguration** drop down to update the graphs and Devices table with your results. The drop down only shows misconfiguration options that exist for enrolled devices. For example, in the image above, there aren't any devices where the Antivirus and Firewall aren't enabled so those options don't appear in the current list.  
+
+  or
+
+- Click a misconfiguration option from the **Misconfigurations** graph to update the remaining graphs on the page and the Devices table with your results. 
+
+:::tip
+You can take a screenshot of the initial graphs and then take screenshots of the graphs over time to show progress to the executive team and stakeholders as you remediate the misconfigurations and reduce potential risks to your organization. 
+::: 
 
 ### View OS Versions
+You can use the **Any OS** filter above the graphs or select an option in the **OS Versions** graph to identify devices on older and more vulnerable operating systems.
 
-Coming soon
+![OS version filters](../images/devices/os-version-filter.png)
+
+- Select an operating system from the **Any OS** drop down to update the graphs and Devices table with your results. If you prefer to filter by a specific OS version, use the graph option below. 
+
+  or
+
+- Hover over different color sections for an operating system in the **OS Versions** graph and click that version to update the remaining graphs on the page and the Devices table with your results. 
+
+
 
 
 ### Update the data collection interval
@@ -79,9 +101,11 @@ You can specify the interval for how often device attributes in the table on thi
 
 2. Click **Edit** beside Data collected every x.
 
-![Data collected every x option](../images/devices/data-collection-option.png)
+   ![Data collected every x option](../images/devices/data-collection-option.png)
 
 3. Under **Frequency**, select how often you want Device360 to poll enrolled devices and return results that display in the Devices table.
+
+   ![Data Collection Frequency](../images/devices/data-collection-frequency.png)
 
 4. Click **Save Changes**. 
 
@@ -89,7 +113,7 @@ You can specify the interval for how often device attributes in the table on thi
 ### Devices table
 The Devices table shows device details and vulnerabilities from polling the device based on the data collection setting.
 
-Click a row with a device to view details. 
+You can click a device row to view details for that device. 
 
 | **Column**             | **Description**                                      | 
 |------------------------|------------------------------------------------------|
