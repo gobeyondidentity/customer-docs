@@ -15,8 +15,8 @@
   --ifm-color-secondary: #faf9fb;
   --ifm-color-content: rgba(7, 0, 20, 0.87);
   --ifm-color-content-secondary: rgba(7, 0, 20, 0.6);
-  --ifm-border-color: rgba(7, 0, 19, 0.12);  
-  --ifm-background-color: var(--ifm-color-secondary);
+  --ifm-border-color: rgba(7, 0, 19, 0.12);
+  --ifm-background-color: var(--white);
   --ifm-global-shadow-lw: rgba(7, 0, 20, 0.03) 0px 0px 0px 1px,
     rgba(7, 0, 20, 0.1) 0px 1px 2px 0px;
   --ifm-global-shadow-md: rgba(7, 0, 20, 0.06) 0px 0px 0px 1px,
@@ -96,7 +96,7 @@ div[class^='announcementBar_'] .close {
   color: var(--ifm-color-content);
 }
 
-/* Full Size Sidebar -- fixes the height issue of the sidebar when the doc page is short (not scrollable) 
+/* Full Size Sidebar -- fixes the height issue of the sidebar when the doc page is short (not scrollable)
 .main-wrapper > div {
   flex: 1 0
 }
@@ -154,7 +154,7 @@ hr {
 }
 
 code {
-  vertical-align: baseline;  
+  vertical-align: baseline;
 }
 
 .bold-blue {
@@ -267,7 +267,7 @@ dt {
 
 
 ol li ol li{
-  list-style-type:lower-alpha;   
+  list-style-type:lower-alpha;
   margin-left: -15px;
 }
 
@@ -290,13 +290,8 @@ div.indent li {
   margin: 10px 0;
 }
 
-
-[data-theme='dark'] .header-logo {
-  background-image: url("@site/static/img/BYD_ID-LOGO_FINAL_WHITE_RGB.svg")
-}
-
-.markdown img { 
-  border: 1px solid #ccc; 
+.markdown img {
+  border: 1px solid #ccc;
   border-radius:5px;
   max-width: 60%;
   height: auto;
@@ -469,8 +464,8 @@ div[class^="searchBox"] {
 }
 
 .sidebar-version {
-  background-color: var(--ifm-color-secondary); 
-  color: 'black'; 
+  background-color: var(--ifm-color-secondary);
+  color: 'black';
   text-decoration: 'none';
 }
 
@@ -646,7 +641,7 @@ button[class*="collapseSidebarButton"] {
 /* Triangle hack to make tooltip look like a speech bubble */
 [data-tooltip]:after {
 	position: absolute;
-  z-index: 2;  
+  z-index: 2;
 	top: 115%;
 	left: 50%;
 	margin-left: -5px;
@@ -710,8 +705,8 @@ table td {
 
 }
 
-/*.vertical { 
-  -webkit-writing-mode:vertical-lr; 
+/*.vertical {
+  -webkit-writing-mode:vertical-lr;
   transform: rotate(-180deg);
   writing-mode: vertical-lr;
   text-align: right;
@@ -852,7 +847,7 @@ div[class^="tocCollapsibleContent"] ul li {
 .success-msg {
   color: #270;
   background-color: #00a40026;
-  border-left: 4px solid #270; 
+  border-left: 4px solid #270;
 	margin: 10px 0;
   padding: 10px;
   border-radius: 5px;
@@ -892,14 +887,14 @@ div[class^="tocCollapsibleContent"] ul li {
   gap: 36px;
   padding: 0 20px;
   grid-template-columns: 1fr 1fr;
-  margin-bottom: 4rem; 
+  margin-bottom: 4rem;
 }
 
 .full-width-cards {
   display: grid;
   gap: 36px;
   grid-template-columns: 1fr;
-  margin-bottom: 4rem; 
+  margin-bottom: 4rem;
 }
 
 .full-width-card {
@@ -925,8 +920,8 @@ div[class^="tocCollapsibleContent"] ul li {
   background-repeat: no-repeat;
   background-image: url("https://www.beyondidentity.com/sites/default/files/styles/max_2600x2600/public/guide-header-circle.webp?itok=_vJRg61D");
   /*background-image: url("@site/static/img/secure-customer-visual.png");*/
-  background-position: 94% 40%; 
-  background-size: 28%; 
+  background-position: 94% 40%;
+  background-size: 28%;
 }
 
 [data-theme='dark'] .intro-visual {
@@ -940,17 +935,6 @@ div[class^="tocCollapsibleContent"] ul li {
 .intro-text h4 {
   padding-bottom: 40px;
 }
-
-/*
-.intro-text h1 {
-  color: var(--ifm-color-primary-darkest) !important;
-  font-weight: 700;
-}
-
-html[data-theme="dark"] .intro-text h1 {
-  color: white;
-}
-*/
 
 .intro-text p {
   color: var(--ifm-color-primary-darkest) !important;
@@ -1114,7 +1098,7 @@ html[data-theme="dark"] .intro-card h3 {
   text-decoration: none;
   color: #333;
   }
-    
+
 
 .info-visual-text {
   max-width: 40%;
@@ -1129,34 +1113,6 @@ html[data-theme="dark"] .intro-card h3 {
 .learn-more a {
   text-decoration: none;
 }
-
-/*
-html[data-theme='dark'] .intro-visual{
-    background-color: #092247;
-}
-
-
-html[data-theme='dark'] .intro-visual h5 {
-  color: #F1F3F6;
-}
-
-html[data-theme='dark'] .intro-text p {
-  color: #B2CBF1 !important;
-}
-
-html[data-theme='dark'] .intro-card p {
-  color: var(--ifm-font-color-base);
-}
-
-html[data-theme='dark'] .intro-card h3,
-html[data-theme='dark'] .intro-card h3 a {
-  color: #47B2FF !important;
-}
-*/
-/* html[data-theme='dark'] .intro-visual {
-  background-color: var(--ifm-color-primary-darkest);
-} */
-
 
 .community {
   display: flex;
@@ -1181,7 +1137,7 @@ html[data-theme='dark'] .intro-card h3 a {
 .community a img,
 .community a svg {
   margin-right: 18px;
-} 
+}
 
 .community a.videos {
   background-color: #FFD2D2;
@@ -1415,7 +1371,7 @@ html[data-theme="dark"] .card__header h4 {
     max-width: 100%;
   }
 
-  .markdown img { 
+  .markdown img {
     max-width: 100%;
   }
 
@@ -1442,7 +1398,7 @@ html[data-theme="dark"] .card__header h4 {
 
   .intro-visual {
     padding: 1em;
-    background-image: none; 
+    background-image: none;
   }
 
   .intro-visual h5 {
@@ -1456,7 +1412,7 @@ html[data-theme="dark"] .card__header h4 {
   .intro-visual h4 {
     font-size: 16px;
     text-align: center;
-    margin: 0;  
+    margin: 0;
   }
 
   .intro-text, p, .intro-text-button {
@@ -1491,26 +1447,26 @@ html[data-theme="dark"] .card__header h4 {
     --ifm-h1-font-size: 1.9rem;
   }
 
-    /** Setting margins      
-    @page { margin: 1cm }*/  
+    /** Setting margins
+    @page { margin: 1cm }*/
 
-    h1, h2, h3, h4, h5, h6 { page-break-after:avoid; 
+    h1, h2, h3, h4, h5, h6 { page-break-after:avoid;
       page-break-inside:avoid }
 
-    #header-widgets, nav, aside.mashsb-container, 
-    .sidebar, .mashshare-top, .mashshare-bottom, 
-    .content-ads, .make-comment, .author-bio, 
-    .heading, .related-posts, #decomments-form-add-comment, 
-    #breadcrumbs, #footer, .post-byline, .meta-single, 
-    .site-title img, .post-tags, .readability 
+    #header-widgets, nav, aside.mashsb-container,
+    .sidebar, .mashshare-top, .mashshare-bottom,
+    .content-ads, .make-comment, .author-bio,
+    .heading, .related-posts, #decomments-form-add-comment,
+    #breadcrumbs, #footer, .post-byline, .meta-single,
+    .site-title img, .post-tags, .readability
     {
     display: none;
     }
 
-    
+
 
     /**
-  * Making intergated videos disappear, and removing the iframes' whitespace to zero. 
+  * Making intergated videos disappear, and removing the iframes' whitespace to zero.
   */
   .entry iframe, ins {
     display: none;
@@ -1545,8 +1501,8 @@ html[data-theme="dark"] .card__header h4 {
     margin-top: calc(var(--ifm-leading) * -1);
     margin-bottom: calc(var(--ifm-leading) * 1);
   }
-  .markdown img { 
-    border: 1px solid #ccc; 
+  .markdown img {
+    border: 1px solid #ccc;
     border-radius:5px;
     max-width: 70%;
     height: auto;
@@ -1565,6 +1521,6 @@ html[data-theme="dark"] .card__header h4 {
     font-size: 11px;
     vertical-align: top;
   }
-  
+
 
 }
