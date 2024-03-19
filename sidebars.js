@@ -14,6 +14,22 @@ const sidebars = {
     },
     {
       type: "category",
+      label: "Introduction",
+      collapsed: false,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "introduction/introduction",
+      },
+      items: [
+        "introduction/what-does-sw-do",
+        "introduction/universal-passkeys",
+        "introduction/faq",
+      ],
+    },
+
+    {
+      type: "category",
       label: "Getting Started",
       collapsed: false,
       collapsible: false,
@@ -36,6 +52,21 @@ const sidebars = {
       },
       items: [
         "tools/policy",
+        "tools/assessments",
+      ],
+    },
+    {
+      type: "category",
+      label: "Deployment",
+      collapsed: false,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "deployment/deployment",
+      },
+      items: [
+        "deployment/authenticators",
+        "deployment/branding",
       ],
     },
      {
@@ -63,7 +94,36 @@ const sidebars = {
       },
       items: [
         "inventory/device-inventory",
+        "inventory/endpoint-integrations",
         "inventory/device-query",
+      ],
+    },
+    {
+      type: "category",
+      label: "Directory",
+      collapsed: false,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "directory/directory",
+      },
+      items: [
+        "directory/identities",
+        "directory/groups",
+        "directory/directory-integrations",
+      ],
+    },
+    {
+      type: "category",
+      label: "Auth & SSO",
+      collapsed: false,
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "auth-sso/auth-sso",
+      },
+      items: [
+        "auth-sso/identity-providers",
       ],
     },
     {
