@@ -1,20 +1,7 @@
 import React from 'react';
 
 export enum Clip {
-  AddIdentityToGroup = 'Sh4dfGOpoOOHRHQNoxEC',
-
-  CopyAuthenticatorConfigID = 'kxuvQibO5nDhoDrK7KOH',
-  CopyClientIDClientSecretAndApplicationID = '832jlMeNFu3Jz4JwVU9Z',
-
-  CreateAPIToken = 'OQge5lspW7TRuqvghZQd',
-  CreateApplication = 'KmtiNsx4Z31MkogQdwST',
-  CreateIdentity = 'TufU7NgJYWOvNSDfuo9j',
-  CreatePasskey = 'Y0eBYYISHT8KxVwkSDpo',
-  CreateRealm = 'eyWvI91g13J7qj5vmCfD',
-
-  FindTenantID = 'MImNGHws6Y2EpwIPrtPl',
-
-  GettingStartedDemoApp = '6kUN385qBx2Jju7wugbM',
+  OktaConfigureUserSettings = "AZQyqPiIAKm8bT0IYdhI",
 }
 
 /**
