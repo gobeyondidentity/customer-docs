@@ -77,18 +77,19 @@ Confirm that the following features are active on your account:
 
 To enable Okta to automatically direct users registered with Beyond Identity towards a passwordless authentication flow, define a custom attribute named "byndidRegistered" on an Okta User's profile.
 
-<Arcade clip={Clip.OktaConfigureUserSettings} />
+<Arcade clip={Clip.OktaConfigurationUserSettings} />
 
 ### 🟠 Create a Beyond Identity Group
-- Create a group and add users to it
 
-TODO: Add arcade here
+To enable specific users to authenticate passwordlessly with Beyond Identity, you shold create a group and include those users in it.
+
+<Arcade clip={Clip.OktaConfigurationAddGroup} />
 
 ### 🟠 Generate an API Token
-- Security -> API -> Tokens -> Create token
-- Keep this somewhere safe for now
 
-TODO: Add arcade here
+To successfully integrate Beyond Identity with Okta, the first step involves registering a credential on the user's device. Following this successful registration, Beyond Identity must notify Okta that the user is now equipped to authenticate using Beyond Identity. This notification is facilitated through the `byndidRegistered` attribute, which you would have configured previously. It is necessary for Beyond Identity to possess an Okta API token in order to communicate the update to Okta.
+
+<Arcade clip={Clip.OktaConfigurationAPIToken} />
 
 ---
 

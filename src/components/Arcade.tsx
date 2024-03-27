@@ -1,7 +1,9 @@
 import React from 'react';
 
 export enum Clip {
-  OktaConfigureUserSettings = "AZQyqPiIAKm8bT0IYdhI",
+  OktaConfigurationUserSettings = "AZQyqPiIAKm8bT0IYdhI",
+  OktaConfigurationAddGroup = "GZpjH3IgEnNWDbc5gqHx",
+  OktaConfigurationAPIToken = "iljH3CoAcw28z3HUcv3Y"
 }
 
 /**
