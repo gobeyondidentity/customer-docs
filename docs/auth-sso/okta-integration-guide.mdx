@@ -1,0 +1,162 @@
+---
+title: Okta Integration Guide
+id: okta-integration-guide
+description: "Learn how to use Beyond Identity as an MFA solution in your Okta Instance."
+slug: /okta-integration-guide
+keywords:
+  - okta
+  - okta integration guide
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 03/26/2024
+  author: Ismail Mustafa
+draft: false
+hide_table_of_contents: false
+hide_title: false
+hide_breadcrumbs: false
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+
+import Arcade, {Clip} from '@site/src/components/Arcade.tsx';
+
+# Okta Integration Guide
+
+This guide is designed to offer step-by-step instruction for integration Beyond Identity with your Okta environment, enabling a passwordless authentication solution. Specifically, you will learn how to:
+
+- Configure Beyond Identity as the primary passwordless authentication method for your Okta environment.
+- Establish Okta to recognize Beyond Identity as an Identity Provider, enhancing security and user experience.
+
+---
+
+## Color Coded Steps
+🔵 **Beyond Identity Steps:** Actions to be performed in the Beyond Identity platform are highlighted in blue.
+
+🟠 **Okta Steps:** Actions to be performed in the Okta platform are highlighted in orange.
+
+---
+
+## Prerequisites
+
+To ensure a smooth integration process, please confirm the availability of the following prerequisites and settings within your Okta account.
+
+### 🟠 Okta Account Access
+
+Ensure you have either **Super Admin** or **Organization Admin** privileges.
+
+<details>
+    <summary><p>Why is this required?</p></summary>
+    <p>Having <strong>Super Admin</strong> or <strong>Organization Admin</strong> privileges enables you to:</p>
+    <ul>
+        <li>Add or edit attributes and their mappings via <code>Directory &gt; Profile Editor</code>.</li>
+        <li>Add or edit Identity Providers (IdPs) through <code>Security &gt; Identity Providers</code>.</li>
+        <li>Add or edit routing rules in <code>Security &gt; Identity Providers &gt; Routing Rules</code>.</li>
+    </ul>
+</details>
+
+### 🟠 Feature Verification
+
+Confirm that the following features are active on your account:
+
+<details>
+    <summary><p>OpenID Connect IdP</p></summary>
+    <p>Verify this by checking if you can navigate to <code>Security &gt; Identity provider &gt; Add Identity Provider &gt; Add OpenID Connect IdP</code>. If this option is unavailable, you will need to contact Okta support to enable it.</p>
+</details>
+
+<details>
+    <summary><p>Routing Rules</p></summary>
+    <p>Ensure the "Routing Rules" tab is visible under <code>Security &gt; Identity Providers</code>. If it is missing, contact Okta support to request its activation on the Identity Provider page.</p>
+</details>
+
+---
+
+## Prepare Okta for Integration
+
+### 🟠 Update User Profile Attributes
+
+To enable Okta to automatically direct users registered with Beyond Identity towards a passwordless authentication flow, define a custom attribute named "byndidRegistered" on an Okta User's profile.
+
+<Arcade clip={Clip.OktaConfigureUserSettings} />
+
+### 🟠 Create a Beyond Identity Group
+- Create a group and add users to it
+
+TODO: Add arcade here
+
+### 🟠 Generate API Token
+- Security -> API -> Tokens -> Create token
+- Keep this somewhere safe for now
+
+TODO: Add arcade here
+
+---
+
+## Set Up Beyond Identity
+### 🔵 Create Beyond Identity Account
+- Go to marketing website
+- Create BI account
+
+TODO: Add arcade here
+
+### 🔵 Integrate with Okta Directory
+- Go to directory integrations -> Add Directory -> Okta
+- Enter your API token where requested
+- Select bearer token for SCIM -> click save
+
+TODO: Add arcade here
+
+### 🔵 Create IdP application
+- Auth & SSO -> Add Identity Provider
+- Keep Values Handy
+
+TODO: Add arcade here
+
+---
+
+## Synchronize Users via SCIM
+
+### 🟠 Enable syncing of users from Okta into Beyond Identity:
+- In Okta Set up a SCIM application
+- Paste in SCIM information from BI directory integration
+
+TODO: Add arcade here
+
+---
+
+## Configure Identity Provider
+
+### 🟠 Set Up OIDC Identity Provider
+- Set up OIDC identity provider.
+- Copy values from BI.
+- Save Identity provider
+- Set up routing rules for byndidRegistered attribute
+
+TODO: Add arcade here
+
+---
+
+## Enroll Users
+
+### 🟠 Add Users to Beyond Identity Group
+- Add user to Beyond Identity Group
+
+TODO: Add arcade here
+
+### 🔵 Provision Newly Added Users
+- Select identity that was just added
+- Add Passkey -> send email
+- Once user enrolls, have them sign into their Okta instance
+
+TODO: Add arcade here
+
+---
+
+## Managing User Access
+
+### 🟠 Disable Beyond Identity Authentication
+- Remove user from "Beyond Identity" group in Okta
+
+TODO: Add arcade here
+
+---

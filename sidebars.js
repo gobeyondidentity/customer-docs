@@ -123,7 +123,7 @@ const sidebars = {
         id: "auth-sso/auth-sso",
       },
       items: [
-        "auth-sso/identity-providers",
+        "auth-sso/okta-integration-guide",
       ],
     },
     {
