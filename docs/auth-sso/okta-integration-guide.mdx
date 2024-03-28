@@ -30,16 +30,23 @@ This guide is designed to offer step-by-step instructions to integrate Beyond Id
 
 ---
 
-## Color Coded Steps
-🔵 **Beyond Identity Steps:** Actions to be performed in the Beyond Identity platform are highlighted in blue.
+### 🔵 **Beyond Identity**
 
-🟠 **Okta Steps:** Actions to be performed in the Okta platform are highlighted in orange.
+Actions to be performed in the Beyond Identity platform are highlighted in blue.
+
+### 🟠 **Okta**
+
+Actions to be performed in the Okta platform are highlighted in orange.
 
 ---
 
 ## Prerequisites
 
 To ensure a smooth integration process, please confirm the availability of the following prerequisites and settings within your Okta account.
+
+### 🟠 Create an Okta Account
+
+This guide assume you already have an Okta account provisioned. If you need to create one, [Click here](https://developer.okta.com/signup/).
 
 ### 🟠 Okta Account Access
 
@@ -55,7 +62,7 @@ Ensure you have either **Super Admin** or **Organization Admin** privileges.
     </ul>
 </details>
 
-### 🟠 Feature Verification
+### 🟠 Okta Feature Verification
 
 Confirm that the following features are active on your account:
 
@@ -69,9 +76,13 @@ Confirm that the following features are active on your account:
     <p>Ensure the "Routing Rules" tab is visible under <code>Security &gt; Identity Providers</code>. If it is missing, contact Okta support to request its activation on the Identity Provider page.</p>
 </details>
 
+### 🔵 Create a Beyond Identity Account
+
+To create a Beyond Identity account, please [click here](https://www.beyondidentity.com/products/secure-workforce).
+
 ---
 
-## Prepare Okta for Integration
+## 1. Set Up Okta
 
 ### 🟠 Update User Profile Attributes
 
@@ -93,21 +104,17 @@ To successfully integrate Beyond Identity with Okta, the first step involves reg
 
 ---
 
-## Set Up Beyond Identity
-### 🔵 Create a Beyond Identity Account
-- Go to marketing website
-- Create BI account
+## 2. Set Up Beyond Identity
 
-TODO: Add arcade here
-
-### 🔵 Integrate with Okta Directory
+### 🔵 Create a Directory Integration
 - Go to directory integrations -> Add Directory -> Okta
 - Enter your API token where requested
 - Select bearer token for SCIM -> click save
+- Keep the bearer token handy
 
 TODO: Add arcade here
 
-### 🔵 Create IdP application
+### 🔵 Create an Identity Provider
 - Auth & SSO -> Add Identity Provider
 - Keep Values Handy
 
@@ -115,19 +122,9 @@ TODO: Add arcade here
 
 ---
 
-## Synchronize Users via SCIM
+## 3. Integrate Beyond Identity with Okta
 
-### 🟠 Enable syncing of users from Okta into Beyond Identity:
-- In Okta Set up a SCIM application
-- Paste in SCIM information from BI directory integration
-
-TODO: Add arcade here
-
----
-
-## Configure Identity Provider
-
-### 🟠 Set Up OIDC Identity Provider
+### 🟠 Configure the Identity Provider
 - Set up OIDC identity provider.
 - Copy values from BI.
 - Save Identity provider
@@ -137,7 +134,15 @@ TODO: Add arcade here
 
 ---
 
-## Enroll Users
+### 🟠 Synchronize Users via SCIM
+- In Okta Set up a SCIM application
+- Paste in SCIM information from BI directory integration
+
+TODO: Add arcade here
+
+---
+
+## 4. Enroll Users
 
 ### 🟠 Add Users to Beyond Identity Group
 - Suggestion: Start with a small group
@@ -154,7 +159,7 @@ TODO: Add arcade here
 
 ---
 
-## Managing User Access
+## 5. Managing User Access
 
 ### 🟠 Disable Beyond Identity Authentication
 - Remove user from "Beyond Identity" group in Okta

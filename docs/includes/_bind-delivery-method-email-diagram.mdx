@@ -1,6 +1,6 @@
 ```mermaid
 sequenceDiagram
-    participant SDK
+    participant Platform Authenticator
     participant User
     participant Your front end
     participant Your server
@@ -14,7 +14,6 @@ sequenceDiagram
     User ->> Beyond Identity API: GET with one time token
     Beyond Identity API ->> Your front end: 302 to your app's configured<br/> Invoke URL + '/bind',<br/> e.g. **http://exampleapp.com/bind?** with<br/> one time token and other parameters
     Note Over Your server: GET to app at /bind route or page,<br/> app makes url available to front end
-    Your front end ->> SDK: credential_binding_link
-    Note Right of SDK: EmbeddedSDK.bindPasskey()
-    SDK ->> Beyond Identity API: send passkey information to associate with identity in BI tenant
+    Your front end ->> Platform Authenticator: credential_binding_link
+    Platform Authenticator ->> Beyond Identity API: send passkey information to associate with identity in BI tenant
 ```
