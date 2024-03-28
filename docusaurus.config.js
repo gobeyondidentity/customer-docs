@@ -221,12 +221,10 @@ const config = {
             label: "Join Slack",
             position: "right",
           },
-*/          
+*/
         ],
       },
       footer: {
-        style: 'dark',
-        
         copyright: `© ${new Date().getFullYear()} Beyond Identity&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="https://www.beyondidentity.com/docs/terms-legal">Terms and Conditions</a>`,
       },
       prism: {
