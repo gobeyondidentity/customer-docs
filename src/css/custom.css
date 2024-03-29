@@ -517,6 +517,18 @@ p.table-list {
     background-size: 28%;
 }
 
+.intro-informational {
+    background-color: #F6F6F6;
+    margin-right: 10px;
+    margin-top: 30px;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+[data-theme="dark"] .intro-informational {
+    background-color: #0A0A0A;
+}
+
 [data-theme="dark"] .intro-visual {
     background-color: var(--ifm-color-primary-lightest);
 }
