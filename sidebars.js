@@ -8,101 +8,41 @@ const sidebars = {
       href: '/docs',
     },
     {
-      type: 'link',
-      label: '🔗 REST API',
-      href: '/api/v1',
-    },
-    {
       type: "category",
       label: "Introduction",
-      collapsed: false,
-      collapsible: false,
+      collapsed: true,
+      collapsible: true,
       link: {
         type: "doc",
         id: "introduction/introduction",
       },
       items: [
-        "introduction/what-does-sw-do",
+        "introduction/what-is-secure-workforce",
         "introduction/universal-passkeys",
         "introduction/faq",
       ],
     },
-
     {
       type: "category",
-      label: "Getting Started",
+      label: "Product Guides",
       collapsed: false,
-      collapsible: false,
+      collapsible: true,
       link: {
         type: "doc",
-        id: "quickstarts/quickstart",
+        id: "product-guides/product-guides",
       },
       items: [
-        "quickstarts/device360-qs",
-      ],
-    },
-    {
-      type: "category",
-      label: "Tools",
-      collapsed: false,
-      collapsible: false,
-      link: {
-        type: "doc",
-        id: "tools/tools",
-      },
-      items: [
-        "tools/policy",
-        "tools/assessments",
-      ],
-    },
-    {
-      type: "category",
-      label: "Deployment",
-      collapsed: false,
-      collapsible: false,
-      link: {
-        type: "doc",
-        id: "deployment/deployment",
-      },
-      items: [
-        "deployment/authenticators",
-        "deployment/branding",
-      ],
-    },
-     {
-      type: "category",
-      label: "Installation",
-      collapsed: false,
-      collapsible: false,
-      link: {
-        type: "doc",
-        id: "installation/installation",
-      },
-      items: [
-        "installation/install-authenticator",
-        "installation/update-authenticator",
-      ],
-    },
-    {
-      type: "category",
-      label: "Inventory",
-      collapsed: false,
-      collapsible: false,
-      link: {
-        type: "doc",
-        id: "inventory/inventory",
-      },
-      items: [
-        "inventory/device-inventory",
-        "inventory/endpoint-integrations",
-        "inventory/device-query",
+        "product-guides/device360",
+        "product-guides/secure-access",
+        "product-guides/secure-work",
+        "product-guides/darkguard",
       ],
     },
     {
       type: "category",
       label: "Directory",
       collapsed: false,
-      collapsible: false,
+      collapsible: true,
       link: {
         type: "doc",
         id: "directory/directory",
@@ -115,9 +55,52 @@ const sidebars = {
     },
     {
       type: "category",
+      label: "Inventory",
+      collapsed: false,
+      collapsible: true,
+      link: {
+        type: "doc",
+        id: "inventory/inventory",
+      },
+      items: [
+        "inventory/device-inventory",
+        "inventory/endpoint-integrations",
+        "inventory/device-query",
+      ],
+    },
+    {
+      type: "category",
+      label: "Deployment",
+      collapsed: false,
+      collapsible: true,
+      link: {
+        type: "doc",
+        id: "deployment/deployment",
+      },
+      items: [
+        "deployment/authenticators",
+        "deployment/branding",
+      ],
+    },
+    {
+      type: "category",
+      label: "Installation",
+      collapsed: false,
+      collapsible: true,
+      link: {
+        type: "doc",
+        id: "installation/installation",
+      },
+      items: [
+        "installation/install-authenticator",
+        "installation/update-authenticator",
+      ],
+    },
+    {
+      type: "category",
       label: "Auth & SSO",
       collapsed: false,
-      collapsible: false,
+      collapsible: true,
       link: {
         type: "doc",
         id: "auth-sso/auth-sso",
@@ -128,9 +111,23 @@ const sidebars = {
     },
     {
       type: "category",
+      label: "Tools",
+      collapsed: false,
+      collapsible: true,
+      link: {
+        type: "doc",
+        id: "tools/tools",
+      },
+      items: [
+        "tools/policy-and-simulation",
+        "tools/assessments",
+      ],
+    },
+    {
+      type: "category",
       label: "Release Notes",
       collapsed: false,
-      collapsible: false,
+      collapsible: true,
       link: {
         type: "doc",
         id: "release-notes/release-notes",
@@ -140,15 +137,31 @@ const sidebars = {
         "release-notes/console-release-notes",
       ],
     },
-
-     {
+    {
       type: "category",
-      label: "Resources",
-      collapsed: false,
-      collapsible: false,
+      label: "API Reference",
+      collapsed: true,
+      collapsible: true,
       link: {
         type: "doc",
-        id: "resources",
+        id: "api-reference/api-reference",
+      },
+      items: [
+        {
+          type: 'link',
+          label: 'Beyond Identity API',
+          href: '/api/v1',
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Resources",
+      collapsed: true,
+      collapsible: true,
+      link: {
+        type: "doc",
+        id: "resources/resources",
       },
       items: [
         "glossary",
