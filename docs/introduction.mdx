@@ -14,133 +14,114 @@ displayed_sidebar: mainSidebar
 ---
 
 import { Col, Divider, Row, Input } from "antd";
-import Stack from "@mui/material/Stack";
+import {Stack, Box} from "@mui/material";
 import Admonition from '@theme/Admonition';
 
 <Admonition type="caution" icon="" title="">
 Beyond Identity will be releasing a new, consolidated admin experience that incorporates our existing Secure Workforce product with two new products, Device360 and our Next Gen SSO. Post launch, Beyond Identity will communicate a migration plan to current customers.
-<br></br>
-Product Documentation and API Documentation for our current Secure Workforce customers is available here:
-- Secure Workforce Product Documentation - [https://support.beyondidentity.com/hc/en-us](https://support.beyondidentity.com)
-- Secure Workforce Rest API - [https://docs.beyondidentity.com/api/v0](/api/v0)
-- Secure Workforce Events API - [https://docs.beyondidentity.com/api/events/v0](/api/events/v0)
-<br></br>
-For any questions please contact <a href="mailto:support@beyondidentity.com">support@beyondidentity.com</a>
 </Admonition>
 
-<div class="intro-visual">
-  <Row wrap={true}>
-    <Col flex="1 1 600px">
-      <div class="intro-text">
-      Beyond Identity Documentation
-      </div>
-    </Col>
-    <Col flex="1 0 250px">
-      <div></div>
-    </Col>
-  </Row>
-</div>
+<Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+  <Stack direction={{ xs: 'column', sm: 'row' }} spacing={3} alignItems="center" sx={{ width: '100%' }}>
+  <Box sx={{ flexGrow: 1, flexShrink: 1, flexBasis: 'auto' }}>
+    <h1>Beyond Identity Secure Workforce Docs</h1>
+    <p>Know and control exactly who and what device is accessing your resources. Stay ahead of bad actors with all the clarity, control and precision you need in order to make informed security decisions, all in one platform.</p>
+  </Box>
+  <Box sx={{ flexShrink: 0 }}>
+    <img src="https://assets-global.website-files.com/657335d32052e5f1b9570244/65ef329bd8e562af50e2f541_phishing%20copy.png" alt="Docs" style={{ width: '500px', height: 'auto', maxWidth: '100%', border: 'none' }} />
+  </Box>
+  </Stack>
+</Box>
 
-<section class="intro-cards">
-  <div class="container intro-cards">
-    <Stack direction={{ xs: "column", sm: "row" }} spacing={3}>
-      <div>
-        <div class="card intro-card">
-          <a href="/docs/device360">
-            <div class="card__header">
-              <h3>
-                <svg
-                  width="16"
-                  height="24"
-                  viewBox="0 0 16 24"
-                  fill="blue"
-                  xmlns="http://www.w3.org/2000/svg"
-                  style={{ marginRight: "8px", transform: "translateY(4px)" }}
-                >
-                  <path
-                    d="M16 9H9.82999L10.29 0.290001C10.4 0.1 10.2 -0.1 10.1 0L0 14C-0.1 14.1 0 14.3 0.2 14.4L6.17001 15.5L5.71 22.71C5.7 22.9 5.9 23.1 6.1 23L16 9C16.1 8.9 16.1 8.7 16 8.6L16 9Z"
-                    fill="#2b4281"
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                Device360
-              </h3>
-            </div>
-            <div class="card__body">
-              <p>
-                <b>Identify risks in your device inventory</b>
-              </p>
-              <p>
-                Gain visibility into security vulnerabilities and misconfigurations, and use threat-hunting queries to identify risks.
-              </p>
+
+<section className="intro-cards">
+  <h2>Quick Links</h2>
+  <div className="container intro-cards">
+    <Stack direction={{ xs: 'column', sm: 'row' }} spacing={3} justifyContent="space-between" flexWrap="wrap">
+      {/* Each card container now directly controls its size */}
+      <div style={{ flexGrow: 1, minWidth: '250px', maxWidth: '1' }}>
+        <div className="card intro-card">
+          <a href="/docs/what-is-secure-workforce">
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <img src="https://byndid-public-assets.s3-us-west-2.amazonaws.com/logos/beyondidentity.png" alt="Introduction" style={{ marginRight: 16, pointerEvents: 'none' }} />
+              <p style={{ margin: 0 }}>Introduction</p>
             </div>
           </a>
         </div>
       </div>
-      <div>
-        <div class="card intro-card">
-          <a href="#">
-            <div class="card__header">
-              <h3>
-                <svg
-                  width="16"
-                  height="24"
-                  viewBox="0 0 16 24"
-                  fill="blue"
-                  xmlns="http://www.w3.org/2000/svg"
-                  style={{ marginRight: "8px", transform: "translateY(4px)" }}
-                >
-                  <path
-                    d="M16 9H9.82999L10.29 0.290001C10.4 0.1 10.2 -0.1 10.1 0L0 14C-0.1 14.1 0 14.3 0.2 14.4L6.17001 15.5L5.71 22.71C5.7 22.9 5.9 23.1 6.1 23L16 9C16.1 8.9 16.1 8.7 16 8.6L16 9Z"
-                    fill="#2b4281"
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                Secure Work - Next Generation
-              </h3>
-            </div>
-            <div class="card__body">
-              <p>
-                <b>Coming soon</b>
-              </p>
+
+      {/* Repeat for other cards */}
+      <div style={{ flexGrow: 1, minWidth: '250px', maxWidth: '1' }}>
+        <div className="card intro-card">
+          <a href="/api/v1">
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <img src="https://byndid-public-assets.s3-us-west-2.amazonaws.com/logos/beyondidentity.png" alt="API Reference" style={{ marginRight: 16, pointerEvents: 'none' }} />
+              <p style={{ margin: 0 }}>API Reference</p>
             </div>
           </a>
         </div>
       </div>
-      <div>
-        <div class="card intro-card">
-          <a href="#">
-            <div class="card__header">
-              <h3>
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  style={{ marginRight: "8px", transform: "translateY(2px)" }}
-                >
-                  <path
-                    d="M8,10 L16,10 L16,12 L8,12 L8,10
-                      M4,14 L12,14 L12,16 L4,16 L4,14 M12,14 L20,14 L20,16 L12,16 L12,14
-                      M0,18 L8,18 L8,20 L0,20 L0,18 M8,18 L16,18 L16,20 L8,20 L8,18 M16,18 L24,18 L24,20 L16,20 L16,18"
-                    fill="#2b4281"
-                  />
-                </svg>
-                SSO
-              </h3>
-            </div>
-            <div class="card__body">
-              <p>
-                <strong>Coming soon</strong>
-              </p>
+
+      <div style={{ flexGrow: 1, minWidth: '250px', maxWidth: '1' }}>
+        <div className="card intro-card">
+          <a href="/docs/release-notes">
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <img src="https://byndid-public-assets.s3-us-west-2.amazonaws.com/logos/beyondidentity.png" alt="Release Notes" style={{ marginRight: 16, pointerEvents: 'none' }} />
+              <p style={{ margin: 0 }}>Release Notes</p>
             </div>
           </a>
         </div>
       </div>
     </Stack>
-
   </div>
 </section>
+
+
+<section className="intro-cards">
+  <h2>Product Guides</h2>
+  <div className="container intro-cards">
+    <Stack direction={{ xs: 'column', sm: 'row' }} spacing={3} justifyContent="space-between" flexWrap="wrap">
+
+      <div style={{ flexGrow: 1, minWidth: '250px', maxWidth: '1' }}>
+        <div className="card intro-card">
+        <a href="/docs/device360" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none', color: 'inherit', textAlign: 'left' }}>
+            <img src="https://byndid-public-assets.s3-us-west-2.amazonaws.com/logos/beyondidentity.png" alt="Device360" style={{ marginBottom: 16, width: '50px', pointerEvents: 'none' }} />
+            <h3 style={{ marginBottom: 4 }}>Device360</h3>
+            <p>Identify risks in your device inventory</p>
+          </a>
+        </div>
+      </div>
+
+      <div style={{ flexGrow: 1, minWidth: '250px', maxWidth: '1' }}>
+        <div className="card intro-card">
+        <a href="/docs/secure-work" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none', color: 'inherit', textAlign: 'left' }}>
+            <img src="https://byndid-public-assets.s3-us-west-2.amazonaws.com/logos/beyondidentity.png" alt="Zero Trust Access (MFA)" style={{ marginBottom: 16, width: '50px', pointerEvents: 'none' }} />
+            <h3 style={{ marginBottom: 4 }}>Zero Trust Access (MFA)</h3>
+            <p>Passwordless, phishing-resistant MFA</p>
+          </a>
+        </div>
+      </div>
+
+      <div style={{ flexGrow: 1, minWidth: '250px', maxWidth: '1' }}>
+        <div className="card intro-card">
+        <a href="/docs/secure-access" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none', color: 'inherit', textAlign: 'left' }}>
+            <img src="https://byndid-public-assets.s3-us-west-2.amazonaws.com/logos/beyondidentity.png" alt="Next Gen SSO" style={{ marginBottom: 16, width: '50px', pointerEvents: 'none' }} />
+            <h3 style={{ marginBottom: 4 }}>Next Gen SSO</h3>
+            <p>Simple and Secure by Design</p>
+          </a>
+        </div>
+      </div>
+
+    </Stack>
+  </div>
+</section>
+
+<div className="intro-informational">
+      Product Documentation and API Documentation for our current Secure Workforce customers is available here:
+      <br></br>
+      - **Secure Workforce Product Documentation** - [https://support.beyondidentity.com/hc/en-us](https://support.beyondidentity.com)
+      - **Secure Workforce Rest API** - [https://docs.beyondidentity.com/api/v0](/api/v0)
+      - **Secure Workforce Events API** - [https://docs.beyondidentity.com/api/events/v0](/api/events/v0)
+      <br></br>
+      For any questions please contact <a href="mailto:support@beyondidentity.com">support@beyondidentity.com</a>
+  </div>
