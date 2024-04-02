@@ -18,7 +18,6 @@ const sidebars = {
       },
       items: [
         "introduction/what-is-secure-workforce",
-        "introduction/universal-passkeys",
         "introduction/faq",
       ],
     },
@@ -35,7 +34,6 @@ const sidebars = {
         "product-guides/device360",
         "product-guides/secure-access",
         "product-guides/secure-work",
-        "product-guides/darkguard",
       ],
     },
     {
@@ -120,7 +118,6 @@ const sidebars = {
       },
       items: [
         "tools/policy-and-simulation",
-        "tools/assessments",
       ],
     },
     {
