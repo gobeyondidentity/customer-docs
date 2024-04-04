@@ -104,7 +104,20 @@ const sidebars = {
         id: "auth-sso/auth-sso",
       },
       items: [
-        "auth-sso/okta-integration-guide",
+        "auth-sso/single-device-mfa",
+        {
+          type: "category",
+          label: "Product Integration Guides",
+          collapsed: true,
+          collapsible: true,
+          link: {
+            type: "doc",
+            id: "auth-sso/product-integration-guides/product-integration-guides",
+          },
+          items: [
+            "auth-sso/product-integration-guides/okta-integration-guide",
+          ],
+        },
       ],
     },
     {
