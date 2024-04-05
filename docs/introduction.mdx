@@ -16,6 +16,7 @@ displayed_sidebar: mainSidebar
 import { Col, Divider, Row, Input } from "antd";
 import {Stack, Box} from "@mui/material";
 import Admonition from '@theme/Admonition';
+import ImageSwitcher from "@site/src/components/ImageSwitcher.js";
 
 <Admonition type="caution" icon="" title="">
 Beyond Identity will be releasing a new, consolidated admin experience that incorporates our existing Secure Workforce product with two new products, Device360 and our Next Gen SSO. Post launch, Beyond Identity will communicate a migration plan to current customers.
@@ -43,7 +44,7 @@ Beyond Identity will be releasing a new, consolidated admin experience that inco
         <div className="card intro-card">
           <a href="/docs/what-is-secure-workforce">
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <img src="/img/globe.svg" alt="Introduction" style={{ marginRight: 16, pointerEvents: 'none', width: '24px' }} />
+              <ImageSwitcher id="globe" lightSrc={"/img/globe.svg"} darkSrc={"/img/globe-white.svg"} alt="Introduction" style={{ marginRight: 16, pointerEvents: 'none', width: '24px' }} />
               <p style={{ margin: 0 }}>Introduction</p>
             </div>
           </a>
@@ -55,7 +56,7 @@ Beyond Identity will be releasing a new, consolidated admin experience that inco
         <div className="card intro-card">
           <a href="/api/v1">
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <img src="/img/code-square.svg" alt="API Reference" style={{ marginRight: 16, pointerEvents: 'none', width: '24px' }} />
+              <ImageSwitcher id="globe" lightSrc={"/img/code-square.svg"} darkSrc={"/img/code-square-white.svg"} alt="API Reference" style={{ marginRight: 16, pointerEvents: 'none', width: '24px' }} />
               <p style={{ margin: 0 }}>API Reference</p>
             </div>
           </a>
@@ -66,7 +67,7 @@ Beyond Identity will be releasing a new, consolidated admin experience that inco
         <div className="card intro-card">
           <a href="/docs/release-notes">
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <img src="/img/file-text-fill.svg" alt="Release Notes" style={{ marginRight: 16, pointerEvents: 'none', width: '24px' }} />
+              <ImageSwitcher id="globe" lightSrc={"/img/file-text-fill.svg"} darkSrc={"/img/file-text-fill-white.svg"} alt="Release Notes" style={{ marginRight: 16, pointerEvents: 'none', width: '24px' }} />
               <p style={{ margin: 0 }}>Release Notes</p>
             </div>
           </a>
