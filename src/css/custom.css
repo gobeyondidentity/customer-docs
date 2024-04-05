@@ -249,6 +249,10 @@ div.image {
     color: white;
 }
 
+.navbar {
+  background: radial-gradient(circle at 70px -30px, #4e67a6 20px, #121212 120px);
+}
+
 /* Navbar */
 .navbar__logo,
 .navbar__logo img,
@@ -259,6 +263,33 @@ a[class^="sidebarLogo"] img {
 /* Docs Sidebar */
 nav[class^="menu"] {
     padding: 0.5rem;
+}
+
+/* Change the color of navbar items to white */
+.navbar__link,
+.navbar__item {
+    color: white !important; /* Use !important to override any other styles */
+}
+
+.navbar__toggle {
+    color: white !important;
+}
+
+.navbar .clean-btn {
+    color: white !important;
+}
+
+.navbar .clean-btn:hover {
+    color: black !important;
+}
+
+[data-theme="dark"] .navbar .clean-btn:hover {
+    color: white !important;
+}
+
+/* Update the color for the active navbar item if needed */
+.navbar__link--active {
+    color: white !important;
 }
 
 .menu__link {
