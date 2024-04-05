@@ -7,7 +7,6 @@
 /* Code */
 @import url("https://fonts.googleapis.com/css2?family=Overpass+Mono:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap");
 
-
 /* You can override the default Infima variables here. */
 :root {
     --ifm-color-primary: #3e5fb8; /* brand color  */
@@ -47,6 +46,10 @@
     --yellow: #ffc107;
     --neptune: #73bfbf;
     --beyond-blue: #3727d6;
+
+    --ifm-h1-font-size: 3.5rem;
+    --ifm-h2-font-size: 1.5rem;
+    --ifm-h3-font-size: 1.25rem;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -70,8 +73,28 @@ body {
     hyphens: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--ifm-heading-font-family);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--ifm-heading-font-family);
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+h1 {
+    font-size: var(--ifm-h1-font-size);
+}
+
+h2 {
+    font-size: var(--ifm-h2-font-size);
+}
+
+h3 {
+    font-size: var(--ifm-h3-font-size);
 }
 
 body,
@@ -97,23 +120,6 @@ pre > code {
     font-family: "Overpass Mono", monospace !important;
 }
 
-h1 {
-    font-size: 34px;
-    padding-top: 10px;
-}
-
-h2 {
-    font-size: 28px;
-}
-
-h3 {
-    font-size: 22px;
-}
-
-h4 {
-    font-size: 18px;
-}
-
 h2.glossary {
     border-bottom: 1px solid #cecece;
 }
@@ -126,26 +132,8 @@ code {
     vertical-align: baseline;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-feature-settings: "ss02", "ss03";
-    font-weight: 600;
-}
-
 :is(h1, h2, h3, h4, h5, h6) code {
     font-size: 0.9em;
-}
-
-.markdown h1:first-child {
-    --ifm-h1-font-size: 2.618rem;
-}
-
-.markdown h3 {
-    --ifm-h3-font-size: 1.25rem;
 }
 
 .markdown header:first-child + p {
@@ -156,7 +144,7 @@ h6 {
 
 p,
 li {
-    font-size: 16.5px;
+    font-size: 1.031rem;
     font-weight: normal;
     margin: 0;
     padding: 0;
@@ -231,7 +219,7 @@ div.image {
 ​ .footer {
     padding: 10px 0px;
     text-align: center;
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 .footer--dark {
     --ifm-footer-background-color: var(--ifm-background-color);
@@ -288,20 +276,23 @@ nav[class^="menu"] {
 .theme-doc-sidebar-item-category-level-1
     > .menu__list-item-collapsible
     > .menu__link {
-    font-family: var(--ifm-heading-font-family);
-    font-weight: 600;
-    font-size: 1rem;
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 0.875rem;
     color: var(--ifm-font-color-base);
     cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2.8px;
+    margin-top: 16px;
 }
 
 [data-theme="dark"]
     .theme-doc-sidebar-item-category-level-1
     > .menu__list-item-collapsible
     > .menu__link {
-    font-family: var(--ifm-heading-font-family);
+    font-family: "Inter", sans-serif;
     font-weight: 900;
-    font-size: 1rem;
+    font-size: 0.875rem;
     color: var(--ifm-font-color-base);
     cursor: pointer;
 }
@@ -309,8 +300,8 @@ nav[class^="menu"] {
 .theme-doc-sidebar-item-category-level-2
     > .menu__list-item-collapsible
     > .menu__link {
-    font-family: var(--ifm-heading-font-family);
-    font-weight: 500;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
     font-size: 1rem;
     color: var(--ifm-font-color-base);
     cursor: pointer;
@@ -320,8 +311,8 @@ nav[class^="menu"] {
     .theme-doc-sidebar-item-category-level-2
     > .menu__list-item-collapsible
     > .menu__link {
-    font-family: var(--ifm-heading-font-family);
-    font-weight: 800;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
     font-size: 1rem;
     color: var(--ifm-font-color-base);
     cursor: pointer;
@@ -333,7 +324,7 @@ nav[class^="menu"] {
 }
 
 .menu__list .menu__list {
-    margin-top: 0;
+    margin-top: 0px;
     margin-bottom: 0.12rem;
 }
 .menu__list-item:not(:first-child) {
@@ -348,6 +339,11 @@ nav[class^="menu"] {
     background-size: 1.5rem;
     transform: rotate(0deg);
 }
+
+.menu__link {
+    margin-top: 8px;
+}
+
 .menu__caret {
     margin: 0;
 }
@@ -428,7 +424,7 @@ p.table-list {
 
 .table-of-contents__link {
     text-decoration: none;
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 .table-of-contents__link--active {
     position: relative;
@@ -545,7 +541,7 @@ p.table-list {
 }
 
 .intro-informational {
-    background-color: #F6F6F6;
+    background-color: #f6f6f6;
     margin-right: 10px;
     margin-top: 30px;
     padding: 30px;
@@ -553,7 +549,7 @@ p.table-list {
 }
 
 [data-theme="dark"] .intro-informational {
-    background-color: #0A0A0A;
+    background-color: #0a0a0a;
 }
 
 [data-theme="dark"] .intro-visual {
@@ -570,14 +566,14 @@ p.table-list {
 
 .intro-text p {
     color: var(--ifm-color-primary-darkest) !important;
-    font-size: 40px;
+    font-size: 2.5rem;
     font-weight: bold;
     line-height: 1.4;
     margin: 16px 0;
 }
 
 .description-text {
-    font-size: 18px;
+    font-size: 1.125rem;
     line-height: 1.5;
     margin: 16px 0;
 }
@@ -603,23 +599,6 @@ p.table-list {
     text-align: center;
 }
 
-.intro-visual h5 {
-    font-size: 64px;
-    font-weight: 700;
-    padding-top: 25px;
-    margin: 0.35rem 0;
-    line-height: 64px;
-    color: var(--ifm-color-primary-darkest);
-}
-
-.intro-visual h4 {
-    color: var(--ifm-color-primary-darkest) !important;
-    font-size: 18px;
-    font-weight: 500;
-    margin: 0.25rem 0;
-    line-height: 1.4;
-}
-
 html[data-theme="dark"] .intro-visual h4 {
     color: white;
 }
@@ -634,18 +613,6 @@ html[data-theme="dark"] .intro-visual h4 {
 
 .center {
     text-align: center;
-}
-
-.intro-card {
-    flex: 1;
-    flex-wrap: 1;
-    justify-content: center;
-    border: none;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    text-align: center;
-    padding: 10px;
-    min-width: 250px;
 }
 
 .intro-cards {
@@ -668,7 +635,7 @@ html[data-theme="dark"] .intro-visual h4 {
 
 html[data-theme="dark"] .intro-card h3 {
     color: white;
-    font-size: 24px;
+    font-size: 1.5rem;
     line-height: 30px;
     margin-bottom: 8px;
 }
@@ -803,7 +770,7 @@ h4 a:hover {
 }
 
 .community a span {
-    font-size: 21px;
+    font-size: 1.313rem;
     line-height: 1.25;
     display: block;
     margin: 0;
@@ -899,19 +866,36 @@ html[data-theme="dark"] .card__header h4 {
 .card {
     transition: box-shadow 0.2s ease-in-out; /* This will animate the shadow */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Initial shadow */
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+}
+
+.intro-card {
+    flex: 1;
+    flex-wrap: 1;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    min-width: 250px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
 }
 
 .card:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    box-shadow: 0px 4px 8px -2px rgba(0, 0, 0, 0.10);
 }
 
 [data-theme="dark"] .card {
     transition: box-shadow 0.2s ease-in-out;
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0);
 }
 
 [data-theme="dark"] .card:hover {
-    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 4px 8px -2px rgba(0, 0, 0, 0.30);
 }
 
 /* SVG default color for light mode */
@@ -947,7 +931,7 @@ html[data-theme="dark"] .card__header h4 {
     padding: 9px 9px 6px 9px;
     background-color: #eee;
     border: none;
-    font-size: 14px;
+    font-size: 0.875rem;
     text-align: center;
     font-weight: 700;
     border-radius: 14px;
@@ -1010,14 +994,14 @@ html[data-theme="dark"] .card__header h4 {
     }
 
     .intro-visual h5 {
-        font-size: 40px;
+        font-size: 2.5rem;
         text-align: center;
         margin: 0;
         line-height: 120%;
     }
 
     .intro-visual h4 {
-        font-size: 16px;
+        font-size: 1rem;
         text-align: center;
         margin: 0;
     }
@@ -1102,17 +1086,17 @@ html[data-theme="dark"] .card__header h4 {
     }
     p,
     li {
-        font-size: 13px;
+        font-size: 0.813rem;
         margin: 0;
         padding: 0;
     }
 
     h1 {
-        font-size: 18pt;
+        font-size: 1.125rem;
         padding: 0;
     }
     h2 {
-        font-size: 15pt;
+        font-size: 0.938rem;
     }
 
     .markdown header:first-child + p {
@@ -1137,7 +1121,7 @@ html[data-theme="dark"] .card__header h4 {
     }
     th,
     td {
-        font-size: 11px;
+        font-size: 0.688rem;
         vertical-align: top;
     }
 }

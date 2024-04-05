@@ -21,29 +21,29 @@ import Admonition from '@theme/Admonition';
 Beyond Identity will be releasing a new, consolidated admin experience that incorporates our existing Secure Workforce product with two new products, Device360 and our Next Gen SSO. Post launch, Beyond Identity will communicate a migration plan to current customers.
 </Admonition>
 
-<Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+<Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', paddingTop: '72px', paddingBottom: '72px' }}>
   <Stack direction={{ xs: 'column', sm: 'row' }} spacing={3} alignItems="center" sx={{ width: '100%' }}>
   <Box sx={{ flexGrow: 1, flexShrink: 1, flexBasis: 'auto' }}>
     <h1>Beyond Identity Secure Workforce Docs</h1>
     <p>Know and control exactly who and what device is accessing your resources. Stay ahead of bad actors with all the clarity, control and precision you need in order to make informed security decisions, all in one platform.</p>
   </Box>
   <Box sx={{ flexShrink: 0 }}>
-    <img src="https://assets-global.website-files.com/657335d32052e5f1b9570244/65ef329bd8e562af50e2f541_phishing%20copy.png" alt="Docs" style={{ width: '500px', height: 'auto', maxWidth: '100%', border: 'none' }} />
+    <img src="/img/docs-image.png" alt="Docs" style={{ width: '500px', height: 'auto', maxWidth: '100%', border: 'none' }} />
   </Box>
   </Stack>
 </Box>
 
 
-<section className="intro-cards">
+<section className="intro-cards" style={{ paddingBottom: '64px' }}>
   <h2>Quick Links</h2>
-  <div className="container intro-cards">
+  <div className="intro-cards">
     <Stack direction={{ xs: 'column', sm: 'row' }} spacing={3} justifyContent="space-between" flexWrap="wrap">
       {/* Each card container now directly controls its size */}
       <div style={{ flexGrow: 1, minWidth: '250px', maxWidth: '1' }}>
         <div className="card intro-card">
           <a href="/docs/what-is-secure-workforce">
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <img src="https://byndid-public-assets.s3-us-west-2.amazonaws.com/logos/beyondidentity.png" alt="Introduction" style={{ marginRight: 16, pointerEvents: 'none' }} />
+              <img src="/img/globe.svg" alt="Introduction" style={{ marginRight: 16, pointerEvents: 'none', width: '24px' }} />
               <p style={{ margin: 0 }}>Introduction</p>
             </div>
           </a>
@@ -55,7 +55,7 @@ Beyond Identity will be releasing a new, consolidated admin experience that inco
         <div className="card intro-card">
           <a href="/api/v1">
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <img src="https://byndid-public-assets.s3-us-west-2.amazonaws.com/logos/beyondidentity.png" alt="API Reference" style={{ marginRight: 16, pointerEvents: 'none' }} />
+              <img src="/img/code-square.svg" alt="API Reference" style={{ marginRight: 16, pointerEvents: 'none', width: '24px' }} />
               <p style={{ margin: 0 }}>API Reference</p>
             </div>
           </a>
@@ -66,7 +66,7 @@ Beyond Identity will be releasing a new, consolidated admin experience that inco
         <div className="card intro-card">
           <a href="/docs/release-notes">
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <img src="https://byndid-public-assets.s3-us-west-2.amazonaws.com/logos/beyondidentity.png" alt="Release Notes" style={{ marginRight: 16, pointerEvents: 'none' }} />
+              <img src="/img/file-text-fill.svg" alt="Release Notes" style={{ marginRight: 16, pointerEvents: 'none', width: '24px' }} />
               <p style={{ margin: 0 }}>Release Notes</p>
             </div>
           </a>
@@ -77,15 +77,15 @@ Beyond Identity will be releasing a new, consolidated admin experience that inco
 </section>
 
 
-<section className="intro-cards">
+<section className="intro-cards" style={{ paddingBottom: '64px' }}>
   <h2>Product Guides</h2>
-  <div className="container intro-cards">
+  <div className="intro-cards">
     <Stack direction={{ xs: 'column', sm: 'row' }} spacing={3} justifyContent="space-between" flexWrap="wrap">
 
       <div style={{ flexGrow: 1, minWidth: '250px', maxWidth: '1' }}>
         <div className="card intro-card">
         <a href="/docs/device360" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none', color: 'inherit', textAlign: 'left' }}>
-            <img src="https://byndid-public-assets.s3-us-west-2.amazonaws.com/logos/beyondidentity.png" alt="Device360" style={{ marginBottom: 16, width: '50px', pointerEvents: 'none' }} />
+            <img src="/img/d360.svg" alt="Device360" style={{ marginBottom: 16, width: '56px', pointerEvents: 'none' }} />
             <h3 style={{ marginBottom: 4 }}>Device360</h3>
             <p>Identify risks in your device inventory</p>
           </a>
@@ -95,7 +95,7 @@ Beyond Identity will be releasing a new, consolidated admin experience that inco
       <div style={{ flexGrow: 1, minWidth: '250px', maxWidth: '1' }}>
         <div className="card intro-card">
         <a href="/docs/secure-work" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none', color: 'inherit', textAlign: 'left' }}>
-            <img src="https://byndid-public-assets.s3-us-west-2.amazonaws.com/logos/beyondidentity.png" alt="Zero Trust Access (MFA)" style={{ marginBottom: 16, width: '50px', pointerEvents: 'none' }} />
+            <img src="/img/pwlmfa.svg" alt="Zero Trust Access (MFA)" style={{ marginBottom: 16, width: '56px', pointerEvents: 'none' }} />
             <h3 style={{ marginBottom: 4 }}>Zero Trust Access (MFA)</h3>
             <p>Passwordless, phishing-resistant MFA</p>
           </a>
@@ -105,7 +105,7 @@ Beyond Identity will be releasing a new, consolidated admin experience that inco
       <div style={{ flexGrow: 1, minWidth: '250px', maxWidth: '1' }}>
         <div className="card intro-card">
         <a href="/docs/secure-access" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none', color: 'inherit', textAlign: 'left' }}>
-            <img src="https://byndid-public-assets.s3-us-west-2.amazonaws.com/logos/beyondidentity.png" alt="Next Gen SSO" style={{ marginBottom: 16, width: '50px', pointerEvents: 'none' }} />
+            <img src="/img/sso.svg" alt="Next Gen SSO" style={{ marginBottom: 16, width: '56px', pointerEvents: 'none' }} />
             <h3 style={{ marginBottom: 4 }}>Next Gen SSO</h3>
             <p>Simple and Secure by Design</p>
           </a>
@@ -116,12 +116,12 @@ Beyond Identity will be releasing a new, consolidated admin experience that inco
   </div>
 </section>
 
-<div className="intro-informational">
-      Product Documentation and API Documentation for our current Secure Workforce customers is available here:
-      <br></br>
-      - **Secure Workforce Product Documentation** - [https://support.beyondidentity.com/hc/en-us](https://support.beyondidentity.com)
-      - **Secure Workforce Rest API** - [https://docs.beyondidentity.com/api/v0](/api/v0)
-      - **Secure Workforce Events API** - [https://docs.beyondidentity.com/api/events/v0](/api/events/v0)
-      <br></br>
-      For any questions please contact <a href="mailto:support@beyondidentity.com">support@beyondidentity.com</a>
-  </div>
+<div className="intro-informational" style={{ marginBottom: '64px' }}>
+    Product Documentation and API Documentation for our current Secure Workforce customers is available here:
+    <br></br>
+    - **Secure Workforce Product Documentation** - [https://support.beyondidentity.com/hc/en-us](https://support.beyondidentity.com)
+    - **Secure Workforce Rest API** - [https://docs.beyondidentity.com/api/v0](/api/v0)
+    - **Secure Workforce Events API** - [https://docs.beyondidentity.com/api/events/v0](/api/events/v0)
+    <br></br>
+    For any questions please contact <a href="mailto:support@beyondidentity.com">support@beyondidentity.com</a>
+</div>
