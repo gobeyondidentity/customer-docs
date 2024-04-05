@@ -15,12 +15,25 @@ export enum Clip {
   OktaUserProfileUpdate = "iljH3CoAcw28z3HUcv3Y",
   OktaGroupCreation = "GZpjH3IgEnNWDbc5gqHx",
   OktaAPITokenGeneration = "AZQyqPiIAKm8bT0IYdhI",
+  OktaConfigurationAPIToken = "iljH3CoAcw28z3HUcv3Y",
+  IdentitiesAddId = "y8Zyxz7jbKLEmAtgvMyF",
+  IdentitiesSelectId = "uXu2DWJnIGaT6bWmWGuS",
+  IdentitiesAddPasskey = "X3d2DAvkEC0njEJfMWpS",
+  IdentitiesSendEmail = "eCHsTZeCYT5RluBym27z",
+  IdentitiesEditId = "PIM8rhVMC30oxdMZBMWk",
+  IdentitiesBindingJobsTab = "6zut5SV0T9V80kDdSJj9",
 }
 
 export const ClipPaddingBottom: { [key: string]: string } = {
   [Clip.OktaUserProfileUpdate]: "calc(50.546875% + 41px)",
   [Clip.OktaGroupCreation]: "calc(50.546875% + 41px)",
   [Clip.OktaAPITokenGeneration]: "calc(50.546875% + 41px)",
+  [Clip.IdentitiesAddId]: "calc(70.50359712230215% + 41px)",
+  [Clip.IdentitiesSelectId]: "calc(71.4478417266187% + 41px)",
+  [Clip.IdentitiesAddPasskey]: "calc(71.49280575539568% + 41px)",
+  [Clip.IdentitiesSendEmail]: "calc(72.52697841726618% + 41px)",
+  [Clip.IdentitiesEditId]: "calc(71.4478417266187% + 41px)",
+  [Clip.IdentitiesBindingJobsTab]: "calc(71.4478417266187% + 41px)",
 };
 
 /**
