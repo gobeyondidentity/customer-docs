@@ -22,6 +22,7 @@ export enum Clip {
   IdentitiesSendEmail = "eCHsTZeCYT5RluBym27z",
   IdentitiesEditId = "PIM8rhVMC30oxdMZBMWk",
   IdentitiesBindingJobsTab = "6zut5SV0T9V80kDdSJj9",
+  GroupsAddGroup = "X9i4RT2dx4vjdxLgwFDx",
 }
 
 export const ClipPaddingBottom: { [key: string]: string } = {
@@ -34,6 +35,7 @@ export const ClipPaddingBottom: { [key: string]: string } = {
   [Clip.IdentitiesSendEmail]: "calc(72.52697841726618% + 41px)",
   [Clip.IdentitiesEditId]: "calc(71.4478417266187% + 41px)",
   [Clip.IdentitiesBindingJobsTab]: "calc(71.4478417266187% + 41px)",
+  [Clip.GroupsAddGroupCallout]: "calc(64.92805755395683% + 41px)",
 };
 
 /**
