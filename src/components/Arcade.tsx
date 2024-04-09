@@ -22,7 +22,7 @@ export enum Clip {
   IdentitiesSendEmail = "eCHsTZeCYT5RluBym27z",
   IdentitiesEditId = "PIM8rhVMC30oxdMZBMWk",
   IdentitiesBindingJobsTab = "6zut5SV0T9V80kDdSJj9",
-  GroupsAddGroup = "X9i4RT2dx4vjdxLgwFDx",
+  GroupsAddGroupCallout = "ZOGqnheQpo9C4tAywQOm",
 }
 
 export const ClipPaddingBottom: { [key: string]: string } = {
