@@ -36,7 +36,6 @@ const config = {
         docs: {
           breadcrumbs: true,
           sidebarPath: require.resolve('./sidebars.js'),
-          // routeBasePath: '/',
           path: 'docs',
           showLastUpdateTime: true,
           editUrl:
@@ -124,30 +123,9 @@ const config = {
       docsDir: './docs/',
       glossaryFilepath: './docs/glossary.mdx'
     }],
-    // "@chatwoot/docusaurus-plugin",
-    // [
-    //   require.resolve("@easyops-cn/docusaurus-search-local"),
-    //   {
-    //     indexDocs: true,
-    //     indexBlog: false,
-    //     indexPages: true,
-    //     language: "en",
-    //     hashed: true,
-    //   },
-    // ],
+    require.resolve("@easyops-cn/docusaurus-search-local"),
   ],
-  scripts: [
-    {
-      src:
-        'https://cdn.optimizely.com/js/22297341556.js',
-      async: false,
-    },
-    {
-      src:
-        '/js/loadtags.js',
-      async: true,
-    },
-  ],
+  scripts: [],
   themeConfig:
     ({
       docs: {
@@ -173,21 +151,6 @@ const config = {
           className: 'header-logo',
         },
         items: [
-          // {
-          //   type: 'dropdown',
-          //   label: 'REST API',
-          //   position: 'left',
-          //   items: [
-          //     {
-          //       label: 'v1 (unreleased)',
-          //       to: '/api/v1',
-          //     },
-          //     {
-          //       label: 'v0',
-          //       to: '/api/v0',
-          //     },
-          //   ],
-          // },
           { to: "/docs/release-notes", label: "Release Notes", position: "left" },
           {
             type: "docsVersionDropdown",
@@ -195,33 +158,6 @@ const config = {
             dropdownItemsBefore: [],
             dropdownActiveClassDisabled: true,
           },
-
-          // {
-          //   href: "https://www.beyondidentity.com/developers/signup",
-          //   label: "Signup",
-          //   position: 'right',
-          // },
-          // {
-          //   type: 'dropdown',
-          //   label: 'Login',
-          //   position: 'right',
-          //   items: [
-          //     {
-          //       href: "https://console-us.beyondidentity.com/login",
-          //       label: "Login-US",
-          //     },
-          //     {
-          //       href: "https://console-eu.beyondidentity.com/login",
-          //       label: "Login-EU",
-          //     },
-          //   ],
-          // },
-/*          {
-            href: "https://join.slack.com/t/byndid/shared_invite/zt-1anns8n83-NQX4JvW7coi9dksADxgeBQ",
-            label: "Join Slack",
-            position: "right",
-          },
-*/
         ],
       },
       footer: {
@@ -242,42 +178,6 @@ const config = {
           }
         }
       },
-      hubspot: {
-        accountId: "7364297",
-      },
-      algolia: {
-        // The application ID provided by Algolia
-        appId: '4P4Q3C985L',
-
-        // Public API key: it is safe to commit it
-        apiKey: 'bbddcf64f82147a7adaa021dd3e7f88b',
-
-        indexName: 'docs.beyondidentity.com',
-
-        // Optional: see doc section below
-        contextualSearch: false,
-
-        // // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-        // externalUrlRegex: 'external\\.com|domain\\.com',
-
-        // // Optional: Algolia search parameters
-        searchParameters: {
-          facetFilters: [],
-        },
-
-        // // Optional: path for search page that enabled by default (`false` to disable it)
-        // searchPagePath: 'search',
-
-      },
-
-      // announcementBar: {
-      //   id: 'support_us',
-      //   content:
-      //     '👋 We\'re working on a new doc site.  <a rel="noopener noreferrer" href="/docs/"><b>Check it out!</b></a>&nbsp;&nbsp;Go back to <a href="/docs/v1/introduction">v1</a>.',
-      //   backgroundColor: '#b9c5e7',
-      //   textColor: '#091E42',
-      //   isCloseable: false,
-      // },
     }),
 };
 
