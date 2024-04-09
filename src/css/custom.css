@@ -265,30 +265,21 @@ nav[class^="menu"] {
     padding: 0.5rem;
 }
 
-/* Change the color of navbar items to white */
 .navbar__link,
-.navbar__item {
-    color: white !important; /* Use !important to override any other styles */
-}
-
-.navbar__toggle {
+.navbar__items--right {
     color: white !important;
 }
 
-.navbar .clean-btn {
+.navbar__link,
+.navbar__items {
     color: white !important;
 }
 
-.navbar .clean-btn:hover {
+.navbar__items--right .clean-btn:hover {
     color: black !important;
 }
 
-[data-theme="dark"] .navbar .clean-btn:hover {
-    color: white !important;
-}
-
-/* Update the color for the active navbar item if needed */
-.navbar__link--active {
+[data-theme="dark"] .navbar__items--right .clean-btn:hover {
     color: white !important;
 }
 
@@ -644,9 +635,6 @@ html[data-theme="dark"] .intro-visual h4 {
 
 .center {
     text-align: center;
-}
-
-.intro-cards {
 }
 
 .next-steps-cards {
