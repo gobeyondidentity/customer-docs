@@ -47,9 +47,10 @@
     --neptune: #73bfbf;
     --beyond-blue: #3727d6;
 
-    --ifm-h1-font-size: 3.5rem;
-    --ifm-h2-font-size: 1.5rem;
-    --ifm-h3-font-size: 1.25rem;
+    --ifm-h1-font-size: 3rem;
+    --ifm-h2-font-size: 2rem;
+    --ifm-h3-font-size: 1.5rem;
+    --ifm-h4-font-size: 1.25rem;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -71,6 +72,7 @@ body {
     -webkit-hyphens: none;
     -ms-hyphens: none;
     hyphens: none;
+    font-size: 1rem;
 }
 
 h1,
@@ -82,7 +84,8 @@ h6 {
     font-family: var(--ifm-heading-font-family);
     font-style: normal;
     font-weight: 700;
-    line-height: normal;
+    line-height: 1.2;
+    letter-spacing: 0rem;
 }
 
 h1 {
@@ -95,6 +98,12 @@ h2 {
 
 h3 {
     font-size: var(--ifm-h3-font-size);
+    margin-top: 4rem !important;
+}
+
+h4 {
+    font-size: var(--ifm-h4-font-size);
+    margin-top: 4rem !important;
 }
 
 body,
@@ -144,7 +153,9 @@ code {
 
 p,
 li {
-    font-size: 1.031rem;
+    font-size: 1rem;
+    letter-spacing: 0rem;
+    line-height: 1.4;
     font-weight: normal;
     margin: 0;
     padding: 0;
@@ -295,6 +306,11 @@ nav[class^="menu"] {
     transition: none;
 }
 
+.theme-doc-sidebar-item-link-level-1 > .menu__link {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
 .theme-doc-sidebar-item-category-level-1
     > .menu__list-item-collapsible
     > .menu__link {
@@ -305,7 +321,8 @@ nav[class^="menu"] {
     cursor: pointer;
     text-transform: uppercase;
     letter-spacing: 2.8px;
-    margin-top: 16px;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 
 [data-theme="dark"]
@@ -322,27 +339,30 @@ nav[class^="menu"] {
 .theme-doc-sidebar-item-category-level-2
     > .menu__list-item-collapsible
     > .menu__link {
-    font-family: "Inter", sans-serif;
-    font-weight: 400;
     font-size: 1rem;
-    color: var(--ifm-font-color-base);
-    cursor: pointer;
-}
-
-[data-theme="dark"]
-    .theme-doc-sidebar-item-category-level-2
-    > .menu__list-item-collapsible
-    > .menu__link {
-    font-family: "Inter", sans-serif;
-    font-weight: 400;
-    font-size: 1rem;
-    color: var(--ifm-font-color-base);
-    cursor: pointer;
+    font-weight: 500;
+    line-height: 1.2rem;
+    color: var(--ifm-color-content-secondary);
+    min-height: 1.2rem;
+    position: relative;
+    text-decoration: none;
+    transition: none;
+    padding-top: 12px;
+    padding-bottom: 12px;
 }
 
 .theme-doc-sidebar-item-link-level-2 .menu__link {
     font-size: 1rem;
     font-weight: var(--ifm-font-weight-normal);
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.theme-doc-sidebar-item-link-level-3 .menu__link {
+    font-size: 1rem;
+    font-weight: var(--ifm-font-weight-normal);
+    padding-top: 12px;
+    padding-bottom: 12px;
 }
 
 .menu__list .menu__list {
@@ -363,7 +383,8 @@ nav[class^="menu"] {
 }
 
 .menu__link {
-    margin-top: 8px;
+    /* padding-top: 16px;
+    padding-bottom: 16px; */
 }
 
 .menu__caret {
@@ -547,6 +568,18 @@ p.table-list {
 
 [data-theme="dark"] .card {
     border: 0.5px solid #cecece26;
+}
+
+.header-logo {
+    padding: 4px;
+}
+
+.intro-card-heading {
+    font-size: 1.25rem !important;
+    letter-spacing: 0rem;
+    line-height: 1.2;
+    font-weight: 700;
+    font-family: var(--ifm-heading-font-family);
 }
 
 .intro-visual {
