@@ -5,6 +5,11 @@ description: "Learn about groups in Beyond Identity."
 slug: /groups
 keywords:
   - groups
+  - add groups
+  - add users to groups
+  - add group members
+  - edit groups
+  - delete groups
 pagination_next: null
 pagination_prev: null
 last_update:
@@ -17,7 +22,49 @@ hide_breadcrumbs: false
 doc_type: overview
 displayed_sidebar: mainSidebar
 ---
-Groups help you organize access to applications.
+import Arcade, {Clip} from '@site/src/components/Arcade.tsx';
 
-## Add a Group
-Coming soon!
+## Manage Groups
+Groups help you allow or deny access to applications for multiple users (identities) based on policies. An accountant in HR can be a member of multiple groups. For example, a user in HR could be a member of the following:
+- General group (all employees)
+- HR group
+- Financial group
+
+
+## Add a Group and Assign Users
+
+1. Navigate to **Directory > Groups** and click **Add group**.
+
+2. Enter a name and description of the group, and then click on **Add group**.
+
+3. Click the newly created group name on the Groups page.
+
+4. Click on **Add group member**.
+
+5. Select a user from the **Select user identities** drop-down. Select the drop-down again to add more users to the group.
+
+6. Click on **Add to group**.
+
+   <Arcade clip={Clip.GroupsAddGroupCallout} />
+
+
+## Edit or Delete Users
+
+1. Navigate to **Directory > Groups** and click a group name.
+
+2. Click **Edit group**.
+
+3. Update the fields as needed and click **Save**.
+
+   -Or-
+
+   Click **Delete group**.
+
+
+## Remove a User from a Group
+
+1. Navigate to **Directory > Groups** and click a group name.
+
+2. Select the checkbox beside one or more group members.
+
+3. Click on **Remove group members**.
