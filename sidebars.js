@@ -82,20 +82,6 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Installation",
-      collapsed: false,
-      collapsible: true,
-      link: {
-        type: "doc",
-        id: "installation/installation",
-      },
-      items: [
-        "installation/install-authenticator",
-        "installation/update-authenticator",
-      ],
-    },
-    {
-      type: "category",
       label: "Auth & SSO",
       collapsed: false,
       collapsible: true,

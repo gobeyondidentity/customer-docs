@@ -42,11 +42,11 @@ const config = {
             'https://github.com/gobeyondidentity/customer-docs/edit/main',
           versions: {
             current: {
-              label: "Device360",
+              label: "Next Gen",
               path: "",
             },
             v0: {
-              label: "Secure Work API",
+              label: "Secure Workforce API",
               path: "v0",
             },
           },
