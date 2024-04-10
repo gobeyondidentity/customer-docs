@@ -37,7 +37,7 @@ function UnmaintainedVersionLabel({siteTitle, versionMetadata}) {
         versionLabel: <b>{versionMetadata.label}</b>,
       }}>
       {
-        'This is documentation for {siteTitle} {versionLabel} API Docs only.'
+        'This is documentation for {siteTitle} and our {versionLabel} Docs only.'
       }
     </Translate>
   );
@@ -69,7 +69,7 @@ function LatestVersionSuggestionLabel({versionLabel, to, onClick}) {
             </Link>
           </b>
         ),
-        
+
       }}>
       {
         'For our new products: Device360 and Growth Tools please see our {latestVersionLink} ({versionLabel}).'
