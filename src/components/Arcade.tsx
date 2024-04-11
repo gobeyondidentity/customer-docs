@@ -12,10 +12,12 @@ import React from "react";
  */
 
 export enum Clip {
-  OktaUserProfileUpdate = "iljH3CoAcw28z3HUcv3Y",
-  OktaGroupCreation = "GZpjH3IgEnNWDbc5gqHx",
-  OktaAPITokenGeneration = "AZQyqPiIAKm8bT0IYdhI",
-  OktaConfigurationAPIToken = "iljH3CoAcw28z3HUcv3Y",
+  OktaIntegrationGuideCreateByndidRegisteredAttribute = "FpkNxrW9ynF3IZPOJ9aY",
+  OktaIntegrationGuideUpdateByndidRegisteredAttribute = "ugWYLymXXcV2IAenTksk",
+  OktaIntegrationGuideGroupCreation = "bsSTVqNn8EV6tZZbAyOC",
+  OktaIntegrationGuideAPITokenGeneration = "PU4cOJiuF5yGTwms9iwY",
+  OktaIntegrationGuideCreateBeyondIdentityIdp = "fLDyfovtLuiJlv2QlnS2",
+  OktaIntegrationGuideCreateOktaIdp = "3qtdBJu0hGFyXQJRMNdF",
   IdentitiesAddId = "y8Zyxz7jbKLEmAtgvMyF",
   IdentitiesSelectId = "uXu2DWJnIGaT6bWmWGuS",
   IdentitiesAddPasskey = "X3d2DAvkEC0njEJfMWpS",
@@ -26,9 +28,12 @@ export enum Clip {
 }
 
 export const ClipPaddingBottom: { [key: string]: string } = {
-  [Clip.OktaUserProfileUpdate]: "calc(50.546875% + 41px)",
-  [Clip.OktaGroupCreation]: "calc(50.546875% + 41px)",
-  [Clip.OktaAPITokenGeneration]: "calc(50.546875% + 41px)",
+  [Clip.OktaIntegrationGuideCreateByndidRegisteredAttribute]: "calc(50.520833333333336% + 41px)",
+  [Clip.OktaIntegrationGuideUpdateByndidRegisteredAttribute]: "calc(50.520833333333336% + 41px)",
+  [Clip.OktaIntegrationGuideGroupCreation]: "calc(50.520833333333336% + 41px)",
+  [Clip.OktaIntegrationGuideAPITokenGeneration]: "calc(50.520833333333336% + 41px)",
+  [Clip.OktaIntegrationGuideCreateBeyondIdentityIdp]: "calc(50.520833333333336% + 41px)",
+  [Clip.OktaIntegrationGuideCreateOktaIdp]: "calc(50.520833333333336% + 41px)",
   [Clip.IdentitiesAddId]: "calc(70.50359712230215% + 41px)",
   [Clip.IdentitiesSelectId]: "calc(71.4478417266187% + 41px)",
   [Clip.IdentitiesAddPasskey]: "calc(71.49280575539568% + 41px)",

@@ -98,12 +98,10 @@ h2 {
 
 h3 {
     font-size: var(--ifm-h3-font-size);
-    margin-top: 4rem !important;
 }
 
 h4 {
     font-size: var(--ifm-h4-font-size);
-    margin-top: 4rem !important;
 }
 
 body,
@@ -572,6 +570,10 @@ p.table-list {
 
 .header-logo {
     padding: 4px;
+}
+
+[data-theme="light"] .navbar-sidebar__brand .header-logo {
+    filter: invert(100%);
 }
 
 .intro-card-heading {
