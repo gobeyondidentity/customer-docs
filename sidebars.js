@@ -62,7 +62,6 @@ const sidebars = {
       },
       items: [
         "inventory/device-inventory",
-        "inventory/endpoint-integrations",
         "inventory/device-query",
       ],
     },
