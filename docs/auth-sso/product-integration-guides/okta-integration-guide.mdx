@@ -82,69 +82,99 @@ To create a Beyond Identity account, please [click here](https://www.beyondident
 
 ---
 
-## 1. Set Up Okta
+## 1. Enable User Syncing between Okta and Beyond Identity
 
 ### 🟠 Update User Profile Attributes
 
 To enable Okta to automatically direct users registered with Beyond Identity towards a passwordless authentication flow, define a custom attribute named "byndidRegistered" on an Okta User's profile.
 
-<Arcade clip={Clip.OktaUserProfileUpdate} />
+<Arcade clip={Clip.OktaIntegrationGuideCreateByndidRegisteredAttribute} />
+
+Once you've created the "byndidRegistered" attribute, update the profile source to inherit from Okta.
+
+<Arcade clip={Clip.OktaIntegrationGuideUpdateByndidRegisteredAttribute} />
 
 ### 🟠 Create a Beyond Identity Group
 
 To enable specific users to authenticate passwordlessly with Beyond Identity, you shold create a group and include those users in it.
 
-<Arcade clip={Clip.OktaGroupCreation} />
+<Arcade clip={Clip.OktaIntegrationGuideGroupCreation} />
 
 ### 🟠 Generate an API Token
 
 To successfully integrate Beyond Identity with Okta, the first step involves registering a credential on the user's device. Following this successful registration, Beyond Identity must notify Okta that the user is now equipped to authenticate using Beyond Identity. This notification is facilitated through the `byndidRegistered` attribute, which you would have configured previously. It is necessary for Beyond Identity to possess an Okta API token in order to communicate the update to Okta.
 
-<Arcade clip={Clip.OktaAPITokenGeneration} />
-
----
-
-## 2. Set Up Beyond Identity
+<Arcade clip={Clip.OktaIntegrationGuideAPITokenGeneration} />
 
 ### 🔵 Create a Directory Integration
 - Go to directory integrations -> Add Directory -> Okta
-- Enter your API token where requested
+- Enter your Okta API token where requested
 - Select bearer token for SCIM -> click save
 - Keep the bearer token handy
 
 TODO: Add arcade here
 
-### 🔵 Create an Identity Provider
-- Auth & SSO -> Add Identity Provider
-- Keep Values Handy
-
-TODO: Add arcade here
-
----
-
-## 3. Integrate Beyond Identity with Okta
-
-### 🟠 Configure the Identity Provider
-- Set up OIDC identity provider.
-- Copy values from BI.
-- Save Identity provider
-- Set up routing rules for byndidRegistered attribute
-
-TODO: Add arcade here
-
----
-
 ### 🟠 Synchronize Users via SCIM
 - In Okta Set up a SCIM application
-- Paste in SCIM information from BI directory integration
+- Paste in SCIM information (bearer token) from BI directory integration
 
 TODO: Add arcade here
 
 ---
 
-## 4. Enroll Users
+## 2. Enable Authentication Using Beyond Identity
 
-### 🟠 Add Users to Beyond Identity Group
+
+### 🔵 Create an Identity Provider in Beyond Identity
+
+Enable Okta to use Beyond Identity for authentication by setting it up as an identity provider. This is achieved by creating an identity provider within the Beyond Identity Admin Console. After creating the identity provider, the status will display `Not Installed`. This indicates that you will need to revisit this section to enter a redirect URI once you have set up an identity provider in Okta.
+
+<Arcade clip={Clip.OktaIntegrationGuideCreateBeyondIdentityIdp} />
+
+:::info
+
+Notice the important values section at the bottom of the Identity Provider creation screen. You will need to copy a few of these URLs over to Okta in a later section.
+
+<br></br>
+
+![Beyond Identity IdP Important Values](../../images/okta-integration-guide/beyond-identity-idp-important-values.png)
+
+:::
+
+### 🟠 Create an Identity Provider in Okta
+
+Create an OpenID Connect Identity Provider in Okta.
+
+<Arcade clip={Clip.OktaIntegrationGuideCreateOktaIdp} />
+
+### 🟠 Configure the Identity Provider in Okta
+
+Configure the OpenID Connect Identity Provider in Okta with the following values and click finish to save the Idp:
+
+| Field                   | Expected Value                                             |
+|-------------------------|------------------------------------------------------------|
+| Name                    | Beyond Identity                                            |
+| IdP Usage               | SSO only                                                   |
+| Scopes                  | email openid                                               |
+| Client ID               | Copy over from important values in the Beyond Identity IdP |
+| Client Secret           | Copy over from important values in the Beyond Identity IdP |
+| Issuer                  | Copy over from important values in the Beyond Identity IdP |
+| Authorization endpoint  | Copy over from important values in the Beyond Identity IdP |
+| Token endpoint          | Copy over from important values in the Beyond Identity IdP |
+| JWKS endpoint           | Copy over from important values in the Beyond Identity IdP |
+| IdP username            | idpuser.email                                               |
+| Match against           | Okta Username                                               |
+| Account Link Policy     | Automatic                                                   |
+| Auto-Link Restrictions  | None                                                        |
+
+### 🔵 Configure the Identity Provider in Beyond Identity
+- Copy redirect uri from Okta into Beyond Identity
+
+---
+
+## 3. Enroll Users
+
+### 🟠 Add Users to the Beyond Identity Group
 - Suggestion: Start with a small group
 - Add user to Beyond Identity Group
 
@@ -159,7 +189,7 @@ TODO: Add arcade here
 
 ---
 
-## 5. Managing User Access
+## 4. Managing User Access
 
 ### 🟠 Disable Beyond Identity Authentication
 - Remove user from "Beyond Identity" group in Okta
