@@ -17,7 +17,7 @@ const sidebars = {
         id: "introduction/introduction",
       },
       items: [
-        "introduction/get-started-with-bi",
+        "introduction/getting-started",
         "introduction/faq",
       ],
     },
