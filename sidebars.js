@@ -17,7 +17,7 @@ const sidebars = {
         id: "introduction/introduction",
       },
       items: [
-        "introduction/what-is-secure-workforce",
+        "introduction/getting-started",
         "introduction/faq",
       ],
     },
