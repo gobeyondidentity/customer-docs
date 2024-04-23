@@ -48,7 +48,22 @@ const sidebars = {
       items: [
         "directory/identities",
         "directory/groups",
-        "directory/directory-integrations",
+        // "directory/directory-integrations",
+        {
+          type: "category",
+          label: "Directory Integrations",
+          collapsed: true,
+          collapsible: true,
+          link: {
+            type: "doc",
+            id: "directory/directory-integrations/directory-integrations",
+          },
+          items: [
+            // "auth-sso/product-integration-guides/okta-integration-guide",
+            "directory/directory-integrations/directory-integrations-generic-scim",
+            "directory/directory-integrations/directory-integrations-okta"
+          ],
+        },
       ],
     },
     {
@@ -100,7 +115,7 @@ const sidebars = {
             id: "auth-sso/product-integration-guides/product-integration-guides",
           },
           items: [
-            "auth-sso/product-integration-guides/okta-integration-guide",
+            "auth-sso/product-integration-guides/product-integration-guides-okta",
           ],
         },
       ],

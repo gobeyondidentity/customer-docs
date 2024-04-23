@@ -1,0 +1,58 @@
+---
+title: Okta
+id: directory-integrations-okta
+description: "Learn how to create a directory integration for Okta."
+slug: /directory-integrations/okta
+keywords:
+  - Generic SCIM
+  - Okta
+  - Directory Integrations
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 04/23/2024
+  author: Ismail Mustafa
+draft: false
+hide_table_of_contents: false
+hide_title: false
+hide_breadcrumbs: false
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+
+import Arcade, {Clip} from '@site/src/components/Arcade.tsx';
+
+## 1. Generate Credentials
+
+Depending on the requirements of the system you are connecting to, you can generate a bearer token or client credentials. Select which one you would like to generate and click on **Generate**.
+
+| Credentials Type   | Description                                                                  | What it Looks Like                                                                       |
+| ------------------ | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Client Credentials | Upon selection, you will be provided with a `client_id` and `client_secret`. | ![Generic SCIM Client Credentials](../../../static/img/generic-scim-client-credentials.png) |
+| Bearer Token       | If you select bearer token, you will see a token displayed.                  | ![Generic SCIM Bearer Token](../../../static/img/generic-scim-bearer-token.png)             |
+
+<br></br>
+
+## 2. Configure Registration Attribute
+
+### Configure Okta with the `byndidRegistered` Attribute
+
+To enable Okta to automatically direct users registered with Beyond Identity towards a passwordless authentication flow, define a custom attribute named "byndidRegistered" on an Okta User's profile.
+
+<Arcade clip={Clip.OktaIntegrationGuideCreateByndidRegisteredAttribute} />
+
+Once you've created the "byndidRegistered" attribute, update the profile source to inherit from Okta.
+
+<Arcade clip={Clip.OktaIntegrationGuideUpdateByndidRegisteredAttribute} />
+
+### Generate an API Token in Okta
+
+In order for Beyond Identity to communicate with Okta and update the `byndidRegistered` attribute for each user, you will need to generate an Okta API token.
+
+<Arcade clip={Clip.OktaIntegrationGuideAPITokenGeneration} />
+
+### Finish Configuring the Okta Directory Integration
+
+Finish configuring your Okta registration attribute by entering your Okta domain as well as the API token you created in the step above.
+
+![Okta Registration Sync](../../../static/img/okta-registration-sync.png)
