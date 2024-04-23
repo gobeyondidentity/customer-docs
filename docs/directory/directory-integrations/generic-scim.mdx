@@ -1,0 +1,35 @@
+---
+title: Generic SCIM
+id: directory-integrations-generic-scim
+description: "Learn how to create and use a generic SCIM directory integration."
+slug: /directory-integrations/generic-scim
+keywords:
+  - Generic SCIM
+  - Directory Integrations
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 04/23/2024
+  author: Ismail Mustafa
+draft: false
+hide_table_of_contents: false
+hide_title: false
+hide_breadcrumbs: false
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+
+## 1. Generate Credentials
+
+Depending on the requirements of the system you are connecting to, you can generate a bearer token or client credentials. Select which one you would like to generate and click on **Generate**.
+
+| Credentials Type   | Description                                                                  | What it Looks Like                                                                       |
+| ------------------ | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Client Credentials | Upon selection, you will be provided with a `client_id` and `client_secret`. | ![Generic SCIM Client Credentials](../../../static/img/generic-scim-client-credentials.png) |
+| Bearer Token       | If you select bearer token, you will see a token displayed.                  | ![Generic SCIM Bearer Token](../../../static/img/generic-scim-bearer-token.png)             |
+
+<br></br>
+
+## 3. Copy Values into Receiving Application
+
+After generating credentials, the SCIM URL will also be displayed. You will need to copy this URL into the application you are configuring along with the credentials you generated above.
