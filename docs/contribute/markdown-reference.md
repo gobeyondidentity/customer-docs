@@ -2,10 +2,10 @@
 title: "Markdown Reference Guide"
 id: markdown-reference
 description: ""
-slug: /markdown-reference
+slug: /contribute/markdown-reference
 pagination_next: null
 pagination_prev: null
-last_update: 
+last_update:
    date: 07/20/2023
    author: Patricia McPhee
 draft: false
@@ -31,7 +31,7 @@ displayed_sidebar: contributorGuideSidebar
 
 ## Headings
 
-All heading levels (e.g., H1, H2, etc.), are marked by the hashtag (#) at the beginning of a line.  
+All heading levels (e.g., H1, H2, etc.), are marked by the hashtag (#) at the beginning of a line.
 
 :::note important
 Avoid using h1 (#) headings. The metadata tile represents this heading level and is automatically displayed. Always start with h2 (##), and respect the order h2 → h3 → h4. Never skip the hierarchy level, such as h2 → h4. Avoid h5 and h6 as much as possible. If you have content with h5 and h6 headers, rethink the structure of your document. Can the content be better scanned in a table or bullet list?
@@ -70,7 +70,7 @@ Also, put blank lines before and after a heading.
 
 ### Link with tooltip
 
-You can add a tool tip to the link to help users learn more about where the link will take them (to avoid click bait). 
+You can add a tool tip to the link to help users learn more about where the link will take them (to avoid click bait).
 
 ```md
 [have a title](<https://somecompany.com> "Awesome tooltip")
@@ -112,7 +112,7 @@ You can add a tool tip to the link to help users learn more about where the link
 
 ## Images
 
-Images can also be inline or use a reference style, like links, but with an exclamation point (!) at the front of the path. 
+Images can also be inline or use a reference style, like links, but with an exclamation point (!) at the front of the path.
 
 ### Inline style
 
@@ -158,11 +158,11 @@ import AuthenticationRequestDiagram from '../images/passkey-workflow-diagram.png
 
 ## Lists
 
-Lists are made by using indentation and a beginning-of-line marker to indicate a list item. 
+Lists are made by using indentation and a beginning-of-line marker to indicate a list item.
 
 ### Unordered lists
 
-Unordered lists can use an asterisk (`*`), plus (`+`), or minus (`-`) to indicate each list item. 
+Unordered lists can use an asterisk (`*`), plus (`+`), or minus (`-`) to indicate each list item.
 
 ```md
 * One item
@@ -180,7 +180,7 @@ Unordered lists can use an asterisk (`*`), plus (`+`), or minus (`-`) to indicat
 * Fourth item
 * Fifth item
 
-Don’t mix and match delimiters in the same list — pick one and stick with it. 
+Don’t mix and match delimiters in the same list — pick one and stick with it.
 
 | :white_check_mark: **DO** | :no_entry_sign: **DON'T** |
 | --- | --- |
@@ -207,7 +207,7 @@ OR
 1. Step
 ```
 
-<h4>Output example</h4> 
+<h4>Output example</h4>
 
 1. Step
 1. Step
@@ -216,7 +216,7 @@ OR
 
 ### Nested unordered lists
 
-Remember to pick a delimiter and stick with it. 
+Remember to pick a delimiter and stick with it.
 
 ```md
 * One item
@@ -227,7 +227,7 @@ Remember to pick a delimiter and stick with it.
 * And back at the main level
 ```
 
-<h4>Output example</h4> 
+<h4>Output example</h4>
 
 * One item
 * Another item
@@ -250,7 +250,7 @@ Remember to pick a delimiter and stick with it.
 1. Step five
 ```
 
-<h4>Output example</h4> 
+<h4>Output example</h4>
 
 1. Step one
 1. Step two
@@ -291,7 +291,7 @@ You can use both types of lists to nest items. In the example below, the unorder
 
 ## Line breaks
 
-For compatibility, use trailing white space **(spacebar)** or pressing **Enter** or **Shift+Enter** to add the line breaks manually. You can also use the `<br>` HTML tag at the end of the line. 
+For compatibility, use trailing white space **(spacebar)** or pressing **Enter** or **Shift+Enter** to add the line breaks manually. You can also use the `<br>` HTML tag at the end of the line.
 
 ## Code and syntax highlighting
 
@@ -301,14 +301,14 @@ Individual elements (words) within a line.
 
 Here's an example of `code` style.
 
-Use code format when referring to named parameters and variables in a nearby code block in your text. Code format may also be used for properties, methods, classes, and language keywords. 
+Use code format when referring to named parameters and variables in a nearby code block in your text. Code format may also be used for properties, methods, classes, and language keywords.
 
 Use one backtick (\`) around the code.  This is the markdown version of the `<code>` tag in HTML.
 
 
 ### Code blocks
 
-Use inline code blocks when it's impractical to display code by reference to a code file. 
+Use inline code blocks when it's impractical to display code by reference to a code file.
 
 
 Use three backticks `(<code>```</code>)` with the language. This is the markdown version of the `<pre\>` tag in HTML.
@@ -441,7 +441,7 @@ To indent text to align with a preceding paragraph or an item in a numbered or b
 
    `This code block is indented three spaces.`
 
-// Example 2  
+// Example 2
 - This is a bulleted list example (one space after the bullet before the letter T).
   This sentence is indented two spaces.
 
@@ -667,4 +667,3 @@ Markdown can embed HTML elements, and [`details`](https://developer.mozilla.org/
     </details>
   </div>
 </details>
-

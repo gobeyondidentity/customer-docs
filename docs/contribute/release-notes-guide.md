@@ -2,10 +2,10 @@
 title: Release Notes Guide
 id: release-notes-guide
 description: ''
-slug: /release-notes-guide
+slug: /contribute/release-notes-guide
 pagination_next: null
 pagination_prev: null
-last_update: 
+last_update:
    date: 03/29/2023
    author: Patricia McPhee
 draft: false
@@ -14,60 +14,60 @@ displayed_sidebar: contributorGuideSidebar
 ---
 
 
-Learn how Secure Workforce release notes are constructed, how to generate and submit them. 
+Learn how Secure Workforce release notes are constructed, how to generate and submit them.
 
 ## Release notes template
 
-The release notes follow a similar pattern for each release. 
+The release notes follow a similar pattern for each release.
 
 ```md
 import SupportedOsAuthenticator from './_supported-os-versions.mdx';
 
 
-## Cloud 
+## Cloud
 
-### What's new 
+### What's new
 
-### Improved 
+### Improved
 
-### Resolved 
+### Resolved
 
-### Known issues 
-
-
-## Platform Authenticators 
-
-<SupportedOsAuthenticator />
-
-### What's new 
-
-### Improved 
-
-### Resolved 
-
-### Known issues 
+### Known issues
 
 
-## Desktop Login 
+## Platform Authenticators
 
 <SupportedOsAuthenticator />
 
-### What's new 
+### What's new
 
-### Improved 
+### Improved
 
-### Resolved 
+### Resolved
 
-### Known issues 
+### Known issues
 
 
-## API 
+## Desktop Login
 
-### What's new 
+<SupportedOsAuthenticator />
 
-### Improved 
+### What's new
 
-### Resolved 
+### Improved
+
+### Resolved
+
+### Known issues
+
+
+## API
+
+### What's new
+
+### Improved
+
+### Resolved
 
 ### Known issues
 

@@ -48,7 +48,6 @@ const sidebars = {
       items: [
         "directory/identities",
         "directory/groups",
-        // "directory/directory-integrations",
         {
           type: "category",
           label: "Directory Integrations",
@@ -59,7 +58,6 @@ const sidebars = {
             id: "directory/directory-integrations/directory-integrations",
           },
           items: [
-            // "auth-sso/product-integration-guides/okta-integration-guide",
             "directory/directory-integrations/directory-integrations-generic-scim",
             "directory/directory-integrations/directory-integrations-okta"
           ],
@@ -76,7 +74,7 @@ const sidebars = {
         id: "inventory/inventory",
       },
       items: [
-        "inventory/device-inventory",
+        "inventory/devices",
         "inventory/device-query",
       ],
     },
@@ -90,7 +88,7 @@ const sidebars = {
         id: "deployment/deployment",
       },
       items: [
-        "deployment/authenticators",
+        "deployment/authenticator-set-up",
         "deployment/branding",
       ],
     },
@@ -101,10 +99,10 @@ const sidebars = {
       collapsible: true,
       link: {
         type: "doc",
-        id: "auth-sso/auth-sso",
+        id: "auth-and-sso/auth-and-sso",
       },
       items: [
-        "auth-sso/single-device-mfa",
+        "auth-and-sso/single-device-mfa",
         {
           type: "category",
           label: "Product Integration Guides",
@@ -112,10 +110,10 @@ const sidebars = {
           collapsible: true,
           link: {
             type: "doc",
-            id: "auth-sso/product-integration-guides/product-integration-guides",
+            id: "auth-and-sso/product-integration-guides/product-integration-guides",
           },
           items: [
-            "auth-sso/product-integration-guides/product-integration-guides-okta",
+            "auth-and-sso/product-integration-guides/okta",
           ],
         },
       ],
@@ -143,8 +141,8 @@ const sidebars = {
         id: "release-notes/release-notes",
       },
       items: [
-        "release-notes/endpoint-release-notes",
-        "release-notes/console-release-notes",
+        "release-notes/endpoint",
+        "release-notes/console",
       ],
     },
     {
@@ -217,17 +215,17 @@ const sidebars = {
         {
           type: "category",
           label: "Edit content",
-          collapsed: true,
-          collapsible: false,
+          collapsed: false,
+          collapsible: true,
           items: [
             {
               type: "doc",
-              id: "contribute/edit-content-minor-changes",
+              id: "contribute/edit-content/minor-changes",
               label: "Minor changes",
             },
             {
               type: "doc",
-              id: "contribute/edit-content-significant-changes",
+              id: "contribute/edit-content/significant-changes",
               label: "Significant changes",
             },
           ],

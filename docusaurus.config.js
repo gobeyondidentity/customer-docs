@@ -10,8 +10,8 @@ const config = {
   tagline: "Beyond Identity will be releasing a new, consolidated admin experience that incorporates our existing Secure Workforce product with two new products, Device360 and our Next Gen SSO.",
   url: "https://docs.beyondidentity.com",
   baseUrl: "/",
-  onBrokenLinks: "warn",
-  onBrokenMarkdownLinks: "warn",
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "throw",
   favicon: "img/favicon.ico",
   organizationName: "gobeyondidentity", // The GitHub org/user name.
   projectName: "customer-docs", // The repo name.

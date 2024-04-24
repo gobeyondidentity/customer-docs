@@ -2,10 +2,10 @@
 title: "Add new content"
 id: add-new-topic
 description: ""
-slug: /add-new-topic
+slug: /contribute/add-new-topic
 pagination_next: contribute/create-pull-request
 pagination_prev: null
-last_update: 
+last_update:
    date: 07/26/2023
    author: Patricia McPhee
 draft: false
@@ -25,7 +25,7 @@ displayed_sidebar: contributorGuideSidebar
 [get-started]: ./get-started.md
 
 
-Make sure to consult with the Sr. Technical Writer when adding topics or want to propose changes to the content structure. 
+Make sure to consult with the Sr. Technical Writer when adding topics or want to propose changes to the content structure.
 
 The Sr. Technical Writer maintains the content's quality, reduces duplication, and provides a consistent user experience. They can also strategize how to deliver complex information—for example, adding an explainer video (&lt;90 secs) can help with complex scenarios or issues.
 
@@ -59,13 +59,13 @@ The Sr. Technical Writer maintains the content's quality, reduces duplication, a
    id: threat-dashboard
    description: 'The threat dashboard provides easy-to-use and intuitive threat intelligence analytics. This new dashboard will help you identify users, passkeys, and authentications that have displayed some risk over the last 0-90 days. Risky entities are added to low, medium, and high groups based on their score from 0-100. You can filter the view of this dashboard and the accompanying table based on these groups.'
    slug: /threat-dashboard
-   keywords: 
+   keywords:
     - threat dashboard
    pagination_next: null
    pagination_prev: null
-   last_update: 
-      date: 07/26/2023  
-      author: John Canneto  
+   last_update:
+      date: 07/26/2023
+      author: John Canneto
    draft: false
    doc_type: overview
    displayed_sidebar: secureWorkforceSidebar
@@ -77,20 +77,20 @@ The Sr. Technical Writer maintains the content's quality, reduces duplication, a
    ```javascript
    {
      type: 'category',
-     label: 'Architecture',  
-     collapsed: false, 
-     collapsible: false,     
+     label: 'Architecture',
+     collapsed: false,
+     collapsible: false,
      link: {
        type: 'doc',
        id: 'architecture/architecture',
-     },  
-     items: [ 
-       'architecture/overview', 
+     },
+     items: [
+       'architecture/overview',
        'architecture/architecture',
      ],
    },
    ```
-   
+
    It's a best practice to add the markdown file early in the content development phase. Otherwise, you\'ll get an error when you run the command to build and review your content.
 
 6. Create your content and run the following command to build and review your changes.
@@ -99,12 +99,12 @@ The Sr. Technical Writer maintains the content's quality, reduces duplication, a
    yarn start
    ```
 
-   This command starts a local development server and opens a browser window. Most changes are reflected live without having to restart the server. If a browser window doesn't open, go to **http://localhost:3000/** to view your local changes. 
+   This command starts a local development server and opens a browser window. Most changes are reflected live without having to restart the server. If a browser window doesn't open, go to **http://localhost:3000/** to view your local changes.
 
 1. Perform a self-review of your markdown and make sure your changes or additions follow the [style guidelines](./style-guide.md).
 
 1. Verify that the PR does not generate warnings or errors, such as broken links. If so, address them and ensure it builds without issues.
-  
+
    ```bash
    npm run clear
    yarn build
@@ -128,7 +128,7 @@ The Sr. Technical Writer maintains the content's quality, reduces duplication, a
 
    ***If applied, this commit will ....***
 
-9. Publish, or push, your changes to the main repo for merging. 
+9. Publish, or push, your changes to the main repo for merging.
 
    ```bash
    git push origin {your-branch-name}

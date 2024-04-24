@@ -2,10 +2,10 @@
 title: "Create Pull Request"
 id: create-pull-request
 description: ""
-slug: /create-pull-request
+slug: /contribute/create-pull-request
 pagination_next: null
 pagination_prev: null
-last_update: 
+last_update:
    date: 07/18/2023
    author: Patricia McPhee
 draft: false
@@ -34,11 +34,11 @@ Now you're ready to create and submit a pull request to have your changes or add
 
    ![Compare and pull request](https://docs.github.com/assets/cb-34106/mw-1440/images/help/pull_requests/pull-request-compare-pull-request.webp)
 
-   :::note important  
-   All pull requests should be opened against the `main` branch unless the it's for the upcoming next release. In that case, the PR should be opened against the `docs-staging` branch. 
+   :::note important
+   All pull requests should be opened against the `main` branch unless the it's for the upcoming next release. In that case, the PR should be opened against the `docs-staging` branch.
    :::
 
-1. Provide additional information and if possible add reviewers. 
+1. Provide additional information and if possible add reviewers.
 
    A pull request must be related to a JIRA issue, unless the changes are minor, for example, correcting a typo. If it is related to a JIRA issue, reference the JIRA issue in the title.
 
@@ -66,7 +66,7 @@ Now you're ready to create and submit a pull request to have your changes or add
 
    If the pull request is a **work in progress** and not ready to be reviewed, select the **[Create draft pull request](https://github.blog/2019-02-14-introducing-draft-pull-requests/#tag-your-work-in-progress)**.
 
-3. After going through the review process for technical accuracy and a copy edit from a Sr. Technical Writer, they will enter `#approved` and merge the pull request. Your changes get merged into the `main` branch. 
+3. After going through the review process for technical accuracy and a copy edit from a Sr. Technical Writer, they will enter `#approved` and merge the pull request. Your changes get merged into the `main` branch.
 
 
 ## Pull request guidelines
@@ -86,7 +86,7 @@ A few things to keep in mind when creating your pull request:
 
 ## Ownership
 
-The ownership of the PR is on the person who creates the PR. The author's responsibility is to get it reviewed and approved for technical accuracy before submitting the PR. 
+The ownership of the PR is on the person who creates the PR. The author's responsibility is to get it reviewed and approved for technical accuracy before submitting the PR.
 
 ### Content dev process - High-level overview
 
@@ -98,7 +98,7 @@ The ownership of the PR is on the person who creates the PR. The author's respon
 
 ## Pull request template
 
-When you create a pull request, a default pull request template is automatically applied for all new pull requests in the repository. It's useful to ensure that every pull request follows a standard process and to have a to-do list for the author to check before requesting a review. 
+When you create a pull request, a default pull request template is automatically applied for all new pull requests in the repository. It's useful to ensure that every pull request follows a standard process and to have a to-do list for the author to check before requesting a review.
 
 
 ## PR descriptions
@@ -108,4 +108,3 @@ The PR descriptions matter because it's an opportunity to set the reviewer up fo
 | The What | The Why |
 | --- | --- |
 |  Explain the changes you've made.  It doesn't need to be fancy and you don't have to get too technical. At a high level, this is where you let the reviewer know the overall effect of the PR.  It's important to explain what the change is and then reference the ticket. It's a much better experience for the reviewer if they're able to spend more time reviewing and less time studying speciications that may not even be applicable. <br /><br />**Example**<br /><br />"Added support for authentication. #JIRA-123"   | The "why" is sometimes more important than the "what." The "why" tells us what business or engineering goal this change achieves. It's a chance to explain the engineering goal and the business.<br /><br />**Example** <br /><br />"These changes complete the user login and account creation experience."    |
-

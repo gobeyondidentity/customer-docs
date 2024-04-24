@@ -2,10 +2,10 @@
 title: "Site organization and files"
 id: site-organization-and-files
 description: ""
-slug: /site-organization-and-files
+slug: /contribute/site-organization-and-files
 pagination_next: contribute/docs-site-branches
 pagination_prev: contribute/when-to-contribute
-last_update: 
+last_update:
    date: 07/18/2023
    author: Patricia McPhee
 draft: false
