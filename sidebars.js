@@ -48,7 +48,6 @@ const sidebars = {
       items: [
         "directory/identities",
         "directory/groups",
-        // "directory/directory-integrations",
         {
           type: "category",
           label: "Directory Integrations",
@@ -59,7 +58,6 @@ const sidebars = {
             id: "directory/directory-integrations/directory-integrations",
           },
           items: [
-            // "auth-sso/product-integration-guides/okta-integration-guide",
             "directory/directory-integrations/directory-integrations-generic-scim",
             "directory/directory-integrations/directory-integrations-okta"
           ],
@@ -76,7 +74,7 @@ const sidebars = {
         id: "inventory/inventory",
       },
       items: [
-        "inventory/device-inventory",
+        "inventory/devices",
         "inventory/device-query",
       ],
     },
@@ -90,7 +88,7 @@ const sidebars = {
         id: "deployment/deployment",
       },
       items: [
-        "deployment/authenticators",
+        "deployment/authenticator-set-up",
         "deployment/branding",
       ],
     },
