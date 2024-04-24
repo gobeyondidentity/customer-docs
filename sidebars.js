@@ -128,7 +128,7 @@ const sidebars = {
         id: "tools/tools",
       },
       items: [
-        "tools/policy-and-simulation",
+        "tools/policy",
       ],
     },
     {
