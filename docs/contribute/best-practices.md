@@ -2,10 +2,10 @@
 title: "Best practices"
 id: best-practices
 description: ""
-slug: /best-practices
+slug: /contribute/best-practices
 pagination_next: null
 pagination_prev: null
-last_update: 
+last_update:
    date: 07/18/2023
    author: Patricia McPhee
 draft: false
@@ -47,7 +47,7 @@ A properly formed git commit subject line should always be able to complete the 
 - Perform a self-review of your markdown, especially spelling errors.
 
 - Verify that the PR does not generate new warnings before pushing your changes. The best way is to run the clear command.
-  
+
   ```nodejs
   npm run clear
   yarn build

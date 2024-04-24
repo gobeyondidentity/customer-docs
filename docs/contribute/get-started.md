@@ -2,10 +2,10 @@
 title: "Get Started"
 id: contribute-get-started
 description: ""
-slug: /contribute-get-started
+slug: /contribute/contribute-get-started
 pagination_next: contribute/site-organization-and-files
 pagination_prev: contribute/when-to-contribute
-last_update: 
+last_update:
    date: 07/14/2023
    author: Patricia McPhee
 draft: false
@@ -14,7 +14,7 @@ displayed_sidebar: contributorGuideSidebar
 ---
 
 
-When you're authoring content, you're working locally. So it's important to have the right tools installed. 
+When you're authoring content, you're working locally. So it's important to have the right tools installed.
 
 
 :::note
@@ -26,8 +26,8 @@ This is a one-time setup.
 - Code editor, [VS Code](https://code.visualstudio.com) is recommended
 - [Git](https://git-scm.com)
 - [Node.js](https://nodejs.org)
-- [Yarn](https://yarnpkg.com) 
-  
+- [Yarn](https://yarnpkg.com)
+
   You'll use the `yarn` package manager to build and view your changes in a browser window before submitting your pull request (PR).
 
 
@@ -40,7 +40,7 @@ This is a one-time setup.
    cd customer-docs
    ```
 
-2. Next, create a new [branch](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell) from `main` (always give your branch a meaningful, descriptive name). 
+2. Next, create a new [branch](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell) from `main` (always give your branch a meaningful, descriptive name).
 
    ```bash
    git checkout -b <branch_name> main

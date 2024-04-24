@@ -2,10 +2,10 @@
 title: "Style Guide"
 id: style-guide
 description: ""
-slug: /style-guide
+slug: /contribute/style-guide
 pagination_next: null
 pagination_prev: null
-last_update: 
+last_update:
    date: 07/27/2023
    author: Patricia McPhee
 draft: false
@@ -53,8 +53,8 @@ We aspire to follow these principles when we write technical content. We might n
 | **Write concisely**  |   Don't waste words. Be affirmative and don't use extra words. Keep sentences short and concise. ***Keep your article focused*** on the scenario or goal (the customer intent). Also, keep the number of notes to a minimum. Use a screenshot when it can save words.      |
 | **Make your article easy to scan** |  Put the most important things first. Use sections to chunk long procedures into more manageable groups of steps. (Procedures with more than 12 steps are probably too long.) Use a screenshot when it adds clarity. Also, use sentence case for titles (headings) as they are easier to scan.       |
 | **Use minimalist design**  |  Minimalism is a design philosophy that focuses on a user-centered approach. In this approach, we structure information based on users' essential tasks.       |
-| **Show empathy**  | Use a supportive tone in the article, and keep disclaimers to a minimum. Honestly call out areas that will be frustrating to customers. Make sure the article focuses on what matters to customers; don't just give a technical lecture.  | 
-| **Write in active voice** | Use present tense rather than future or past tense as much as possible.<br /><br />Exceptions: Passive voice is acceptable when any of these conditions are true:<ul><li>The system performs the action.</li><li>It is more appropriate to focus on the receiver of the action.</li><li>You want to avoid blaming the user for an error, such as in an error message.</li><li>The information is clearer in the passive voice.</li></ul> | 
+| **Show empathy**  | Use a supportive tone in the article, and keep disclaimers to a minimum. Honestly call out areas that will be frustrating to customers. Make sure the article focuses on what matters to customers; don't just give a technical lecture.  |
+| **Write in active voice** | Use present tense rather than future or past tense as much as possible.<br /><br />Exceptions: Passive voice is acceptable when any of these conditions are true:<ul><li>The system performs the action.</li><li>It is more appropriate to focus on the receiver of the action.</li><li>You want to avoid blaming the user for an error, such as in an error message.</li><li>The information is clearer in the passive voice.</li></ul> |
 | **Use second person** | Using "you" instead of "we" and "our" to speak directly to the user. |
 
 
@@ -84,12 +84,12 @@ Maintain the heading hierarchy throughout the doc, and follow heading levels. Do
 
 ```javascript title=" markdown file"
  // highlight-start
- // Top-level heading in the metadata 
+ // Top-level heading in the metadata
  ---
  title: Top-level heading
  ...
  ---
- // highlight-end 
+ // highlight-end
 
  ---
 
@@ -107,7 +107,7 @@ Maintain the heading hierarchy throughout the doc, and follow heading levels. Do
 
 #### Best practices
 
-- 👉 Keep headings short and place the most important idea at the beginning. If there is a lot to say, use lower-level headings to break up the section into smaller, more scannable chunks. 
+- 👉 Keep headings short and place the most important idea at the beginning. If there is a lot to say, use lower-level headings to break up the section into smaller, more scannable chunks.
 
 - Avoid using h1 (#) headings. The metadata tile represents this heading level and is automatically displayed. Always start with h2 (##), and respect the order h2 → h3 → h4. Never skip the hierarchy level, such as h2 → h4. Avoid h5 and h6 as much as possible. If you have content with h5 and h6 headers, rethink the structure of your document. Can the content be better scanned in a table or bullet list?
 
@@ -168,7 +168,7 @@ Style: **Bold**
 
 Example: From the Admin Console, under **Directory**, select **Identities > Add identity**.
 
-When referring to labels of user interface items, do not include ending punctuation such as the ellipse (…) or colon (:). 
+When referring to labels of user interface items, do not include ending punctuation such as the ellipse (…) or colon (:).
 
 Whenever possible, refer to user interface items without identifying them as any special type of element. Complex dialogs may require more specific wording.
 
@@ -189,12 +189,12 @@ Acronyms and abbreviations can hurt clarity, voice, and findability. Although so
 
 - Be careful with acronyms in titles and headings. Avoid using an acronym for the first time in a title or heading unless it's a keyword you need to place in the title or heading for SEO. If the first use of the acronym is in a title or heading, introduce the acronym (in parentheses, following the spelled-out term) in the following body text.
 
-- Lowercase all words in the spelled-out form of an acronym except for proper nouns. The names of many protocols and specifications are considered proper nouns and are capitalized when spelled out. 
+- Lowercase all words in the spelled-out form of an acronym except for proper nouns. The names of many protocols and specifications are considered proper nouns and are capitalized when spelled out.
 
    **Examples**
 
    - infrastructure as a service (IaaS)
-   
+
    - dynamic-link library (DLL)
 
 | :white_check_mark: **DO** | :no_entry_sign: **DON'T** |
@@ -202,7 +202,7 @@ Acronyms and abbreviations can hurt clarity, voice, and findability. Although so
 |  |   |
 
 ### Abbreviations
- 
+
 Do not use Latin abbreviations. Use the full English form: for example, use “that is” instead of “i.e.”. As an exception to this rule, the abbreviation etc. is allowed.
 
 ### Results of actions
@@ -210,7 +210,7 @@ Do not use Latin abbreviations. Use the full English form: for example, use “t
 Show results of actions in the same step as the task and be clear about where in the flow the reader is. In general, omit results statements unless the result is surprising or unexpected.
 
 
-Put actions and results in the same step.  If you need to mention the results of a user action, then do it in the same numbered step that describes that action (don’t use a separate numbered step).  
+Put actions and results in the same step.  If you need to mention the results of a user action, then do it in the same numbered step that describes that action (don’t use a separate numbered step).
 
 
 ### Referring to earlier steps
@@ -268,7 +268,7 @@ Use "can" to indicate ability, or use "might" to indicate possibility.
 **Example**
 
 - **Indicating ability**
-  
+
   | :white_check_mark: **DO** | :no_entry_sign: **DON'T** |
   | --- | --- |
   | You can use the command line interface to update your application. |  You may use the command line interface to update your application. |
@@ -283,8 +283,8 @@ Use "can" to indicate ability, or use "might" to indicate possibility.
 
 Use “make sure” or “confirm” instead. When asking the reader to confirm something for important tasks, use one of the following terms:
 
-- Use “make sure” in cases where there’s still a related important task.   
-  
+- Use “make sure” in cases where there’s still a related important task.
+
   | :white_check_mark: **DO** | :no_entry_sign: **DON'T** |
   | --- | --- |
   |  | instead of “check that” or “verify that”  |
