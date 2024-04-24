@@ -102,7 +102,19 @@ const sidebars = {
         id: "auth-and-sso/auth-and-sso",
       },
       items: [
-        "auth-and-sso/identity-providers",
+        {
+          type: "category",
+          label: "Identity Providers",
+          collapsed: true,
+          collapsible: true,
+          link: {
+            type: "doc",
+            id: "auth-and-sso/identity-providers/identity-providers",
+          },
+          items: [
+            "auth-and-sso/identity-providers/generic-oidc",
+          ],
+        },
         {
           type: "category",
           label: "Product Integration Guides",
