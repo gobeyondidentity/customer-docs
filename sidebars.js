@@ -102,7 +102,7 @@ const sidebars = {
         id: "auth-and-sso/auth-and-sso",
       },
       items: [
-        "auth-and-sso/single-device-mfa",
+        "auth-and-sso/identity-providers",
         {
           type: "category",
           label: "Product Integration Guides",
