@@ -18,6 +18,9 @@ export enum Clip {
   OktaIntegrationGuideAPITokenGeneration = "PU4cOJiuF5yGTwms9iwY",
   OktaIntegrationGuideCreateBeyondIdentityIdp = "fLDyfovtLuiJlv2QlnS2",
   OktaIntegrationGuideCreateOktaIdp = "3qtdBJu0hGFyXQJRMNdF",
+  OktaIntegrationGuideCreateSCIMApplication = "VwTjovW4ax5ykrleAz2e",
+  OktaIntegrationGuideConfigureSCIMApplication = "dJDWsQEPTpNfClpPeUuI",
+  OktaIntegrationGuidePushGroupSCIMApplication = "cSIE0ESXc0gQ97NCsCcl",
   IdentitiesAddId = "y8Zyxz7jbKLEmAtgvMyF",
   IdentitiesSelectId = "uXu2DWJnIGaT6bWmWGuS",
   IdentitiesAddPasskey = "X3d2DAvkEC0njEJfMWpS",
@@ -41,6 +44,9 @@ export const ClipPaddingBottom: { [key: string]: string } = {
   [Clip.IdentitiesEditId]: "calc(71.4478417266187% + 41px)",
   [Clip.IdentitiesBindingJobsTab]: "calc(71.4478417266187% + 41px)",
   [Clip.GroupsAddGroupCallout]: "calc(64.92805755395683% + 41px)",
+  [Clip.OktaIntegrationGuideCreateSCIMApplication]: "calc(50.46296296296296% + 41px)",
+  [Clip.OktaIntegrationGuideConfigureSCIMApplication]: "calc(50.46296296296296% + 41px)",
+  [Clip.OktaIntegrationGuidePushGroupSCIMApplication]: "calc(50.46296296296296% + 41px)",
 };
 
 /**
