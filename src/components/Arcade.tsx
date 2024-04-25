@@ -21,6 +21,7 @@ export enum Clip {
   OktaIntegrationGuideCreateSCIMApplication = "VwTjovW4ax5ykrleAz2e",
   OktaIntegrationGuideConfigureSCIMApplication = "dJDWsQEPTpNfClpPeUuI",
   OktaIntegrationGuidePushGroupSCIMApplication = "cSIE0ESXc0gQ97NCsCcl",
+  OktaIntegrationGuideRoutingRuleConfiguration = "LMmiu70U6Pt9yPvT6p4Z",
   IdentitiesAddId = "y8Zyxz7jbKLEmAtgvMyF",
   IdentitiesSelectId = "uXu2DWJnIGaT6bWmWGuS",
   IdentitiesAddPasskey = "X3d2DAvkEC0njEJfMWpS",
@@ -47,6 +48,7 @@ export const ClipPaddingBottom: { [key: string]: string } = {
   [Clip.OktaIntegrationGuideCreateSCIMApplication]: "calc(50.46296296296296% + 41px)",
   [Clip.OktaIntegrationGuideConfigureSCIMApplication]: "calc(50.46296296296296% + 41px)",
   [Clip.OktaIntegrationGuidePushGroupSCIMApplication]: "calc(50.46296296296296% + 41px)",
+  [Clip.OktaIntegrationGuideRoutingRuleConfiguration]: "calc(50.520833333333336% + 41px)",
 };
 
 /**
