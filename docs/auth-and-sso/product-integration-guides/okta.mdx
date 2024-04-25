@@ -82,7 +82,7 @@ To create a Beyond Identity account, please [click here](https://www.beyondident
 
 ## 1. Enable User Syncing between Okta and Beyond Identity
 
-In order to enable user syncing between Okta and Beyond Identity, [follow the steps here](/docs/directory/directory-integrations/okta).
+In order to enable user syncing between Okta and Beyond Identity, [follow the steps here](/docs/directory/directory-integrations/okta). Return to this guide once you've enabled user syncing between Okta and Beyond Identity.
 
 ---
 
@@ -91,7 +91,7 @@ In order to enable user syncing between Okta and Beyond Identity, [follow the st
 
 ### 🔵 Create an Identity Provider in Beyond Identity
 
-Enable Okta to use Beyond Identity for authentication by setting it up as an identity provider. This is achieved by creating an identity provider within the Beyond Identity Admin Console. Follow the steps here to create a [generic OIDC Identity Provider](/docs/auth-and-sso/identity-providers/generic-oidc).
+Enable Okta to use Beyond Identity for authentication by setting it up as an identity provider. This is achieved by creating an identity provider within the Beyond Identity Admin Console. Follow the steps here to create a [generic OIDC Identity Provider](/docs/auth-and-sso/identity-providers/generic-oidc). Return to this guide once you've created a generic OIDC Identity Provider in Beyond Identity.
 
 ### 🟠 Create an Identity Provider in Okta
 
@@ -134,17 +134,24 @@ Head back to the identity provider you already created by navigating to **Auth &
 ## 3. Enable Authentication with Beyond Identity
 
 ### 🟠 Configure IdP Routing Rules
-- Create routing rule to byndidRegistered
 
-TODO: Add arcade here
+Configure your Identity Provider routing rules in Okta to enable redirection to Beyond Identity when the `byndidRegistered` user attribute is set to `true`. To create a new routing rule, navigate to **Security > Identity Providers** and click on the **Routing Rules** tab.
+
+<Arcade clip={Clip.OktaIntegrationGuideRoutingRuleConfiguration} />
 
 ---
 
 ## 4. Managing User Access
 
-### 🟠 Disable Beyond Identity Authentication
-- Remove user from "Beyond Identity" group in Okta
+### 🔵 Disable Beyond Identity Authentication
 
-TODO: Add arcade here
+To disable Beyond Identity authentication for a specific user:
+
+1. Navigate to **Directory > Identities**.
+2. Click on the Identity you want to disable.
+3. Select the **Passkeys** tab.
+4. Click on **Revoke Passkey**.
+
+![Okta IDP Redirect URI](../../../static/img/revoke-passkey.png)
 
 ---
