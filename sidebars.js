@@ -32,7 +32,7 @@ const sidebars = {
       },
       items: [
         "product-guides/device360",
-        "product-guides/secure-access",
+        "product-guides/access360",
         "product-guides/secure-work",
       ],
     },
