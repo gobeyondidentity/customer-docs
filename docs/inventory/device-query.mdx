@@ -11,6 +11,12 @@ keywords:
   - device vulnerabilities
   - osquery
   - run device queries
+  - create query
+  - create queries
+  - run query
+  - save query
+  - edit query
+  - delete query
 pagination_next: null
 pagination_prev: null
 last_update:
@@ -19,57 +25,112 @@ last_update:
 doc_type: overview
 displayed_sidebar: mainSidebar
 ---
-## Run a device query
+import Arcade, {Clip} from '@site/src/components/Arcade.tsx';
 
-Device360 live queries allow you to quickly and efficiently gather information from all devices in a tenant to support threat hunting, policy management and impact assessment, and for asset inventory purposes. Device360 provides a number of pre-canned queries that help collect attributes that may not be accessible at the time of authentication (e.g., running processes, installed third-party software, chrome extensions, etc.).
+## Run a query from the Query Library
 
-1. Click **Device Query** under Inventory.
+Device360 provides 45 pre-canned queries to collect attributes that may not be available during authentication (e.g., running processes, installed third-party software, chrome extensions, etc.). These attributes can help you identify any misconfigurations or potential vulnerabilities in your system, enabling you to manage policies and assess impacts. Additionally, they can help you keep track of your fleet inventory. 
+You can use also use these queries as a basis for creating a new query.
 
-2. Click the **Query Library** tab.
+1. Click **Inventory > Device Query > Query Library** tab.
 
-3. Click a query card from the list to view details for it.
+2. Click a query card from the list. To use this query as-is, continue to Step 4. 
+   
+   To create a new query based on this query, follow the steps below.
 
-   Note the timeout for the query under **Run Query for 5 minutes**. This specifies the timeout value to account for latency, device lifecycles, etc. Queries should return results in less than 30 seconds based on the polling interval.
+    1. Modify the query name, description, and tags.
 
-4. (Optional) Select the drop-down beside **Run once now** if you want to schedule the query to run on a regular basis.
+    2. Edit the SQL query.
 
-5. (Optional) Click **View Full Query** if you want to see more than the first three lines of the query that will run.
+    3. Click on **Save as new query**. You'll be returned to the Query Library with the newly saved query as the first card on the page.
 
-6. Click **Run Now**. You will be returned to the Device Query page's Query tab to view the status of the query.
+    4. Click the newly created card.
+    
+    5. Continue to Step 3.
+  
+3. (Optional) Select how frequently to run the query under the **Run once now** dropdown.
+   
+4. Click on **Run Now** in the top right.
 
-7. When complete, click the **Query Name** to view results. You don't have to wait for the query to complete to view the results. For more information, see <ins>[View query results](#view-query-results)</ins> below.
-
-
-## View device query status
-
-The authenticator includes a built-in version of Osquery so you can run live queries to identify misconfigurations and vulnerabilities on any devices that are online. You can then triage the results to improve your device posture and security.
-
-1. Click **Device Query** in the navigation pane to open the Device Query page. The Queries tab displays a list of all queries that are running, have ran, or are scheduled to run.
-
-   Note that until a query runs for the first time, this page will be blank.
-
-2. To run a query, see Run a device query above.
-
-3. You can view the following information in the Query table:
-
-   | Option                     | Description |
+5. 
+   | Option                     | Description|
    | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Query Name**             | Displays the name of the query. Click a query name in the table to view query results and begin threat hunting. For more infromation, see Viewing Query Results below. |
-   | **Status**                 | Displays the status of a query. <br /><br />**Note:** At this time, a total of 5 queries can run in parallel and/or be scheduled to run per tenant. If needed, locate a scheduled query and select **Cancel all future runs** under the Actions column or cancel a running query. |
-   | **Last Run**               | Displays the date and time the query last ran. |
-   | **Target Devices**         | Displays the type of devices targeted in the query. |
-   | **Responding Devices**     | Displays the number of devices that met the conditions in the query. |
-   | **Result Rows**            | Displays the number of rows containing details for each result returned from this query.<br /><br />For example, if you run a query that looks for executable files stored in temp directories, a single device could have 100s of executable files in temp directories so a single device could have 100+ result rows. |
-   | **Actions**                | Provides a set of actions available based on the status of a query: <br /><br />- Re-run query - Applies to queries with a status of Run Complete or Cancelled.<br /><br />- Cancel run - Applies to queries with a status of Now running.<br /><br />- Cancel this run - Applies to a scheduled query that is currently running.<br /><br />- Cancel all future runs - Applies to queries that are scheduled to run.<br /><br />- Cancel this and all future runs - Applies to a scheduled query that is currently running.  |
+   | **Previous Runs**          | By default, the latest run displays on this page. You can select a previous date and time in the left pane to view previous runs of the same query as you begin threat hunting. As you resolve misconfigurations and mitigate risks, you can compare runs to track progress from where you started to where you are now. For example, your initial run of a query could return 15 devices with 100 rows of data. Later runs of the same query should result in fewer devices and rows of data as you resolve issues for those devices.|
+   | **Successes**              | This tab displays a list of devices that provided an update for the query. If a device doesn't have a name provided, it displays as "Not Available" in this table. To add a device name, see "Renaming a device".|
+   | **Failures**               | This tab displays a list of devices that didn't respond because they were offline or there was a query error.|
+   | **All results**            | This tab displays a row for each result returned for a device. For example, if you run a query that looks for executable files stored in temp directories, a single device could have 100s of executable files in temp directories so one device could have 100+ rows.|
 
+#### Example: Use a query from the Query Library as-is
+
+<Arcade clip={Clip.D360QueryLibrary} />
+
+#### Example: Create a query based on an existing one
+
+<Arcade clip={Clip.D360CreateQueryFromExisting} />
+
+## Create a new query
+
+Use this feature to create a query from scratch. If you want to modify an existing query and save it, see Use a query from the Query Library above.
+
+1. Click **Inventory > Device Query > Create Query**.
+
+2. Enter a query name, description, and select applicable tags.
+
+3. Type the query.
+
+4. Click on **Save as new query**.
+
+
+## Edit a custom query
+
+After creating a new query, you can make updates to it.
+
+1. Click **Inventory > Device Query > Query Library**.
+
+2. Click an updated query card.
+
+3. Modify the query or details, then click on **Library Options > Save changes to the existing query**.
+
+
+## Delete a query
+
+1. Click **Inventory > Device Query > Query Library**.
+
+2. Click an updated query card.
+   :::note 
+   You can only delete queries you've saved as a new query.
+   :::
+
+3. Click on **Library Options > Delete query from library**.
+
+4. When prompted, confirm the deletion.
 
 
 ## View query results
-After running a query, you can view results and begin threat hunting.
 
-  | Option                     | Description |
-  | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | **Previous Runs**          | By default, the latest run displays on this page. You can select a previous date and time in the left pane to view previous runs of the same query as you begin threat hunting. As you resolve misconfigurations and mitigate risks, you can compare runs to track progress from where you started to where you are now. For example, your initial run of a query could return 15 devices with 100 rows of data. Later runs of the same query should result in fewer devices and rows of data as you resolve issues for those devices.                      |
-  | **Successes**              | This tab displays a list of devices that provided an update for the query. If a device doesn't have a name provided, it displays as "Not Available" in this table. To add a device name, see "Renaming a device".              |
-  | **Failures**               | This tab displays a list of devices that didn't respond because they were offline or there was a query error. |
-  | **All results**            | This tab displays a row for each result returned for a device. For example, if you run a query that looks for executable files stored in temp directories, a single device could have 100s of executable files in temp directories so one device could have 100+ rows.      |
+After running a query, you can view results and begin threat hunting and improve your device posture and security.
+
+1. Click **Inventory > Device Query **. The Queries tab displays a list of all queries that are running, have ran, or are scheduled to run.
+
+   Note that until a query runs for the first time, this page will be blank.
+
+2. You can view the following information in the Query table:
+
+   | Option                     | Description|
+   | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Query Name**             | Displays the name of the query.|
+   | **Run Status**             | Displays the status of a query. <br /><br />**Note:** At this time, a total of 5 queries can run in parallel and/or be scheduled to run per tenant. If needed, locate a scheduled query and select **Cancel all future runs** under the Actions column or cancel a running query.|
+   | **Device Target**          | Displays the type of devices targeted in the query.|
+   | **Device Response**        | Displays the number of devices that met the conditions in the query.|
+   | **Device Data Rows**       | Displays the number of rows containing details for each result returned from this query.<br /><br />For example, if you run a query that looks for executable files stored in temp directories, a single device could have 100s of executable files in temp directories so a single device could have 100+ result rows.|
+   | **Run Schedule**           | Displays how often the query is scheduled to run.|
+   | **Actions**                | Provides a set of actions available based on the status of a query: <br /><br />**- Re-run query:** Applies to queries with a status of Run Complete or Cancelled.<br /><br />**- Cancel run:** Applies to queries with a status of Now running.<br /><br />**- Cancel this run:** Applies to a scheduled query that is currently running.<br /><br />**- Cancel all future runs:** Applies to queries that are scheduled to run.<br /><br />**- Cancel this and all future runs:** Applies to a scheduled query that is currently running.|
+
+3. Click a query name in the table to view results and begin threat hunting.
+
+   | Option                     | Description|
+   | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Previous Runs**          | By default, the latest run displays on this page. You can select a previous date and time in the left pane to view previous runs of the same query as you begin threat hunting. As you resolve misconfigurations and mitigate risks, you can compare runs to track progress from where you started to where you are now. For example, your initial run of a query could return 15 devices with 100 rows of data. Later runs of the same query should result in fewer devices and rows of data as you resolve issues for those devices.|
+   | **Successes**              | This tab displays a list of devices that provided an update for the query. If a device doesn't have a name provided, it displays as "Not Available" in this table. To add a device name, see "Renaming a device".|
+   | **Failures**               | This tab displays a list of devices that didn't respond because they were offline or there was a query error.|
+   | **All results**            | This tab displays a row for each result returned for a device. For example, if you run a query that looks for executable files stored in temp directories, a single device could have 100s of executable files in temp directories so one device could have 100+ rows.|
