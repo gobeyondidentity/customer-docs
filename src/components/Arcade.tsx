@@ -29,6 +29,8 @@ export enum Clip {
   IdentitiesEditId = "PIM8rhVMC30oxdMZBMWk",
   IdentitiesBindingJobsTab = "6zut5SV0T9V80kDdSJj9",
   GroupsAddGroupCallout = "ZOGqnheQpo9C4tAywQOm",
+  D360QueryLibrary = "aEZVxkl5OLL3Uxod4pCZ",
+  D360CreateQueryFromExisting = "D8RKeOQr4fTMQTVYrGsc",
 }
 
 export const ClipPaddingBottom: { [key: string]: string } = {
@@ -49,6 +51,8 @@ export const ClipPaddingBottom: { [key: string]: string } = {
   [Clip.OktaIntegrationGuideConfigureSCIMApplication]: "calc(50.46296296296296% + 41px)",
   [Clip.OktaIntegrationGuidePushGroupSCIMApplication]: "calc(50.46296296296296% + 41px)",
   [Clip.OktaIntegrationGuideRoutingRuleConfiguration]: "calc(50.520833333333336% + 41px)",
+  [Clip.D360QueryLibrary]: "calc(48.96988906497623% + 41px)",
+  [Clip.D360CreateQueryFromExisting]: "calc(51.38528138528139% + 41px)",
 };
 
 /**
