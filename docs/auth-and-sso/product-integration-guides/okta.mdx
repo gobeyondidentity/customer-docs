@@ -80,18 +80,27 @@ To create a Beyond Identity account, please [click here](https://www.beyondident
 
 ---
 
-## 1. Enable User Syncing between Okta and Beyond Identity
+## 1. Create a Custom Attribute
 
-In order to enable user syncing between Okta and Beyond Identity, [follow the steps here](/docs/directory/directory-integrations/okta). Return to this guide once you've enabled user syncing between Okta and Beyond Identity.
+### 🟠 Create Custom Attribute in Okta User Profile
+
+To enable Okta to automatically direct users registered with Beyond Identity towards a passwordless authentication flow, create a custom attribute named "byndidRegistered" on an Okta User's profile.
+
+<Arcade clip={Clip.OktaIntegrationGuideCreateByndidRegisteredAttribute} />
+
+### 🟠 Update Custom Attribute in Okta User Profile
+
+Once you've created the "byndidRegistered" attribute, update the profile source to inherit from Okta.
+
+<Arcade clip={Clip.OktaIntegrationGuideUpdateByndidRegisteredAttribute} />
 
 ---
 
-## 2. Enable Authentication Using Beyond Identity
-
+## 2. Configure your Okta Identity Provider
 
 ### 🔵 Create an Identity Provider in Beyond Identity
 
-Enable Okta to use Beyond Identity for authentication by setting it up as an identity provider. This is achieved by creating an identity provider within the Beyond Identity Admin Console. Follow the steps here to create a [generic OIDC Identity Provider](/docs/auth-and-sso/identity-providers/generic-oidc). Return to this guide once you've created a generic OIDC Identity Provider in Beyond Identity.
+Enable Okta to use Beyond Identity for authentication by setting it up as an identity provider. This is achieved by creating an identity provider within the Beyond Identity Admin Console. Follow the steps here to create a <a href="/docs/auth-and-sso/identity-providers/generic-oidc" target="_blank">generic OIDC Identity Provider</a>. Return to this guide once you've created a generic OIDC Identity Provider in Beyond Identity.
 
 ### 🟠 Create an Identity Provider in Okta
 
@@ -129,10 +138,6 @@ Upon creating the Identity Provider in Okta, copy the redirect URI:
 
 Head back to the identity provider you already created by navigating to **Auth & SSO > Identity Providers** and clicking on the identity provider. Copy the redirect URI from the Identity Provider in Okta into the redirect URI fields in Beyond Identity.
 
----
-
-## 3. Enable Authentication with Beyond Identity
-
 ### 🟠 Configure IdP Routing Rules
 
 Configure your Identity Provider routing rules in Okta to enable redirection to Beyond Identity when the `byndidRegistered` user attribute is set to `true`. To create a new routing rule, navigate to **Security > Identity Providers** and click on the **Routing Rules** tab.
@@ -141,7 +146,42 @@ Configure your Identity Provider routing rules in Okta to enable redirection to 
 
 ---
 
-## 4. Managing User Access
+## 3. Add Users to Beyond Identity's Directory
+
+### Option 1: Add Identities Manually
+
+In order to manually add identities directly to Beyond Identity:
+1. Go to **Directory > Identities > Add identity > Manual Entry**
+2. Enter the name, username, and email of the new user.
+3. Click **Add Identity**.
+
+### Option 2: Enable Using SCIM
+
+In order to enable user syncing between Okta and Beyond Identity, <a href="/docs/directory/directory-integrations/okta" target="_blank">follow the guide here</a>. Return to this guide once you've enabled user syncing between Okta and Beyond Identity.
+
+---
+
+## 4. Send Passkey Enrollment
+
+### Option 1: Email
+
+1. Go to **Directory > Identities**.
+2. Click on **Add a Passkey**.
+3. Set delivery method to **Send an email to user**.
+4. Click on **Proceed & send email**.
+
+### Option 2: API
+
+1. Go to **Directory > Identities**.
+2. Click on **Add a Passkey**.
+3. Set delivery method to **Generate curl for link from the API**.
+4. Click on **Generate curl**.
+5. Execute the curl request using the terminal.
+6. Send the `credential_binding_link` from the response to your employees using any delivery method.
+
+See the <a href="https://docs.beyondidentity.com/api/v1#tag/Credential-Binding-Jobs/operation/CreateCredentialBindingJob" target="_blank">API here</a> for more details.
+
+## 5. Managing User Access
 
 ### 🔵 Disable Beyond Identity Authentication
 
