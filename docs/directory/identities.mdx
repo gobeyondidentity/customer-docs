@@ -43,12 +43,23 @@ An identity is a unique identifier and an end-user may have multiple identities.
 
 You can add users by:
 
-- Uploading a .csv file in the Admin console
 - Manually adding them in the Admin console
-- Using the Beyond Identity APIs
+- Uploading a .csv file in the Admin console
 - Using SCIM
+- Using the Beyond Identity APIs
 
 ## Manage Users
+
+### Manually Add a User
+
+1. Select **Directory > Identities > Add identity > Manual Entry**.
+  
+2. Enter the name, username, and email of the new user.
+
+3. Click **Add Identity**.
+
+ <Arcade clip={Clip.IdentitiesAddId} />
+
 
 ### Upload Users from a .csv File
 1. Select **Directory > Identities > Add identity > CSV Upload**.
@@ -56,28 +67,12 @@ You can add users by:
    Coming soon!
 
 
-### Manually Add a User
-
-1. Select **Directory > Identities > Add identity > Manual Entry**.
-
-   <Arcade clip={Clip.IdentitiesAddId} />
-
-2. Enter the name, username, and email of the new user.
-
-   ![Add Identity dialog](../images/directory/add-id.png)
-
-3. Click **Add Identity**.
-
 
 ### Edit or Delete a User
 
 1. Select **Directory > Identities** and click an identity from the list.
 
-     <Arcade clip={Clip.IdentitiesSelectId} />
-
 2. Click **Edit Identity**.
-
-     <Arcade clip={Clip.IdentitiesEditId} />
 
 3. Update the fields as needed and click **Save**.
 
@@ -94,13 +89,10 @@ You can add passkeys using the Admin console or from the API. This section descr
 
 1. Select **Directory > Identities** and click an identity from the list. You can search for a user if needed.
 
-     <Arcade clip={Clip.IdentitiesSelectId} />
-
 2. Click **Add a passkey**.
-     <Arcade clip={Clip.IdentitiesAddPasskey} />
 
 3. Select whether to send an email to the user to register their passkey or to use the API to generate a link.
-     <Arcade clip={Clip.IdentitiesSendEmail} />
+
    :::note
    You can customize the email template in Branding.
    :::
@@ -117,11 +109,7 @@ When you send an invite to a user to add a passkey, until the user follows the i
 
 1. Select **Directory > Identities** and click an identity from the list.
 
-     <Arcade clip={Clip.IdentitiesSelectId} />
-
 2. Click the **Binding jobs** tab.
-
-     <Arcade clip={Clip.IdentitiesBindingJobsTab} />
 
 3. View the status of any enrollments.
 
