@@ -31,6 +31,7 @@ export enum Clip {
   GroupsAddGroupCallout = "ZOGqnheQpo9C4tAywQOm",
   D360QueryLibrary = "aEZVxkl5OLL3Uxod4pCZ",
   D360CreateQueryFromExisting = "D8RKeOQr4fTMQTVYrGsc",
+  CrowdStrikeIntegration = "XKmmOlte5oBTVAKjB874"
 }
 
 export const ClipPaddingBottom: { [key: string]: string } = {
@@ -53,6 +54,7 @@ export const ClipPaddingBottom: { [key: string]: string } = {
   [Clip.OktaIntegrationGuideRoutingRuleConfiguration]: "calc(50.520833333333336% + 41px)",
   [Clip.D360QueryLibrary]: "calc(48.96988906497623% + 41px)",
   [Clip.D360CreateQueryFromExisting]: "calc(51.38528138528139% + 41px)",
+  [Clip.CrowdStrikeIntegration]: "calc(65.7042869641295% + 41px)",
 };
 
 /**
