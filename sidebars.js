@@ -141,6 +141,19 @@ const sidebars = {
       },
       items: [
         "tools/policy",
+        {
+          type: "category",
+          label: "Integration Catalog",
+          collapsed: true,
+          collapsible: true,
+          link: {
+            type: "doc",
+            id: "tools/integration-catalog/integration-catalog",
+          },
+          items: [
+            "tools/integration-catalog/integration-catalog-crowdstrike",
+          ],
+        },
       ],
     },
     {

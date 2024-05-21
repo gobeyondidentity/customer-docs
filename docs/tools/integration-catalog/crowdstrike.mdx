@@ -1,0 +1,193 @@
+---
+title: CrowdStrike Integration
+id: integration-catalog-crowdstrike
+description: "Learn how to integrate CrowdStrike with Beyond Identity."
+slug: /tools/integration-catalog/crowdstrike
+keywords:
+  - CrowdStrike
+  - EDR integrations
+  - integration catalog
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 05/14/2024
+  author: Shannon Moore
+draft: false
+hide_table_of_contents: false
+hide_title: false
+hide_breadcrumbs: false
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+
+import Arcade, {Clip} from '@site/src/components/Arcade.tsx';
+
+This guide will walk you through setting up a CrowdStrike Falcon Insight XDR integration.
+
+## Benefits of integrating CrowdStrike with Beyond Identity
+
+- Ensure devices are protected with CrowdStrike Falcon - The Beyond Identity CrowdStrike Falcon Insight XDR integration allows administrators to restrict access using conditional access policies, optionally restricting devices that fail to be found in the Falcon device directory or fail to meet a minimum Zero Trust Assessment baseline score.
+
+- Ensure specific controls are configured correctly - It's not enough to simply know a device exists in the Falcon device directory, it's just as important to ensure that the device is functional and configured correctly. In addition to the Zero Trust Assessment scores (overall, sensor, operating system), this integration also surfaces each individual assessment item and their evaluation outcome, allowing granular access control policies to be created that analyze devices.
+
+- Take actions on devices that fail conditional access policies - Execute actions on devices that fail to meet your conditional access policies, enabling proactive responses to security threats.
+
+- Network Containment - Network Containment is available for supported Windows, MacOS, and Linux operating systems. When systems are contained, they will lose the ability to make network connections to anything other than the CrowdStrike cloud infrastructure and any internal IP addresses that have been specified in the Respond App.
+
+---
+
+### 🔵 Beyond Identity
+
+Actions to be performed in the Beyond Identity platform are highlighted in blue.
+
+### 🟠 CrowdStrike
+
+Actions to be performed in the CrowdStrike platform are highlighted in orange.
+
+---
+
+
+## 🔵 OS Support on Beyond Identity
+ The CrowdStrike Falcon integration currently supports Windows and MacOS, with Linux support under active development.
+
+  | Platform | Supported |
+  |--|--|
+  | Windows | ✅ |
+  | MacOS | ✅ |
+  | Linux | 〰️ |
+  | iOS | ❌ |
+  | Android | ❌ |
+
+  *✅  Fully Supported*
+
+  *〰️ Under Development / Limited Support*
+
+  *❌ Not Supported*
+
+## 🟠 CrowdStrike License Requirements
+Falcon Insight XDR is required for compatibility with this integration. Falcon Insight XDR is an included component of the Enterprise, Elite, and Complete bundles.
+
+The CrowdStrike Falcon Integration reads Zero Trust Assessment scores assessed for each endpoint by CrowdStrike. CrowdStrike Falcon requires a Feature Flag to be enabled to allow ZTA data files to be pushed to endpoints. The Feature Flag to distribute ZTA files to endpoints – zta_distribute_payload – can only be enabled by opening a case with CrowdStrike Support with the request for the Feature Flag zta_distribute_payload be enabled. You can reach the CrowdStrike Support team at support@crowdstrike.com.
+
+## 🟠 Authentication Requirements
+The CrowdStrike Falcon integration requires a valid API client key and client secret. The token scope must be configured with these scopes:
+- **Hosts Read and Write**
+  <details>
+    <summary><p>Why is this required?</p></summary>
+    <p>This permission is necessary to allow Beyond Identity to read information about the hosts within the CrowdStrike host directory, and allows Beyond Identity to take action against devices as configured in policy.</p>
+  </details>
+
+- **Zero Trust Assessment Read**
+  <details>
+    <summary><p>Why is this required?</p></summary>
+    <p>This permission is necessary to allow Beyond Identity to read Zero Trust Assessment results.</p>
+  </details>
+
+- **Valid API client key and client secret**
+  - In addition, the CrowdStrike Falcon integration also requires the tenant base URL. Depending on your type of CrowdStrike account, you will use a specific endpoint to access the API. Use the relevant subdomain based upon where your account resides. These base URLs are:
+    - US-1 "api.crowdstrike.com"
+    - US-2 "api.us-2.crowdstrike.com"
+    - US-GOV-1 "api.laggar.gcw.crowdstrike.com"
+    - EU-1 "api.eu-1.crowdstrike.com"
+
+
+## 🟠 Enable the ZTA feature flag
+
+1. Open a case with CrowdStrike Support (support@crowdstrike.com) and request the following
+   - Feature Flag zta_distribute_payload be enabled
+
+   - data.zta file be enabled on macOS
+
+2. Verify that ZTA is enabled and populating
+
+   - The ZTA scope will be unlocked in the API credentials dashboard.
+
+   - Verify that the data.zta file has been populated at the following locations:
+
+       **Windows:** %ProgramData%\CrowdStrike\ZeroTrustAsssessment
+
+       **MacOS:** /Library/Application Support/Crowdstrike/ZeroTrustAssessment
+
+
+## 🟠 Get the API credentials from CrowdStrike to configure in Beyond Identity
+
+1. Log into the Falcon UI and navigate to **Support > API Clients and Keys**.
+
+2. Click on **Add new API client** in the CrowdStrike API Clients and Keys screen.
+
+3. In the Add new API client dialog, enter the following information:
+
+   - Client Name: Beyond Identity
+
+   - Optional description.
+
+   - Apply a checkmark as follows:
+
+     - Hosts Read and Write
+
+     - Zero Trust Assessment Read
+
+4. Click on **Add**.
+
+5. Copy the CLIENT ID, SECRET, and BASE URL from the API client created dialog These will be needed in the next section to configure Beyond Identity.
+
+6. Click on **Done**. The Integration screen is updated to reflect that CrowdStrike Falcon is connected.
+
+
+## 🔵 Configure Beyond Identity
+
+1. Select **Tools > Integrations Catalog** in the Beyond Identity Admin console.
+
+2. Click the **All Integrations** tab and then click the **CrowdStrike** tile.
+
+3. Click on **Add instance**.
+
+4. Complete the following entries in the Add integration - CrowdStrike dialog.
+
+   - **Display Name:** Enter "CrowdStrike Integration" or another name you want to display on the Installed Integrations page.
+
+   - **Description:** Optionally enter a description.
+
+   - Provide the information from step 5 in the section above.
+
+     - **Base Url**
+
+     - **Client ID**
+
+     - **Client Secret**
+
+5. Click on **Add instance**. You'll be returned to the Installed Integrations page with the CrowdStrike integration displayed.
+
+  <Arcade clip={Clip.CrowdStrikeIntegration} />
+
+
+## 🔵 CrowdStrike policy attributes
+You can now create policies that allow or deny authentication. The attributes below are available by default. For more information about policies, see <a href="https://docs.beyondidentity.com/docs/tools/policy">Policy</a>
+
+| Attribute | Source | Description |
+  |--|--|--|
+  | ZTA Score  | Crowdstrike Host API  | Checks the device's zero trust score.|
+  | Device Found | Crowdstrike Host API  | Checks whether CrowdStrike is able to collect data on the device.|
+  | Connection is | Crowdstrike Host API  | Checks whether the device is connected to CrowdStrike.|
+
+
+## 🔵 Frequently asked questions
+
+#### How are devices matched to the CrowdStrike Falcon device directory?
+
+This integration uses the Agent ID (AID), a unique and device specific identifier created by CrowdStrike. We attempt to collect the Agent ID from both the data.zta file as well as from falconctl, preferring the former. We do not use the serial number to match devices to records.
+
+#### Where can the data.zta file be found?
+
+**Windows:** %ProgramData%\CrowdStrike\ZeroTrustAsssessment
+
+**MacOS:** /Library/Application Support/Crowdstrike/ZeroTrustAssessment
+
+#### Why does Linux have an OS score of zero?
+
+The OS score for Linux will be reported by CrowdStrike as 0 as there are no Linux OS assessment features.
+
+
+#### What rate limits apply to this integration?
+
+All requests to the CrowdStrike API are subject to a rate limit. The default rate limit for requests containing a valid bearer token is **6,000 requests per minute per customer account**. Each request in your customer account removes one request from that pool, **regardless of which API endpoint or API client is used for the request**. The rate limit is calculated on a sliding window.
