@@ -1,8 +1,8 @@
 ---
-title: CrowdStrike Integration 
+title: CrowdStrike Integration
 id: integration-catalog-crowdstrike
 description: "Learn how to integrate CrowdStrike with Beyond Identity."
-slug: /tools/integration-catalog/integration-catalog-crowdstrike
+slug: /tools/integration-catalog/crowdstrike
 keywords:
   - CrowdStrike
   - EDR integrations
@@ -22,7 +22,7 @@ displayed_sidebar: mainSidebar
 
 import Arcade, {Clip} from '@site/src/components/Arcade.tsx';
 
-This guide will walk you through setting up a CrowdStrike Falcon Insight XDR integration. 
+This guide will walk you through setting up a CrowdStrike Falcon Insight XDR integration.
 
 ## Benefits of integrating CrowdStrike with Beyond Identity
 
@@ -59,9 +59,9 @@ Actions to be performed in the CrowdStrike platform are highlighted in orange.
   | Android | ❌ |
 
   *✅  Fully Supported*
-  
+
   *〰️ Under Development / Limited Support*
-  
+
   *❌ Not Supported*
 
 ## 🟠 CrowdStrike License Requirements
@@ -105,7 +105,7 @@ The CrowdStrike Falcon integration requires a valid API client key and client se
    - Verify that the data.zta file has been populated at the following locations:
 
        **Windows:** %ProgramData%\CrowdStrike\ZeroTrustAsssessment
- 
+
        **MacOS:** /Library/Application Support/Crowdstrike/ZeroTrustAssessment
 
 
@@ -118,13 +118,13 @@ The CrowdStrike Falcon integration requires a valid API client key and client se
 3. In the Add new API client dialog, enter the following information:
 
    - Client Name: Beyond Identity
-   
+
    - Optional description.
 
    - Apply a checkmark as follows:
-   
+
      - Hosts Read and Write
-   
+
      - Zero Trust Assessment Read
 
 4. Click on **Add**.
@@ -156,13 +156,13 @@ The CrowdStrike Falcon integration requires a valid API client key and client se
 
      - **Client Secret**
 
-5. Click on **Add instance**. You'll be returned to the Installed Integrations page with the CrowdStrike integration displayed. 
+5. Click on **Add instance**. You'll be returned to the Installed Integrations page with the CrowdStrike integration displayed.
 
   <Arcade clip={Clip.CrowdStrikeIntegration} />
 
 
 ## 🔵 CrowdStrike policy attributes
-You can now create policies that allow or deny authentication. The attributes below are available by default. For more information about policies, see <a href="https://docs.beyondidentity.com/docs/tools/policy">Policy</a> 
+You can now create policies that allow or deny authentication. The attributes below are available by default. For more information about policies, see <a href="https://docs.beyondidentity.com/docs/tools/policy">Policy</a>
 
 | Attribute | Source | Description |
   |--|--|--|
