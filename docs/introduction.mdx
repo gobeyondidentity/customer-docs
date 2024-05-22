@@ -1,7 +1,7 @@
 ---
-title: Secure Workforce Documentation
+title: Secure Access Platform Documentation
 id: welcome
-description: "Overview of features in Device360 and SSO"
+description: "Overview of features in Secure Access"
 slug: "/"
 pagination_next: null
 pagination_prev: null
@@ -19,20 +19,15 @@ import Admonition from '@theme/Admonition';
 import ImageSwitcher from "@site/src/components/ImageSwitcher.js";
 
 <Admonition type="caution" icon="" title="">
-Beyond Identity will be releasing a new, consolidated admin experience that incorporates our existing Secure Workforce product with two new products, Device360 and our Next Gen SSO. Post launch, Beyond Identity will communicate a migration plan to current customers.
+Beyond Identity has released a new, consolidated admin experience that incorporates our next generation MFA and Zero Trust products with new products, Access360, Device360, and Secure SSO. Beyond Identity will communicate a migration plan to current customers.
 </Admonition>
 
-<Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', paddingTop: '72px', paddingBottom: '72px' }}>
-  <Stack direction={{ xs: 'column', sm: 'row' }} spacing={3} alignItems="center" sx={{ width: '100%' }}>
-  <Box sx={{ flexGrow: 1, flexShrink: 1, flexBasis: 'auto' }}>
-    <h1>Beyond Identity Secure Access Platform Docs</h1>
-    <p>Know and control exactly who and what device is accessing your resources. Stay ahead of bad actors with all the clarity, control and precision you need in order to make informed security decisions, all in one platform.</p>
-  </Box>
-  <Box sx={{ flexShrink: 0 }}>
-    <img src="/img/docs-image.png" alt="Docs" style={{ width: '500px', height: 'auto', maxWidth: '100%', border: 'none' }} />
-  </Box>
-  </Stack>
-</Box>
+<h1>Beyond Identity Secure Access Platform Docs</h1>
+    <p>With the Secure Access Platform, you can use our phish-resistant, passwordless MFA, our lightweight, Secure SSO, and a suite of access risk detection features all in one platform, for a modern access security approach that’s easy on admins and users alike.</p>
+    <p>You can use one feature or all three features based on the package you purchase. </p>
+
+
+ ![Secure Access Platform](images/what-is-secure-access.png)
 
 
 <section className="intro-cards" style={{ paddingBottom: '64px' }}>
@@ -83,22 +78,41 @@ Beyond Identity will be releasing a new, consolidated admin experience that inco
   <div className="intro-cards">
     <Stack direction={{ xs: 'column', sm: 'column', md: 'column', lg: 'column', xl: 'row' }} spacing={3} justifyContent="space-between" flexWrap="wrap">
 
+
       <div style={{ flexGrow: 1, minWidth: '250px', maxWidth: '1' }}>
         <div className="card intro-card">
-        <a href="/docs/product-guides/device360" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none', color: 'inherit', textAlign: 'left' }}>
-            <img src="/img/d360.svg" alt="Device360" style={{ marginBottom: 16, width: '56px', pointerEvents: 'none' }} />
-            <p class="intro-card-heading" style={{ marginBottom: 4 }}>Device360</p>
-            <p>Identify risks in your device inventory</p>
+        <a href="/docs/product-guides/access360" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none', color: 'inherit', textAlign: 'left' }}>
+            <img src="/img/d360.svg" alt="Access360" style={{ marginBottom: 16, width: '56px', pointerEvents: 'none' }} />
+            <p class="intro-card-heading" style={{ marginBottom: 4 }}>Access360</p>
+            <p>Identify risks in your 3rd party SSO environment.</p>
           </a>
         </div>
       </div>
 
+           <div style={{ flexGrow: 1, minWidth: '250px', maxWidth: '1' }}>
+        <div className="card intro-card">
+        <a href="/docs/product-guides/device360" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none', color: 'inherit', textAlign: 'left' }}>
+            <img src="/img/d360.svg" alt="Device360" style={{ marginBottom: 16, width: '56px', pointerEvents: 'none' }} />
+            <p class="intro-card-heading" style={{ marginBottom: 4 }}>Device360</p>
+            <p>Device security And visibility, across every device.</p>
+          </a>
+        </div>
+      </div>
+
+    </Stack>
+  </div>
+
+  <div className="intro-cards">
+    <Stack direction={{ xs: 'column', sm: 'column', md: 'column', lg: 'column', xl: 'row' }} spacing={3} justifyContent="space-between" flexWrap="wrap">
+
+
+ 
       <div style={{ flexGrow: 1, minWidth: '250px', maxWidth: '1' }}>
         <div className="card intro-card">
         <a href="/docs/product-guides/secure-work" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none', color: 'inherit', textAlign: 'left' }}>
-            <img src="/img/pwlmfa.svg" alt="Zero Trust Access (MFA)" style={{ marginBottom: 16, width: '56px', pointerEvents: 'none' }} />
-            <p class="intro-card-heading" style={{ marginBottom: 4 }}>Zero Trust Access (MFA)</p>
-            <p>Passwordless, phishing-resistant MFA</p>
+            <img src="/img/pwlmfa.svg" alt="Zero Trust Authentication (MFA)" style={{ marginBottom: 16, width: '56px', pointerEvents: 'none' }} />
+            <p class="intro-card-heading" style={{ marginBottom: 4 }}>Zero Trust Authentication (MFA)</p>
+            <p>Passwordless, phishing-resistant MFA, policies, and more.</p>
           </a>
         </div>
       </div>
@@ -106,15 +120,17 @@ Beyond Identity will be releasing a new, consolidated admin experience that inco
       <div style={{ flexGrow: 1, minWidth: '250px', maxWidth: '1' }}>
         <div className="card intro-card">
         <a href="/docs/product-guides/secure-access" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none', color: 'inherit', textAlign: 'left' }}>
-            <img src="/img/sso.svg" alt="Next Gen SSO" style={{ marginBottom: 16, width: '56px', pointerEvents: 'none' }} />
-            <p class="intro-card-heading" style={{ marginBottom: 4 }}>Next Gen SSO</p>
-            <p>Simple and Secure by Design</p>
+            <img src="/img/sso.svg" alt="Secure SSO" style={{ marginBottom: 16, width: '56px', pointerEvents: 'none' }} />
+            <p class="intro-card-heading" style={{ marginBottom: 4 }}>Secure SSO</p>
+            <p>The first SSO to be built, from the ground up, for zero trust.</p>
           </a>
         </div>
       </div>
 
     </Stack>
   </div>
+
+
 </section>
 
 <div className="intro-informational" style={{ marginBottom: '64px' }}>
