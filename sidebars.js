@@ -3,9 +3,9 @@ const sidebars = {
   // By default, Docusaurus generates a sidebar from the docs folder structure
   mainSidebar: [
     {
-      type: 'link',
-      label: 'Home',
-      href: '/docs',
+      type: "link",
+      label: "Home",
+      href: "/docs",
     },
     {
       type: "category",
@@ -16,10 +16,7 @@ const sidebars = {
         type: "doc",
         id: "introduction/introduction",
       },
-      items: [
-        "introduction/getting-started",
-        "introduction/faq",
-      ],
+      items: ["introduction/getting-started", "introduction/faq"],
     },
     {
       type: "category",
@@ -31,9 +28,10 @@ const sidebars = {
         id: "product-guides/product-guides",
       },
       items: [
+        "product-guides/access360",
         "product-guides/device360",
-        "product-guides/secure-access",
-        "product-guides/secure-work",
+        "product-guides/zero-trust-authentication",
+        "product-guides/secure-sso",
       ],
     },
     {
@@ -59,7 +57,7 @@ const sidebars = {
           },
           items: [
             "directory/directory-integrations/directory-integrations-generic-scim",
-            "directory/directory-integrations/directory-integrations-okta"
+            "directory/directory-integrations/directory-integrations-okta",
           ],
         },
       ],
@@ -73,10 +71,7 @@ const sidebars = {
         type: "doc",
         id: "inventory/inventory",
       },
-      items: [
-        "inventory/devices",
-        "inventory/device-query",
-      ],
+      items: ["inventory/devices", "inventory/device-query"],
     },
     {
       type: "category",
@@ -87,10 +82,7 @@ const sidebars = {
         type: "doc",
         id: "deployment/deployment",
       },
-      items: [
-        "deployment/authenticator-set-up",
-        "deployment/branding",
-      ],
+      items: ["deployment/authenticator-set-up", "deployment/branding"],
     },
     {
       type: "category",
@@ -104,30 +96,30 @@ const sidebars = {
       items: [
         {
           type: "category",
-          label: "Identity Providers",
+          label: "Protect Your SSO",
           collapsed: true,
           collapsible: true,
           link: {
             type: "doc",
-            id: "auth-and-sso/identity-providers/identity-providers",
+            id: "auth-and-sso/protect-your-sso/protect-your-sso",
           },
           items: [
-            "auth-and-sso/identity-providers/generic-oidc",
+            "auth-and-sso/protect-your-sso/generic-oidc",
+            {
+              type: "category",
+              label: "Product Integration Guides",
+              collapsed: true,
+              collapsible: true,
+              link: {
+                type: "doc",
+                id: "auth-and-sso/product-integration-guides/product-integration-guides",
+              },
+              items: ["auth-and-sso/product-integration-guides/okta"],
+            },
           ],
         },
-        {
-          type: "category",
-          label: "Product Integration Guides",
-          collapsed: true,
-          collapsible: true,
-          link: {
-            type: "doc",
-            id: "auth-and-sso/product-integration-guides/product-integration-guides",
-          },
-          items: [
-            "auth-and-sso/product-integration-guides/okta",
-          ],
-        },
+
+        "auth-and-sso/bi-secure-sso",
       ],
     },
     {
@@ -150,9 +142,7 @@ const sidebars = {
             type: "doc",
             id: "tools/integration-catalog/integration-catalog",
           },
-          items: [
-            "tools/integration-catalog/integration-catalog-crowdstrike",
-          ],
+          items: ["tools/integration-catalog/integration-catalog-crowdstrike"],
         },
       ],
     },
@@ -165,10 +155,7 @@ const sidebars = {
         type: "doc",
         id: "release-notes/release-notes",
       },
-      items: [
-        "release-notes/endpoint",
-        "release-notes/console",
-      ],
+      items: ["release-notes/endpoint", "release-notes/console"],
     },
     {
       type: "category",
@@ -181,9 +168,9 @@ const sidebars = {
       },
       items: [
         {
-          type: 'link',
-          label: 'Beyond Identity API',
-          href: '/api/v1',
+          type: "link",
+          label: "Beyond Identity API",
+          href: "/api/v1",
         },
       ],
     },
