@@ -96,15 +96,15 @@ const sidebars = {
       items: [
         {
           type: "category",
-          label: "Protect Your SSO",
+          label: "External SSO",
           collapsed: true,
           collapsible: true,
           link: {
             type: "doc",
-            id: "auth-and-sso/protect-your-sso/protect-your-sso",
+            id: "auth-and-sso/external-sso/external-sso",
           },
           items: [
-            "auth-and-sso/protect-your-sso/generic-oidc",
+            "auth-and-sso/external-sso/generic-oidc",
             {
               type: "category",
               label: "Product Integration Guides",
@@ -119,7 +119,7 @@ const sidebars = {
           ],
         },
 
-        "auth-and-sso/bi-secure-sso",
+        "auth-and-sso/beyond-identity-sso",
       ],
     },
     {
@@ -135,15 +135,17 @@ const sidebars = {
         "tools/policy",
         {
           type: "category",
-          label: "Integration Catalog",
+          label: "Integrations",
           collapsed: true,
           collapsible: true,
           link: {
             type: "doc",
-            id: "tools/integration-catalog/integration-catalog",
+            id: "tools/integrations/integrations",
           },
           items: [
-            "tools/integration-catalog/integration-catalog-crowdstrike", "tools/integration-catalog/integration-catalog-jamf"],
+            "tools/integrations/integrations-crowdstrike",
+            "tools/integrations/integrations-jamf"
+          ],
         },
       ],
     },
