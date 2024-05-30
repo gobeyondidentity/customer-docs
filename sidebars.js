@@ -142,7 +142,8 @@ const sidebars = {
             type: "doc",
             id: "tools/integration-catalog/integration-catalog",
           },
-          items: ["tools/integration-catalog/integration-catalog-crowdstrike"],
+          items: [
+            "tools/integration-catalog/integration-catalog-crowdstrike", "tools/integration-catalog/integration-catalog-jamf"],
         },
       ],
     },
