@@ -33,6 +33,7 @@ export enum Clip {
   D360CreateQueryFromExisting = "D8RKeOQr4fTMQTVYrGsc",
   CrowdStrikeIntegration = "XKmmOlte5oBTVAKjB874",
   Access360 = "TUr5Ta1lms4pAXrEqAMa",
+  Device360 = "z9hyF8cHLKTwBns6WQ57",
   JamfIntegration = "aBqNcsOXYRZZ4EGM4D3s",
 }
 
@@ -58,6 +59,7 @@ export const ClipPaddingBottom: { [key: string]: string } = {
   [Clip.D360CreateQueryFromExisting]: "calc(51.38528138528139% + 41px)",
   [Clip.CrowdStrikeIntegration]: "calc(65.7042869641295% + 41px)",
   [Clip.Access360]: "calc(67.40107913669064% + 41px)",
+  [Clip.Device360]: "calc(68.21043165467626% + 41px)",
   [Clip.JamfIntegration]: "calc(66.4568345323741% + 41px)",
 };
 
