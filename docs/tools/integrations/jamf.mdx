@@ -1,12 +1,13 @@
 ---
 title: Jamf Integration
-id: integration-catalog-jamf
+id: integrations-jamf
 description: "Learn how to integrate Jamf with Beyond Identity."
-slug: /tools/integration-catalog/jamf
+slug: /tools/integrations/jamf
 keywords:
   - Jamf
   - EDR integrations
   - integration catalog
+  - integrations
 pagination_next: null
 pagination_prev: null
 last_update:
@@ -22,12 +23,12 @@ displayed_sidebar: mainSidebar
 
 import Arcade, {Clip} from '@site/src/components/Arcade.tsx';
 
-This guide will walk you through setting up a Jamf Pro integration with Beyond Identity. 
+This guide will walk you through setting up a Jamf Pro integration with Beyond Identity.
 
 ## Benefits of integrating Jamf with Beyond Identity
-  
+
   **Ensure devices are found within Jamf Pro**
-  
+
   Prevent unmanaged devices from accessing sensitive resources by leveraging Jamf Pro within Beyond Identity. Administrators are empowered to create policies using attributes such as:
 
   - Device Ownership Type
@@ -37,7 +38,7 @@ This guide will walk you through setting up a Jamf Pro integration with Beyond I
 
   **Ensure specific controls are configured correctly**
 
-  It's not enough to simply know a device exists in the Jamf Pro device directory, it's just as important to ensure that the device is functional and configured correctly. This integration provides deep visibility into the security configuration of monitored devices, exposing the following attributes and more: 
+  It's not enough to simply know a device exists in the Jamf Pro device directory, it's just as important to ensure that the device is functional and configured correctly. This integration provides deep visibility into the security configuration of monitored devices, exposing the following attributes and more:
   - FileVault Status
   - Secure Boot Status
   - SIP Status
@@ -57,10 +58,10 @@ Actions to be performed in the Jamf Pro platform are highlighted in orange.
 ---
 
 ## Prerequisites
-To ensure a smooth integration process, please confirm the availability of the following prerequisites and requirements. 
-  
+To ensure a smooth integration process, please confirm the availability of the following prerequisites and requirements.
 
-### 🔵 OS Support on Beyond Identity 
+
+### 🔵 OS Support on Beyond Identity
 
   The Jamf Pro integration currently supports MacOS and iOS.
 
@@ -73,24 +74,24 @@ To ensure a smooth integration process, please confirm the availability of the f
   | Android | ❌ |
 
   *✅  Fully Supported*
-  
+
   *〰️ Under Development / Limited Support*
-  
+
   *❌ Not Supported*
 
 
 ### 🟠 License Requirements
-  
+
 This integration provides support for Jamf Pro. A valid Jamf Pro tenant is required.
 
 ### 🟠 Authentication Requirements
 
-The Jamf Pro integration requires a valid username, password, and tenant URL. The tenant URL must be supplied in the form `https://<yourinstancename>.jamfcloud.com`, where `yourinstancename` is the name of your Jamf tenant. 
+The Jamf Pro integration requires a valid username, password, and tenant URL. The tenant URL must be supplied in the form `https://<yourinstancename>.jamfcloud.com`, where `yourinstancename` is the name of your Jamf tenant.
 
 ---
 
 ## 🟠 Step 1 - Set up the Jamf Pro environment for first use
-This section describes how to set up the Jamf environment for the first time. 
+This section describes how to set up the Jamf environment for the first time.
 
 **If you already have a Jamf environment configured, skip this section and go directly to Step 2 - Configure Jamf Pro to work with Beyond Identity.**
 
@@ -101,7 +102,7 @@ This section describes how to set up the Jamf environment for the first time.
     <li>Access the Jamf Pro environment by logging in to the following link as an administrator:
    https://yourinstancename.jamfcloud.com
    Replace "yourinstancename" with the name of your Jamf Pro instance.
-   Login using your Jamf Pro admin username and password.</li> 	
+   Login using your Jamf Pro admin username and password.</li>
     <li>Create additional users, if required. To create additional users, follow these steps:
    https://docs.jamf.com/10.28.0/jamf-pro/administrator-guide/Jamf_Pro_User_Accounts_and_Groups.html</li>
     <li>You can integrate with a third-party identity provider (IdP) to enable single sign-on (SSO) for portions of Jamf Pro. When SSO is configured and enabled, users are automatically redirected to your organization's IdP login page. After authentication, users obtain access to the resource they were attempting to access. To configure SAML, follow these steps:
@@ -150,7 +151,7 @@ This section describes how to set up the Jamf environment for the first time.
         <p>The MDM Profile is now installed. After the MDM profile has been installed, jamf binary, agents and other management tools will automatically begin installing in the background, please allow a few minutes for this process to complete before attempting to perform management tasks on the device.</p>
     <li>Quit the browser to ensure all Jamf Pro sessions are closed.</li>
     \
-        More information and screenshots of the end user experience can be found in the Jamf Pro Administrator’s Guide at the following link: 
+        More information and screenshots of the end user experience can be found in the Jamf Pro Administrator’s Guide at the following link:
         https://www.jamf.com/resources/product-documentation/jamf-pro-administrators-guide
     </ol>
     \
@@ -171,12 +172,12 @@ This section describes how to set up the Jamf environment for the first time.
     More information and screenshots of the end-user experience can be found in the Jamf Pro Administrator’s Guide at the following link:
 
       https://www.jamf.com/resources/product-documentation/jamf-pro-administrators-guide/
-   
+
  </details>
 
 ## 🟠 Step 2 - Configure Jamf Pro to work with Beyond Identity
 
-If you already have Jamf Pro configured, start here to begin the configuration with Beyond Identity. 
+If you already have Jamf Pro configured, start here to begin the configuration with Beyond Identity.
 
 1. Log into the Jamf Pro Admin Console.
 
@@ -205,7 +206,7 @@ If you already have Jamf Pro configured, start here to begin the configuration w
    2. Select **READ** permissions for all.
 
    3. Leave other permissions unchecked.
-   
+
 6. Click **Save**.
 
 
@@ -215,7 +216,7 @@ If you already have Jamf Pro configured, start here to begin the configuration w
  <details>
     <summary><p>Click here to view the steps.</p></summary>
     <ol>
-    <li>Go to **Tools > Integrations Catalog** in the Beyond Identity Admin console. </li> 	
+    <li>Go to **Tools > Integrations Catalog** in the Beyond Identity Admin console. </li>
     <li> Click the **All Integrations** tab and then click the **Jamf** tile. </li>
     <li> Click  **Add instance**. </li>
     <li>Complete the following entries in the Add integration - Jamf dialog.</li>
@@ -242,7 +243,7 @@ You can create policies that allow or deny authentication. The attributes below 
   | Computer Managed State is  | Jamf Pro API  | Checks whether the device is managed by Jamf.|
   | Mobile Device Managed State is | Jamf Pro API  | Checks whether the mobile device is managed by Jamf.|
 
-If the computer or mobile device is "Not Managed," your rule can deny authentication. If you've purchased Device360, you can simulate the policy to see 
+If the computer or mobile device is "Not Managed," your rule can deny authentication. If you've purchased Device360, you can simulate the policy to see
 
 **Note:** This rule will take effect immediately.
 
@@ -276,15 +277,15 @@ To leverage JAMF mobile attributes in the Beyond Identity policy and determine a
 ## 🔵 Frequently Asked Questions
 
   **How are devices matched to the Jamf Pro device directory?**
-  
+
   This integration leverages the Apple Unique Device Identifier (UDID). The UDID is a 24-character string assigned to all modern Apple devices. We **do not** use the serial number to match devices to records.
 
   **What rate limits apply to this integration?**
-  
+
   No explicit rate limits are set for Jamf Pro.
 
   **Why aren't my iOS devices being found?**
-  
+
   There are several reasons why an iOS device may fail to be found by Beyond Identity when it exists in the Jamf Pro device directory.
 
   iOS devices require a **managed configuration** to be provided in order to map device information into the Beyond Identity Platform Authenticator. The managed configuration must be assigned to the correct user and device population within Jamf Pro.

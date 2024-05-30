@@ -1,7 +1,7 @@
 ---
-title: Secure Workforce Documentation
+title: Secure Access Platform Documentation
 id: welcome
-description: "Overview of features in Device360 and SSO"
+description: "Overview of features in Secure Access"
 slug: "/"
 pagination_next: null
 pagination_prev: null
@@ -14,32 +14,61 @@ displayed_sidebar: mainSidebar
 ---
 
 import { Col, Divider, Row, Input } from "antd";
-import {Stack, Box} from "@mui/material";
-import Admonition from '@theme/Admonition';
+import { Stack, Box } from "@mui/material";
+import Admonition from "@theme/Admonition";
 import ImageSwitcher from "@site/src/components/ImageSwitcher.js";
 
 <Admonition type="caution" icon="" title="">
-Beyond Identity will be releasing a new, consolidated admin experience that incorporates our existing Secure Workforce product with two new products, Device360 and our Next Gen SSO. Post launch, Beyond Identity will communicate a migration plan to current customers.
+  Beyond Identity has released a new, consolidated admin experience that
+  incorporates our next generation MFA and Zero Trust products with new
+  products, Access360, Device360, and Secure SSO. Beyond Identity will
+  communicate a migration plan to current customers.
 </Admonition>
 
-<Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', paddingTop: '72px', paddingBottom: '72px' }}>
-  <Stack direction={{ xs: 'column', sm: 'row' }} spacing={3} alignItems="center" sx={{ width: '100%' }}>
-  <Box sx={{ flexGrow: 1, flexShrink: 1, flexBasis: 'auto' }}>
-    <h1>Beyond Identity Secure Access Platform Docs</h1>
-    <p>Know and control exactly who and what device is accessing your resources. Stay ahead of bad actors with all the clarity, control and precision you need in order to make informed security decisions, all in one platform.</p>
-  </Box>
-  <Box sx={{ flexShrink: 0 }}>
-    <img src="/img/docs-image.png" alt="Docs" style={{ width: '500px', height: 'auto', maxWidth: '100%', border: 'none' }} />
-  </Box>
+<Box
+  sx={{
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    paddingTop: "72px",
+    paddingBottom: "72px",
+  }}
+>
+  <Stack
+    direction={{ xs: "column", sm: "row" }}
+    spacing={3}
+    alignItems="center"
+    sx={{ width: "100%" }}
+  >
+    <Box sx={{ flexGrow: 1, flexShrink: 1, flexBasis: "auto" }}>
+      <h1>Beyond Identity Secure Access Platform Docs</h1>
+      <p>
+        With the Secure Access Platform, you can use our phish-resistant,
+        passwordless MFA, our lightweight, Secure SSO, and a suite of access
+        risk detection features all in one platform, for a modern access
+        security approach that’s easy on admins and users alike.
+      </p>
+    </Box>
+    <Box sx={{ flexShrink: 0 }}>
+      <img
+        src="/img/docs-image.png"
+        alt="Docs"
+        style={{
+          width: "500px",
+          height: "auto",
+          maxWidth: "100%",
+          border: "none",
+        }}
+      />
+    </Box>
   </Stack>
 </Box>
-
 
 <section className="intro-cards" style={{ paddingBottom: '64px' }}>
   <h2>Quick Links</h2>
   <div className="intro-cards">
     <Stack direction={{ xs: 'column', sm: 'column', md: 'column', lg: 'row' }} spacing={3} justifyContent="space-between" flexWrap="wrap">
-      {/* Each card container now directly controls its size */}
+
       <div style={{ flexGrow: 1, minWidth: '250px', maxWidth: '1' }}>
         <div className="card intro-card">
           <a href="/docs/introduction/getting-started">
@@ -51,7 +80,6 @@ Beyond Identity will be releasing a new, consolidated admin experience that inco
         </div>
       </div>
 
-      {/* Repeat for other cards */}
       <div style={{ flexGrow: 1, minWidth: '250px', maxWidth: '1' }}>
         <div className="card intro-card">
           <a href="/api/v1">
@@ -74,55 +102,65 @@ Beyond Identity will be releasing a new, consolidated admin experience that inco
         </div>
       </div>
     </Stack>
+
   </div>
 </section>
 
-
-<section className="intro-cards" style={{ paddingBottom: '64px' }}>
+<section className="product-guides-intro-cards" style={{ paddingBottom: '64px' }}>
   <h2>Product Guides</h2>
-  <div className="intro-cards">
-    <Stack direction={{ xs: 'column', sm: 'column', md: 'column', lg: 'column', xl: 'row' }} spacing={3} justifyContent="space-between" flexWrap="wrap">
+  <div className="product-guides-intro-cards-container">
 
-      <div style={{ flexGrow: 1, minWidth: '250px', maxWidth: '1' }}>
-        <div className="card intro-card">
-        <a href="/docs/product-guides/device360" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none', color: 'inherit', textAlign: 'left' }}>
-            <img src="/img/d360.svg" alt="Device360" style={{ marginBottom: 16, width: '56px', pointerEvents: 'none' }} />
-            <p class="intro-card-heading" style={{ marginBottom: 4 }}>Device360</p>
-            <p>Identify risks in your device inventory</p>
-          </a>
+    <div className="product-guides-intro-card">
+      <a href="/docs/product-guides/access360">
+        <div className="product-guides-card-content">
+          <img src="/img/d360.svg" alt="Access360" className="product-guides-card-icon" />
+          <p className="product-guides-card-heading">Access360</p>
+          <p>Identify risks in your 3rd party SSO environment.</p>
         </div>
-      </div>
+      </a>
+    </div>
 
-      <div style={{ flexGrow: 1, minWidth: '250px', maxWidth: '1' }}>
-        <div className="card intro-card">
-        <a href="/docs/product-guides/secure-work" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none', color: 'inherit', textAlign: 'left' }}>
-            <img src="/img/pwlmfa.svg" alt="Zero Trust Access (MFA)" style={{ marginBottom: 16, width: '56px', pointerEvents: 'none' }} />
-            <p class="intro-card-heading" style={{ marginBottom: 4 }}>Zero Trust Access (MFA)</p>
-            <p>Passwordless, phishing-resistant MFA</p>
-          </a>
+    <div className="product-guides-intro-card">
+      <a href="/docs/product-guides/device360">
+        <div className="product-guides-card-content">
+          <img src="/img/d360.svg" alt="Device360" className="product-guides-card-icon" />
+          <p className="product-guides-card-heading">Device360</p>
+          <p>Device security And visibility, across every device.</p>
         </div>
-      </div>
+      </a>
+    </div>
 
-      <div style={{ flexGrow: 1, minWidth: '250px', maxWidth: '1' }}>
-        <div className="card intro-card">
-        <a href="/docs/product-guides/secure-access" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none', color: 'inherit', textAlign: 'left' }}>
-            <img src="/img/sso.svg" alt="Next Gen SSO" style={{ marginBottom: 16, width: '56px', pointerEvents: 'none' }} />
-            <p class="intro-card-heading" style={{ marginBottom: 4 }}>Next Gen SSO</p>
-            <p>Simple and Secure by Design</p>
-          </a>
+    <div className="product-guides-intro-card">
+      <a href="/docs/product-guides/zero-trust-authentication">
+        <div className="product-guides-card-content">
+          <img src="/img/pwlmfa.svg" alt="Zero Trust Authentication (MFA)" className="product-guides-card-icon" />
+          <p className="product-guides-card-heading">Zero Trust Authentication (MFA)</p>
+          <p>Passwordless, phishing-resistant MFA, policies, and more.</p>
         </div>
-      </div>
+      </a>
+    </div>
 
-    </Stack>
+    <div className="product-guides-intro-card">
+      <a href="/docs/product-guides/secure-sso">
+        <div className="product-guides-card-content">
+          <img src="/img/sso.svg" alt="Secure SSO" className="product-guides-card-icon" />
+          <p className="product-guides-card-heading">Secure SSO</p>
+          <p>The first SSO to be built, from the ground up, for zero trust.</p>
+        </div>
+      </a>
+    </div>
+
   </div>
 </section>
 
-<div className="intro-informational" style={{ marginBottom: '64px' }}>
-    Product Documentation and API Documentation for our current Secure Workforce customers is available here:
-    <br></br>
-    - **Secure Workforce Product Documentation** - [https://support.beyondidentity.com/hc/en-us](https://support.beyondidentity.com)
-    - **Secure Workforce Rest API** - [https://docs.beyondidentity.com/api/v0](/api/v0)
-    - **Secure Workforce Events API** - [https://docs.beyondidentity.com/api/events/v0](/api/events/v0)
-    <br></br>
-    For any questions please contact <a href="mailto:support@beyondidentity.com">support@beyondidentity.com</a>
+
+<div className="intro-informational" style={{ marginBottom: "64px" }}>
+  Product Documentation and API Documentation for our current Secure Workforce
+  customers is available here:
+  <br></br>- **Secure Workforce Product Documentation** - [https://support.beyondidentity.com/hc/en-us](https://support.beyondidentity.com)
+  - **Secure Workforce Rest API** - [https://docs.beyondidentity.com/api/v0](/api/v0)
+  - **Secure Workforce Events API** - [https://docs.beyondidentity.com/api/events/v0](/api/events/v0)
+  <br></br>
+  For any questions please contact{" "}
+  <a href="mailto:support@beyondidentity.com">support@beyondidentity.com</a>
 </div>
