@@ -60,6 +60,7 @@ const sidebars = {
             "directory/directory-integrations/directory-integrations-okta",
           ],
         },
+        "directory/roles",
       ],
     },
     {

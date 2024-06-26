@@ -35,6 +35,10 @@ export enum Clip {
   Access360 = "TUr5Ta1lms4pAXrEqAMa",
   Device360 = "z9hyF8cHLKTwBns6WQ57",
   JamfIntegration = "aBqNcsOXYRZZ4EGM4D3s",
+  RolesAddRole = "3Z7OXz9EfrDfqrhni5l5",
+  RolesEditDeleteRole = "o7fubx589UlHR2VhJOCG",
+  RolesAddIdentitytoRole = "CLRUbL4MV9ilGb09cGTU",
+  RolesAddGrouptoRole = "0gX2fOfvNL98UB50Q4sC",
 }
 
 export const ClipPaddingBottom: { [key: string]: string } = {
@@ -61,6 +65,10 @@ export const ClipPaddingBottom: { [key: string]: string } = {
   [Clip.Access360]: "calc(67.40107913669064% + 41px)",
   [Clip.Device360]: "calc(68.21043165467626% + 41px)",
   [Clip.JamfIntegration]: "calc(66.4568345323741% + 41px)",
+  [Clip.RolesAddRole]: "calc(64.16366906474819% + 41px)",
+  [Clip.RolesEditDeleteRole]: "calc(65.01798561151078% + 41px)",
+  [Clip.RolesAddIdentitytoRole]: "calc(57.79194898365883% + 41px)",
+  [Clip.RolesAddGrouptoRole]: "calc(57.79194898365883% + 41px)",
 };
 
 /**

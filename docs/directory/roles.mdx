@@ -1,0 +1,87 @@
+---
+title: Roles
+id: roles
+description: "Learn about roles in Beyond Identity."
+slug: /directory/roles
+keywords:
+  - roles
+  - add roles
+  - edit roles
+  - delete roles
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 06/25/2024
+  author: Shannon Moore
+draft: false
+hide_table_of_contents: false
+hide_title: false
+hide_breadcrumbs: false
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+import Arcade, {Clip} from '@site/src/components/Arcade.tsx';
+
+## Manage Roles
+Use roles to restrict access to resources for your identities.For example, you might want to create a Users role with basic access corporate applications, HR role with access to financial applictions, etc. A user (identity) can be assigned to multiple roles.
+
+
+## Create a Role
+1. Navigate to **Directory > Roles** and click **Create Role**.
+
+2. Enter a name and an optional description for the role. 
+
+3. Click **Create role**.
+
+<Arcade clip={Clip.RolesAddRole} />
+
+
+## Edit or Delete a Role
+1. Navigate to **Directory > Roles** and click a role name.
+
+2. Click **Edit role**.
+
+3. Update the fields as needed and click **Save changes**.
+
+   -Or-
+
+   Click **Delete role role_name**.
+
+<Arcade clip={Clip.RolesEditDeleteRole} />
+
+
+## Add an Identity to a Role
+1. Navigate to **Directory > Roles** and click a role name.
+
+2. Click the **Identity** tab, if needed. 
+
+3. Click **Add identity**. 
+
+4. Enter a username to search identities or click the drop-down beside **Select identity** to select a user to add. 
+
+   You can enter or select mulitple users from this field. 
+
+5. Click **Add to role**. Any selected identities appear on the page.
+
+To remove an identity from the role, select the checkbox beside a username in the table and click **Remove identity from role**. 
+
+<Arcade clip={Clip.RolesAddIdentitytoRole} />
+
+## Add a Group to a Role
+1. Navigate to **Directory > Roles** and click a role name.
+
+2. Click the **Groups** tab. 
+
+3. Click **Add group**. 
+
+4. Enter a group to search existing groups or click the drop-down beside **Select group** to select a group to add. 
+
+   You can enter or select mulitple groups from this field. 
+
+5. Click **Add to role**. Any selected groups appear in the table. 
+
+   **Note:** Any users in the group will be added to the role but they won't appear under the **Identities** tab. 
+
+To remove a group from a role, select the checkbox beside a group in the table and click **Remove group from role**. 
+
+<Arcade clip={Clip.RolesAddGrouptoRole} />
