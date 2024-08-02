@@ -140,10 +140,18 @@ const sidebars = {
           collapsible: true,
           items: [
             "access-control/applications/beyond-identity-sso",
-            "access-control/applications/generic-oidc",
-            "access-control/applications/okta",
               ],
        },
+       {
+        type: "category",
+        label: "Identity Providers",
+        collapsed: true,
+        collapsible: true,
+        items: [
+          "access-control/identity-providers/generic-oidc",
+          "access-control/identity-providers/okta",
+        ],
+      },
      ],
     },
      {
