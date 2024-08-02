@@ -26,27 +26,15 @@ This guide is designed to offer step-by-step instructions to integrate Beyond Id
 - Configure Beyond Identity as the primary phishing-resistant, passwordless authentication method for your Okta environment.
 - Configure Okta to delegate authentication to Beyond Identity to enhance security and the user experience.
 
----
-
-### 🔵 **Beyond Identity**
-
-Actions to be performed in the Beyond Identity platform are highlighted in blue.
-
-### 🟠 **Okta**
-
-Actions to be performed in the Okta platform are highlighted in orange.
-
----
-
 ## Prerequisites
 
 To ensure a smooth integration process, please confirm the availability of the following prerequisites and settings within your Okta account.
 
-### 🟠 Create an Okta Account
+### Create an Okta Account
 
 This guide assume you already have an Okta account provisioned. If you need to create one, [Click here](https://developer.okta.com/signup/).
 
-### 🟠 Okta Account Access
+### Okta Account Access
 
 Ensure you have either **Super Admin** or **Organization Admin** privileges.
 
@@ -60,7 +48,7 @@ Ensure you have either **Super Admin** or **Organization Admin** privileges.
     </ul>
 </details>
 
-### 🟠 Okta Feature Verification
+### Okta Feature Verification
 
 Confirm that the following features are active on your account:
 
@@ -79,6 +67,16 @@ Confirm that the following features are active on your account:
 To create a Beyond Identity account, please [click here](https://www.beyondidentity.com/products/secure-workforce).
 
 ---
+
+### Legend
+In the following sections, a color-coded indicator has been added to a heading to help identify whether the steps should be performed using Beyond Identity or a different application.
+
+🔵 **Beyond Identity:** Actions to be performed in the Beyond Identity platform are highlighted in blue.
+
+🟠 **Okta:** Actions to be performed in the Okta platform are highlighted in orange.
+
+---
+
 
 ## 1. Create a Custom Attribute
 
@@ -146,7 +144,7 @@ Configure your Identity Provider routing rules in Okta to enable redirection to 
 
 ---
 
-## 3. Add Users to Beyond Identity's Directory
+## 🔵 3. Add Users to Beyond Identity's Directory
 
 ### Option 1: Add Identities Manually
 
@@ -161,7 +159,7 @@ In order to enable user syncing between Okta and Beyond Identity, <a href="/docs
 
 ---
 
-## 4. Send Passkey Enrollment
+## 🔵 4. Send Passkey Enrollments
 
 ### Option 1: Email
 
