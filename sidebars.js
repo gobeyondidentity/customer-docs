@@ -34,33 +34,7 @@ const sidebars = {
         "product-guides/secure-sso",
       ],
     },
-    {
-      type: "category",
-      label: "Platform",
-      collapsed: false,
-      collapsible: true,
-      link: {
-        type: "doc",
-        id: "platform/platform",
-      },
-      items: [
-        {
-          type: "category",
-          label: "Integrations",
-          collapsed: true,
-          collapsible: true,
-          link: {
-            type: "doc",
-            id: "platform/integrations/integrations",
-          },
-          items: [
-            "platform/integrations/integrations-crowdstrike",
-            "platform/integrations/integrations-jamf"
-          ],
-        },
-      ],
-    },
-    {
+     {
       type: "category",
       label: "Policy",
       collapsed: false,
@@ -141,19 +115,31 @@ const sidebars = {
           "access-control/identity-providers/generic-oidc",
           "access-control/identity-providers/okta",
         ],
-      },
+      },      
      ],
     },
      {
       type: "category",
-      label: "Customization",
+      label: "Tools",
       collapsed: false,
       collapsible: true,
       link: {
         type: "doc",
-        id: "customization/customization",
+        id: "tools/tools",
       },
-      items: ["customization/branding"],
+      items: [
+        "tools/branding",
+        {
+          type: "category",
+          label: "Integrations",
+          collapsed: true,
+          collapsible: true,
+          items: [
+            "tools/integrations/integrations-crowdstrike",
+            "tools/integrations/integrations-jamf"
+              ],
+       },
+      ],
     },
     {
       type: "category",
