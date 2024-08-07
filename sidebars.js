@@ -118,7 +118,7 @@ const sidebars = {
       },      
      ],
     },
-     {
+    {
       type: "category",
       label: "Tools",
       collapsed: false,
@@ -137,7 +137,7 @@ const sidebars = {
           items: [
             "tools/integrations/integrations-crowdstrike",
             "tools/integrations/integrations-jamf",
-              ],
+            ],
        },
       ],
     },
