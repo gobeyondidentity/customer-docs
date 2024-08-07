@@ -136,7 +136,7 @@ const sidebars = {
           collapsible: true,
           items: [
             "tools/integrations/integrations-crowdstrike",
-            "tools/integrations/integrations-jamf"
+            "tools/integrations/integrations-jamf",
               ],
        },
       ],
