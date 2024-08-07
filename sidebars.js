@@ -82,17 +82,6 @@ const sidebars = {
       },
       items: ["reporting/device-query"],
     },
-    {
-      type: "category",
-      label: "Deployment",
-      collapsed: false,
-      collapsible: true,
-      link: {
-        type: "doc",
-        id: "deployment/deployment",
-      },
-      items: ["deployment/authenticator-set-up"],
-    },
      {
       type: "category",
       label: "Directory",
@@ -133,6 +122,7 @@ const sidebars = {
       },
       items: [
         "access-control/roles",
+        "access-control/authentication-methods",
         {
           type: "category",
           label: "Applications",
