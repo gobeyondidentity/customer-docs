@@ -112,9 +112,7 @@ const sidebars = {
         collapsed: true,
         collapsible: true,
         items: [
-          "access-control/identity-providers/generic-oidc",
-          "access-control/identity-providers/okta",
-        ],
+          "access-control/identity-providers/generic-oidc", "access-control/identity-providers/okta",],
       },      
      ],
     },
@@ -134,8 +132,7 @@ const sidebars = {
           label: "Integrations",
           collapsed: true,
           collapsible: true,
-          items: [
-            "tools/integrations/integrations-crowdstrike",
+          items: ["tools/integrations/integrations-crowdstrike",
             "tools/integrations/integrations-jamf",
             ],
        },
