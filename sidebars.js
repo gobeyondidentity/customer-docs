@@ -34,7 +34,29 @@ const sidebars = {
         "product-guides/secure-sso",
       ],
     },
+     {
+      type: "category",
+      label: "Policy",
+      collapsed: false,
+      collapsible: true,
+      link: {
+        type: "doc",
+        id: "policy/policy",
+      },
+      items: ["policy/rules"],
+    },
     {
+      type: "category",
+      label: "Reporting",
+      collapsed: false,
+      collapsible: true,
+      link: {
+        type: "doc",
+        id: "reporting/reporting",
+      },
+      items: ["reporting/device-query"],
+    },
+     {
       type: "category",
       label: "Directory",
       collapsed: false,
@@ -46,6 +68,7 @@ const sidebars = {
       items: [
         "directory/identities",
         "directory/groups",
+        "directory/devices",
         {
           type: "category",
           label: "Directory Integrations",
@@ -60,68 +83,38 @@ const sidebars = {
             "directory/directory-integrations/directory-integrations-okta",
           ],
         },
-        "directory/roles",
       ],
     },
     {
       type: "category",
-      label: "Inventory",
+      label: "Access Control",
       collapsed: false,
       collapsible: true,
       link: {
         type: "doc",
-        id: "inventory/inventory",
-      },
-      items: ["inventory/devices", "inventory/device-query"],
-    },
-    {
-      type: "category",
-      label: "Deployment",
-      collapsed: false,
-      collapsible: true,
-      link: {
-        type: "doc",
-        id: "deployment/deployment",
-      },
-      items: ["deployment/authenticator-set-up", "deployment/branding"],
-    },
-    {
-      type: "category",
-      label: "Auth & SSO",
-      collapsed: false,
-      collapsible: true,
-      link: {
-        type: "doc",
-        id: "auth-and-sso/auth-and-sso",
+        id: "access-control/access-control",
       },
       items: [
+        "access-control/roles",
+        "access-control/authentication-methods",
         {
           type: "category",
-          label: "External SSO",
+          label: "Applications",
           collapsed: true,
           collapsible: true,
-          link: {
-            type: "doc",
-            id: "auth-and-sso/external-sso/external-sso",
-          },
           items: [
-            "auth-and-sso/external-sso/generic-oidc",
-            {
-              type: "category",
-              label: "Product Integration Guides",
-              collapsed: true,
-              collapsible: true,
-              link: {
-                type: "doc",
-                id: "auth-and-sso/product-integration-guides/product-integration-guides",
-              },
-              items: ["auth-and-sso/product-integration-guides/okta"],
-            },
-          ],
-        },
-
-        "auth-and-sso/beyond-identity-sso",
-      ],
+            "access-control/applications/beyond-identity-sso",
+              ],
+       },
+       {
+        type: "category",
+        label: "Identity Providers",
+        collapsed: true,
+        collapsible: true,
+        items: [
+          "access-control/identity-providers/generic-oidc", "access-control/identity-providers/okta",],
+      },      
+     ],
     },
     {
       type: "category",
@@ -133,21 +126,16 @@ const sidebars = {
         id: "tools/tools",
       },
       items: [
-        "tools/policy",
+        "tools/branding",
         {
           type: "category",
           label: "Integrations",
           collapsed: true,
           collapsible: true,
-          link: {
-            type: "doc",
-            id: "tools/integrations/integrations",
-          },
-          items: [
-            "tools/integrations/integrations-crowdstrike",
-            "tools/integrations/integrations-jamf"
-          ],
-        },
+          items: ["tools/integrations/crowdstrike",
+            "tools/integrations/jamf",
+            ],
+       },
       ],
     },
     {
