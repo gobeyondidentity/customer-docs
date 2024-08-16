@@ -45,23 +45,11 @@ This guide will walk you through setting up a Jamf Pro integration with Beyond I
   - Firewall Status
   - Remote Login Enabled/Disabled
 
-  ---
-
-### 🔵 Beyond Identity
-
-Actions to be performed in the Beyond Identity platform are highlighted in blue.
-
-### 🟠 Jamf Pro
-
-Actions to be performed in the Jamf Pro platform are highlighted in orange.
-
----
-
 ## Prerequisites
 To ensure a smooth integration process, please confirm the availability of the following prerequisites and requirements.
 
 
-### 🔵 OS Support on Beyond Identity
+### OS Support on Beyond Identity
 
   The Jamf Pro integration currently supports MacOS and iOS.
 
@@ -80,13 +68,22 @@ To ensure a smooth integration process, please confirm the availability of the f
   *❌ Not Supported*
 
 
-### 🟠 License Requirements
+### License Requirements for Jamf Pro
 
 This integration provides support for Jamf Pro. A valid Jamf Pro tenant is required.
 
-### 🟠 Authentication Requirements
+### Authentication Requirements
 
 The Jamf Pro integration requires a valid username, password, and tenant URL. The tenant URL must be supplied in the form `https://<yourinstancename>.jamfcloud.com`, where `yourinstancename` is the name of your Jamf tenant.
+
+---
+
+### Legend
+In the following sections, a color-coded indicator has been added to a heading to help identify whether the steps should be performed in Beyond Identity or a different application.
+
+🔵 **Beyond Identity:** Actions to be performed in the Beyond Identity platform are highlighted in blue.
+
+🟠 **Jamf Pro:** Actions to be performed in the Jamf Pro platform are highlighted in orange.
 
 ---
 
@@ -167,8 +164,8 @@ This section describes how to set up the Jamf environment for the first time.
     <li>Tap the **CA Certificate**, and then tap **Install** in the top-right corner.</li>
     <li>Follow the on-screen prompts to complete the installation process.</li>
         <p>**Note:** If a warning prompts about the authenticity of the MDM Profile, tap Install. This is expected when Jamf Pro is configured to skip certificate installation during enrollment.</p>
+    </ol>
     \
-     </ol>
     More information and screenshots of the end-user experience can be found in the Jamf Pro Administrator’s Guide at the following link:
 
       https://www.jamf.com/resources/product-documentation/jamf-pro-administrators-guide/

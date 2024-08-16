@@ -35,20 +35,8 @@ This guide will walk you through setting up a CrowdStrike Falcon Insight XDR int
 
 - Network Containment - Network Containment is available for supported Windows, MacOS, and Linux operating systems. When systems are contained, they will lose the ability to make network connections to anything other than the CrowdStrike cloud infrastructure and any internal IP addresses that have been specified in the Respond App.
 
----
 
-### 🔵 Beyond Identity
-
-Actions to be performed in the Beyond Identity platform are highlighted in blue.
-
-### 🟠 CrowdStrike
-
-Actions to be performed in the CrowdStrike platform are highlighted in orange.
-
----
-
-
-## 🔵 OS Support on Beyond Identity
+## OS Support on Beyond Identity
  The CrowdStrike Falcon integration currently supports Windows and MacOS, with Linux support under active development.
 
   | Platform | Supported |
@@ -65,12 +53,12 @@ Actions to be performed in the CrowdStrike platform are highlighted in orange.
 
   *❌ Not Supported*
 
-## 🟠 CrowdStrike License Requirements
+## CrowdStrike License Requirements
 Falcon Insight XDR is required for compatibility with this integration. Falcon Insight XDR is an included component of the Enterprise, Elite, and Complete bundles.
 
 The CrowdStrike Falcon Integration reads Zero Trust Assessment scores assessed for each endpoint by CrowdStrike. CrowdStrike Falcon requires a Feature Flag to be enabled to allow ZTA data files to be pushed to endpoints. The Feature Flag to distribute ZTA files to endpoints – zta_distribute_payload – can only be enabled by opening a case with CrowdStrike Support with the request for the Feature Flag zta_distribute_payload be enabled. You can reach the CrowdStrike Support team at support@crowdstrike.com.
 
-## 🟠 Authentication Requirements
+## Authentication Requirements
 The CrowdStrike Falcon integration requires a valid API client key and client secret. The token scope must be configured with these scopes:
 - **Hosts Read and Write**
   <details>
@@ -91,6 +79,17 @@ The CrowdStrike Falcon integration requires a valid API client key and client se
     - US-GOV-1 "api.laggar.gcw.crowdstrike.com"
     - EU-1 "api.eu-1.crowdstrike.com"
 
+
+---
+
+### Legend
+In the following sections, a color-coded indicator has been added to a heading to help identify whether the steps should be performed in Beyond Identity or a different application.
+
+🔵 **Beyond Identity:** Actions to be performed in the Beyond Identity platform are highlighted in blue.
+
+🟠 **CrowdStrike:** Actions to be performed in the CrowdStrike platform are highlighted in orange.
+
+---
 
 ## 🟠 Enable the ZTA feature flag
 
@@ -163,7 +162,7 @@ The CrowdStrike Falcon integration requires a valid API client key and client se
 
 
 ## 🔵 CrowdStrike policy attributes
-You can now create policies that allow or deny authentication. The attributes below are available by default. For more information about policies, see <a href="https://docs.beyondidentity.com/docs/tools/policy">Policy</a>
+You can now create policies that allow or deny authentication in Beyond Identity. The attributes below are available by default. For more information about policies, see <a href="https://docs.beyondidentity.com/docs/tools/policy">Policy</a>
 
 | Attribute | Source | Description |
   |--|--|--|
