@@ -1,0 +1,232 @@
+---
+title: Intune Integration
+id: intune
+description: "Learn how to integrate Intune with Beyond Identity."
+slug: /tools/integrations/intune
+keywords:
+  - Intune
+  - MDM integrations
+  - integrations
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 05/14/2024
+  author: Shannon Moore
+draft: false
+hide_table_of_contents: false
+hide_title: false
+hide_breadcrumbs: false
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+
+import Arcade, {Clip} from '@site/src/components/Arcade.tsx';
+
+This guide will walk you through setting up a Microsoft Intune MDM integration.
+
+## Benefits of integrating Intune with Beyond Identity
+ - **Ensure devices are found within Intune** - Prevent unmanaged devices from accessing sensitive resources by leveraging Intune within Beyond Identity. Administrators are empowered to create policies that ensure that devices are managed before gaining access to resources. 
+ - **Ensure specific controls are configured correctly** - It's not enough to simply know a device exists in the Intune device directory, it's just as important to ensure that the device is functional and configured correctly. This integration surfaces information regarding device operational status and provisioned policies, allowing granular access control policies to be created that analyze devices.
+
+## OS Support on Beyond Identity
+ The Microsoft Intune integration currently supports Windows, MacOS, iOS, and Android devices.
+
+  | Platform | Supported |
+  |--|--|
+  | Windows | ✅ |
+  | MacOS | ✅ |
+  | Linux | ❌ |
+  | iOS | ✅ |
+  | Android | ✅ |
+
+  *✅  Fully Supported*
+
+  *〰️ Under Development / Limited Support*
+
+  *❌ Not Supported*
+
+**Important:** For mobile devices, the Beyond Identity authenticator must be configured and pushed via Intune in order to leverage the integration.
+
+ ## License requirements
+ This integration provides support for Intune under the following plan versions:
+    
+  - Microsoft Intune Plan 1
+  - Microsoft Intune Plan 2
+  - Microsoft Intune Plan 3
+
+  These plans are included with subscriptions to Microsoft 365 E3, E5, F1, and F3, Enterprise Mobility + Security E3 and E5, and Business Premium plans, including versions of these suites that do not include Microsoft Teams.
+
+## Authentication Requirements
+
+  The Intune integration uses the OAuth 2.0 Client Credentials Grant Type, and therefore uses a Client ID and Client Secret for authentication. The associated credentials must be configured with the following OAuth scopes:
+  - Device.Read.All
+  - DeviceManagementConfiguration.Read.All
+  - DeviceManagementManagedDevices.Read.All
+  - Directory.Read.All
+  - User.Read.All
+  - get_device_compliance
+
+  These roles are necessary to collect information on devices and users in Intune. 
+
+---
+
+### Legend
+In the following sections, a color-coded indicator has been added to a heading to help identify whether the steps should be performed in Beyond Identity or a different application.
+
+🔵 **Beyond Identity:** Actions to be performed in the Beyond Identity platform are highlighted in blue.
+
+🟠 **Microsoft Entra ID/Intune:** Actions to be performed in the Entra ID/Intune platform are highlighted in orange.
+
+---
+
+
+## 🟠 Step 1: Update or Create an App Registration in Entra ID
+
+1. Log into [https://portal.azure.com](https://portal.azure.com) using the Global Administrator account.
+
+2. Navigate to **Microsoft Entra ID**. 
+
+3. Navigate to **Manage > App Registrations**.
+
+4. Update your existing app registration or create a new app registration.
+   - If you have integrated Beyond Identity with Entra SSO:
+
+      1. In the list of applications, click **Beyond Identity User Console**.
+
+      2. Copy the **Application (client) ID** and the **Directory (tenant) ID**. These will be needed in a later section when you configure Beyond Identity.
+
+      3. Under **Display name**, click **Beyond Identity User Console**.
+
+   - If you have not integrated Beyond Identity with Entra SSO:
+
+       1. Click **New registration**.
+
+       2. Type a name for the app registration, such as “Beyond Identity Integration”.
+
+       3. Click **Register**.
+
+       4. Copy the **Application (client) ID** and the **Directory (tenant) ID**. These will be needed in a later section when you configure Beyond Identity.
+
+5. Navigate to **API permissions**.
+
+6. Click **Add a permission**.
+
+7. Select the **Microsoft Graph** option.
+
+8. Select the **Application permissions** option and select the checkbox to set the following permissions:
+   - Device.Read.All
+   - DeviceManagementConfiguration.Read.All
+   - DeviceManagementManagedDevices.Read.All
+   - Directory.Read.All
+   - User.Read.All
+
+9. Select the **Delegated permissions** option and set all the Openid permissions to **No**.
+   - email  = No
+   - offline_access = No
+   - openid = No
+   - profile = No
+
+10. Click **Add permissions**.
+
+11. If prompted to keep these other granted permissions, click **Yes, add other granted permissions to configured permissions** and save this update.
+
+12. Click **Grant admin consent** and confirm your consent when prompted.
+
+13. Navigate to **Certificates & secrets**.
+
+14. Click **New client secret**.
+
+15. Type "Beyond Identity Policy Engine" in the **Description** field.
+    Note the expiration time (update your SOP manual and add a reminder to create a new secret after the expiration date). 
+
+16. Copy the secret value. 
+   **Important:** This value will not be available after you exit this page.
+
+17. If you created a separate application registration for the integration, you can skip this step. 
+
+    If you used the Beyond Identity User Console application for the integration, ensure that the application is enabled in Azure.
+    Navigate to **Azure Directory > Enterprise Applications > Beyond Identity User Console > Properties** and verify that the **Enabled for users to sign-in** is set to *Yes*.
+
+
+## 🔵 Step 2: Configure Intune Integration in Beyond Identity
+
+1. Select **Tools > Integrations Catalog** in the Beyond Identity Admin console.
+
+2. Click the **All Integrations** tab and then click the **Intune** tile.
+
+3. Click **Add instance**.
+
+4. Enter the following information obtained from the Azure Admin Portal.
+    - Azure Tenant ID
+    - Client ID
+    - Client Secret
+
+5. Click **Add instance**.
+
+## 🔵 Step 3: Configure and Test the MDM Authentication Policy
+
+1. Create a new user group named **Require Intune on Windows** and assign a test user to it. For more information, see [Groups](https://docs.beyondidentity.com/docs/directory/groups).
+
+2. Create a policy rule to test that the integration is working: 
+    | Option | Value|    
+    |--------|------|   
+    | For any transaction | Authentication |
+    | If user | is in user group > "Require Intune on Windows" |
+    | If device platform is | Windows |
+    | If Integration is| Intune > Registration > is > Registered |
+    | Then | Deny |
+
+3. Click **Add rule**.
+
+4. Click **Publish rule**.
+
+5. Do one of the following to test the rule: 
+   - Try authenticating with the test user's credentials from a Windows computer that is managed with Intune. If the authentication is denied, then the policy works as expected.
+   - If you have Device360, click **Simulate Policy** to see if the test user's authentication will be denied. If so, the policy works as expected. 
+
+4. Now, change the policy to check if Intune is reporting that the device is "Not Registered" -- **If Integration is > Intune > Registration > is > Not Registered, Pending Enrollment**. 
+
+5. Click **Add rule**.
+
+6. Click **Publish rule**.
+
+7. Do one of the following to test the rule: 
+   - Try authenticating again with the test user's credentials from the same Windows computer that is managed with Intune. If the authentication is successful, then the policy works as expected.
+   - If you have Device360, click **Simulate Policy** to see if the test user's authentication will be denied. If the authentication is successful, then the policy works as expected.
+
+
+## 🟠 Step 4: Configure and Push iOS and Android Apps
+
+In order for Beyond Identity to query the managed status for Android and iOS devices, **the “Beyond Identity Platform Authenticator” app needs to be pushed from Intune. This is a mandatory step.** If you do not push the Beyond Identity App through MDM, then Beyond Identity will not be able to apply policies for the managed state.
+
+1. In the Intune Admin center, navigate to **Apps > App configuration policies** and add an App configuration policy.  
+2. Select **Managed devices**.
+3. Select the appropriate platform (iOS/Android) and add the Beyond Identity authenticator as the associated App.
+4. In the next step, select configuration designer and enter the following app config. 
+
+   **Note:** Configuration keys are case sensitive.
+
+   | **Configuration key**  | **Value type**   | **Configuration value** |
+   |--------|------|------|   
+   | serialNumber | String | Type "serialnumber" in double brackets. |
+   | intuneDeviceID | String | Type "deviceid" in double brackets. |
+
+
+## Frequently Asked Questions
+**How are devices matched to the Intune device directory?**
+  
+  This integration leverages the Intune Managed Device ID. The Device ID is a unique string assigned to all devices in Intune. We **do not** use the serial number to match devices to records.
+
+**What rate limits apply to this integration?**
+    
+  The following rate limits apply to  Microsoft Intune.
+  - 4000 requests per 20 second (per tenant for all apps)
+  - 2000 requests per 20 seconds (Limit per app per tenant)
+
+**Why aren't my mobile devices being found?**
+  
+  There are several reasons why a mobile device may fail to be found by Beyond Identity when it exists in the Microsoft Intune device directory.
+
+  Mobile devices require a **managed configuration** to be provided in order to map device information into the Beyond Identity Platform Authenticator. The managed configuration must be assigned to the correct user and device population within Intune.
+
+  Certain MDM enrollment types are incompatible with managed configurations. Ensure your accepted enrollment types fully support managed applications.
