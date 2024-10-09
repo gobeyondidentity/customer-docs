@@ -1,0 +1,89 @@
+---
+title: OneLogin
+id: onelogin
+description: "Set up and configure Beyond Identity as an MFA solution in your OneLogin instance."
+slug: /access-control/identity-providers/OneLogin
+keywords:
+  - onelogin
+  - onelogin integration guide
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 2024-10-09
+  author: Jerome Villegas
+draft: false
+hide_table_of_contents: false
+hide_title: false
+hide_breadcrumbs: false
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+
+import Arcade, {Clip} from '@site/src/components/Arcade.tsx';
+
+## Beyond Identity Phishing-Resistant Passwordless Authentication for OneLogin
+
+Beyond Identity and OneLogin integrate to offer phishing-resistant, passwordless login with device trust to OneLogin SSO. 
+
+This guide is designed to offer step-by-step instructions to integrate Beyond Identity with your OneLogin environment, and to enable your end users to authenticate with phishing resistant, passwordless authentication. Specifically, you will learn how to:
+
+- Configure Beyond Identity as the primary phishing-resistant, passwordless authentication method for your OneLogin environment.
+- Configure OneLogin to delegate authentication to Beyond Identity to enhance security and the user experience.
+
+## Prerequisites
+
+To get started with the integration, view the following prerequisites.
+
+### OneLogin
+
+This information contains the necessary items for integrating with Beyond Identity.
+
+- Appropriate OneLogin SKU (advanced or Pro) to provisioning and federation 
+- OneLogin Super User Privileges 
+
+### Beyond Identity
+
+The list below covers the basic Beyond Identity requirements for the integration.
+
+- Secure Access Tenant with Super Admin Role
+  - Use an existing account, or [sign up here](https://www.beyondidentity.com/get-demo) to create a new Beyond Identity account
+- Have at least two devices and two Super Admin roles configured*
+  - *Recommended, optional
+
+
+{/* 
+
+<details>
+    <summary><p>Why is this required?</p></summary>
+    <p>Having <strong>Super Admin</strong> or <strong>Organization Admin</strong> privileges enables you to:</p>
+    <ul>
+        <li>Add or edit attributes and their mappings via <code>Directory &gt; Profile Editor</code>.</li>
+        <li>Add or edit Identity Providers (IdPs) through <code>Security &gt; Identity Providers</code>.</li>
+        <li>Add or edit routing rules in <code>Security &gt; Identity Providers &gt; Routing Rules</code>.</li>
+    </ul>
+</details>
+
+<details>
+    <summary><p>OpenID Connect IdP</p></summary>
+    <p>Verify this by checking if you can navigate to <code>Security &gt; Identity provider &gt; Add Identity Provider &gt; Add OpenID Connect IdP</code>. If this option is unavailable, you will need to contact OneLogin support to enable it.</p>
+</details>
+
+<details>
+    <summary><p>Routing Rules</p></summary>
+    <p>Ensure the "Routing Rules" tab is visible under <code>Security &gt; Identity Providers</code>. If it is missing, contact OneLogin support to request its activation on the Identity Provider page.</p>
+</details>
+
+ */}
+
+
+---
+
+### Legend
+
+The sections below use these two color codings to identify the steps for separate platforms.
+
+🔵 **Beyond Identity** - Beyond Identity platform tasks are highlighted in blue.
+🟠 **OneLogin** - OneLogin platform tasks are highlighted in orange.
+
+---
+
