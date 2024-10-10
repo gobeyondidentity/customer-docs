@@ -36,7 +36,7 @@ To get started with the integration, view the following prerequisites.
 
 This information contains the necessary items for integrating with Beyond Identity.
 
-- Appropriate OneLogin SKU (advanced or Pro) to provisioning and federation 
+- Appropriate OneLogin SKU (advanced or Pro) with provisioning and federation 
 - OneLogin Super User Privileges 
 
 ### Beyond Identity requirements
@@ -46,7 +46,7 @@ The list below covers the basic Beyond Identity requirements for the integration
 - Secure Access Tenant with Super Admin Role
   - Use an existing account, or [sign up here](https://www.beyondidentity.com/get-demo) to create a new Beyond Identity account
 - Have at least two devices and two Super Admin roles configured*
-  - *Recommended, optional
+  - **Recommended, optional*
 
 
 {/* 
@@ -73,10 +73,6 @@ The list below covers the basic Beyond Identity requirements for the integration
 
  */}
 
-
----
-
-
 ---
 
 # Steps
@@ -93,11 +89,11 @@ The sections below use these two color codings to identify the steps for separat
 
 ## 🟠 Configure OneLogin Administration
 
-These steps are for the OneLogin platform administration account.
+These steps are for the 🟠 OneLogin platform administration account.
 
 1. Under the Administration dropdown at the top, click **Trusted IdPs**.
 2. Click **New Trust**.
-3. In the blank field at the top for the Trusted IdP, type `Beyond Identity`.
+3. In the blank field at the top for the Trusted IdP, type `Beyond Identity OIDC`.
 ![OneLogin platform page](../../images/identity-providers/onelogin/onelogin-platform-trusted-new.png)
 4. Click the green check icon to confirm.
 5. Under **Settings**, scroll down to the **Protocol** section.
@@ -106,7 +102,7 @@ These steps are for the OneLogin platform administration account.
 
 ## 🔵 Beyond Identity console information
 
-The following section covers the Beyond Identity console and related steps.
+The following section covers the 🔵 Beyond Identity console and related steps.
 
 1. Navigate to your Beyond Identity console.
 2. On the left-hand navigation under **Access Control**, click **Applications**.
@@ -128,9 +124,38 @@ This section explains the steps to copy values from Beyond Identity and paste in
   - 🔵 **User Info Endpoint** → 🟠 **User Information Endpoint**, under **OIDC Configurations**
   - 🔵 **Client ID** → 🟠 **Client Id**, under **OIDC Configurations**
   - 🔵 **Client Secret** → 🟠 **Client Secret**, under **OIDC Configurations**
-2. Confirm OneLogin configuration by scrolling to the top of the page and clicking **Save**.
+2. Type `openid email` in the **Scopes** field under the **OIDC Configurations** section.
+3. Confirm 🟠 OneLogin configuration by scrolling to the top of the page and clicking **Save**.
 ![OneLogin platform page](../../images/identity-providers/onelogin/onelogin-platform-trusted-save.png)
 
+## 🔵 Beyond Identity console OneLogin authentication
+
+The steps in this section involve going through the 🔵 Beyond Identity console again to configure the integration with OneLogin.
+
+1. Under the Redirect URIs section, click the + icon.
+2. Input `https://bitest.onelogin.com/access/idp` into the text field.
+![Beyond Identity platform page](../../images/identity-providers/onelogin/beyond-identity-console-apps.png)
+3. Click the **Save Changes** button at the top. The pop up display shows the authentication successfully updated.
+4. Click the **Assignments** tab at the top.
+5. Click the **Add Assignments** dropdown.
+6. Click **By Identity**.
+7. On the **Assign Identities** pop up, click the dropdown menu for **Select Identities**.
+8. Select the respective identity for the integration.
+9. Click **Assign Identities**.
+
+![Beyond Identity platform page](../../images/identity-providers/onelogin/beyond-identity-console-assign.png)
+
+## 🟠 OneLogin user configuration
+
+This section covers the steps for configuring the user in your 🟠 OneLogin platform.
+
+1. Under the **Users** dropdown menu at the top, click **Users**.
+2. Click the respective user for the integration.
+3. On that user's page, click the **Authentication** tab on the left.
+4. Under the **Trusted IDP** section dropdown, select **Beyond Identity OIDC**.
+5. Click the **Save User** button on the top right.
+![OneLogin platform page](../../images/identity-providers/onelogin/onelogin-platform-user-auth.png)
+6. Under the Authentication dropdown menu at the top, click **Trusted IdPs**.
 
 :::success
 Congratulations! You've completed your Beyond Identity and OneLogin integration!
