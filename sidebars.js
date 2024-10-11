@@ -112,7 +112,7 @@ const sidebars = {
         collapsed: true,
         collapsible: true,
         items: [
-          "access-control/identity-providers/generic-oidc", "access-control/identity-providers/okta", "access-control/identity-providers/onelogin"],
+          "access-control/identity-providers/generic-oidc", "access-control/identity-providers/okta", "access-control/identity-providers/onelogin", "access-control/identity-providers/microsoft-eam"],
       },      
      ],
     },
