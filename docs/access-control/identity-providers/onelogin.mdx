@@ -48,31 +48,6 @@ The list below covers the basic Beyond Identity requirements for the integration
 - Have at least two devices and two Super Admin roles configured*
   - **Recommended, optional*
 
-
-{/* 
-
-<details>
-    <summary><p>Why is this required?</p></summary>
-    <p>Having <strong>Super Admin</strong> or <strong>Organization Admin</strong> privileges enables you to:</p>
-    <ul>
-        <li>Add or edit attributes and their mappings via <code>Directory &gt; Profile Editor</code>.</li>
-        <li>Add or edit Identity Providers (IdPs) through <code>Security &gt; Identity Providers</code>.</li>
-        <li>Add or edit routing rules in <code>Security &gt; Identity Providers &gt; Routing Rules</code>.</li>
-    </ul>
-</details>
-
-<details>
-    <summary><p>OpenID Connect IdP</p></summary>
-    <p>Verify this by checking if you can navigate to <code>Security &gt; Identity provider &gt; Add Identity Provider &gt; Add OpenID Connect IdP</code>. If this option is unavailable, you will need to contact OneLogin support to enable it.</p>
-</details>
-
-<details>
-    <summary><p>Routing Rules</p></summary>
-    <p>Ensure the "Routing Rules" tab is visible under <code>Security &gt; Identity Providers</code>. If it is missing, contact OneLogin support to request its activation on the Identity Provider page.</p>
-</details>
-
- */}
-
 ---
 
 # Steps
@@ -125,6 +100,9 @@ This section explains the steps to copy values from Beyond Identity and paste in
   - 🔵 **Client ID** → 🟠 **Client Id**, under **OIDC Configurations**
   - 🔵 **Client Secret** → 🟠 **Client Secret**, under **OIDC Configurations**
 2. Type `openid email` in the **Scopes** field under the **OIDC Configurations** section.
+:::note
+No other configuration in 🟠 OneLogin for **User Attributes** and **Third-Party Initiated Login Settings** are required. The fields in these sections can be empty to continue.
+:::
 3. Confirm 🟠 OneLogin configuration by scrolling to the top of the page and clicking **Save**.
 ![OneLogin platform page](../../images/identity-providers/onelogin/onelogin-platform-trusted-save.png)
 
