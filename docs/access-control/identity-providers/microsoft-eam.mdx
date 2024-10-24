@@ -89,11 +89,10 @@ The steps below are for configuring a new app registration in 🟠 Microsoft Ent
 4. Under the **Name** section, update the user-facing display name in the text field.
 5. Under supported account types, select **Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant).**
 6. Under **Redirect URI (optional)** → **Select a platform** dropdown, select **Web**.
-7. Paste the **Discovery Endpoint value** from the **Client Information & Endpoints** of [Step 11 of the previous section](#-set-up-beyond-identity-console) into the **Redirect URI** text field.
-8. Remove `/introspect` from the **Redirect URI** text field of the pasted value from the previous step. This is the **Issuer URI** value.
-9. Click **Register**.
+7. Paste the **Discovery Endpoint value** from the **Client Information & Endpoints** of [Step 11 of the previous section](#-set-up-beyond-identity-console) into the **Redirect URI** text field. This is the **Issuer URI** value.
+8. Click **Register**.
 
-## 🟠 Configre API permissions for Microsoft
+## 🟠 Configure API permissions for Microsoft
 
 This section contains the instructions for updating permissions in 🟠 Microsoft Entra.
 
@@ -130,10 +129,8 @@ Follow the steps below to copy important values from 🔵 Beyond Identity and pa
 These steps are for 🟠 Microsoft Entra ID and modifying the **App ID*** value to complete the configuration.
 
 1. Under **Method Properties**, navigate to the **Discovery Endpoint** field.
-2. Remove `/introspect` from the **Redirect URI** text field of the pasted value.
-2. Type `/.well-known/openid-configuration` at the end of the value in the **Discovery Endpoint** field.
-3. Next to **Request admin consent**, click **Request permission**. This prompts the Microsoft account account login. Administrator privilege is required to request permissions.
-4. Login to the account and click **Accept**.
+2. Next to **Request admin consent**, click **Request permission**. This prompts the Microsoft account account login. Administrator privilege is required to request permissions.
+3. Login to the account and click **Accept**.
 
 ### 🟠 Add directory member groups to configuration
 
