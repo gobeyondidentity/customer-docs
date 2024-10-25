@@ -1,0 +1,214 @@
+---
+title: Microsoft External Authentication Methods (EAM)
+id: microsoft-eam
+description: "Use Beyond Identity as an MFA solution with Microsoft EAM."
+slug: /access-control/identity-providers/microsoft-eam
+keywords:
+  - microsoft
+  - external authentication methods
+  - eam
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 2024-10-25
+  author: Jerome Villegas
+draft: false
+hide_table_of_contents: false
+hide_title: false
+hide_breadcrumbs: false
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+
+## Beyond Identity phishing-resistant passwordless authentication for Microsoft External Authentication Methods
+
+Integrate Beyond Identity with your Microsoft External Authentication Methods (EAM) configuration for users to have phishing-resistant and passwordless authentication.
+
+This guide covers the process of configuring Microsoft EAM and Beyond Identity. Each section contains instructions for that specific platform. View the overall summary in the list below.
+
+- Set up new configurations for Beyond Identity
+- Register a new app on EAM
+- Configure API permissions for Microsoft Graph
+- Validate administrator consent for Microsoft EAM
+- Assign new identities in Beyond Identity
+- Configure new conditional access policy
+- User login verification
+
+## Prerequisites
+
+To get started with the integration, view the following prerequisites.
+
+### Microsoft EAM requirements
+
+This information contains the necessary items for integrating with Beyond Identity.
+
+- Microsoft EAM administrator privileges 
+
+### Beyond Identity requirements
+
+The list below covers the basic Beyond Identity requirements for the integration.
+
+- Secure Access Tenant with Super Admin Role
+  - Use an existing account, or [sign up here](https://www.beyondidentity.com/get-demo) to create a new Beyond Identity account
+- Have at least two devices and two Super Admin roles configured*
+  - **Recommended, optional*
+
+# Steps
+
+Follow the steps in the sections below to complete your integration for Beyond Identity and Microsoft EAM.
+
+## Legend
+
+The sections below use these two color codings to identify the steps for separate platforms. Use a separate browser window when following instructions for each platform.
+
+🔵 **Beyond Identity** - Beyond Identity platform tasks are highlighted in blue.
+
+🟠 **Microsoft EAM** - Microsoft EAM platform tasks are highlighted in orange.
+
+## 🔵 Set up Beyond Identity console
+
+The following section covers the 🔵 Beyond Identity console and related steps. For convenience, use a separate browser window for this section.
+
+1. Navigate to your Beyond Identity console.
+2. On the left-hand navigation under **Access Control**, click **Applications**.
+3. Select the **Browse Applications** tab.
+4. Click **Entra ID (External Authentication Methods).**
+5. Click **Add OIDC**.
+6. Under **General**, update the **Display Name** text field.
+7. Click **Save Changes** at the top of the page.
+8. Scroll down to **Client Information & Endpoints**.
+9. Copy the **Discovery Endpoint** value.
+
+## 🟠 Register new app in Microsoft Entra ID
+
+The steps below are for configuring a new app registration in 🟠 Microsoft Entra. Follow the instructions in this section using a separate browser window.
+
+1. Navigate to your Entra ID platform.
+2. On the left-hand navigation under **Manage**, click **App Registrations**.
+3. Click **+ New Registration** at the top of the page.
+4. Under the **Name** section, update the user-facing display name in the text field.
+5. Under supported account types, select **Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant).**
+6. Under **Redirect URI (optional)** → **Select a platform** dropdown, select **Web**.
+7. Paste the **Discovery Endpoint value** from the **Client Information & Endpoints** of [Step 9 of the previous section](#-set-up-beyond-identity-console) into the **Redirect URI** text field.
+8. Click **Register**.
+
+## 🟠 Enable ID tokens for flows
+
+The steps in this section go over enabling ID tokens for authentication after registering a new application.
+
+1. Under the new application's registration page and the **Manage** section, click **Authentication**.
+2. Scroll to the **Implicit grant and hybrid flows** section.
+3. Check the box for **ID tokens (used for implicit and hybrid flows)**.
+4. Click **Save**.
+
+## 🟠 Configure API permissions for Microsoft
+
+This section contains the instructions for updating permissions in 🟠 Microsoft Entra.
+
+1. On the left-hand navigation under **Manage**, click **API permissions**.
+2. Under **Configured permissions**, click **+ Add a permission**.
+3. On the **Request API permissions** page, click **Microsoft Graph**.
+4. On the **Microsoft Graph permissions** page, click **Delegated permissions**.
+5. Scroll down the **Select permissions** section pop up.
+6. Under the **Permission** table column, click the checkboxes for `openid` and `profile`.
+7. Click **Add permissions** at the bottom of the page.
+
+## 🟠 Create a Microsoft external method and validate consent
+
+The steps below cover setting up important values in 🟠 Microsoft for Beyond Identity validation after registering the new application.
+
+1. While on the new application landing page, on the left-hand navigation, click **Overview**.
+2. Under the **Essentials** section, copy the **Application (client) ID** value.
+3. Navigate to the platform home page for your organization.
+4. On the left-hand navigation under **Manage**, click **Security**.
+5. On the **Security** page under **Manage**, click **Authentication methods**.
+5. On the **Authentication methods** page, click **+ Add external method (Preview).**
+6. Under the **Method Properties** section, input the name in the **Name*** field.
+7. Paste the **Application (client) ID** value from **Step 2** in the text field for **App ID***.
+
+### 🟠🔵Copy values from Beyond Identity to Microsoft and request consent
+
+Follow the steps below to copy important values from 🔵 Beyond Identity and paste them into 🟠 Microsoft Entra ID.
+
+1. From 🔵 [Step 8 of the Set Up Beyond Identity console section](#-set-up-beyond-identity-console), copy the **Client ID** value.
+2. 🟠 Go back to the **Method Properties** section in Microsoft Entra and paste the **Client ID** value from the previous step in the **Client ID** field.
+3. From 🔵 [Step 9 of the Beyond Identity console configuration section](#-set-up-beyond-identity-console), copy the **Discovery Endpoint** value.
+4. 🟠 In Microsoft Entra, go back to the **Method Properties** section and paste the value from the previous step into the **Discovery Endpoint** field.
+5. Next to **Request admin consent**, click **Request permission**. This prompts the Microsoft account account login. Administrator privilege is required to request permissions.
+6. Login to the account and click **Accept**.
+
+### 🟠 Add directory member groups to configuration
+
+As 🟠 Microsoft validates administrator consent, these steps are for adding targets of existing users.
+
+1. Under the **Enable and target** section, click **+ Add target ⌄** for the dropdown menu.
+2. Click **Select targets**.
+3. On the **Add directory members** page, use the search field to find the user group for the login configuration.
+4. Click the checkbox to select that group.
+5. Click **Select** at the bottom of the page.
+6. On the **Add external method (Preview)** page and under the **Enable and target** section, toggle **Enable** to **On**.
+7. Click **Save** at the bottom of the page.
+
+## 🔵 Assign identities in Beyond Identity console
+
+After configuring Microsoft EAM, use the 🔵 Beyond Identity console to assign an identity.
+
+:::note
+Before continuing with the integration, confirm that the user `objectid` value for your Entra users is the same as the `externalid` value in Beyond Identity. Review your SCIM mapping as needed.
+:::
+
+1. Navigate to your Beyond Identity console.
+2. On the left-hand navigation under **Access Control**, click **Applications**.
+3. Under the **Installed Applications** tab, click the appropriate **Entra ID (External Authentication Methods)** application.
+4. Click **Assignments**.
+5. Under the **Assignments** tab, click **+ Add Assignments ⌄** for the dropdown menu.
+6. Click **By Identity**.
+7. On the **Assign Identities** pop up, select the user.
+8. Click **Assign Identities**.
+
+## 🟠 Configure conditional access in Microsoft
+
+The steps below cover setting up important values in 🟠 Microsoft for Beyond Identity validation. 
+
+### 🟠 Create a new policy
+
+The steps here are to add a new policy for your app.
+
+1. On the platform organization home page, under **Manage**, click **Security**.
+2. Under the **⌄ Protect** dropdown, click **Conditional Access**.
+3. Click **+ Create new policy** at the top of the page.
+
+### 🟠 Configure the policy 
+
+This section goes over the configurations required for your policy.
+
+1. On the New Conditional Access policy page, input a name for the policy in the **Name*** field.
+2. Configure your policy assignment requirements for **Users** and **Target resources**. *NOTE: Confirm that you can continue accessing your portal with the app under Target resources.*
+3. Under the **Access Controls** → **Grant**, click **0 controls selected**.
+4. Check the box for **Require multifactor authentication** under **Grant Access**.
+5. Scroll down to the **For multiple controls** section.
+6. Click **Require one of the selected controls**.
+7. Click **Select**.
+8. Under the Enable policy section, toggle **On**.
+9. Click **Create**.
+
+:::success
+Congratulations! You've completed your Beyond Identity integration with Microsoft EAM!
+:::
+
+## Process for Microsoft user login
+
+Microsoft end users follow these steps to login and authenticate using Beyond Identity.
+
+1. Navigate to the Microsoft login page.
+2. Type the login information in the Email, phone, or Skype field.
+3. Click Next.
+4. Input the login password for the Microsoft account.
+5. The Verify your identity pop up appears. Click **Approve with \{Your Entra ID App registration name\}**. This redirects to the Beyond Identity verification process.
+6. On the **Beyond Identity Authenticator** app, select the correct user for the Microsoft account.
+7. Continue with the Microsoft login procedure.
+
+
+
+
+
