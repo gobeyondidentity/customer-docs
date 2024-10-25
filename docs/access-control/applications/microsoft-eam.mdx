@@ -75,10 +75,9 @@ The following section covers the 🔵 Beyond Identity console and related steps.
 4. Click **Entra ID (External Authentication Methods).**
 5. Click **Add OIDC**.
 6. Under **General**, update the **Display Name** text field.
-7. Under **Redirect URIs**, click the **+ icon**.
-8. Click **Save Changes** at the top of the page.
-9. Scroll down to **Client Information & Endpoints**.
-10. Copy the **Discovery Endpoint** value.
+7. Click **Save Changes** at the top of the page.
+8. Scroll down to **Client Information & Endpoints**.
+9. Copy the **Discovery Endpoint** value.
 
 ## 🟠 Register new app in Microsoft Entra ID
 
@@ -90,7 +89,7 @@ The steps below are for configuring a new app registration in 🟠 Microsoft Ent
 4. Under the **Name** section, update the user-facing display name in the text field.
 5. Under supported account types, select **Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant).**
 6. Under **Redirect URI (optional)** → **Select a platform** dropdown, select **Web**.
-7. Paste the **Discovery Endpoint value** from the **Client Information & Endpoints** of [Step 10 of the previous section](#-set-up-beyond-identity-console) into the **Redirect URI** text field. This is the **Issuer URI** value.
+7. Paste the **Discovery Endpoint value** from the **Client Information & Endpoints** of [Step 9 of the previous section](#-set-up-beyond-identity-console) into the **Redirect URI** text field.
 8. Click **Register**.
 
 ## 🟠 Enable ID tokens for flows
@@ -107,21 +106,22 @@ The steps in this section go over enabling ID tokens for authentication after re
 This section contains the instructions for updating permissions in 🟠 Microsoft Entra.
 
 1. On the left-hand navigation under **Manage**, click **API permissions**.
-2. Click **+ Add a permission**.
+2. Under **Configured permissions**, click **+ Add a permission**.
 3. On the **Request API permissions** page, click **Microsoft Graph**.
 4. On the **Microsoft Graph permissions** page, click **Delegated permissions**.
-5. Scroll down the **Selected permissions** section pop up.
+5. Scroll down the **Select permissions** section pop up.
 6. Under the **Permission** table column, click the checkboxes for `openid` and `profile`.
 7. Click **Add permissions** at the bottom of the page.
 
-## 🟠 Configure and validate admin consent in Microsoft
+## 🟠 Create a Microsoft external method and validate consent
 
 The steps below cover setting up important values in 🟠 Microsoft for Beyond Identity validation after registering the new application.
 
 1. While on the new application landing page, on the left-hand navigation, click **Overview**.
 2. Under the **Essentials** section, copy the **Application (client) ID** value.
 3. Navigate to the platform home page for your organization.
-4. On the left-hand navigation under **Manage**, click **Security** → **Authentication methods**.
+4. On the left-hand navigation under **Manage**, click **Security**.
+5. On the **Security** page under **Manage**, click **Authentication methods**.
 5. On the **Authentication methods** page, click **+ Add external method (Preview).**
 6. Under the **Method Properties** section, input the name in the **Name*** field.
 7. Paste the **Application (client) ID** value from **Step 2** in the text field for **App ID***.
@@ -130,9 +130,9 @@ The steps below cover setting up important values in 🟠 Microsoft for Beyond I
 
 Follow the steps below to copy important values from 🔵 Beyond Identity and paste them into 🟠 Microsoft Entra ID.
 
-1. From 🔵 [Step 10 of the Set Up Beyond Identity console section](#-set-up-beyond-identity-console), copy the **Client ID** value.
+1. From 🔵 [Step 8 of the Set Up Beyond Identity console section](#-set-up-beyond-identity-console), copy the **Client ID** value.
 2. 🟠 Go back to the **Method Properties** section in Microsoft Entra and paste the **Client ID** value from the previous step in the **Client ID** field.
-3. From 🔵 [Step 11 of the Beyond Identity console configuration section](#-set-up-beyond-identity-console), copy the **Discovery Endpoint** value.
+3. From 🔵 [Step 9 of the Beyond Identity console configuration section](#-set-up-beyond-identity-console), copy the **Discovery Endpoint** value.
 4. 🟠 In Microsoft Entra, go back to the **Method Properties** section and paste the value from the previous step into the **Discovery Endpoint** field.
 5. Next to **Request admin consent**, click **Request permission**. This prompts the Microsoft account account login. Administrator privilege is required to request permissions.
 6. Login to the account and click **Accept**.
