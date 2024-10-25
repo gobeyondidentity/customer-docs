@@ -10,7 +10,7 @@ keywords:
 pagination_next: null
 pagination_prev: null
 last_update:
-  date: 2024-10-11
+  date: 2024-10-25
   author: Jerome Villegas
 draft: false
 hide_table_of_contents: false
@@ -31,6 +31,7 @@ This guide covers the process of configuring Microsoft EAM and Beyond Identity. 
 - Configure API permissions for Microsoft Graph
 - Validate administrator consent for Microsoft EAM
 - Assign new identities in Beyond Identity
+- Configure new conditional access policy
 - User login verification
 
 ## Prerequisites
@@ -85,12 +86,21 @@ The steps below are for configuring a new app registration in 🟠 Microsoft Ent
 
 1. Navigate to your Entra ID platform.
 2. On the left-hand navigation under **Manage**, click **App Registrations**.
-3. Click** + New Registration** at the top of the page.
+3. Click **+ New Registration** at the top of the page.
 4. Under the **Name** section, update the user-facing display name in the text field.
 5. Under supported account types, select **Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant).**
 6. Under **Redirect URI (optional)** → **Select a platform** dropdown, select **Web**.
-7. Paste the **Discovery Endpoint value** from the **Client Information & Endpoints** of [Step 11 of the previous section](#-set-up-beyond-identity-console) into the **Redirect URI** text field. This is the **Issuer URI** value.
+7. Paste the **Discovery Endpoint value** from the **Client Information & Endpoints** of [Step 10 of the previous section](#-set-up-beyond-identity-console) into the **Redirect URI** text field. This is the **Issuer URI** value.
 8. Click **Register**.
+
+## 🟠 Enable ID tokens for flows
+
+The steps in this section go over enabling ID tokens for authentication after registering a new application.
+
+1. Under the new application's registration page and the **Manage** section, click **Authentication**.
+2. Scroll to the **Implicit grant and hybrid flows** section.
+3. Check the box for **ID tokens (used for implicit and hybrid flows)**.
+4. Click **Save**.
 
 ## 🟠 Configure API permissions for Microsoft
 
@@ -106,16 +116,17 @@ This section contains the instructions for updating permissions in 🟠 Microsof
 
 ## 🟠 Configure and validate admin consent in Microsoft
 
-The steps below cover setting up important values in 🟠 Microsoft for Beyond Identity validation. 
+The steps below cover setting up important values in 🟠 Microsoft for Beyond Identity validation after registering the new application.
 
-1. On the left-hand navigation, click **Overview**.
+1. While on the new application landing page, on the left-hand navigation, click **Overview**.
 2. Under the **Essentials** section, copy the **Application (client) ID** value.
-3. On the left-hand navigation under **Manage**, click **Security** → **Authentication methods**.
-4. On the **Authentication methods** page, click **+ Add external method (Preview).**
-5. Under the **Method Properties** section, input the name in the **Name*** field.
-6. Paste the **Application (client) ID** value from **Step 2** in the text field for **App ID***.
+3. Navigate to the platform home page for your organization.
+4. On the left-hand navigation under **Manage**, click **Security** → **Authentication methods**.
+5. On the **Authentication methods** page, click **+ Add external method (Preview).**
+6. Under the **Method Properties** section, input the name in the **Name*** field.
+7. Paste the **Application (client) ID** value from **Step 2** in the text field for **App ID***.
 
-### 🟠🔵Copy values from Beyond Identity to Microsoft
+### 🟠🔵Copy values from Beyond Identity to Microsoft and request consent
 
 Follow the steps below to copy important values from 🔵 Beyond Identity and paste them into 🟠 Microsoft Entra ID.
 
@@ -123,14 +134,8 @@ Follow the steps below to copy important values from 🔵 Beyond Identity and pa
 2. 🟠 Go back to the **Method Properties** section in Microsoft Entra and paste the **Client ID** value from the previous step in the **Client ID** field.
 3. From 🔵 [Step 11 of the Beyond Identity console configuration section](#-set-up-beyond-identity-console), copy the **Discovery Endpoint** value.
 4. 🟠 In Microsoft Entra, go back to the **Method Properties** section and paste the value from the previous step into the **Discovery Endpoint** field.
-
-### 🟠 Modify URI text information
-
-These steps are for 🟠 Microsoft Entra ID and modifying the **App ID*** value to complete the configuration.
-
-1. Under **Method Properties**, navigate to the **Discovery Endpoint** field.
-2. Next to **Request admin consent**, click **Request permission**. This prompts the Microsoft account account login. Administrator privilege is required to request permissions.
-3. Login to the account and click **Accept**.
+5. Next to **Request admin consent**, click **Request permission**. This prompts the Microsoft account account login. Administrator privilege is required to request permissions.
+6. Login to the account and click **Accept**.
 
 ### 🟠 Add directory member groups to configuration
 
@@ -148,6 +153,10 @@ As 🟠 Microsoft validates administrator consent, these steps are for adding ta
 
 After configuring Microsoft EAM, use the 🔵 Beyond Identity console to assign an identity.
 
+:::note
+Before continuing with the integration, confirm that the user `objectid` value in Microsoft EAM maps to the `externalid` value in Beyond Identity.
+:::
+
 1. Navigate to your Beyond Identity console.
 2. On the left-hand navigation under **Access Control**, click **Applications**.
 3. Under the **Installed Applications** tab, click the appropriate **Entra ID (External Authentication Methods)** application.
@@ -156,6 +165,32 @@ After configuring Microsoft EAM, use the 🔵 Beyond Identity console to assign 
 6. Click **By Identity**.
 7. On the **Assign Identities** pop up, select the user.
 8. Click **Assign Identities**.
+
+## 🟠 Configure conditional access in Microsoft
+
+The steps below cover setting up important values in 🟠 Microsoft for Beyond Identity validation. 
+
+### 🟠 Create a new policy
+
+The steps here are to add a new policy for your app.
+
+1. On the platform organization home page, under **Manage**, click **Security**.
+2. Under the **⌄ Protect** dropdown, click **Conditional Access**.
+3. Click **+ Create new policy** at the top of the page.
+
+### 🟠 Configure the policy 
+
+This section goes over the configurations required for your policy.
+
+1. On the New Conditional Access policy page, input a name for the policy in the **Name*** field.
+2. Configure your policy assignment requirements for **Users** and **Target resources**. *NOTE: Confirm that you can continue accessing your portal with the app under Target resources.*
+3. Under the **Access Controls** → **Grant**, click **0 controls selected**.
+4. Check the box for **Require multifactor authentication** under **Grant Access**.
+5. Scroll down to the **For multiple controls** section.
+6. Click **Require one of the selected controls**.
+7. Click **Select**.
+8. Under the Enable policy section, toggle **On**.
+9. Click **Create**.
 
 :::success
 Congratulations! You've completed your Beyond Identity integration with Microsoft EAM!

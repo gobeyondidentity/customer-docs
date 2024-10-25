@@ -103,7 +103,7 @@ const sidebars = {
           collapsed: true,
           collapsible: true,
           items: [
-            "access-control/applications/beyond-identity-sso",
+            "access-control/applications/beyond-identity-sso", "access-control/applications/microsoft-eam"
               ],
        },
        {
@@ -112,7 +112,7 @@ const sidebars = {
         collapsed: true,
         collapsible: true,
         items: [
-          "access-control/identity-providers/generic-oidc", "access-control/identity-providers/okta", "access-control/identity-providers/onelogin", "access-control/identity-providers/microsoft-eam"],
+          "access-control/identity-providers/generic-oidc", "access-control/identity-providers/okta", "access-control/identity-providers/onelogin"],
       },      
      ],
     },
