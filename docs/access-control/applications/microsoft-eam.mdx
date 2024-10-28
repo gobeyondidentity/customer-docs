@@ -6,11 +6,12 @@ slug: /access-control/identity-providers/microsoft-eam
 keywords:
   - microsoft
   - external authentication methods
+  - entra ID
   - eam
 pagination_next: null
 pagination_prev: null
 last_update:
-  date: 2024-10-25
+  date: 2024-10-28
   author: Jerome Villegas
 draft: false
 hide_table_of_contents: false
@@ -20,29 +21,30 @@ doc_type: overview
 displayed_sidebar: mainSidebar
 ---
 
-## Beyond Identity phishing-resistant passwordless authentication for Microsoft External Authentication Methods
+## Beyond Identity phishing-resistant passwordless authentication for Microsoft Entra ID
 
-Integrate Beyond Identity with your Microsoft External Authentication Methods (EAM) configuration for users to have phishing-resistant and passwordless authentication.
+Integrate Beyond Identity with Microsoft Entra ID using the External Authentication Methods (EAM) configuration for users to have phishing-resistant and passwordless authentication to Entra ID logons.
 
-This guide covers the process of configuring Microsoft EAM and Beyond Identity. Each section contains instructions for that specific platform. View the overall summary in the list below.
+This guide covers the process of configuring Microsoft Entra ID and Beyond Identity. Each section contains instructions for that specific platform. View the overall summary in the list below.
 
-- Set up new configurations for Beyond Identity
-- Register a new app on EAM
+- Set up configurations for Beyond Identity
+- Register a new app in Microsoft Entra ID to configure EAM
 - Configure API permissions for Microsoft Graph
 - Validate administrator consent for Microsoft EAM
 - Assign new identities in Beyond Identity
-- Configure new conditional access policy
-- User login verification
+- Configure Microsoft conditional access policy
+- User login verification for testing
 
 ## Prerequisites
 
 To get started with the integration, view the following prerequisites.
 
-### Microsoft EAM requirements
+### Microsoft Entra ID requirements
 
 This information contains the necessary items for integrating with Beyond Identity.
 
-- Microsoft EAM administrator privileges 
+- Microsoft Entra ID global administrator privileges
+- Active Entra ID P1 license
 
 ### Beyond Identity requirements
 
@@ -63,7 +65,7 @@ The sections below use these two color codings to identify the steps for separat
 
 🔵 **Beyond Identity** - Beyond Identity platform tasks are highlighted in blue.
 
-🟠 **Microsoft EAM** - Microsoft EAM platform tasks are highlighted in orange.
+🟠 **Microsoft Entra ID** - Microsoft EAM platform tasks are highlighted in orange.
 
 ## 🔵 Set up Beyond Identity console
 
@@ -81,7 +83,7 @@ The following section covers the 🔵 Beyond Identity console and related steps.
 
 ## 🟠 Register new app in Microsoft Entra ID
 
-The steps below are for configuring a new app registration in 🟠 Microsoft Entra. Follow the instructions in this section using a separate browser window.
+The steps below are for configuring a new app registration in 🟠 Microsoft Entra ID. Follow the instructions in this section using a separate browser window.
 
 1. Navigate to your Entra ID platform.
 2. On the left-hand navigation under **Manage**, click **App Registrations**.
@@ -115,7 +117,7 @@ This section contains the instructions for updating permissions in 🟠 Microsof
 
 ## 🟠 Create a Microsoft external method and validate consent
 
-The steps below cover setting up important values in 🟠 Microsoft for Beyond Identity validation after registering the new application.
+The steps below cover setting up important values in 🟠 Microsoft Entra ID for Beyond Identity validation after registering the new application.
 
 1. While on the new application landing page, on the left-hand navigation, click **Overview**.
 2. Under the **Essentials** section, copy the **Application (client) ID** value.
@@ -151,7 +153,7 @@ As 🟠 Microsoft validates administrator consent, these steps are for adding ta
 
 ## 🔵 Assign identities in Beyond Identity console
 
-After configuring Microsoft EAM, use the 🔵 Beyond Identity console to assign an identity.
+After configuring Microsoft Entra ID, use the 🔵 Beyond Identity console to assign an identity.
 
 :::note
 Before continuing with the integration, confirm that the user `objectid` value for your Entra users is the same as the `externalid` value in Beyond Identity. Review your SCIM mapping as needed.
@@ -168,7 +170,7 @@ Before continuing with the integration, confirm that the user `objectid` value f
 
 ## 🟠 Configure conditional access in Microsoft
 
-The steps below cover setting up important values in 🟠 Microsoft for Beyond Identity validation. 
+The steps below cover setting up important values in 🟠 Microsoft Entra ID for Beyond Identity validation. 
 
 ### 🟠 Create a new policy
 
@@ -193,7 +195,7 @@ This section goes over the configurations required for your policy.
 9. Click **Create**.
 
 :::success
-Congratulations! You've completed your Beyond Identity integration with Microsoft EAM!
+Congratulations! You've completed your Beyond Identity integration with Microsoft Entra ID!
 :::
 
 ## Process for Microsoft user login
