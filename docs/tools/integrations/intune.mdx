@@ -1,0 +1,154 @@
+---
+title: Intune Integration
+id: intune
+description: "Learn how to integrate Intune with Beyond Identity."
+slug: /tools/integrations/intune
+keywords:
+  - intune
+  - EDR integrations
+  - integration catalog
+  - integrations
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 
+  author: Jerome Villegas
+draft: false
+hide_table_of_contents: false
+hide_title: false
+hide_breadcrumbs: false
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+
+# Intune Integration with Beyond Identity
+
+This guide is an overview and walkthrough of setting up Microsoft Intune.
+
+## Overview
+
+Microsoft Intune is a platform to help companies manage work devices from a single online location. The integration with Beyond Identity improves safety settings management and supports streamlining IT team solutions.
+
+Intune and Beyond Identity work together to improve organizational security and safety for devices. The list below covers example actions available with the integration.
+
+- Verify Intune device management
+- Stop unmanaged devices from accessing work files
+- Confirm devices have the correct safety settings
+- Tracks if devices are working properly
+
+## Prerequisites
+
+To get started with the integration, view the following prerequisites.
+
+## Microsoft Intune prerequisites
+
+This information contains the necessary items for integrating with Beyond Identity.
+
+- Version Microsoft Intune Plan 1, 2, or 3
+    - NOTE: These plans are included with subscriptions to Microsoft 365 E3, E5, F1, and F3, Enterprise Mobility + Security E3 and E5, and Business Premium plans, including versions of these suites that do not include Microsoft Teams.
+- OAuth 2.0 Client Credentials Grant Type and required scopes to collect information on devices and users in Intune
+    - `DeviceManagementConfiguration.Read.All`
+    - `DeviceManagementManagedDevices.Read.All`
+    - `User.Read.All`
+    - `Device.Read.All`
+    - `Directory.Read.All`
+    - `get_device_compliance`
+
+## Operating system compatibility
+
+The Microsoft Intune integration currently supports Windows, macOS, iOS, and Android. The list below describes all platform compatibility.
+
+- Windows -  ✅ Fully Supported
+- macOS - ✅ Fully Supported
+- Linux -  ❌ Not Supported
+- iOS - ✅ Fully Supported
+- Android - ✅ Fully Supported
+
+# Steps
+
+Follow the steps in the sections below to complete your integration for Beyond Identity and Microsoft Intune.
+
+## Legend
+
+The sections below use these two color codings to identify the steps for separate platforms. Use a separate browser window when following instructions for each platform.
+
+🔵 Beyond Identity - Beyond Identity platform tasks are highlighted in blue.
+
+🟠 Intune - Microsoft Intune platform tasks are highlighted in orange.
+
+## 🔵 Configure Beyond Identity
+
+After configuring CrowdStrike, add the integration using the 🔵 Beyond Identity console.
+
+1. On your Beyond Identity Secure Access console home page under **PLATFORM**, navigate to **Integrations**.
+2. Under **Integrations**, click **Browse Integrations**.
+3. Click **Intune**.
+4. On the **Intune** page, click the **Add instance** button.
+5. On the **Add integration** pop up under **General**, input your information for the **Display Name*** field. This is required.
+6. Under the **Configure API for Intune** section, paste the values from your Microsoft Intune platform. Each of these values is required.
+        - **Base URL***
+        - **Token URL***
+        - **Tenant ID***
+        - **Client ID***
+        - **Client secret***
+7. Click **Save Changes**. This prompts the successfully added pop up and returns you to the integration page.
+
+## Policy attributes
+
+With this integration, you can create policies to allow or deny authentication using Beyond Identity. The attributes in the table below are available by default.
+
+| Attribute | Type | Usage | Description |
+|-----------|------|--------|-------------|
+| Device Name | string | policy | The user-friendly name assigned to a device. |
+| Device Registration State | enum | policy | Device registration state. |
+| Device Ownership | enum | policy | Ownership of the device (Company, Personal, or Unknown). |
+| Operating System | string | policy | Operating system of the device. |
+| Compliance State | enum | policy | Compliance state of the device with respect to the organization's policies. Default is Unknown. |
+| Management Agent | enum | policy | Management agent used for managing the device, such as Intune or a third-party solution. Default is Unknown. |
+| Azure AD Registered | boolean | policy | Whether the device is registered with Azure Active Directory or not. |
+| Azure AD Device ID | string | policy | The unique identifier for the device in Azure Active Directory. |
+| Device Category Display Name | string | policy | Device category display name. Default is an empty string. |
+| Device is supervised | boolean | policy | Indicates whether the device is supervised or not. |
+| Device is encrypted | boolean | policy | Indicates whether the device's data is encrypted or not. |
+| Device Model | string | policy | Model of the device. |
+| Device Manufacturer | string | policy | Manufacturer of the device. |
+| Managed Device Name | string | policy | Automatically generated name used to identify a managed device. Can be overwritten to a user friendly name. |
+| Partner Reported Threat State | enum | policy | Indicates the threat state of a device when a Mobile Threat Defense partner is in use by the account and device. |
+| Serial Number | string | policy | Device serial number. |
+| Exchange Access State | enum | policy | The Access State of the device in Exchange ActiveSync. |
+| Require User Enrollment Approval | boolean | policy | Reports if the managed iOS device requires user enrollment approval. |
+| Device User Principal Name | string | policy | The user principal name (UPN) of the user associated with the device. |
+| MAC Address | string | policy | MAC address of the device's Wi-Fi interface. |
+| Windows Defender Quick Scan Overdue | boolean | policy | A flag indicating whether a quick scan is overdue. |
+| Windows Defender Full Scan Required | boolean | policy | A flag indicating whether a full scan is required based on the device's protection settings. |
+| Windows Defender Full Scan Overdue | boolean | policy | A flag indicating whether a full scan is overdue for the managed device. |
+| Windows Defender Real Time Protection Enabled | boolean | policy | A flag indicating whether real time protection is enabled. |
+| Windows Defender Malware Protection Enabled | boolean | policy | A flag indicating whether malware protection is enabled for the managed device. |
+| Windows Defender Tamper Protection Enabled | boolean | policy | A flag indicating whether tamper protection is enabled for the managed device. |
+| Windows Defender Signature Update Overdue | boolean | policy | A flag indicating whether an signature update is overdue. |
+| Windows Protection State | string | policy | Represents the current protection state of the device, indicating any threats or security issues. |
+
+## Additional Intune information
+
+This section covers details from Intune for your integration.
+
+### Intune device directory matching
+
+This integration leverages the Intune Managed Device ID, a unique string assigned to all devices in Intune. Beyond Identity does not use serial numbers to match devices to records.
+
+### Integration rate limits
+
+Microsoft Intune uses the rate limits below.
+
+- 4000 requests per 20 second (per tenant for all apps)
+- 2000 requests per 20 seconds (limit per app per tenant)
+
+### Managed configurations for mobile devices
+
+The Beyond Identity Platform Authenticator requires managed configurations for mobile devices. To map device information to the correct user and device population within Intune, managed configurations must be assigned. 
+
+Mobile devices may be missing from Beyond Identity if they are not assigned with managed configurations. Confirm the accepted enrollment types can support managed applications for your organization. Not all MDM enrollment types are compatible with managed configurations.
+
+### Intune integration compatibility
+
+The Beyond Identity Platform Authenticator app must be installed from managed channels, such as through the Company Portal. Installations from the Android or Apple app stores are not compatible with the integration as they do not include managed configurations.
