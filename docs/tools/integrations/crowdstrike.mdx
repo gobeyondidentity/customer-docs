@@ -11,8 +11,8 @@ keywords:
 pagination_next: null
 pagination_prev: null
 last_update:
-  date: 05/14/2024
-  author: Shannon Moore
+  date: 2024-10-31
+  author: Jerome Villegas
 draft: false
 hide_table_of_contents: false
 hide_title: false
@@ -21,173 +21,201 @@ doc_type: overview
 displayed_sidebar: mainSidebar
 ---
 
-import Arcade, {Clip} from '@site/src/components/Arcade.tsx';
+# CrowdStrike Integration with Beyond Identity
 
-This guide will walk you through setting up a CrowdStrike Falcon Insight XDR integration.
+This guide is an overview and walkthrough of setting up CrowdStrike Falcon Insight XDR.
 
-## Benefits of integrating CrowdStrike with Beyond Identity
+## Overview
 
-- Ensure devices are protected with CrowdStrike Falcon - The Beyond Identity CrowdStrike Falcon Insight XDR integration allows administrators to restrict access using conditional access policies, optionally restricting devices that fail to be found in the Falcon device directory or fail to meet a minimum Zero Trust Assessment baseline score.
+CrowdStrike Falcon Insight XDR provides device protection as well as security actions for administrators to manage their organizations. With Beyond Identity, administrators can restrict access using conditional access policies.
 
-- Ensure specific controls are configured correctly - It's not enough to simply know a device exists in the Falcon device directory, it's just as important to ensure that the device is functional and configured correctly. In addition to the Zero Trust Assessment scores (overall, sensor, operating system), this integration also surfaces each individual assessment item and their evaluation outcome, allowing granular access control policies to be created that analyze devices.
+### Device protection basics
 
-- Take actions on devices that fail conditional access policies - Execute actions on devices that fail to meet your conditional access policies, enabling proactive responses to security threats.
+The list below shows improvements to security best practices with CrowdStrike Falcon and Beyond Identity.
 
-- Network Containment - Network Containment is available for supported Windows, MacOS, and Linux operating systems. When systems are contained, they will lose the ability to make network connections to anything other than the CrowdStrike cloud infrastructure and any internal IP addresses that have been specified in the Respond App.
+- Checks if devices meet security rules
+- Validate if devices are registered
+- Confirm proper device setup and working security tools
+- Evaluate system scores for device security in different areas
 
+### Security actions available
 
-## OS Support on Beyond Identity
- The CrowdStrike Falcon integration currently supports Windows and MacOS, with Linux support under active development.
+These points cover the ways that administrators can maximize security.
 
-  | Platform | Supported |
-  |--|--|
-  | Windows | ✅ |
-  | MacOS | ✅ |
-  | Linux | 〰️ |
-  | iOS | ❌ |
-  | Android | ❌ |
+- Creating rules based on security scores
+- Automatic responses for devices failing checks
+- Network access limits on Windows, Mac, and Linux devices
+- Restricted devices only connect to approved networks
+- Blocking unregistered or failing devices
 
-  *✅  Fully Supported*
+### Process walkthrough
 
-  *〰️ Under Development / Limited Support*
+The sections in this guide cover the steps to integrate Crowdstrike Falcon Insight XDR with Beyond Identity. View the summary of the overall process below.
 
-  *❌ Not Supported*
+- Enable Zero Trust Assessment (ZTA) feature flag with CrowdStrike
+- Configure Beyond Identity with CrowdStrike API credentials
 
-## CrowdStrike License Requirements
-Falcon Insight XDR is required for compatibility with this integration. Falcon Insight XDR is an included component of the Enterprise, Elite, and Complete bundles.
+## Prerequisites
 
-The CrowdStrike Falcon Integration reads Zero Trust Assessment scores assessed for each endpoint by CrowdStrike. CrowdStrike Falcon requires a Feature Flag to be enabled to allow ZTA data files to be pushed to endpoints. The Feature Flag to distribute ZTA files to endpoints – zta_distribute_payload – can only be enabled by opening a case with CrowdStrike Support with the request for the Feature Flag zta_distribute_payload be enabled. You can reach the CrowdStrike Support team at support@crowdstrike.com.
+To get started with the integration, view the following prerequisites.
 
-## Authentication Requirements
-The CrowdStrike Falcon integration requires a valid API client key and client secret. The token scope must be configured with these scopes:
-- **Hosts Read and Write**
-  <details>
-    <summary><p>Why is this required?</p></summary>
-    <p>This permission is necessary to allow Beyond Identity to read information about the hosts within the CrowdStrike host directory, and allows Beyond Identity to take action against devices as configured in policy.</p>
-  </details>
+### Crowdstrike prerequisites
 
-- **Zero Trust Assessment Read**
-  <details>
-    <summary><p>Why is this required?</p></summary>
-    <p>This permission is necessary to allow Beyond Identity to read Zero Trust Assessment results.</p>
-  </details>
+This information contains the necessary items for integrating with Beyond Identity.
 
-- **Valid API client key and client secret**
-  - In addition, the CrowdStrike Falcon integration also requires the tenant base URL. Depending on your type of CrowdStrike account, you will use a specific endpoint to access the API. Use the relevant subdomain based upon where your account resides. These base URLs are:
-    - US-1 "api.crowdstrike.com"
-    - US-2 "api.us-2.crowdstrike.com"
-    - US-GOV-1 "api.laggar.gcw.crowdstrike.com"
-    - EU-1 "api.eu-1.crowdstrike.com"
+- Falcon Insight XDR product
+  - ZTA feature flag enabled, [contact CrowdStrike support team](mailto:support@crowdstrike.com) to open a case with the requests below
+    - `zta_distribute_payload` enabled
+    - `data.zta` file enabled on macOS
+- Valid API client key and client secret
+  - Token scope configurations to include*: hosts (read, write), zero trust assessment (read)
 
+:::note
+*Authentication requirements**
 
----
+These permissions are necessary to allow Beyond Identity to read information about the hosts within the CrowdStrike host directory. They also allow Beyond Identity to take action against devices as configured in policy and to read Zero Trust Assessment results.
+:::
 
-### Legend
-In the following sections, a color-coded indicator has been added to a heading to help identify whether the steps should be performed in Beyond Identity or a different application.
+#### Endpoint access base URLs
 
-🔵 **Beyond Identity:** Actions to be performed in the Beyond Identity platform are highlighted in blue.
+CrowdStrike Falcon integrations also require a tenant base URL. Accessing the API with a specific endpoint depends on your type of CrowdStrike account. View the base URLs below for relevant subdomain based on your account.
 
-🟠 **CrowdStrike:** Actions to be performed in the CrowdStrike platform are highlighted in orange.
+- US-1 - `api.crowdstrike.com`
+- US-2 - `api.us-2.crowdstrike.com`
+- US-GOV-1 - `api.laggar.gcw.crowdstrike.com`
+- EU-1 - `api.eu-1.crowdstrike.com`
 
----
+### Operating system compatibility
 
-## 🟠 Enable the ZTA feature flag
+The CrowdStrike Falcon integration currently supports Windows and macOS, with Linux support under active development. The list below describes the platforms supported.
 
-1. Open a case with CrowdStrike Support (support@crowdstrike.com) and request the following
-   - Feature Flag zta_distribute_payload be enabled
+- Windows - ✅ Fully Supported
+- macOS - ✅ Fully Supported
+- Linux - 〰️ Under Development / Limited Support
+- iOS - ❌ Not Supported
+- Android - ❌ Not Supported
 
-   - data.zta file be enabled on macOS
+# Steps
 
-2. Verify that ZTA is enabled and populating
+Follow the steps in the sections below to complete your integration for Beyond Identity and CrowdStrike.
 
-   - The ZTA scope will be unlocked in the API credentials dashboard.
+## Legend
 
-   - Verify that the data.zta file has been populated at the following locations:
+The sections below use these two color codings to identify the steps for separate platforms. Use a separate browser window when following instructions for each platform.
 
-       **Windows:** %ProgramData%\CrowdStrike\ZeroTrustAsssessment
+🔵 Beyond Identity - Beyond Identity platform tasks are highlighted in blue.
 
-       **MacOS:** /Library/Application Support/Crowdstrike/ZeroTrustAssessment
+🟠 CrowdStrike - CrowdStrike platform tasks are highlighted in orange.
 
+## 🟠 Confirm ZTA enabled
 
-## 🟠 Get the API credentials from CrowdStrike to configure in Beyond Identity
+The steps in this section go over verifying 🟠 CrowdStrike for ZTA features.
 
-1. Log into the Falcon UI and navigate to **Support > API Clients and Keys**.
+1. Contact CrowdStrike support for ZTA access, if applicable. See [CrowdStrike prerequisites section](#crowdstrike-prerequisites).
+2. Check API credentials dashboard for ZTA scope.
+3. Verify the `data.zta` file is populated in the locations below.
+    - Windows - `%ProgramData%\CrowdStrike\ZeroTrustAsssessment`
+    - macOS - `/Library/Application Support/Crowdstrike/ZeroTrustAssessment`
 
-2. Click on **Add new API client** in the CrowdStrike API Clients and Keys screen.
+## 🟠 Configure CrowdStrike API client and copy credentials
 
-3. In the Add new API client dialog, enter the following information:
+This section covers the instructions for adding an API client in 🟠 CrowdStrike and navigating to important configuration values.
 
-   - Client Name: Beyond Identity
-
-   - Optional description.
-
-   - Apply a checkmark as follows:
-
-     - Hosts Read and Write
-
-     - Zero Trust Assessment Read
-
-4. Click on **Add**.
-
-5. Copy the CLIENT ID, SECRET, and BASE URL from the API client created dialog These will be needed in the next section to configure Beyond Identity.
-
-6. Click on **Done**. The Integration screen is updated to reflect that CrowdStrike Falcon is connected.
-
+1. On the CrowdStrike Falcon platform page, navigate to **Support** → **API Clients and Keys**.
+1. On the **CrowdStrike API Clients and Keys** screen, click **Add new API client**.
+1. Under the **Add new API client** section, enter `Beyond Identity` into the **Client Name** field.
+1. Under the **Description** field, update the field with your information.
+1. Click the checkboxes for **Hosts Read and Write** and **Zero Trust Assessment Read**.
+1. Click **Add**.
+1. On the **API client** created pop up, copy the following values. These values are required to configure Beyond Identity in the next section.
+    - `CLIENT ID`
+    - `SECRET`
+    - `BASE URL`
+8. Click **Done**. The Integration screen then shows CrowdStrike Falcon is connected.
 
 ## 🔵 Configure Beyond Identity
 
-1. Select **Tools > Integrations Catalog** in the Beyond Identity Admin console.
+After configuring CrowdStrike, add the integration using the 🔵 Beyond Identity console.
 
-2. Click the **All Integrations** tab and then click the **CrowdStrike** tile.
+1. On your Beyond Identity Secure Access console home page under **PLATFORM**, navigate to **Integrations**.
+1. Under **Integrations**, click **Browse Integrations**.
+1. Click **CrowdStrike**.
+1. On the **CrowdStrike** page, click the **Add instance** button.
+1. On the **Add integration** pop up, under **General**, input your information for the **Display Name*** field. This is required.
+1. Under the **Configure API for CrowdStrike** section, paste the values from [Step 7 of the previous section](#-configure-crowdstrike-api-client-and-copy-credentials). Each of these values is required.
+    - `BASE URL` → **Base URL***
+    - `CLIENT ID` → **Client ID***
+    - `SECRET` → **Client secret***
+7. Click **Save Changes**. This prompts the successfully added pop up and returns you to the integration page.
 
-3. Click on **Add instance**.
+## Policy attributes
 
-4. Complete the following entries in the Add integration - CrowdStrike dialog.
+With this integration, you can create policies to allow or deny authentication using Beyond Identity. The attributes in the table below are available by default.
 
-   - **Display Name:** Enter "CrowdStrike Integration" or another name you want to display on the Installed Integrations page.
+| Attribute | Type | Usage | Description |
+|-----------|------|--------|-------------|
+| Connection Available | boolean | policy | Checks whether the connection to CrowdStrike is available. |
+| Device Found | boolean | policy | Verifies that the device was found in CrowdStrike. |
+| Serial Number | string | policy | Device Serial Number. |
+| Overall ZTA Score | integer | policy | Consolidated ZTA score for both the CrowdStrike sensor configuration and the OS configuration as a value from 1 to 100. |
+| Sensor ZTA Score | integer | policy | ZTA score for the CrowdStrike sensor configuration as a value from 1 to 100. |
+| OS ZTA Score | integer | policy | ZTA score for the OS configuration of the device. |
+| macOS Version Supported | boolean | policy | Verifies the macOS OS version is sufficiently new and is supported by CrowdStrike for compatibility and support purposes. |
+| File Vault Enabled | boolean | policy | Verifies that FileVault is enabled for the device. FileVault is Apple's method of data encryption. When FileVault is enabled, the entire drive is encrypted unless accessed by user credentials. Even if a device is stolen, without a valid username and password, the data is safe. |
+| SIP Enabled | boolean | policy | Verifies that System Integrity Protection (SIP) is enabled for the device. System Integrity Protection (SIP) prevents even root users from taking any action on critical system files. Enabling SIP eliminates the chance of a Mac from being subject to malicious runtime attachments. |
+| Remote Login Disabled | boolean | policy | Verifies that Remote Login is disabled for the device. Disabling Remote Login prevents access to the device using Secure Shell (SSH) and admin credentials. |
+| Gatekeeper Enabled | boolean | policy | Verifies that Remote Login is enabled for the device. Gatekeeper protects the device from launching malicious applications by enforcing code signing and limiting the sources that applications can be downloaded from. On macOS 10.15 and later, Gatekeeper also performs a malicious content scan and signature validation periodically to check that code has not been tampered with. |
+| Application Firewall Enabled | boolean | policy | Verifies that the Application Level Firewall (ALF) is enabled for the device. Application Firewall prevents network ports from being occupied by anything other than priority applications, controlling connections for individual apps. |
+| Stealth Mode Enabled | boolean | policy | Verifies that Stealth Mode is enabled for the device. Stealth Mode ensures that macOS ignores network discovery attempts from a closed Transmission Control Protocol (TCP) or User Datagram Protocol (UDP) network. |
+| Internet Sharing Disabled | boolean | policy | Verifies that Internet Sharing is disabled for all but CrowdStrike apps. Internet Sharing allows a Mac device to share a network connection with other devices. |
+| System Full Disk Access Disabled | boolean | policy | System Full Disk Access allows selected apps to access data from Mail, Messages, Safari, Home, Time Machine backups, and certain administrative settings for all users on the device. This setting should be disabled for everything except CrowdStrike apps. |
+| CrowdStrike Full Disk Access | boolean | policy | Verifies that the CrowdStrike agent is granted Full Disk Access to the device. CrowdStrike Full Disk Access allows CrowdStrike apps to access necessary data, info, and certain administrative settings on the device. |
+| Windows OS Build Supported | boolean | policy | Verifies the Windows OS build number is sufficiently new and is supported by CrowdStrike for compatibility and support purposes. |
+| KMCI Enabled | boolean | policy | Verifies that Kernel Mode Code Integrity (KMCI) is enabled on the device. Kernel Mode Code Integrity (KMCI) is enabled by default. When enabled, it ensures that all kernel mode drivers are signed. Those that are not signed cannot load. This setting requires Hypervisor Code Integrity to be enabled. |
+| Firmware Is UEFI | boolean | policy | Verifies that Unified Extensible Firmware Interface (UEFI) is running on the device. This ZTA requirement ensures the host has UEFI compatible firmware irrespective of its enablement status. |
+| HSTI Available | boolean | policy | Verifies that Hardware Security Testability Specifications (HSTI) is available on the device. Hardware Security Testability Specifications (HSTI) protects against misconfiguration of security features on Windows devices. It provides best effort assurance that the machine is secure by default. |
+| VSM Available | boolean | policy | Verifies that Virtual Secure Mode (VSM) is available on the device. Virtualization-based security uses hardware virtualization features to create and isolate a secure region of memory from the normal operating system. |
+| IOMMU Available | boolean | policy | Verifies that Input–Output Memory Management Unit (IOMMU) is available and supported on the device. Input-Output Memory Management Unit (IOMMU) offers additional security against direct memory attacks. If available, it is automatically leveraged as part of Windows Memory Access Protection. |
+| Secure MOR Available | boolean | policy | Verifies that Memory Overwrite Request Control is enabled on the device. Memory Overwrite Request Control is a setting for Secure Memory Overwrite Request or Secure MOR. Secure MOR enhances Credential Guard to prevent advanced memory attacks. |
+| Secure Boot Enabled | boolean | policy | Verifies that Secure Boot is enabled on the device. Secure Boot is a security standard developed by members of the PC industry to help make sure a device boots using only software that is trusted by the original equipment manufacturer (OEM). |
+| UEFI Memory Protection | boolean | policy | Verifies that Unified Extensible Firmware Interface (UEFI) Memory Protection is available and enabled on the device. UEFI memory protection enhances system security by protecting memory used by the firmware. |
+| MBEC Available | boolean | policy | Verifies that Mode based execution control (MBEC) is available on the device. Supported in Windows 10 version 1803 and later, Mode Based Execution Control (MBEC) provides an extra layer of protection from malware attacks in a virtualized environment. |
+| SMM Protections | boolean | policy | Verifies that System Management Mode (SMM) Protections are available and enabled on the device. System Management Mode (SMM) code executes at the highest privilege level and is invisible to the OS, which makes it an attractive target for malicious activity. |
+| IOMMU In Use | boolean | policy | Verifies that Input–Output Memory Management Unit (IOMMU) is in use on the device. Input-output Memory Management Unit (IOMMU) offers additional security against direct memory attacks. |
+| Secure Kernel Running | boolean | policy | Verifies that Secure Kernel is running on the device. Secure Kernel is leveraged by virtualization-based security to secure its kernel which runs at a higher trust level than the NT kernel. |
+| Credential Guard Running | boolean | policy | Verifies that Windows Defender Credential Guard is running on the device. Credential Guard uses virtualization-based security to protect your credentials. This setting requires Secure Boot, UEFI, and VBS. |
+| DMA Guard Enabled | boolean | policy | Verifies that Direct Memory Access Protection (DMA) is enabled for the device. Also known as Kernel DMA Protection, Memory Access Protection prohibits direct memory access (DMA) attacks. |
+| HVCI Enabled | boolean | policy | Verifies that Hypervisor Code Integrity is enabled for the device. Previously known as Device Guard, Hypervisor Code Integrity (HVCI) runs on a hypervisor, protecting against kernel attacks. |
+| HVCI Strict Mode | boolean | policy | Verifies that Hypervisor Code Integrity (Strict Mode) is enabled for the device. This is an additional layer of security for Hypervisor Code Integrity. If HVCI is active, then Strict Mode is enabled by default. |
+| Windows Insider Program Disabled | boolean | policy | Verifies that the Windows Insider Program is disabled for the device. This setting checks if the host is registered as part of the Windows Insider Program (WIP). |
+| Test Signing Disabled | boolean | policy | Verifies that the Test Signing is disabled for the device. Test Signing allows any and all things to run on the device. It should always be disabled. |
+| Debug Mode Disabled | boolean | policy | Verifies that the Debug Mode is disabled for the device. When a host is in debug mode, it is not secure. |
+| Beta Build Disabled | boolean | policy | Verifies Windows Beta is disabled for the device. Undocumented Windows Betas are builds that are not officially part of Windows beta program and are not secure. |
+| Script Enforcement | boolean | policy | Verifies that Script Enforcement is enabled for the device. Script Enforcement helps prevent the execution of unauthorized scripts on the system. |
+| Branch Target Injection Mitigation | boolean | policy | Verifies that Branch Target Injection Mitigation is active on the device. This requirement monitors whether mitigations are in place to defend against branch target injection (CVE-2017-5715). |
+| Branch Target Injection Mitigation Registry Allowed | boolean | policy | Verifies that Branch Target Injection Mitigation is not disabled in the registry. This requirement is based on the registry status for mitigations required to prevent branch target injection. The status for these mitigations must not be disabled in the registry. |
+| Branch Target Injection Mitigation Hardware Support | boolean | policy | Verifies that Branch Target Injection Mitigation is supported by hardware. This requirement determines if the host's hardware supports the mitigations required to prevent branch target injection. |
+| Branch Target Injection Mitigation Patch | boolean | policy | Verifies that the system is patched against CVE-2017-5715. This requirement ensures the host has applied the relevant patches to prevent branch target injection. |
+| Rogue Data Cache Load Mitigation | boolean | policy | Verifies that Rogue Data Cache Load Mitigations is enabled for the device. This requirement ensures mitigations are in place to defend against Rogue Data Cache Load (CVE-2017-5754). |
+| Rogue Data Cache Load Mitigation Patch | boolean | policy | Verifies that the system is patched against CVE-2017-5754. This requirement ensures the host has applied the relevant patches to prevent branch target injection. |
+| L1 Terminal Fault Mitigation | boolean | policy | Verifies that L1 Terminal Fault Mitigation is enabled for the device. This requirement ensures mitigations are in place to defend against L1 Terminal Fault (CVE-2018-3620). |
+| Speculative Store Bypass Mitigation Available | boolean | policy | Verifies that Speculative Store Bypass Mitigation is available and active on the device. This requirement ensures the host's OS contains the mitigation for Speculative Store Bypass (CVE-2018-3639). Speculative Store Bypass Mitigation Hardware Support must be enabled. |
+| Speculative Store Bypass Mitigation Hardware Support | boolean | policy | Verifies that Speculative Store Bypass Mitigation is supported by hardware on the device. This requirement ensures the host's hardware supports the mitigation for Speculative Store Bypass, CVE-2018-3639, and that it is automatically enabled by the OS. |
+| Analytics And Improvements Disabled | boolean | policy | Verifies that Analytics and Improvements reports to Apple are disabled for the device. Analytics & Improvements automatically collects diagnostics information, captured audio, crash logs, and more in order to help Apple and other third-party vendors improve their solutions. |
+| Windows Insider Program Not Running | boolean | policy | Verifies that the Windows Insider Program is not running on the device. Windows Insider Program (WIP) is an open software testing program by Microsoft. It allows users who own a valid license of Windows to register for pre-release builds of the operating system previously only accessible to software developers. A device running a beta version of Windows is less secure. Additionally, the sensor might be in reduced functionality mode (RFM). |
 
-   - **Description:** Optionally enter a description.
+## Additional CrowdStrike information
 
-   - Provide the information from step 5 in the section above.
+This section covers details from CrowdStrike for your integration.
 
-     - **Base Url**
+### CrowdStrike Falcon device directory matching
 
-     - **Client ID**
+This integration uses Agent ID (AID), a unique and device specific identifier created by CrowdStrike. Beyond Identity collects the Agent ID from both the data.zta file and from falconctl. Beyond Identity does not use serial numbers to match devices to records.
 
-     - **Client Secret**
+### Linux OS score
 
-5. Click on **Add instance**. You'll be returned to the Installed Integrations page with the CrowdStrike integration displayed.
+CrowdStrike reports the OS score for Linux as 0. CrowdStrike has no Linux OS assessment features.
 
-  <Arcade clip={Clip.CrowdStrikeIntegration} />
+### Integration rate limits
 
-
-## 🔵 CrowdStrike policy attributes
-You can now create policies that allow or deny authentication in Beyond Identity. The attributes below are available by default. For more information about policies, see <a href="https://docs.beyondidentity.com/docs/tools/policy">Policy</a>
-
-| Attribute | Source | Description |
-  |--|--|--|
-  | ZTA Score  | Crowdstrike Host API  | Checks the device's zero trust score.|
-  | Device Found | Crowdstrike Host API  | Checks whether CrowdStrike is able to collect data on the device.|
-  | Connection is | Crowdstrike Host API  | Checks whether the device is connected to CrowdStrike.|
-
-
-## 🔵 Frequently asked questions
-
-#### How are devices matched to the CrowdStrike Falcon device directory?
-
-This integration uses the Agent ID (AID), a unique and device specific identifier created by CrowdStrike. We attempt to collect the Agent ID from both the data.zta file as well as from falconctl, preferring the former. We do not use the serial number to match devices to records.
-
-#### Where can the data.zta file be found?
-
-**Windows:** %ProgramData%\CrowdStrike\ZeroTrustAsssessment
-
-**MacOS:** /Library/Application Support/Crowdstrike/ZeroTrustAssessment
-
-#### Why does Linux have an OS score of zero?
-
-The OS score for Linux will be reported by CrowdStrike as 0 as there are no Linux OS assessment features.
-
-
-#### What rate limits apply to this integration?
-
-All requests to the CrowdStrike API are subject to a rate limit. The default rate limit for requests containing a valid bearer token is **6,000 requests per minute per customer account**. Each request in your customer account removes one request from that pool, **regardless of which API endpoint or API client is used for the request**. The rate limit is calculated on a sliding window.
+All requests to the CrowdStrike API have rate limits. The rate limit is calculated on a sliding window. The default rate limit for requests from a valid bearer token is 6,000 requests per minute per customer account. Each request in your customer account removes one request from that pool. This applies to any API endpoint or API client used for the request. 
