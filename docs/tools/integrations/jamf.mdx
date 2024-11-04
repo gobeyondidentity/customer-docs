@@ -11,8 +11,8 @@ keywords:
 pagination_next: null
 pagination_prev: null
 last_update:
-  date: 05/14/2024
-  author: Shannon Moore
+  date: 2024-10-31
+  author: Jerome Villegas
 draft: false
 hide_table_of_contents: false
 hide_title: false
@@ -21,76 +21,61 @@ doc_type: overview
 displayed_sidebar: mainSidebar
 ---
 
-import Arcade, {Clip} from '@site/src/components/Arcade.tsx';
+# Overview
 
-This guide will walk you through setting up a Jamf Pro integration with Beyond Identity.
+Jamf Pro is a device management solution for Apple devices within organizations. With Beyond Identity, administrators can restrict access using conditional access policies.
 
-## Benefits of integrating Jamf with Beyond Identity
+## Control device access
 
-  **Ensure devices are found within Jamf Pro**
+The list below shows additional example access management with Jamf Pro and Beyond Identity.
 
-  Prevent unmanaged devices from accessing sensitive resources by leveraging Jamf Pro within Beyond Identity. Administrators are empowered to create policies using attributes such as:
+- Ownership types of mobile devices
+- Supervision status of devices
+- User-approved mobile device management
 
-  - Device Ownership Type
-  - Supervision status
-  - User Approved MDM
-  - and many more
-
-  **Ensure specific controls are configured correctly**
-
-  It's not enough to simply know a device exists in the Jamf Pro device directory, it's just as important to ensure that the device is functional and configured correctly. This integration provides deep visibility into the security configuration of monitored devices, exposing the following attributes and more:
-  - FileVault Status
-  - Secure Boot Status
-  - SIP Status
-  - Firewall Status
-  - Remote Login Enabled/Disabled
+View the [🔵 Jamf policy attributes](#-Jamf-policy-attributes) table for more.
 
 ## Prerequisites
-To ensure a smooth integration process, please confirm the availability of the following prerequisites and requirements.
 
+To get started with the integration, view the following prerequisites.
 
-### OS Support on Beyond Identity
+### Jamf prerequisites
 
-  The Jamf Pro integration currently supports MacOS and iOS.
+This information contains the requirements for integrating with Beyond Identity.
 
-  | Platform | Supported |
-  |--|--|
-  | Windows | ❌ |
-  | MacOS | ✅ |
-  | Linux | ❌ |
-  | iOS | ✅ |
-  | Android | ❌ |
+- Jamf Pro tenant with valid values
+  - Username
+  - Password
+- Tenant URL
+    - Must be in this formatting: `https://\{YOUR_JAMF_TENANT_NAME\}.jamfcloud.com`
 
-  *✅  Fully Supported*
+### Operating system compatibility
 
-  *〰️ Under Development / Limited Support*
+The Jamf integration currently supports macOS and iOS only. The list below describes all platform compatibility.
 
-  *❌ Not Supported*
+- Windows -  ❌ Not Supported
+- macOS - ✅ Fully Supported
+- Linux -  ❌ Not Supported
+- iOS - ✅ Fully Supported
+- Android - ❌ Not Supported
 
+# Steps
 
-### License Requirements for Jamf Pro
+Follow the steps in the sections below to complete your integration for Beyond Identity and Jamf.
 
-This integration provides support for Jamf Pro. A valid Jamf Pro tenant is required.
+## Legend
 
-### Authentication Requirements
+The sections below use these two color codings to identify the steps for separate platforms. Use a separate browser window when following instructions for each platform.
 
-The Jamf Pro integration requires a valid username, password, and tenant URL. The tenant URL must be supplied in the form `https://<yourinstancename>.jamfcloud.com`, where `yourinstancename` is the name of your Jamf tenant.
+🔵 Beyond Identity - Beyond Identity platform tasks are highlighted in blue.
 
----
-
-### Legend
-In the following sections, a color-coded indicator has been added to a heading to help identify whether the steps should be performed in Beyond Identity or a different application.
-
-🔵 **Beyond Identity:** Actions to be performed in the Beyond Identity platform are highlighted in blue.
-
-🟠 **Jamf Pro:** Actions to be performed in the Jamf Pro platform are highlighted in orange.
+🟠 Jamf - Jamf Pro platform tasks are highlighted in orange.
 
 ---
 
-## 🟠 Step 1 - Set up the Jamf Pro environment for first use
-This section describes how to set up the Jamf environment for the first time.
+## 🟠 Set up initial Jamf Pro environment
 
-**If you already have a Jamf environment configured, skip this section and go directly to Step 2 - Configure Jamf Pro to work with Beyond Identity.**
+This section describes setting up the 🟠 Jamf Pro environment for the first time. If you already have a Jamf environment configured, go directly to [Configure Jamf Pro to integrate with Beyond Identity](#-configure-jamf-pro-to-integrate-with-beyond-identity).
 
 <details>
     <summary><p>Click here to view the steps.</p></summary>
@@ -102,19 +87,19 @@ This section describes how to set up the Jamf environment for the first time.
    Login using your Jamf Pro admin username and password.</li>
     <li>Create additional users, if required. To create additional users, follow these steps:
    https://docs.jamf.com/10.28.0/jamf-pro/administrator-guide/Jamf_Pro_User_Accounts_and_Groups.html</li>
-    <li>You can integrate with a third-party identity provider (IdP) to enable single sign-on (SSO) for portions of Jamf Pro. When SSO is configured and enabled, users are automatically redirected to your organization's IdP login page. After authentication, users obtain access to the resource they were attempting to access. To configure SAML, follow these steps:
+    <li>Integrate with a third-party identity provider (IdP) to enable single sign-on (SSO) for portions of Jamf Pro. When SSO is configured and enabled, users are automatically redirected to your organization's IdP login page. After authentication, users obtain access to the resource they were attempting to access. To configure SAML, follow these steps:
    https://docs.jamf.com/10.28.0/jamf-pro/administrator-guide/Single_Sign-On.html</li>
    </ol>
     <h4>Prepare for Computer and Device Enrollment</h4>
     <p>**Apple Push Notification Certificate**</p>
-    <p>Creation of an APNs certificate is required for enrollment of iOS devices and macOS devices. This certificate enables secure communication between Jamf Pro and Apple’s servers which support and enable MDM protocols, such as automated deployment of apps, configuration profiles and remote commands.</p>
+    <p>Creation of an APNs certificate is required for enrollment of iOS devices and macOS devices. This certificate enables secure communication between Jamf Pro and Apple's servers which support and enable MDM protocols, such as automated deployment of apps, configuration profiles and remote commands.</p>
     <ul>
-    <li>Please follow the instructions in the article below to create the APNs certificate, once you’ve identified an appropriate Apple ID to use.</li>
+    <li>Please follow the instructions in the article below to create the APNs certificate, once you've identified an appropriate Apple ID to use.</li>
     <p>https://www.jamf.com/jamf-nation/articles/111/generating-and-renewing-an-apple-push-notification-service-apns-certificate</p>
     </ul>
     <p>.</p>
     <h4>Configure User-initiated Enrollment Settings</h4>
-    <p>While the majority of customer (production) environments utilize Automated enrollment using Apple Business Manager, for the demo environment, you can configure User-initiated enrollment.</p> 
+    <p>While the majority of customer (production) environments utilize Automated enrollment using Apple Business Manager, for the demo environment, you can configure User-initiated enrollment.</p> 
     <p>Before enrolling devices, the server must be configured to support user-initiated enrollment. Follow the steps below to enable enrollment of both iOS and macOS devices.</p>
     <ol>
     <li>Login to Jamf Pro.</li>
@@ -135,20 +120,20 @@ This section describes how to set up the Jamf environment for the first time.
     <li>Enter the credentials for the account used to log into Jamf Pro on the Login screen, and then click **Log in**.</li>
     <li>Click **Enroll** without entering anything in the text box on the Assign to user screen.</li>
         <p>**Important:** Entering data into the text box will prevent enrollment if no LDAP servers are configured (none are by default).</p>
-    <li>When prompted, click **Continue**. This will download a file “CA Certificate.mobileconfig” on your Mac.</li>
+    <li>When prompted, click **Continue**. This will download a file “CA Certificate.mobileconfig” on your Mac.</li>
     <li>Click the file “CA Certificate.mobileconfig”.</li>
     <li>Go to **Mac System Preferences > Profiles**. You will see the CA Certificate listed there.</li>
     <li>Click **Install**.</li>
     <li>Click **Install** again. The CA Certificate is now installed.</li>
     <li>When prompted, click **Continue** to download the “enrollmentProfile.mobileconfig” on your Mac.</li>
     <li>Click the file “enrollmentProfile.mobileconfig”.</li>
-    <li>Go to Mac System Preferences > Profiles. You will see the MDM Profile listed there.</li>
+    <li>Go to Mac System Preferences > Profiles. You will see the MDM Profile listed there.</li>
     <li>Click **Install**.</li>
     <li>Click **Install** again.</li>
         <p>The MDM Profile is now installed. After the MDM profile has been installed, jamf binary, agents and other management tools will automatically begin installing in the background, please allow a few minutes for this process to complete before attempting to perform management tasks on the device.</p>
     <li>Quit the browser to ensure all Jamf Pro sessions are closed.</li>
     \
-        More information and screenshots of the end user experience can be found in the Jamf Pro Administrator’s Guide at the following link:
+        More information and screenshots of the end user experience can be found in the Jamf Pro Administrator's Guide at the following link:
         https://www.jamf.com/resources/product-documentation/jamf-pro-administrators-guide
     </ol>
     \
@@ -156,7 +141,7 @@ This section describes how to set up the Jamf environment for the first time.
     <ol>
     <li>On the test device you intend to deploy the app to, navigate to https://yourInstanceName.jamfcloud.com/enroll.</li>
     <li>On the Login screen, enter the credentials for the account used to login to Jamf Pro, then tap **Log in**.</li>
-    <li>When prompted to choose between a Personally Owned or an Institutionally Owned device, tap **Personally Owned** and then tap **Enroll**.</li>
+    <li>When prompted to choose between a Personally Owned or an Institutionally Owned device, tap **Personally Owned** and then tap **Enroll**.</li>
     <li>Tap **Continue** when prompted to install the CA certificate.</li>
     <li>Tap **Allow** when prompted to download the configuration profile.</li>
     <li>Tap **Close** and then close the browser.</li>
@@ -166,22 +151,19 @@ This section describes how to set up the Jamf environment for the first time.
         <p>**Note:** If a warning prompts about the authenticity of the MDM Profile, tap Install. This is expected when Jamf Pro is configured to skip certificate installation during enrollment.</p>
     </ol>
     \
-    More information and screenshots of the end-user experience can be found in the Jamf Pro Administrator’s Guide at the following link:
+    More information and screenshots of the end-user experience can be found in the Jamf Pro Administrator's Guide at the following link:
 
       https://www.jamf.com/resources/product-documentation/jamf-pro-administrators-guide/
 
  </details>
 
-## 🟠 Step 2 - Configure Jamf Pro to work with Beyond Identity
+## 🟠 Configure Jamf Pro to integrate with Beyond Identity
 
 If you already have Jamf Pro configured, start here to begin the configuration with Beyond Identity.
 
 1. Log into the Jamf Pro Admin Console.
-
-2. Go to **All Settings > Jamf Pro User Accounts & Groups > New > Create Standard Account**.
-
+2. Go to **All Settings → Jamf Pro User Accounts & Groups → New → Create Standard Account**.
 3. Click **Next**.
-
 4. Under the Account tab, fill in the following information:
    | Option | Enter or Select |
    |--|--|
@@ -195,98 +177,112 @@ If you already have Jamf Pro configured, start here to begin the configuration w
    |Verify Password | your_password|
    |Force user to change password at next login | Leave unchecked|
 
-   **Note:** You will need the username and password in the next section.
+   **Note:** The **Username** and **Password** are required for configuring Beyond Identity.
 5. Under the Privileges tab, fill in the following information
-
    1. Click **Jamf Pro Server Objects**.
-
    2. Select **READ** permissions for all.
-
    3. Leave other permissions unchecked.
-
 6. Click **Save**.
 
+## 🔵 Configure Beyond Identity
 
-## 🔵 Step 3 - Integrate Jamf Pro with Beyond Identity
+After configuring Jamf, add the integration using the 🔵 Beyond Identity console.
 
-### Add the Jamf Pro integration
- <details>
-    <summary><p>Click here to view the steps.</p></summary>
-    <ol>
-    <li>Go to **Tools > Integrations Catalog** in the Beyond Identity Admin console. </li>
-    <li> Click the **All Integrations** tab and then click the **Jamf** tile. </li>
-    <li> Click  **Add instance**. </li>
-    <li>Complete the following entries in the Add integration - Jamf dialog.</li>
-        <ul>
-        <li>**Display Name:** Enter "Jamf Integration" or another name you want to display on the Installed Integrations page.</li>
-        <li>**Description:** Optionally enter a description.</li>
-        <li>Provide the Base URL, Username, and Password you entered in the previous section.</li>
-        </ul>
-    <li>Click **Add instance**. You'll be returned to the Installed Integrations page with the Jamf integration displayed.</li>
-    </ol>
- </details>
+1. On your Beyond Identity Secure Access console home page under **PLATFORM**, navigate to **Integrations**.
+2. Under **Integrations**, click **Browse Integrations**.
+3. Click **Jamf**.
+4. On the **Jamf** page, click the **Add instance** button.
+5. On the **Add integration** pop up under **General**, input your information for the **Display Name*** field. This is required.
+6. Under the **Configure API for Jamf** section, paste the values from your Jamf Pro platform of [Step 4 in the previous section](#-configure-jamf-pro-to-integrate-with-beyond-identity). Each of these values is required.
+    - **Base URL***
+    - **Username***
+    - **Password***
+7. Click **Save Changes**. This prompts the successfully added pop up and returns you to the integration page.
 
-**Click below to interact with the video**
+## 🟠 Push Beyond Identity Platform Authenticator to mobile devices
 
- <Arcade clip={Clip.JamfIntegration} />
+Leveraging Jamf mobile attributes in the Beyond Identity policy and determining managed states requires the Beyond Identity Platform Authenticator to be pushed to managed mobile devices. These must have the following specific app configuration.
 
-
-## 🔵 Jamf policy attributes
-You can create policies that allow or deny authentication. The attributes below are available by default. For more information about policies, see <a href="https://docs.beyondidentity.com/docs/tools/policy">Policy</a>
-
-| Attribute | Source | Description |
-  |--|--|--|
-  | Connection is | Jamf Pro API  | Checks whether the device is connected to Jamf.|
-  | Computer Managed State is  | Jamf Pro API  | Checks whether the device is managed by Jamf.|
-  | Mobile Device Managed State is | Jamf Pro API  | Checks whether the mobile device is managed by Jamf.|
-
-If the computer or mobile device is "Not Managed," your rule can deny authentication. If you've purchased Device360, you can simulate the policy to see
-
-**Note:** This rule will take effect immediately.
-
-
-## 🟠 Step 4 - Push the Beyond Identity Authenticator to Mobile Devices
-
-To leverage JAMF mobile attributes in the Beyond Identity policy and determine a managed state, the Beyond Identity Authenticator must be pushed to managed mobile devices with a specific app configuration.
-
-1. Go to **Devices > Mobile Device Apps > + New**.
-
+1. Navigate to **Devices → Mobile Device Apps → + New**.
 2. Click **App Store app or apps purchased in volume**.
-
-3. Search for and add the Beyond Identity mobile application.
-
-4. On the 'New Mobile Device App' page, go to **App Configuration** and enter the following:
-
-   <dict><key>serialNumber</key><string>$SERIALNUMBER</string><key>DeviceUid</key><string>$UDID</string><key>JamfProID</key><string>$JSSID</string></dict>
-
+3. Search for and add the **Beyond Identity** mobile application.
+4. On the **New Mobile Device App** page, go to **App Configuration** and input the items below.
+```
+serialNumber: $SERIALNUMBER
+DeviceUid: $UDID
+JamfProID: $JSSID
+```
 5. Click **Save**.
 
 
-## 🔵 Step 5 - Test the MDM Authentication Policy
+## 🔵 Test MDM authentication policy
 
-1. Login to the Beyond Identity Admin console first from a computer that is enrolled in Jamf Pro and then from a computer that is not enrolled in Jamf Pro.
+1. Login to the Beyond Identity Admin console from a computer that is enrolled in Jamf Pro.
+2. On a computer that is not enrolled in Jamf Pro, begin logging into Beyond Identity.
+3. Confirm that the policy behavior is as expected.
+4. Click **Events** in the navigation bar to confirm the correct rule is triggered.
 
-2. Confirm that the policy behavior is as expected.
+## 🔵 Jamf policy attributes
 
-3. Click **Events** in the nav bar to ensure that the correct rule is triggered.
+With this integration, you can create policies to allow or deny authentication using Beyond Identity. The attributes in the table below are available by default.
+
+| Attribute | Type | Usage | Description |
+|-----------|------|--------|-------------|
+| Connection Available | boolean | policy | Checks whether the connection to CrowdStrike is available. |
+| Computer Serial Number | string | policy | Serial number of the computer. |
+| Computer Managed by Jamf | boolean | policy | Verifies that the computer is managed by Jamf. |
+| Computer is Supervised | boolean | policy | Verifies that the computer is supervised. Supervision gives your organization more control over the devices you own, allowing restrictions such as disabling AirDrop or Apple Music, or placing the device in Single App Mode. It also provides additional device configurations and features, so you can do things like silently install apps and filter web usage using a global proxy, to ensure that users' web traffic stays within the organization's guidelines. |
+| MDM Capable | boolean | policy | Verifies whether the computer has the MDM profile installed. |
+| User Approved MDM | boolean | policy | Verifies that Jamf management has been approved by the user. User approved MDM (UAMDM) grants mobile device management (MDM) software additional privileges beyond what is allowed for macOS MDM enrollments that have not been user approved. |
+| Boot Partition Filevault State | enum | policy | FileVault state of the macOS boot partition. |
+| Computer Model | string | policy | Model of the computer. |
+| Processor Architecture | string | policy | Architecture of the processor on the computer. |
+| Computer MAC Address | string | policy | MAC address of the computer. |
+| OS Filevault Status | enum | policy | FileVault state of the macOS OS partition. |
+| SIP Status | enum | policy | Describes the status of System Integrity Protection (SIP). |
+| Gatekeeper Status | enum | policy | Describes the Gatekeeper state. |
+| Automatic Login Disabled | boolean | policy | Verifies that Automatic Login is disabled. |
+| Remote Desktop Enabled | boolean | policy | Verifies that Remote Desktop is enabled. |
+| Activation Lock Enabled | boolean | policy | Verifies that Activation Lock is enabled. With Activation Lock, the Apple ID password or device passcode is required before anyone can turn off Find My, erase your Mac, or reactivate and use your Mac. |
+| Secure Boot Level | enum | policy | Describes the Secure Boot state of the computer. |
+| External Boot Level | enum | policy | Describes the External Boot configuration. |
+| Recovery Lock Enabled | boolean | policy | Verifies that a password is required to enter recovery mode. |
+| Application Level Firewall Enabled | boolean | policy | Verifies that the Application Level Firewall (ALF) is enabled. |
+| Computer Username | string | policy | Username of the user assigned to the computer in Jamf. |
+| Device Type | string | policy | Device type, e.g. iOS. |
+| Mobile Device Managed by Jamf | boolean | policy | Verifies that the mobile device is managed by Jamf. |
+| Software Update Device ID | string | policy | Software update device ID. |
+| Mobile Device IP Address | string | policy | Last identified public IP address of the mobile device. |
+| Mobile Device is Supervised | boolean | policy | Verifies that the mobile device is supervised. Provides additional control and configuration options for organizational devices. |
+| Device Ownership Type | string | policy | Describes the ownership type of the mobile device. |
+| UDID | string | policy | Unique device identifier for the mobile device. |
+| Mobile Device Serial Number | string | policy | The serial number of the mobile device. |
+| Mobile Device Model | string | policy | Model of the mobile device. |
+| Mobile Device Model Identifier | string | policy | Device model identifier of the mobile device. |
+| Mobile Device Model Number | string | policy | Device model number of the mobile device. |
+| Mobile Wi-Fi MAC Address | string | policy | MAC address of the mobile device's wireless network interface, used for connecting to Wi-Fi networks. |
+| Data Protection Enabled | boolean | policy | Indicates if data protection is enabled on the mobile device. |
+| Block Level Encryption Capable | boolean | policy | Verifies that the mobile device is block level encryption capable. |
+| File Level Encryption Capable | boolean | policy | Verifies that the mobile device is file level encryption capable. |
+| Passcode Present | boolean | policy | Verifies that a passcode is present on the mobile device. |
+| Passcode Compliant | boolean | policy | Verifies that the passcode set on the mobile device is compliant with passcode complexity requirements. |
+| Jailbreak Detected | boolean | policy | Describes whether or not a jailbreak is detected on the mobile device. Jailbreaking is the process of exploiting the flaws of a locked-down electronic device to install software other than what the manufacturer has made available for that device. |
+| Lost Mode Enabled | boolean | policy | Describes whether or not Lost Mode is enabled. Lost Mode is a feature that allows you to lock a mobile device and track the device's location. |
+| Mobile Username | string | policy | Username of the user assigned to the mobile device in Jamf. |
 
 
-## 🔵 Frequently Asked Questions
+## Additional Jamf information
 
-  **How are devices matched to the Jamf Pro device directory?**
+This section covers details from Jamf for your integration.
 
-  This integration leverages the Apple Unique Device Identifier (UDID). The UDID is a 24-character string assigned to all modern Apple devices. We **do not** use the serial number to match devices to records.
+### Jamf device directory matching
 
-  **What rate limits apply to this integration?**
+This integration uses Apple Unique Device Identifier (UDID), a 24-character string assigned to all modern Apple devices. Beyond Identity does not use serial numbers to match devices to records.
 
-  No explicit rate limits are set for Jamf Pro.
+### Managed configurations for mobile devices
 
-  **Why aren't my iOS devices being found?**
+The Beyond Identity Platform Authenticator requires managed configurations for mobile devices. To map device information to the correct user and device population within Jamf Pro, managed configurations must be assigned. Mobile devices may be missing from Beyond Identity if they are not assigned with managed configurations. Confirm the accepted enrollment types can support managed applications for your organization. Not all MDM enrollment types are compatible with managed configurations.
 
-  There are several reasons why an iOS device may fail to be found by Beyond Identity when it exists in the Jamf Pro device directory.
+### Jamf Pro integration compatibility
 
-  iOS devices require a **managed configuration** to be provided in order to map device information into the Beyond Identity Platform Authenticator. The managed configuration must be assigned to the correct user and device population within Jamf Pro.
-
-  Certain MDM enrollment types are incompatible with managed configurations. Ensure your accepted enrollment types fully support managed applications.
-
-  For Jamf Pro integration compatibility, the cannot be Beyond Identity Platform Authenticator app cannot be installed directly from the Apple App Store, but instead  **must** be installed from a managed channel such as Self Service or be pushed to the device from Jamf Pro. Installations from the App Store will not include the managed configuration.
+The Beyond Identity Platform Authenticator app must be installed from managed channels, such as through Self Service or pushed to the device by Jamf Pro directly. Installations from the Apple App Store are not compatible with the integration as they do not include managed configurations.
