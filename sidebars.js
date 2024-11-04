@@ -134,6 +134,7 @@ const sidebars = {
           collapsible: true,
           items: ["tools/integrations/crowdstrike",
             "tools/integrations/jamf",
+            "tools/integrations/intune",
             ],
        },
       ],
