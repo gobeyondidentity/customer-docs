@@ -42,7 +42,7 @@ This information contains the necessary items for integrating with Beyond Identi
 - Active Entra ID P1 license
 - Domain added to Entra, must not be federated
   - NOTE: If domain is already federated, complete the unfederating process before continuing.
-- Powershell administrator configurations
+- Powershell configurations for administrators
 
 ### Beyond Identity requirements
 
@@ -87,10 +87,10 @@ Follow the steps below to copy important values from 🔵 Beyond Identity and pa
 
 | Service Provider Attribute Name | Name Format | Beyond Identity Attribute Name | Namespace |
 |---|---|---|---|
-| immutableID | unspecified | External ID | http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID |
-| emailaddress | unspecified | Email | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress |
-| UPN | unspecified | Username | http://schemas.xmlsoap.org/claims |
-| authnmethodsreferences | unspecified | Custom string `http://schemas.microsoft.com/claims/multipleauthn` | http://schemas.microsoft.com/claims |
+| `immutableID` | unspecified | External ID | `http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID` |
+| `emailaddress` | unspecified | Email | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |
+| `UPN` | unspecified | Username | `http://schemas.xmlsoap.org/claims` |
+| `authnmethodsreferences` | unspecified | Custom string `http://schemas.microsoft.com/claims/multipleauthn` | `http://schemas.microsoft.com/claims` |
 
 4. Click **Save Changes** at the top of the page.
 
