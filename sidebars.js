@@ -103,7 +103,7 @@ const sidebars = {
           collapsed: true,
           collapsible: true,
           items: [
-            "access-control/applications/beyond-identity-sso", "access-control/applications/microsoft-eam"
+            "access-control/applications/beyond-identity-sso", "access-control/applications/microsoft-eam", "access-control/applications/wsfed"
               ],
        },
        {
