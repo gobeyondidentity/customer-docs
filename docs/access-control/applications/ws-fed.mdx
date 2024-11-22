@@ -1,0 +1,183 @@
+---
+title: WS-Fed Integration Guide
+id: wsfed
+description: "Learn about the steps to complete the process to integrate Beyond Identity with WS-Fed."
+slug: /access-control/applications/wsfed
+keywords:
+  - microsoft
+  - entra
+  - wsfed
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 2024-11-19
+  author: Jerome Villegas
+draft: false
+hide_table_of_contents: false
+hide_title: false
+hide_breadcrumbs: false
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+
+## Overview
+
+This guide is for integrating Web Services Federation (WS-Fed) with Beyond Identity for phishing-resistant and passwordless authentication for logins. Each section covers the steps required to complete the integration. View the following points for a general summary.
+
+- Add a new WS Fed application
+- Configure attributes in Beyond Identity
+- SCIM to map users and attributes to Beyond Identity
+- Federating a new domain
+- Testing for end users
+
+## Prerequisites
+
+To get started with the integration, view the following prerequisites.
+
+### Microsoft Entra ID
+
+This information contains the necessary items for integrating with Beyond Identity.
+
+- Microsoft Entra ID global administrator privileges
+- Active Entra ID P1 license
+- Domain added to Entra, must not be federated
+  - NOTE: If domain is already federated, complete the unfederating process before continuing.
+- Powershell configurations for administrators
+
+### Beyond Identity requirements
+
+The list below covers the basic Beyond Identity requirements for the integration.
+
+- Secure Access Tenant with Super Admin Role
+  - Use an existing account, or [sign up here](https://www.beyondidentity.com/get-demo) to create a new Beyond Identity account
+- Have at least two devices and two Super Admin roles configured*
+  - **Recommended, optional*
+
+# Steps
+
+Follow the steps in the sections below to complete your integration for Beyond Identity and Microsoft Entra ID.
+
+## Legend
+
+The sections below use these two color codings to identify the steps for separate platforms. Use a separate browser window when following instructions for each platform.
+
+🔵 **Beyond Identity** - Beyond Identity platform tasks are highlighted in blue.
+
+🟠 **Microsoft Entra ID** - Microsoft Entra ID platform and Powershell tasks are highlighted in orange.
+
+## 🔵 Add new WS-Fed application in Beyond Identity console
+
+The following section covers the 🔵 Beyond Identity console and related steps. For convenience, use a separate browser window for this section.
+
+1. Under **Access Control** → **Applications**, click **WS-Fed**.
+2. On the **WS-Fed** page, click **Add WS-FED**.
+3. On the **New SSO Application** page, fields with * are required.  Under the **General** section, input the **Display Name*** information. 
+4. Under the **Configuration** section, input the following information into the respective fields.
+    - **ACS URL (SSO URL)*** - `https://login.microsoftonline.com/login.srf`
+    - **Audience URL (Entity ID)*** - `urn:federation:MicrosoftOnline`
+6. For the **Subject User Name Attribute** field, select **External ID** in the dropdown.
+
+## 🔵 Configure attributes in Beyond Identity
+
+Follow the steps below to copy important values from 🔵 Beyond Identity and paste them into the application configuration fields.
+
+1. On the **New SSO Application** page, scroll down to the **Attribute Statements (Optional) **section.
+2. Four additional attributes are required for this configuration. Click **Add Attribute** multiple times to add blank attribute rows.
+3. Use the table below to input the additional attributes.
+
+| Service Provider Attribute Name | Name Format | Beyond Identity Attribute Name | Namespace |
+|---|---|---|---|
+| `immutableID` | unspecified | External ID | `http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID` |
+| `emailaddress` | unspecified | Email | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |
+| `UPN` | unspecified | Username | `http://schemas.xmlsoap.org/claims` |
+| `authnmethodsreferences` | unspecified | Custom string `http://schemas.microsoft.com/claims/multipleauthn` | `http://schemas.microsoft.com/claims` |
+
+4. Click **Save Changes** at the top of the page.
+
+## 🟠 SCIM Entra users to Beyond Identity
+
+At this point in the guide, complete the process for bringing Entra users to Beyond Identity. Use the Entra platform to complete the SCIM to map users and attributes to Beyond Identity for the integration. The requirements below are for mapping attributes to add and modify.
+
+On the **Attribute Mapping** page for **Provisioning** in Microsoft Entra, confirm the **customappsso Attributes** and corresponding **Microsoft Entra ID Attributes** configurations.
+
+- `emails[primary eq true].value`,  set **Apply this mapping** to **Always**
+- `emails[type eq "work"].value`, set **Apply this mapping** to **Only During Object Creation**
+- `externalID` → `immutableId`
+
+:::note
+Confirm all users are in Entra before federating the domain. Adding new users in Entra after federating causes issues. See the [Add new users after federation section](#-add-new-users-after-federation) for more.
+:::
+
+## 🔵🟠 Federate the domain
+
+The sections below have the steps for federating the domain to use with Beyond Identity.
+
+### 🔵 Secure Access console configuration
+
+The process below is for viewing the Secure Access console information about the federation process.
+
+1. On the **New SSO Application** page, scroll down to the **General** section.
+2. Click **View Federation Script**.
+3. On the **Generate Federation Script** pop up, input your domain to the **Domain Name*** field.
+4. Click **Generate**.
+5. When the **Script Generated!** notification appears, click the **Download** button.
+
+### 🟠 Executing in Powershell
+
+These steps are for executing the script in 🟠 Powershell to federate the domain.
+
+1. In your Powershell environment, open the downloaded file from [Step 5 of the Secure Access console configuration](#-secure-access-console-configuration) section.
+2. Run the file in your Powershell environment.
+3. For the Security warning pop up, click **Run once**.
+4. The browser window appears for the log in to Microsoft. Continue to pick your account for the login.
+5. Close the **Generate Federation Script** pop up. The domain is federated after logging in. According to Microsoft, domain federation can take up to 30 Minutes.
+
+## 🔵 Select identities in Beyond Identity
+
+The following section contains the steps to add identities as assignments for using Beyond Identity in the integration.
+
+:::note
+NOTE: Adding new users after federating the domain causes a `sourceanchor` issue in Entra. See the [Add new users after federation section](#-add-new-users-after-federation) for more.
+:::
+
+1. Return to the **New WS Fed Integration** page in Beyond Identity.
+2. At the top of the page, click on the **Assignments** tab.
+3. Click the **Add Assignments** drop down.
+4. Select **By Identity**.
+5. On the **Add Identities** pop up, select the identity to use.
+6. Click **Add Identity**.
+7. At the top of the page, click on the **Settings** tab.
+8. Click **Save Changes** at the top of the page.
+
+
+:::success
+Congratulations! You've completed your Beyond Identity integration!
+:::
+
+## 🟠 Process for Microsoft user login
+
+The section below has information on the process for end users to log in using Beyond Identity in the integration.
+
+1. Navigate to the Microsoft login page.
+2. Type the login information of the credentials from the federated domain.
+3. Click **Next**.
+4. This continues with the **Beyond Identity Platform Authenticator** process. Select the account corresponding to the federated domain.
+5. Continue with the Microsoft login procedure.
+
+## 🟠 Add new users after federation
+
+If adding users to Entra after federating your domain, the `sourceanchor` issue occurs in Entra. The following code is a solution to create new users after federing the domain. 
+
+Execute the Powershell script below to create new users and add the `immutableID` value for mapping to prevent the issue in the integration. Contact your Beyond Identity representative for additional support, if needed.
+
+```
+Install-Module MSOnline
+Connect-MsolService
+$upn = "example@sample.com"
+Write-Output "Calling Get-MsolUser"
+$user = Get-MsolUser -UserPrincipalName $upn
+Write-Output "User $user"
+$uuid = [system.convert]::ToBase64String(([GUID]$user.objectID.Guid).ToByteArray())
+Write-Output "$uuid"
+Set-Msoluser -UserPrincipalName $upn -ImmutableID $uuid
+```
