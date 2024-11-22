@@ -26,8 +26,8 @@ This guide is for integrating Web Services Federation (WS-Fed) with Beyond Ident
 
 - Add a new WS Fed application
 - Configure attributes in Beyond Identity
-- Federating a new domain
 - SCIM to map users and attributes to Beyond Identity
+- Federating a new domain
 - Testing for end users
 
 ## Prerequisites
@@ -94,6 +94,20 @@ Follow the steps below to copy important values from 🔵 Beyond Identity and pa
 
 4. Click **Save Changes** at the top of the page.
 
+## 🟠 SCIM Entra users to Beyond Identity
+
+At this point in the guide, complete the process for bringing Entra users to Beyond Identity. Use the Entra platform to complete the SCIM to map users and attributes to Beyond Identity for the integration. The requirements below are for mapping attributes to add and modify.
+
+On the **Attribute Mapping** page for **Provisioning** in Microsoft Entra, confirm the **customappsso Attributes** and corresponding **Microsoft Entra ID Attributes** configurations.
+
+- `emails[primary eq true].value`,  set **Apply this mapping** to **Always**
+- `emails[type eq "work"].value`, set **Apply this mapping** to **Only During Object Creation**
+- `externalID` → `immutableId`
+
+:::note
+Confirm all users are in Entra before federating the domain. Adding new users in Entra after federating causes issues. See the [Add new users after federation section](#-add-new-users-after-federation) for more.
+:::
+
 ## 🔵🟠 Federate the domain
 
 The sections below have the steps for federating the domain to use with Beyond Identity.
@@ -118,24 +132,13 @@ These steps are for executing the script in 🟠 Powershell to federate the doma
 4. The browser window appears for the log in to Microsoft. Continue to pick your account for the login.
 5. Close the **Generate Federation Script** pop up. The domain is federated after logging in. According to Microsoft, domain federation can take up to 30 Minutes.
 
-## 🟠 SCIM Entra users to Beyond Identity
-
-At this point in the guide, complete the process for bringing Entra users to Beyond Identity. Use the Entra platform to complete the SCIM to map users and attributes to Beyond Identity for the integration. The requirements below are for mapping attributes to add and modify.
-
-On the **Attribute Mapping** page for **Provisioning** in Microsoft Entra, confirm the **customappsso Attributes** and corresponding **Microsoft Entra ID Attributes** configurations.
-
-- `emails[primary eq true].value` -  set **Apply this mapping** to **Always**
-- `emails[type eq "work"].value` - set **Apply this mapping** to **Only During Object Creation**
-- `externalID` - `immutableId`
-
-:::note
-NOTE: Adding new users after federating the domain causes a `sourceanchor` issue in Entra. Contact your Beyond Identity representative for support.
-:::
-
 ## 🔵 Select identities in Beyond Identity
 
-
 The following section contains the steps to add identities as assignments for using Beyond Identity in the integration.
+
+:::note
+NOTE: Adding new users after federating the domain causes a `sourceanchor` issue in Entra. See the [Add new users after federation section](#-add-new-users-after-federation) for more.
+:::
 
 1. Return to the **New WS Fed Integration** page in Beyond Identity.
 2. At the top of the page, click on the **Assignments** tab.
@@ -160,3 +163,21 @@ The section below has information on the process for end users to log in using B
 3. Click **Next**.
 4. This continues with the **Beyond Identity Platform Authenticator** process. Select the account corresponding to the federated domain.
 5. Continue with the Microsoft login procedure.
+
+## 🟠 Add new users after federation
+
+If adding users to Entra after federating your domain, the `sourceanchor` issue occurs in Entra. The following code is a solution to create new users after federing the domain. 
+
+Execute the Powershell script below to create new users and add the `immutableID` value for mapping to prevent the issue in the integration. Contact your Beyond Identity representative for additional support, if needed.
+
+```
+Install-Module MSOnline
+Connect-MsolService
+$upn = "example@sample.com"
+Write-Output "Calling Get-MsolUser"
+$user = Get-MsolUser -UserPrincipalName $upn
+Write-Output "User $user"
+$uuid = [system.convert]::ToBase64String(([GUID]$user.objectID.Guid).ToByteArray())
+Write-Output "$uuid"
+Set-Msoluser -UserPrincipalName $upn -ImmutableID $uuid
+```
