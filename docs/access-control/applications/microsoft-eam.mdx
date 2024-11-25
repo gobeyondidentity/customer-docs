@@ -156,7 +156,7 @@ As 🟠 Microsoft validates administrator consent, these steps are for adding ta
 After configuring Microsoft Entra ID, use the 🔵 Beyond Identity console to assign an identity.
 
 :::note
-Before continuing with the integration, confirm that the user `objectid` value for your Entra users is the same as the `externalid` value in Beyond Identity. Review your SCIM mapping as needed.
+Before continuing with the integration, confirm that the user `objectid` value for your Entra users is the same as the `externalid` value in Beyond Identity. See the [EAM missing for users in Microsoft section](#eam-missing-for-users-in-microsoft) for more information.
 :::
 
 1. Navigate to your Beyond Identity console.
@@ -167,6 +167,12 @@ Before continuing with the integration, confirm that the user `objectid` value f
 6. Click **By Identity**.
 7. On the **Assign Identities** pop up, select the user.
 8. Click **Assign Identities**.
+
+### EAM missing for users in Microsoft
+
+Without the correct mapping for Entra user `objectid` to the Beyond Identity `externalid` field, users logging in to Microsoft protected resources do not have the option for External Authentication Methods (EAM). 
+
+Confirm that the user `objectid` value for your Entra users is the same as the `externalid` value in Beyond Identity. Review your SCIM mapping as needed.
 
 ## 🟠 Configure conditional access in Microsoft
 
