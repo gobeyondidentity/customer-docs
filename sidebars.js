@@ -11,16 +11,18 @@ const sidebars = {
       type: "category",
       label: "Introduction",
       collapsed: true,
-      collapsible: true,
+      collapsible: false,
       link: {
         type: "doc",
-        id: "introduction/introduction",
+        id: "introduction/getting-started",
       },
-      items: ["introduction/getting-started", "introduction/faq"],
+      items: ["introduction/getting-started", 
+        // "introduction/faq"
+      ],
     },
     {
       type: "category",
-      label: "Product Guides",
+      label: "Platform",
       collapsed: false,
       collapsible: true,
       link: {
@@ -29,11 +31,26 @@ const sidebars = {
       },
       items: [
         "product-guides/access360",
-        "product-guides/device360",
+        // "product-guides/device360",
         "product-guides/zero-trust-authentication",
         "product-guides/secure-sso",
       ],
     },
+    {
+      type: "category",
+      label: "Integrations",
+      collapsed: false,
+      collapsible: true,
+      link: {
+        type: "doc",
+        id: "integrations/integrations",
+      },
+      items: 
+            ["integrations/crowdstrike",
+            "integrations/intune",
+            "integrations/jamf",
+            ],
+       },
      {
       type: "category",
       label: "Policy",
@@ -69,6 +86,7 @@ const sidebars = {
         "directory/identities",
         "directory/groups",
         "directory/devices",
+        "directory/roles",
         {
           type: "category",
           label: "Directory Integrations",
@@ -95,15 +113,21 @@ const sidebars = {
         id: "access-control/access-control",
       },
       items: [
-        "access-control/roles",
-        "access-control/authentication-methods",
+        // "access-control/authentication-methods",
         {
           type: "category",
           label: "Applications",
           collapsed: true,
           collapsible: true,
+          link: {
+            type: "doc",
+            id: "access-control/applications/applications",
+          },
           items: [
-            "access-control/applications/beyond-identity-sso", "access-control/applications/microsoft-eam", "access-control/applications/wsfed"
+            "access-control/applications/microsoft-eam", 
+            "access-control/applications/okta", 
+            "access-control/applications/onelogin",
+            "access-control/applications/wsfed"
               ],
        },
        {
@@ -111,8 +135,12 @@ const sidebars = {
         label: "Identity Providers",
         collapsed: true,
         collapsible: true,
+        link: {
+          type: "doc",
+          id: "access-control/identity-providers/identity-providers",
+        },
         items: [
-          "access-control/identity-providers/generic-oidc", "access-control/identity-providers/okta", "access-control/identity-providers/onelogin"],
+          "access-control/identity-providers/generic-oidc"],
       },      
      ],
     },
@@ -126,18 +154,7 @@ const sidebars = {
         id: "tools/tools",
       },
       items: [
-        "tools/branding",
-        {
-          type: "category",
-          label: "Integrations",
-          collapsed: true,
-          collapsible: true,
-          items: ["tools/integrations/crowdstrike",
-            "tools/integrations/jamf",
-            "tools/integrations/intune",
-            ],
-       },
-      ],
+        "tools/branding"],
     },
     {
       type: "category",
@@ -148,7 +165,9 @@ const sidebars = {
         type: "doc",
         id: "release-notes/release-notes",
       },
-      items: ["release-notes/endpoint", "release-notes/console"],
+      items: ["release-notes/endpoint", 
+        // "release-notes/console"
+        ],
     },
     {
       type: "category",
@@ -179,11 +198,6 @@ const sidebars = {
       items: [
         "glossary",
         {
-          type: "doc",
-          id: "contribute/contribute",
-          label: "Contributor Guide",
-        },
-        {
           type: "link",
           label: "Service Status",
           href: "https://status.beyondidentity.com/",
@@ -206,7 +220,7 @@ const sidebars = {
       type: "category",
       label: "Contribute",
       collapsible: false,
-      collapsed: false,
+      collapsed: true,
       link: {
         type: "doc",
         id: "contribute/contribute",
