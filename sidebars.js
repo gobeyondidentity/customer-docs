@@ -11,10 +11,10 @@ const sidebars = {
       type: "category",
       label: "Introduction",
       collapsed: true,
-      collapsible: false,
+      collapsible: true,
       link: {
         type: "doc",
-        id: "introduction/getting-started",
+        id: "introduction/introduction",
       },
       items: ["introduction/getting-started", 
         // "introduction/faq"
