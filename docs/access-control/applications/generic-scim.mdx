@@ -1,0 +1,75 @@
+---
+title: Generic SCIM
+id: generic-scim
+description: "Learn how to create and use a generic SCIM integration."
+slug: /access-control/applications/generic-scim
+keywords:
+  - Generic SCIM
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 2024-12-06
+  author: Jerome Villegas
+draft: false
+hide_table_of_contents: false
+hide_title: false
+hide_breadcrumbs: false
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+
+## Use the Beyond Identity Generic SCIM implementation
+
+The System for Cross-domain Identity Management (SCIM) implementation in Beyond Identity has the functionality for adding user identity information across platforms programmatically. This generic configuration works for various systems acting as upstream directory sources. This guide covers directing user identity information to Beyond Identity from another source.
+
+### Process overview
+
+The generic SCIM implementation to automate identity information exchanges covers the main points below.
+
+- Add a new Generic SCIM application
+- Configure inbound provisioning
+- Set credential values in upstream application
+  - Client ID and Client Secret, or Bearer token
+- Run SCIM implementation on upstream application
+
+## Add Generic SCIM application
+
+The steps in this section cover adding a new Generic SCIM application in Beyond Identity. 
+
+1. Navigate to your Beyond Identity console.
+2. On the left-hand navigation under **Access Control**, click **Applications**.
+3. Select the **Browse Applications** tab.
+4. Click **SCIM** to proceed.
+5. Click **Add SCIM**.
+6. Under **General** → **Display Name**, input a name into the text field.
+7. Click **Save Changes** on the top of the page.
+
+### Select and copy credential values
+
+This section is for collecting the values for configuring the inbound provisioning. For your SCIM implementation, both [Client ID and Client Secret](#client-id-and-client-secret) as well as [Bearer tokens](#bearer-tokens) configurations are available.
+
+#### Client ID and Client secret
+
+The Beyond Identity values below are available to copy to the directory source SCIM implementation.
+
+- Client ID
+- Client Secret
+  - *NOTE: The Client Secret is scoped to SCIM and doesn't expire.*
+- SCIM URL
+- Token endpoint
+
+#### Bearer tokens
+
+The Beyond Identity bearer tokens are scoped for SCIM actions and have set expiration dates. The table in this section shows information about all added tokens. To add a new token, follow the steps below.
+
+1. Under the Bearer tokens section, click the **Add bearer token** button.
+2. On the Create bearer token pop up, type an input for the **Name*** field.
+3. In the Expires* text field, input the date for the expiration in `MM/DD/YYYY` format. The calendar icon also has a date select option dropdown available.
+4. Click **Add token**.
+5. The **Token created** prompt appears with the JSON web token value below. Copy the value to save in a secure location. *NOTE: This value is not viewable again.*
+6. After saving the token value, click **Close**.
+7. After adding tokens, click the **Save Changes** button at the top of the page.
+
+## Run SCIM implementation on upstream application
+
+With the credentials above, copy the relevant values to your upstream application. Complete the remaining SCIM implementation process on the upstream application.

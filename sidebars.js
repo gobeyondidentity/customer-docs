@@ -87,20 +87,20 @@ const sidebars = {
         "directory/groups",
         "directory/devices",
         "directory/roles",
-        {
-          type: "category",
-          label: "Directory Integrations",
-          collapsed: true,
-          collapsible: true,
-          link: {
-            type: "doc",
-            id: "directory/directory-integrations/directory-integrations",
-          },
-          items: [
-            "directory/directory-integrations/directory-integrations-generic-scim",
-            "directory/directory-integrations/directory-integrations-okta",
-          ],
-        },
+        // {
+        //   type: "category",
+        //   label: "Directory Integrations",
+        //   collapsed: true,
+        //   collapsible: true,
+        //   link: {
+        //     type: "doc",
+        //     id: "directory/directory-integrations/directory-integrations",
+        //   },
+        //   items: [
+        //     "directory/directory-integrations/directory-integrations-generic-scim",
+        //     "directory/directory-integrations/directory-integrations-okta",
+        //   ],
+        // },
       ],
     },
     {
@@ -124,6 +124,7 @@ const sidebars = {
             id: "access-control/applications/applications",
           },
           items: [
+            "access-control/applications/generic-scim", 
             "access-control/applications/microsoft-eam", 
             "access-control/applications/okta", 
             "access-control/applications/onelogin",
