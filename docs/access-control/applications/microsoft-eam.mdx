@@ -45,6 +45,9 @@ This information contains the necessary items for integrating with Beyond Identi
 
 - Microsoft Entra ID global administrator privileges
 - Active Entra ID P1 license
+- SCIM implementation for Microsoft Entra as upstream directory source to Beyond Identity
+  - View the [Generic SCIM](/docs/access-control/applications/generic-scim) for more information.
+
 
 ### Beyond Identity requirements
 
@@ -153,7 +156,7 @@ As 🟠 Microsoft validates administrator consent, these steps are for adding ta
 
 ## 🔵 Assign identities in Beyond Identity console
 
-After configuring Microsoft Entra ID, use the 🔵 Beyond Identity console to assign an identity.
+After configuring Microsoft Entra ID, use the 🔵 Beyond Identity console to assign an identity. Before continuying with the next steps, complete the sections in the [Generic SCIM guide](/docs/access-control/applications/generic-scim) for configuring users from the upstream directory source.
 
 :::note
 Before continuing with the integration, confirm that the user `objectid` value for your Entra users is the same as the `externalid` value in Beyond Identity. See the [EAM missing for users in Microsoft section](#eam-missing-for-users-in-microsoft) for more information.

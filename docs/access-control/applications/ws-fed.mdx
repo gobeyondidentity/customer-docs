@@ -43,6 +43,9 @@ This information contains the necessary items for integrating with Beyond Identi
 - Domain added to Entra, must not be federated
   - NOTE: If domain is already federated, complete the unfederating process before continuing.
 - Powershell configurations for administrators
+- SCIM implementation for Microsoft Entra as upstream directory source to Beyond Identity
+  - View the [Generic SCIM](/docs/access-control/applications/generic-scim) for more information.
+
 
 ### Beyond Identity requirements
 
@@ -134,7 +137,7 @@ These steps are for executing the script in 🟠 Powershell to federate the doma
 
 ## 🔵 Select identities in Beyond Identity
 
-The following section contains the steps to add identities as assignments for using Beyond Identity in the integration.
+Before continuying with the next steps, complete the sections in the [Generic SCIM guide](/docs/access-control/applications/generic-scim) for configuring users from the upstream directory source. The following section contains the steps to add identities as assignments for using Beyond Identity in the integration. 
 
 :::note
 NOTE: Adding new users after federating the domain causes a `sourceanchor` issue in Entra. See the [Add new users after federation section](#-add-new-users-after-federation) for more.
