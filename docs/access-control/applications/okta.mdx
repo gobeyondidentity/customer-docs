@@ -9,7 +9,7 @@ keywords:
 pagination_next: null
 pagination_prev: null
 last_update:
-  date: 2024-10-10
+  date: 2024-12-09
   author: Jerome Villegas
 draft: false
 hide_table_of_contents: false
@@ -19,6 +19,8 @@ doc_type: overview
 displayed_sidebar: mainSidebar
 ---
 
+import Arcade, {Clip} from '@site/src/components/Arcade.tsx';
+
 ## Authentication for Okta using Beyond Identity
 
 Integrate Beyond Identity with your Okta organization for users to have phishing-resistant and passwordless authentication.
@@ -26,6 +28,7 @@ Integrate Beyond Identity with your Okta organization for users to have phishing
 This guide covers the process of configuring Okta and Beyond Identity. Each section contains instructions for that specific platform. View the overall summary in the list below.
 
 - Set up new configurations on each console for Beyond Identity and Okta
+- Set up Okta SCIM user provisioning
 - Add new users to Beyond Identity for passkey verification
 - Configure rules to use Beyond Identity in Okta
 
@@ -92,9 +95,31 @@ The steps in this section are for setting up Beyond Identity in 🟠 Okta as a n
   - 🔵 **Client Secret** → 🟠 **Client Secret**, under **Client details**
 7. Click **Finish**.
 
-## 🔵 Configuring the directory in Beyond Identity
+## 🟠 Set up Okta directory integration
 
-The steps below go over adding a new user to your Beyond Identity identities directory.
+This section is a walkthrough for setting up the Okta directory as the upstream source to share user identity information to Beyond Identity. View the use cases below.
+
+- SCIM user provisioning - Okta user identity information programmatically syncs to Beyond Identity
+- Registration syncing - Okta redirects users to Beyond Identity
+  - NOTE: This feature sets up the passwordless experience for users Okta users. It omits the username and password input screen because it redirects to Beyond Identity.
+
+### 🟠 Create Beyond Identity group
+
+You can specify users to authenticate with Beyond Identity and without passwords. This section covers creating a group in Okta for including this configuration for users. View the clip below for instructions.
+
+<Arcade clip={Clip.OktaIntegrationGuideGroupCreation} />
+
+### 🟠 Generate API token in Okta
+
+Beyond Identity requires an Okta API token to communicate updates to Okta. This includes notifying Okta when users bind passkeys to their device. This action is required for users to be routed to Beyond Identity from Okta. The clip below covers the steps to generate the token.
+
+<Arcade clip={Clip.OktaIntegrationGuideAPITokenGeneration} />
+
+## 🔵 Configure the directory in Beyond Identity
+
+The sections below go over adding a new user to your Beyond Identity identities directory.
+
+### 🔵 Manual entry
 
 1. Under **Directory**, click **Identities**.
 2. Click **Add identity**.
@@ -109,6 +134,26 @@ The steps below go over adding a new user to your Beyond Identity identities dir
   - **Send email** - Prompts verification through link sent to the identity's email address
   - **Generate link** - Creates a specific link to share for verification
 11. At this point, the end users completes verification through **Beyond Identity Platform Authenticator**.
+
+### 🔵 SCIM implementation
+
+The Okta SCIM implementation requires a bearer token. Use the Okta platform to complete the SCIM to map users and attributes to Beyond Identity for the integration. Complete the sections in the [Generic SCIM guide](/docs/access-control/applications/generic-scim) for configuring users from the Okta upstream directory source.
+
+### 🟠 Complete Okta SCIM configuration
+
+Configure the SCIM application in Okta with the SCIM URL and bearer token generated on the Beyond Identity application page. After completing the provisioning configuration, enable the actions below. The clip below contains the instructions for this process.
+
+- Create Users
+- Deactivate Users
+
+<Arcade clip={Clip.OktaIntegrationGuideConfigureSCIMApplication} />
+
+### Synchronize users with SCIM
+
+Push the created Beyond Identity group from Okta to Beyond Identity. After this is complete, all users in this group appear on the **Identities** page under **Directory**.
+
+<Arcade clip={Clip.OktaIntegrationGuidePushGroupSCIMApplication} />
+
 
 ## 🟠 Use Okta Routing rules
 
