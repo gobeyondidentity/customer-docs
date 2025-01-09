@@ -16,26 +16,27 @@ const sidebars = {
         type: "doc",
         id: "introduction/introduction",
       },
-      items: ["introduction/getting-started", 
+      items: [
+        // "introduction/getting-started", 
         // "introduction/faq"
       ],
     },
-    {
-      type: "category",
-      label: "Platform",
-      collapsed: false,
-      collapsible: true,
-      link: {
-        type: "doc",
-        id: "product-guides/product-guides",
-      },
-      items: [
-        "product-guides/access360",
-        // "product-guides/device360",
-        "product-guides/zero-trust-authentication",
-        "product-guides/secure-sso",
-      ],
-    },
+    // {
+    //   type: "category",
+    //   label: "Platform",
+    //   collapsed: false,
+    //   collapsible: true,
+    //   link: {
+    //     type: "doc",
+    //     id: "product-guides/product-guides",
+    //   },
+    //   items: [
+    //     "product-guides/access360",
+    //     // "product-guides/device360",
+    //     "product-guides/zero-trust-authentication",
+    //     "product-guides/secure-sso",
+    //   ],
+    // },
     {
       type: "category",
       label: "Integrations",
@@ -51,7 +52,37 @@ const sidebars = {
             "integrations/jamf",
             ],
        },
-     {
+       {
+        type: "category",
+        label: "Directory",
+        collapsed: false,
+        collapsible: true,
+        link: {
+          type: "doc",
+          id: "directory/directory",
+        },
+        items: [
+          "directory/identities",
+          "directory/groups",
+          "directory/devices",
+          "directory/roles",
+          // {
+          //   type: "category",
+          //   label: "Directory Integrations",
+          //   collapsed: true,
+          //   collapsible: true,
+          //   link: {
+          //     type: "doc",
+          //     id: "directory/directory-integrations/directory-integrations",
+          //   },
+          //   items: [
+          //     "directory/directory-integrations/directory-integrations-generic-scim",
+          //     "directory/directory-integrations/directory-integrations-okta",
+          //   ],
+          // },
+        ],
+      },
+       {
       type: "category",
       label: "Policy",
       collapsed: false,
@@ -72,36 +103,6 @@ const sidebars = {
         id: "reporting/reporting",
       },
       items: ["reporting/device-query"],
-    },
-     {
-      type: "category",
-      label: "Directory",
-      collapsed: false,
-      collapsible: true,
-      link: {
-        type: "doc",
-        id: "directory/directory",
-      },
-      items: [
-        "directory/identities",
-        "directory/groups",
-        "directory/devices",
-        "directory/roles",
-        // {
-        //   type: "category",
-        //   label: "Directory Integrations",
-        //   collapsed: true,
-        //   collapsible: true,
-        //   link: {
-        //     type: "doc",
-        //     id: "directory/directory-integrations/directory-integrations",
-        //   },
-        //   items: [
-        //     "directory/directory-integrations/directory-integrations-generic-scim",
-        //     "directory/directory-integrations/directory-integrations-okta",
-        //   ],
-        // },
-      ],
     },
     {
       type: "category",
@@ -197,7 +198,7 @@ const sidebars = {
         id: "resources/resources",
       },
       items: [
-        "glossary",
+        // "glossary",
         {
           type: "link",
           label: "Service Status",
