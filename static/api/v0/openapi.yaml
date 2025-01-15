@@ -2507,14 +2507,7 @@ paths:
         content:
           application/json:
             schema:
-              title: Create User Request
-              description: Request for CreateUser.
-              type: object
-              properties:
-                user:
-                  $ref: '#/components/schemas/SCIMUser'
-              required:
-                - user
+              $ref: '#/components/schemas/SCIMUser'
             examples:
               Create User:
                 value:
@@ -2861,14 +2854,7 @@ paths:
         content:
           application/json:
             schema:
-              title: Update User Request
-              description: Request for UpdateUser.
-              type: object
-              properties:
-                user:
-                  $ref: '#/components/schemas/SCIMUser'
-              required:
-                - user
+              $ref: '#/components/schemas/SCIMUser'
             examples:
               Update Display Name:
                 value:
@@ -2959,14 +2945,7 @@ paths:
         content:
           application/json:
             schema:
-              title: Update User Request
-              description: Request for UpdateUser.
-              type: object
-              properties:
-                user:
-                  $ref: '#/components/schemas/SCIMUser'
-              required:
-                - user
+              $ref: '#/components/schemas/SCIMUser'
             examples:
               Replace User:
                 value:
