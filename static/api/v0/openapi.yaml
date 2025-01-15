@@ -2507,20 +2507,12 @@ paths:
         content:
           application/json:
             schema:
-              title: Create User Request
-              description: Request for CreateUser.
-              type: object
-              properties:
-                user:
-                  $ref: '#/components/schemas/SCIMUser'
-              required:
-                - user
+              $ref: '#/components/schemas/SCIMUser'
             examples:
               Create User:
                 value:
                   schemas:
                     - 'urn:ietf:params:scim:schemas:core:2.0:User'
-                  id: 2819c223-7f76-453a-919d-413861904646
                   userName: bjensen
                   externalId: bjensen
                   name:
@@ -2861,14 +2853,7 @@ paths:
         content:
           application/json:
             schema:
-              title: Update User Request
-              description: Request for UpdateUser.
-              type: object
-              properties:
-                user:
-                  $ref: '#/components/schemas/SCIMUser'
-              required:
-                - user
+              $ref: '#/components/schemas/SCIMUser'
             examples:
               Update Display Name:
                 value:
@@ -2959,14 +2944,7 @@ paths:
         content:
           application/json:
             schema:
-              title: Update User Request
-              description: Request for UpdateUser.
-              type: object
-              properties:
-                user:
-                  $ref: '#/components/schemas/SCIMUser'
-              required:
-                - user
+              $ref: '#/components/schemas/SCIMUser'
             examples:
               Replace User:
                 value:
@@ -3144,7 +3122,6 @@ paths:
                   schemas:
                     - 'urn:ietf:params:scim:schemas:core:2.0:Group'
                     - 'urn:scim:schemas:extension:byndid:1.0:Group'
-                  id: 22e7c78c-39ff-4501-8ed4-32d0479e54c1
                   displayName: Test Group
                   members:
                     - display: Ms. Barbara J Jensen III
