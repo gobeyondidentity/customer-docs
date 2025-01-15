@@ -3108,14 +3108,7 @@ paths:
         content:
           application/json:
             schema:
-              title: Create Group Request
-              description: Request for CreateGroup.
-              type: object
-              properties:
-                group:
-                  $ref: '#/components/schemas/SCIMGroup'
-              required:
-                - group
+              $ref: '#/components/schemas/SCIMGroup'
             examples:
               Create Group:
                 value:
@@ -3450,14 +3443,7 @@ paths:
         content:
           application/json:
             schema:
-              title: Update Group Request
-              description: Request for UpdateGroup.
-              type: object
-              properties:
-                group:
-                  $ref: '#/components/schemas/SCIMGroup'
-              required:
-                - group
+              $ref: '#/components/schemas/SCIMGroup'
             examples:
               Add Member:
                 value:
