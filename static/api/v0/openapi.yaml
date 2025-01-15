@@ -2676,20 +2676,23 @@ paths:
                       - 'urn:ietf:params:scim:api:messages:2.0:ListResponse'
                     Resources:
                       - schemas:
-                          - 'urn:ietf:params:scim:schemas:core:2.0:Group'
-                          - 'urn:scim:schemas:extension:byndid:1.0:Group'
-                        id: 22e7c78c-39ff-4501-8ed4-32d0479e54c1
-                        displayName: Test Group
-                        members:
-                          - display: Ms. Barbara J Jensen III
-                            value: 2819c223-7f76-453a-919d-413861904646
-                        'urn:scim:schemas:extension:byndid:1.0:Group':
-                          description: Test Group Description
+                          - 'urn:ietf:params:scim:schemas:core:2.0:User'
+                        id: 2819c223-7f76-453a-919d-413861904646
+                        externalId: bjensen
+                        userName: bjensen
+                        displayName: Ms. Barbara J Jensen III
+                        name:
+                          - familyName: Jensen
+                          - givenName: Barbara
+                        active: true
+                        emails:
+                          - primary: true
+                            value: bjensen@example.com
                         meta:
-                          created: '2023-04-10T06:08:28Z'
-                          lastModified: '2023-04-10T06:08:28Z'
-                          location: Groups/22e7c78c-39ff-4501-8ed4-32d0479e54c1
-                          resourceType: Group
+                          resourceType: User
+                          created: '2022-10-12T05:11:47Z'
+                          lastModified: '2023-03-30T06:00:03Z'
+                          location: Users/2819c223-7f76-453a-919d-413861904646
                           version: W/0
                     itemsPerPage: 1000
                     startIndex: 1
