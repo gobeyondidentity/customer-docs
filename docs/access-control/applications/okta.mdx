@@ -23,7 +23,7 @@ displayed_sidebar: mainSidebar
 
 This guide is a walkthrough of the stages and steps to integrate Beyond Identity as a phishing-resistant multifactor authentication addition to your Okta organization. 
 
-When finished with the stages and steps below, end users can authenticate with their device's passkey to log in to Okta. This protects users from having to input a username and password each time they log in.
+Once the following stages and steps are complete, end users can authenticate to Okta using their device's passkey. This enhances security by eliminating passwords from the login flow while also improving the user experience by removing the need to enter a password.
 
 ## Stage summary
 
@@ -31,7 +31,7 @@ The integration setup consists of the four stages below. Each stage covers the i
 
 | Stage | Summary | Okta | Beyond Identity |
 | :---- | :---- | :---- | :---- |
-| [I](#stage-i) | Initial set up | - [Set up Beyond Identity group](#-okta-set-up-beyond-identity-group) | - [Set up Console](#-beyond-identity-set-up-console) |
+| [I](#stage-i) | Initial set up | - [Set up Beyond Identity group in Okta](#-okta-set-up-beyond-identity-group) | - [Set up Okta Application in Beyond Identity Console](#-beyond-identity-set-up-console) |
 | [II](#stage-ii) | System for Cross-domain Identity Management (SCIM) implementation | - [Create SCIM app](#-okta-create-outbound-scim-app)<br></br>- [Update provisioning for SCIM](#-okta-update-provisioning-for-scim)<br></br>- [Push SCIM users](#-okta-push-scim-users) | - [Create API token for inbound SCIM](#-beyond-identity-create-api-token-for-inbound-scim) |
 | [III](#stage-iii) | Single sign-on configuration | - [Create Okta API token](#-okta-create-okta-api-token)<br></br>- [Set up custom attribute for users](#-okta-set-up-custom-attribute-for-users) | - [Configure Okta domain](#-beyond-identity-configure-okta-domain) |
 | [IV](#stage-iv) | Identity provider setup and enrollment | - [Configure new identity provider](#-okta-configure-new-identity-provider)<br></br>- [Create routing rules](#-okta-create-routing-rules) | - [Assign application to group](#-beyond-identity-assign-application-to-group)<br></br>- [Enroll users](#-beyond-identity-enroll-users) |
@@ -71,11 +71,11 @@ The sections below use these two color codings to identify the steps for separat
 
 ## Stage I
 
-The sections here are for the initial setup between Beyond Identity and Okta. This is for setting up the Console in Beyond Identity and for creating groups in Okta for Beyond Identity.
+The sections here are for the initial setup between Beyond Identity and Okta. This is for setting up the Okta Application in the Beyond Identity Console and for creating groups in Okta for Beyond Identity. This group will be a subset of your users that use Beyond Identity for authentication vs. your current authentication methods.
 
-### 🔵 Beyond Identity: Set up Console
+### 🔵 Beyond Identity: Set up Okta Application in Console
 
-The steps in this section are for going through the initial Beyond Identity configuration. This covers adding the Okta integration application from Beyond Identity.
+The steps in this section are for going through the initial Beyond Identity configuration. This covers adding the Okta integration application in the Beyond Identity Console.
 
 1. Navigate to your Beyond Identity console.  
 2. On the left-hand navigation under **Access Control**, click **Applications**.  
@@ -83,67 +83,79 @@ The steps in this section are for going through the initial Beyond Identity conf
 4. Click **Okta** to proceed.  
 5. Click **Add OIDC**.  
 6. Under **General** → **Display Name**, input `Okta` into the text field.
+7. We will leave this app up as we get some values that we need in Okta.
 
 ### 🟠 Okta: Set up Beyond Identity group
 
-This section covers the beginning steps in your Okta environment. To start, all steps in this section are within the Okta platform. To streamline the process of using Beyond Identity phishing-resistant multifactor authentication, create a group of users for Beyond Identity in Okta.
+This section covers creating a Beyond Identity group in your Okta environment. This will be the subset of users that will use Beyond Identity phishing-resistant authentication to authenticate into Okta.
 
 1. On your Okta home page, navigate to **Directory** → **Groups** on the left hand side.  
 2. Click the **Add Group** button.  
-3. In the **Name** field, input `Beyond Identity`.  
+3. In the **Name** field, input `Beyond Identity`.  Description is optional.
 4. Click **Save**. This returns you to the **Groups** page.  
 5. Click the **Beyond Identity** group.  
-6. Click the **Assign people button** to assign users with the + icon to the **Beyond Identity** group.  
+6. Click the **Assign people** button to assign users with the **+** icon to the **Beyond Identity** group.  
 7. Click **Done** to return to the **Groups** page.
 
 ## Stage II
 
-The Stage II sections cover the System for Cross-domain Identity Management (SCIM) implementation between Beyond Identity as the inbound platform and Okta as the outbound platform. The SCIM implementation makes it easier for Beyond Identity and Okta to communicate user additions, changes, and removals.
+The Stage II sections cover the System for Cross-domain Identity Management (SCIM) implementation between Beyond Identity as the inbound platform and Okta as the outbound platform. SCIM is used to populate users from your Okta directory to the Beyond Identity directory. The SCIM protocol will automatically update any changes in your Okta directory to the Beyond Identity directory.
+
+:::note
+This means that the directory is your source of truth. Any changes made to your directory **should occur in Okta** and will be reflected in Beyond Identity directory.
+:::
 
 ### 🟠 Okta: Create outbound SCIM app
 
-To have Okta act as the outbound SCIM app, the steps below are for adding and configuring the SCIM application. All the steps in this process happen within the Okta platform.
+To have Okta act as the outbound SCIM provider, follow the steps below. All the steps in this process happen within the Okta platform.
 
 1. Navigate to **Applications** → **Applications** on the left hand side.  
 2. Click the **Browse App catalog** button.  
 3. In the search field, input `SCIM 2.0 Test App (OAuth Bearer Token)` to select the correct app.  
 4. On the `SCIM 2.0 Test App (OAuth Bearer Token)` page, click **Add integration**.  
-5. In the Application label field, update the text to `Beyond Identity`.  
+5. In the Application label field, update the text to `Beyond Identity Outbound SCIM`.  
 6. For the **General settings· Required** page, the default values are valid. Click **Next**.  
 7. For the **Sign-On Options· Required** page, the default values are valid as well. Click **Done** at the bottom of the page.
 
+We will now go back to the Beyond Identity Admin Console to get some values that we need to plug into this SCIM configuration.
+
 ### 🔵 Beyond Identity: Create API token for inbound SCIM
 
-This section is for the Beyond Identity console on the new Okta application page. To configure Beyond Identity as the inbound platform for SCIM, the steps below set up the Bearer token and show the required values for Okta.
+This section is for configuring Okta as an inbound SCIM provider for your Beyond Identity directory. Follow the steps below in your Beyond Identity Admin Console.
 
 1. On the new Okta app in Beyond Identity, navigate to the **Bearer tokens** section.  
 2. Click **Add bearer token**.  
-3. Input a name for the bearer token.  
-4. Select an expiration date for the token.  
+3. Input a name for the bearer token such as **Okta SCIM Token**.
+4. Select an expiration date for the token.  The default value should work here.
 5. Copy the value and store in a secure location.  
 6. Scroll to the **Configure inbound provisioning** section.  
-7. Copy the **SCIM URL** value.
+7. Copy the **SCIM URL** value. It should look like `https://api-us.beyondidentity.com/v1/.../scim/v2`.
 
 :::note
 The Beyond Identity bearer token for the inbound SCIM has an expiration date. To continue with the SCIM implementation, the token must be updated after the initial token expires.
+
+Okta does not support SCIM with `client credentials`, which is a service-to-service authentication protocol that automatically refreshes the tokens. We are currently working to add **Basic authentication** to our SCIM implementation so you will not have to update the token after expiration.
 :::
 
 ### 🟠 Okta: Update provisioning for SCIM
 
-After completing the Beyond Identity section for copying the SCIM URL and Bearer token values, this section goes over testing the credentials within Okta.
+After completing the Beyond Identity section for copying the SCIM URL and Bearer token values, this section goes over testing the credentials within Okta to prepare for SCIM. These steps are back in your Okta admin console.
 
-1. On the **SCIM Beyond Identity Application** page, navigate to the **Provisioning** tab.  
+1. In your **Beyond Identity Outbound SCIM** page, navigate to the **Provisioning** tab.  
 2. Click the **Configure API Integration** button.  
 3. Check the **Enable API integration** box.  
 4. From the [Beyond Identity: Create API token for inbound SCIM](#-beyond-identity-create-api-token-for-inbound-scim) section, copy and input the following values into Okta.  
    1. **SCIM URL** →  **SCIM 2.0 Base Url**  
    2. **Bearer token** → **OAuth Bearer Token**  
 5. Click **Test API Credentials**.  
-6. Click **Save**.
+   1. If successful, awesome! Click **Save**.
+   2. If it is not successful, go back to the section above [Beyond Identity: Create API token for inbound SCIM](#-beyond-identity-create-api-token-for-inbound-scim) and repeat the steps.
 
 ### 🟠 Okta: Continue SCIM app setup
 
-When the API credentials are configured, the SCIM application for Okta needs additional setup for permissions and assignments. The steps below are for the SCIM app to manage users and assign them to the Beyond Identity group.
+When the API credentials are configured, this means Okta can now begin provisioning users from your Okta directory to the Beyond Identity directory. Follow the steps below to finish your SCIM app setup in Okta. 
+
+When this step is completed, your **Beyond Identity** group that you created in Stage I should show up in your Beyond Identity directory.
 
 1. On the **SCIM Beyond Identity Application** page, navigate to **Provisioning** → **To App** → **Provisioning to App** section.  
 2. Click **Edit.**  
@@ -154,26 +166,31 @@ When the API credentials are configured, the SCIM application for Okta needs add
 4. Click **Save**.  
 5. Navigate to **Assignments** → Click **Assign** drop down → Select **Assign to Groups**  
 6. Select **Assign** for **Beyond Identity** group.  
-7. Click **Done**.
+7. Click **Save and Go Back**.
+8. Click **Done**.
 
 ### 🟠 Okta: Push SCIM users
 
 With the configuration complete for the inbound and outbound SCIM implementation, the app must push users to Beyond Identity. Begin this process with the steps below.
 
-1. On the **SCIM Beyond Identity Application** page, navigate to **Push Groups** tab.  
+1. On the **Beyond Identity Outbound SCIM** Application page, navigate to **Push Groups** tab.  
 2. Click **Push Groups** dropdown.  
 3. Select **Find groups by name**.  
 4. Search for **Beyond Identity** group.  
-   - NOTE: Cannot have existing group names in Beyond Identity for SCIM integration  
+   - NOTE: You CANNOT have a group **with the same name existing** in the Beyond Identity directory. If there is, it will result in an error.
 5. Click **Save**. This prompts the SCIM process to begin in Okta to push the group to Beyond Identity.
 
 :::note
-Beyond Identity: Directory - Check the identities and groups in the Beyond Identity Console to confirm the SCIM setup and application success. Updates may take time. If the SCIM setup hasn't completed, check your SCIM application configuration. 
+Check the identities and groups in the Beyond Identity Console to confirm the SCIM setup and application success. Updates may take time. If the SCIM setup hasn't completed, check your SCIM application configuration. 
 :::
 
 ## Stage III
 
-The sections for Stage III cover setting up Beyond Identity as the single sign-on application for the identity provider in Okta. They involve creating a token in Okta, setting up a custom attribute, then configuring the registration attributes in Beyond Identity.
+The sections for Stage III cover setting up Beyond Identity as the single sign-on application for the identity provider in Okta. 
+
+This involves setting up a callback hook into your Okta directory to update an attribute on users in your Okta directory to say that your user has registered a Beyond Identity passkey.
+
+This attribute will later be used in Stage IV to route your users to use Beyond Identity to authenticate into Okta rather than your existing authentication methods.
 
 ### 🟠 Okta: Create Okta API token
 
@@ -184,13 +201,15 @@ The steps below are for the Okta platform. This section guides you through creat
 3. Input a name for the token in the first field.  
 4. On the dropdown field below, select **Any IP**.  
 5. Click **Create token**.  
-6. Copy the token value and store it in a secure location. Click **OK, got it** to continue.
+6. Name the token **Beyond Identity API Token**.
+7. API Calls made with this token must originate from **Any IP**. This can be changed later.
+8. Copy the token value and store it in a secure location. Click **OK, got it** to continue.
 
 ### 🟠 Okta: Set up custom attribute for users
 
 The section here is for setting up a custom attribute for users in Okta. This value acts as a flag for users signing in to Okta to be directed to the Beyond Identity sign on process. When the integration is complete, the phishing-resistant multi-factor authentication from Beyond Identity serves as the security between the user and the resources.
 
-When the user creates a Beyond Identity passkey, the cloud service sets the `byndidRegistered` value to `true` in the Okta user's profile. This indicates the user has a Beyond Identity passkey. The boolean value set to true is the flag for the Beyond Identity process in the login.
+When the user creates a Beyond Identity passkey, the cloud service sets the `byndidRegistered` value to `true` in the Okta user's profile. This indicates the user has a Beyond Identity passkey. The boolean value set to true and used for the routing rule to direct users to use Beyond Identity authentication during login.
 
 1. On the Okta platform, navigate to **Directory** → **Profile editor**.  
 2. Select the **User (default)** profile under the Okta type.  
@@ -203,22 +222,22 @@ When the user creates a Beyond Identity passkey, the cloud service sets the `byn
    4. **User permission** → select **Read only**  
 6. Click **Save**.
 
-### 🔵 Beyond Identity: Configure Okta domain
+### 🔵 Beyond Identity: Configure Okta domain and set up API Access
 
-This section is for configuring the Okta credentials and values within Beyond Identity to complete the single sign-on setup. With these fields configured, Okta can then route users to Beyond Identity for phishing-resistant multi-factor authentication. The steps below are for the Beyond Identity console.
+This section guides you through configuring the Okta token created in the previous step to set an attribute in your Okta directory, indicating that the user is registered with Beyond Identity. This attribute will later be used to route users through Beyond Identity for authentication.
 
 1. On the new Okta app in Beyond Identity, navigate to the **Configure registration attribute for users in Okta** section.  
 2. Input the following information into the respective fields.  
-   1. Okta Domain → the Okta domain URL value from your Okta account   
+   1. Okta Domain → the Okta domain URL value from your Okta account. NOTE: it must resolve to the full URL, and without the `-admin` suffix. E.g. https://dev-48007952.okta.com
    2. Okta Token → the Okta token from Step 6 of 🟠 [Okta: Create Okta API token](#-okta-create-okta-api-token)
 3. Click **Save changes** at the top of the page.  
-4. Scroll down to the **Client Information & Endpoints** section for values to copy to Okta.
+4. Click **Save Changes** at the top of the page.
 
 ## Stage IV
 
 In this stage of the integration, the Okta platform requires the new identity provider of Beyond Identity to get configured. The sections below also include using routing rules for Beyond Identity to serve as the identity provider when logging into Okta resources.
 
-After Okta has the Beyond Identity identity provider set up, the groups in Beyond Identity must be assigned to the new Okta app within the console. This completes the process to use Beyond Identity as the phishing-resistant multi-factor authentication flow for users.
+After Okta has the Beyond Identity identity provider set up, the users/groups in Beyond Identity must be assigned to the new Okta app within the console. This completes the process to use Beyond Identity as the phishing-resistant multi-factor authentication flow for users.
 
 ### 🟠 Okta: Configure new identity provider
 
@@ -232,7 +251,7 @@ The steps here must be completed before moving on to the Beyond Identity section
 2. Click **+ Add identity provider**.  
 3. Select **OpenID Connect IdP** and click **Next**.  
 4. Under the General settings section, input `Beyond Identity` for the name.  
-5. Under the **Client details** and **Endpoints** sections, input the following values from Step 4 of the [Beyond Identity: Configure Okta domain section](#-beyond-identity-configure-okta-domain) to Okta.  
+5. Under the **Client details** and **Endpoints** sections, input the following values from **Client Information & Endpoints** of your Okta app in Beyond Identity. NOTE: This ensure you are in the **Client Information & Endpoints**, and not the **Configure registration attribute for users in Okta** section. There are two clientIDs here so don't get confused!
    1. **Client ID** → 🟠 **Client ID**, under Client details  
    2. **Client Secret** → 🟠 **Client Secret**, under Client details  
    3. **Issuer** → 🟠 **Issuer**, under Endpoints  
@@ -279,7 +298,7 @@ Users must be assigned the Okta application in Beyond Identity to use the phishi
 
 ### 🔵 Beyond Identity: Enroll users
 
-After completing the Okta and Beyond Identity integration for phishing-resistant multifactor authentication, follow the steps in this section to enroll users and their passkeys. With the passkey, the process for users to log in to their Okta resources uses the Beyond Identity flow without requiring a username or password. Proceed to the Beyond Identity console to complete the steps below.
+After completing the Okta and Beyond Identity integration for phishing-resistant multifactor authentication, follow the steps in this section to enroll users and their passkeys. With the passkey, the process for users to log in to their Okta resources uses the Beyond Identity flow without requiring a password. Proceed to the Beyond Identity console to complete the steps below.
 
 1. On the Beyond Identity console, navigate to **Identities** → a specific user → **Passkeys** tab.  
 2. New users have no passkeys added. Click **Add a passkey**.  
@@ -292,7 +311,11 @@ After completing the Okta and Beyond Identity integration for phishing-resistant
 
 ## End users: Register passkey
 
-As end users receive the link to generate a passkey, they can follow the steps in the Beyond Identity Platform Authenticator.
+As end users receive their magic link, they can follow the interactive guide that the link sends them to.
+
+This enrollment email will guide them through the following 2 steps:
+1. Download the Beyond Identity Platform Authenticator - this is the app that is required for Beyond Identity authentication.
+2. Enroll a passkey on their device.
 
 :::success
 Congratulations! You've completed your Okta and Beyond Identity integration!
