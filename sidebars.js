@@ -198,7 +198,7 @@ const sidebars = {
         id: "resources/resources",
       },
       items: [
-        // "glossary",
+        "resources/os-support",
         {
           type: "link",
           label: "Service Status",
