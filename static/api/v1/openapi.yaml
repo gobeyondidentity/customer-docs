@@ -241,6 +241,12 @@ tags:
   - name: Authenticator Configurations
     description: |
       A authenticator configuration prescribes how an end user may authenticate themselves to Beyond Identity. Beyond Identity provides a Hosted Web Authenticator which will work out-of-the-box, as well as SDKs that can be embedded into an end user application.
+  - name: Identity Provider
+    description: |
+      Identity providers enable integration with external systems to support IdP-authorized workflows, such as passkey enrollment. They serve as the counterpart to SSO applications, focusing on initiating authentication workflows and enabling secure interactions.
+  - name: SSO Configs
+    description: |
+      An SSO configuration defines how end users interact with supported SSO protocols and related services. Each configuration type represents a protocol or integration (e.g., SAML, WS-Federation, OIDC, SCIM) supported by Beyond Identity. An SSO configuration provides a flexible framework for managing authentication, provisioning, and other integrations. It abstracts application protocols, inbound and outbound provisioning, and supports named integrations. Additionally, it includes features like user or group assignments, visual tiles in the SSO interface, and compatibility with multiple authentication and provisioning standards.  This makes SSO configurations versatile for both authentication and non-authentication use cases.
   - name: Resource Servers
     description: |
       A resource server represents an API server that hosts a set of protected resources and is capable of accepting and responding to protected resource requests using access tokens. Clients can enable these APIs to be consumed from authorized applications.
@@ -271,8 +277,8 @@ paths:
                   value:
                     id: 000176d94fd7b4d1
                     display_name: Test Tenant
-                    create_time: 2022-01-28T12:00:02.423Z
-                    update_time: 2022-04-19T15:17:21.186Z
+                    create_time: '2022-01-28T12:00:02.423Z'
+                    update_time: '2022-04-19T15:17:21.186Z'
         '401':
           description: Unauthorized.
           content:
@@ -433,8 +439,9 @@ paths:
                     id: 19a95130480dfa79
                     tenant_id: 0001f1f460b1ace6
                     display_name: Test Realm
-                    create_time: 2022-05-18T18:00:01.167Z
-                    update_time: 2022-05-19T14:23:01.327Z
+                    classification: SECURE_WORKFORCE
+                    create_time: '2022-05-18T18:00:01.167Z'
+                    update_time: '2022-05-19T14:23:01.327Z'
         '400':
           description: Bad request.
           content:
@@ -524,8 +531,8 @@ paths:
                       - id: 19a95130480dfa79
                         tenant_id: 0001f1f460b1ace6
                         display_name: Test Realm
-                        create_time: 2022-05-18T18:00:01.167Z
-                        update_time: 2022-05-19T14:23:01.327Z
+                        create_time: '2022-05-18T18:00:01.167Z'
+                        update_time: '2022-05-19T14:23:01.327Z'
                     total_size: 1
         '400':
           description: Bad request.
@@ -838,8 +845,8 @@ paths:
                     tenant_id: 0001b42d80372976
                     display_name: Realm Administrators
                     description: A group of realm administrators.
-                    create_time: 2022-03-14T03:42:52.905Z
-                    update_time: 2022-06-14T05:55:23.823Z
+                    create_time: '2022-03-14T03:42:52.905657Z'
+                    update_time: '2022-06-14T05:55:23.823187Z'
         '400':
           description: Bad request.
           content:
@@ -941,8 +948,8 @@ paths:
                         tenant_id: 0001b42d80372976
                         display_name: Realm Administrators
                         description: A group of realm administrators.
-                        create_time: 2022-03-14T03:42:52.905Z
-                        update_time: 2022-06-14T05:55:23.823Z
+                        create_time: '2022-03-14T03:42:52.905657Z'
+                        update_time: '2022-06-14T05:55:23.823187Z'
                     total_size: 1
         '400':
           description: Bad request.
@@ -1462,8 +1469,8 @@ paths:
                         realm_id: 8f5bec58229e6f29
                         tenant_id: 0001f1f460b1ace6
                         display_name: Test Identity
-                        create_time: 2022-04-12T05:53:07.119Z
-                        update_time: 2022-06-16T14:31:03.770Z
+                        create_time: '2022-04-12T05:53:07.119Z'
+                        update_time: '2022-06-16T14:31:03.770Z'
                         traits:
                           type: traits_v0
                           username: test
@@ -1571,8 +1578,8 @@ paths:
                         tenant_id: 00010036778ce59f
                         description: Help Desk
                         display_name: Customer support personnel.
-                        create_time: 2023-02-14T18:18:58.332Z
-                        update_time: 2023-02-14T18:18:58.332Z
+                        create_time: '2023-02-14T18:18:58.332247Z'
+                        update_time: '2023-02-14T18:18:58.332247Z'
                     total_size: 1
         '400':
           description: Bad request.
@@ -1693,8 +1700,8 @@ paths:
                     realm_id: 8f5bec58229e6f29
                     tenant_id: 0001f1f460b1ace6
                     display_name: Test Identity
-                    create_time: 2022-04-12T05:53:07.119Z
-                    update_time: 2022-06-16T14:31:03.770Z
+                    create_time: '2022-04-12T05:53:07.119Z'
+                    update_time: '2022-06-16T14:31:03.770Z'
                     traits:
                       type: traits_v0
                       username: test
@@ -1819,8 +1826,8 @@ paths:
                         realm_id: 8f5bec58229e6f29
                         tenant_id: 0001f1f460b1ace6
                         display_name: Test Identity
-                        create_time: 2022-04-12T05:53:07.119Z
-                        update_time: 2022-06-16T14:31:03.770Z
+                        create_time: '2022-04-12T05:53:07.119Z'
+                        update_time: '2022-06-16T14:31:03.770Z'
                         traits:
                           type: traits_v0
                           username: test
@@ -2157,8 +2164,8 @@ paths:
                         tenant_id: 0001b42d80372976
                         display_name: Realm Administrators
                         description: A group of realm administrators.
-                        create_time: 2022-03-14T03:42:52.905Z
-                        update_time: 2022-06-14T05:55:23.823Z
+                        create_time: '2022-03-14T03:42:52.905657Z'
+                        update_time: '2022-06-14T05:55:23.823187Z'
                     total_size: 1
         '400':
           description: Bad request.
@@ -2262,8 +2269,8 @@ paths:
                         tenant_id: 00010036778ce59f
                         description: Help Desk
                         display_name: Customer support personnel.
-                        create_time: 2023-02-14T18:18:58.332Z
-                        update_time: 2023-02-14T18:18:58.332Z
+                        create_time: '2023-02-14T18:18:58.332247Z'
+                        update_time: '2023-02-14T18:18:58.332247Z'
                     total_size: 1
         '400':
           description: Bad request.
@@ -2370,8 +2377,8 @@ paths:
                     tenant_id: 00010036778ce59f
                     description: Help Desk
                     display_name: Customer support personnel.
-                    create_time: 2023-02-14T18:18:58.332Z
-                    update_time: 2023-02-14T18:18:58.332Z
+                    create_time: '2023-02-14T18:18:58.332247Z'
+                    update_time: '2023-02-14T18:18:58.332247Z'
         '400':
           description: Bad request.
           content:
@@ -2475,8 +2482,8 @@ paths:
                         tenant_id: 00010036778ce59f
                         description: Help Desk
                         display_name: Customer support personnel.
-                        create_time: 2023-02-14T18:18:58.332Z
-                        update_time: 2023-02-14T18:18:58.332Z
+                        create_time: '2023-02-14T18:18:58.332247Z'
+                        update_time: '2023-02-14T18:18:58.332247Z'
                     total_size: 1
         '400':
           description: Bad request.
@@ -3014,16 +3021,16 @@ paths:
                         tenant_id: 0001b42d80372976
                         display_name: Realm Administrators
                         description: A group of realm administrators.
-                        create_time: 2022-03-14T03:42:52.905Z
-                        update_time: 2022-06-14T05:55:23.823Z
+                        create_time: '2022-03-14T03:42:52.905657Z'
+                        update_time: '2022-06-14T05:55:23.823187Z'
                     total_groups_size: 1
                     identities:
                       - id: e372db224c06e850
                         realm_id: 7df92e4a38ba0993
                         tenant_id: 0001b42d80372976
                         display_name: Test Identity
-                        create_time: 2022-04-12T05:53:07.119Z
-                        update_time: 2022-06-16T14:31:03.770Z
+                        create_time: '2022-04-12T05:53:07.119Z'
+                        update_time: '2022-06-16T14:31:03.770Z'
                         traits:
                           type: traits_v0
                           username: test
@@ -3422,8 +3429,8 @@ paths:
                         csr_type: JWT
                         jwk_json: '{"crv":"P-256","kty":"EC","x":"2MRhz05PJPq3BUfB18AT3HqgWEkI3VpWUg1MWi8rz1g","y":"YtvLYwGEqYQaoDVok2fVziJT4fu7DFPz3hy96FTAelQ"}'
                         jwk_thumbprint: UW-uVNL0mP1vcLjHrTBxibNgCEe_PD0HIsE3FrbYjPA=
-                        create_time: 2022-03-14T03:42:52.905Z
-                        update_time: 2022-06-14T05:55:23.823Z
+                        create_time: '2022-03-14T03:42:52.905657Z'
+                        update_time: '2022-06-14T05:55:23.823187Z'
                     total_size: 1
         '400':
           description: Bad request.
@@ -3496,8 +3503,8 @@ paths:
                     csr_type: JWT
                     jwk_json: '{"crv":"P-256","kty":"EC","x":"2MRhz05PJPq3BUfB18AT3HqgWEkI3VpWUg1MWi8rz1g","y":"YtvLYwGEqYQaoDVok2fVziJT4fu7DFPz3hy96FTAelQ"}'
                     jwk_thumbprint: UW-uVNL0mP1vcLjHrTBxibNgCEe_PD0HIsE3FrbYjPA=
-                    create_time: 2022-03-14T03:42:52.905Z
-                    update_time: 2022-06-14T05:55:23.823Z
+                    create_time: '2022-03-14T03:42:52.905657Z'
+                    update_time: '2022-06-14T05:55:23.823187Z'
         '401':
           description: Unauthorized.
           content:
@@ -3670,9 +3677,9 @@ paths:
                       state: LINK_SENT
                       post_binding_redirect_uri: 'http://example.com/callback'
                       authenticator_config_id: 67bb0acf12e5c899
-                      expire_time: 2022-03-21T03:42:52.905Z
-                      create_time: 2022-03-14T03:42:52.905Z
-                      update_time: 2022-03-15T05:55:23.823Z
+                      expire_time: '2022-03-21T03:42:52.905657Z'
+                      create_time: '2022-03-14T03:42:52.905657Z'
+                      update_time: '2022-03-15T05:55:23.823187Z'
                     credential_binding_link: 'http://example.com/v1/tenants/000183a77dd50fa9/realms/cdf4862dc4d49791/identities/87fabad6956c6d4b/credential-binding-jobs/c4fc2d753ca22b14:invokeAuthenticator?token=1St9IKIIrYyQ8sOSeuk5UkbLKnBJhuD4I7nWIqt-BNANDEFS-XVuOHxB7TFdZcRm'
                 Delivery Method Email:
                   value:
@@ -3685,9 +3692,9 @@ paths:
                       state: LINK_SENT
                       post_binding_redirect_uri: 'http://example.com/callback'
                       authenticator_config_id: 67bb0acf12e5c899
-                      expire_time: 2022-03-21T03:42:52.905Z
-                      create_time: 2022-03-14T03:42:52.905Z
-                      update_time: 2022-03-15T05:55:23.823Z
+                      expire_time: '2022-03-21T03:42:52.905657Z'
+                      create_time: '2022-03-14T03:42:52.905657Z'
+                      update_time: '2022-03-15T05:55:23.823187Z'
         '400':
           description: Bad request.
           content:
@@ -3819,9 +3826,9 @@ paths:
                         state: COMPLETE
                         post_binding_redirect_uri: 'http://example.com/callback'
                         authenticator_config_id: 67bb0acf12e5c899
-                        expire_time: 2022-03-21T03:42:52.905Z
-                        create_time: 2022-03-14T03:42:52.905Z
-                        update_time: 2022-03-15T05:55:23.823Z
+                        expire_time: '2022-03-21T03:42:52.905657Z'
+                        create_time: '2022-03-14T03:42:52.905657Z'
+                        update_time: '2022-03-15T05:55:23.823187Z'
                     total_size: 1
         '400':
           description: Bad request.
@@ -3895,9 +3902,9 @@ paths:
                     state: COMPLETE
                     post_binding_redirect_uri: 'http://example.com/callback'
                     authenticator_config_id: 67bb0acf12e5c899
-                    expire_time: 2022-03-21T03:42:52.905Z
-                    create_time: 2022-03-14T03:42:52.905Z
-                    update_time: 2022-03-15T05:55:23.823Z
+                    expire_time: '2022-03-21T03:42:52.905657Z'
+                    create_time: '2022-03-14T03:42:52.905657Z'
+                    update_time: '2022-03-15T05:55:23.823187Z'
         '401':
           description: Unauthorized.
           content:
@@ -3995,7 +4002,7 @@ paths:
                     logo_url_light: 'https://example.com/logo_url_light.png'
                     logo_url_dark: 'https://example.com/logo_url_dark.png'
                     support_url: 'https://example.com/support'
-                    create_time: 2022-07-28T18:00:00.000Z
+                    create_time: '2022-07-28T18:00:00.000Z'
                     button_color: '#4673D3'
                     button_text_color: '#FFFFFF'
         '400':
@@ -7462,6 +7469,2256 @@ paths:
               examples:
                 Internal Error:
                   $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1scim~1v2~1Users/get/responses/500/content/application~1json/examples/Internal%20Error'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/sso-configs/{sso_config_id}:addGroups':
+    $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1groups~1%7Bgroup_id%7D~1sso-configs'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/sso-configs/{sso_config_id}:deleteGroups':
+    post:
+      tags:
+        - SSO Configs
+      operationId: DeleteGroupsFromSsoConfig
+      summary: Delete Groups from an SSO Config
+      description: |
+        To delete groups from an sso config. The request must contain at least one and no more than 1000 group IDs.
+      security:
+        - BearerAuth:
+            - 'sso-configs:update'
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/3'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SsoConfigDeleteGroup'
+            examples:
+              Remove Members:
+                value:
+                  group_ids:
+                    - e372db224c06e850
+                    - 3a28d4f28b57cc93
+      responses:
+        '200':
+          description: The action was successful and the response body is empty.
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '404':
+          description: Resource server not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/sso-configs/{sso_config_id}:addIdentities':
+    post:
+      tags:
+        - SSO Configs
+      operationId: AddIdentitiesToSsoConfig
+      summary: Associate Identities with an SSO Config
+      description: |
+        To associate identities to an sso config. The request must contain at least one and no more than 1000 identity IDs.
+      security:
+        - BearerAuth:
+            - 'sso-configs:update'
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/3'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SsoConfigAddIdentities'
+      responses:
+        '200':
+          description: The action was successful and the response body is empty.
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                schema:
+                  value:
+                    code: bad_request
+                    message: invalid parameters
+                    details:
+                      - type: FieldViolations
+                        field_violations:
+                          - field: identity_ids
+                            description: array exceeds 1000 elements
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '404':
+          description: Resource server not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/sso-configs/{sso_config_id}:deleteIdentities':
+    post:
+      tags:
+        - SSO Configs
+      operationId: DeleteIdentitiesFromSsoConfig
+      summary: Delete Identities from an SSO Config
+      description: |
+        To delete identities from an sso config. The request must contain at least one and no more than 1000 identities IDs.
+      security:
+        - BearerAuth:
+            - 'sso-configs:update'
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/3'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Delete Identities from SSO Config
+              description: Request for DeleteIdentitiesFromSsoConfig.
+              type: object
+              properties:
+                identity_ids:
+                  description: IDs of the identities to be removed from the sso config.
+                  type: array
+                  items:
+                    type: string
+                  minItems: 1
+                  maxItems: 1000
+              required:
+                - identity_ids
+            examples:
+              Remove Identities:
+                value:
+                  identity_ids:
+                    - e372db224c06e850
+                    - 3a28d4f28b57cc93
+      responses:
+        '200':
+          description: The action was successful and the response body is empty.
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Invalid Parameters:
+                  value:
+                    code: bad_request
+                    message: invalid parameters
+                    details:
+                      - type: FieldViolations
+                        field_violations:
+                          - field: identities_ids
+                            description: array exceeds 1000 elements
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '404':
+          description: Resource server not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/sso-configs/{sso_config_id}:listIdentityAssociations':
+    get:
+      tags:
+        - SSO Configs
+      operationId: ListIdentitiesForSsoConfig
+      summary: List Identities Directly and Indirectly Associated With an SSO Config.
+      description: |
+        To list identities belonging to an sso config.
+        Note that there may be duplicate identities or an empty array in the response, but as long as there is a `page_token` then pagination should continue.
+      security:
+        - BearerAuth:
+            - 'sso-configs:read'
+            - 'identities:read'
+            - 'groups:read'
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/3'
+        - $ref: '#/components/parameters/page_size'
+        - $ref: '#/components/parameters/page_token'
+      responses:
+        '200':
+          description: |
+            The response will be a JSON object with keys for `identities`. `identities` will be set to an array of identity objects. If there are more items to be returned by the requested query, the response will also contain a key called `next_page_token`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1identities~1%7Bidentity_id%7D~1sso-configs/get/responses/200/content/application~1json/schema'
+              examples:
+                Success:
+                  value:
+                    identities:
+                      - id: e372db224c06e850
+                        realm_id: 8f5bec58229e6f29
+                        tenant_id: 0001f1f460b1ace6
+                        group_id: 923935b2912304
+                        group_display_name: Test Group
+                        display_name: Test Identity
+                        create_time: '2022-04-12T05:53:07.119Z'
+                        update_time: '2022-06-16T14:31:03.770Z'
+                        traits:
+                          type: traits_v0
+                          username: test
+                          primary_email_address: test@example.com
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/sso-configs/{sso_config_id}:listGroupAssociations':
+    get:
+      tags:
+        - SSO Configs
+      operationId: ListGroupsForSSOConfig
+      summary: List Groups associcated with an SSO config.
+      description: |
+        To list groups belonging to an sso config.
+      security:
+        - BearerAuth:
+            - 'sso-configs:read'
+            - 'groups:read'
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/3'
+      responses:
+        '200':
+          description: |
+            The response will be a JSON object with keys for `groups` and `total_size`. `groups` will be set to an array of group objects. `total_size` will be set to the total number of items matched by the list request. If there are more items to be returned by the requested query, the response will also contain a key called `next_page_token`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SsoConfigListGroups'
+              examples:
+                Success:
+                  value:
+                    code: bad_request
+                    message: invalid parameters
+                    details:
+                      - type: FieldViolations
+                        field_violations:
+                          - field: identity_ids
+                            description: array exceeds 1000 elements
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/identities/{identity_id}/sso-configs':
+    get:
+      tags:
+        - SSO Configs
+      operationId: ListSsoConfigsForIdentity
+      summary: List SSO configs directly and indirectly associated with an identity.
+      description: |
+        To list sso configs associated with an identity.
+
+        This will return all SSO configs that have an association with the specified identity ID.
+        Note that there may be duplicate soo configs or an empty array in the response, but as long as there is a `page_token` pagination should continue.
+      security:
+        - BearerAuth:
+            - 'sso-configs:read'
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/3'
+        - $ref: '#/components/parameters/page_size'
+        - $ref: '#/components/parameters/page_token'
+        - $ref: '#/components/parameters/identity_id'
+      responses:
+        '200':
+          description: |
+            The response will be a JSON object with keys for `sso_configs` and `total_size`. `total_size` will be set to the total number of items matched by the list request. If there are more items to be returned by the requested query, the response will also contain a key called `next_page_token`.
+          content:
+            application/json:
+              schema:
+                title: List Identities directly and indirectly associated with an SSO config.
+                description: List Identities Directly and Indirectly Associated With an SSO Config.
+                type: object
+                properties:
+                  identities:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '#/components/schemas/Identity'
+                        - properties:
+                            group_id:
+                              description: 'If the association is through a group, the group ID will be added to the response object.'
+                              type: string
+                            group_display_name:
+                              description: 'If the association is through a group, the group display name will be added to the response object.'
+                              type: string
+                    maxItems: 200
+                    description: An unordered array of identities corresponding to the request.
+                  next_page_token:
+                    type: string
+                    description: |
+                      Token used to fetch the next set of results. If this field is omitted, there are no subsequent pages.
+                required:
+                  - identities
+                  - total_size
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/groups/{group_id}/sso-configs':
+    get:
+      tags:
+        - SSO Configs
+      operationId: ListSsoConfigsForGroup
+      summary: List SSO Configs associated with a Group.
+      description: |
+        To list sso configs associated with a group.
+
+        This will return all SSO configs that have an association with the specified group ID.
+      security:
+        - BearerAuth:
+            - 'sso-configs:read'
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/3'
+        - $ref: '#/components/parameters/page_size'
+        - $ref: '#/components/parameters/page_token'
+        - $ref: '#/components/parameters/group_id'
+      responses:
+        '200':
+          description: |
+            The response will be a JSON object with keys for `sso_configs` and `total_size`. `total_size` will be set to the total number of items matched by the list request. If there are more items to be returned by the requested query, the response will also contain a key called `next_page_token`.
+          content:
+            application/json:
+              schema:
+                title: List SSO configs directly and indirectly associated with an identity.
+                description: List SSO configs directly and indirectly associated with an identity.
+                type: object
+                properties:
+                  sso_configs:
+                    type: array
+                    items:
+                      $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/content/application~1json/schema/properties/sso_configs/items'
+                  total_size:
+                    type: integer
+                    format: uint32
+                    description: |
+                      Total number of results returned by the operation. This value may be larger than the number of resources returned, such as when returning a single page where multiple pages are available.
+                    example: 1000
+                  next_page_token:
+                    type: string
+                    description: |
+                      Token used to fetch the next set of results. If this field is omitted, there are no subsequent pages.
+                required:
+                  - sso_configs
+                  - total_size
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/sso-configs':
+    get:
+      summary: Lists SSO Configs by Realm.
+      description: Lists sso configs by realm.
+      tags:
+        - SSO Configs
+      operationId: listSsoConfigs
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - name: tenant_id
+          in: path
+          description: A unique identifier for a tenant.
+          required: true
+          schema:
+            type: string
+            example: 000176d94fd7b4d1
+        - name: realm_id
+          in: path
+          description: A unique identifier for a realm.
+          required: true
+          schema:
+            type: string
+            example: 19a95130480dfa79
+        - name: sso_config_id
+          in: path
+          required: true
+          description: A unique identifier of the sso configuration
+          schema:
+            type: string
+        - $ref: '#/components/parameters/page_size'
+        - $ref: '#/components/parameters/page_token'
+        - name: type
+          in: query
+          required: false
+          description: The type of sso config to filter by. You may query with multiple types for example "/sso-configs?type=generic_oidc&type=generic_oid_idp"
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/SsoConfigType'
+        - name: is_migrated
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: order_by
+          in: query
+          required: false
+          schema:
+            type: string
+      security:
+        - BearerAuth:
+            - 'sso-configs:read'
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                description: Represents a list of sso configs as a response body.
+                type: object
+                required:
+                  - sso_configs
+                  - total_size
+                properties:
+                  sso_configs:
+                    description: The sso configs which are part of the response.
+                    type: array
+                    items:
+                      description: Represents an SSO config as a response body.
+                      type: object
+                      required:
+                        - id
+                        - display_name
+                        - payload
+                      properties:
+                        id:
+                          description: A unique identifier for an SSO config. This is automatically generated on creation. This field is immutable and read-only. This field is unique within the realm.
+                          type: string
+                          format: uuid
+                        display_name:
+                          description: A human-readable name for the SSO config. This name is used for display purposes.
+                          type: string
+                        payload:
+                          oneOf:
+                            - type: object
+                              required:
+                                - type
+                                - login_link
+                              properties:
+                                type:
+                                  $ref: '#/components/schemas/SsoConfigType'
+                                login_link:
+                                  type: string
+                                icon:
+                                  type: string
+                                is_tile_visible:
+                                  type: boolean
+                            - type: object
+                              required:
+                                - type
+                                - redirect_uris
+                                - discover_endpoint
+                              properties:
+                                type:
+                                  $ref: '#/components/schemas/SsoConfigType'
+                                redirect_uris:
+                                  type: array
+                                  items:
+                                    type: string
+                                discover_endpoint:
+                                  $ref: '#/components/schemas/SsoConfigEntraIdExternalAuthMethod/properties/discover_endpoint'
+                            - type: object
+                              required:
+                                - type
+                                - redirect_uris
+                              properties:
+                                type:
+                                  $ref: '#/components/schemas/SsoConfigType'
+                                redirect_uris:
+                                  type: array
+                                  items:
+                                    type: string
+                                login_link:
+                                  type: string
+                                icon:
+                                  type: string
+                                is_tile_visible:
+                                  type: boolean
+                            - type: object
+                              required:
+                                - type
+                              properties:
+                                type:
+                                  $ref: '#/components/schemas/SsoConfigType'
+                            - type: object
+                              required:
+                                - type
+                              properties:
+                                type:
+                                  description: The type of the SSO configuration.
+                                  $ref: '#/components/schemas/SsoConfigType'
+                                icon:
+                                  description: The URL or data URI of the icon representing the SSO configuration.
+                                  type: string
+                                is_tile_visible:
+                                  description: Indicates if the SSO configuration tile is visible to the user.
+                                  type: boolean
+                            - type: object
+                              required:
+                                - type
+                              properties:
+                                type:
+                                  $ref: '#/components/schemas/SsoConfigType'
+                            - type: object
+                              required:
+                                - type
+                              properties:
+                                type:
+                                  $ref: '#/components/schemas/SsoConfigType'
+                            - type: object
+                              required:
+                                - type
+                                - company_identifier
+                              properties:
+                                type:
+                                  $ref: '#/components/schemas/SsoConfigType'
+                                company_identifier:
+                                  type: string
+                            - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/post/responses/200/content/application~1json/schema/properties/payload/oneOf/8'
+                            - type: object
+                              required:
+                                - type
+                              properties:
+                                type:
+                                  description: The type of the SSO configuration.
+                                  $ref: '#/components/schemas/SsoConfigType'
+                                icon:
+                                  description: The URL or data URI of the icon representing the SSO configuration.
+                                  type: string
+                                is_tile_visible:
+                                  description: Indicates if the SSO configuration tile is visible to the user.
+                                  type: boolean
+                  total_size:
+                    description: The total number of sso configs contained by the Realm.
+                    type: integer
+                    format: uint
+                    minimum: 0
+                  next_page_token:
+                    description: The value to be passed as the page_token parameter to retrieve the next page.
+                    type: string
+                    nullable: true
+          headers:
+            x-correlation-id:
+              description: 'Correlation ID. If supplied with the request, the response must contain the same value. If not supplied with the request, it is generated by the server and returned in the response.'
+              required: true
+              schema:
+                type: string
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+    post:
+      summary: Creates a new SSO Config.
+      description: Creates a new SSO Config.
+      tags:
+        - SSO Configs
+      operationId: CreateSsoConfig
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+      security:
+        - BearerAuth:
+            - 'sso-configs:create'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SsoConfigEnvelope'
+      responses:
+        '200':
+          description: The sso config has been created.
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+          content:
+            application/json:
+              schema:
+                description: Represents an SSO config as a response body.
+                type: object
+                required:
+                  - id
+                  - display_name
+                  - payload
+                properties:
+                  id:
+                    description: A unique identifier for an SSO config. This is automatically generated on creation. This field is immutable and read-only. This field is unique within the realm.
+                    type: string
+                    format: uuid
+                  display_name:
+                    description: A human-readable name for the SSO config. This name is used for display purposes.
+                    type: string
+                  payload:
+                    oneOf:
+                      - type: object
+                        required:
+                          - type
+                          - login_link
+                        properties:
+                          type:
+                            $ref: '#/components/schemas/SsoConfigType'
+                          login_link:
+                            type: string
+                          icon:
+                            type: string
+                          is_tile_visible:
+                            type: boolean
+                          application_tile_id:
+                            type: string
+                      - type: object
+                        required:
+                          - type
+                          - redirect_uris
+                          - application_id
+                          - authenticator_config_id
+                          - resource_server_id
+                          - oidc_configuration
+                          - client_id
+                          - discover_endpoint
+                        properties:
+                          type:
+                            $ref: '#/components/schemas/SsoConfigType'
+                          redirect_uris:
+                            type: array
+                            items:
+                              type: string
+                          oidc_configuration:
+                            type: object
+                            required:
+                              - grant_types_supported
+                              - introspect_endpoint
+                              - issuer
+                              - jwks_uri
+                              - response_types_supported
+                              - token_endpoint
+                              - token_endpoint_auth_methods_supported
+                            properties:
+                              issuer:
+                                type: string
+                              authorization_endpoint:
+                                type: string
+                                nullable: true
+                              token_endpoint:
+                                type: string
+                              userinfo_endpoint:
+                                type: string
+                                nullable: true
+                              jwks_uri:
+                                type: string
+                              response_types_supported:
+                                type: array
+                                items:
+                                  type: string
+                                  enum:
+                                    - code
+                                    - id_token
+                              token_endpoint_auth_methods_supported:
+                                type: array
+                                items:
+                                  $ref: '#/components/schemas/TokenEndpointAuthMethod'
+                          client_id:
+                            description: The client ID for the idp application.
+                            type: string
+                          inbound_scim:
+                            $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/post/responses/200/content/application~1json/schema/properties/payload/oneOf/8/allOf/0'
+                          application_id:
+                            type: string
+                          authenticator_config_id:
+                            type: string
+                          resource_server_id:
+                            type: string
+                          discover_endpoint:
+                            $ref: '#/components/schemas/SsoConfigEntraIdExternalAuthMethod/properties/discover_endpoint'
+                      - type: object
+                        required:
+                          - type
+                          - redirect_uris
+                          - scopes
+                          - trusted_origins
+                          - confidentiality
+                          - pkce
+                          - application_id
+                          - authenticator_config_id
+                          - resource_server_id
+                          - oidc_configuration
+                          - client_id
+                        properties:
+                          type:
+                            $ref: '#/components/schemas/SsoConfigType'
+                          redirect_uris:
+                            type: array
+                            items:
+                              type: string
+                          scopes:
+                            type: array
+                            items:
+                              type: string
+                          trusted_origins:
+                            type: array
+                            items:
+                              type: string
+                          login_link:
+                            type: string
+                          icon:
+                            type: string
+                          is_tile_visible:
+                            type: boolean
+                          confidentiality:
+                            $ref: '#/components/schemas/Confidentiality'
+                          pkce:
+                            $ref: '#/components/schemas/PkceConfig'
+                          oidc_configuration:
+                            $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/post/responses/200/content/application~1json/schema/properties/payload/oneOf/1/properties/oidc_configuration'
+                          client_id:
+                            description: The client ID for the idp application.
+                            type: string
+                          client_secret:
+                            description: The client secret to authenticate as the idp application.
+                            type: string
+                          inbound_scim:
+                            $ref: '#/components/schemas/SsoConfigType'
+                          application_id:
+                            type: string
+                          authenticator_config_id:
+                            type: string
+                          resource_server_id:
+                            type: string
+                          application_tile_id:
+                            type: string
+                      - type: object
+                        required:
+                          - type
+                          - client_id
+                          - pkce
+                          - identifying_claim_name
+                          - identity_attribute
+                          - authorization_endpoint
+                          - token_endpoint
+                          - jwks_endpoint
+                          - redirect_uri
+                          - identity_provider_id
+                        properties:
+                          type:
+                            $ref: '#/components/schemas/SsoConfigType'
+                          client_id:
+                            description: The client ID for the idp application.
+                            type: string
+                          client_secret:
+                            description: The client secret to authenticate as the idp application.
+                            type: string
+                          pkce:
+                            $ref: '#/components/schemas/PkceConfig'
+                          id_token_scopes:
+                            type: array
+                            items:
+                              type: string
+                          identifying_claim_name:
+                            type: string
+                          identity_attribute:
+                            $ref: '#/components/schemas/SubjectField'
+                          authorization_endpoint:
+                            type: string
+                            nullable: true
+                          token_endpoint:
+                            type: string
+                          jwks_endpoint:
+                            type: string
+                          redirect_uri:
+                            type: string
+                          identity_provider_id:
+                            type: string
+                      - type: object
+                        properties:
+                          type:
+                            $ref: '#/components/schemas/SsoConfigType'
+                          acs_url:
+                            type: string
+                            description: The Assertion Consumer Service (ACS) URL where the SAML assertions are sent.
+                          override_recipient_and_destination:
+                            type: boolean
+                            description: Flag to override the recipient and destination URLs in the SAML response.
+                          recipient_url:
+                            type: string
+                            description: The recipient URL for the SAML response.
+                          destination_url:
+                            type: string
+                            description: The destination URL for the SAML response.
+                          audience_url:
+                            type: string
+                            description: The URL that identifies the intended audience for the SAML assertion.
+                          default_relay_state:
+                            type: string
+                            description: The default relay state parameter for the SAML response.
+                          name_format:
+                            $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/name_format'
+                            description: The format of the NameID in the SAML assertion.
+                          authentication_context:
+                            $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/authentication_context'
+                            description: The authentication context for the SAML assertion.
+                          subject_user_name_attribute:
+                            $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/subject_user_name_attribute'
+                            description: The attribute used for the subject's username in the SAML assertion.
+                          sign_envelope:
+                            type: boolean
+                            description: Flag indicating whether to sign the SAML envelope.
+                          sign_assertions:
+                            type: boolean
+                            description: Flag indicating whether to sign the SAML assertions.
+                          signature_algorithm:
+                            $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/signature_algorithm'
+                            description: The algorithm used for signing the SAML assertions.
+                          digest_algorithm:
+                            $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/digest_algorithm'
+                            description: The algorithm used for the digest of the SAML assertions.
+                          encrypt_assertions:
+                            type: boolean
+                            description: Flag indicating whether to encrypt the SAML assertions.
+                          assertion_validity_duration_seconds:
+                            type: integer
+                            format: int32
+                            description: The duration (in seconds) for which the SAML assertion is valid.
+                          assertion_encryption_algorithm:
+                            $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/assertion_encryption_algorithm'
+                            description: The algorithm used for encrypting the SAML assertions.
+                          assertion_key_transport_algorithm:
+                            $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/assertion_key_transport_algorithm'
+                            description: The algorithm used for key transport when encrypting SAML assertions.
+                          assertion_encryption_public_key:
+                            type: string
+                            description: The public key used for encrypting the SAML assertions.
+                          sp_signature_certificates:
+                            type: array
+                            items:
+                              $ref: '#/components/schemas/SsoConfigSamlPartialUpdate/properties/sp_signature_certificates/items'
+                            description: The certificates used for signing the SAML assertions.
+                          enable_single_log_out:
+                            type: boolean
+                            description: Flag indicating whether to enable single logout (SLO) functionality.
+                          single_log_out_url:
+                            type: string
+                            description: The URL for single logout (SLO).
+                          single_log_out_issuer_url:
+                            type: string
+                            description: The issuer URL for single logout (SLO).
+                          single_log_out_binding:
+                            $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/single_log_out_binding'
+                            description: The binding method for single logout (SLO) requests.
+                          single_logout_sign_request_and_response:
+                            type: boolean
+                            description: Flag indicating whether to sign the single logout (SLO) requests and responses.
+                          validate_signed_requests:
+                            type: boolean
+                            description: Flag indicating whether to validate signed SAML requests.
+                          other_sso_urls:
+                            $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/other_sso_urls'
+                            description: Other SSO URLs associated with the configuration.
+                          additional_user_attributes:
+                            description: Additional user attributes to include in the SAML assertions.
+                            type: array
+                            items:
+                              $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/additional_user_attributes'
+                          icon:
+                            type: string
+                            description: The icon associated with the SSO configuration.
+                          is_tile_visible:
+                            type: boolean
+                            description: Flag indicating whether the configuration tile is visible.
+                          application_id:
+                            type: string
+                            description: The application ID associated with the SSO configuration.
+                          authenticator_config_id:
+                            type: string
+                            description: The authenticator configuration ID.
+                          application_tile_id:
+                            type: string
+                            description: The application tile ID.
+                          idp_initiated_url:
+                            type: string
+                            description: The URL for IdP-initiated SSO.
+                          sp_initiated_url:
+                            type: string
+                            description: The URL for SP-initiated SSO.
+                          inbound_scim:
+                            $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/post/responses/200/content/application~1json/schema/properties/payload/oneOf/8/allOf/0'
+                      - type: object
+                        required:
+                          - type
+                          - client_id
+                          - pkce
+                          - identifying_claim_name
+                          - identity_attribute
+                          - okta_domain
+                          - authorization_endpoint
+                          - token_endpoint
+                          - jwks_endpoint
+                          - redirect_uri
+                          - identity_provider_id
+                        properties:
+                          type:
+                            $ref: '#/components/schemas/SsoConfigType'
+                          client_id:
+                            description: The client ID for the idp application.
+                            type: string
+                          client_secret:
+                            description: The client secret to authenticate as the idp application.
+                            type: string
+                          pkce:
+                            allOf:
+                              - $ref: '#/components/schemas/PkceConfig'
+                          id_token_scopes:
+                            type: array
+                            items:
+                              type: string
+                          identifying_claim_name:
+                            type: string
+                          identity_attribute:
+                            $ref: '#/components/schemas/SubjectField'
+                          okta_domain:
+                            type: string
+                          authorization_endpoint:
+                            type: string
+                            nullable: true
+                          token_endpoint:
+                            type: string
+                          jwks_endpoint:
+                            type: string
+                          redirect_uri:
+                            type: string
+                          identity_provider_id:
+                            type: string
+                          inbound_scim:
+                            $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/post/responses/200/content/application~1json/schema/properties/payload/oneOf/8/allOf/0'
+                      - type: object
+                        required:
+                          - type
+                          - pkce
+                          - oidc_configuration
+                          - client_id
+                          - client_secret
+                          - application_id
+                          - authenticator_config_id
+                          - okta_registration
+                        properties:
+                          type:
+                            $ref: '#/components/schemas/SsoConfigType'
+                          pkce:
+                            allOf:
+                              - $ref: '#/components/schemas/PkceConfig'
+                          oidc_configuration:
+                            $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/post/responses/200/content/application~1json/schema/properties/payload/oneOf/1/properties/oidc_configuration'
+                          client_id:
+                            description: The client ID for the idp application.
+                            type: string
+                          client_secret:
+                            description: The client secret to authenticate as the idp application.
+                            type: string
+                          okta_registration:
+                            $ref: '#/components/schemas/SsoConfigOktaBiIdp/properties/okta_registration'
+                          inbound_scim:
+                            $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/post/responses/200/content/application~1json/schema/properties/payload/oneOf/8/allOf/0'
+                          application_id:
+                            type: string
+                          authenticator_config_id:
+                            type: string
+                      - type: object
+                        required:
+                          - type
+                          - company_identifier
+                        properties:
+                          type:
+                            $ref: '#/components/schemas/SsoConfigType'
+                          company_identifier:
+                            type: string
+                      - type: object
+                        required:
+                          - type
+                          - application_id
+                          - client_id
+                          - client_secret
+                          - scim_url
+                          - token_endpoint
+                        properties:
+                          type:
+                            $ref: '#/components/schemas/SsoConfigType'
+                        allOf:
+                          - type: object
+                            required:
+                              - application_id
+                              - client_id
+                              - client_secret
+                              - scim_url
+                              - token_endpoint
+                            properties:
+                              application_id:
+                                type: string
+                              client_id:
+                                description: The client ID for the scim application.
+                                type: string
+                              client_secret:
+                                description: The client secret for the scim application.
+                                type: string
+                              scim_url:
+                                description: Beyond Identity Scim server endpoint
+                                type: string
+                              token_endpoint:
+                                type: string
+                      - type: object
+                        required:
+                          - type
+                          - acs_url
+                          - override_recipient_and_destination
+                          - audience_url
+                          - default_relay_state
+                          - name_format
+                          - authentication_context
+                          - subject_user_name_attribute
+                          - sign_envelope
+                          - sign_assertions
+                          - signature_algorithm
+                          - digest_algorithm
+                          - encrypt_assertions
+                          - assertion_validity_duration_seconds
+                          - sp_signature_certificates
+                          - enable_single_log_out
+                          - validate_signed_requests
+                          - additional_user_attributes
+                          - application_id
+                          - authenticator_config_id
+                          - idp_initiated_url
+                          - sp_initiated_url
+                        properties:
+                          type:
+                            $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/post/responses/200/content/application~1json/schema/properties/payload/oneOf/8/allOf/0'
+                            description: The type of SSO configuration.
+                          acs_url:
+                            type: string
+                          expiration_time_seconds:
+                            type: integer
+                            format: int32
+                          audience_url:
+                            type: string
+                          digest_algorithm:
+                            $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/digest_algorithm'
+                          signature_algorithm:
+                            $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/signature_algorithm'
+                          name_format:
+                            $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/name_format'
+                          subject_user_name_attribute:
+                            $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/subject_user_name_attribute'
+                          authentication_context:
+                            $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/authentication_context'
+                          additional_user_attributes:
+                            type: array
+                            items:
+                              $ref: '#/components/schemas/SsoConfigWsFed/properties/additional_user_attributes/items'
+                          icon:
+                            type: string
+                            description: The icon associated with the SSO configuration.
+                          is_tile_visible:
+                            type: boolean
+                            description: Flag indicating whether the configuration tile is visible.
+                          application_id:
+                            type: string
+                            description: The application ID associated with the SSO configuration.
+                          authenticator_config_id:
+                            type: string
+                            description: The authenticator configuration ID.
+                          application_tile_id:
+                            type: string
+                            description: The application tile ID.
+                          idp_sso_url:
+                            type: string
+                          idp_issuer_url:
+                            type: string
+                          metadata_url:
+                            type: string
+                          inbound_scim:
+                            $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/post/responses/200/content/application~1json/schema/properties/payload/oneOf/8/allOf/0'
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/sso-configs/{sso_config_id}':
+    get:
+      summary: Finds an SSO Config by its ID.
+      description: Finds an SSO Config by its ID.
+      tags:
+        - SSO Configs
+      operationId: GetSsoConfig
+      security:
+        - BearerAuth:
+            - 'sso-configs:read'
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/3'
+      responses:
+        '200':
+          description: The sso config has been found.
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/post/responses/200/content/application~1json/schema'
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '404':
+          description: sso config not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+    delete:
+      summary: Deletes an SSO Config by its ID.
+      description: Deletes an SSO Config by its ID.
+      tags:
+        - SSO Configs
+      operationId: DeleteSsoConfig
+      security:
+        - BearerAuth:
+            - 'sso-configs:delete'
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/3'
+      responses:
+        '200':
+          description: The resource has been found and deleted.
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '404':
+          description: SSO Config not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+    patch:
+      summary: Updates an SSO Config by its ID.
+      description: Updates an SSO Config by its ID.
+      tags:
+        - SSO Configs
+      operationId: UpdateSsoConfig
+      security:
+        - BearerAuth:
+            - 'sso-configs:update'
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/3'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SsoConfigPartialUpdate'
+        required: true
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/post/responses/200/content/application~1json/schema'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '404':
+          description: SSO Config not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/sso-configs/{sso_config_id}/test':
+    post:
+      summary: Tests an SSO Config.
+      description: Tests an SSO Config.
+      tags:
+        - SSO Configs
+      operationId: TestSsoConfig
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/3'
+      security:
+        - BearerAuth:
+            - 'sso-configs:read'
+      responses:
+        '200':
+          description: The sso config has been tested.
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+          content:
+            application/json:
+              schema:
+                description: Represents an SSO config test response body.
+                type: object
+                required:
+                  - identity_providers
+                  - oidc_applications
+                properties:
+                  identity_providers:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/IdentityProviderTestResponse'
+                  oidc_applications:
+                    type: array
+                    items:
+                      description: Represents an SSO config test response body.
+                      type: object
+                      required:
+                        - application_id
+                        - display_name
+                        - is_success
+                        - status_code
+                      properties:
+                        application_id:
+                          type: string
+                        display_name:
+                          type: string
+                        is_success:
+                          type: boolean
+                        status_code:
+                          type: string
+                        error_context:
+                          type: string
+              example:
+                identity_providers:
+                  - identity_provider_id: '123'
+                    display_name: Okta IDP
+                    is_successful: true
+                    status_code: 200
+                  - identity_provider_id: '456'
+                    display_name: Ping IDP
+                    is_successful: false
+                    status_code: 500
+                    error_context: |
+                      <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+                      <html>
+                      <head>
+                          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                          <meta name="robots" content="noindex,nofollow" />
+
+                          <title>zeropw-rolling - Bad Request</title>
+
+                          <link rel="stylesheet" type="text/css" href="/assets/css/sections/errors-v2.css">
+
+                          <!-- Styles generated from theme -->
+                          <link href="/api/internal/brand/theme/style-sheet?touch-point=ERROR_PAGE&amp;v=1c5f33b32b86a6a64df6637d07c27a375119d7a8fe54632d87e9ed00b24d9510bd977fcafd928c2991cd5c2dae06d79c" rel="stylesheet" type="text/css">
+
+                          <!-- Favicon from theme -->
+                          <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+
+                          
+
+                          <style nonce="zUfBFwrhQk0UI73zxsAGqg">
+                              #login-bg-image-id {
+                                  background-image: none
+                              }
+                          </style>
+                      </head>
+                      <body>
+                      <div id="login-bg-image-id" class="login-bg-image tb--background"></div>
+                      <div class="widget">
+                          <div class="container">
+                              <div class="header">
+                                  <img alt="zeropw-rolling" src="https://op1static.oktacdn.com/assets/img/logos/okta-logo.1e146cad5713da744492be95eb0f7793.png" class="org-logo">
+                              </div>
+                              <div class="illustration">
+                                  <!-- Show HTTP error code if exists -->
+                                  <div class="error-code">400</div>
+                                  <!-- Show generic error image if not  -->
+                              </div>
+                              <div class="content">
+                                  <h2 class="o-form-title">Bad Request</h2>
+                                  <p class="o-form-explain">Your request resulted in an error. The &#39;redirect_uri&#39; parameter must be a Login redirect URI in the client app settings: https://zeropw-rolling-admin.oktapreview.com/admin/app/oidc_client/instance/0oa24fkg4hed8IxFK0h8#tab-general</p>
+                                  <a href="/" class="button tb--button">Go to Homepage</a>
+
+                                  <div class="footer">
+                                      <a class="non-link">
+                                          Technical Details
+                                      </a> <span class="dropdown-arrow">&#9662;</span>
+                                      <p class="technical-details">Identity Provider: Unknown, Error Code: invalid_request</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      </body>
+                      </html><script type="text/javascript" nonce="zUfBFwrhQk0UI73zxsAGqg">
+                          window.addEventListener('load', function(event) {
+                              function applyStyle(id, attr) {
+                                  var el = document.getElementById(id);
+                                  if (el) {
+                                      var img = el.getAttribute(attr);
+                                      if (img) {
+                                         el.style["background-image"] = img;
+                                      }
+                                  }
+                              }
+                              applyStyle("login-bg-image-id", "data-img-url");
+                          });
+                      </script><style type="text/css" nonce="zUfBFwrhQk0UI73zxsAGqg">
+                          #st-app {
+                              display: none;
+                          }
+                      </style><span id="st-app">END_USER_APP</span>
+
+                      <style type="text/css" nonce="zUfBFwrhQk0UI73zxsAGqg">
+                              #content-container {
+                              width: 1000px;
+                              margin: 0 auto;
+                              }
+                          </style><div id="content-container" class="content no-translate">
+                                  <h2>
+                                      Error:&nbsp;The 'redirect_uri' parameter must be a Login redirect URI in the client app settings: https://zeropw-rolling-admin.oktapreview.com/admin/app/oidc_client/instance/0oa24fkg4hed8IxFK0h8#tab-general</h2>
+                                  <pre></pre>
+                          </div>
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/identity-providers':
+    get:
+      operationId: listIdentityProviders
+      tags:
+        - Identity Provider
+      summary: Lists Identity Providers by Realm.
+      description: Lists Identity Providers by Realm.
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/3'
+        - $ref: '#/components/parameters/page_size'
+        - $ref: '#/components/parameters/page_token'
+      responses:
+        '200':
+          description: The list operation was successful.
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityProviderListResponse'
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+    post:
+      operationId: createIdentityProvider
+      tags:
+        - Identity Provider
+      summary: Creates a new identity provider.
+      description: Creates a new identity provider.
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Represents an identity provider.
+              type: object
+              required:
+                - protocol_config
+                - display_name
+              properties:
+                id:
+                  description: |
+                    A unique identifier identifying an application within a realm.
+                  type: string
+                tenant_id:
+                  type: string
+                  description: |
+                    A unique identifier for the identity's tenant. This is automatically
+                    set on creation. This field is immutable and read-only.
+                  readOnly: true
+                  example: 0001f1f460b1ace6
+                realm_id:
+                  type: string
+                  description: |
+                    A unique identifier for the identity's realm. This is automatically
+                    set on creation. This field is immutable and read-only.
+                  readOnly: true
+                  example: 8f5bec58229e6f29
+                display_name:
+                  type: string
+                  description: |
+                    The human-readable name associated with the identity provider.
+                protocol_config:
+                  description: |
+                    The kind of protocol we should use to communicate with the identity
+                    provider.
+                  allOf:
+                    - $ref: '#/components/schemas/IdentityProviderProtocolConfig'
+      responses:
+        '200':
+          description: The identity provider has been created.
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityProviderProtocolConfigResponse'
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/identity-providers/{identity_provider_id}':
+    patch:
+      operationId: updateIdentityProvider
+      tags:
+        - Identity Provider
+      summary: Updates an identity provider.
+      description: Updates an identity provider.
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1identity-providers~1%7Bidentity_provider_id%7D/get/parameters/3'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentityProviderUpdate'
+      responses:
+        '200':
+          description: The identity provider has been updated.
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityProviderResponse'
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+    get:
+      operationId: getIdentityProvider
+      tags:
+        - Identity Provider
+      summary: Retrieves data about an Identity Provider.
+      description: Retrieves data about an identity provider.
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - name: identity_provider_id
+          in: path
+          description: A unique identifier for an identity provider.
+          required: true
+          schema:
+            type: string
+            example: e372db224c06e850
+      responses:
+        '200':
+          description: The requested identity provider.
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityProviderResponse'
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+    delete:
+      operationId: deleteIdentityProvider
+      tags:
+        - Identity Provider
+      summary: Deletes an Identity Provider.
+      description: Deletes an identity provider.
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1identity-providers~1%7Bidentity_provider_id%7D/get/parameters/3'
+      responses:
+        '200':
+          description: The identity provider has been deleted.
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/applications/{application_id}/sso-configs-id':
+    get:
+      summary: Returns the ID of the SSO Config associated with the Application.
+      description: Returns the ID of the SSO Config associated with the application.
+      tags:
+        - SSO Configs
+      operationId: ApplicationIdToSSOConfigId
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - $ref: '#/components/parameters/application_id'
+      security:
+        - BearerAuth:
+            - 'sso-configs:read'
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationSsoResponse'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/sso-configs/{sso_config_id}/is-group-assigned':
+    post:
+      summary: Check if any of the groups provided are associated with the SSO Config ID.
+      description: Check if any of the groups provided are associated with the SSO Config ID.
+      tags:
+        - SSO Configs
+      operationId: SSOIsGroupAssigned
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/3'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              description: |
+                A collection of group ids.
+              properties:
+                group_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: A group id.
+        required: true
+      security:
+        - BearerAuth:
+            - 'sso-configs:read'
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+                description: |
+                  Used to indicate if the result of a request is associated with an SSO
+                  Config. This could be through an Identity or a group depending on the 
+                  endpoint used.
+                required:
+                  - is_assigned_to_sso_config
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/identities/{identity_id}/sso-configs/{sso_config_id}/is-identity-assigned':
+    $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs~1%7Bsso_config_id%7D~1is-group-assigned'
 components:
   parameters:
     tenant_id:
@@ -7699,6 +9956,13 @@ components:
         format: uint32
         minimum: 1
         default: 1
+    correlation_id:
+      name: x-correlation_id
+      description: 'Correlation ID. If supplied with the request, the response must contain the same value. If not supplied with the request, it is generated by the server and returned in the response.'
+      in: header
+      required: true
+      schema:
+        type: string
   schemas:
     Tenant:
       title: Tenant
@@ -7726,14 +9990,14 @@ components:
           description: |
             A time value given in ISO8601 combined date and time format that represents when the tenant was created. This is automatically generated on creation. This field is read-only.
           readOnly: true
-          example: 2022-01-28T12:00:02.423Z
+          example: '2022-01-28T12:00:02.423Z'
         update_time:
           type: string
           format: date-time
           description: |
             A time value given in ISO8601 combined date and time format that represents when the tenant was last updated. This is automatically updated when the tenant is updated. This field is read-only.
           readOnly: true
-          example: 2022-04-19T15:17:21.186Z
+          example: '2022-04-19T15:17:21.186Z'
     Realm:
       title: Realm
       type: object
@@ -7760,20 +10024,24 @@ components:
           description: |
             A human-readable name for the realm. This name is used for display purposes.
           example: Test Realm
+        classification:
+          type: string
+          description: Classification of the realm. Can be either SECURE_WORFORCE or SECURE_CUSTOMER
+          example: SECURE_CUSTOMER
         create_time:
           type: string
           format: date-time
           description: |
             A time value given in ISO8601 combined date and time format that represents when the realm was created. This is automatically generated on creation. This field is read-only.
           readOnly: true
-          example: 2022-05-18T18:00:01.167Z
+          example: '2022-05-18T18:00:01.167Z'
         update_time:
           type: string
           format: date-time
           description: |
             A time value given in ISO8601 combined date and time format that represents when the realm was last updated. This is automatically updated when the realm is updated. This field is read-only.
           readOnly: true
-          example: 2022-05-19T14:23:01.327Z
+          example: '2022-05-19T14:23:01.327Z'
     Group:
       title: Group
       type: object
@@ -7819,14 +10087,14 @@ components:
           description: |
             A time value given in ISO8601 combined date and time format that represents when the group was created. This is automatically generated on creation. This field is read-only.
           readOnly: true
-          example: 2022-03-14T03:42:52.905Z
+          example: '2022-03-14T03:42:52.905657Z'
         update_time:
           type: string
           format: date-time
           description: |
             A time value given in ISO8601 combined date and time format that represents when the group was last updated. This is automatically updated when the group is updated. This field is read-only.
           readOnly: true
-          example: 2022-06-14T05:55:23.823Z
+          example: '2022-06-14T05:55:23.823187Z'
     Identity:
       title: Identity
       type: object
@@ -7865,14 +10133,14 @@ components:
           description: |
             A time value given in ISO8601 combined date and time format that represents when the identity was created. This is automatically generated on creation. This field is read-only.
           readOnly: true
-          example: 2022-04-12T05:53:07.119Z
+          example: '2022-04-12T05:53:07.119Z'
         update_time:
           type: string
           format: date-time
           description: |
             A time value given in ISO8601 combined date and time format that represents when the identity was last updated. This is automatically updated when the identity is updated. This field is read-only.
           readOnly: true
-          example: 2022-06-16T14:31:03.770Z
+          example: '2022-06-16T14:31:03.770Z'
         status:
           type: string
           description: |
@@ -7908,6 +10176,10 @@ components:
           type: string
           description: Email address serving as primary contact for identity.
           example: test@example.com
+        secondary_email_address:
+          type: string
+          description: |
+            An additional email address for the user.
         external_id:
           type: string
           description: |
@@ -7920,6 +10192,114 @@ components:
           type: string
           description: |
             The given name or first name in most Western languages.
+        formatted_name:
+          type: string
+          description: |
+            The full name, including all middle names, titles, and suffixes as appropriate, formatted for display (e.g. "Ms. Barbara Jane Jensen, III").
+        middle_name:
+          type: string
+          description: |
+            The middle name of the user, if applicable.
+        honorific_prefix:
+          type: string
+          description: |
+            Honorifics like "Mr.", "Mrs.", "Dr.", etc.
+        honorific_suffix:
+          type: string
+          description: |
+            Suffixes such as "Jr.", "Sr.", "III", etc.
+        nick_name:
+          type: string
+          description: |
+            A nickname the user goes by.
+        title:
+          type: string
+          description: |
+            The user's job title.
+        primary_phone:
+          type: string
+          description: |
+            The primary contact phone number for the user.
+        secondary_phone:
+          type: string
+          description: |
+            An additional phone number for the user.
+        profile_url:
+          type: string
+          description: |
+            A URL to the user's profile.
+        photo:
+          type: string
+          description: |
+            A URL to the user's photo.
+        preferred_language:
+          type: string
+          description: |
+            The user's preferred language.
+        locale:
+          type: string
+          description: |
+            The locale of the user, typically in the format of language-region.
+        timezone:
+          type: string
+          description: |
+            The timezone of the user.
+        formatted_address:
+          type: string
+          description: |
+            The full mailing address, formatted for display or use with a mailing label. This attribute MAY contain newlines.
+        street_address:
+          type: string
+          description: |
+            The full street address component, which may include house number, street name, P.O. box, and multi-line extended street address information. This attribute MAY contain newlines.
+        locality:
+          type: string
+          description: |
+            The locality or city of the user.
+        region:
+          type: string
+          description: |
+            The region or state of the user.
+        postal_code:
+          type: string
+          description: |
+            The zip code or postal code of the user.
+        country:
+          type: string
+          description: |
+            The country of the user.
+        user_type:
+          type: string
+          description: |
+            Used to identify the relationship between the organization and the user. Typical values used might be 'Contractor', 'Employee', 'Intern', 'Temp', 'External', and 'Unknown', but any value may be used.
+        employee_number:
+          type: string
+          description: |
+            The employee number assigned to the user, typically based on order of hire or association with an organization.
+        cost_center:
+          type: string
+          description: |
+            The cost center associated with the user.
+        organization:
+          type: string
+          description: |
+            The organization the user belongs to.
+        division:
+          type: string
+          description: |
+            The division of the organization the user belongs to.
+        department:
+          type: string
+          description: |
+            The department of the organization the user belongs to.
+        manager_id:
+          type: string
+          description: |
+            The unique identifier for the user's manager.
+        manager_name:
+          type: string
+          description: |
+            The name of the user's manager.
       required:
         - type
     Role:
@@ -7980,14 +10360,14 @@ components:
           description: |
             A time value given in ISO8601 combined date and time format that represents when the role was created. This is automatically generated on creation. This field is read-only.
           readOnly: true
-          example: 2023-02-14T18:18:58.332Z
+          example: '2023-02-14T18:18:58.332247Z'
         update_time:
           type: string
           format: date-time
           description: |
             A time value given in ISO8601 combined date and time format that represents when the role was last updated. This is automatically updated when the group is updated. This field is read-only.
           readOnly: true
-          example: 2023-02-14T18:18:58.332Z
+          example: '2023-02-14T18:18:58.332247Z'
     ListRealmsResponse:
       title: List Realms Response
       description: Response for ListRealms.
@@ -8324,14 +10704,14 @@ components:
           description: |
             A time value given in ISO8601 combined date and time format that represents when the credential was created. This is automatically generated on creation. This field is read-only.
           readOnly: true
-          example: 2022-05-12T20:29:47.636Z
+          example: '2022-05-12T20:29:47.636497Z'
         update_time:
           type: string
           format: date-time
           description: |
             A time value given in ISO8601 combined date and time format that represents when the credential was last updated. This is automatically updated when the credential is updated. This field is read-only.
           readOnly: true
-          example: 2022-05-12T20:29:47.636Z
+          example: '2022-05-12T20:29:47.636497Z'
     CredentialBindingJob:
       title: CredentialBindingJob
       description: |
@@ -8421,21 +10801,21 @@ components:
           description: |
             A timestamp that represents when the credential binding link associated with the credential binding job will expire. This field is immutable and read-only.
           readOnly: true
-          example: 2022-05-12T20:29:47.636Z
+          example: '2022-05-12T20:29:47.636497Z'
         create_time:
           type: string
           format: date-time
           description: |
             A time value given in ISO8601 combined date and time format that represents when the credential binding job was created. This is automatically generated on creation. This field is read-only.
           readOnly: true
-          example: 2022-05-12T20:29:47.636Z
+          example: '2022-05-12T20:29:47.636497Z'
         update_time:
           type: string
           format: date-time
           description: |
             A time value given in ISO8601 combined date and time format that represents when the credential binding job was last updated. This is automatically updated when the credential binding job is updated. This field is read-only.
           readOnly: true
-          example: 2022-05-12T20:29:47.636Z
+          example: '2022-05-12T20:29:47.636497Z'
     ListCredentialsResponse:
       title: List Credentials Response
       description: Response for ListCredentials.
@@ -8516,14 +10896,14 @@ components:
           description: |
             Timestamp of when the theme was created. This field is immutable and read-only.
           readOnly: true
-          example: 2022-07-28T18:00:00.000Z
+          example: '2022-07-28T18:00:00.000Z'
         update_time:
           type: string
           format: date-time
           description: |
             Timestamp of when the theme was last updated. This field is read-only.
           readOnly: true
-          example: 2022-07-30T16:00:00.000Z
+          example: '2022-07-30T16:00:00.000Z'
         email_realm_name:
           type: string
           minLength: 1
@@ -8645,6 +11025,18 @@ components:
             required to equate as follows: `code_challenge` = `base64url(sha256(ascii(code_verifier)))`. This is
             the higher security option and should always be preferred if it is supported by the client.
       example: s256
+    SubjectField:
+      description: |
+        Defines which field should be used to populate the subject field of an id token.
+        - `id` - The user ID is used.
+        - `email` - The user email is used.
+        - `username` - The username is used.
+      type: string
+      enum:
+        - id
+        - email
+        - username
+        - external_id
     TokenEndpointAuthMethod:
       description: |
         Indicator of the requested authentication method for the token endpoint.
@@ -8827,7 +11219,8 @@ components:
                 pkce:
                   $ref: '#/components/schemas/PkceConfig'
                 token_format:
-                  $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1applications/get/responses/200/content/application~1json/schema/properties/applications/items/properties/protocol_config/oneOf/0/properties/token_format'
+                  $ref: '#/components/schemas/Application/properties/protocol_config/oneOf/0/properties/token_format'
+            - $ref: '#/components/schemas/SsoConfigPayload/oneOf/4'
     AuthenticatorConfig:
       title: Authenticator Configuration
       type: object
@@ -8944,7 +11337,7 @@ components:
               properties:
                 authentication_methods:
                   items:
-                    $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1authenticator-configs/get/responses/200/content/application~1json/schema/properties/authenticator_configs/items/properties/config/oneOf/0/properties/authentication_methods/items'
+                    $ref: '#/components/schemas/AuthenticatorConfig/properties/config/oneOf/0/properties/authentication_methods/items'
                   type: array
                 trusted_origins:
                   description: |
@@ -9168,13 +11561,13 @@ components:
               format: date-time
               description: Timestamp of when the resource was created.
               readOnly: true
-              example: 2022-04-07T07:23:33.000Z
+              example: '2022-04-07T07:23:33Z'
             lastModified:
               type: string
               format: date-time
               description: Timestamp of when the resource was last updated.
               readOnly: true
-              example: 2023-03-30T07:00:14.000Z
+              example: '2023-03-30T07:00:14Z'
             location:
               type: string
               description: The URI of the resource being returned.
@@ -9618,6 +12011,1495 @@ components:
       required:
         - schemas
         - status
+    ApplicationSsoResponse:
+      type: object
+      properties:
+        sso_config_id:
+          type: string
+          description: |
+            This is the id of the SSO Config object that is associated with the
+            provided application id. If this is missing it means that the
+            application isn't associated with an SSO config.
+    SsoConfigAddIdentities:
+      title: Associate Identities with SSO Config
+      description: Request for AddIdentitiesToSsoConfig.
+      type: object
+      properties:
+        identity_ids:
+          description: IDs of the identities to be added to the sso config.
+          type: array
+          items:
+            type: string
+          minItems: 1
+          maxItems: 1000
+      required:
+        - identity_ids
+    SsoConfigBookmarkPartialUpdate:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          $ref: '#/components/schemas/SsoConfigType'
+        login_link:
+          type: string
+        icon:
+          type: string
+        is_tile_visible:
+          type: boolean
+    SsoConfigBookmark:
+      type: object
+      required:
+        - type
+        - login_link
+      properties:
+        type:
+          $ref: '#/components/schemas/SsoConfigType'
+        login_link:
+          type: string
+        icon:
+          type: string
+        is_tile_visible:
+          type: boolean
+    SsoConfigDeleteGroup:
+      title: Delete Groups from SSO Config
+      description: Request for DeleteGroupsToSsoConfig.
+      type: object
+      properties:
+        group_ids:
+          description: IDs of the groups to be removed from the sso config.
+          type: array
+          items:
+            type: string
+          minItems: 1
+          maxItems: 1000
+      required:
+        - group_ids
+    SsoConfigEntraIdAuthMethodPartial:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          $ref: '#/components/schemas/SsoConfigType'
+        redirect_uris:
+          default: null
+          type: array
+          items:
+            type: string
+        inbound_scim:
+          default: null
+          type: object
+        discover_endpoint:
+          default: null
+          $ref: '#/components/schemas/SsoConfigEntraIdExternalAuthMethod/properties/discover_endpoint'
+    SsoConfigEntraIdExternalAuthMethod:
+      type: object
+      required:
+        - type
+        - redirect_uris
+        - discover_endpoint
+      properties:
+        type:
+          $ref: '#/components/schemas/SsoConfigType'
+        redirect_uris:
+          default: null
+          type: array
+          items:
+            type: string
+        inbound_scim:
+          default: null
+          type: object
+        discover_endpoint:
+          description: |
+            Describes the type of discovery endpoint for the entra_id_external_auth_methods sso config.
+          type: string
+          enum:
+            - global_azure
+            - azure_us_government
+            - microsoft_azure_vianet
+    SsoConfigEnvelope:
+      description: Represents an SSO config as a request body.
+      type: object
+      required:
+        - sso_config
+      properties:
+        sso_config:
+          $ref: '#/components/schemas/SsoConfig'
+    SsoConfigGenericOidcIdpPartialUpdate:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          $ref: '#/components/schemas/SsoConfigType'
+        client_id:
+          description: The client ID for the idp application.
+          type: string
+        client_secret:
+          description: The client secret to authenticate as the idp application.
+          type: string
+          nullable: true
+        pkce:
+          default: null
+          allOf:
+            - $ref: '#/components/schemas/PkceConfig'
+        id_token_scopes:
+          default: null
+          type: array
+          items:
+            type: string
+        identifying_claim_name:
+          type: string
+        identity_attribute:
+          $ref: '#/components/schemas/SubjectField'
+        authorization_endpoint:
+          type: string
+          nullable: true
+        token_endpoint:
+          type: string
+        jwks_endpoint:
+          type: string
+    SsoConfigGenericOidcPartialUpdate:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          $ref: '#/components/schemas/SsoConfigType'
+        redirect_uris:
+          default: null
+          type: array
+          items:
+            type: string
+        scopes:
+          default: null
+          type: array
+          items:
+            type: string
+        trusted_origins:
+          default: null
+          type: array
+          items:
+            type: string
+        login_link:
+          type: string
+        icon:
+          type: string
+        is_tile_visible:
+          type: boolean
+        confidentiality:
+          default: null
+          allOf:
+            - $ref: '#/components/schemas/Confidentiality'
+        pkce:
+          default: null
+          allOf:
+            - $ref: '#/components/schemas/PkceConfig'
+        inbound_scim:
+          default: null
+          type: object
+    SsoConfigGenericOidc:
+      type: object
+      required:
+        - type
+        - redirect_uris
+        - scopes
+        - confidentiality
+        - pkce
+      properties:
+        type:
+          $ref: '#/components/schemas/SsoConfigType'
+        redirect_uris:
+          default: null
+          type: array
+          items:
+            type: string
+        scopes:
+          default: null
+          type: array
+          items:
+            type: string
+        trusted_origins:
+          default: null
+          type: array
+          items:
+            type: string
+        login_link:
+          type: string
+        icon:
+          type: string
+        is_tile_visible:
+          type: boolean
+        confidentiality:
+          default: null
+          allOf:
+            - $ref: '#/components/schemas/Confidentiality'
+        pkce:
+          default: null
+          allOf:
+            - $ref: '#/components/schemas/PkceConfig'
+        inbound_scim:
+          default: null
+          type: object
+    SsoConfigListGroups:
+      title: List Groups associated with an SSO config.
+      description: List Groups associated with an SSO config.
+      type: object
+      properties:
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/SsoGroupWithMemberCount'
+    SsoConfigOidcIdp:
+      type: object
+      required:
+        - type
+        - client_id
+        - identifying_claim_name
+        - identity_attribute
+        - authorization_endpoint
+        - token_endpoint
+        - jwks_endpoint
+      properties:
+        type:
+          $ref: '#/components/schemas/SsoConfigType'
+        client_id:
+          description: The client ID for the idp application.
+          type: string
+        identifying_claim_name:
+          type: string
+        identity_attribute:
+          $ref: '#/components/schemas/SubjectField'
+        authorization_endpoint:
+          type: string
+          nullable: true
+        token_endpoint:
+          type: string
+        jwks_endpoint:
+          type: string
+    SsoConfigOktaBiIdpPartialUpdate:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          $ref: '#/components/schemas/SsoConfigType'
+        pkce:
+          default: null
+          allOf:
+            - $ref: '#/components/schemas/PkceConfig'
+        okta_registration:
+          description: Represents a list of Resource Servers as a response body.
+          type: object
+          properties:
+            domain:
+              description: The domain Url inside of Okta.
+              type: string
+            okta_token:
+              description: An okta token used for accessing the okta API.
+              type: string
+            attribute_name:
+              description: |-
+                The name of the attribute within okta that we are going to set to
+                true.
+              type: string
+            is_enabled:
+              description: If the integration is enabled.
+              type: boolean
+        inbound_scim:
+          default: null
+          type: object
+    SsoConfigOktaBiIdp:
+      type: object
+      required:
+        - type
+        - pkce
+        - okta_registration
+      properties:
+        type:
+          $ref: '#/components/schemas/SsoConfigType'
+        pkce:
+          default: null
+          allOf:
+            - $ref: '#/components/schemas/PkceConfig'
+        okta_registration:
+          description: Represents a list of Resource Servers as a response body.
+          type: object
+          properties:
+            domain:
+              description: The domain Url inside of Okta.
+              type: string
+            okta_token:
+              description: An okta token used for accessing the okta API.
+              type: string
+            attribute_name:
+              description: |-
+                The name of the attribute within okta that we are going to set to
+                true.
+              type: string
+            is_enabled:
+              description: If the integration is enabled.
+              type: boolean
+        inbound_scim:
+          default: null
+          type: object
+    SsoConfigPartialUpdatePayload:
+      oneOf:
+        - $ref: '#/components/schemas/SsoConfigBookmarkPartialUpdate'
+        - $ref: '#/components/schemas/SsoConfigEntraIdAuthMethodPartial'
+        - $ref: '#/components/schemas/SsoConfigGenericOidcPartialUpdate'
+        - $ref: '#/components/schemas/SsoConfigGenericOidcIdpPartialUpdate'
+        - $ref: '#/components/schemas/SsoConfigSamlPartialUpdate'
+        - type: object
+          required:
+            - type
+          properties:
+            type:
+              $ref: '#/components/schemas/SsoConfigType'
+            client_id:
+              description: The client ID for the idp application.
+              type: string
+            client_secret:
+              description: The client secret to authenticate as the idp application.
+              type: string
+              nullable: true
+            pkce:
+              default: null
+              allOf:
+                - $ref: '#/components/schemas/PkceConfig'
+            id_token_scopes:
+              default: null
+              type: array
+              items:
+                type: string
+            identifying_claim_name:
+              type: string
+            identity_attribute:
+              $ref: '#/components/schemas/SubjectField'
+            okta_domain:
+              type: string
+            inbound_scim:
+              default: null
+              type: object
+        - $ref: '#/components/schemas/SsoConfigOktaBiIdpPartialUpdate'
+        - $ref: '#/components/schemas/SsoConfigRealityCheckPartialUpdate'
+        - $ref: '#/components/schemas/SsoConfigWsFedPartialUpdate'
+    SsoConfigPartialUpdate:
+      description: Represents an sso config as an update request body.
+      type: object
+      required:
+        - sso_config
+      properties:
+        sso_config:
+          $ref: '#/components/schemas/SsoConfigPartialUpdatePayload'
+    SsoConfigPayload:
+      oneOf:
+        - $ref: '#/components/schemas/SsoConfigBookmark'
+        - $ref: '#/components/schemas/SsoConfigEntraIdExternalAuthMethod'
+        - $ref: '#/components/schemas/SsoConfigGenericOidc'
+        - $ref: '#/components/schemas/SsoConfigOidcIdp'
+        - type: object
+          required:
+            - type
+            - acs_url
+            - override_recipient_and_destination
+            - audience_url
+            - default_relay_state
+            - name_format
+            - authentication_context
+            - subject_user_name_attribute
+            - sign_envelope
+            - sign_assertions
+            - signature_algorithm
+            - digest_algorithm
+            - encrypt_assertions
+            - assertion_validity_duration_seconds
+            - sp_signature_certificates
+            - enable_single_log_out
+            - validate_signed_requests
+            - additional_user_attributes
+            - single_logout_sign_request_and_response
+          properties:
+            type:
+              type: string
+              enum:
+                - saml
+            acs_url:
+              description: |
+                Location where the SAML Response is sent via HTTP-POST. Often referred to as the SAML Assertion Consumer Service (ACS) URL.
+              type: string
+              example: 'https://example.com/saml/acs'
+            override_recipient_and_destination:
+              description: |
+                When this is true, the `recipient_url` and the `destination_url` are used for SAML Response.
+                When this is false, both the `recipient_url` and the `destination_url` are omitted and the `acs_url` is used instead.
+              type: boolean
+              example: true
+            recipient_url:
+              description: |
+                If `override_recipient_and_destination` is set to `true`, this field is utilized for the SAML Response. If it is `false`, this field is unused.
+                The location where the application may present the SAML assertion. This is usually the same location as the Single Sign-On URL.
+              type: string
+              example: 'https://example.com/saml/recipient'
+            destination_url:
+              description: |
+                If `override_recipient_and_destination` is set to `true`, this field is utilized for the SAML Response. If it is `false`, this field is unused.
+                Identifies the location where the SAML response is intended to be sent inside of the SAML assertion.
+              type: string
+              example: 'https://example.com/saml/destination'
+            audience_url:
+              description: |
+                The intended audience of the SAML assertion. Often referred to as the service provider Entity ID.
+              type: string
+              example: 'https://example.com/saml/audience'
+            default_relay_state:
+              description: |
+                Identifies a specific application resource in an IDP initiated Single Sign-On scenario. In most instances this is blank.
+              type: string
+              example: defaultRelayState
+            name_format:
+              description: |
+                Name format of the assertion's subject statement. Processing rules and constraints can be applied based on selection. Default value is "unspecified" unless SP explicitly requires differently.
+              type: string
+              enum:
+                - unspecified
+                - email_address
+                - x509_subject_name
+                - persistent
+                - transient
+                - entity
+                - kerberos
+                - windows_domain_qualified_name
+              example: unspecified
+            authentication_context:
+              description: |
+                The SAML Authentication Context Class for the assertion's authentication statement. Default value is "X509".
+              type: string
+              enum:
+                - x509
+                - integrated_windows_federation
+                - kerberos
+                - password
+                - password_protected_transport
+                - tls_client
+                - unspecified
+                - refeds_mfa
+              example: x509
+            subject_user_name_attribute:
+              description: |
+                Determines the default value for a user's application username. The application username will be used for the assertion's subject statement.
+              type: string
+              enum:
+                - user_name
+                - email
+                - email_prefix
+                - external_id
+                - display_name
+                - custom
+                - none
+              example: user_name
+            sign_envelope:
+              description: |
+                Determines whether the SAML authentication response message is digitally signed by the IdP or not. A digital signature is required to ensure that only your IdP generated the response message.
+              type: boolean
+              example: true
+            sign_assertions:
+              description: All of the assertions should be signed by the IdP.
+              type: boolean
+              example: true
+            signature_algorithm:
+              description: |
+                The algorithm used for signing the SAML assertions.
+              type: string
+              enum:
+                - rsa_sha256
+                - rsa_sha1
+                - rsa_sha384
+                - rsa_sha512
+              example: rsa_sha256
+            digest_algorithm:
+              description: |
+                The algorithm used to encrypt the SAML assertion.
+              type: string
+              enum:
+                - sha256
+                - sha1
+                - sha384
+                - sha512
+              example: sha256
+            encrypt_assertions:
+              description: |
+                This is the flag that determines if the SAML assertion is encrypted. If this flag is set to `true`, there **MUST** be a SAML encryption certificate uploaded.
+                Encryption ensures that nobody but the sender and receiver can understand the assertion.
+              type: boolean
+              example: false
+            assertion_validity_duration_seconds:
+              description: |
+                The amount of time SAML assertions are valid for in seconds.
+              type: integer
+              format: int32
+              example: 300
+            assertion_encryption_algorithm:
+              description: |
+                The algorithm used for the digest in SAML assertions.
+              type: string
+              enum:
+                - aes256_cbc
+                - aes256_gcm
+                - aes128_cbc
+                - aes128_gcm
+              example: aes256_cbc
+            assertion_key_transport_algorithm:
+              description: |
+                The algorithm used for key transport in SAML assertions.
+              type: string
+              enum:
+                - rsa_oaep
+                - rsa1_5
+              example: rsa_oaep
+            assertion_encryption_public_key:
+              description: |
+                The public key used to encrypt the SAML assertion. This is required if `encrypt_assertions` is true.
+              type: string
+              example: |
+                -----BEGIN PUBLIC KEY-----
+
+                MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAr3Q4ebLzciJlVf4QDQ2u
+                0Y2CfX9z4rMdG6MQSDW2NFQF0kM16Zzsz0p2gMOnp7YOz8OZqkU2XgUN3kQ8zC1h
+                q+um2mU5K45f9Idoq8gE7/kmlZG1zS1mrDS36lM5Sc+E5hVgXJkNw3kEJ7OnhHHu
+                ZG0EvTlGjqntCGXxrpX5sS1a9z7HeemEos6Xlw8I8Q8txJTeHgkRmZkMy5ndRbWa
+                sMyV8A1tk0Z5bLpoZBxn8Hh/M4v8HkV8O7lH91kB9D+4O+CZ4WcG4Fj8UOJW5m1M
+                nsCfYvzpEzeLoB2xD3CEmonGzZC+Ij1ZhrWu5V6mnmx6dzUMjOZchRQtfnJZzQ1U
+                2QIDAQAB
+                -----END PUBLIC KEY-----
+            sp_signature_certificates:
+              $ref: '#/components/schemas/SsoConfigSamlPartialUpdate/properties/sp_signature_certificates/items'
+            enable_single_log_out:
+              description: |
+                Enables single logout. Single Logout (SLO) is a feature that allows users to be logged out from multiple service providers (SPs) and the identity provider (IdP) with a single logout action.
+              type: boolean
+              example: false
+            single_log_out_url:
+              description: |
+                The location where the single logout response will be sent.
+                This is only enabled if `enable_single_log_out` is true.
+              type: string
+              example: 'https://example.com/saml/logout'
+            single_log_out_issuer_url:
+              description: |
+                The issuer ID for the service provider when handling a Single Logout.
+                This is only enabled if `enable_single_log_out` is true.
+              type: string
+              example: 'https://example.com/saml/issuer'
+            single_log_out_binding:
+              description: |
+                The SAML binding used for SAML messages.
+              type: string
+              enum:
+                - post
+                - redirect
+              example: post
+            single_logout_sign_request_and_response:
+              description: |
+                If enabled, Single Logout requests must bbe signed and Single Logout responses will also be signed.
+              type: boolean
+              example: false
+            validate_signed_requests:
+              description: |
+                Select this to validate all SAML requests using the SP Signature Certificate.
+              type: boolean
+              example: true
+            other_sso_urls:
+              type: object
+              description: |
+                For use with SP-initiated sign-in flows. Enter the ACS URLs for any other requestable SSO nodes used by your app integration. This option enables applications to choose where to send the SAML Response. Specify a URL and an index that uniquely identifies each ACS URL endpoint.
+                Some SAML AuthnRequest messages don't specify an index or URL. In these cases, the SAML Response is sent to the ACS specified in the Single sign on URL field.
+                When you enable Signed Requests, Beyond Identity deletes any previously defined static SSO URLs and reads the SSO URLs from the signed SAML request instead. You can't have both static SSO URLs and dynamic SSO URLs.
+                This can only be set if `validate_signed_requests` is set to false.
+              required:
+                - index
+                - url
+              properties:
+                index:
+                  description: The index that this URL may be referenced by.
+                  type: integer
+                  format: int16
+                  example: 1
+                url:
+                  description: |
+                    This is a URL that may be used to replace the ACS URL.
+                  type: string
+                  example: 'https://example.com/saml/acs1'
+            additional_user_attributes:
+              description: |
+                This structure describes additional attributes that can be attached to SAML assertion.
+              type: array
+              items:
+                type: object
+                required:
+                  - name
+                  - name_format
+                  - value
+                properties:
+                  name:
+                    description: The SAML attribute name.
+                    type: string
+                    example: firstName
+                  name_format:
+                    $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/name_format'
+                  value:
+                    description: The value to attach to the SAML value.
+                    $ref: '#/components/schemas/SsoConfigSamlPartialUpdate/properties/additional_user_attributes/items'
+                  custom_value:
+                    description: |
+                      The custom static string value when value is set to `custom_static_string`.
+                    type: string
+                    example: customString
+            identity_provider_certs:
+              description: |
+                The X509 certificates of the identity provider (Beyond Identity). These are the certificates that is in our IDP metadata, and that the upstream services use to validate our SAML assertion.
+              type: array
+              readOnly: true
+              items:
+                type: object
+                description: |
+                  The BI Identity Provider Certificate for this SAML connection.
+                required:
+                  - id
+                  - created_at
+                  - expires_at
+                  - is_active
+                  - idp_public_certificate
+                properties:
+                  id:
+                    description: The id of the certificate.
+                    type: string
+                    example: 3cb717d1-88ff-440a-b5ee-86c00ce63dbf
+                  created_at:
+                    description: Timestamp of when the certificate was created.
+                    type: string
+                    format: date-time
+                    example: '2022-05-12T20:29:47.636Z'
+                  expires_at:
+                    description: Timestamp of when the certificate expires.
+                    type: string
+                    format: date-time
+                    example: '2022-05-12T20:29:47.636Z'
+                  is_active:
+                    description: Indicates whether the certificate is active.
+                    type: boolean
+                    example: true
+                  idp_public_certificate:
+                    description: |
+                      Beyond Identity's public signing key wrapped in a certificate.
+                      Stored as a base64 encoded DER format.
+                    type: string
+                    example: |
+                      -----BEGIN CERTIFICATE-----
+
+                      MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAr3Q4ebLzciJlVf4QDQ2u
+                      0Y2CfX9z4rMdG6MQSDW2NFQF0kM16Zzsz0p2gMOnp7YOz8OZqkU2XgUN3kQ8zC1h
+                      q+um2mU5K45f9Idoq8gE7/kmlZG1zS1mrDS36lM5Sc+E5hVgXJkNw3kEJ7OnhHHu
+                      ZG0EvTlGjqntCGXxrpX5sS1a9z7HeemEos6Xlw8I8Q8txJTeHgkRmZkMy5ndRbWa
+                      sMyV8A1tk0Z5bLpoZBxn8Hh/M4v8HkV8O7lH91kB9D+4O+CZ4WcG4Fj8UOJW5m1M
+                      nsCfYvzpEzeLoB2xD3CEmonGzZC+Ij1ZhrWu5V6mnmx6dzUMjOZchRQtfnJZzQ1U
+                      2QIDAQAB
+                      -----END CERTIFICATE-----
+        - type: object
+          required:
+            - type
+            - client_id
+            - identifying_claim_name
+            - identity_attribute
+            - okta_domain
+          properties:
+            type:
+              $ref: '#/components/schemas/SsoConfigType'
+            client_id:
+              description: The client ID for the idp application.
+              type: string
+            client_secret:
+              description: The client secret to authenticate as the idp application.
+              type: string
+              nullable: true
+            pkce:
+              default: null
+              allOf:
+                - $ref: '#/components/schemas/PkceConfig'
+            id_token_scopes:
+              default: null
+              type: array
+              items:
+                type: string
+            identifying_claim_name:
+              type: string
+            identity_attribute:
+              $ref: '#/components/schemas/SubjectField'
+            okta_domain:
+              type: string
+            inbound_scim:
+              default: null
+              type: object
+        - $ref: '#/components/schemas/SsoConfigOktaBiIdp'
+        - $ref: '#/components/schemas/SsoConfigRealityCheck'
+        - $ref: '#/components/schemas/SsoConfigWsFed'
+    SsoConfigRealityCheckPartialUpdate:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          $ref: '#/components/schemas/SsoConfigType'
+        company_identifier:
+          default: null
+          type: string
+    SsoConfigRealityCheck:
+      type: object
+      required:
+        - type
+        - company_identifier
+      properties:
+        type:
+          $ref: '#/components/schemas/SsoConfigType'
+        company_identifier:
+          default: null
+          type: string
+    SsoConfigSamlPartialUpdate:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          $ref: '#/components/schemas/SsoConfigType'
+        acs_url:
+          description: |
+            Location where the SAML Response is sent via HTTP-POST. Often referred
+            to as the SAML Assertion Consumer Service (ACS) URL.
+          type: string
+        override_recipient_and_destination:
+          description: |
+            When this is true, the `recipient_url` and the `destination_url` are
+            used for SAML Response.
+
+            When this is false, both the `recipient_url` and the `destination_url`
+            are omitted and the acs_url is used instead.
+          type: boolean
+        recipient_url:
+          description: |
+            If `override_recipient_and_destination` is set to true, this field is
+            utilized for the SAML Response. If it is false, this field is unused.
+
+            The location where the application can present the SAML assertion. This
+            is usually the Single Sign-On (SSO) URL.
+          type: string
+        destination_url:
+          description: |
+            If `override_recipient_and_destination` is set to true, this field is
+            utilized for the SAML Response. If it is false, this field is unused.
+
+            The location to send the SAML Response, as defined in the SAML
+            assertion.
+          type: string
+        audience_url:
+          description: |
+            The intended audience of the SAML assertion. Often referred to as the
+            service provider Entity ID.
+          type: string
+        default_relay_state:
+          description: |
+            Identifies a specific application resource in an IDP initiated Single
+            Sign-On scenario. In most instances this is blank.
+          type: string
+        name_format:
+          description: The format of the SAML NameID.
+          $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/name_format'
+        authentication_context:
+          description: The context for SAML authentication.
+          $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/authentication_context'
+        subject_user_name_attribute:
+          description: The attribute to use for the subject's username.
+          $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/subject_user_name_attribute'
+        sign_envelope:
+          description: |
+            Determines whether the SAML authentication response message is digitally
+            signed by the IdP or not. A digital signature is required to ensure that
+            only your IdP generated the response message.
+          type: boolean
+        sign_assertions:
+          description: All of the assertions are signed by the IdP.
+          type: boolean
+        signature_algorithm:
+          description: The algorithm used for signing the SAML assertions.
+          $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/signature_algorithm'
+        digest_algorithm:
+          description: The algorithm used for the digest in SAML assertions.
+          $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/digest_algorithm'
+        encrypt_assertions:
+          description: |
+            This is the flag that determines if the SAML assertion is encrypted.
+            If this flag is set to `true`, there MUST be a SAML encryption certificate
+            uploaded.
+
+            Determines whether the SAML assertion is encrypted or not. Encryption
+            ensures that nobody but the sender and receiver can understand the
+            assertion.
+          type: boolean
+        assertion_validity_duration_seconds:
+          description: |
+            The amount of time assertions are valid for in seconds.
+          type: integer
+          format: int32
+        assertion_encryption_algorithm:
+          description: The algorithm used to encrypt the SAML assertion.
+          $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/assertion_encryption_algorithm'
+        assertion_key_transport_algorithm:
+          description: The algorithm used for key transport in SAML assertions.
+          $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/assertion_key_transport_algorithm'
+        assertion_encryption_public_key:
+          description: |
+            The public key used to encrypt the SAML assertion. This is required
+            if `encrypt_assertions` is true.
+          type: string
+        sp_signature_certificates:
+          description: |
+            The PEM encoded X509 key certificate of the Service Provider
+            used to verify SAML AuthnRequests.
+          type: array
+          items:
+            description: |
+              The PEM encoded X509 key certificate of the Service Provider used to verify SAML AuthnRequests.
+            type: array
+            items:
+              type: object
+              required:
+                - sp_public_signing_key
+              properties:
+                sp_public_signing_key:
+                  type: string
+            example:
+              - |
+                -----BEGIN CERTIFICATE-----
+
+                MIIDdzCCAl+gAwIBAgIEbF2LTTANBgkqhkiG9w0BAQsFADBoMQswCQYDVQQGEwJV
+                UzELMAkGA1UECBMCQ0ExFTATBgNVBAcTDFNhbiBGcmFuY2lzY28xEjAQBgNVBAoT
+                CU9rdGEsIEluYy4xHzAdBgNVBAMTFm9rdGEuZXhhbXBsZS5jb20gQ0EgUm9vdDAe
+                Fw0yMDA2MTkwMDAwMDBaFw0yMTA2MTkyMzU5NTlaMG0xCzAJBgNVBAYTAlVTMQsw
+                CQYDVQQIEwJDQTEVMBMGA1UEBxMMU2FuIEZyYW5jaXNjbzESMBAGA1UEChMJb2t0
+                Pbg6vGfJnxYYibTwLlXhgxl0tT+NMQFZ5GQslLh2sB3AWBzjZtFzFS7lDi0n4Fz5
+                y9x6U1hUS54fScJmSVSTT9v/qAD0ccjvlPj3M6PENq2X7TwrOqSTgx5TPOpA5Myl
+                MtwPbU3wn/pA5Cp9kWvlYbBfTS4Hx14FQyg3GAAkMrzrhKhpIfhz6iH0H8kDxFId
+                6KjXy4TvoUM/tH7c6v2HS6D4TD7TfYOv/8A7E1Lj6WKwjtghTAh3Rb5tbyxRBcw
+                gg==
+                -----END CERTIFICATE-----
+        enable_single_log_out:
+          description: Enable single logout.
+          type: boolean
+        single_log_out_url:
+          description: |
+            The location where the logout response will be sent.
+            Only enabled if `enable_single_log_out` is true.
+          type: string
+        single_log_out_issuer_url:
+          description: |
+            The issuer ID for the service provider. When handling a Single Log Out.
+
+            Only enabled if `enable_single_log_out` is true.
+          type: string
+        single_log_out_binding:
+          description: The binding used for single logout messages.
+          $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/single_log_out_binding'
+        single_logout_sign_request_and_response:
+          description: |
+            If we should expect the LogoutRequest to be signed and if we
+            should sign the LogoutResponse.
+          type: boolean
+        validate_signed_requests:
+          description: |
+            Select this to validate all SAML requests using the Signature
+            Certificate. The payload from the SAML request is validated, and Okta
+            dynamically reads any single sign-on (SSO) URLs from the request. This
+            checkbox appears after you upload a Signature Certificate.
+
+            When Signed Requests is enabled, the SAML Request must include a
+            NameIDPolicy.
+          type: boolean
+        other_sso_urls:
+          description: |
+            For use with SP-initiated sign-in flows. Enter the ACS URLs for any
+            other requestable SSO nodes used by your app integration. This option
+            enables applications to choose where to send the SAML Response. Specify
+            a URL and an index that uniquely identifies each ACS URL endpoint.
+
+            Some SAML AuthnRequest messages don't specify an index or URL. In these
+            cases, the SAML Response is sent to the ACS specified in the Single sign
+            on URL field.
+
+            When you enable Signed Requests, Okta deletes any previously defined
+            static SSO URLs and reads the SSO URLs from the signed SAML request
+            instead. You can't have both static SSO URLs and dynamic SSO URLs.
+
+            This can only be set if validate_signed_requests is set to false.
+          type: object
+          required:
+            - index
+            - url
+          properties:
+            index:
+              description: The index that this URL may be referenced by.
+              type: integer
+              format: int16
+            url:
+              description: |
+                This is a URL that may be used to replace the ACS URL.
+              type: string
+        additional_user_attributes:
+          description: Any additional attributes to attach to the SAML assertion.
+          type: array
+          items:
+            description: |
+              The value of the SAML attribute. It will correspond to a directory attribute of the user.
+            type: string
+            enum:
+              - email
+              - user_name
+              - external_id
+              - display_name
+              - custom_static_string
+            example: email
+        icon:
+          description: The URL or data URI of the icon representing the SSO configuration.
+          type: string
+        is_tile_visible:
+          description: Indicates if the SSO configuration tile is visible to the user.
+          type: boolean
+        inbound_scim:
+          default: null
+          type: object
+    SsoConfigType:
+      description: |
+        Describes the type of sso config.
+      type: string
+      enum:
+        - bookmark
+        - entra_id_external_auth_methods
+        - generic_oidc
+        - generic_oidc_idp
+        - generic_saml
+        - okta_idp
+        - okta_sso_bi_idp
+        - reality_check
+        - scim
+        - ws_fed
+    SsoConfigWsFedPartialUpdate:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          $ref: '#/components/schemas/SsoConfigType'
+        acs_url:
+          description: |
+            This is where to redirect too. This is also known as the SP SSO url.
+          type: string
+        audience_url:
+          description: The Recipient/Audience of the RSTR.
+          type: string
+        expiration_time_seconds:
+          description: The amount of time in seconds that the RSTR should be valid for.
+          type: integer
+          format: int32
+        digest_algorithm:
+          description: The algorithm used to create a digest inside of the token within the RSTR.
+          $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/digest_algorithm'
+        signature_algorithm:
+          description: The algorithm used to create a signature inside of the token within the RSTR.
+          $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/signature_algorithm'
+        name_format:
+          description: The format that should be used to identify the user that is logging into the system.
+          $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/name_format'
+        subject_user_name_attribute:
+          description: |
+            The attribute on the identity that's used to uniquely identify the user.
+            This is also the source for the user name inside of the RSTR.
+          $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/subject_user_name_attribute'
+        authentication_context:
+          description: |
+            The SAML Authentication Context Class for the assertion's authentication statement. 
+            Default value is "X509".
+          $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/authentication_context'
+        additional_user_attributes:
+          description: Any additional attributes to attach to the assertion.
+          type: array
+          items:
+            $ref: '#/components/schemas/SsoConfigWsFed/properties/additional_user_attributes/items'
+        icon:
+          description: The URL or data URI of the icon representing the SSO configuration.
+          type: string
+        is_tile_visible:
+          description: Indicates if the SSO configuration tile is visible to the user.
+          type: boolean
+        inbound_scim:
+          default: null
+          type: object
+    SsoConfigWsFed:
+      type: object
+      required:
+        - type
+        - acs_url
+        - audience_url
+        - expiration_time_seconds
+        - digest_algorithm
+        - signature_algorithm
+        - name_format
+        - subject_user_name_attribute
+        - authentication_context
+        - additional_user_attributes
+      properties:
+        type:
+          description: The type of the SSO configuration.
+          $ref: '#/components/schemas/SsoConfigType'
+        acs_url:
+          description: |
+            This is where to redirect to. This is also known as the SP SSO url.
+          type: string
+        audience_url:
+          description: The Recipient/Audience of the RSTR.
+          type: string
+        expiration_time_seconds:
+          description: The amount of time in seconds that the RSTR should be valid for.
+          type: integer
+          format: int32
+        digest_algorithm:
+          description: The algorithm used to create a digest inside of the token within the RSTR.
+          $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/digest_algorithm'
+        signature_algorithm:
+          description: The algorithm used to create a signature inside of the token within the RSTR.
+          $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/signature_algorithm'
+        name_format:
+          description: The format that should be used to identify the user that is logging into the system.
+          $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/name_format'
+        subject_user_name_attribute:
+          description: |
+            The attribute on the identity that's used to uniquely identify the user.
+            This is also the source for the user name inside of the RSTR.
+          $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/subject_user_name_attribute'
+        authentication_context:
+          description: |
+            The SAML Authentication Context Class for the assertion's authentication statement. 
+            Default value is "X509".
+          $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/authentication_context'
+        additional_user_attributes:
+          description: Any additional attributes to attach to the assertion.
+          type: array
+          items:
+            description: |
+              This structure describes additional attributes that can be
+              attached to SAML assertion inside of WS-Fed token.
+            type: object
+            required:
+              - name
+              - name_format
+              - value
+            properties:
+              name:
+                description: The SAML attribute name.
+                type: string
+              name_format:
+                description: The format that the attribute has.
+                $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/name_format'
+              value:
+                description: The value to attach to the SAML value.
+                $ref: '#/components/schemas/SsoConfigSamlPartialUpdate/properties/additional_user_attributes/items'
+              namespace:
+                type: string
+                description: |
+                  This is an XML namespace that is applied the attribute and all of
+                  its children.
+        icon:
+          description: The URL or data URI of the icon representing the SSO configuration.
+          type: string
+        is_tile_visible:
+          description: Indicates if the SSO configuration tile is visible to the user.
+          type: boolean
+        inbound_scim:
+          default: null
+          type: object
+    SsoConfig:
+      description: Represents an SSO config as a request body.
+      type: object
+      required:
+        - display_name
+        - payload
+      properties:
+        is_migrated:
+          description: Indicates that the SSO Config was added by a script such as fast migrate
+          type: boolean
+        display_name:
+          description: A human-readable name for the application. This name is used for display purposes.
+          type: string
+        payload:
+          $ref: '#/components/schemas/SsoConfigPayload'
+    SsoGroupWithMemberCount:
+      title: Group with count of members
+      type: object
+      description: |
+        A group is a logical collection of identities. Groups are commonly used as a predicate in a policy rule.
+      properties:
+        id:
+          type: string
+          description: |
+            A unique identifier for a group. This is automatically generated on creation. This field is immutable and read-only. This field is unique within the realm.
+          readOnly: true
+          example: 81490afab171aef0
+        realm_id:
+          type: string
+          description: |
+            A unique identifier for the group's realm. This is automatically set on creation. This field is immutable and read-only.
+          readOnly: true
+          example: 7df92e4a38ba0993
+        tenant_id:
+          type: string
+          description: |
+            A unique identifier for the group's tenant. This is automatically set on creation. This field is immutable and read-only.
+          readOnly: true
+          example: 0001b42d80372976
+        display_name:
+          type: string
+          minLength: 1
+          maxLength: 64
+          pattern: '^[^{}[\]<>;:?\\/|*^%$#=~`!]*$'
+          description: |
+            A human-readable name for the group. This name is used for display purposes.
+          example: Realm Administrators
+        description:
+          type: string
+          maxLength: 300
+          pattern: '^[^{}[\]<>;:?\\/|*^%$#=~`!]*$'
+          description: |
+            A free-form text field to describe a group.
+          example: A group of realm administrators.
+        create_time:
+          type: string
+          format: date-time
+          description: |
+            A time value given in ISO8601 combined date and time format that represents when the group was created. This is automatically generated on creation. This field is read-only.
+          readOnly: true
+          example: '2022-03-14T03:42:52.905Z'
+        update_time:
+          type: string
+          format: date-time
+          description: |
+            A time value given in ISO8601 combined date and time format that represents when the group was last updated. This is automatically updated when the group is updated. This field is read-only.
+          readOnly: true
+          example: '2022-06-14T05:55:23.823Z'
+        member_count:
+          type: integer
+          format: uint32
+          description: |
+            Total number of members of this group.
+          example: 1000
+    IdentityProviderUpdate:
+      description: Represents an identity provider.
+      type: object
+      properties:
+        id:
+          description: |
+            A unique identifier identifying an identity provider.
+          type: string
+        tenant_id:
+          type: string
+          description: |
+            A unique identifier for the identity provider's tenant. This is automatically
+            set on creation. This field is immutable and read-only.
+          readOnly: true
+          example: 0001f1f460b1ace6
+        realm_id:
+          type: string
+          description: |
+            A unique identifier for the identity provider's realm. This is automatically
+            set on creation. This field is immutable and read-only.
+          readOnly: true
+          example: 8f5bec58229e6f29
+        display_name:
+          type: string
+          description: |
+            The human-readable name associated with the identity provider.
+        protocol_config:
+          description: |
+            The kind of protocol we should use to communicate with the identity
+            provider.
+          allOf:
+            - $ref: '#/components/schemas/IdentityProviderUpdateProtocolConfig'
+    IdentityProviderProtocolConfigOidcIdp:
+      description: |
+        OIDC protocol configuration for connecting to an identity provider, and
+        validating the token we received.
+      type: object
+      required:
+        - client_id
+        - client_secret
+        - token_scopes
+        - identity_attribute
+        - pkce
+        - jwks_url
+        - token_url
+        - authorize_url
+        - identifying_claim_name
+        - type
+      properties:
+        type:
+          type: string
+          enum:
+            - oidc_idp
+        client_id:
+          description: |
+            The OIDC client id. This value is from the identity provider.
+          type: string
+        client_secret:
+          description: |
+            The OIDC client secret. This value is from the identity provider.
+          type: string
+        token_scopes:
+          description: |
+            The scopes which to assign to the generated Access token. Scopes will be checked against the identity before validating.
+          type: array
+          items:
+            type: string
+        identity_attribute:
+          $ref: '#/components/schemas/SubjectField'
+        pkce:
+          $ref: '#/components/schemas/PkceConfig'
+        jwks_url:
+          description: |
+            The URL that points to the ".well-known/jwks.json" of the identity
+            provider. Must be a URL.
+          type: string
+        token_url:
+          description: |
+            The URL that points to the "/token" endpoint of the identity
+            provider. Must be a URL.
+          type: string
+        authorize_url:
+          description: |
+            The "/authorize" URL to authenticate against inside of the identity
+            provider. Must be a URL.
+          type: string
+        identifying_claim_name:
+          description: |
+            The name of the claim that specifies the user's identity inside of a
+            token.
+          type: string
+    IdentityProviderProtocolConfig:
+      description: |
+        Represents the protocol configuration that is used by the identity
+        provider.
+      oneOf:
+        - $ref: '#/components/schemas/IdentityProviderProtocolConfigOidcIdp'
+    IdentityProviderUpdateProtocolConfig:
+      description: |
+        Represents the protocol configuration that is used by the identity
+        provider.
+      oneOf:
+        - $ref: '#/components/schemas/IdentityProviderUpdateProtocolConfigOidcIdp'
+      discriminator:
+        propertyName: type
+    IdentityProviderUpdateProtocolConfigOidcIdp:
+      description: |
+        OIDC protocol configuration for connecting to an identity provider, and
+        validating the token we received.
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+          enum:
+            - oidc_idp
+        client_id:
+          description: |
+            The OIDC client id. This value is from the identity provider.
+          type: string
+        client_secret:
+          description: |
+            The OIDC client secret. This value is from the identity provider.
+          type: string
+        token_scopes:
+          description: |
+            The scopes which to assign to the generated Access token. Scopes will be checked against the identity before validating.
+          type: array
+          items:
+            type: string
+        identity_attribute:
+          $ref: '#/components/schemas/SubjectField'
+        pkce:
+          $ref: '#/components/schemas/PkceConfig'
+        jwks_url:
+          description: |
+            The URL that points to the ".well-known/jwks.json" of the identity
+            provider. Must be a URL.
+          type: string
+        token_url:
+          description: |
+            The URL that points to the "/token" endpoint of the identity
+            provider. Must be a URL.
+          type: string
+        authorize_url:
+          description: |
+            The "/authorize" URL to authenticate against inside of the identity
+            provider. Must be a URL.
+          type: string
+        identifying_claim_name:
+          description: |
+            The name of the claim that specifies the user's identity inside of a
+            token.
+          type: string
+    IdentityProviderListResponse:
+      description: Represents a list of identity providers as a response body.
+      type: object
+      required:
+        - identity_providers
+        - total_size
+      properties:
+        identity_providers:
+          description: The identity providers that are in the list.
+          type: array
+          items:
+            $ref: '#/components/schemas/IdentityProviderResponse'
+        total_size:
+          description: The total number of identity providers contained by the Realm.
+          type: integer
+          format: uint
+          minimum: 0
+        next_page_token:
+          description: The value to be passed as the page_token parameter to retrieve the next page.
+          type: string
+          nullable: true
+    IdentityProviderProtocolConfigOidcIdpResponse:
+      description: |
+        OIDC protocol configuration for connecting to an identity provider, and
+        validating the token we received.
+      type: object
+      required:
+        - client_id
+        - client_secret
+        - token_scopes
+        - identity_attribute
+        - pkce
+        - jwks_url
+        - token_url
+        - authorize_url
+        - redirect_url
+        - identifying_claim_name
+        - type
+      properties:
+        type:
+          type: string
+          enum:
+            - oidc_idp
+        client_id:
+          description: |
+            The OIDC client id. This value is from the identity provider.
+          type: string
+        client_secret:
+          description: |
+            The OIDC client secret. This value is from the identity provider.
+          type: string
+        token_scopes:
+          description: |
+            The scopes to assign to the generated Access token. Scopes will be checked against the identity before validating.
+          type: array
+          items:
+            type: string
+        identity_attribute:
+          $ref: '#/components/schemas/SubjectField'
+        pkce:
+          $ref: '#/components/schemas/PkceConfig'
+        jwks_url:
+          description: |
+            The URL that points to the ".well-known/jwks.json" of the identity
+            provider. Must be a URL.
+          type: string
+        token_url:
+          description: |
+            The URL that points to the "/token" endpoint of the identity
+            provider. Must be a URL.
+          type: string
+        authorize_url:
+          description: |
+            The "/authorize" URL to authenticate against inside of the identity
+            provider. Must be a URL.
+          type: string
+        redirect_url:
+          description: |
+            Redirect URL provided by Beyond Identity that the IdP can redirect
+            end users to after successful authorize call. This is an
+            OIDC-compliant callback.
+          type: string
+        identifying_claim_name:
+          description: |
+            The name of the claim that specifies the user's identity inside of a
+            token.
+          type: string
+    IdentityProviderProtocolConfigResponse:
+      description: |
+        Represents the protocol configuration that is used by the identity
+        provider.
+      oneOf:
+        - $ref: '#/components/schemas/IdentityProviderProtocolConfigOidcIdpResponse'
+    IdentityProviderResponse:
+      description: Represents an identity provider.
+      type: object
+      required:
+        - id
+        - tenant_id
+        - realm_id
+        - protocol_config
+        - display_name
+      properties:
+        id:
+          description: |
+            A unique identifier identifying an identity provider within a realm.
+          type: string
+        tenant_id:
+          type: string
+          description: |
+            A unique identifier for the identity provider's tenant. This is automatically
+            set on creation. This field is immutable and read-only.
+          readOnly: true
+          example: 0001f1f460b1ace6
+        realm_id:
+          type: string
+          description: |
+            A unique identifier for the identity provider's realm. This is automatically
+            set on creation. This field is immutable and read-only.
+          readOnly: true
+          example: 8f5bec58229e6f29
+        display_name:
+          type: string
+          description: |
+            The human-readable name associated with the identity provider.
+        protocol_config:
+          $ref: '#/components/schemas/IdentityProviderProtocolConfigResponse'
+    IdentityProviderTestResponse:
+      description: Represents an SSO config test response body.
+      type: object
+      required:
+        - identity_provider_id
+        - display_name
+        - is_success
+        - status_code
+      properties:
+        identity_provider_id:
+          type: string
+        display_name:
+          type: string
+        is_success:
+          type: boolean
+        status_code:
+          type: string
+        error_context:
+          type: string
     Error:
       type: object
       properties:
