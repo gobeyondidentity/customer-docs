@@ -9,7 +9,7 @@ keywords:
 pagination_next: null
 pagination_prev: null
 last_update:
-  date: 2025-01-28
+  date: 2025-01-30
   author: Jerome Villegas
 draft: false
 hide_table_of_contents: false
@@ -87,7 +87,7 @@ The steps in this section are for going through the initial Beyond Identity conf
 
 ### 🟠 Okta: Set up Beyond Identity group
 
-This section covers creating a Beyond Identity group in your Okta environment. This will be the subset of users that will use Beyond Identity phishing-resistant authentication to authenticate into Okta.
+This section covers creating a Beyond Identity group in your Okta environment. This is the subset of users to use Beyond Identity phishing-resistant authentication to authenticate into Okta.
 
 1. On your Okta home page, navigate to **Directory** → **Groups** on the left hand side.  
 2. Click the **Add Group** button.  
@@ -104,7 +104,7 @@ The Stage II sections cover the System for Cross-domain Identity Management (SCI
 SCIM is used to populate users from your Okta directory to the Beyond Identity directory. The SCIM protocol automatically updates any changes in your Okta directory to the Beyond Identity directory.
 
 :::note
-With the SCIM implementation, this means the Okta directory is the source of truth. Any changes made to your Okta directory will be pushed and reflected in the Beyond Identity directory.
+With the SCIM implementation, this means the Okta directory is the source of truth. Any changes made to your Okta directory are pushed and reflected in the Beyond Identity directory.
 :::
 
 ### 🟠 Okta: Create outbound SCIM app
@@ -333,8 +333,5 @@ This enrollment email guides through the following steps.
 
 :::success
 Congratulations! You've completed your Okta and Beyond Identity integration!
-
-<br><br>
-
-Now, when your users login to Okta, they will be prompted with Beyond Identity for seamless authentication experience.
+<br></br><br></br>Now, when your users login to Okta, they are prompted with Beyond Identity for seamless authentication experience.
 :::
