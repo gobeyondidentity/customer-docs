@@ -191,7 +191,7 @@ const sidebars = {
     {
       type: "category",
       label: "Resources",
-      collapsed: true,
+      collapsed: false,
       collapsible: true,
       link: {
         type: "doc",
@@ -199,6 +199,7 @@ const sidebars = {
       },
       items: [
         "resources/os-support",
+        "resources/proxy-end-user",
         {
           type: "link",
           label: "Service Status",
