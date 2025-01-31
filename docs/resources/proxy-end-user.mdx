@@ -29,11 +29,11 @@ In a future release, this feature defaults to an enabled state.  We recommend an
 
 We are releasing this feature on Windows, then macOS shortly to follow.  This specific release only updates Windows.
 
-## End user Guide
+## End user guide
 
 This section covers the actions IT administrators take to toggle visibility of this functionality for your organization's end users.
 
-1. To turn on the proxy PAC support, go to **File** > **Enable PAC Support (Beta).**  When the feature is enabled, the **File** > **Disable PAC Support (Beta) **appears in the menu.
+1. To turn on the proxy PAC support, go to **File** > **Enable PAC Support (Beta)**.  When the feature is enabled, the **File** > **Disable PAC Support (Beta)** appears in the menu.
 
 ![Proxy end user visibility toggle](../images/pa-proxy.png)
 
@@ -47,7 +47,7 @@ Without this bypass added, the Windows Platform Authenticator works as expected,
 
 This code sample defines network routing rules for proxy server configuration. It configures authentication services to work as expected and maintain security through proxy routing for general internet traffic.
 
-```
+```javascript
 function FindProxyForURL(url, host)
 {
     // Exclude FTP from proxy
