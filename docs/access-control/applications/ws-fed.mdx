@@ -96,7 +96,7 @@ on the Beyond Identity side for delegating authentication to Beyond Identity.
 1. For the **Subject User Name Attribute** field, select **External ID** in the dropdown.
     - This field is the value that is present in the WS-Fed token after Beyond Identity authenticates the user.
     This is how Entra matches the Beyond Identity user to the user in Entra.
-1. For the **Attribute Statements (Optional)** section, use the table below to input the additional 4 attributes.
+1. For the **Attribute Statements (Optional)** section, use the table below to input the additional four attributes.
 These are additional attributes sent in the WS-Fed token to Entra during the authentication process.
 
 | Service Provider Attribute Name | Name Format | Beyond Identity Attribute Name | Namespace |
@@ -112,16 +112,16 @@ These are additional attributes sent in the WS-Fed token to Entra during the aut
 
 The Stage II sections cover the System for Cross-Domain Identity Management (SCIM) implementation between Beyond Identity as the inbound platform and Microsoft Entra ID as the outbound platform.
 SCIM is used to populate users from your Microsoft Entra ID directory to the Beyond Identity directory.
-The SCIM protocol will automatically update any changes in your Microsoft Entra ID directory to the Beyond Identity directory.
+The SCIM protocol automatically updates any changes in your Microsoft Entra ID directory to the Beyond Identity directory.
 
 :::note
-This means that the Entra ID directory is your source of truth. Any changes made to your directory **should occur in Microsoft Entra ID** and will be reflected in Beyond Identity directory.
+With the SCIM implementation, the Entra ID directory is the source of truth. Any changes made to the Entra ID directory are reflected in the Beyond Identity directory.
 :::
 
 
 ### 🟠 Create SCIM application in Microsoft Entra ID
 
-This will create a SCIM application in Microsoft Entra ID that will be used to provision users to Beyond Identity.
+This section includes steps for creating a SCIM application in Microsoft Entra ID. This SCIM application provisions users to Beyond Identity.
 
 1. Navigate to your Microsoft Entra ID Admin Console at [https://portal.azure.com](https://portal.azure.com).
 1. Navigate to **Microsoft Entra ID**.
@@ -133,20 +133,18 @@ This will create a SCIM application in Microsoft Entra ID that will be used to p
 1. Under the **Getting Started** section, click **1. Assign users and groups**.
 1. Click **+ Add user/group**.
 1. On the left-hand navigation, under **Users and groups**, click **None Selected**.
-1. Select the users and groups that will be using Beyond Identity authentication. This should be all the users in the domain that you
-will federate later.
-1. Once you have selected the users and groups, click **Assign** at the bottom of the page.
+1. Select the users and groups for using Beyond Identity authentication. This includes all the users in the domain that you later federate.
+1. After selecting the users and groups, click **Assign** at the bottom of the page.
 1. Now, on the left-hand navigation, click **Manage** → **Provisioning**.
-1. This should bring you to a preview of the application. On the left-hand navigation, click **Manage** → **Provisioning**.
-   - We know that the past two steps are the exact same, but Entra ID is hard to navigate and it just be like that.
+1. This shows a preview of the application. On the left-hand navigation, click **Manage** → **Provisioning**.
 1. For the **Provisioning Mode**, set to **Automatic**.
-1. A new section, **Admin Credentials**, should have appeared.
-1. For the next part, you will go back to the Beyond Identity console to get the SCIM credentials to input into the **Admin Credentials** section.
+1. The new section, **Admin Credentials** appears.
+1. Return to the Beyond Identity console to get the SCIM credentials to input into the **Admin Credentials** section.
 
 
 ### 🔵 Set up SCIM application in Beyond Identity
 
-This will get the SCIM credentials from Beyond Identity to enter into the Entra ID SCIM application you just created.
+This section is for getting the SCIM credentials from Beyond Identity to enter into the Entra ID SCIM application you just created.
 This step enables Entra ID to push users and groups from your Entra ID directory into your Beyond Identity directory.
 
 1. Navigate to your Beyond Identity Admin Console.
@@ -155,100 +153,100 @@ This step enables Entra ID to push users and groups from your Entra ID directory
 1. Click the **SCIM** tile to proceed.
 1. Click **Add SCIM**.
 1. Under **General** → **Display Name**, input `Microsoft Entra ID SCIM` into the text field.
-1. Under the **Configure inbound provisioning section**, you will need the following 2 values:
+1. Under the **Configure inbound provisioning section**, configure the following values.
    - **SCIM URL**
    - An API Bearer token you generate in the next step.
 1. To generate the API Bearer token, go to the **Bearer tokens** section and click the **Add Bearer Token** button.
-1. For the **Name** field, input `Microsoft Entra ID SCIM Token`. You can leave the expiration field as the default value.
+1. For the **Name** field, input `Microsoft Entra ID SCIM Token`. Leave the expiration field as the default value.
 1. Click **Add token**.
 1. Copy the value and store in a secure location.
 1. Click **Save Changes** at the top of the page.
 
 :::note
 The Beyond Identity bearer token for the inbound SCIM has an expiration date. To ensure the SCIM implementation doesn't break, the token must be updated after the initial token expires.
-
+<br></br><br></br>
 Entra ID does not support SCIM with `client credentials`, which is a service-to-service authentication protocol that automatically refreshes the tokens. We will look into alternative solutions to ensure that you don't have to manually update the token from time to time.
 :::
 
 ### 🟠 Enter SCIM credentials in Microsoft Entra ID
 
 1. Navigate back to your SCIM application that you created in [Create SCIM application in Microsoft Entra ID section](#-create-scim-application-in-microsoft-entra-id).
-1. Under **Admin Credentials**, input the following values:
+1. Under **Admin Credentials**, input the following values.
    - `Tenant URL`: the value of `SCIM URL` from the section above.
    - `Secret Token`: the Bearer token that you created from the section above.
 1. Click **Test Connection**.
    1. If the test connection is successful, click **Save**.
    1. If the test connection is unsuccessful, go back to the [Set up SCIM application in Beyond Identity section](#-set-up-scim-application-in-beyond-identity) and ensure the correct values were copied over.
 1. Click **Save**.
-1. You should see another new section, **Mappings**, appear. Go to the next section for next steps.
+1. The new section, **Mappings**, appears.
 
 ### 🟠 Update Attribute Mappings for SCIM in Microsoft Entra ID
 
 This section covers the attribute mappings for the SCIM application in Microsoft Entra ID.
 This ensures that your Entra ID user attributes maps correctly to the Beyond Identity user attributes.
-This section is definitely confusing (as the rest of the guide has been), but bear with us, we're almost there.
 
 1. Under the **Mappings** section, click **Provision Microsoft Entra ID Users**.
 1. At the bottom of the **Attribute Mapping** section, click **Show advanced options** checkbox.
 1. Click **Edit attribute list for customappsso**.
-1. At the bottom, add the following attribute:
+1. At the bottom, add the following attribute.
 
     | Name | Type |
     |---|---|
     | `emails[primary eq true].value` | String |
 
 1. Click **Save**.
-1. Now, under the **Attribute Mappings** section, click **Add New Mapping**.
-1. The following configuration will apply (all other fields can be left as default):
+1. Under the **Attribute Mappings** section, click **Add New Mapping**.
+1. Apply the following configurations. All other fields are valid defaults.
    - **Source attribute**: `mail`
    - **Target attribute**: `emails[primary eq true].value`
 8. Click **Save**.
 
 :::note
-The reason we need to do this is because in the SCIM spec, there are 2 types of emails for the user. A `primary` email and a `work` email.
-The default Entra ID SCIM configuration maps the user's email into the `work` email, which Beyond Identity does not currently support.
-Beyond Identity does however, support the `primary` email, which is why we do this custom mapping here.
+In the SCIM specifications, users have two types of emails, the `primary` email and `work` email. This setup confirms the correct email selection in the configuration.
+The default Entra ID SCIM configuration maps the user's email into the `work` email. The `work` email isn't currently supported in Beyond Identity. The custom mapping for Beyond Identity uses the supported `primary` email instead.
 :::
 
 
-9. We need to edit one last thing in the configuration here. Under the **Attribute Mappings** list, find the `externalId` attribute.
+9. Under the **Attribute Mappings** list, find the `externalId` attribute.
 10. In that row, click the `Edit` button.
 11. For the **Source attribute** field, select `immutableId`.
 12. Click **Save**.
 :::note
-This step is done so that when Entra ID populates the Beyond Identity directory, the `immutableId` is set as the `External ID` field in Beyond Identity.
-This is the unique value that allows matching of identities in your Entra ID directory and Beyond Identity directory.
+This process confirms the `immutableId` is set as the `External ID` field in Beyond Identity when Entra ID populates the Beyond Identity directory.
+This unique value allows identity matching of your Entra ID and Beyond Identity directories.
 :::
 
-13. Now, save all the changes we made to **Attribute Mapping** by clicking **Save** at the top of the page.
-14. Almost done! In the next section, you will provision users from your Entra ID directory to the Beyond Identity directory.
+13. Click **Save** at the top of the page to save all changes to **Attribute Mapping**.
+<br></br>The next section covers provisioning users from your Entra ID directory to the Beyond Identity directory.
 
 ### 🟠 Provision users in Beyond Identity using the Entra ID SCIM application
 
-Nice! You're on the last step here. This section will provision users from your Entra ID directory to the Beyond Identity directory.
+This section includes steps to provision users from your Entra ID directory to the Beyond Identity directory.
 
 1. Navigate back to your SCIM application in Entra ID.
 1. Navigate to the **Overview** section.
 1. Click **Start Provisioning**.
 
 :::note
-This process could take up to 30 minutes to complete.
-Entra ID will also push changes to the Beyond Identity directory via SCIM on a fixed interval (typically 40 minutes).
+This process may take up to 30 minutes to complete.
+Entra ID also pushes changes to the Beyond Identity directory using SCIM on a fixed interval. This typically happens on a 40 minute schedule.
 :::
 
-4. Once this process completes, go back to your Beyond Identity Console.
+4. After this process is complete, return to your Beyond Identity Console.
 5. Click on **Identities** and you should see all your users populated!
 
 
 ## Stage III
 
-This section outlines the user enrollment process, which includes assigning users to the Beyond Identity application and ensuring they register a passkey on their device(s).
+This section outlines the user enrollment process. It includes assigning users to the Beyond Identity application and confirming they register a passkey on their device or devices.
 
-We complete this step before federating the domain because domain federation in Entra ID is an **all-or-nothing operation** when it comes to authentication.
+Completing this step is mandatory before federating the domain. This is because domain federation in Entra ID is a comprehensive action and can't be portioned or split otherwise for authentication. In this case, all users must have Beyond Identity assigned as the application and have a registered passkey on their device.
 
-Once authentication is switched to Beyond Identity, users must have a Beyond Identity passkey to log in successfully. Without one, they will be locked out.
+When authentication is switched to Beyond Identity, users must have a Beyond Identity passkey to log in successfully. All users without a Beyond Identity passkey are locked out from logging in.
 
-To prevent any disruptions to your organization, it is critical that all users register a passkey on their device(s) before proceeding with domain federation in Stage IV.
+:::tip
+Prevent any disruptions to your organization and confirm all users register a passkey on their device before proceeding with domain federation in Stage IV.
+:::
 
 ### 🔵 Assign application to users
 
