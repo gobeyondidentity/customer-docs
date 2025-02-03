@@ -1,7 +1,7 @@
 ---
 title: WS-Fed Integration Guide
 id: wsfed
-description: "Learn about the steps to complete the process to integrate Beyond Identity with WS-Fed."
+description: "Learn about the steps to complete the process to set up Beyond Identity for your Entra environment through WS-Fed."
 slug: /access-control/applications/wsfed
 keywords:
   - microsoft
@@ -10,7 +10,7 @@ keywords:
 pagination_next: null
 pagination_prev: null
 last_update:
-  date: 2024-11-19
+  date: 2025-01-30
   author: Jerome Villegas
 draft: false
 hide_table_of_contents: false
@@ -22,13 +22,22 @@ displayed_sidebar: mainSidebar
 
 ## Overview
 
-This guide is for integrating Web Services Federation (WS-Fed) with Beyond Identity for phishing-resistant and passwordless authentication for logins. Each section covers the steps required to complete the integration. View the following points for a general summary.
+This guide is for delegating authentication to Beyond Identity for your Entra environment through WS-Fed.
+Integrating Beyond Identity with your Entra environment through WS-Fed allows your users to authenticate with Beyond Identity, a passwordless, phishing-resistant, multi-factor authentication solution.
 
-- Add a new WS Fed application
-- Configure attributes in Beyond Identity
-- SCIM to map users and attributes to Beyond Identity
-- Federating a new domain
-- Testing for end users
+This guide covers the steps required to complete the integration.
+
+## Stage summary
+
+The integration setup consists of the five stages below. Each stage covers the initial set up for continuing the integration process on each respective platform. Follow the guide in linear order to complete the integration.
+
+| Stage | Summary | Microsoft Entra ID | Beyond Identity |
+| :---- | :---- | :---- | :---- |
+| [I](#stage-i) | Initial set up | - N/A | - [Set up WS-Fed application in Beyond Identity](#-set-up-ws-fed-application-in-beyond-identity) |
+| [II](#stage-ii) | System for Cross-domain Identity Management (SCIM) implementation | - [Create SCIM application in Microsoft Entra ID](#-create-scim-application-in-microsoft-entra-id)<br></br>- [Enter SCIM credentials in Microsoft Entra ID](#-enter-scim-credentials-in-microsoft-entra-id)<br></br>- [Update Attribute Mappings for SCIM in Microsoft Entra ID](#-update-attribute-mappings-for-scim-in-microsoft-entra-id)<br></br>- [Provision users in Beyond Identity using the Entra ID SCIM application](#-provision-users-in-beyond-identity-using-the-entra-id-scim-application) | - [Set up SCIM application in Beyond Identity](#-set-up-scim-application-in-beyond-identity) |
+| [III](#stage-iii) | User Enrollment | - N/A | - [Assign application to users](#-assign-application-to-users)<br></br>- [Create Entra ID Bookmark App](#-create-entra-id-bookmark-app)<br></br>- [Enroll users with passkeys](#-enroll-users-with-passkeys) |
+| [IV](#stage-iv) | Domain Federation | - [Executing Powershell Script for Domain Federation](#-executing-powershell-script-for-domain-federation)| - [Get Powershell Script from WS-Fed Application](#-get-powershell-script-from-ws-fed-application) |
+| [V](#stage-v) | Add New Users to Entra ID | - [Add new users after federation](#-add-new-users-after-federation) | - N/A |
 
 ## Prerequisites
 
@@ -38,20 +47,17 @@ To get started with the integration, view the following prerequisites.
 
 This information contains the necessary items for integrating with Beyond Identity.
 
-- Microsoft Entra ID global administrator privileges
+- Microsoft Entra ID Global Administrator privileges
 - Active Entra ID P1 license
 - Domain added to Entra, must not be federated
-  - NOTE: If domain is already federated, complete the unfederating process before continuing.
+  - NOTE: If the domain is already federated, complete the unfederating process before continuing.
 - Powershell configurations for administrators
-- SCIM implementation for Microsoft Entra as upstream directory source to Beyond Identity
-  - View the [Generic SCIM](/docs/access-control/applications/generic-scim) for more information.
-
 
 ### Beyond Identity requirements
 
 The list below covers the basic Beyond Identity requirements for the integration.
 
-- Secure Access Tenant with Super Admin Role
+- Secure Access Tenant with Super Administrator Role
   - Use an existing account, or [sign up here](https://www.beyondidentity.com/get-demo) to create a new Beyond Identity account
 - Have at least two devices and two Super Admin roles configured*
   - **Recommended, optional*
@@ -68,110 +74,271 @@ The sections below use these two color codings to identify the steps for separat
 
 🟠 **Microsoft Entra ID** - Microsoft Entra ID platform and Powershell tasks are highlighted in orange.
 
-## 🔵 Add new WS-Fed application in Beyond Identity console
+## Stage I
 
-The following section covers the 🔵 Beyond Identity console and related steps. For convenience, use a separate browser window for this section.
+The sections here are for the initial setup between Beyond Identity and Microsoft Entra ID.
+This is for setting up the WS-Fed application in the Beyond Identity Console.
 
-1. Under **Access Control** → **Applications**, click **WS-Fed**.
-2. On the **WS-Fed** page, click **Add WS-FED**.
-3. On the **New SSO Application** page, fields with * are required.  Under the **General** section, input the **Display Name*** information. 
-4. Under the **Configuration** section, input the following information into the respective fields.
+### 🔵 Set up WS-Fed application in Beyond Identity
+
+The following section covers setting up a WS-Fed application in the Beyond Identity console. This WS-Fed application is the configuration
+on the Beyond Identity side for delegating authentication to Beyond Identity.
+
+1. Navigate to your Beyond Identity Admin Console.
+1. On the left-hand navigation under **Access Control**, click **Applications**.
+1. Select the **Browse Applications** tab.
+1. Click the **WS-Fed** tile to proceed.
+1. Click **Add WS-FED**.
+1. Under **General** → **Display Name**, input `Microsoft Entra ID` into the text field.
+1. Under the **Configuration** section, input the following information into the respective fields.
     - **ACS URL (SSO URL)*** - `https://login.microsoftonline.com/login.srf`
     - **Audience URL (Entity ID)*** - `urn:federation:MicrosoftOnline`
-6. For the **Subject User Name Attribute** field, select **External ID** in the dropdown.
-
-## 🔵 Configure attributes in Beyond Identity
-
-Follow the steps below to copy important values from 🔵 Beyond Identity and paste them into the application configuration fields.
-
-1. On the **New SSO Application** page, scroll down to the **Attribute Statements (Optional) **section.
-2. Four additional attributes are required for this configuration. Click **Add Attribute** multiple times to add blank attribute rows.
-3. Use the table below to input the additional attributes.
+1. For the **Subject User Name Attribute** field, select **External ID** in the dropdown.
+    - This field is the value that is present in the WS-Fed token after Beyond Identity authenticates the user.
+    This is how Entra matches the Beyond Identity user to the user in Entra.
+1. For the **Attribute Statements (Optional)** section, use the table below to input the additional four attributes.
+These are additional attributes sent in the WS-Fed token to Entra during the authentication process.
 
 | Service Provider Attribute Name | Name Format | Beyond Identity Attribute Name | Namespace |
 |---|---|---|---|
-| `immutableID` | unspecified | External ID | `http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID` |
+| `immutableID` | unspecified | External ID | `http://schemas.microsoft.com/LiveID/Federation/2008/05` |
 | `emailaddress` | unspecified | Email | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |
 | `UPN` | unspecified | Username | `http://schemas.xmlsoap.org/claims` |
-| `authnmethodsreferences` | unspecified | Custom string `http://schemas.microsoft.com/claims/multipleauthn` | `http://schemas.microsoft.com/claims` |
+| `authnmethodsreferences` | unspecified | Custom static string `http://schemas.microsoft.com/claims/multipleauthn` | `http://schemas.microsoft.com/claims` |
 
-4. Click **Save Changes** at the top of the page.
+10. Click **Save Changes** at the top of the page.
 
-## 🟠 SCIM Entra users to Beyond Identity
+## Stage II
 
-At this point in the guide, complete the process for bringing Entra users to Beyond Identity. Use the Entra platform to complete the SCIM to map users and attributes to Beyond Identity for the integration. The requirements below are for mapping attributes to add and modify.
-
-On the **Attribute Mapping** page for **Provisioning** in Microsoft Entra, confirm the **customappsso Attributes** and corresponding **Microsoft Entra ID Attributes** configurations.
-
-- `emails[primary eq true].value`,  set **Apply this mapping** to **Always**
-- `emails[type eq "work"].value`, set **Apply this mapping** to **Only During Object Creation**
-- `externalID` → `immutableId`
+The Stage II sections cover the System for Cross-Domain Identity Management (SCIM) implementation between Beyond Identity as the inbound platform and Microsoft Entra ID as the outbound platform.
+SCIM is used to populate users from your Microsoft Entra ID directory to the Beyond Identity directory.
+The SCIM protocol automatically updates any changes in your Microsoft Entra ID directory to the Beyond Identity directory.
 
 :::note
-Confirm all users are in Entra before federating the domain. Adding new users in Entra after federating causes issues. See the [Add new users after federation section](#-add-new-users-after-federation) for more.
+With the SCIM implementation, the Entra ID directory is the source of truth. Any changes made to the Entra ID directory are reflected in the Beyond Identity directory.
 :::
 
-## 🔵🟠 Federate the domain
 
-The sections below have the steps for federating the domain to use with Beyond Identity.
+### 🟠 Create SCIM application in Microsoft Entra ID
 
-### 🔵 Secure Access console configuration
+This section includes steps for creating a SCIM application in Microsoft Entra ID. This SCIM application provisions users to Beyond Identity.
 
-The process below is for viewing the Secure Access console information about the federation process.
+1. Navigate to your Microsoft Entra ID Admin Console at [https://portal.azure.com](https://portal.azure.com).
+1. Navigate to **Microsoft Entra ID**.
+1. On the left-hand navigation, click **Manage** → **Enterprise applications**.
+1. Click **+ New application**.
+1. Click **+ Create your own application**.
+1. For field **What's the name of your app?**, input `Beyond Identity SCIM`.
+1. Click **Create**.
+1. Under the **Getting Started** section, click **1. Assign users and groups**.
+1. Click **+ Add user/group**.
+1. On the left-hand navigation, under **Users and groups**, click **None Selected**.
+1. Select the users and groups for using Beyond Identity authentication. This includes all the users in the domain that you later federate.
+1. After selecting the users and groups, click **Assign** at the bottom of the page.
+1. Now, on the left-hand navigation, click **Manage** → **Provisioning**.
+1. This shows a preview of the application. On the left-hand navigation, click **Manage** → **Provisioning**.
+1. For the **Provisioning Mode**, set to **Automatic**.
+1. The new section, **Admin Credentials** appears.
+1. Return to the Beyond Identity console to get the SCIM credentials to input into the **Admin Credentials** section.
 
-1. On the **New SSO Application** page, scroll down to the **General** section.
-2. Click **View Federation Script**.
-3. On the **Generate Federation Script** pop up, input your domain to the **Domain Name*** field.
-4. Click **Generate**.
-5. When the **Script Generated!** notification appears, click the **Download** button.
 
-### 🟠 Executing in Powershell
+### 🔵 Set up SCIM application in Beyond Identity
 
-These steps are for executing the script in 🟠 Powershell to federate the domain.
+This section is for getting the SCIM credentials from Beyond Identity to enter into the Entra ID SCIM application you just created.
+This step enables Entra ID to push users and groups from your Entra ID directory into your Beyond Identity directory.
 
-1. In your Powershell environment, open the downloaded file from [Step 5 of the Secure Access console configuration](#-secure-access-console-configuration) section.
-2. Run the file in your Powershell environment.
-3. For the Security warning pop up, click **Run once**.
-4. The browser window appears for the log in to Microsoft. Continue to pick your account for the login.
-5. Close the **Generate Federation Script** pop up. The domain is federated after logging in. According to Microsoft, domain federation can take up to 30 Minutes.
-
-## 🔵 Select identities in Beyond Identity
-
-Before continuying with the next steps, complete the sections in the [Generic SCIM guide](/docs/access-control/applications/generic-scim) for configuring users from the upstream directory source. The following section contains the steps to add identities as assignments for using Beyond Identity in the integration. 
+1. Navigate to your Beyond Identity Admin Console.
+1. On the left-hand navigation, click **Access Control** → **Applications**.
+1. Select the **Browse Applications** tab.
+1. Click the **SCIM** tile to proceed.
+1. Click **Add SCIM**.
+1. Under **General** → **Display Name**, input `Microsoft Entra ID SCIM` into the text field.
+1. Under the **Configure inbound provisioning section**, configure the following values.
+   - **SCIM URL**
+   - An API Bearer token you generate in the next step.
+1. To generate the API Bearer token, go to the **Bearer tokens** section and click the **Add Bearer Token** button.
+1. For the **Name** field, input `Microsoft Entra ID SCIM Token`. Leave the expiration field as the default value.
+1. Click **Add token**.
+1. Copy the value and store in a secure location.
+1. Click **Save Changes** at the top of the page.
 
 :::note
-NOTE: Adding new users after federating the domain causes a `sourceanchor` issue in Entra. See the [Add new users after federation section](#-add-new-users-after-federation) for more.
+The Beyond Identity bearer token for the inbound SCIM has an expiration date. To ensure the SCIM implementation doesn't break, the token must be updated after the initial token expires.
+<br></br><br></br>
+Entra ID does not support SCIM with `client credentials`, which is a service-to-service authentication protocol that automatically refreshes the tokens. We will look into alternative solutions to ensure that you don't have to manually update the token from time to time.
 :::
 
-1. Return to the **New WS Fed Integration** page in Beyond Identity.
-2. At the top of the page, click on the **Assignments** tab.
-3. Click the **Add Assignments** drop down.
-4. Select **By Identity**.
-5. On the **Add Identities** pop up, select the identity to use.
-6. Click **Add Identity**.
-7. At the top of the page, click on the **Settings** tab.
-8. Click **Save Changes** at the top of the page.
+### 🟠 Enter SCIM credentials in Microsoft Entra ID
 
+1. Navigate back to your SCIM application that you created in [Create SCIM application in Microsoft Entra ID section](#-create-scim-application-in-microsoft-entra-id).
+1. Under **Admin Credentials**, input the following values.
+   - `Tenant URL`: the value of `SCIM URL` from the section above.
+   - `Secret Token`: the Bearer token that you created from the section above.
+1. Click **Test Connection**.
+   1. If the test connection is successful, click **Save**.
+   1. If the test connection is unsuccessful, go back to the [Set up SCIM application in Beyond Identity section](#-set-up-scim-application-in-beyond-identity) and ensure the correct values were copied over.
+1. Click **Save**.
+1. The new section, **Mappings**, appears.
 
-:::success
-Congratulations! You've completed your Beyond Identity integration!
+### 🟠 Update Attribute Mappings for SCIM in Microsoft Entra ID
+
+This section covers the attribute mappings for the SCIM application in Microsoft Entra ID.
+This ensures that your Entra ID user attributes maps correctly to the Beyond Identity user attributes.
+
+1. Under the **Mappings** section, click **Provision Microsoft Entra ID Users**.
+1. At the bottom of the **Attribute Mapping** section, click **Show advanced options** checkbox.
+1. Click **Edit attribute list for customappsso**.
+1. At the bottom, add the following attribute.
+
+    | Name | Type |
+    |---|---|
+    | `emails[primary eq true].value` | String |
+
+1. Click **Save**.
+1. Under the **Attribute Mappings** section, click **Add New Mapping**.
+1. Apply the following configurations. All other fields are valid defaults.
+   - **Source attribute**: `mail`
+   - **Target attribute**: `emails[primary eq true].value`
+8. Click **Save**.
+
+:::note
+In the SCIM specifications, users have two types of emails, the `primary` email and `work` email. This setup confirms the correct email selection in the configuration.
+The default Entra ID SCIM configuration maps the user's email into the `work` email. The `work` email isn't currently supported in Beyond Identity. The custom mapping for Beyond Identity uses the supported `primary` email instead.
 :::
 
-## 🟠 Process for Microsoft user login
 
-The section below has information on the process for end users to log in using Beyond Identity in the integration.
+9. Under the **Attribute Mappings** list, find the `externalId` attribute.
+10. In that row, click the `Edit` button.
+11. For the **Source attribute** field, select `immutableId`.
+12. Click **Save**.
+:::note
+This process confirms the `immutableId` is set as the `External ID` field in Beyond Identity when Entra ID populates the Beyond Identity directory.
+This unique value allows identity matching of your Entra ID and Beyond Identity directories.
+:::
 
-1. Navigate to the Microsoft login page.
-2. Type the login information of the credentials from the federated domain.
-3. Click **Next**.
-4. This continues with the **Beyond Identity Platform Authenticator** process. Select the account corresponding to the federated domain.
-5. Continue with the Microsoft login procedure.
+13. Click **Save** at the top of the page to save all changes to **Attribute Mapping**.
+<br></br>The next section covers provisioning users from your Entra ID directory to the Beyond Identity directory.
 
-## 🟠 Add new users after federation
+### 🟠 Provision users in Beyond Identity using the Entra ID SCIM application
 
-If adding users to Entra after federating your domain, the `sourceanchor` issue occurs in Entra. The following code is a solution to create new users after federing the domain. 
+This section includes steps to provision users from your Entra ID directory to the Beyond Identity directory.
 
-Execute the Powershell script below to create new users and add the `immutableID` value for mapping to prevent the issue in the integration. Contact your Beyond Identity representative for additional support, if needed.
+1. Navigate back to your SCIM application in Entra ID.
+1. Navigate to the **Overview** section.
+1. Click **Start Provisioning**.
+
+:::note
+This process may take up to 30 minutes to complete.
+Entra ID also pushes changes to the Beyond Identity directory using SCIM on a fixed interval. This typically happens on a 40 minute schedule.
+:::
+
+4. After this process is complete, return to your Beyond Identity Console.
+5. Click on **Identities** and you should see all your users populated!
+
+
+## Stage III
+
+This section outlines the user enrollment process. It includes assigning users to the Beyond Identity application and confirming they register a passkey on their device or devices.
+
+Completing this step is mandatory before federating the domain. This is because domain federation in Entra ID is a comprehensive action and can't be portioned or split otherwise for authentication. In this case, all users must have Beyond Identity assigned as the application and have a registered passkey on their device.
+
+When authentication is switched to Beyond Identity, users must have a Beyond Identity passkey to log in successfully. All users without a Beyond Identity passkey are locked out from logging in.
+
+:::tip
+Prevent any disruptions to your organization and confirm all users register a passkey on their device before proceeding with domain federation in Stage IV.
+:::
+
+### 🔵 Assign application to users
+
+In this section, we will assign your users the WS-Fed application that we created in [Stage I](#stage-i). This ensures that when they login to Entra ID with their passkey, they successfully authenticate with Beyond Identity.
+
+1. Navigate to your Beyond Identity Admin Console.
+1. On the left-hand navigation, click **Access Control** → **Applications**.
+1. Go to your **Microsoft Entra ID** WS-Fed application that you created in [Stage I](#stage-i).
+1. Click the **Assignments** tab at the top.
+1. Click the **Add Assignments** drop down.
+1. Add the users and groups that are authenticating via Beyond Identity (this should be ALL your users).
+1. Click **Save Changes** at the top of the page once completed.
+
+### 🔵 Create Entra ID Bookmark App
+
+In this section, we will set up a **Bookmark App**. When your users complete the enrollment process, they are redirected to the Beyond Identity dashboard. To prevent user confusion, we will put an app tile that redirects the user to the Azure Portal.
+
+1. Navigate to your Beyond Identity Admin Console.
+1. On the left-hand navigation, click **Access Control** → **Applications**.
+1. Select the **Browse Applications** tab.
+1. Click on the **Bookmark** tile.
+1. Click **Add Bookmark**.
+1. Fill in the following Fields:
+   1. **Display Name**: `Azure Portal`
+   1. **Login Link**: `https://portal.azure.com`
+   1. **App Tile**: Upload an Azure Icon.
+1. Click **Save Changes** at the top.
+1. Navigate to the **Assignments** tab at the top.
+1. Click the **Add Assignments** drop down.
+1. Add the users and groups that are authenticating via Beyond Identity (this should be ALL your users).
+1. Click **Save Changes** at the top.
+
+
+### 🔵 Enroll users with passkeys
+
+In this section, we will get your end users set up with a passkey on their device. All your users MUST have a passkey registered on their device(s) before federating the domain, or they will be locked out.
+
+1. On the Beyond Identity console, navigate to **Identities** → a specific user → **Passkeys** tab.
+1. New users have no passkeys added. Click **Add a passkey**.
+1. Under Identity Verification Method, select **Magic link**.
+1. For the Delivery Method option, select **Send email** or **Generate link.**
+1. Click the **Send enrollment** button.
+   1. For the **Send email** option, the email connected to that identity receives a Beyond Identity email for the process to register a passkey.
+   2. For the **Generate link** option, a URL is generated from Beyond Identity. This link is for sharing with the user for them to register a passkey.
+1. When the user goes through the enrollment process, they will go through an interactive guide with the following 2 steps:
+   1. Download the Beyond Identity Platform Authenticator - this is the app that is required for Beyond Identity authentication.
+   2. Enroll a passkey on their device.
+
+:::note
+Ensure all your users have enrolled in passkeys before proceeding with the next step.
+:::
+
+## Stage IV Domain Federation
+
+In this step, we will federate your Azure domain to use Beyond Identity authentication.
+
+:::danger
+Ensure all your users have enrolled in passkeys before proceeding with the next step. Domain federation in Entra ID is an **all-or-nothing operation** when it comes to authentication. If any users do not have passkeys, they will be locked out.
+:::
+
+
+### 🔵 Get Powershell Script from WS-Fed Application
+
+We have a generated Powershell script for you to run!
+
+1. Navigate to your Beyond Identity Admin Console.
+1. On the left-hand navigation, click **Access Control** → **Applications**.
+1. Go to your **Microsoft Entra ID** WS-Fed application that you created in [Stage I](#stage-i).
+1. Under **Configuration**, click the **View Federation Script** button.
+1. Enter in the following values:
+   - **Domain Name**: Your domain name that you want federated. It should not have a leading period. Ex. `beyondidentity.com`.
+   - **Logoff Url**: You can set a logoff URL, or leave it as the default value.
+1. Download or copy the script. You will need it in the next step.
+
+### 🟠 Executing Powershell Script for Domain Federation
+
+These steps are for executing the script in Powershell to federate the domain.
+
+1. In your Powershell environment, run the script from the step above.
+1. For the Security warning pop up, click **Run once**.
+1. The browser window appears for the log in to Microsoft. Continue to pick your account for the login.
+1. The domain is federated after logging in. According to Microsoft, domain federation can take up to 60 Minutes.
+
+## Stage V
+
+This outlines the process for adding new users to your Entra ID environment.
+
+### 🟠 Add new users after federation
+
+If you add users to Entra after federating your domain, you may encounter the `sourceAnchor` issue. To prevent this, use the following Powershell script to create new users after federation.
+
+Run the PowerShell script below to create new users and set the `immutableID` value for proper mapping, ensuring a seamless integration. If you need further assistance, contact your Beyond Identity representative.
 
 ```
 Install-Module MSOnline
@@ -184,3 +351,7 @@ $uuid = [system.convert]::ToBase64String(([GUID]$user.objectID.Guid).ToByteArray
 Write-Output "$uuid"
 Set-Msoluser -UserPrincipalName $upn -ImmutableID $uuid
 ```
+
+:::success
+Congratulations! You've completed your Beyond Identity integration with Entra ID!
+:::
