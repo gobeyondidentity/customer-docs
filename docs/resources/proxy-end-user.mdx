@@ -41,7 +41,11 @@ This section covers the actions IT administrators take to toggle visibility of t
 
 Bypass any requests for host `*.authenticator.beyondidentity.com`. These domains resolve to `localhost` or `127.0.0.1` and are used for communication by the Platform Authenticator local to the system.
 
-Without this bypass added, the Windows Platform Authenticator works as expected, but the macOS Authenticator performance suffers. All platforms, however, require this bypass, including Windows. 
+Without this bypass added, the Windows Platform Authenticator works as expected, but the macOS Authenticator performance suffers. All platforms, however, require this bypass, including Windows.
+
+:::note
+**Limitations** - Only HTTP proxies are supported.
+:::
 
 ### Example PAC file
 
