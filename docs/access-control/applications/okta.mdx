@@ -9,7 +9,7 @@ keywords:
 pagination_next: null
 pagination_prev: null
 last_update:
-  date: 2025-01-30
+  date: 2025-02-05
   author: Jerome Villegas
 draft: false
 hide_table_of_contents: false
@@ -180,10 +180,6 @@ With the configuration complete for the inbound and outbound SCIM implementation
    - *NOTE*: The Okta directory cannot have a group with the same name existing in the Beyond Identity directory. Group name collisions result in an error.
 5. Click **Save**. This prompts the SCIM process to begin in Okta to push the group to Beyond Identity.
 
-:::note
-Check the identities and groups in the Beyond Identity Console to confirm the SCIM setup and application success. Updates may take time. If the SCIM setup hasn't completed, check your SCIM application configuration. 
-:::
-
 ## Stage III
 
 
@@ -230,6 +226,10 @@ This section guides you through configuring the Okta token created in the previo
 3. Click **Save changes** at the top of the page.  
 4. Scroll down to the **Client Information & Endpoints** section for values to copy to Okta.
 
+:::note
+Check the identities and groups in the Beyond Identity Console to confirm the SCIM setup and application success. Updates may take time. If the SCIM setup hasn't completed, check your SCIM application configuration. 
+:::
+
 ## Stage IV
 
 In this stage of the integration, the Okta platform requires the new identity provider of Beyond Identity to get configured. The sections below also include using routing rules for Beyond Identity to serve as the identity provider when logging into Okta resources.
@@ -250,7 +250,7 @@ The steps here must be completed before moving on to the Beyond Identity section
 4. Under the General settings section, input `Beyond Identity` for the name.  
 5. Under the **Client details** and **Endpoints** sections, input the following values from **Client Information & Endpoints** of your Okta app in Beyond Identity. 
 
-*NOTE*: On your Okta app in Beyond Identity, confirm the `Client ID` and `Client secret` values are from the **Client Information & Endpoints** section. The separate values from **Configure registration attribute for users in Okta** section aren't valid for the Okta identity provider.
+*NOTE*: On your Okta app in Beyond Identity, confirm the `Client ID` and `Client secret` values are from the **Client Information & Endpoints** section. The separate values from the **Configure inbound provisioning** section aren't valid for the Okta identity provider.
 
    - **Client ID** → 🟠 **Client ID**, under Client details  
    - **Client Secret** → 🟠 **Client Secret**, under Client details  
