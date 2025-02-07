@@ -180,6 +180,12 @@ With the configuration complete for the inbound and outbound SCIM implementation
    - *NOTE*: The Okta directory cannot have a group with the same name existing in the Beyond Identity directory. Group name collisions result in an error.
 5. Click **Save**. This prompts the SCIM process to begin in Okta to push the group to Beyond Identity.
 
+:::note
+Identities may not appear in the group when pushing the SCIM transfer if users are provisioned before the group in Okta because of a provisioning error during the SCIM transfer. Provision users in Okta after provisioning the group for the SCIM transfer to display users and groups in the correct order. 
+<br></br>
+If an identity provisioining error occurs during the SCIM transfer, navigate to the **Identities** section of your Okta dashboard to resolve the error.
+:::
+
 ## Stage III
 
 This section involves setting up a callback hook into your Okta directory to update an attribute on users in your Okta directory. This value communicates that the user has registered a Beyond Identity passkey. This attribute is necessary in Stage IV, [Okta: Create routing rules](#-okta-create-routing-rules) to route your users to use Beyond Identity to authenticate into Okta rather than your existing authentication methods.
