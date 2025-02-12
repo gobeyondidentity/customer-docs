@@ -1,5 +1,5 @@
 ---
-title: Directory
+title: Directory Management
 id: directory
 description: "Learn about identities, groups, and directory integrations."
 slug: /directory
@@ -8,7 +8,7 @@ keywords:
 pagination_next: null
 pagination_prev: null
 last_update:
-  date: 2024-11-26
+  date: 2025-02-11
   author: Jerome Villegas
 draft: false
 hide_table_of_contents: false
@@ -18,10 +18,45 @@ doc_type: overview
 displayed_sidebar: mainSidebar
 ---
 
-## Identity Management
+## Overview
 
-- [Devices](/docs/directory/devices)
-- [Groups](/docs/directory/groups)
-- [Identities](/docs/directory/identities)
-- [Roles](/docs/directory/roles)
+Directory management is the foundation of organizational security and access control. Beyond Identity has Directory models for administrating access privileges in your organization consisting of Identities, Groups, Devices, and Roles. Read about the models and their descriptions in the list below.
 
+- [Identities](/docs/directory/identities) - Users, individuals, entities
+- [Groups](/docs/directory/groups) - Collections of Identities
+- [Devices](/docs/directory/devices) - Hardware to connect to organizational resources
+- [Roles](/docs/directory/roles) - Defined groups of permissions
+
+This overview provides the foundation for understanding directory management. Each model is an important part in maintaining organizational security and enabling efficient resource access.
+
+## Relationships between models
+
+The Directory models in Beyond Identity have connected relationships and form the basis of managing your organization's security. 
+
+- Identities are assigned roles that define their permissions
+- Identities use devices to access organizational resources
+- Groups make it easier for bulk management of models
+- Devices run applications and act on an identity's behalf
+- All actions and access behavior are tracked for security monitoring
+
+## Security considerations
+
+Directory models require constant attention to security as they are a prime threat target for malicious actors.
+
+- Implement strong authentication for all identities
+- Audit role assignments and permissions on a regular basis
+- Use up to date device security policies
+- Monitor application behavior for unusual patterns
+- Review access logs on a consistent schedule
+- Maintain backup and recovery procedures for directory data
+
+## Best practices
+
+These security strategies are helpful to continue protecting your organization's resources.
+
+- Have clear and specific role definitions
+- Review and update access permissions regularly
+- Monitor device compliance with security policies
+- Document application dependencies and access requirements
+- Implement the principle of least privilege across all models
+- Maintain processes for adding and removing identities, devices, and applications
