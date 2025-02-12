@@ -199,6 +199,7 @@ const sidebars = {
       },
       items: [
         "resources/os-support",
+        "resources/pppc-profile",
         "resources/proxy-end-user",
         {
           type: "link",
