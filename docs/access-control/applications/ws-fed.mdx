@@ -33,7 +33,7 @@ The integration setup consists of the five stages below. Each stage covers the i
 
 | Stage | Summary | Microsoft Entra ID | Beyond Identity |
 | :---- | :---- | :---- | :---- |
-| [I](#stage-i) | Initial set up | - N/A | - [Set up WS-Fed application in Beyond Identity](#-set-up-ws-fed-application-in-beyond-identity) |
+| [I](#stage-i) | Initial set up | - [(Optional) Set up Beyond Identity Group in Entra ID](#-optional-set-up-beyond-identity-group-in-entra-id) | - [Set up WS-Fed application in Beyond Identity](#-set-up-ws-fed-application-in-beyond-identity) |
 | [II](#stage-ii) | System for Cross-domain Identity Management (SCIM) implementation | - [Create SCIM application in Microsoft Entra ID](#-create-scim-application-in-microsoft-entra-id)<br></br>- [Enter SCIM credentials in Microsoft Entra ID](#-enter-scim-credentials-in-microsoft-entra-id)<br></br>- [Update Attribute Mappings for SCIM in Microsoft Entra ID](#-update-attribute-mappings-for-scim-in-microsoft-entra-id)<br></br>- [Provision users in Beyond Identity using the Entra ID SCIM application](#-provision-users-in-beyond-identity-using-the-entra-id-scim-application) | - [Set up SCIM application in Beyond Identity](#-set-up-scim-application-in-beyond-identity) |
 | [III](#stage-iii) | User Enrollment | - N/A | - [Assign application to users](#-assign-application-to-users)<br></br>- [Create Entra ID Bookmark App](#-create-entra-id-bookmark-app)<br></br>- [Enroll users with passkeys](#-enroll-users-with-passkeys) |
 | [IV](#stage-iv) | Domain Federation | - [Executing Powershell Script for Domain Federation](#-executing-powershell-script-for-domain-federation)| - [Get Powershell Script from WS-Fed Application](#-get-powershell-script-from-ws-fed-application) |
@@ -77,7 +77,24 @@ The sections below use these two color codings to identify the steps for separat
 ## Stage I
 
 The sections here are for the initial setup between Beyond Identity and Microsoft Entra ID.
-This is for setting up the WS-Fed application in the Beyond Identity Console.
+This is for setting up the WS-Fed application in the Beyond Identity Console. Optionally, you can set
+up a Beyond Identity Group in your Entra ID instance.
+
+### 🟠 (Optional) Set up Beyond Identity Group in Entra ID
+
+This section explains how to set up a Beyond Identity group in your Entra ID instance. While having a Beyond Identity group containing all your Beyond Identity users can be useful later in this guide, it is optional.
+
+1. Navigate to your Entra ID Admin Console at [https://portal.azure.com](https://portal.azure.com).
+1. Navigate to **Microsoft Entra ID**.
+1. On the left-hand navigation, click **Manage** → **Groups**.
+1. Click **+ New group**.
+1. For the **Group name** field, input `Beyond Identity Users`.
+1. For the **Group description** field, input `Beyond Identity Users Group`.
+1. Under **Members**, click **No members selected**.
+1. Search for the users that you want to add to the group.
+1. Select the users and click **Select**.
+1. Click **Create**.
+
 
 ### 🔵 Set up WS-Fed application in Beyond Identity
 
@@ -153,7 +170,7 @@ This step enables Entra ID to push users and groups from your Entra ID directory
 1. Click the **SCIM** tile to proceed.
 1. Click **Add SCIM**.
 1. Under **General** → **Display Name**, input `Microsoft Entra ID SCIM` into the text field.
-1. Under the **Configure inbound provisioning section**, configure the following values.
+1. Under the **Configure inbound provisioning section**, obtain the following values and store for user later.
    - **SCIM URL**
    - An API Bearer token you generate in the next step.
 1. To generate the API Bearer token, go to the **Bearer tokens** section and click the **Add Bearer Token** button.
@@ -183,11 +200,29 @@ Entra ID does not support SCIM with `client credentials`, which is a service-to-
 ### 🟠 Update Attribute Mappings for SCIM in Microsoft Entra ID
 
 This section covers the attribute mappings for the SCIM application in Microsoft Entra ID.
-This ensures that your Entra ID user attributes maps correctly to the Beyond Identity user attributes.
+This ensures that your Entra ID user and group attributes maps correctly to the Beyond Identity user and group attributes.
+
+#### Provision Microsoft Entra ID Groups
+
+1. Under the **Mappings** section, click **Provision Microsoft Entra ID Groups**.
+1. Under the **Attribute Mapping** section, there should be a **customappsso Attribute** called **externalId**.
+1. In that row, click the **Delete** button.
+
+:::note
+In the Beyond Identity SCIM implementation for groups, we do not support this field.
+:::
+
+
+#### Provision Microsoft Entra ID Users
 
 1. Under the **Mappings** section, click **Provision Microsoft Entra ID Users**.
 1. At the bottom of the **Attribute Mapping** section, click **Show advanced options** checkbox.
 1. Click **Edit attribute list for customappsso**.
+1. Mark the following attributes as required:
+  - **id**
+  - **displayName**
+  - **userName**
+  - **externalId**
 1. At the bottom, add the following attribute.
 
     | Name | Type |
@@ -199,7 +234,7 @@ This ensures that your Entra ID user attributes maps correctly to the Beyond Ide
 1. Apply the following configurations. All other fields are valid defaults.
    - **Source attribute**: `mail`
    - **Target attribute**: `emails[primary eq true].value`
-8. Click **Save**.
+1. Click **Save**.
 
 :::note
 In the SCIM specifications, users have two types of emails, the `primary` email and `work` email. This setup confirms the correct email selection in the configuration.
@@ -271,7 +306,7 @@ In this section, we will set up a **Bookmark App**. When your users complete the
 1. Click **Add Bookmark**.
 1. Fill in the following Fields:
    1. **Display Name**: `Azure Portal`
-   1. **Login Link**: `https://portal.azure.com`
+   1. **Login Link**: `https://myapps.microsoft.com`
    1. **App Tile**: Upload an Azure Icon.
 1. Click **Save Changes** at the top.
 1. Navigate to the **Assignments** tab at the top.
@@ -283,6 +318,23 @@ In this section, we will set up a **Bookmark App**. When your users complete the
 ### 🔵 Enroll users with passkeys
 
 In this section, we will get your end users set up with a passkey on their device. All your users MUST have a passkey registered on their device(s) before federating the domain, or they will be locked out.
+
+#### Bulk Enrollment
+
+1. On the Beyond Identity console, navigate to **Identities**.
+1. Use the **Enrollment status** filter to filter by enrollment status. Enrollment status can be one of the following values:
+  - **Unenrolled**: The identity does not have any pending invites or any active passkeys.
+  - **Pending**: The identity has one or more pending invites and no active passkeys.
+  - **Enrolled**: The identity has one or more active passkeys.
+3. After filtering, you can multi-select users that you want to send an enrollment email to.
+1. Click the **Send enrollments** button. A modal should appear.
+1. Under Identity Verification Method, select **Magic link**.
+   1. For the **Send email** option, the email connected to that identity receives a Beyond Identity email for the process to register a passkey.
+1. When the user goes through the enrollment process, they will go through an interactive guide with the following 2 steps:
+   1. Download the Beyond Identity Platform Authenticator - this is the app that is required for Beyond Identity authentication.
+   2. Enroll a passkey on their device.
+
+#### Single identity enrollment
 
 1. On the Beyond Identity console, navigate to **Identities** → a specific user → **Passkeys** tab.
 1. New users have no passkeys added. Click **Add a passkey**.
