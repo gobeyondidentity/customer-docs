@@ -326,21 +326,23 @@ In this section, we will get your end users set up with a passkey on their devic
    - **Pending**: The identity has one or more pending invites and no active passkeys.
    - **Enrolled**: The identity has one or more active passkeys.
 1. After filtering, you can multi-select users that you want to send an enrollment email to.
-1. Click the **Send enrollments** button. A modal should appear.
+1. Click the **Add passkey(s)** button above the identities table. A **Send enrollment** modal should appear.
 1. Under Identity Verification Method, select **Magic link**.
-   1. For the **Send email** option, the email connected to that identity receives a Beyond Identity email for the process to register a passkey.
+   1. For the **Send email** option, the email connected to that identity receives a Beyond Identity welcome email for the process to register a passkey.
 1. When the user goes through the enrollment process, they will go through an interactive guide with the following 2 steps:
    1. Download the Beyond Identity Platform Authenticator - this is the app that is required for Beyond Identity authentication.
-   2. Enroll a passkey on their device.
+   1. Enroll a passkey on their device.
 
 #### Single identity enrollment
 
 1. On the Beyond Identity console, navigate to **Identities** → a specific user → **Passkeys** tab.
-1. New users have no passkeys added. Click **Add a passkey**.
+1. The following options are avaialable for adding a passkey for an identity:
+   1. If an identity does not have any active passkeys, click the **Add a passkey** button in the middle.
+   1. If an identity has one or more active passkeys, click the **Actions** button → **Add passkey**.
 1. Under Identity Verification Method, select **Magic link**.
 1. For the Delivery Method option, select **Send email** or **Generate link.**
 1. Click the **Send enrollment** button.
-   1. For the **Send email** option, the email connected to that identity receives a Beyond Identity email for the process to register a passkey.
+   1. For the **Send email** option, the email connected to that identity receives a Beyond Identity welcome email for the process to register a passkey.
    1. For the **Generate link** option, a URL is generated from Beyond Identity. This link is for sharing with the user for them to register a passkey.
 1. When the user goes through the enrollment process, they will go through an interactive guide with the following 2 steps:
    1. Download the Beyond Identity Platform Authenticator - this is the app that is required for Beyond Identity authentication.
