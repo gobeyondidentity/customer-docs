@@ -37,7 +37,7 @@ The integration setup consists of the five stages below. Each stage covers the i
 | [II](#stage-ii) | System for Cross-domain Identity Management (SCIM) implementation | - [Create SCIM application in Microsoft Entra ID](#-create-scim-application-in-microsoft-entra-id)<br></br>- [Enter SCIM credentials in Microsoft Entra ID](#-enter-scim-credentials-in-microsoft-entra-id)<br></br>- [Update Attribute Mappings for SCIM in Microsoft Entra ID](#-update-attribute-mappings-for-scim-in-microsoft-entra-id)<br></br>- [Provision users in Beyond Identity using the Entra ID SCIM application](#-provision-users-in-beyond-identity-using-the-entra-id-scim-application) | - [Set up SCIM application in Beyond Identity](#-set-up-scim-application-in-beyond-identity) |
 | [III](#stage-iii) | User Enrollment | - N/A | - [Assign application to users](#-assign-application-to-users)<br></br>- [Create Entra ID Bookmark App](#-create-entra-id-bookmark-app)<br></br>- [Enroll users with passkeys](#-enroll-users-with-passkeys) |
 | [IV](#stage-iv) | Domain Federation | - [Executing Powershell Script for Domain Federation](#-executing-powershell-script-for-domain-federation)| - [Get Powershell Script from WS-Fed Application](#-get-powershell-script-from-ws-fed-application) |
-| [V](#stage-v) | Add New Users to Entra ID | - [Add new users after federation](#-add-new-users-after-federation) | - N/A |
+| [V](#stage-v) | Update ImmutableID for Azure Users (Azure AD Only Deployments) | - [Update ImmutableID for Azure Users](#-update-immutableid-for-azure-users) | - N/A |
 
 ## Prerequisites
 
@@ -378,7 +378,29 @@ We have a generated Powershell script for you to run!
 
 These steps are for executing the script in Powershell to federate the domain.
 
-1. In your Powershell environment, run the script from the step above.
+1. In your Powershell environment, ensure you have the proper [Microsoft Graph PowerShell SDK](https://learn.microsoft.com/en-us/powershell/microsoftgraph/installation?view=graph-powershell-1.0) installed. In your Powershell environment, run the following command:
+
+   ```
+   Install-Module Microsoft.Graph -Scope CurrentUser -Repository PSGallery -Force
+   ```
+
+2. Verify your installation by running the following command:
+   ```
+   Get-InstalledModule Microsoft.Graph
+   ```
+
+   Ensure the following modules are installed:
+   - `Microsoft.Graph.Authentication`
+   - `Microsoft.Graph.Identity.DirectoryManagement`
+
+   If they are not installed, run the following commands to install those SDKs directly:
+
+   ```
+   Install-Module Microsoft.Graph.Authentication -Scope CurrentUser -Force
+   Install-Module Microsoft.Graph.Identity.DirectoryManagement -Scope CurrentUser -Force
+   ```
+
+3. Run the script from the step above.
 1. For the Security warning pop up, click **Run once**.
 1. The browser window appears for the log in to Microsoft. Continue to pick your account for the login.
 1. The domain is federated after logging in. According to Microsoft, domain federation can take up to 60 Minutes.
@@ -387,23 +409,48 @@ These steps are for executing the script in Powershell to federate the domain.
 
 This outlines the process for adding new users to your Entra ID environment.
 
-### 🟠 Add new users after federation
+### 🟠 Update ImmutableID for Azure Users
 
-If you add users to Entra after federating your domain, you may encounter the `sourceAnchor` issue. To prevent this, use the following Powershell script to create new users after federation.
+If your organization is running in an **Azure AD Only** deployment, you must set the `immutableID` for the users in your Entra ID directory. This ensures that the users are properly mapped in the Beyond Identity directory. Users created in an **Azure AD Only** environment do not have this attribute populated.
 
-Run the PowerShell script below to create new users and set the `immutableID` value for proper mapping, ensuring a seamless integration. If you need further assistance, contact your Beyond Identity representative.
+1. Verify your Microsoft Graph PowerShell SDK installation by running the following command:
+   ```
+   Get-InstalledModule Microsoft.Graph
+   ```
 
-```
-Install-Module MSOnline
-Connect-MsolService
-$upn = "example@sample.com"
-Write-Output "Calling Get-MsolUser"
-$user = Get-MsolUser -UserPrincipalName $upn
-Write-Output "User $user"
-$uuid = [system.convert]::ToBase64String(([GUID]$user.objectID.Guid).ToByteArray())
-Write-Output "$uuid"
-Set-Msoluser -UserPrincipalName $upn -ImmutableID $uuid
-```
+   Ensure the following modules are installed:
+   - `Microsoft.Graph.Authentication`
+   - `Microsoft.Graph.Users`
+
+   If they are not installed, run the following commands to install those SDKs directly:
+
+   ```
+   Install-Module Microsoft.Graph.Authentication -Scope CurrentUser -Force
+   Install-Module Microsoft.Graph.Users -Scope CurrentUser -Force
+   ```
+
+2. Run the PowerShell script below to create new users and set the `immutableID` value for proper mapping. If you need further assistance, contact your Beyond Identity representative.
+
+   ```
+   # Connect to Microsoft Graph with necessary permissions
+   Connect-MgGraph -Scopes "User.ReadWrite.All"
+
+   # Define user UPN
+   $upn = "<upn of the user you are setting ImmutableID for>"
+
+   # Get user details
+   Write-Output "Calling Get-MgUser"
+   $user = Get-MgUser -UserId $upn
+   Write-Output "User found: $($user.DisplayName)"
+
+   # Generate ImmutableID from ObjectID
+   $uuid = [system.convert]::ToBase64String(([GUID]$user.Id).ToByteArray())
+   Write-Output "Generated ImmutableID: $uuid"
+
+   # Update the user's ImmutableID
+   Update-MgUser -UserId $upn -OnPremisesImmutableId $uuid
+   Write-Output "ImmutableID updated successfully."
+   ```
 
 :::success
 Congratulations! You've completed your Beyond Identity integration with Entra ID!
