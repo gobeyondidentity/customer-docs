@@ -1,7 +1,7 @@
 ---
 title: Identities
 id: identities
-description: "Learn about identities in Beyond Identity."
+description: "Learn about managing and organizing everything related to your Identities in Beyond Identity."
 slug: /directory/identities
 keywords:
   - identities
@@ -25,8 +25,8 @@ keywords:
 pagination_next: null
 pagination_prev: null
 last_update:
-  date: 03/18/2024
-  author: Shannon Moore
+  date: 2025-02-25
+  author: Jerome Villegas
 draft: false
 hide_table_of_contents: false
 hide_title: false
@@ -34,89 +34,125 @@ hide_breadcrumbs: false
 doc_type: overview
 displayed_sidebar: mainSidebar
 ---
-import Arcade, {Clip} from '@site/src/components/Arcade.tsx';
 
-## Manage Users and Passkeys
-Before your users can use Beyond Identity or obtain a passkey, they need to be added as an identity to the Beyond Identity tenant so they can access applications.
+## About Identities
 
-An identity is a unique identifier and an end-user may have multiple identities. Identities can also be part of a group or belong to many groups. Groups are commonly used as a predicate in a policy rule (e.g. Allow group "Beyond Identity Administrators" to access the "Beyond Identity Admin console" application).
+Identities are the users, individuals, or entities and their respective information. These Identities access resources in the organization and perform work. Each identity has unique attributes for identification and authentication. 
 
-You can add users by:
+Configure and manage Identities in Beyond Identity to build structure and accountability for access to resources in your organization. View the example list below for kinds of Identities that may exist in an organization.
 
-- Manually adding them in the Admin console
-- Uploading a .csv file in the Admin console
-- Using SCIM
-- Using the Beyond Identity APIs
+- People - User email addresses, employee IDs, department affiliations
+- Services - Service accounts and application identifiers
+- Systems - Server names and resource identifiers
 
-## Manage Users
+Identities are modeled with a streamlined lifecycle to make information about them more transparent and accessible. Users and individuals go through stages of employment and the Identity model has processes in place for each. When creating, viewing, editing, and removing Identities, each action is logged and recorded. These data points are available from within the platform for reference and tracking.
 
-### Manually Add a User
+## Identity lifecycle
 
-1. Select **Directory > Identities > Add identity > Manual Entry**.
-  
-2. Enter the name, username, and email of the new user.
+The Identity lifecycle in Beyond Identity consists of creating a new Identity, viewing that Identity's information within Beyond Identity, editing the Identity's configuration across other Beyond Identity models, and removing an Identity from Beyond Identity.
 
-3. Click **Add Identity**.
+- Create - Add new Identity
+- Retrieve - View Identity information
+- Update - Modify Identity information
+- Delete - Remove Identity and Identity information
 
- <Arcade clip={Clip.IdentitiesAddId} />
+This Identity lifecycle covers the transitions of an individual and their respective identity in your organization. For context, the lifecycle details the actions for adding a new employee, collecting relevant information about that employee's configuration, changing any part of the employee's setup, and removing the employee from Beyond Identity as needed.
 
+The security advantages of this lifecycle come from reducing IT admin errors, efficient provisioning, consistent and reliable compliance, and historical activity records. Beyond Identity supports these critical processes to make managing Identities straightforward and seamless.
 
-### Upload Users from a .csv File
-1. Select **Directory > Identities > Add identity > CSV Upload**.
+### Lifecycle example
 
-   Coming soon!
+For example at Sample Corporation, Isabella, the IT administrator there is onboarding a new employee, Ethan. Isabella uses the Beyond Identity console to add Ethan along with the information about his job, such as his email address. 
 
+During Ethan's first week, Isabella edits his Identity in Beyond Identity to update the Group that his job is in and the Applications that he can access. Over the next few months, Ethan switches teams and requires different access to different applications. Isabella modifies Ethan's Identity to place him in the correct Group. She also updates the Application access available to him in his new role.
 
+After a few years, Ethan has left Sample Corporation. Isabella then removes Ethan's Identity from Beyond Identity for the organization so that it can no longer access any of the protected resources. The console also tracks and logs the activity from Ethan's Identity throughout the lifecycle for an accurate history of that model.
 
-### Edit or Delete a User
+### Manage Identities
 
-1. Select **Directory > Identities** and click an identity from the list.
+Beyond Identity has all the available actions for managing your Identities. Create, Retrieve, Update, and Delete Identities across the platform using the methods in the sections below.
 
-2. Click **Edit Identity**.
+- Directly within the Beyond Identity platform
+- Use the System for Cross-domain Identity Management (SCIM)
+- Programmatically with the Beyond Identity API
 
-3. Update the fields as needed and click **Save**.
+#### Create Identities
 
-   -Or-
+Creating a new Identity adds an individual to the Beyond Identity platform for your organization. To get started in Beyond Identity, create new Identities or import Identity information from a source. 
 
-   Click **Delete Identity**.
+#### Retrieve Identities
 
+After populating Beyond Identity with Identities, you can view any and all Identity information with the same processes. From within the console, view the profile, passkey, and application information about the selected Identity.
 
-## Manage Passkeys
+#### Update Identities
 
-You can add passkeys using the Admin console or from the API. This section describes how to use the console to add and manage passkeys.
+This action is for editing and modifying existing Identities within Beyond Identity.
 
-### Add a Passkey
+#### Delete Identities
 
-1. Select **Directory > Identities** and click an identity from the list. You can search for a user if needed.
+When an Identity is no longer part of your organization, delete the Identity and their information from Beyond Identity.
 
-2. Click **Add a passkey**.
+:::note
+If an Identity has been removed from an upstream source, such as using SCIM, the Identity status becomes `suspended`. This means the Identity is no longer available within Beyond Identity.
+:::
 
-3. Select whether to send an email to the user to register their passkey or to use the API to generate a link.
+### Identity states
 
-   :::note
-   You can customize the email template in Branding.
-   :::
+Identities in Beyond Identity throughout the lifecycle have two categories of states, the enrollment status of the Identity and the directory status of the Identity.
 
-4. Click **Proceed & send email**.
+- Unenrolled - Identity has no pending invites or active passkeys
+- Pending - Identity has one or more pending invites and no active passkeys
+- Enrolled - Identity has one or more active passkeys
+- Suspended - Identity has been removed from upstream source and is no longer available
 
-   -Or-
+## Configure Identities with other Beyond Identity models
 
-   Click **Generate curl**.
+The Identity model within Beyond Identity is connected to both models for Groups and Applications. Identities can be configured according to these for more robust control and setup. These models interact with one another and can define Identity boundaries within an organization.
 
+### Roles
 
-### View Binding jobs
-When you send an invite to a user to add a passkey, until the user follows the instructions and registers/binds the passkey to their device, the passkey remains in a pending state under Binding jobs.
+Roles are specific titles for determining administrative rights in Beyond Identity. Assign Roles for IT administrators to limit specific scope of access to actions within Beyond Identity for your organization. 
 
-1. Select **Directory > Identities** and click an identity from the list.
+- Create - Add new Roles
+- Read - View available Roles
+- Update - Change or modify Roles
+- Delete - Remove or eliminate Roles
 
-2. Click the **Binding jobs** tab.
+For Roles in Beyond Identity, the default Role for new Beyond Identity tenants is the Super Administrator. This Role has full access and privileges to all available actions within Beyond Identity and for the organization.
 
-3. View the status of any enrollments.
+Additional Role support is available to limit and restrict administrator access across the organization. These Roles account for additional security for enforcing the least privileged access in Beyond Identity.
 
-   ![Binding job example](../images/directory/binding-job.png)
+### Groups
 
-4. You can optionally do the following:
+Groups are defined collections of Identities. These collections of users create bulk interactions as Groups. Identities can be assigned to one or more Groups. 
 
-   - Click **Refresh list** to update the list of outstanding jobs.
+- Create - Add new Groups
+- Read - View available Groups
+- Update - Change or modify Groups
+- Delete - Remove or eliminate Groups
 
-   - Click **View passkey** or click the down arrow beside a device with a passkey to view details about the enrollment.
+Additional configurations are also available for the Group model in Beyond Identity. Groups can have the assignments below.
+
+- Roles - Roles can be assigned to Groups to specify administrative rights of all users or individuals in the Group
+- Applications - Groups can have Applications assigned for wider access for all users or individuals in the Group
+
+### Applications
+
+Applications are tools and resources within the organization. Identities can be assigned Applications. When an Application is assigned to an Identity, that user or individual then has access to those resources.
+
+- Create - Add new Applications
+- Read - View available Applications
+- Update - Change or modify Applications
+- Delete - Remove or eliminate Applications
+
+:::note
+The actions above for this Beyond Identity model are only available within the Applications section of the Console. Managing Applications for specific models is not supported.
+:::
+
+Other examples of assigning Applications also apply to the list below. Applications can be assigned to other Beyond Identity models for additional resource control and management.
+
+- Identities - A user or individual Identity can have a specific Application assigned to them
+   - *NOTE: This behavior is only available within the Console.*
+- Roles - When a Role has an Application assigned to it, the specific role then has access privileges
+- Groups - Applications can be assigned to Groups for wider access for all users or individuals in the Group
+- Applications - For Applications assigned other Applications, this action provides additional access for a specific Application relationship
