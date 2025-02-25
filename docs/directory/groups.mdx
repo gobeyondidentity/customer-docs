@@ -1,7 +1,7 @@
 ---
 title: Groups
 id: groups
-description: "Learn about groups in Beyond Identity."
+description: "Learn about managing and organizing everything related to your Groups in Beyond Identity."
 slug: /directory/groups
 keywords:
   - groups
@@ -13,8 +13,8 @@ keywords:
 pagination_next: null
 pagination_prev: null
 last_update:
-  date: 03/18/2024
-  author: Shannon Moore
+  date: 2025-02-25
+  author: Jerome Villegas
 draft: false
 hide_table_of_contents: false
 hide_title: false
@@ -22,49 +22,98 @@ hide_breadcrumbs: false
 doc_type: overview
 displayed_sidebar: mainSidebar
 ---
-import Arcade, {Clip} from '@site/src/components/Arcade.tsx';
 
-## Manage Groups
-Groups help you allow or deny access to applications for multiple users (identities) based on policies. An accountant in HR can be a member of multiple groups. For example, a user in HR could be a member of the following:
-- General group (all employees)
-- HR group
-- Financial group
+## About Groups
 
+Groups are a collection of users or individuals and their respective information. These collections make it easier to categorize and manage users in bulk. Configure and manage groups in Beyond Identity to organize users according to shared common characteristics.
 
-## Add a Group and Assign Users
+For example, access rights can be updated for a large number of users through Groups, as all of the users in that Group receive the change at the same time. This simplifies directory management to consolidate users and application assignments.
 
-1. Navigate to **Directory > Groups** and click **Add group**.
+In Beyond Identity, Groups are modeled with a streamlined lifecycle to make information about them more transparent and accessible. The Group model has processes in place for creating, viewing, editing, and removing Groups. Each action is logged and recorded. These data points are available from within the platform for reference and tracking.
 
-2. Enter a name and description of the group, and then click on **Add group**.
+## Group lifecycle
 
-3. Click the newly created group name on the Groups page.
+The Group lifecycle in Beyond Identity consists of creating a new Group, viewing that Group’s information within Beyond Identity, editing the Group’s configuration across other Beyond Identity models, and removing a Group from Beyond Identity.
 
-4. Click on **Add group member**.
+- Create - Add new Group
+- Retrieve - View Group information
+- Update - Modify Group information
+- Delete - Remove Group and Group information
 
-5. Select a user from the **Select user identities** drop-down. Select the drop-down again to add more users to the group.
+This Group lifecycle covers the transitions of an individual and their respective identity in your organization. For context, the lifecycle details the actions for adding a new employee, collecting relevant information about that employee’s configuration, changing any part of the employee’s setup, and removing the employee from Beyond Identity as needed.
 
-6. Click on **Add to group**.
+The security advantages of this lifecycle come from reducing IT admin errors, efficient provisioning, consistent and reliable compliance, and historical activity records. Beyond Identity supports these critical processes to make managing Identities straightforward and seamless.
 
-   <Arcade clip={Clip.GroupsAddGroupCallout} />
+### Lifecycle example
 
+For example at Sample Corporation, Isabella, the IT administrator there is onboarding a new employee, Ethan. Isabella uses the Beyond Identity console to add Ethan along with the information about his job, such as his email address. 
 
-## Edit or Delete Users
+During Ethan’s first week, Isabella edits his Group in Beyond Identity to update the Group that his job is in and the Applications that he can access. Over the next few months, Ethan switches teams and requires different access to different applications. Isabella modifies Ethan’s Identity to place him in the correct Group. She also updates the Application access available to him in his new role.
 
-1. Navigate to **Directory > Groups** and click a group name.
+After a few years, Ethan has left Sample Corporation. Isabella then removes Ethan’s Identity from Beyond Identity for the organization so that it can no longer access any of the protected resources. The console also tracks and logs the activity from Ethan’s Identity throughout the lifecycle for an accurate history of that Beyond Identity model.
 
-2. Click **Edit group**.
+### Manage Groups
 
-3. Update the fields as needed and click **Save**.
+Beyond Identity has all the available actions for managing your Groups. Create, Retrieve, Update, and Delete Identities across the platform using the methods in the sections below.
 
-   -Or-
+- Directly within the Beyond Identity platform
+- Use the System for Cross-domain Identity Management (SCIM)
+- Programmatically with the Beyond Identity API
 
-   Click **Delete group**.
+#### Create Groups
 
+Creating a new Identity adds an individual to the Beyond Identity platform for your organization. To get started in Beyond Identity, create new Identities or import Identity information from a source. 
 
-## Remove a User from a Group
+#### Retrieve Groups
 
-1. Navigate to **Directory > Groups** and click a group name.
+After populating Beyond Identity with Groups, you can view any and all Group information with the same processes. From within the console, view the profile, passkey, and application information about the selected Group.
 
-2. Select the checkbox beside one or more group members.
+#### Update Groups
 
-3. Click on **Remove group members**.
+This action is for editing and modifying existing Identities within Beyond Identity.
+
+#### Delete Groups
+
+When a Group is no longer part of your organization, delete the Group and their information from Beyond Identity.
+
+## Configure Groups with other Beyond Identity models
+
+The Group model within Beyond Identity is connected to both models for Identities and Applications. Groups can be configured according to these for more robust control and setup. These models interact with one another and can define Group boundaries within an organization.
+
+### Roles
+
+Roles are specific titles for determining administrative rights in Beyond Identity. Assign Roles for IT administrators to limit specific scope of access to actions within Beyond Identity for your organization. 
+
+- Create - Add new Roles
+- Read - View available Roles
+- Update - Change or modify Roles
+- Delete - Remove or eliminate Roles
+
+For Roles in Beyond Identity, the default Role for new Beyond Identity tenants is the Super Administrator. This Role has full access and privileges to all available actions within Beyond Identity and for the organization.
+
+Additional Role support is available to limit and restrict administrator access across the organization. These Roles account for additional security for enforcing the least privileged access in Beyond Identity.
+
+### Identities
+
+IdentitiesGroups are defined collections of Identities. These collections of users create bulk interactions as Groups. Identities can be assigned to one or more Groups. 
+
+- Create - Add new Identity
+- Retrieve - View Identity information
+- Update - Modify Identity information
+- Delete - Remove Identity and Identity information
+
+### Applications
+
+Applications are tools and resources within the organization. Identities can be assigned to Applications. When an Application is assigned to an Identity, that user or individual then has access to those resources.
+
+- Create - Add new Applications
+- Read - View available Applications
+- Update - Change or modify Applications
+- Delete - Remove or eliminate Applications
+
+Other examples of assigning Applications also apply to the list below. Applications can be assigned to other Beyond Identity models for additional resource control and management.
+
+- Identities - A user or individual Identity can have a specific Application assigned to them
+- Roles - When a Role has an Application assigned to it, the specific role then has access privileges
+- Groups - Applications can be assigned to Groups for wider access for all users or individuals in the Group
+- Applications - For Applications assigned other Applications, this action provides additional access for a specific Application relationship
