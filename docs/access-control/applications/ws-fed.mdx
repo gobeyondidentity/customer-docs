@@ -400,6 +400,10 @@ These steps are for executing the script in Powershell to federate the domain.
    Install-Module Microsoft.Graph.Identity.DirectoryManagement -Scope CurrentUser -Force
    ```
 
+:::caution
+Ensure the versions of Microsoft Graph PowerShell SDK are **2.26.1** or higher. There was a bug in the 2.26.0 version that causes the domain federation to fail.
+:::
+
 3. Run the script from the step above.
 1. For the Security warning pop up, click **Run once**.
 1. The browser window appears for the log in to Microsoft. Continue to pick your account for the login.
