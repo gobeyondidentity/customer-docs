@@ -151,7 +151,9 @@ const config = {
           className: 'header-logo',
         },
         items: [
+          { to: "/docs/", label: "Home", position: "left" },
           { to: "/docs/release-notes", label: "Release Notes", position: "left" },
+          { to: "api/v1", label: "API Reference", position: "left" },
           {
             type: "docsVersionDropdown",
             position: "right",
