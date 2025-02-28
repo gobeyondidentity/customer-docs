@@ -1,5 +1,5 @@
 ---
-title: Release Notes and Changelog
+title: Release Notes
 id: endpoint
 description: 'Updates to Secure Access for Release Notes and Changelog'
 slug: /release-notes/release-notes-changelog
@@ -10,7 +10,7 @@ keywords:
 pagination_next: null
 pagination_prev: null
 last_update:
-  date: 2025-02-06
+  date: 2025-02-28
   author: Jerome Villegas
 doc_type: overview
 displayed_sidebar: mainSidebar
@@ -19,6 +19,36 @@ displayed_sidebar: mainSidebar
 ## Secure Access
 
 Learn more about the latest updates to the Secure Access platform.
+
+### February 28th, 2025
+
+<details>
+  <summary><p>Secure Access Updates</p></summary>
+### Console
+**v1.55**
+- Added support for bulk email enrollment from the Identities page
+  - This functionality is available on request. Contact your Beyond Identity support representative for more information.<br></br>
+  ![Bulk enrollment](../images/bulk-enrollment.png)
+<br></br>
+**v1.56**
+- Fixed a bug where Administrators and Users login to the Beyond Identity Console navigated users to the incorrect login screen if the `?tenant={TENANT_NAME}` query parameter was present in the URL
+<br></br>
+**v1.59**
+- Added Groups as an optional attribute statement value source
+  - When creating a new application with Generic SAML, the dropdown field for Beyond Identity Attribute Name now includes `Groups`. This functionality enables bulk assignment for Groups. Both the Beyond Identity Console and the API support this.<br></br>
+  ![Attribute statements](../images/attribute-statements.png)
+
+<br></br>
+### Bug fixes
+
+- Improved dashboard performance
+- Fixed an API token error with the Okta | Beyond Identity integration which prevented `byndRegistered` custom attribute in Okta from being updated successfully upon end user enrollment in Beyond Identity
+- Fixed an issue with SCIM-created Groups not being visible in the Application Assignment page
+- Resolved an issue with policy attributes evaluating to undefined in the policy activity log
+- Improved CrowdStrike policy evaluation accuracy for temporary API return errors that prevented successful user logins
+- Fixed a bug with policy activity log displaying the incorrect status of CrowdStrike Device Found attribute
+
+</details>
 
 ### February 6th, 2025
 
