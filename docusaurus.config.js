@@ -42,7 +42,7 @@ const config = {
             'https://github.com/gobeyondidentity/customer-docs/edit/main',
           versions: {
             current: {
-              label: "Next Gen",
+              label: "Secure Access",
               path: "",
             },
             v0: {
