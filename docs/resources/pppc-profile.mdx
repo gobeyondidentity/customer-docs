@@ -1,0 +1,39 @@
+---
+title: Privacy Preferences Policy Control (PPPC) Profile
+id: pppc-profile
+description: 'This page is a guide on configuring your MDM deployment for Beyond Identity for created profiles.'
+slug: /resources/pppc-profile
+keywords:
+  - MDM
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 2025-02-11
+  author: Jerome Villegas
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+
+## Overview
+
+Managing mobile devices in your organization requires balancing security requirements with user experience. This guide explains how to configure mobile device management (MDM) settings to create a seamless experience for your end users while maintaining security standards.
+
+End users may experience friction when using security tools on mobile devices. The list below covers common difficulties and issues. These interruptions can confuse users and impact productivity.
+
+- Multiple permission prompts
+- Manual configuration requirements
+- Repetitive authentication requests
+- Disk access authorization prompts
+
+The guide below covers steps to automate device configuration through a general MDM. This reduces user intervention, sets consistent security settings across devices, minimizes support requests, and increases user adoption of security tools.
+
+## Steps
+
+Follow the generalized instructions below for your MDM settings during deployment.
+
+1. Set **identifier type** to `path`.
+2. Input in **identifier field** the following value: `/Applications/Beyond Identity.app/Contents/Resources/osqueryi`.
+3. Set the **code requirement** to the sample below.
+```
+anchor apple generic and identifier osqueryi and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = BZA6SZ8XVQ)
+```
