@@ -199,6 +199,7 @@ const sidebars = {
       },
       items: [
         "resources/os-support",
+        "resources/pa-support",
         "resources/proxy-end-user",
         {
           type: "link",
