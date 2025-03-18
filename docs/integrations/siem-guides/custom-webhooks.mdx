@@ -31,7 +31,7 @@ Confirm you have the following prerequisites before continuing with the integrat
 - Beyond Identity
     - Tenant configured for organization with ability to enroll users
 - Custom webhooks
-    - /
+    - Webhook URL destination
 
 ## Stage summary
 
@@ -39,12 +39,12 @@ The integration setup consists of the two stages below. Each stage covers the in
 
 | Stage | Summary | Custom webhook | Beyond Identity |
 | :---- | :---- | :---- | :---- |
-| [I](#stage-i) | Initial configuration | - [](#-)<br></br>- [](#-) | - [Add integration in Beyond Identity](#-add-integration-in-beyond-identity) |
-| [II](#stage-ii) | Set up API and confirm logs | - [](#-) | - [Configure custom webhooks in Beyond Identity](#-configure-custom-webhooks-in-beyond-identity)<br></br>- [View SIEM integration logs](#-view-siem-integration-logs) |
+| [I](#stage-i) | Initial configuration | - [Configure your custom webhook destination](#-configure-your-custom-webhook-destination) | - [Add custom webhook integration in Beyond Identity](#-add-custom-webhook-integration-in-beyond-identity) |
+| [II](#stage-ii) | Set up Beyond Identity integration and confirm logs | - [Verify logs on your custom webhook](#-verify-logs-on-your-custom-webhook) | - [Configure custom webhooks in Beyond Identity](#-configure-custom-webhooks-in-beyond-identity)<br></br>- [View SIEM integration logs](#-view-siem-integration-logs) |
 
 # Steps
 
-Follow the steps in the sections below to complete your integration for Beyond Identity and Okta.
+Follow the steps in the sections below to complete your SIEM integration with Beyond Identity.
 
 ## Legend
 
@@ -52,29 +52,19 @@ The sections below use these two color codings to identify the steps for separat
 
 🔵 Beyond Identity: Beyond Identity platform tasks are highlighted in blue.
 
-🟠 Custom webhooks:  platform tasks are highlighted in orange.
+🟠 Custom webhooks: Custom webhooks tasks are highlighted in orange.
 
 ## Stage I
 
-The sections in this stage are for the intial setup of the integration between the two platforms.
+The sections in this stage are for the intial setup of the integration.
 
-### 🟠 
+### 🟠 Configure your custom webhook destination
 
-This section has the steps for covering the setup 
+To use the custom webhook SIEM integration in Beyond Identity, have a webhook observability vendor resource with the following requirements.
 
-### 🟠 
+- URL destination
 
-The ins
-
-1. 
-2. 
-3. 
-4. 
-5. 
-6. 
-
-
-### 🔵 Add integration in Beyond Identity
+### 🔵 Add custom webhook integration in Beyond Identity
 
 The section here includes the steps for configuring the SIEM integration in Beyond Identity. The instructions below are for the Beyond Identity Console.
 
@@ -85,23 +75,23 @@ The section here includes the steps for configuring the SIEM integration in Beyo
 
 ## Stage II
 
-The sections in this stage are for setting up the API key in Beyond Identity and viewing the logs in your custom webhook. Follow the sections below to complete the integration.
+The sections in this stage are for configuring the custom webhook values in Beyond Identity and viewing the logs on your custom webhook. Follow the sections below to complete the integration.
 
 ### 🔵 Configure custom webhooks in Beyond Identity
 
-The steps below are for adding values from DataDog to Beyond Identity for completing the SIEM integration.
+The steps below are for adding values from your custom webhook to Beyond Identity for completing the SIEM integration.
 
 1. On the **Add integration** pop up after completing the steps in Add integration in Beyond Identity section, input the following required values.
     - Name → `Beyond Identity SIEM integration`
-    -  → 
-2. Input the API value from Step 5 of the Create DataDog API key section into the API Key field.
+    - URL → Your custom webhook URL
+2. For the **Auth method** field, select **No auth** in the dropdown.
 3. For your configuration's events and threat signal selection, click the **Select all and automatically add...** checkboxes for both fields.
     - NOTE: These configuration selections can be changed and updated later.
 4. Confirm the Status is set to **Active**.
 5. Click **Test Configuration**.
 6. After testing is complete, click **Save changes**.
 
-### 🟠 Verify logs in 
+### 🟠 Verify logs on your custom webhook
 
 After completing the integration, view the logs from Beyond Identity within your custom webhook. Follow the instructions below to verify and confirm the data.
 
