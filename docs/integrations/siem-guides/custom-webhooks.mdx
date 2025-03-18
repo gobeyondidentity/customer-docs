@@ -1,0 +1,116 @@
+---
+title: Custom Webhooks
+id: custom-webhooks
+description: "Learn about this."
+slug: /integrations/siem-guides/custom-webhooks
+keywords:
+  - SIEM
+  - custom webhooks
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 2025-03-17
+  author: Jerome Villegas
+draft: false
+hide_table_of_contents: false
+hide_title: false
+hide_breadcrumbs: false
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+
+
+## Overview
+
+This is an instructional guide for integrating Beyond Identity events data with custom webhooks. Configure event log integrations with your observability tool of choice using our custom webhook option. Select the events to receive and create multiple integration configurations to support different reporting and monitoring needs. 
+
+## Prerequisites
+
+Confirm you have the following prerequisites before continuing with the integration.
+
+- Beyond Identity
+    - Tenant configured for organization with ability to enroll users
+- Custom webhooks
+    - /
+
+## Stage summary
+
+The integration setup consists of the two stages below. Each stage covers the initial set up for continuing the integration process on each respective platform. Follow the guide in linear order to complete the integration.
+
+| Stage | Summary | Custom webhook | Beyond Identity |
+| :---- | :---- | :---- | :---- |
+| [I](#stage-i) | Initial configuration | - [](#-)<br></br>- [](#-) | - [Add integration in Beyond Identity](#-add-integration-in-beyond-identity) |
+| [II](#stage-ii) | Set up API and confirm logs | - [](#-) | - [Configure custom webhooks in Beyond Identity](#-configure-custom-webhooks-in-beyond-identity)<br></br>- [View SIEM integration logs](#-view-siem-integration-logs) |
+
+# Steps
+
+Follow the steps in the sections below to complete your integration for Beyond Identity and Okta.
+
+## Legend
+
+The sections below use these two color codings to identify the steps for separate platforms.
+
+🔵 Beyond Identity: Beyond Identity platform tasks are highlighted in blue.
+
+🟠 Custom webhooks:  platform tasks are highlighted in orange.
+
+## Stage I
+
+The sections in this stage are for the intial setup of the integration between the two platforms.
+
+### 🟠 
+
+This section has the steps for covering the setup 
+
+### 🟠 
+
+The ins
+
+1. 
+2. 
+3. 
+4. 
+5. 
+6. 
+
+
+### 🔵 Add integration in Beyond Identity
+
+The section here includes the steps for configuring the SIEM integration in Beyond Identity. The instructions below are for the Beyond Identity Console.
+
+1. On the Beyond Identity Console lefthand navigation, under Platform, select **Integrations**.
+2. Select the **Browse integrations** tab.
+3. Select **Custom Webhook**.
+4. On the Custom Webhook overview page, click **Add instance**.
+
+## Stage II
+
+The sections in this stage are for setting up the API key in Beyond Identity and viewing the logs in your custom webhook. Follow the sections below to complete the integration.
+
+### 🔵 Configure custom webhooks in Beyond Identity
+
+The steps below are for adding values from DataDog to Beyond Identity for completing the SIEM integration.
+
+1. On the **Add integration** pop up after completing the steps in Add integration in Beyond Identity section, input the following required values.
+    - Name → `Beyond Identity SIEM integration`
+    -  → 
+2. Input the API value from Step 5 of the Create DataDog API key section into the API Key field.
+3. For your configuration's events and threat signal selection, click the **Select all and automatically add...** checkboxes for both fields.
+    - NOTE: These configuration selections can be changed and updated later.
+4. Confirm the Status is set to **Active**.
+5. Click **Test Configuration**.
+6. After testing is complete, click **Save changes**.
+
+### 🟠 Verify logs in 
+
+After completing the integration, view the logs from Beyond Identity within your custom webhook. Follow the instructions below to verify and confirm the data.
+
+1. Navigate to your custom webhook URL.
+2. Confirm Beyond Identity events data is available.
+
+
+import ViewSiem from '../../includes/_view-siem-integration-logs.mdx';
+
+### 🔵 View SIEM integration logs
+
+<ViewSiem />

@@ -60,11 +60,13 @@ const sidebars = {
                 id: "integrations/siem-guides/siem-guides",
               },
               items: [
+                "integrations/siem-guides/custom-webhooks", 
                 "integrations/siem-guides/datadog", 
-                // "integrations/siem-guides/", 
-                // "integrations/siem-guides/", 
-                // "integrations/siem-guides/",
-                // "integrations/siem-guides/"
+                "integrations/siem-guides/elastic",
+                "integrations/siem-guides/google-pubsub",
+                "integrations/siem-guides/microsoft-sentinel", 
+                "integrations/siem-guides/splunk",
+                "integrations/siem-guides/sumo-logic"
                   ],
               },]
        },
