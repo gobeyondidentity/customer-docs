@@ -29,7 +29,34 @@ Confirm you have the following prerequisites before continuing with the integrat
 
 - Beyond Identity
     - Tenant configured for organization with ability to enroll users
-- \
+- Elastic
+    - Elastic cloud account with admin privilege
+    - Firewall ports open to allow Beyond Identity to push events to your Elastic deployment, see the [Inbound traffic allow list](#inbound-traffic-allow-list) section for more 
+
+### Inbound traffic allow list
+
+Customers using IP controls require the following IPs as allow-listed for cloud communications from Beyond Identity cloud services to your integration servers.
+
+#### U.S. Customers
+
+Production US Primary
+`3.139.250.82`
+`3.133.76.42`
+`18.225.16.182`
+
+Production US Secondary
+`13.52.210.186`
+`54.151.74.30`
+`34.218.146.196`
+`54.203.163.254`
+`35.166.108.93`
+`3.121.221.43`
+
+#### EU Customers
+
+Production EU Primary
+`18.196.19.155`
+`52.28.57.25`
 
 ## Stage summary
 
@@ -37,8 +64,8 @@ The integration setup consists of the two stages below. Each stage covers the in
 
 | Stage | Summary | Elastic | Beyond Identity |
 | :---- | :---- | :---- | :---- |
-| [I](#stage-i) | Initial configuration | - [sample](#-)<br></br>- [sample](#-) | - [sample](#-) |
-| [II](#stage-ii) | Set up API and confirm logs | - [sample](#-) | - [sample](#-)<br></br>- [sample](#-) |
+| [I](#stage-i) | Initial configuration | - [Set up Elastic account and custom HTTP endpoint logs](#-set-up-elastic-account-and-custom-http-endpoint-logs)<br></br>- [Install Elastic agent](#-install-elastic-agent)<br></br>- [Create agent policy in Elastic](#-create-agent-policy-in-elastic)<br></br>- [Add HTTP logs integration to policy](#-add-http-logs-integration-to-policy) | - [Add integration in Beyond Identity](#-add-integration-in-beyond-identity) |
+| [II](#stage-ii) | Set up Elastic integration and confirm logs | - [Verify logs in Elastic](#-verify-logs-in-elastic) | - [Configure Elastic integration in Beyond Identity](#-configure-elastic-integration-in-beyond-identity)<br></br>- [View SIEM integration logs](#-view-siem-integration-logs) |
 
 # Steps
 
@@ -56,21 +83,65 @@ The sections below use these two color codings to identify the steps for separat
 
 The sections in this stage are for the intial setup of the integration between the two platforms.
 
-### 🟠 
+### 🟠 Set up Elastic account and custom HTTP endpoint logs
 
-This section has the steps for covering the setup 
+This section has the steps for covering the setup for your Elastic account. Follow the link to log in or create a new account for [Elastic](https://cloud.elastic.co/login). 
 
-### 🟠 
+To monitor Beyond Identity information, search for `Custom HTTP Endpoint Logs` in the other ways for ingesting data field. Complete the process by clicking the **+ Add Custom HTTP Endpoint Logs** button.
 
 
+### 🟠 Install Elastic agent
 
-1. 
-2. 
-3. 
-4. 
-5. 
-6. 
+This section covers installing the Elastic agent for monitoring Beyond Identity data.
 
+After adding the custom HTTP endpoint logs in Elastic. Continue the installation process in your Elastic account integrations.
+
+Select the agent platform relevant to your configuration. For example, a host running in AWS EC2 can run an Elastic agent. After the agent is successfully installed, the custom agent enrollment updates to show the agent has been enrolled.
+
+View the agent listed on the Fleet page under the Management section of the Elastic console.
+
+1. In your Elastic Observability platform page, under **Management**, select **Fleet**.
+2. Click the Add agent button.
+3. Navigate through the Elastic Add agent popup guide.
+
+### 🟠 Create agent policy in Elastic
+
+Agents are added to an agent policy and ntegrations are then attached to the policy. Agent policy is a collection of inputs and settings to define the data collected by an Elastic Agent. Each Elastic Agent can only be enrolled in a single policy.
+
+Within an Elastic Agent policy is a set of individual integration policies. These integration policies define the settings for each input type. The available settings in an integration depend on the version of the integration in use. 
+
+The **Custom HTTP Endpoint Log** integration is used for setting up a HTTP listener to post Beyond Identity data events.
+
+The **Custom HTTPJSON input** integration is used to ingest data from the Beyond Identity tenant events API endpoint `https://dataexport-public.byndid.com/v1/events?ordering=desc` to pull data.
+
+1. Under Management, navigate to **Fleet**.
+2. Click the **Agent Policies** tab.
+3. Click **+ Create agent policy**.
+4. Input `Agent Policy 1` in the Name field.
+5. Deselect the checkboxes for the following items.
+    - **Collect system logs and metrics**
+    - Under the Advanced options dropdown, in the Agent monitoring section
+        - **Collect agent logs**
+        - **Collect agent metrics**
+6. Click **Create agent policy**.
+
+### 🟠 Add HTTP logs integration to policy
+
+Enter “0.0.0.0”  for the Listen Address and a value for the listen port, for example 8787.
+
+:::note
+This port must be opened to Beyond Identity to post events.
+:::
+
+Maintain the defaults for the other settings. Under the **Where to add this integration?** section, select the agent policy `Agent Policy 1` created in the section above.
+
+1. Under Management, navigate to **Fleet**.
+2. Click the **Agent Policies** tab.
+3. Select the `Agent Policy 1` policy from the Create Agent Policy in Elastic section.
+4. Click **+ Add integrations**.
+5. Search for `Custom HTTP Endpoint Logs` in the search field and select the result.
+6. Click the **+ Add Custom HTTP Endpoint Logs** button.
+7. Complete the install Elastic agent process.
 
 ### 🔵 Add integration in Beyond Identity
 
@@ -85,16 +156,30 @@ The section here includes the steps for configuring the SIEM integration in Beyo
 
 The sections in this stage are for setting up the API key in Beyond Identity and viewing the logs. Follow the sections below to complete the integration.
 
-### 🔵 
+### 🔵 Configure Elastic integration in Beyond Identity
 
-1. 
+The steps below are for adding values from your custom webhook to Beyond Identity for completing the SIEM integration.
 
-### 🟠 Verify logs in 
+1. On the **Add integration** pop up after completing the steps in Add integration in Beyond Identity section, input the following required values.
+    - Name → `Beyond Identity SIEM integration`
+    - Host → Your Elastic host name
+    - Port → Your Elastic custom endpoint HTTP port
+2. For the **Auth method** field, select **No auth** in the dropdown.
+3. For your configuration's events and threat signal selection, click the **Select all and automatically add...** checkboxes for both fields.
+    - NOTE: These configuration selections can be changed and updated later.
+4. Confirm the Status is set to **Active**.
+5. Click **Test Configuration**.
+6. After testing is complete, click **Save changes**.
+
+### 🟠 Verify logs in Elastic
 
 After completing the integration, view the logs from Beyond Identity within your custom webhook. Follow the instructions below to verify and confirm the data.
 
-1. Navigate to your custom webhook URL.
-2. Confirm Beyond Identity events data is available.
+1. Navigate to your Elastic URL.
+2. Under **Analytics**, select **Discover**.
+3. Select the `logs-http_endpoint.generic-default` pattern to find all Beyond Identity logs within Elastic.
+4. Input `json.eventData.user.user_name: USER_WHO_AUTHENTICATED_USING_BI` in the query box to search for event data. Select the event in the results and click **JSON**.
+5. Confirm Beyond Identity events data is available.
 
 
 import ViewSiem from '../../includes/_view-siem-integration-logs.mdx';
