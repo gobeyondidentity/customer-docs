@@ -21,7 +21,7 @@ displayed_sidebar: mainSidebar
 
 ## Overview
 
-
+This guide provides instructions on how to integrate Beyond Identity events data with Microsoft Sentinel. Microsoft Sentinel Integration is done by posting event logs to Entra Log Analytics. The Log Analytics workspace is attached to Microsoft Sentinel.
 
 ## Prerequisites
 
@@ -29,7 +29,9 @@ Confirm you have the following prerequisites before continuing with the integrat
 
 - Beyond Identity
     - Tenant configured for organization with ability to enroll users
-- \
+- Microsoft Sentinel
+    - Admin privileges to create Log Analytics workspace
+    - Microsoft Sentinel license
 
 ## Stage summary
 
@@ -38,7 +40,7 @@ The integration setup consists of the two stages below. Each stage covers the in
 | Stage | Summary | Microsoft Sentinel | Beyond Identity |
 | :---- | :---- | :---- | :---- |
 | [I](#stage-i) | Initial configuration | - [sample](#-)<br></br>- [sample](#-) | - [sample](#-) |
-| [II](#stage-ii) | Set up API and confirm logs | - [sample](#-) | - [sample](#-)<br></br>- [sample](#-) |
+| [II](#stage-ii) | Set up Beyond Identity integration and confirm logs | - [sample](#-) | - [sample](#-)<br></br>- [sample](#-) |
 
 # Steps
 
@@ -79,7 +81,7 @@ The section here includes the steps for configuring the SIEM integration in Beyo
 1. On the Beyond Identity Console lefthand navigation, under Platform, select **Integrations**.
 2. Select the **Browse integrations** tab.
 3. Select **Microsoft Sentinel**.
-4. On the Custom Webhook overview page, click **Add instance**.
+4. On the Microsoft Sentinel overview page, click **Add instance**.
 
 ## Stage II
 
@@ -89,11 +91,11 @@ The sections in this stage are for setting up the API key in Beyond Identity and
 
 1. 
 
-### 🟠 Verify logs in 
+### 🟠 Verify logs in Microsoft Sentinel
 
 After completing the integration, view the logs from Beyond Identity within your custom webhook. Follow the instructions below to verify and confirm the data.
 
-1. Navigate to your custom webhook URL.
+1. Navigate to your Microsoft Sentinel workspace.
 2. Confirm Beyond Identity events data is available.
 
 
