@@ -39,8 +39,8 @@ The integration setup consists of the two stages below. Each stage covers the in
 
 | Stage | Summary | Microsoft Sentinel | Beyond Identity |
 | :---- | :---- | :---- | :---- |
-| [I](#stage-i) | Initial configuration | - [sample](#-)<br></br>- [sample](#-) | - [sample](#-) |
-| [II](#stage-ii) | Set up Beyond Identity integration and confirm logs | - [sample](#-) | - [sample](#-)<br></br>- [sample](#-) |
+| [I](#stage-i) | Initial configuration | - [Configure the Entra Log Analytics workspace](#-configure-the-entra-log-analytics-workspace)<br></br>- [Add Microsoft Sentinel to the Log Analytics workspace](#-add-microsoft-sentinel-to-the-log-analytics-workspace) | - [Add integration in Beyond Identity](#-add-integration-in-beyond-identity) |
+| [II](#stage-ii) | Set up Beyond Identity integration and confirm logs | - [Verify logs in Microsoft Sentinel](#-verify-logs-in-microsoft-sentinel) | - [Configure Microsoft Sentinel integration in Beyond Identity](#-configure-microsoft-sentinel-integration-in-beyond-identity)<br></br>- [View SIEM integration logs](#-view-siem-integration-logs) |
 
 # Steps
 
@@ -58,21 +58,32 @@ The sections below use these two color codings to identify the steps for separat
 
 The sections in this stage are for the intial setup of the integration between the two platforms.
 
-### 🟠 
+### 🟠 Configure the Entra Log Analytics workspace
 
-This section has the steps for covering the setup 
+This section has the steps for covering the Microsoft Sentinel setup in your Azure portal.
 
-### 🟠 
+1. Navigate to your Microsoft Azure portal.
+2. Input `log analytics workspaces` into the search box to select the **Log Analytics workspaces**.
+3. On the **Log Analytics workspaces** screen, click **Create log analytics workspace**.
+4. Configure the following information for the **Create Log Analytics workspace** screen.
+    - Select an Entra subscription and resource group
+    - Under the **Instance details** section, input `bi-siem-events` as the Name field
+    - Select a region for the log analytics workspace
+    - Click on **Review + Create**.
+5. Click **Create** on the next screen. After the Log Analytics workspace is successfully created, it appears in the **Log Analytics workspaces**.
+6. Save the **Workspace Name** and **Workspace ID** to secure space. These values are required for the [Configure Microsoft Sentinel integration in Beyond Identity](#-configure-microsoft-sentinel-integration-in-beyond-identity) section.
+7. Click **Agents** and expand **Log analytics agent instructions**.
+8. Save the Primary Key value to a secure space. This value is required for the [Configure Microsoft Sentinel integration in Beyond Identity](#-configure-microsoft-sentinel-integration-in-beyond-identity) section.
 
 
+### 🟠 Add Microsoft Sentinel to the Log Analytics workspace
 
-1. 
-2. 
-3. 
-4. 
-5. 
-6. 
+These steps are for the log analytics workspace for adding Microsoft Sentinel to complete the integration.
 
+1. In the Entra portal, access Microsoft Sentinel.
+2. Click **Create**.
+3. Under **Add Microsoft Sentinel to a workspace** section, input the `bi-siem-events` as the Workspace name and select the result.
+4. Click **Add**.
 
 ### 🔵 Add integration in Beyond Identity
 
@@ -87,16 +98,34 @@ The section here includes the steps for configuring the SIEM integration in Beyo
 
 The sections in this stage are for setting up the API key in Beyond Identity and viewing the logs. Follow the sections below to complete the integration.
 
-### 🔵 
+### 🔵 Configure Microsoft Sentinel integration in Beyond Identity
 
-1. 
+The steps below are for adding values from your custom webhook to Beyond Identity for completing the SIEM integration.
+
+1. On the **Add integration** pop up after completing the steps in [Add integration in Beyond Identity](#-add-integration-in-beyond-identity) section, input the following required values.
+    - Name → `Beyond Identity SIEM integration`
+    - Workspace ID → 
+    - Shared Key → 
+    - Log Type → `beyondidentity`
+2. For your configuration's events and threat signal selection, click the **Select all and automatically add...** checkboxes for both fields.
+    - NOTE: These configuration selections can be changed and updated later.
+4. Confirm the Status is set to **Active**.
+5. Click **Test Configuration**.
+6. After testing is complete, click **Save changes**.
 
 ### 🟠 Verify logs in Microsoft Sentinel
 
 After completing the integration, view the logs from Beyond Identity within your custom webhook. Follow the instructions below to verify and confirm the data.
 
-1. Navigate to your Microsoft Sentinel workspace.
-2. Confirm Beyond Identity events data is available.
+1. Navigate to your Microsoft Sentinel workspace on the Entra portal.
+2. Select the `bi-siem-events` in the Log Analytics workspace from SECTION.
+3. Close the **Queries** pop up.
+4. Input the following query in the query text field. Replace `BI_Tenant_events` with the log type value from the Admin console.
+```
+BI_Tenant_events_CL | where actor_tenant_id_s contains_cs ""
+```
+5. View the results in the results box. The query language used is [Kusto query language (KQL)](https://learn.microsoft.com/en-us/kusto/query/?view=azure-data-explorer&preserve-view=true)
+6. Confirm Beyond Identity events data is available.
 
 
 import ViewSiem from '../../includes/_view-siem-integration-logs.mdx';

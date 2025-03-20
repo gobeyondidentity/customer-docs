@@ -38,7 +38,7 @@ The integration setup consists of the two stages below. Each stage covers the in
 
 | Stage | Summary | Splunk | Beyond Identity |
 | :---- | :---- | :---- | :---- |
-| [I](#stage-i) | Initial configuration | - [Create HTTP event collector](#-create-http-event-collector)<br></br>- [Additional Splunk configurations](#-additional-splunk-configurations)<br></br>- [Configure HTTP Event Collector with SSL certificate](#-configure-http-event-collector-with-ssl-certificate)<br></br>- [HTTP Event Collector port](#-http-event-collector-port) | - [Add integration in Beyond Identity](#-add-integration-in-beyond-identity) |
+| [I](#stage-i) | Initial configuration | - [Create HTTP event collector](#-create-http-event-collector)<br></br>- [Additional Splunk configurations](#-additional-splunk-configurations)<br></br>   - [Configure HTTP Event Collector with SSL certificate](#-configure-http-event-collector-with-ssl-certificate)<br></br>   - [Set up HTTP Event Collector port](#-set-up-http-event-collector-port) | - [Add integration in Beyond Identity](#-add-integration-in-beyond-identity) |
 | [II](#stage-ii) | Set up Beyond Identity integration and confirm logs | - [Verify logs in Splunk](#-verify-logs-in-splunk) | - [Configure Splunk integration in Beyond Identity](#-configure-splunk-integration-in-beyond-identity)<br></br>- [View SIEM integration logs](#-view-siem-integration-logs) |
 
 # Steps
@@ -59,7 +59,7 @@ The sections in this stage are for the intial setup of the integration between t
 
 ### 🟠 Create HTTP event collector
 
-This section has the steps for covering the setup 
+This section has the steps for creating an HTTP event collector in Splunk.
 
 1. Navigate and login to your Splunk Cloud administrator console.
 2. Click **Settings**.
@@ -79,7 +79,7 @@ The section here covers the remaining setup for Splunk configurations.
 
 #### 🟠 Configure HTTP Event Collector with SSL certificate
 
-This section covers SSL instructions for Splunk Enterprise. Follow the specifications below to configure the integration.
+This section includes SSL instructions for Splunk Enterprise. Follow the specifications below to configure the integration.
 
 :::note
 This functionality is not available for trial accounts.
@@ -100,7 +100,7 @@ serverCert = <path>
 The full path to the server certificate Privacy-Enhanced Mail (PEM) format file. PEM is the most common text-based storage format for SSL certificate files. No default.
 
 
-#### 🟠 HTTP Event Collector port
+#### 🟠 Set up HTTP Event Collector port
 
 Open HTTP Event Collector port `8080`. Splunk Cloud HTTP Event collector listens on port 8088 by default. This port is open for SSL traffic in the firewall for Beyond Identity event integration to work.
 
