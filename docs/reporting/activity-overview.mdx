@@ -1,0 +1,81 @@
+---
+title: Activity Overview
+id: activity-overview
+description: 'Find information about the Activity section in the Beyond Identity Console..'
+slug: /reporting/activity-overview
+keywords:
+  - activity
+  - logs
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 2025-03-25
+  author: Jerome Villegas
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+
+# Overview
+
+This section in your Beyond Identity Console contains all logs of actions from your organization. This information includes operational activity from across all directory models, policies, integrations, and access control configurations. All events are timestamped, tracked with unique identification, and referenced to specific policy versions and users. 
+
+:::note
+Log activity is stored for 90 days. To retain logs for longer, view the SIEM integration guides.
+:::
+
+## Search and filtering
+
+The Activity log table has search available for every event for your organization. Input your search terms in the search field to see the relevant actions and events across user identities and configured services. View the points below for details on the search criteria.
+
+- `User` - Principal actor of the event
+- `Country` - Location of the event
+- `Correlation ID` - Identifier for two or more events related to each other
+
+:::note
+Boolean operators and other search logic functions aren't supported at this time.
+:::
+
+The filtering options consist of the following items.
+
+- `Date range` - Previous or custom timelines
+- `Event` - Event types to filter
+- `Outcome` - Specific outcomes to filter
+- `Policy version history` - Events that occurred while a specific policy was active
+
+## Event reference
+
+This information contains available events from the Beyond Identity Console Activity section.
+
+- `Add passkey` - Addition of a passkey authentication method
+- `Application operation` - Operations on applications
+- `Application tile operation` - Operations on application tiles
+- `Authenticator config operation` - Changes to authenticator configuration
+- `Branding theme configuration change` - Changes to branding themes
+- `Client commit sign` - Client committing signatures
+- `Client create gpg key` - Client creating GPG keys
+- `Credential binding email template configuration change` - Changes to credential binding email templates
+- `Credential binding job change` - Changes to credential binding jobs
+- `Credential change` - Changes to credentials
+- `Device certificate added` - Addition of device certificates
+- `Device certificate bound` - Binding of device certificates
+- `Device certificate deleted` - Deletion of device certificates
+- `Email status change` - Changes to email status
+- `Fetch data from integration` - Fetching data from integrations
+- `Identity change` - Changes to identities
+- `Integration instance operation` - Operations on integration instances
+- `Otp email template configuration change` - Changes to one-time password email templates
+- `Outbound provision` - Outbound provisioning events
+- `Policy` - General policy event
+- `Policy change` - Modifications to policies
+- `Resource server operation` - Resource server events
+- `Role membership operation` - Operations on role memberships
+- `Role operation` - Operations on roles
+- `Role scopes operation` - Operations on role scopes
+- `Sso config association change` - Changes to SSO configuration associations
+- `Sso config generic operation` - Generic operations on SSO configuration
+- `Token operation` - Token management events
+- `User authentication` - Authentication of a user
+- `Userinfo read` - Reading of user information
+- `V 1 group change` - Secure Access group modifications
+- `V 1 group membership change` - Secure Access group membership modifications
+- `V 1 realm change` - Secure Access realm modifications

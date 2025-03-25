@@ -102,7 +102,8 @@ const sidebars = {
         type: "doc",
         id: "reporting/reporting",
       },
-      items: ["reporting/device-query"],
+      items: 
+        ["reporting/activity-overview", "reporting/device-query"],
     },
     {
       type: "category",
