@@ -190,6 +190,19 @@ const sidebars = {
     },
     {
       type: "category",
+      label: "End User Guides",
+      collapsed: false,
+      collapsible: true,
+      link: {
+        type: "doc",
+        id: "end-user-guides/end-user-guides",
+      },
+      items: [
+        "end-user-guides/proxy-end-user",
+      ],
+    },
+    {
+      type: "category",
       label: "Resources",
       collapsed: false,
       collapsible: true,
@@ -200,7 +213,6 @@ const sidebars = {
       items: [
         "resources/os-support",
         "resources/pa-support",
-        "resources/proxy-end-user",
         {
           type: "link",
           label: "Service Status",
