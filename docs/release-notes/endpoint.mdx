@@ -26,8 +26,12 @@ Learn more about the latest updates to the Secure Access platform.
 <summary><p>Secure Access Updates</p></summary>
 ### What's new
 
-- Integration Events logs
-  - We've added debug capabilities for Integration issues and improved event transparency and accountability in the Beyond Identity Console.
+- New event type: Fetch Data From Integration
+  - We are now publishing a new debug capability for integrations that improves event transparency and accountability in the Beyond Identity Console.
+  - The new event type, `FETCH_DATA_FROM_INTEGRATION`, provides information when an attempt to retrieve data from your integrations fails.
+  - Beyond Identity will retry the connection to your integration approximately once per 15 minutes. Each time the attempt to fetch data from the integration fails, you will see the new event in your Activity log.
+  - After the connection to the integration is restored, we will send one `FETCH_DATA_FROM_INTEGRATION` event with a Success outcome to confirm that the connection has been reestablished. Future successful data retrievals will not send more events.
+  - You can filter these events from your view in the Activity log.
 <br></br>
 
 ### Bug fixes
