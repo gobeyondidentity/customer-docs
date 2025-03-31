@@ -20,6 +20,30 @@ displayed_sidebar: mainSidebar
 
 Learn more about the latest updates to the Secure Access platform.
 
+### March 31st, 2025
+
+<details>
+<summary><p>Secure Access Updates</p></summary>
+### What's new
+
+- Integration Events logs
+  - We've added debug capabilities for Integration issues and improved event transparency and accountability in the Beyond Identity Console.
+<br></br>
+
+### Bug fixes
+
+- Fixed the Datadog SIEM integration configuration screen not displaying a required API Key field input when attempting to add the instance without the value.
+- Resolved an issue that happens when manually adding an Identity then deleting values in the Add identity pop up. That behavior returned a `400` error and also caused the remaining user information to persist when attempting to create another new identity.
+- Fixed inaccurate data for the Integrations activity log of the event's date and time recorded when comparing date values from the table on the Log page to the Activity page.
+- Revised the language in the Policy Rules section of OS Version configurations. The description now reflects that the OS version rule applies to the last five updates of the current version of the operating system instead of the last five updates of the major version. This means updates do not cross versions, so for example the `14.x` version is not within any updates of a `15.x` version.
+- Resolved an iOS issue that created a duplicate prompt during biometric authentication on trusted devices.
+- Fixed a bug with Policy involving rules with geolocation comparison for event attributes not matching to users within that geolocation during policy outcome simulation.
+- Fixed an API issue when attempting to add an identity to a non-existent group displaying an internal error of `500` instead of a `404` Not Found.
+- Improved initialization of the Swift SDK against multi-thread initialization and also fixed an issue during initialization related to an inability to prevent the passkey directory from being backed up. 
+
+
+</details>
+
 ### February 28th, 2025
 
 <details>
