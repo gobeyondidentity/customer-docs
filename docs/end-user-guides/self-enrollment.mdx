@@ -29,7 +29,7 @@ Credential extension helps end users maintain additional devices, passkeys, or b
 
 To use credential extension in Beyond Identity as an end user, the following conditions are required.
 
-End users
+**End users**
 - Beyond Identity Platform Authenticator installed with a passkey on any of these operating systems
     - macOS, iOS, Windows, Android, Linux
 - Untrusted device with Beyond Identity Platform Authenticator installed
@@ -40,7 +40,7 @@ End users
 Only enroll credentials on devices you control.
 :::
 
-Administrators
+**Administrators**
 - Group or groups in Beyond Identity to apply credential enrollment policy rules
 
 ## Stage summary
@@ -49,8 +49,8 @@ The process for credential extension covers different steps for IT administrator
 
 | Stage | Summary | Role |
 | --- | --- | --- |
-| [Beyond Identity Console setup] | - [Create group for testing]<br></br> - [Configure policy for credential enrollment] | Adminstrator |
-| [Passkey enrollment for devices] | - [Download Beyond Identity Platform Authenticator on devices]<br></br> - [Initiate credential extension on trusted device]<br></br> - [Coordinate enrollment on untrusted device] | End user |
+| [Beyond Identity Console setup](#beyond-identity-console-setup) | - [Create group for testing](#create-group-for-testing)<br></br> - [Configure policy for credential enrollment](#configure-policy-for-credential-enrollment) | Adminstrator |
+| [Passkey enrollment for devices](#passkey-enrollment-for-devices) | - [Download Beyond Identity Platform Authenticator on devices](#download-beyond-identity-platform-authenticator-on-devices)<br></br> - [Initiate credential enrollment on trusted device](#initiate-credential-enrollment-on-trusted-device)<br></br> - [Coordinate enrollment on untrusted device](#coordinate-enrollment-on-untrusted-device) | End user |
 
 ### Beyond Identity Console setup
 
@@ -73,7 +73,7 @@ View the Groups document for more information on managing Groups in Beyond Ident
 
 Before end users are able to use credential extension, use policy rules for the transaction of `Authorize Credential Enrollment` to create protections against passkey abuse.
 
-image
+![Screenshot of rule definition for credential enrollment in Beyond Identity Console](../images/rule-definition.png)
 
 Learn more about credential enrollment policies in the [Credential Enrollment Policy Guide](/docs/policy/credential-enrollment)
 
@@ -85,38 +85,38 @@ End users with existing passkeys can add their passkey to new devices using cred
 
 This section includes the steps to download and install the Beyond Identity Platform Authenticator on your new device.
 
-1. Download the Beyond Identity Platform Authenticator according to your operating system.
-    1. For Desktop users, navigate to this URL and install the app.
+1. [Download the Beyond Identity Platform Authenticator](https://app.byndid.com/downloads) according to your operating system.
+    1. For Desktop users, navigate to [https://app.byndid.com/downloads](https://app.byndid.com/downloads) and install the app.
     1. For Mobile users, install the Beyond Identity app from the App Store.
 
-#### Initiate credential extension on trusted device
+#### Initiate credential enrollment on trusted device
 
-The steps below are for beginning the credential extension on the trusted device. This involves opening the Beyond Identity Platform Authenticator on that device.
+The steps below are for beginning the credential enrollment on the trusted device. This involves opening the Beyond Identity Platform Authenticator on that device.
 
 1. On the Beyond Identity Platform Authenticator, select the specific passkey to extend.
-1. Select the Set up other devices button at the bottom of the selected passkey.
-image
-1. On the operating system pop up, click Yes, extend my passkey to confirm.
-image
-1. Follow the steps from the Platform Authenticator and begin the next section of credential extension.
+1. Select the **Set up other devices** button at the bottom of the selected passkey.
+![Screenshot of Beyond Identity Platform Authenticator to set up other devices](../images/set-up-other.png)
+1. On the operating system pop up, click **Yes, extend my passkey** to confirm.
+![Screenshot of pop up from Beyond Identity Platform Authenticator to confirm credential enrollment and extend passkey](../images/cred-confirmation.png)
+1. Follow the steps from the Platform Authenticator and begin the next section of credential enrollment.
 
 #### Coordinate enrollment on untrusted device
 
 This section is for generating QR codes or nine digit codes to input to the trusted device. When the devices communicate and confirm authentication and authorization, the passkey extends from the trusted device to the new device. Follow the steps below to complete the process.
 
-1. On your new device, Click + button or Enroll with existing device if you just downloaded the app.
-1. Click Generate QR/9 Digit Code.
+1. On your new device, Click **+** button or **Enroll with existing device** if you just downloaded the app.
+1. Click **Generate QR/9 Digit Code**.
 1. On the trusted device, use the device's camera to scan the QR code or input the nine digit code.
-image
+![Screenshot of 9 digit code input from Platform Authenticator](../images/9-digit-code.png)
 
 :::success
 Success! Congratulations, you've completed your credential enrollment to a new device!
 :::
 
-For policy denied errors, contact your administrator for support.
+For `Policy denied` errors, contact your administrator for support.
 
 ## Process for Secure Work customers
 
-For users coming from Secure Work, the Secure Access credential extension process is different. End users generate a QR code or a nine digit code from the new device and then input that information to the trusted device. 
+For users coming from Secure Work, the Secure Access credential enrollment process is different. End users generate a QR code or a nine digit code from the new device and then input that information to the trusted device. 
 
 The Secure Work credential extension process inverts this and cannot communicate passkeys with Secure Access.
