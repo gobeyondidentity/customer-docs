@@ -7469,822 +7469,11 @@ paths:
               examples:
                 Internal Error:
                   $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1scim~1v2~1Users/get/responses/500/content/application~1json/examples/Internal%20Error'
-  '/v1/tenants/{tenant_id}/realms/{realm_id}/sso-configs/{sso_config_id}:addGroups':
-    $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1groups~1%7Bgroup_id%7D~1sso-configs'
-  '/v1/tenants/{tenant_id}/realms/{realm_id}/sso-configs/{sso_config_id}:deleteGroups':
-    post:
-      tags:
-        - SSO Configs
-      operationId: DeleteGroupsFromSsoConfig
-      summary: Delete Groups from an SSO Config
-      description: |
-        To delete groups from an sso config. The request must contain at least one and no more than 1000 group IDs.
-      security:
-        - BearerAuth:
-            - 'sso-configs:update'
-      parameters:
-        - $ref: '#/components/parameters/correlation_id'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/3'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SsoConfigDeleteGroup'
-            examples:
-              Remove Members:
-                value:
-                  group_ids:
-                    - e372db224c06e850
-                    - 3a28d4f28b57cc93
-      responses:
-        '200':
-          description: The action was successful and the response body is empty.
-        '400':
-          description: The request is malformed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '401':
-          description: An invalid Authorization token has been supplied.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '403':
-          description: The supplied authorization token doesn't allow the requested operation.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '404':
-          description: Resource server not found.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '500':
-          description: Internal server error.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-  '/v1/tenants/{tenant_id}/realms/{realm_id}/sso-configs/{sso_config_id}:addIdentities':
-    post:
-      tags:
-        - SSO Configs
-      operationId: AddIdentitiesToSsoConfig
-      summary: Associate Identities with an SSO Config
-      description: |
-        To associate identities to an sso config. The request must contain at least one and no more than 1000 identity IDs.
-      security:
-        - BearerAuth:
-            - 'sso-configs:update'
-      parameters:
-        - $ref: '#/components/parameters/correlation_id'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/3'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SsoConfigAddIdentities'
-      responses:
-        '200':
-          description: The action was successful and the response body is empty.
-        '400':
-          description: The request is malformed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-              examples:
-                schema:
-                  value:
-                    code: bad_request
-                    message: invalid parameters
-                    details:
-                      - type: FieldViolations
-                        field_violations:
-                          - field: identity_ids
-                            description: array exceeds 1000 elements
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '401':
-          description: An invalid Authorization token has been supplied.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '403':
-          description: The supplied authorization token doesn't allow the requested operation.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '404':
-          description: Resource server not found.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '500':
-          description: Internal server error.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-  '/v1/tenants/{tenant_id}/realms/{realm_id}/sso-configs/{sso_config_id}:deleteIdentities':
-    post:
-      tags:
-        - SSO Configs
-      operationId: DeleteIdentitiesFromSsoConfig
-      summary: Delete Identities from an SSO Config
-      description: |
-        To delete identities from an sso config. The request must contain at least one and no more than 1000 identities IDs.
-      security:
-        - BearerAuth:
-            - 'sso-configs:update'
-      parameters:
-        - $ref: '#/components/parameters/correlation_id'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/3'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              title: Delete Identities from SSO Config
-              description: Request for DeleteIdentitiesFromSsoConfig.
-              type: object
-              properties:
-                identity_ids:
-                  description: IDs of the identities to be removed from the sso config.
-                  type: array
-                  items:
-                    type: string
-                  minItems: 1
-                  maxItems: 1000
-              required:
-                - identity_ids
-            examples:
-              Remove Identities:
-                value:
-                  identity_ids:
-                    - e372db224c06e850
-                    - 3a28d4f28b57cc93
-      responses:
-        '200':
-          description: The action was successful and the response body is empty.
-        '400':
-          description: The request is malformed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-              examples:
-                Invalid Parameters:
-                  value:
-                    code: bad_request
-                    message: invalid parameters
-                    details:
-                      - type: FieldViolations
-                        field_violations:
-                          - field: identities_ids
-                            description: array exceeds 1000 elements
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '401':
-          description: An invalid Authorization token has been supplied.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '403':
-          description: The supplied authorization token doesn't allow the requested operation.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '404':
-          description: Resource server not found.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '500':
-          description: Internal server error.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-  '/v1/tenants/{tenant_id}/realms/{realm_id}/sso-configs/{sso_config_id}:listIdentityAssociations':
-    get:
-      tags:
-        - SSO Configs
-      operationId: ListIdentitiesForSsoConfig
-      summary: List Identities Directly and Indirectly Associated With an SSO Config.
-      description: |
-        To list identities belonging to an sso config.
-        Note that there may be duplicate identities or an empty array in the response, but as long as there is a `page_token` then pagination should continue.
-      security:
-        - BearerAuth:
-            - 'sso-configs:read'
-            - 'identities:read'
-            - 'groups:read'
-      parameters:
-        - $ref: '#/components/parameters/correlation_id'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/3'
-        - $ref: '#/components/parameters/page_size'
-        - $ref: '#/components/parameters/page_token'
-      responses:
-        '200':
-          description: |
-            The response will be a JSON object with keys for `identities`. `identities` will be set to an array of identity objects. If there are more items to be returned by the requested query, the response will also contain a key called `next_page_token`.
-          content:
-            application/json:
-              schema:
-                $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1identities~1%7Bidentity_id%7D~1sso-configs/get/responses/200/content/application~1json/schema'
-              examples:
-                Success:
-                  value:
-                    identities:
-                      - id: e372db224c06e850
-                        realm_id: 8f5bec58229e6f29
-                        tenant_id: 0001f1f460b1ace6
-                        group_id: 923935b2912304
-                        group_display_name: Test Group
-                        display_name: Test Identity
-                        create_time: '2022-04-12T05:53:07.119Z'
-                        update_time: '2022-06-16T14:31:03.770Z'
-                        traits:
-                          type: traits_v0
-                          username: test
-                          primary_email_address: test@example.com
-        '400':
-          description: The request is malformed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '401':
-          description: An invalid Authorization token has been supplied.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '403':
-          description: The supplied authorization token doesn't allow the requested operation.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '500':
-          description: Internal server error.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-  '/v1/tenants/{tenant_id}/realms/{realm_id}/sso-configs/{sso_config_id}:listGroupAssociations':
-    get:
-      tags:
-        - SSO Configs
-      operationId: ListGroupsForSSOConfig
-      summary: List Groups associcated with an SSO config.
-      description: |
-        To list groups belonging to an sso config.
-      security:
-        - BearerAuth:
-            - 'sso-configs:read'
-            - 'groups:read'
-      parameters:
-        - $ref: '#/components/parameters/correlation_id'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/3'
-      responses:
-        '200':
-          description: |
-            The response will be a JSON object with keys for `groups` and `total_size`. `groups` will be set to an array of group objects. `total_size` will be set to the total number of items matched by the list request. If there are more items to be returned by the requested query, the response will also contain a key called `next_page_token`.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SsoConfigListGroups'
-              examples:
-                Success:
-                  value:
-                    code: bad_request
-                    message: invalid parameters
-                    details:
-                      - type: FieldViolations
-                        field_violations:
-                          - field: identity_ids
-                            description: array exceeds 1000 elements
-        '400':
-          description: The request is malformed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '401':
-          description: An invalid Authorization token has been supplied.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '403':
-          description: The supplied authorization token doesn't allow the requested operation.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '500':
-          description: Internal server error.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-  '/v1/tenants/{tenant_id}/realms/{realm_id}/identities/{identity_id}/sso-configs':
-    get:
-      tags:
-        - SSO Configs
-      operationId: ListSsoConfigsForIdentity
-      summary: List SSO configs directly and indirectly associated with an identity.
-      description: |
-        To list sso configs associated with an identity.
-
-        This will return all SSO configs that have an association with the specified identity ID.
-        Note that there may be duplicate soo configs or an empty array in the response, but as long as there is a `page_token` pagination should continue.
-      security:
-        - BearerAuth:
-            - 'sso-configs:read'
-      parameters:
-        - $ref: '#/components/parameters/correlation_id'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/3'
-        - $ref: '#/components/parameters/page_size'
-        - $ref: '#/components/parameters/page_token'
-        - $ref: '#/components/parameters/identity_id'
-      responses:
-        '200':
-          description: |
-            The response will be a JSON object with keys for `sso_configs` and `total_size`. `total_size` will be set to the total number of items matched by the list request. If there are more items to be returned by the requested query, the response will also contain a key called `next_page_token`.
-          content:
-            application/json:
-              schema:
-                title: List Identities directly and indirectly associated with an SSO config.
-                description: List Identities Directly and Indirectly Associated With an SSO Config.
-                type: object
-                properties:
-                  identities:
-                    type: array
-                    items:
-                      allOf:
-                        - $ref: '#/components/schemas/Identity'
-                        - properties:
-                            group_id:
-                              description: 'If the association is through a group, the group ID will be added to the response object.'
-                              type: string
-                            group_display_name:
-                              description: 'If the association is through a group, the group display name will be added to the response object.'
-                              type: string
-                    maxItems: 200
-                    description: An unordered array of identities corresponding to the request.
-                  next_page_token:
-                    type: string
-                    description: |
-                      Token used to fetch the next set of results. If this field is omitted, there are no subsequent pages.
-                required:
-                  - identities
-                  - total_size
-        '400':
-          description: The request is malformed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '401':
-          description: An invalid Authorization token has been supplied.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '403':
-          description: The supplied authorization token doesn't allow the requested operation.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '500':
-          description: Internal server error.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-  '/v1/tenants/{tenant_id}/realms/{realm_id}/groups/{group_id}/sso-configs':
-    get:
-      tags:
-        - SSO Configs
-      operationId: ListSsoConfigsForGroup
-      summary: List SSO Configs associated with a Group.
-      description: |
-        To list sso configs associated with a group.
-
-        This will return all SSO configs that have an association with the specified group ID.
-      security:
-        - BearerAuth:
-            - 'sso-configs:read'
-      parameters:
-        - $ref: '#/components/parameters/correlation_id'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/3'
-        - $ref: '#/components/parameters/page_size'
-        - $ref: '#/components/parameters/page_token'
-        - $ref: '#/components/parameters/group_id'
-      responses:
-        '200':
-          description: |
-            The response will be a JSON object with keys for `sso_configs` and `total_size`. `total_size` will be set to the total number of items matched by the list request. If there are more items to be returned by the requested query, the response will also contain a key called `next_page_token`.
-          content:
-            application/json:
-              schema:
-                title: List SSO configs directly and indirectly associated with an identity.
-                description: List SSO configs directly and indirectly associated with an identity.
-                type: object
-                properties:
-                  sso_configs:
-                    type: array
-                    items:
-                      $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/content/application~1json/schema/properties/sso_configs/items'
-                  total_size:
-                    type: integer
-                    format: uint32
-                    description: |
-                      Total number of results returned by the operation. This value may be larger than the number of resources returned, such as when returning a single page where multiple pages are available.
-                    example: 1000
-                  next_page_token:
-                    type: string
-                    description: |
-                      Token used to fetch the next set of results. If this field is omitted, there are no subsequent pages.
-                required:
-                  - sso_configs
-                  - total_size
-        '400':
-          description: The request is malformed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '401':
-          description: An invalid Authorization token has been supplied.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '403':
-          description: The supplied authorization token doesn't allow the requested operation.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '500':
-          description: Internal server error.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
   '/v1/tenants/{tenant_id}/realms/{realm_id}/sso-configs':
-    get:
-      summary: Lists SSO Configs by Realm.
-      description: Lists sso configs by realm.
-      tags:
-        - SSO Configs
-      operationId: listSsoConfigs
-      parameters:
-        - $ref: '#/components/parameters/correlation_id'
-        - name: tenant_id
-          in: path
-          description: A unique identifier for a tenant.
-          required: true
-          schema:
-            type: string
-            example: 000176d94fd7b4d1
-        - name: realm_id
-          in: path
-          description: A unique identifier for a realm.
-          required: true
-          schema:
-            type: string
-            example: 19a95130480dfa79
-        - name: sso_config_id
-          in: path
-          required: true
-          description: A unique identifier of the sso configuration
-          schema:
-            type: string
-        - $ref: '#/components/parameters/page_size'
-        - $ref: '#/components/parameters/page_token'
-        - name: type
-          in: query
-          required: false
-          description: The type of sso config to filter by. You may query with multiple types for example "/sso-configs?type=generic_oidc&type=generic_oid_idp"
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/SsoConfigType'
-        - name: is_migrated
-          in: query
-          required: false
-          schema:
-            type: boolean
-        - name: order_by
-          in: query
-          required: false
-          schema:
-            type: string
-      security:
-        - BearerAuth:
-            - 'sso-configs:read'
-      responses:
-        '200':
-          description: Successful response.
-          content:
-            application/json:
-              schema:
-                description: Represents a list of sso configs as a response body.
-                type: object
-                required:
-                  - sso_configs
-                  - total_size
-                properties:
-                  sso_configs:
-                    description: The sso configs which are part of the response.
-                    type: array
-                    items:
-                      description: Represents an SSO config as a response body.
-                      type: object
-                      required:
-                        - id
-                        - display_name
-                        - payload
-                      properties:
-                        id:
-                          description: A unique identifier for an SSO config. This is automatically generated on creation. This field is immutable and read-only. This field is unique within the realm.
-                          type: string
-                          format: uuid
-                        display_name:
-                          description: A human-readable name for the SSO config. This name is used for display purposes.
-                          type: string
-                        payload:
-                          oneOf:
-                            - type: object
-                              required:
-                                - type
-                                - login_link
-                              properties:
-                                type:
-                                  $ref: '#/components/schemas/SsoConfigType'
-                                login_link:
-                                  type: string
-                                icon:
-                                  type: string
-                                is_tile_visible:
-                                  type: boolean
-                            - type: object
-                              required:
-                                - type
-                                - redirect_uris
-                                - discover_endpoint
-                              properties:
-                                type:
-                                  $ref: '#/components/schemas/SsoConfigType'
-                                redirect_uris:
-                                  type: array
-                                  items:
-                                    type: string
-                                discover_endpoint:
-                                  $ref: '#/components/schemas/SsoConfigEntraIdExternalAuthMethod/properties/discover_endpoint'
-                            - type: object
-                              required:
-                                - type
-                                - redirect_uris
-                              properties:
-                                type:
-                                  $ref: '#/components/schemas/SsoConfigType'
-                                redirect_uris:
-                                  type: array
-                                  items:
-                                    type: string
-                                login_link:
-                                  type: string
-                                icon:
-                                  type: string
-                                is_tile_visible:
-                                  type: boolean
-                            - type: object
-                              required:
-                                - type
-                              properties:
-                                type:
-                                  $ref: '#/components/schemas/SsoConfigType'
-                            - type: object
-                              required:
-                                - type
-                              properties:
-                                type:
-                                  description: The type of the SSO configuration.
-                                  $ref: '#/components/schemas/SsoConfigType'
-                                icon:
-                                  description: The URL or data URI of the icon representing the SSO configuration.
-                                  type: string
-                                is_tile_visible:
-                                  description: Indicates if the SSO configuration tile is visible to the user.
-                                  type: boolean
-                            - type: object
-                              required:
-                                - type
-                              properties:
-                                type:
-                                  $ref: '#/components/schemas/SsoConfigType'
-                            - type: object
-                              required:
-                                - type
-                              properties:
-                                type:
-                                  $ref: '#/components/schemas/SsoConfigType'
-                            - type: object
-                              required:
-                                - type
-                                - company_identifier
-                              properties:
-                                type:
-                                  $ref: '#/components/schemas/SsoConfigType'
-                                company_identifier:
-                                  type: string
-                            - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/post/responses/200/content/application~1json/schema/properties/payload/oneOf/8'
-                            - type: object
-                              required:
-                                - type
-                              properties:
-                                type:
-                                  description: The type of the SSO configuration.
-                                  $ref: '#/components/schemas/SsoConfigType'
-                                icon:
-                                  description: The URL or data URI of the icon representing the SSO configuration.
-                                  type: string
-                                is_tile_visible:
-                                  description: Indicates if the SSO configuration tile is visible to the user.
-                                  type: boolean
-                  total_size:
-                    description: The total number of sso configs contained by the Realm.
-                    type: integer
-                    format: uint
-                    minimum: 0
-                  next_page_token:
-                    description: The value to be passed as the page_token parameter to retrieve the next page.
-                    type: string
-                    nullable: true
-          headers:
-            x-correlation-id:
-              description: 'Correlation ID. If supplied with the request, the response must contain the same value. If not supplied with the request, it is generated by the server and returned in the response.'
-              required: true
-              schema:
-                type: string
-        '400':
-          description: The request is malformed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '401':
-          description: An invalid Authorization token has been supplied.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '403':
-          description: The supplied authorization token doesn't allow the requested operation.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '500':
-          description: Internal server error.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
     post:
-      summary: Creates a new SSO Config.
-      description: Creates a new SSO Config.
+      summary: Create a new SSO Config.
+      description: |
+        To create a new SSO Config, send a POST request to `/v1/tenants/$TENANT_ID/realms/$REALM_ID/sso-configs`.
       tags:
         - SSO Configs
       operationId: CreateSsoConfig
@@ -8845,10 +8034,251 @@ paths:
           headers:
             x-correlation-id:
               $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+    get:
+      summary: List SSO Configs for a Realm.
+      description: |
+        To list SSO Configs for a Realm, send a GET request to
+        `/v1/tenants/$TENANT_ID/realms/$REALM_ID/sso-configs`.
+
+        The response will contain at most 200 items and may contain a page token to
+        query the remaining items. If page size is not specified, the response will
+        contain 20 items. There is no defined ordering of the list of identities in
+        the response. Note that the maximum and default page sizes are subject to
+        change.
+
+        When paginating, the page size is maintained by the page token but may be
+        overridden on subsequent requests.
+
+        Page tokens expire after one week. Requests which specify an expired page
+        token will result in undefined behavior.
+      tags:
+        - SSO Configs
+      operationId: listSsoConfigs
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - name: tenant_id
+          in: path
+          description: A unique identifier for a tenant.
+          required: true
+          schema:
+            type: string
+            example: 000176d94fd7b4d1
+        - name: realm_id
+          in: path
+          description: A unique identifier for a realm.
+          required: true
+          schema:
+            type: string
+            example: 19a95130480dfa79
+        - $ref: '#/components/parameters/page_size'
+        - $ref: '#/components/parameters/page_token'
+        - name: type
+          in: query
+          required: false
+          description: The type of sso config to filter by. You may query with multiple types for example "/sso-configs?type=generic_oidc&type=generic_oid_idp"
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/SsoConfigType'
+        - name: is_migrated
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: order_by
+          in: query
+          required: false
+          schema:
+            type: string
+      security:
+        - BearerAuth:
+            - 'sso-configs:read'
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                description: Represents a list of sso configs as a response body.
+                type: object
+                required:
+                  - sso_configs
+                  - total_size
+                properties:
+                  sso_configs:
+                    description: The sso configs which are part of the response.
+                    type: array
+                    items:
+                      description: Represents an SSO config as a response body.
+                      type: object
+                      required:
+                        - id
+                        - display_name
+                        - payload
+                      properties:
+                        id:
+                          description: A unique identifier for an SSO config. This is automatically generated on creation. This field is immutable and read-only. This field is unique within the realm.
+                          type: string
+                          format: uuid
+                        display_name:
+                          description: A human-readable name for the SSO config. This name is used for display purposes.
+                          type: string
+                        payload:
+                          oneOf:
+                            - type: object
+                              required:
+                                - type
+                                - login_link
+                              properties:
+                                type:
+                                  $ref: '#/components/schemas/SsoConfigType'
+                                login_link:
+                                  type: string
+                                icon:
+                                  type: string
+                                is_tile_visible:
+                                  type: boolean
+                            - type: object
+                              required:
+                                - type
+                                - redirect_uris
+                                - discover_endpoint
+                              properties:
+                                type:
+                                  $ref: '#/components/schemas/SsoConfigType'
+                                redirect_uris:
+                                  type: array
+                                  items:
+                                    type: string
+                                discover_endpoint:
+                                  $ref: '#/components/schemas/SsoConfigEntraIdExternalAuthMethod/properties/discover_endpoint'
+                            - type: object
+                              required:
+                                - type
+                                - redirect_uris
+                              properties:
+                                type:
+                                  $ref: '#/components/schemas/SsoConfigType'
+                                redirect_uris:
+                                  type: array
+                                  items:
+                                    type: string
+                                login_link:
+                                  type: string
+                                icon:
+                                  type: string
+                                is_tile_visible:
+                                  type: boolean
+                            - type: object
+                              required:
+                                - type
+                              properties:
+                                type:
+                                  $ref: '#/components/schemas/SsoConfigType'
+                            - type: object
+                              required:
+                                - type
+                              properties:
+                                type:
+                                  description: The type of the SSO configuration.
+                                  $ref: '#/components/schemas/SsoConfigType'
+                                icon:
+                                  description: The URL or data URI of the icon representing the SSO configuration.
+                                  type: string
+                                is_tile_visible:
+                                  description: Indicates if the SSO configuration tile is visible to the user.
+                                  type: boolean
+                            - type: object
+                              required:
+                                - type
+                              properties:
+                                type:
+                                  $ref: '#/components/schemas/SsoConfigType'
+                            - type: object
+                              required:
+                                - type
+                              properties:
+                                type:
+                                  $ref: '#/components/schemas/SsoConfigType'
+                            - type: object
+                              required:
+                                - type
+                                - company_identifier
+                              properties:
+                                type:
+                                  $ref: '#/components/schemas/SsoConfigType'
+                                company_identifier:
+                                  type: string
+                            - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/post/responses/200/content/application~1json/schema/properties/payload/oneOf/8'
+                            - type: object
+                              required:
+                                - type
+                              properties:
+                                type:
+                                  description: The type of the SSO configuration.
+                                  $ref: '#/components/schemas/SsoConfigType'
+                                icon:
+                                  description: The URL or data URI of the icon representing the SSO configuration.
+                                  type: string
+                                is_tile_visible:
+                                  description: Indicates if the SSO configuration tile is visible to the user.
+                                  type: boolean
+                  total_size:
+                    description: The total number of sso configs contained by the Realm.
+                    type: integer
+                    format: uint
+                    minimum: 0
+                  next_page_token:
+                    description: The value to be passed as the page_token parameter to retrieve the next page.
+                    type: string
+                    nullable: true
+          headers:
+            x-correlation-id:
+              description: 'Correlation ID. If supplied with the request, the response must contain the same value. If not supplied with the request, it is generated by the server and returned in the response.'
+              required: true
+              schema:
+                type: string
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
   '/v1/tenants/{tenant_id}/realms/{realm_id}/sso-configs/{sso_config_id}':
     get:
-      summary: Finds an SSO Config by its ID.
-      description: Finds an SSO Config by its ID.
+      summary: Retrieves an existing SSO Config.
+      description: |
+        To retrieve an existing SSO Config, send a GET request to `/v1/tenants/$TENANT_ID/realms/$REALM_ID/sso-configs/$SSO_CONFIG_ID`.
       tags:
         - SSO Configs
       operationId: GetSsoConfig
@@ -8859,7 +8289,7 @@ paths:
         - $ref: '#/components/parameters/correlation_id'
         - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
         - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/3'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1identity-providers/get/parameters/3'
       responses:
         '200':
           description: The sso config has been found.
@@ -8915,75 +8345,6 @@ paths:
           headers:
             x-correlation-id:
               $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-    delete:
-      summary: Deletes an SSO Config by its ID.
-      description: Deletes an SSO Config by its ID.
-      tags:
-        - SSO Configs
-      operationId: DeleteSsoConfig
-      security:
-        - BearerAuth:
-            - 'sso-configs:delete'
-      parameters:
-        - $ref: '#/components/parameters/correlation_id'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/3'
-      responses:
-        '200':
-          description: The resource has been found and deleted.
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-          content:
-            application/json:
-              schema:
-                type: object
-        '400':
-          description: The request is malformed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '401':
-          description: An invalid Authorization token has been supplied.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '403':
-          description: The supplied authorization token doesn't allow the requested operation.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '404':
-          description: SSO Config not found.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '500':
-          description: Internal server error.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
     patch:
       summary: Updates an SSO Config by its ID.
       description: Updates an SSO Config by its ID.
@@ -8997,7 +8358,7 @@ paths:
         - $ref: '#/components/parameters/correlation_id'
         - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
         - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/3'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1identity-providers/get/parameters/3'
       requestBody:
         content:
           application/json:
@@ -9059,6 +8420,948 @@ paths:
           headers:
             x-correlation-id:
               $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+    delete:
+      summary: Deletes an SSO Config by its ID.
+      description: Deletes an SSO Config by its ID.
+      tags:
+        - SSO Configs
+      operationId: DeleteSsoConfig
+      security:
+        - BearerAuth:
+            - 'sso-configs:delete'
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1identity-providers/get/parameters/3'
+      responses:
+        '200':
+          description: The action was successful and the response body is empty.
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '404':
+          description: SSO Config not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/sso-configs/{sso_config_id}:addIdentities':
+    post:
+      tags:
+        - SSO Configs
+      operationId: AddIdentitiesToSsoConfig
+      summary: Associate Identities with an SSO Config
+      description: |
+        To associate identities to an sso config. The request must contain at least one and no more than 1000 identity IDs.
+      security:
+        - BearerAuth:
+            - 'sso-configs:update'
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1identity-providers/get/parameters/3'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SsoConfigAddIdentities'
+      responses:
+        '200':
+          description: The action was successful and the response body is empty.
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                schema:
+                  value:
+                    code: bad_request
+                    message: invalid parameters
+                    details:
+                      - type: FieldViolations
+                        field_violations:
+                          - field: identity_ids
+                            description: array exceeds 1000 elements
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '404':
+          description: Resource server not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/sso-configs/{sso_config_id}:deleteIdentities':
+    post:
+      tags:
+        - SSO Configs
+      operationId: DeleteIdentitiesFromSsoConfig
+      summary: Delete Identities from an SSO Config
+      description: |
+        To delete identities from an sso config. The request must contain at least one and no more than 1000 identities IDs.
+      security:
+        - BearerAuth:
+            - 'sso-configs:update'
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1identity-providers/get/parameters/3'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Delete Identities from SSO Config
+              description: Request for DeleteIdentitiesFromSsoConfig.
+              type: object
+              properties:
+                identity_ids:
+                  description: IDs of the identities to be removed from the sso config.
+                  type: array
+                  items:
+                    type: string
+                  minItems: 1
+                  maxItems: 1000
+              required:
+                - identity_ids
+            examples:
+              Remove Identities:
+                value:
+                  identity_ids:
+                    - e372db224c06e850
+                    - 3a28d4f28b57cc93
+      responses:
+        '200':
+          description: The action was successful and the response body is empty.
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Invalid Parameters:
+                  value:
+                    code: bad_request
+                    message: invalid parameters
+                    details:
+                      - type: FieldViolations
+                        field_violations:
+                          - field: identities_ids
+                            description: array exceeds 1000 elements
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '404':
+          description: Resource server not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/sso-configs/{sso_config_id}:listIdentityAssociations':
+    get:
+      tags:
+        - SSO Configs
+      operationId: ListIdentitiesForSsoConfig
+      summary: List Identities Directly and Indirectly Associated With an SSO Config.
+      description: |
+        To list identities belonging to an sso config.
+        Note that there may be duplicate identities or an empty array in the response, but as long as there is a `page_token` then pagination should continue.
+      security:
+        - BearerAuth:
+            - 'sso-configs:read'
+            - 'identities:read'
+            - 'groups:read'
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1identity-providers/get/parameters/3'
+        - $ref: '#/components/parameters/page_size'
+        - $ref: '#/components/parameters/page_token'
+      responses:
+        '200':
+          description: |
+            The response will be a JSON object with keys for `identities`. `identities` will be set to an array of identity objects. If there are more items to be returned by the requested query, the response will also contain a key called `next_page_token`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1identities~1%7Bidentity_id%7D~1sso-configs/get/responses/200/content/application~1json/schema'
+              examples:
+                Success:
+                  value:
+                    identities:
+                      - id: e372db224c06e850
+                        realm_id: 8f5bec58229e6f29
+                        tenant_id: 0001f1f460b1ace6
+                        group_id: 923935b2912304
+                        group_display_name: Test Group
+                        display_name: Test Identity
+                        create_time: '2022-04-12T05:53:07.119Z'
+                        update_time: '2022-06-16T14:31:03.770Z'
+                        traits:
+                          type: traits_v0
+                          username: test
+                          primary_email_address: test@example.com
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/identities/{identity_id}/sso-configs/{sso_config_id}/is-identity-assigned':
+    get:
+      summary: Returns if an identity is assigned to the SSO config id.
+      description: |
+        To check if an identity is assigned to the SSO config id, send a GET request to `/v1/tenants/$TENANT_ID/realms/$REALM_ID/identities/$IDENTITY_ID/sso-configs/$SSO_CONFIG_ID/is-identity-assigned`.
+      tags:
+        - SSO Configs
+      operationId: IdentityToSSOConfigCheck
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1identity-providers/get/parameters/3'
+      security:
+        - BearerAuth:
+            - 'sso-configs:read'
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs~1%7Bsso_config_id%7D~1is-group-assigned/post/responses/200/content/application~1json/schema'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/identities/{identity_id}/sso-configs':
+    get:
+      tags:
+        - SSO Configs
+      operationId: ListSsoConfigsForIdentity
+      summary: List SSO configs directly and indirectly associated with an identity.
+      description: |
+        To list sso configs associated with an identity.
+
+        This will return all SSO configs that have an association with the specified identity ID.
+        Note that there may be duplicate SSO configs or an empty array in the response, but as long as there is a `page_token` pagination should continue.
+      security:
+        - BearerAuth:
+            - 'sso-configs:read'
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1identity-providers/get/parameters/3'
+        - $ref: '#/components/parameters/page_size'
+        - $ref: '#/components/parameters/page_token'
+        - $ref: '#/components/parameters/identity_id'
+      responses:
+        '200':
+          description: |
+            The response will be a JSON object with keys for `sso_configs` and `total_size`. `total_size` will be set to the total number of items matched by the list request. If there are more items to be returned by the requested query, the response will also contain a key called `next_page_token`.
+          content:
+            application/json:
+              schema:
+                title: List Identities directly and indirectly associated with an SSO config.
+                description: List Identities Directly and Indirectly Associated With an SSO Config.
+                type: object
+                properties:
+                  identities:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '#/components/schemas/Identity'
+                        - properties:
+                            group_id:
+                              description: 'If the association is through a group, the group ID will be added to the response object.'
+                              type: string
+                            group_display_name:
+                              description: 'If the association is through a group, the group display name will be added to the response object.'
+                              type: string
+                    maxItems: 200
+                    description: An unordered array of identities corresponding to the request.
+                  next_page_token:
+                    type: string
+                    description: |
+                      Token used to fetch the next set of results. If this field is omitted, there are no subsequent pages.
+                required:
+                  - identities
+                  - total_size
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/sso-configs/{sso_config_id}:addGroups':
+    post:
+      tags:
+        - SSO Configs
+      operationId: AddGroupsToSsoConfig
+      summary: Associate Groups with an SSOConfig
+      description: |
+        To associate groups to an sso config. The request must contain at least one and no more than 1000 group IDs.
+      security:
+        - BearerAuth:
+            - 'sso-configs:update'
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1identity-providers/get/parameters/3'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Associate Groups with SSO Config
+              description: Request for AddGroupsToSsoConfig.
+              type: object
+              properties:
+                group_ids:
+                  description: IDs of the groups to be added to the sso config.
+                  type: array
+                  items:
+                    type: string
+                  minItems: 1
+                  maxItems: 1000
+              required:
+                - group_ids
+            examples:
+              Add Members:
+                value:
+                  group_ids:
+                    - e372db224c06e850
+                    - 3a28d4f28b57cc93
+      responses:
+        '200':
+          description: The action was successful and the response body is empty.
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Invalid Parameters:
+                  value:
+                    code: bad_request
+                    message: invalid parameters
+                    details:
+                      - type: FieldViolations
+                        field_violations:
+                          - field: group_ids
+                            description: array exceeds 1000 elements
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '404':
+          description: Resource server not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/sso-configs/{sso_config_id}:deleteGroups':
+    post:
+      tags:
+        - SSO Configs
+      operationId: DeleteGroupsFromSsoConfig
+      summary: Delete Groups from an SSO Config
+      description: |
+        To delete groups from an sso config. The request must contain at least one and no more than 1000 group IDs.
+      security:
+        - BearerAuth:
+            - 'sso-configs:update'
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1identity-providers/get/parameters/3'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SsoConfigDeleteGroup'
+            examples:
+              Remove Members:
+                value:
+                  group_ids:
+                    - e372db224c06e850
+                    - 3a28d4f28b57cc93
+      responses:
+        '200':
+          description: The action was successful and the response body is empty.
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '404':
+          description: Resource server not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/sso-configs/{sso_config_id}:listGroupAssociations':
+    get:
+      tags:
+        - SSO Configs
+      operationId: ListGroupsForSSOConfig
+      summary: List Groups associated with an SSO config.
+      description: |
+        To list groups associated with an SSO config, send a GET request to
+        `/v1/tenants/$TENANT_ID/realms/$REALM_ID/sso-configs/$SSO_CONFIG_ID/groups`.
+      security:
+        - BearerAuth:
+            - 'sso-configs:read'
+            - 'groups:read'
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1identity-providers/get/parameters/3'
+      responses:
+        '200':
+          description: |
+            The response will be a JSON object with keys for `groups` and `total_size`. `groups` will be set to an array of group objects. `total_size` will be set to the total number of items matched by the list request. If there are more items to be returned by the requested query, the response will also contain a key called `next_page_token`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SsoConfigListGroups'
+              examples:
+                Success:
+                  value:
+                    code: bad_request
+                    message: invalid parameters
+                    details:
+                      - type: FieldViolations
+                        field_violations:
+                          - field: identity_ids
+                            description: array exceeds 1000 elements
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/groups/{group_id}/sso-configs':
+    get:
+      tags:
+        - SSO Configs
+      operationId: ListSsoConfigsForGroup
+      summary: List SSO Configs associated with a Group.
+      description: |
+        To list sso configs associated with a group.
+
+        This will return all SSO configs that have an association with the specified group ID.
+      security:
+        - BearerAuth:
+            - 'sso-configs:read'
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1identity-providers/get/parameters/3'
+        - $ref: '#/components/parameters/page_size'
+        - $ref: '#/components/parameters/page_token'
+        - $ref: '#/components/parameters/group_id'
+      responses:
+        '200':
+          description: |
+            The response will be a JSON object with keys for `sso_configs` and `total_size`. `total_size` will be set to the total number of items matched by the list request. If there are more items to be returned by the requested query, the response will also contain a key called `next_page_token`.
+          content:
+            application/json:
+              schema:
+                title: List SSO configs directly and indirectly associated with an identity.
+                description: List SSO configs directly and indirectly associated with an identity.
+                type: object
+                properties:
+                  sso_configs:
+                    type: array
+                    items:
+                      $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/content/application~1json/schema/properties/sso_configs/items'
+                  total_size:
+                    type: integer
+                    format: uint32
+                    description: |
+                      Total number of results returned by the operation. This value may be larger than the number of resources returned, such as when returning a single page where multiple pages are available.
+                    example: 1000
+                  next_page_token:
+                    type: string
+                    description: |
+                      Token used to fetch the next set of results. If this field is omitted, there are no subsequent pages.
+                required:
+                  - sso_configs
+                  - total_size
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/sso-configs/{sso_config_id}/is-group-assigned':
+    post:
+      summary: Check if any of the groups provided are associated with the SSO Config ID.
+      description: Check if any of the groups provided are associated with the SSO Config ID.
+      tags:
+        - SSO Configs
+      operationId: SSOIsGroupAssigned
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1identity-providers/get/parameters/3'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              description: |
+                A collection of group ids.
+              properties:
+                group_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: A group id.
+        required: true
+      security:
+        - BearerAuth:
+            - 'sso-configs:read'
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+                description: |
+                  Used to indicate if the result of a request is associated with an SSO
+                  Config. This could be through an Identity or a group depending on the
+                  endpoint used.
+                required:
+                  - is_assigned_to_sso_config
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/applications/{application_id}/sso-configs-id':
+    get:
+      summary: Returns the ID of the SSO Config associated with the Application.
+      description: Returns the ID of the SSO Config associated with the application.
+      tags:
+        - SSO Configs
+      operationId: ApplicationIdToSSOConfigId
+      parameters:
+        - $ref: '#/components/parameters/correlation_id'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
+        - $ref: '#/components/parameters/application_id'
+      security:
+        - BearerAuth:
+            - 'sso-configs:read'
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationSsoResponse'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '400':
+          description: The request is malformed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '401':
+          description: An invalid Authorization token has been supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '403':
+          description: The supplied authorization token doesn't allow the requested operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            x-correlation-id:
+              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
   '/v1/tenants/{tenant_id}/realms/{realm_id}/sso-configs/{sso_config_id}/test':
     post:
       summary: Tests an SSO Config.
@@ -9070,7 +9373,7 @@ paths:
         - $ref: '#/components/parameters/correlation_id'
         - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
         - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/3'
+        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1identity-providers/get/parameters/3'
       security:
         - BearerAuth:
             - 'sso-configs:read'
@@ -9142,7 +9445,7 @@ paths:
                           <!-- Favicon from theme -->
                           <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
 
-                          
+
 
                           <style nonce="zUfBFwrhQk0UI73zxsAGqg">
                               #login-bg-image-id {
@@ -9253,7 +9556,12 @@ paths:
         - $ref: '#/components/parameters/correlation_id'
         - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
         - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/3'
+        - name: sso_config_id
+          in: path
+          required: true
+          description: A unique identifier of the sso configuration
+          schema:
+            type: string
         - $ref: '#/components/parameters/page_size'
         - $ref: '#/components/parameters/page_token'
       responses:
@@ -9575,150 +9883,6 @@ paths:
           headers:
             x-correlation-id:
               $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-  '/v1/tenants/{tenant_id}/realms/{realm_id}/applications/{application_id}/sso-configs-id':
-    get:
-      summary: Returns the ID of the SSO Config associated with the Application.
-      description: Returns the ID of the SSO Config associated with the application.
-      tags:
-        - SSO Configs
-      operationId: ApplicationIdToSSOConfigId
-      parameters:
-        - $ref: '#/components/parameters/correlation_id'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
-        - $ref: '#/components/parameters/application_id'
-      security:
-        - BearerAuth:
-            - 'sso-configs:read'
-      responses:
-        '200':
-          description: Successful response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApplicationSsoResponse'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '400':
-          description: The request is malformed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '401':
-          description: An invalid Authorization token has been supplied.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '403':
-          description: The supplied authorization token doesn't allow the requested operation.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '500':
-          description: Internal server error.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-  '/v1/tenants/{tenant_id}/realms/{realm_id}/sso-configs/{sso_config_id}/is-group-assigned':
-    post:
-      summary: Check if any of the groups provided are associated with the SSO Config ID.
-      description: Check if any of the groups provided are associated with the SSO Config ID.
-      tags:
-        - SSO Configs
-      operationId: SSOIsGroupAssigned
-      parameters:
-        - $ref: '#/components/parameters/correlation_id'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/1'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/2'
-        - $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/parameters/3'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              description: |
-                A collection of group ids.
-              properties:
-                group_ids:
-                  type: array
-                  items:
-                    type: string
-                  description: A group id.
-        required: true
-      security:
-        - BearerAuth:
-            - 'sso-configs:read'
-      responses:
-        '200':
-          description: Successful response.
-          content:
-            application/json:
-              schema:
-                type: object
-                description: |
-                  Used to indicate if the result of a request is associated with an SSO
-                  Config. This could be through an Identity or a group depending on the 
-                  endpoint used.
-                required:
-                  - is_assigned_to_sso_config
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '400':
-          description: The request is malformed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '401':
-          description: An invalid Authorization token has been supplied.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '403':
-          description: The supplied authorization token doesn't allow the requested operation.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-        '500':
-          description: Internal server error.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          headers:
-            x-correlation-id:
-              $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-  '/v1/tenants/{tenant_id}/realms/{realm_id}/identities/{identity_id}/sso-configs/{sso_config_id}/is-identity-assigned':
-    $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs~1%7Bsso_config_id%7D~1is-group-assigned'
 components:
   parameters:
     tenant_id:
@@ -11010,16 +11174,16 @@ components:
         - plain
         - s256
       description: |
-        PKCE code challenge methods supported for applications, as defined by 
+        PKCE code challenge methods supported for applications, as defined by
         [RFC-7636](https://datatracker.ietf.org/doc/html/rfc7636). Allowable values are:
-          - `disabled` : PKCE is disabled for this application. This is the default state if 
+          - `disabled` : PKCE is disabled for this application. This is the default state if
             the `pkce` field is left blank. Please note that public OIDC and OAuth2 configured
-            applications MUST enable PKCE support. Confidential clients can leave PKCE disabled 
-            if they choose. 
-          - `plain` : PKCE is enabled for this application. The server will correlate the `code_challenge` and 
+            applications MUST enable PKCE support. Confidential clients can leave PKCE disabled
+            if they choose.
+          - `plain` : PKCE is enabled for this application. The server will correlate the `code_challenge` and
             `code_verifier` between the `authorize` and `token` requests. In this configuration, those fields are
             required to be identical. This is the lower security option for PKCE support and should only be used
-            by legacy clients, or clients that don't support `s256`. 
+            by legacy clients, or clients that don't support `s256`.
           - `s256` : PKCE is enabled for this application, and the server will correlate the `code_challenge` and
             `code_verifier` between the `authorize` and `token` requests. In this configuration, those fields are
             required to equate as follows: `code_challenge` = `base64url(sha256(ascii(code_verifier)))`. This is
@@ -12988,7 +13152,6 @@ components:
         - generic_saml
         - okta_idp
         - okta_sso_bi_idp
-        - reality_check
         - scim
         - ws_fed
     SsoConfigWsFedPartialUpdate:
@@ -13025,7 +13188,7 @@ components:
           $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/subject_user_name_attribute'
         authentication_context:
           description: |
-            The SAML Authentication Context Class for the assertion's authentication statement. 
+            The SAML Authentication Context Class for the assertion's authentication statement.
             Default value is "X509".
           $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/authentication_context'
         additional_user_attributes:
@@ -13086,7 +13249,7 @@ components:
           $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/subject_user_name_attribute'
         authentication_context:
           description: |
-            The SAML Authentication Context Class for the assertion's authentication statement. 
+            The SAML Authentication Context Class for the assertion's authentication statement.
             Default value is "X509".
           $ref: '#/components/schemas/SsoConfigPayload/oneOf/4/properties/authentication_context'
         additional_user_attributes:
