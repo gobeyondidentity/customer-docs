@@ -91,7 +91,7 @@ const sidebars = {
         type: "doc",
         id: "policy/policy",
       },
-      items: ["policy/rules"],
+      items: ["policy/rules", "policy/credential-enrollment"],
     },
     {
       type: "category",
@@ -198,7 +198,7 @@ const sidebars = {
         id: "end-user-guides/end-user-guides",
       },
       items: [
-        "end-user-guides/proxy-end-user",
+        "end-user-guides/proxy-end-user", "end-user-guides/self-enrollment"
       ],
     },
     {
