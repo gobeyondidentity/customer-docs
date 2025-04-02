@@ -1,0 +1,148 @@
+---
+title: Splunk
+id: splunk
+description: "Learn about this."
+slug: /integrations/siem-guides/splunk
+keywords:
+  - SIEM
+  - Splunk
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 2025-03-17
+  author: Jerome Villegas
+draft: false
+hide_table_of_contents: false
+hide_title: false
+hide_breadcrumbs: false
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+
+## Overview
+
+This guide is a walkthrough of the sections and steps to integrate Beyond Identity SIEM information to Splunk.
+
+## Prerequisites
+
+Confirm you have the following prerequisites before continuing with the integration.
+
+- Beyond Identity
+    - Tenant configured for organization with ability to enroll users
+- Splunk Cloud
+    - Administrator account
+
+## Stage summary
+
+The integration setup consists of the two stages below. Each stage covers the initial set up for continuing the integration process on each respective platform. Follow the guide in linear order to complete the integration.
+
+| Stage | Summary | Splunk | Beyond Identity |
+| :---- | :---- | :---- | :---- |
+| [I](#stage-i) | Initial configuration | - [Create HTTP event collector](#-create-http-event-collector)<br></br>- [Additional Splunk configurations](#-additional-splunk-configurations)<br></br>   - [Configure HTTP Event Collector with SSL certificate](#-configure-http-event-collector-with-ssl-certificate)<br></br>   - [Set up HTTP Event Collector port](#-set-up-http-event-collector-port) | - [Add integration in Beyond Identity](#-add-integration-in-beyond-identity) |
+| [II](#stage-ii) | Set up Beyond Identity integration and confirm logs | - [Verify logs in Splunk](#-verify-logs-in-splunk) | - [Configure Splunk integration in Beyond Identity](#-configure-splunk-integration-in-beyond-identity)<br></br>- [View SIEM integration logs](#-view-siem-integration-logs) |
+
+# Steps
+
+Follow the steps in the sections below to complete your SIEM integration with Beyond Identity.
+
+## Legend
+
+The sections below use these two color codings to identify the steps for separate platforms.
+
+🔵 Beyond Identity: Beyond Identity platform tasks are highlighted in blue.
+
+🟠 Splunk: Splunk platform tasks are highlighted in orange.
+
+## Stage I
+
+The sections in this stage are for the intial setup of the integration between the two platforms.
+
+### 🟠 Create HTTP event collector
+
+This section has the steps for creating an HTTP event collector in Splunk.
+
+1. Navigate and login to your Splunk Cloud administrator console.
+2. Click **Settings**.
+3. Click **Data inputs** in the dropdown menu.
+4. On the **Data inputs** screen, click **Add new**.
+5. Input `BI_events_http` in the name field for the HTTP Event Collector and add a description.
+6. Maintain the default for the other fields and click **Next**.
+7. Next to **Available items**, click **add all**. This action populates the **Selected item(s) **section.
+8. Under the **Default Index** dropdown, select **main**.
+9. Click **Review** to review the settings.
+10. Click **Submit**. This prompts the Token has been created successfully screen and shows the new HTTP Event Collector.
+11. Copy the token value and save it in a secure location.
+
+### 🟠 Additional Splunk configurations
+
+The section here covers the remaining setup for Splunk configurations.
+
+#### 🟠 Configure HTTP Event Collector with SSL certificate
+
+This section includes SSL instructions for Splunk Enterprise. Follow the specifications below to configure the integration.
+
+:::note
+This functionality is not available for trial accounts.
+:::
+
+The default SSL certificate deployed with HTTP Event Collector has the Subject `CN=SplunkServerDefaultCert`. The SSL handshake requires the subject in the certificate to match the host name of HTTP Event collector URL. 
+
+Copy an SSL certificate, for example using `letsencrypt`, with host name as the subject and the full CA certificate chain file in PEM format.
+
+Refer to the [Splunk HTTP Event Collector reference documentation](https://docs.splunk.com/Documentation/Splunk/7.2.0/Admin/Inputsconf#http:_.28HTTP_Event_Collector.29) for more. 
+ 
+Set the following specifications for receiving Secure Sockets Layer (SSL)communication underneath this stanza name.
+
+```
+serverCert = <path>
+```
+
+The full path to the server certificate Privacy-Enhanced Mail (PEM) format file. PEM is the most common text-based storage format for SSL certificate files. No default.
+
+
+#### 🟠 Set up HTTP Event Collector port
+
+Open HTTP Event Collector port `8080`. Splunk Cloud HTTP Event collector listens on port 8088 by default. This port is open for SSL traffic in the firewall for Beyond Identity event integration to work.
+
+### 🔵 Add integration in Beyond Identity
+
+The section here includes the steps for configuring the SIEM integration in Beyond Identity. The instructions below are for the Beyond Identity Console.
+
+1. On the Beyond Identity Console lefthand navigation, under Platform, select **Integrations**.
+2. Select the **Browse integrations** tab.
+3. Select **Splunk**.
+4. On the Splunk overview page, click **Add instance**.
+
+## Stage II
+
+The sections in this stage are for setting up the Splunk configuration in Beyond Identity and viewing the logs. Follow the sections below to complete the integration.
+
+### 🔵 Configure Splunk integration in Beyond Identity
+
+The steps below are for adding values from your custom webhook to Beyond Identity for completing the SIEM integration.
+
+1. On the **Add integration** pop up after completing the steps in Add integration in Beyond Identity section, input the following required values.
+    - Name → `Beyond Identity SIEM integration`
+    - HEC Token → Your Splunk token value from the [Create HTTP event collector](#-create-http-event-collector) section
+    - HEC Host → Your host name
+    - HEC Port → Your Splunk HTTP port
+2. For your configuration's events and threat signal selection, click the **Select all and automatically add...** checkboxes for both fields.
+    - NOTE: These configuration selections can be changed and updated later.
+4. Confirm the Status is set to **Active**.
+5. Click **Test Configuration**.
+6. After testing is complete, click **Save changes**.
+
+### 🟠 Verify logs in Splunk
+
+After completing the integration, view the logs from Beyond Identity within your custom webhook. Follow the instructions below to verify and confirm the data.
+
+1. Navigate to your Splunk platforms.
+2. Search for `index="main" source="BI_events_http" "actor.tenant_id"="TENANT_CONFIGURED"` in Splunk Cloud.
+3. Confirm Beyond Identity events data is available.
+
+
+import ViewSiem from '../../includes/_view-siem-integration-logs.mdx';
+
+### 🔵 View SIEM integration logs
+
+<ViewSiem />

@@ -50,7 +50,25 @@ const sidebars = {
             ["integrations/crowdstrike",
             "integrations/intune",
             "integrations/jamf",
-            ],
+              {
+              type: "category",
+              label: "SIEM Guides",
+              collapsed: true,
+              collapsible: true,
+              link: {
+                type: "doc",
+                id: "integrations/siem-guides/siem-guides",
+              },
+              items: [
+                "integrations/siem-guides/custom-webhooks", 
+                "integrations/siem-guides/datadog", 
+                "integrations/siem-guides/elastic",
+                "integrations/siem-guides/google-pubsub",
+                "integrations/siem-guides/microsoft-sentinel", 
+                "integrations/siem-guides/splunk",
+                "integrations/siem-guides/sumo-logic"
+                  ],
+              },]
        },
        {
         type: "category",
