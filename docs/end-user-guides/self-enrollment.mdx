@@ -30,11 +30,10 @@ Credential extension helps end users maintain additional devices, passkeys, or b
 To use credential extension in Beyond Identity as an end user, the following conditions are required.
 
 **End users**
-- Beyond Identity Platform Authenticator installed with a passkey on any of these operating systems
-    - macOS, iOS, Windows, Android, Linux
-- Untrusted device with Beyond Identity Platform Authenticator installed
-    - The Beyond Identity Platform Authenticator version `2.103.0` is the most recently supported version.
-    - [Download the most recent version of the Beyond Identity Platform Authenticator at this link](https://app.byndid.com/downloads).
+- Beyond Identity Platform Authenticator installed with a passkey on any of these operating systems: macOS, iOS, Windows, Android, Linux
+    - The Beyond Identity Platform Authenticator version `2.103.0` is the most recently supported version
+    - Both trusted and untrusted devices must have the supported Beyond Identity Platform Authenticator version installed
+    - [Download the most recent version of the Beyond Identity Platform Authenticator](https://app.byndid.com/downloads)
 
 :::caution
 Only enroll credentials on devices you control.
@@ -42,6 +41,14 @@ Only enroll credentials on devices you control.
 
 **Administrators**
 - Group or groups in Beyond Identity to apply credential enrollment policy rules
+
+### Differences from Secure Work passkey enrollment
+
+For users coming from Secure Work, the Secure Access credential enrollment process is different. End users generate a QR code or a nine digit code from the new device and then input that information to the trusted device.  The Secure Work credential enrollment process inverts this process and hasn't changed from the original method.
+
+:::note
+Passkeys from Secure Work aren't compatible with passkeys from Secure Access and Secure Access passkeys aren't backwards compatible with Secure Work.
+:::
 
 ## Stage summary
 
@@ -85,9 +92,7 @@ End users with existing passkeys can add their passkey to new devices using cred
 
 This section includes the steps to download and install the Beyond Identity Platform Authenticator on your new device.
 
-1. [Download the Beyond Identity Platform Authenticator](https://app.byndid.com/downloads) according to your operating system.
-    1. For Desktop users, navigate to [https://app.byndid.com/downloads](https://app.byndid.com/downloads) and install the app.
-    1. For Mobile users, install the Beyond Identity app from the App Store.
+1. [Download the Beyond Identity Platform Authenticator](https://app.byndid.com/downloads) according to your operating system for desktop, mobile, or both.
 
 #### Initiate credential enrollment on trusted device
 
@@ -114,9 +119,3 @@ Success! Congratulations, you've completed your credential enrollment to a new d
 :::
 
 For `Policy denied` errors, contact your administrator for support.
-
-## Process for Secure Work customers
-
-For users coming from Secure Work, the Secure Access credential enrollment process is different. End users generate a QR code or a nine digit code from the new device and then input that information to the trusted device. 
-
-The Secure Work credential extension process inverts this and cannot communicate passkeys with Secure Access.
