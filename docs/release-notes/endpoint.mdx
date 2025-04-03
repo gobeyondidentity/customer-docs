@@ -20,7 +20,28 @@ displayed_sidebar: mainSidebar
 
 Learn more about the latest updates to the Secure Access platform.
 
-### March 31st, 2025
+### April 3rd, 2025
+
+<details>
+<summary><p>Version 2.103.0 Endpoint Release Notes</p></summary>
+## Credential enrollment for Secure Access
+- We've launched functionality for the process of taking a trusted device with its passkey and extending the passkey to another device. End users enrolled in Beyond Identity can provision passkeys to their devices on their own. Learn more about credential enrollment in the guides below.
+    - Self Enrollment Guide for End Users
+    - Credential Enrollment Policy Guide
+
+## Bug fixes
+
+**Domain Connector**
+- Fixed an issue where Domain Connector 2.102.6 would not start. 
+- Changed default locations and settings to better align with Windows best practices.
+    - Settings.ini file moved to `C:\ProgramData\BeyondIdentity\domain_connector.ini`
+    - Default log folder moved to `C:\ProgramData\BeyondIdentity\logs\domainConnector`
+    - The `multiDC` configuration value now defaults to `yes`
+<br></br>
+**macOS Authenticator**
+- Fixed a minor issue where a long username would cause the Tenant name to be clipped on the user passkey.
+
+</details>
 
 <details>
 <summary><p>Secure Access Updates</p></summary>
@@ -36,6 +57,7 @@ Learn more about the latest updates to the Secure Access platform.
 
 ### Bug fixes
 
+- Resolved an issue to allow the SCIM server to accept string values for boolean attributes, improving the experience while integrating SCIM with Microsoft Entra ID, which provisions the `active` attribute as a string instead of a boolean.
 - Fixed the Datadog SIEM integration configuration screen not displaying a required API Key field input when attempting to add the instance without the value.
 - Resolved an issue that happens when manually adding an Identity then deleting values in the Add identity pop up. That behavior returned a `400` error and also caused the remaining user information to persist when attempting to create another new identity.
 - Fixed inaccurate data for the Integrations activity log of the event's date and time recorded when comparing date values from the table on the Log page to the Activity page.
@@ -44,7 +66,6 @@ Learn more about the latest updates to the Secure Access platform.
 - Fixed a bug with Policy involving rules with geolocation comparison for event attributes not matching to users within that geolocation during policy outcome simulation.
 - Fixed an API issue when attempting to add an identity to a non-existent group displaying an internal error of `500` instead of a `404` Not Found.
 - Improved initialization of the Swift SDK against multi-thread initialization and also fixed an issue during initialization related to an inability to prevent the passkey directory from being backed up. 
-
 
 </details>
 
