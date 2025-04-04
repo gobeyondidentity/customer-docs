@@ -1,0 +1,81 @@
+---
+title: Web Authentication Guide
+id: web-authentication
+description: 'Learn more about Beyond Identity and web authentication.'
+slug: /resources/web-authentication
+keywords:
+  - Platform Authenticator
+  - web authenticator
+  - Endpoint
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 2025-04-04
+  author: Jerome Villegas
+doc_type: overview
+unlisted: true
+displayed_sidebar: mainSidebar
+---
+
+# Web Authentication
+
+## About Web Authentication
+
+Web Authentication uses an entirely browser-based authenticator, which works
+in the same was as the Beyond Identity Platform Authenticator on the device.
+
+Web Authentication is a convenient solution for platforms where a
+Platform Authenticator cannot be installed or has no access to underlying
+system resources.
+
+### Security Considerations
+
+Beyond Identity supports two configurations of browser-based passkeys,
+WebAuthn passkeys and software passkeys. 
+
+> Blurb about webauthn
+
+If your browser does not support WebAuthn, then Beyond Identity generates a software passkey.
+
+### WebAuthn Passkeys
+
+* WebAuthn passkeys are hardware based. 
+* WebAuthn passkeys are bound to the domain on which they are created. This means they cannot be used to authenticate into a site on a different domain.
+* Beyond Identity's WebAuthn passkeys cannot be synced between devices. 
+
+### Software passkeys
+
+* Software passkeys cannot be easily exfiltrated.
+* Software passkeys do not support user verification.
+
+## Configuring Web Authentication
+
+For Secure Work:
+
+1. Navigate to **Settings** → **Tenant** and scroll down to **Authentication Options**.
+2. Click the **Edit** icon.
+3. Enable **Web Authentication**.
+4. Select the platform or platforms on which to enable Web Authentication.
+
+:::note
+Enabling Web Authentication on a platform effectively disables the Platform Authenticator for that platform. 
+:::
+
+### Web Authentication and roaming
+
+If Web Authentication and Roaming Authentication are enabled  a
+user has no passkeys registered for that specific browser, then during an
+authentication a roaming QR code will be displayed so that the user may proceed.
+
+See Roaming Authentication for more details.
+
+
+## Registering a passkey
+
+Registering a passkey for web authenticator is the same process as registering a passkey in the Platform Authenticator. Click on the **Register New Passkey** button in the enrollment email. Your passkey will be registered with your default browser.
+
+To register a passkey in a browser other than your default, copy the link fom the **Register New Passkey** in the enrollment email, then paste it into the navigation bar of the browser of your choice. 
+
+After a passkey is registered with a browser, it is only be available in that browser. If you switch browsers, you cannot authenticate in a browser that does not have the registered passkey. 
+
+
