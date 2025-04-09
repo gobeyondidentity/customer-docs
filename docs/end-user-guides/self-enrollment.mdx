@@ -1,5 +1,5 @@
 ---
-title: Self Enrollment Guide
+title: Enroll a new device
 id: self-enrollment
 description: 'Learn about extending your passkey credential from a trusted device to a new device.'
 slug: /end-user-guides/self-enrollment
@@ -19,15 +19,36 @@ displayed_sidebar: mainSidebar
 
 ## Overview
 
-This guide covers the process of taking a trusted device with the user's passkey and extending that passkey to another device. This lets end users extend passkeys to their devices on their own.
+Credential enrollment is the process of securely creating a passkey on a new (second) device, using an already trusted (first) device for authorization. Users enrolled in Beyond Identity can perform credential enrollment if permitted by their organization's security policy. This policy is managed by tenant administrators.
 
-Users enroll a credential on a device which lets them login to work applications on that device. When users want to access work applications from another device, they must extend existing enrolled credentials to the new device. 
+Creating passkeys on new devices allows you to securely access all of your Beyond Identity-protected applications directly from those devices.
 
-Credential extension helps end users maintain additional devices, passkeys, or both if a primary device no longer has a passkey. This method streamlines enrollment and reduces dependency on external factors. It helps when resources like email or IdP aren't available while still maintaining our high-security standards. 
+Credential enrollment helps end users maintain additional devices, passkeys, or both if a primary device no longer has a passkey. This method streamlines enrollment and reduces dependency on external factors. It helps when resources like email or IdP aren't available while still maintaining our high-security standards. 
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Untrusted Device
+    participant Trusted Device
+    participant BeyondIdentity
+
+    User->>Untrusted Device: Requests credential enrollment
+    Untrusted Device-->>User: Displays 9-digit code
+    User->>Trusted Device: Enters 9-digit code
+    Trusted Device->>BeyondIdentity: Sends code, requests enrollment
+    BeyondIdentity->>BeyondIdentity: Checks policy for enrollment permission
+    alt Policy allows enrollment
+        BeyondIdentity-->>Untrusted Device: Issues credential (passkey)
+        Untrusted Device->>User: Ready to access applications
+    else Policy denies enrollment
+        BeyondIdentity-->>Trusted Device: Enrollment denied
+        Trusted Device->>User: Cannot enroll credential
+    end
+```
 
 ## Prerequisites
 
-To use credential extension in Beyond Identity as an end user, the following conditions are required.
+To use credential enrollment in Beyond Identity as an end user, the following conditions are required.
 
 **End users**
 - Beyond Identity Platform Authenticator installed with a passkey on any of these operating systems: macOS, iOS, Windows, Android, Linux
@@ -39,34 +60,31 @@ To use credential extension in Beyond Identity as an end user, the following con
 Only enroll credentials on devices you control.
 :::
 
-**Administrators**
-- Group or groups in Beyond Identity to apply credential enrollment policy rules
+### Why initiate self enrollment from an untrusted device?
 
-### Differences from Secure Work passkey enrollment
+In Secure Access, credential enrollment begins on the new (untrusted) device. The user generates a QR code or a 9-digit code on that device and enters it into an existing trusted device to authorize the creation of a new passkey.
 
-For users coming from Secure Work, the Secure Access credential enrollment process is different. End users generate a QR code or a nine digit code from the new device and then input that information to the trusted device.  The Secure Work credential enrollment process inverts this process and hasn't changed from the original method.
+This flow is more secure than initiating from a trusted device because it ensures the new device must be physically present and under the user’s control during enrollment. The trusted device doesn’t blindly push credentials out. Instead, it only responds to explicit requests from a device that the user has verified in-person. This prevents scenarios where a malicious actor could trick a trusted device into provisioning credentials to a remote or spoofed device.
 
 :::note
-Passkeys from Secure Work aren't compatible with passkeys from Secure Access and Secure Access passkeys aren't backwards compatible with Secure Work.
+Coming from Secure Work? See the [Migrating passkey guides](https://support.beyondidentity.com/hc/en-us/sections/6763268099863-Migrating-passkey)
 :::
-
-View the [Migrating passkey guides from Secure Work documentation](https://support.beyondidentity.com/hc/en-us/sections/6763268099863-Migrating-passkey) for more information.
 
 ## Stage summary
 
-The process for credential extension covers different steps for IT administrators and end users. The sections below include sections and steps to complete the setup.
+The process for credential enrollment covers different steps for IT administrators and end users. The sections below include sections and steps to complete the setup.
 
 | Stage | Summary | Role |
 | --- | --- | --- |
-| [Beyond Identity Console setup](#beyond-identity-console-setup) | - [Create group for testing](#create-group-for-testing)<br></br> - [Configure policy for credential enrollment](#configure-policy-for-credential-enrollment) | Adminstrator |
-| [Passkey enrollment for devices](#passkey-enrollment-for-devices) | - [Download Beyond Identity Platform Authenticator on devices](#download-beyond-identity-platform-authenticator-on-devices)<br></br> - [Initiate credential enrollment on trusted device](#initiate-credential-enrollment-on-trusted-device)<br></br> - [Coordinate enrollment on untrusted device](#coordinate-enrollment-on-untrusted-device) | End user |
+| [Beyond Identity Console setup](#beyond-identity-console-setup) | - [Group creation for credential enrollment](#group-creation-for-credential-enrollment)<br></br> - [Configure policy for credential enrollment](#configure-policy-for-credential-enrollment) | Adminstrator |
+| [Passkey enrollment for devices](#passkey-enrollment-for-devices) | - [Initiate credential enrollment on trusted device](#initiate-credential-enrollment-on-trusted-device)<br></br> - [Coordinate enrollment on untrusted device](#coordinate-enrollment-on-untrusted-device) | End user |
 | [Changes to Secure Work self enrollment flow](#changes-to-secure-work-self-enrollment-flow) | Changes to already existing Secure Work self enrollment flow for<br></br>Platform Authenticator version 2.103.0 and above  | End user |
 
 ### Beyond Identity Console setup
 
 The stages below are for administrators to prepare user groups with the ability to enroll their own credentials on to other devices.
 
-#### Create group for testing
+#### Group creation for credential enrollment
 
 As a security best practice, configure this feature for a smaller number of users within a group. With this functionality available for a smaller number of users at first, you can test this in a more controlled environment first. After successful testing, you can then configure this for a larger group or more groups as needed.
 
@@ -79,9 +97,13 @@ View the Groups document for more information on managing Groups in Beyond Ident
 1. Scroll down to the newly added Group at the bottom of the Group table and click on the name to go to group details.
 1. Click **Add group member** to add Identities to the group.
 
+:::note
+As a security best practice, configure this feature for a smaller number of users within a group. With this functionality available for a smaller number of users at first, you can test this in a more controlled environment first. After successful testing, you can then configure this for a larger group or more groups as needed.
+:::
+
 #### Configure policy for credential enrollment
 
-Before end users are able to use credential extension, use policy rules for the transaction of `Authorize Credential Enrollment` to create protections against passkey abuse.
+Before end users are able to use credential enrollment, use policy rules for the transaction of `Authorize Credential Enrollment` to create protections against passkey abuse.
 
 ![Screenshot of rule definition for credential enrollment in Beyond Identity Console](../images/self-enroll/rule-definition.png)
 
@@ -89,13 +111,7 @@ Learn more about credential enrollment policies in the [Credential Enrollment Po
 
 ### Passkey enrollment for devices
 
-End users with existing passkeys can add their passkey to new devices using credential extension. This functionality is available after IT administrators for the organization configure policy for authorized credential enrollment. The sections below cover the steps to download and install the Beyond Identity Platform Authenticator to the new device, then to initiate the communication between devices for credential extension.
-
-#### Download Beyond Identity Platform Authenticator on devices
-
-This section includes the steps to download and install the Beyond Identity Platform Authenticator on your new device.
-
-1. [Download the Beyond Identity Platform Authenticator](https://app.byndid.com/downloads) according to your operating system for desktop, mobile, or both.
+End users with existing passkeys can add their passkey to new devices using credential enrollment. This functionality is available after IT administrators for the organization configure policy for authorized credential enrollment. The sections below cover the steps to download and install the Beyond Identity Platform Authenticator to the new device, then to initiate the communication between devices for credential enrollment.
 
 #### Initiate credential enrollment on trusted device
 
