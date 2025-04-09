@@ -1,7 +1,7 @@
 ---
 title: Policy
 id: policy
-description: 'Create authentication policies and optionally simulate them BEFORE implement implementation'
+description: 'Create authentication policies and optionally simulate them before implementation'
 slug: /policy/policy
 keywords:
   - policy
@@ -20,3 +20,88 @@ displayed_sidebar: mainSidebar
 import DocCardList from '@theme/DocCardList';
 
 <DocCardList />
+
+## Overview
+
+Beyond Identity's policy engine provides IT and Security Administrators with a powerful and flexible framework to define access controls, ensuring secure authentication and resource protection. The Beyond Identity policy engine enables IT and Security Administrators to:
+
+- Define rules governing authentication and passkey self-enrollment
+- Detect and prevent unauthorized passkey self-enrollment
+- Monitor and investigate policy decisions and authentication attempts
+- Secure application access by enforcing conditions based on user roles, device compliance, and other contextual factors
+
+This document outlines the core components of the Beyond Identity policy and rule builder, including transaction types, attributes, default policies, and evaluation mechanisms.
+
+## Policy evaluation process
+
+Beyond identity policy contains an ordered list of one or more rules. Each rule contains a list of conditions and an action, decision, or both to perform if the conditions of the rule are all matched.
+
+As part of the policy evaluation process for an operation, Beyond Identity evaluates the rules in the policy sequentially, meaning:
+
+1. The policy engine evaluates rules in order, from top to bottom.
+1. When all the conditions defined in a rule are met, the specified action in the rule is executed.
+    1. The action may be a terminating action, such as allow or deny, that stops the policy evaluation process. Any rules below the rule will not be evaluated.
+    1. The action may be a non-terminating action, monitor, that performs some effect. This kind of action will not terminate the policy evaluation process. After the action is performed, the policy evaluation process continues evaluating rules below it.
+
+This sequential processing ensures efficient policy execution and reduces unnecessary evaluations. As a best practice, place restrictive rules at the top of the list. There is no limit to the number of rules your policies can have.
+
+## Beyond Identity rule builder summary
+
+The rule builder enables administrators to create and enforce access policies through a structured decision framework. Rules consist of:
+
+- Rule Name (Optional): A descriptive name for easy reference and management.
+- Description (Optional): Additional details to help administrators understand the purpose of the rule.
+- Rule Definition:
+    - Transactions: Define the operation for which the policy protects
+    - Conditions: Criteria that must be met for a policy to match
+    - Actions: Outcomes (allow, monitor, or deny) applied when a rule is matched
+    - Customize Notification (Optional): Allows administrators to define custom messages displayed to users when authentication is denied
+
+## Transactions and types
+
+Transactions define the scope of a policy rule.
+
+### Authentication
+
+Authentication rules determine the conditions under which access to a resource is granted, monitored or denied. These rules evaluate attributes describing:
+
+- User group membership
+- User has a registered device to limit number of available devices
+- Device security posture
+- Integration Attributes
+- Authenticatator Versions
+- User behavior (Network and Location)
+
+### Credential enrollment
+
+Enrollment rules determine whether a user can enroll a credential on another device. These rules help prevent unauthorized credential distribution.
+
+## Default policies and functions
+
+Beyond Identity provides several pre-configured default policies to enhance security:
+
+- Credential Enrollment is default deny: Any request for credential enrollment authorized by an existing credential is denied. 
+- SSO Assignments - Assigned to Application: If a user requests access to an SSO application, but has not been granted permission to use it, access is denied
+- Inactive User Status: If a user is inactive, access is denied
+- Default Deny: Any request for access that is not explicitly approved is denied
+
+## Policy evaluation and logging
+
+The sections below cover logs and events. 
+
+## Viewing policy logs
+
+To review policy logs within the Beyond Identity Admin Console, navigate to Reporting > Activity. This section provides visibility into all the events in the system including policy decisions to help administrators identify and resolve authentication issues.
+
+### Policy events
+
+Beyond Identity provides the following policy events types to help with authentication troubleshooting and policy tracking:
+
+- Policy Event - Indicates whether an authentication attempt was Allowed, Monitored, or Denied based on policy evaluation. 
+- Policy Change Event - Captures changes to policies, including when a policy is created, updated or deleted.
+
+### Enrollment events
+
+Beyond Identity shows events related to enrollments.
+
+- Add Passkey - Indicates the actor, credential id which authorized the enrollment, credential created, enrollment method [short code], outcome [success, failure, unauthorized] 
