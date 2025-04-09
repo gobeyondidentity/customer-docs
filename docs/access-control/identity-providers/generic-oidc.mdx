@@ -12,8 +12,8 @@ keywords:
 pagination_next: null
 pagination_prev: null
 last_update:
-  date: 04/03/2024
-  author: Ismail Mustafa
+  date: 04/09/2025
+  author: Ben Bynum
 draft: false
 hide_table_of_contents: false
 hide_title: false
@@ -22,22 +22,26 @@ doc_type: overview
 displayed_sidebar: mainSidebar
 ---
 
-import Arcade, {Clip} from '@site/src/components/Arcade.tsx';
+import Arcade, { Clip } from "@site/src/components/Arcade.tsx";
 
 ## Create a Generic OIDC Identity Provider
 
-<Arcade clip={Clip.OktaIntegrationGuideCreateBeyondIdentityIdp} />
+This guide is a walkthrough of the steps to add a Generic OIDC Identity Provider from which users can authenticate into Beyond Identity.
+
+<Arcade clip={Clip.IdentityProviderIntegrationGuideGenericOIDC} />
 
 :::info
 
-Notice the important values section at the bottom of the Identity Provider creation screen. You will need to copy a few of these URLs over to the application/SSO you are configuring.
+The following required fields can be found in your Identity Provider's configuration.
 
-<br></br>
-
-![Beyond Identity IdP Important Values](../../images/okta-integration-guide/beyond-identity-idp-important-values.png)
+- Client ID
+- Client Secret
+- Authorization Endpoint
+- Token Endpoint
+- JWKS Endpoint
 
 :::
 
-## Fill in the Redirect URI
+## Redirect URI
 
-Upon creating a generic OIDC identity provider, you'll be required to fill in the redirect URI to ensure that the identity provider is operational. Instructions for this vary depending on the SSO you are integrating with.
+Upon creating a generic OIDC identity provider, the Redirect URI is auto-generated. Be sure to copy this and add it to your Identity Provider's configuration settings. Redirect URIs must match exactly.
