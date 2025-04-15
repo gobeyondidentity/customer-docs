@@ -46,43 +46,43 @@ const sidebars = {
         type: "doc",
         id: "integrations/integrations",
       },
-      items: 
-            ["integrations/crowdstrike",
-            "integrations/intune",
-            "integrations/jamf",
-            ],
-       },
-       {
-        type: "category",
-        label: "Directory",
-        collapsed: false,
-        collapsible: true,
-        link: {
-          type: "doc",
-          id: "directory/directory",
-        },
-        items: [
-          "directory/identities",
-          "directory/groups",
-          "directory/devices",
-          "directory/roles",
-          // {
-          //   type: "category",
-          //   label: "Directory Integrations",
-          //   collapsed: true,
-          //   collapsible: true,
-          //   link: {
-          //     type: "doc",
-          //     id: "directory/directory-integrations/directory-integrations",
-          //   },
-          //   items: [
-          //     "directory/directory-integrations/directory-integrations-generic-scim",
-          //     "directory/directory-integrations/directory-integrations-okta",
-          //   ],
-          // },
+      items:
+        ["integrations/crowdstrike",
+          "integrations/intune",
+          "integrations/jamf",
         ],
+    },
+    {
+      type: "category",
+      label: "Directory",
+      collapsed: false,
+      collapsible: true,
+      link: {
+        type: "doc",
+        id: "directory/directory",
       },
-       {
+      items: [
+        "directory/identities",
+        "directory/groups",
+        "directory/devices",
+        "directory/roles",
+        // {
+        //   type: "category",
+        //   label: "Directory Integrations",
+        //   collapsed: true,
+        //   collapsible: true,
+        //   link: {
+        //     type: "doc",
+        //     id: "directory/directory-integrations/directory-integrations",
+        //   },
+        //   items: [
+        //     "directory/directory-integrations/directory-integrations-generic-scim",
+        //     "directory/directory-integrations/directory-integrations-okta",
+        //   ],
+        // },
+      ],
+    },
+    {
       type: "category",
       label: "Policy",
       collapsed: false,
@@ -91,7 +91,7 @@ const sidebars = {
         type: "doc",
         id: "policy/policy",
       },
-      items: ["policy/rules"],
+      items: ["policy/rules", "policy/credential-enrollment"],
     },
     {
       type: "category",
@@ -125,26 +125,26 @@ const sidebars = {
             id: "access-control/applications/applications",
           },
           items: [
-            "access-control/applications/generic-scim", 
-            "access-control/applications/microsoft-eam", 
-            "access-control/applications/okta", 
+            "access-control/applications/generic-scim",
+            "access-control/applications/microsoft-eam",
+            "access-control/applications/okta",
             "access-control/applications/onelogin",
             "access-control/applications/wsfed"
-              ],
-       },
-       {
-        type: "category",
-        label: "Identity Providers",
-        collapsed: true,
-        collapsible: true,
-        link: {
-          type: "doc",
-          id: "access-control/identity-providers/identity-providers",
+          ],
         },
-        items: [
-          "access-control/identity-providers/generic-oidc"],
-      },      
-     ],
+        {
+          type: "category",
+          label: "Identity Providers",
+          collapsed: true,
+          collapsible: true,
+          link: {
+            type: "doc",
+            id: "access-control/identity-providers/identity-providers",
+          },
+          items: [
+            "access-control/identity-providers/generic-oidc"],
+        },
+      ],
     },
     {
       type: "category",
@@ -167,9 +167,9 @@ const sidebars = {
         type: "doc",
         id: "release-notes/release-notes",
       },
-      items: ["release-notes/endpoint", 
+      items: ["release-notes/endpoint",
         // "release-notes/console"
-        ],
+      ],
     },
     {
       type: "category",
@@ -198,7 +198,7 @@ const sidebars = {
         id: "end-user-guides/end-user-guides",
       },
       items: [
-        "end-user-guides/proxy-end-user",
+        "end-user-guides/proxy-end-user", "end-user-guides/self-enrollment"
       ],
     },
     {
