@@ -50,6 +50,7 @@ const sidebars = {
         ["integrations/crowdstrike",
           "integrations/intune",
           "integrations/jamf",
+          "integrations/integrations-logs"
         ],
     },
     {

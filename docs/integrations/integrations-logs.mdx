@@ -1,0 +1,60 @@
+---
+title: Integrations Logs
+id: integrations-logs
+description: "View third-party integrations with Beyond Identity platform."
+slug: /tools/integrations/integrations-logs
+keywords:
+  - integrations logs
+  - integrations errors
+  - EDR logs
+  - MDM logs
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 2025-04-18
+  author: Angela DiSalvo
+draft: false
+hide_table_of_contents: false
+hide_title: false
+hide_breadcrumbs: false
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+
+
+Beyond Identity's Secure Access Platform provides a dedicated view for MDM & EDR Integrations error logs. This view leverages our main events stream.
+
+### How it works
+
+The integrations update and get stored to our system every approximately 15 minutes. If an integration experiences an error, an event is triggered and can be viewed in the logs. The system continues emitting failure events until it recovers and emits a successful event.
+
+### Where to view
+
+#### The system is currently in an error state
+
+If the system is currently in an error state, you will see this on the main Integrations page under the status column. During this time, a link to the error logs will surface and you can navigate directly to the logs from there.
+
+#### The system is currently operational
+
+If this system is currently in an operational state, you can navigate to the logs view by clicking the row of your installed integration, and then navigating to the `Logs` tab.
+
+### Types of errors
+
+- 50x - This indicates an error upstream with the integration provider. If the issue persists, we recommend reaching out to the integration provider to learn more.
+
+- 40x - This indicates an issue with the credential and likely requires updating. Upon credential expiration, this error persists until it is fixed.
+
+- Generic Error - This indicates an issue with the Beyond Identity system. If this issue persists, please contact Beyond Identity support.
+
+### Filter by date
+
+You can filter by date range to get a customized view for these errors. History goes back 90 days.
+
+### Empty logs
+
+If the logs view is empty, then the system has not experienced any errors in the selected time frame.
+
+### View logs in the activity pane
+
+All logs posted to the logs view can also be viewed on the activity page. You can click `See Event` to navigate there. 
+
