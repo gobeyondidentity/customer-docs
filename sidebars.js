@@ -50,7 +50,20 @@ const sidebars = {
         ["integrations/crowdstrike",
           "integrations/intune",
           "integrations/jamf",
-          "integrations/integrations-logs"
+          {
+            type: "category",
+            label: "Logs",
+            collapsed: true,
+            collapsible: true,
+            link: {
+              type: "doc",
+              id: "integrations/logs/logs",
+            },
+            items: [
+              "integrations/logs/mdm-edr",
+              "integrations/logs/siem"
+            ],
+          },
         ],
     },
     {
