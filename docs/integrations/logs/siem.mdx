@@ -21,4 +21,29 @@ displayed_sidebar: mainSidebar
 ---
 
 
-Coming Soon
+Beyond Identity's Secure Access Platform provides a dedicated view for SIEM Integrations logs. 
+
+### How it works
+
+When a SIEM event push occurs, this view will provide information on the success or failure of that push.
+
+### Where to view
+
+You can navigate to the logs view by clicking the row of your installed SIEM integration, and then navigating to the `Logs` tab.
+
+### Types of errors
+
+- 50x - This indicates an error upstream with the integration provider. If the issue persists, we recommend reaching out to the integration provider to learn more.
+
+- 40x - This indicates an issue with the SIEM connection and might require user intervention. 
+
+- Generic Error - This indicates an issue with the Beyond Identity system. If this issue persists, please contact Beyond Identity support.
+
+### Filter by date
+
+You can filter by date range to get a customized view for these errors. History goes back 90 days.
+
+### Empty logs
+
+If the logs view is empty, then the system has not attempted to push event data to the SIEM. 
+
