@@ -17,7 +17,7 @@ const sidebars = {
         id: "introduction/introduction",
       },
       items: [
-        // "introduction/getting-started", 
+        // "introduction/getting-started",
         // "introduction/faq"
       ],
     },
@@ -46,25 +46,22 @@ const sidebars = {
         type: "doc",
         id: "integrations/integrations",
       },
-      items:
-        ["integrations/crowdstrike",
-          "integrations/intune",
-          "integrations/jamf",
-          {
-            type: "category",
-            label: "Logs",
-            collapsed: true,
-            collapsible: true,
-            link: {
-              type: "doc",
-              id: "integrations/logs/logs",
-            },
-            items: [
-              "integrations/logs/mdm-edr",
-              "integrations/logs/siem"
-            ],
+      items: [
+        "integrations/crowdstrike",
+        "integrations/intune",
+        "integrations/jamf",
+        {
+          type: "category",
+          label: "Logs",
+          collapsed: true,
+          collapsible: true,
+          link: {
+            type: "doc",
+            id: "integrations/logs/logs",
           },
-        ],
+          items: ["integrations/logs/mdm-edr", "integrations/logs/siem"],
+        },
+      ],
     },
     {
       type: "category",
@@ -143,7 +140,9 @@ const sidebars = {
             "access-control/applications/microsoft-eam",
             "access-control/applications/okta",
             "access-control/applications/onelogin",
-            "access-control/applications/wsfed"
+            "access-control/applications/wsfed",
+            "access-control/applications/realitycheck-for-zoom",
+            "access-control/applications/realitycheck-for-teams",
           ],
         },
         {
@@ -155,8 +154,7 @@ const sidebars = {
             type: "doc",
             id: "access-control/identity-providers/identity-providers",
           },
-          items: [
-            "access-control/identity-providers/generic-oidc"],
+          items: ["access-control/identity-providers/generic-oidc"],
         },
       ],
     },
@@ -169,8 +167,7 @@ const sidebars = {
         type: "doc",
         id: "tools/tools",
       },
-      items: [
-        "tools/branding"],
+      items: ["tools/branding"],
     },
     {
       type: "category",
@@ -181,7 +178,8 @@ const sidebars = {
         type: "doc",
         id: "release-notes/release-notes",
       },
-      items: ["release-notes/endpoint",
+      items: [
+        "release-notes/endpoint",
         // "release-notes/console"
       ],
     },
@@ -212,7 +210,8 @@ const sidebars = {
         id: "end-user-guides/end-user-guides",
       },
       items: [
-        "end-user-guides/proxy-end-user", "end-user-guides/self-enrollment"
+        "end-user-guides/proxy-end-user",
+        "end-user-guides/self-enrollment",
       ],
     },
     {
