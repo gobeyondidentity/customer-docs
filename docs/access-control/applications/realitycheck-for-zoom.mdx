@@ -1,0 +1,72 @@
+---
+title: RealityCheck for Zoom
+id: realitycheck-for-zoom
+description: "Learn how to create and use a RealityCheck for Zoom integration."
+slug: /access-control/applications/realitycheck-for-zoom
+keywords:
+  - RealityCheck for Zoom
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 2025-04-28
+  author: Harry Guo
+draft: false
+hide_table_of_contents: false
+hide_title: false
+hide_breadcrumbs: false
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+
+## Overview
+
+RealityCheck for Zoom is a Zoom plug-in for Beyond Identity customers to secure their Zoom meetings with our zero-trust, phish-resistant MFA solution. Protect your Zoom meetings from generative AI and deepfakes by strongly verifying users and devices on the call.
+
+Check out our [solutions page](https://www.beyondidentity.com/solutions/ai-deception-elimination) for more information.
+
+## Prerequisites
+
+- Beyond Identity tenant
+- Zoom License
+
+**NOTE:** You MUST be an existing Beyond Identity customer to have RealityCheck enabled.
+
+### Admin Installation
+
+1. In your Admin Console, navigate to the **Access Control** section and select **Applications**.
+2. Click **Browse Applications** and select **Generic OIDC**.
+3. Click **Add OIDC**.
+4. Input the following values:
+    - **Display Name:** RealityCheck for Zoom
+    - **Redirect URI:** `https://realitycheck.beyondidentity.com/auth/callback`
+    - **Show Tile**: Disable show tile
+5. Click **Save Changes**.
+6. Note the following values for use later:
+    - **Client ID**
+    - **Client Secret**
+    - **Issuer**
+7. Submit a [support ticket](https://support.beyondidentity.com/hc/en-us/requests/new) with the following values:
+    - **Subject Line**: RealityCheck for Zoom intake
+    - **Client ID** from step 6
+    - **Client Secret** from step 6
+    - **Issuer** from step 6
+    - **Company Identifier**: a unique identifier for your organization
+       - We strongly recommend your Zoom domain as the company identifier. For example, if your Zoom subdomain is beyondidentity.zoom.us, your company identifier should be `beyondidentity.zoom.us`
+8. Our support team will follow up on next steps.
+
+### End-user Installation
+
+As an admin, you can install the RealityCheck app for your users.
+
+1. Go to the [RealityCheck for Zoom app](https://marketplace.zoom.us/apps/ZgT5jp7xTfyqGks_h8M-Jg) on the Zoom App Marketplace.
+2. Click **Install**.
+3. Click **Install for Others**.
+4. Select the users you want to install the app for.
+5. Click **Install**.
+
+### Additional Resources
+
+- [Solutions Page](https://www.beyondidentity.com/solutions/ai-deception-elimination)
+- [RealityCheck for Zoom Integration Guide](https://support.beyondidentity.com/hc/en-us/articles/24038107991191-RealityCheck-for-Zoom-Integration-Guide)
+- [Getting Started Zoom Apps](https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0059804)
+- [Admin Deployment of Zoom Apps](https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0061035)
