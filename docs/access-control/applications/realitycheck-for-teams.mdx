@@ -1,0 +1,74 @@
+---
+title: RealityCheck for Teams
+id: realitycheck-for-teams
+description: "Learn how to create and use a RealityCheck for Teams integration."
+slug: /access-control/applications/realitycheck-for-teams
+keywords:
+  - RealityCheck for Teams
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 2025-04-28
+  author: Harry Guo
+draft: false
+hide_table_of_contents: false
+hide_title: false
+hide_breadcrumbs: false
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+
+## Overview
+
+RealityCheck for Teams is a Microsoft Teams plug-in for Beyond Identity customers to secure their Microsoft Teams meetings with our zero-trust, phish-resistant MFA solution. Protect your Microsoft Teams meetings from generative AI and deepfakes by strongly verifying users and devices on the call.
+
+Check out our [solutions page](https://www.beyondidentity.com/solutions/ai-deception-elimination) or [integrations guide](https://support.beyondidentity.com/hc/en-us/articles/30574119964183-RealityCheck-for-Teams-Integration-Guide) for more information.
+
+## Prerequisites
+
+- Beyond Identity tenant
+- Microsoft Teams License
+- Apps for Teams enabled
+
+**NOTE:** You MUST be an existing Beyond Identity customer to have RealityCheck enabled.
+
+### Admin Installation
+
+1. In your Admin Console, navigate to the **Access Control** section and select **Applications**.
+2. Click **Browse Applications** and select **Generic OIDC**.
+3. Click **Add OIDC**.
+4. Input the following values:
+    - **Display Name:** RealityCheck for Teams
+    - **Redirect URI:** `https://realitycheck-teams.beyondidentity.com/auth/callback`
+    - **Show Tile**: Disable show tile
+5. Click **Save Changes**.
+6. Note the following values for use later:
+    - **Client ID**
+    - **Client Secret**
+    - **Issuer**
+7. Assign the application to a group of users.
+8. Submit a [support ticket](https://support.beyondidentity.com/hc/en-us/requests/new) with the following values:
+    - **Subject Line**: RealityCheck for Teams intake
+    - **Client ID** from step 6
+    - **Client Secret** from step 6
+    - **Issuer** from step 6
+    - **Company Identifier**: a unique identifier for your organization
+       - We **strongly recommend** your email domain as the company identifier. For example, if your email address is first.last@beyondidentity.com, your company identifier should be `beyondidentity`.
+    - **Company Name**: a name for your organization
+9. Our support team will follow up on next steps.
+
+### End-user Installation
+
+1. In any team, channel, or meeting, click **Apps**.
+2. Search for "RealityCheck" and click **Install**.
+3. RealityCheck should be available and installed if the steps above were followed by your admin.
+4. If the App is not installed, you can always search "RealityCheck" in the app marketplace in any channel, chat, or meeting.
+
+### Additional Resources
+
+- [Solutions Page](https://www.beyondidentity.com/solutions/ai-deception-elimination)
+- [RealityCheck for Teams Integration Guide](https://support.beyondidentity.com/hc/en-us/articles/30574119964183-RealityCheck-for-Teams-Integration-Guide)
+- [Add an app to Microsoft Teams](https://support.microsoft.com/en-us/office/add-an-app-to-microsoft-teams-b2217706-f7ed-4e64-8e96-c413afd02f77)
+- [Microsoft App Setup Policies](https://learn.microsoft.com/en-us/microsoftteams/teams-app-setup-policies?WT.mc_id=TeamsAdminCenterCSH)
+- [Microsoft Teams App Centric Management](https://learn.microsoft.com/en-us/microsoftteams/install-teams-apps#install-apps-using-app-centric-management)
+- [Overview of App Management and Governance in Teams Admin Center](https://learn.microsoft.com/en-us/microsoftteams/manage-apps)
