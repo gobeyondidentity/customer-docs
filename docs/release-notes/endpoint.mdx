@@ -62,6 +62,22 @@ Learn more about the latest updates to the Secure Access platform.
   </ul></p>
 </details>
 
+### April 14th, 2025
+
+<details>
+  <summary><p>Console Release Notes</p></summary>
+  <p><ul>
+    <h4>New event type: Fetch Data From Integration</h4>
+      <li>We are now publishing a new debug capability for integrations that improves event transparency and accountability in the Beyond Identity Console.</li>
+      <li>The new event type, FETCH_DATA_FROM_INTEGRATION, provides information when an attempt to retrieve data from your integrations fails.</li>
+      <li>Beyond Identity will retry the connection to your integration approximately once per 15 minutes. Each time the attempt to fetch data from the integration fails, you will see the new event in your Activity log.</li>
+      <li>After the connection to the integration is restored, we will send one FETCH_DATA_FROM_INTEGRATION event with a Success outcome to confirm that the connection has been reestablished. Future successful data retrievals will not send more events.</li>
+      <li>You can filter these events from your view in the Activity log.</li>
+      <li>You can view these events for each integration on the new Logs tab in the Integrations panel:</li>
+      ![Logs View](../images/crowdstrike-log.png)
+  </ul></p>
+</details>
+
 ### February 28th, 2025
 
 <details>
