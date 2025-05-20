@@ -221,18 +221,29 @@ const sidebars = {
       collapsible: true,
       link: {
         type: "doc",
-        id: "resources/resources",
+        id: "resources",
       },
       items: [
         "resources/os-support",
         "resources/pa-support",
+        {
+          type: "category",
+          label: "Platform Information",
+          link: {
+            type: "doc",
+            id: "resources/platform-information/index",
+          },
+          items: [
+            "resources/platform-information/session-behavior",
+          ],
+        },
         {
           type: "link",
           label: "Service Status",
           href: "https://status.beyondidentity.com/",
         },
       ],
-    },
+    },    
   ],
 
   contributorGuideSidebar: [
