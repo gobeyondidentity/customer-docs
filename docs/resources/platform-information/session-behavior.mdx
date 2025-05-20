@@ -1,0 +1,37 @@
+---
+title: Session Behavior
+description: How Session Behavior Works
+keywords:
+  - User Session
+  - Platform Timeout
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 2025-05-20
+  author: Dolores M. Bernal
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+
+# Secure Access Console - Session Behavior
+
+The Secure Access Console controls access to its resources through usage of a session. A session is tied to a user and is created after the user authenticates and logs into the Secure Access Console. The session ends when it expires after a set time or the user logs out. In addition, when a session inactivity timeout is set, the user is logged out after a set period of inactivity.
+
+When a user is logged out of the Secure Access Console due to session expiration or inactivity timeout, they must re-authenticate to regain access to the application.
+
+Session duration and inactivity timeout for the Secure Access Console are set to the following values:
+
+|                       | **Privileged users¹** | **Non-privileged users²** |
+|-----------------------|-----------------------|----------------------------|
+| **Session duration³** | 24 hours              | 24 hours                   |
+| **Session inactivity timeout⁴** | 15 minutes             | None                       |
+
+---
+
+¹ *Privileged users are users that are granted scopes. They belong to roles that give them access to read or write sensitive data. These users can access both the Secure Access Admin Console and Dashboard.*
+
+² *Non-privileged users are users with no scopes. They either have no role or have been assigned to a role that has no scopes. These users can only access the Secure Access Dashboard.*
+
+³ *Session duration - Amount of time before a session expires.*
+
+⁴ *Session inactivity timeout - Amount of time the user is allowed to be inactive for before they are logged out.*
