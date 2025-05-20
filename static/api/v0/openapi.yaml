@@ -2963,7 +2963,7 @@ paths:
         Retrieves a list of SCIM Group resources that match the specified filter criteria.
         Send a GET request to `/Groups`.
 
-        Note that this method excludes the RBAC access groups as well as groups created through the Admin Console.
+        Note that this method includes the RBAC access groups as well as groups created through the Admin Console.
 
         Filtering ([RFC-7644 §3.4.2.2](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2)):
         - Supports 'eq' (equals) and 'ne' (not equals) operators
@@ -3139,7 +3139,7 @@ paths:
                 $ref: '#/components/schemas/SCIMGroup'
         '400':
           description: |
-            Bad request. This could also be returned if the group is one of the RBAC permission groups. Please consult the error message for more details.
+            Bad request. Please consult the error message for more details.
           content:
             application/json:
               schema:
@@ -3161,9 +3161,6 @@ paths:
             Returns 404 if:
             - The group was not found
             - The group exists but was created through the Admin Console
-
-            Note that if the group is one of the RBAC permission groups, this method
-            will return a 400 error instead.
           content:
             application/json:
               schema:
@@ -3232,9 +3229,10 @@ paths:
           5. The error response does not indicate which operation failed or which operations were applied
           6. To determine the current state, clients should issue a GET request after receiving an error
 
-        Note that this method cannot be used to update any groups which were not
-        created by SCIM, e.g. RBAC permission groups or other groups created through
-        the Admin Console.
+        This method can be used to provision roles to a user. 
+        Role provisioning is performed by adding the user to the appropriate role group as a member.
+
+        It is not possible to rename a role group or change its description.
       security:
         - BearerAuth:
             - 'scim:groups:update'
@@ -3361,10 +3359,6 @@ paths:
           description: |
             Returns 404 if:
             * The group was not found
-            * The group exists but was created through the Admin Console
-            * The group is one of the RBAC permission groups
-
-            Note: Groups not created via SCIM APIs cannot be updated using SCIM APIs.
           content:
             application/json:
               schema:
