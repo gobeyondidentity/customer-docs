@@ -3359,10 +3359,6 @@ paths:
           description: |
             Returns 404 if:
             * The group was not found
-            * The group exists but was created through the Admin Console
-            * The group is one of the RBAC permission groups
-
-            Note: Groups not created via SCIM APIs cannot be updated using SCIM APIs.
           content:
             application/json:
               schema:
