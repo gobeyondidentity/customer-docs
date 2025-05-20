@@ -55,7 +55,7 @@ The list below covers the basic Beyond Identity requirements for the integration
 
 - Secure Access Tenant with Super Admin Role
   - Use an existing account, or [sign up here](https://www.beyondidentity.com/get-demo) to create a new Beyond Identity account
-- Have at least two devices and two Super Admin roles configured*
+- Have at least two devices and two accounts with Super Admin roles configured*
   - **Recommended, optional*
 
 # Steps
@@ -177,8 +177,9 @@ With the configuration complete for the inbound and outbound SCIM implementation
 2. Click **Push Groups** dropdown.
 3. Select **Find groups by name**.
 4. Search for **Beyond Identity** group.
-   - *NOTE*: The Okta directory cannot have a group with the same name existing in the Beyond Identity directory. Group name collisions result in an error.
-5. Click **Save**. This prompts the SCIM process to begin in Okta to push the group to Beyond Identity.
+5. Verify that the **Push group memberships immediately** check box is enabled
+6. Under ***Match result & push action**, verify that the group name is **Beyond Identity** and that **Create Group* is selected under No match found. These should be the default values.
+7. Click **Save**. This prompts the SCIM process to begin in Okta to push the group to Beyond Identity.
 
 :::note
 Identities may not appear in the group when pushing the SCIM transfer if users are provisioned before the group in Okta. This may happen because of a provisioning error during the SCIM transfer.
@@ -198,9 +199,10 @@ The steps below are for the Okta platform. This section guides you through creat
 2. Click the **Create token** button.
 3. Input a name for the token in the first field.
 4. On the dropdown field below, select **Any IP**.
-5. Click **Create token**.
-6. Name the token **Beyond Identity API Token**.
+5. Name the token **Beyond Identity API Token**.
+6. Click **Create token**.
 7. API Calls made with this token must originate from **Any IP**. This can be changed later.
+8. Select **
 8. Copy the token value and store it in a secure location. Click **OK, got it** to continue.
 
 ### 🟠 Okta: Set up custom attribute for users
@@ -219,6 +221,9 @@ When the user registers a Beyond Identity passkey, the cloud service sets the `b
    3. **Variable name** → `byndidRegistered`
    4. **User permission** → select **Read only**
 6. Click **Save**.
+7. Scroll down to the bottom of the list of attributes and select the Pencil icon to edit the newly created attribute
+8. On the **Source Priority** drop down, change the value from **Inherit from profile source** to **Inherit from Okta**
+9. Select **Save Attribute**.
 
 ### 🔵 Beyond Identity: Configure Okta domain and set up API Access
 
@@ -226,7 +231,7 @@ This section guides you through configuring the Okta token created in the previo
 
 1. On the new Okta app in Beyond Identity, navigate to the **Configure registration attribute for users in Okta** section.
 2. Input the following information into the respective fields.
-   - Okta Domain → the Okta domain URL value from your Okta account<br></br>*NOTE:* This value must resolve to the full URL and omit the `-admin` suffix, for example `https://dev-48007952.okta.com`.
+   - Okta Domain → the Okta domain URL value from your Okta account<br></br>*NOTE:* This value must resolve to the full URL and omit the `-admin` suffix, for example `https://dev-48007952.okta.com`. Ensure there is no trailing `/` character at the end of the URL.
    - Okta Token → the Okta token from Step 6 of 🟠 [Okta: Create Okta API token](#-okta-create-okta-api-token)
 3. Click **Save changes** at the top of the page.
 4. Scroll down to the **Client Information & Endpoints** section for values to copy to Okta.
@@ -254,7 +259,9 @@ The steps here must be completed before moving on to the Beyond Identity section
 2. Click **+ Add identity provider**.
 3. Select **OpenID Connect IdP** and click **Next**.
 4. Under the General settings section, input `Beyond Identity` for the name.
-5. Under the **Client details** and **Endpoints** sections, input the following values from **Client Information & Endpoints** of your Okta app in Beyond Identity.
+5. In the **IdP Usage**, accept the default of **SSO only**
+6. In the Scopes field, accept the default scopes of *email, openid, and profile**
+7. Under the **Client details** and **Endpoints** sections, input the following values from **Client Information & Endpoints** of your Okta app in Beyond Identity.
 
 *NOTE*: On your Okta app in Beyond Identity, confirm the `Client ID` and `Client secret` values are from the **Client Information & Endpoints** section. The separate values from the **Configure inbound provisioning** section aren't valid for the Okta identity provider.
 
@@ -267,9 +274,10 @@ The steps here must be completed before moving on to the Beyond Identity section
    - **User Info Endpoint** → 🟠 **Userinfo endpoint**, under Endpoints
 6. Under the **Authentication settings optional** section, configure the following fields and values.
    - **Match against** → **Okta Username or Email**
-   - **Account link policy** → **Automatic**
+   - **Account link policy** → Select **Enable automatic linking**. Do not select any of the **Auto-link filters**
    - **If no match is found** → **Redirect to Okta Sign-in page**
 7. Keep the default values for remaining sections. Click **Finish** at the bottom of the page.
+*Note*: Unpun saving, Okta may prompt for step-up authentication with Oka the Okta Verify application.
 
 ### 🟠 Okta: Create routing rules
 
@@ -283,6 +291,7 @@ After having Beyond Identity as an identity provider in Okta, set up routing rul
 5. For the **THEN Use this identity provider** option, remove **Okta.**
 6. Select **Beyond Identity**.
 7. Click **Create rule**.
+8. Select **Activate**.
 
 :::warning
 Routing rules in Okta are active immediately after creating the rule. For security purposes, maintain a super administrator account that is isolated from routing rules to prevent lockout.
@@ -295,7 +304,7 @@ This section of Stage IV is for assigning the Okta application to Beyond Identit
 1. On the Okta app in Beyond Identity, navigate to the **Assignments** tab.
 2. Click the **Add assignments** dropdown and select **By Group**.
 3. On the **Assign Groups** pop up, select the **Beyond Identity** group.
-4. Click **Assign Groups**.
+4. Click **Add Group**.
 5. At the top of the page, click **Save Changes**.
 
 :::note
@@ -333,10 +342,10 @@ With the passkey, the process for users to log in to their Okta resources uses t
 1. For the Delivery Method option, select **Send email** or **Generate link.**
 1. Click the **Send enrollment** button.
    1. For the **Send email** option, the email connected to that identity receives a Beyond Identity welcome email for the process to register a passkey.
-   1. For the **Generate link** option, a URL is generated from Beyond Identity. This link is for sharing with the user for them to register a passkey.
+   2. For the **Generate link** option, a URL is generated from Beyond Identity. This link is for sharing with the user for them to register a passkey.
 1. When the user goes through the enrollment process, they will go through an interactive guide with the following 2 steps:
    1. Download the Beyond Identity Platform Authenticator - this is the app that is required for Beyond Identity authentication.
-   1. Enroll a passkey on their device.
+   2. Enroll a passkey on their device.
 
 ### 🔵 Beyond Identity: Create Okta bookmark (Optional)
 
