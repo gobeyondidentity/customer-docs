@@ -1,0 +1,67 @@
+---
+title: Kandji Integration
+id: kandji
+description: "Learn how to integrate Kandji with Beyond Identity."
+slug: /tools/integrations/kandji
+keywords:
+  - Kandji
+  - Mac integrations
+  - integration catalog
+  - integrations
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 2025-05-29
+  author: Dolores M Bernal
+draft: false
+hide_table_of_contents: false
+hide_title: false
+hide_breadcrumbs: false
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+
+---
+Deploy Beyond Identity Authenticator to macOS Using Kandji
+---
+
+This article describes how to deploy and automatically update the **Beyond Identity Authenticator** application to macOS devices via **Kandji**.  
+
+For more details on Kandji Auto Apps, please refer to the [Kandji Knowledge Base](https://support.kandji.io/).
+
+## Add the Beyond Identity Auto App Library Item
+
+1. Login to your **Kandji** tenant and navigate to the **Library**.
+
+2. Click **+ Add Library Item** at the top right corner.
+
+![Add Library Item](../images/add-library-item.png)
+
+3. In the search bar, type `Beyond` to filter available Library Items.
+
+4. Click the **Beyond Identity Auto App**.
+
+5. Click **Add and Configure** in the bottom right corner.
+
+![Add and Configure](../images/add-and-configure.png)
+
+## Configure the Beyond Identity Auto App Library Item
+
+6. Select the **Blueprint(s)** you want to assign the Library Item to.
+
+7. Select **Continuously Enforce** from the **Installation** dropdown.
+
+![Installation Dropdown](../images/installation-dropdown.png)
+
+8. Select **Automatically enforce new updates** from the **Version enforcement** dropdown.
+
+9. Set the **Enforcement time frame** based on your organization’s preferences.  
+   _Note: We suggest setting this to no longer than 2 weeks._
+
+![Version Enforcement](../images/version-enforcement.png)
+
+10. *(Optional)* Select the **Add to Dock during install** checkbox.
+
+11. Click **Save**.
+
+![Save Settings](../images/save-settings.png)

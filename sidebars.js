@@ -1,6 +1,5 @@
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
-  // By default, Docusaurus generates a sidebar from the docs folder structure
   mainSidebar: [
     {
       type: "link",
@@ -16,27 +15,8 @@ const sidebars = {
         type: "doc",
         id: "introduction/introduction",
       },
-      items: [
-        // "introduction/getting-started",
-        // "introduction/faq"
-      ],
+      items: [],
     },
-    // {
-    //   type: "category",
-    //   label: "Platform",
-    //   collapsed: false,
-    //   collapsible: true,
-    //   link: {
-    //     type: "doc",
-    //     id: "product-guides/product-guides",
-    //   },
-    //   items: [
-    //     "product-guides/access360",
-    //     // "product-guides/device360",
-    //     "product-guides/zero-trust-authentication",
-    //     "product-guides/secure-sso",
-    //   ],
-    // },
     {
       type: "category",
       label: "Integrations",
@@ -50,6 +30,7 @@ const sidebars = {
         "integrations/crowdstrike",
         "integrations/intune",
         "integrations/jamf",
+        "integrations/kandji", // ✅ Kandji integration added here
         {
           type: "category",
           label: "Logs",
@@ -59,7 +40,10 @@ const sidebars = {
             type: "doc",
             id: "integrations/logs/logs",
           },
-          items: ["integrations/logs/mdm-edr", "integrations/logs/siem"],
+          items: [
+            "integrations/logs/mdm-edr",
+            "integrations/logs/siem",
+          ],
         },
       ],
     },
@@ -77,20 +61,6 @@ const sidebars = {
         "directory/groups",
         "directory/devices",
         "directory/roles",
-        // {
-        //   type: "category",
-        //   label: "Directory Integrations",
-        //   collapsed: true,
-        //   collapsible: true,
-        //   link: {
-        //     type: "doc",
-        //     id: "directory/directory-integrations/directory-integrations",
-        //   },
-        //   items: [
-        //     "directory/directory-integrations/directory-integrations-generic-scim",
-        //     "directory/directory-integrations/directory-integrations-okta",
-        //   ],
-        // },
       ],
     },
     {
@@ -102,7 +72,10 @@ const sidebars = {
         type: "doc",
         id: "policy/policy",
       },
-      items: ["policy/rules", "policy/credential-enrollment"],
+      items: [
+        "policy/rules",
+        "policy/credential-enrollment",
+      ],
     },
     {
       type: "category",
@@ -113,7 +86,9 @@ const sidebars = {
         type: "doc",
         id: "reporting/reporting",
       },
-      items: ["reporting/device-query"],
+      items: [
+        "reporting/device-query",
+      ],
     },
     {
       type: "category",
@@ -125,7 +100,6 @@ const sidebars = {
         id: "access-control/access-control",
       },
       items: [
-        // "access-control/authentication-methods",
         {
           type: "category",
           label: "Applications",
@@ -154,7 +128,9 @@ const sidebars = {
             type: "doc",
             id: "access-control/identity-providers/identity-providers",
           },
-          items: ["access-control/identity-providers/generic-oidc"],
+          items: [
+            "access-control/identity-providers/generic-oidc",
+          ],
         },
       ],
     },
@@ -167,7 +143,9 @@ const sidebars = {
         type: "doc",
         id: "tools/tools",
       },
-      items: ["tools/branding"],
+      items: [
+        "tools/branding",
+      ],
     },
     {
       type: "category",
@@ -180,7 +158,6 @@ const sidebars = {
       },
       items: [
         "release-notes/endpoint",
-        // "release-notes/console"
       ],
     },
     {
@@ -243,7 +220,7 @@ const sidebars = {
           href: "https://status.beyondidentity.com/",
         },
       ],
-    },    
+    },
   ],
 
   contributorGuideSidebar: [
