@@ -30,7 +30,6 @@ const sidebars = {
         "integrations/crowdstrike",
         "integrations/intune",
         "integrations/jamf",
-        "integrations/kandji", // ✅ Kandji integration added here
         {
           type: "category",
           label: "Logs",
@@ -212,6 +211,17 @@ const sidebars = {
           },
           items: [
             "resources/platform-information/session-behavior",
+          ],
+        },
+        {
+          type: "category",
+          label: "Platform Authenticator",
+          link: {
+            type: "doc",
+            id: "resources/platform-authenticator/index",
+          },
+          items: [
+            "resources/platform-authenticator/kandji",
           ],
         },
         {
