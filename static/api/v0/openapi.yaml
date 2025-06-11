@@ -2012,6 +2012,15 @@ paths:
                           The type of email address. Valid values are "work", "home", and "other" as defined in [RFC 7643](https://www.rfc-editor.org/rfc/rfc7643).
                           Important notes about email handling: - Only one email address is supported per user - The email must be marked as primary (primary: true) - If multiple email addresses are provided, only the primary email will be used and all others will be ignored
                         example: work
+                'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User':
+                  type: object
+                  description: The Employee Number as defined in the enterprise SCIM extension
+                  properties:
+                    employeeNumber:
+                      type: string
+                      description: |
+                        The identifier assigned to a user within the enterprise, often a numerical or alphanumeric code.
+                      example: 10.164682/g9j6r80
                 name:
                   type: object
                   description: Definition of the user's name.
@@ -2438,7 +2447,7 @@ paths:
                       path:
                         type: string
                         description: |
-                          The path to the attribute to be updated. The path follows the SCIM specification for PATCH operations. Please refer to the [SCIM specification](https://datatracker.ietf.org/doc/html/rfc7644#section-3.5.2) for more information. For the Beyond Identity SCIM server, the supported paths are as follows: - emails - name - displayName
+                          The path to the attribute to be updated. The path follows the SCIM specification for PATCH operations. Please refer to the [SCIM specification](https://datatracker.ietf.org/doc/html/rfc7644#section-3.5.2) for more information. For the Beyond Identity SCIM server, the supported paths are as follows: - emails - name - displayName - urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber
                       value:
                         type: object
                         description: |
@@ -3139,7 +3148,7 @@ paths:
                 $ref: '#/components/schemas/SCIMGroup'
         '400':
           description: |
-            Bad request. Please consult the error message for more details.
+            Bad request. This could also be returned if the group is one of the RBAC permission groups. Please consult the error message for more details.
           content:
             application/json:
               schema:
@@ -3161,6 +3170,9 @@ paths:
             Returns 404 if:
             - The group was not found
             - The group exists but was created through the Admin Console
+
+            Note that if the group is one of the RBAC permission groups, this method
+            will return a 400 error instead.
           content:
             application/json:
               schema:
@@ -3359,6 +3371,10 @@ paths:
           description: |
             Returns 404 if:
             * The group was not found
+            * The group exists but was created through the Admin Console
+            * The group is one of the RBAC permission groups
+
+            Note: Groups not created via SCIM APIs cannot be updated using SCIM APIs.
           content:
             application/json:
               schema:
@@ -4372,6 +4388,15 @@ components:
               description: |
                 The family name of the user, or last name in most Western languages.
               example: Jensen
+        'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User':
+          type: object
+          description: The Employee Number as defined in the enterprise SCIM extension
+          properties:
+            employeeNumber:
+              type: string
+              description: |
+                The identifier assigned to a user within the enterprise, often a numerical or alphanumeric code.
+              example: 10.164682/g9j6r80
         groups:
           type: array
           description: |
