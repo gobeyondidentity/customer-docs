@@ -2014,7 +2014,8 @@ paths:
                         example: work
                 'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User':
                   type: object
-                  description: The Employee Number as defined in the enterprise SCIM extension
+                  description: |
+                    A string identifier, typically numeric or alphanumeric, assigned to a person, typically based on order of hire or association as defined in [RFC 7643](https://datatracker.ietf.org/doc/html/rfc7643#section-4.3).
                   properties:
                     employeeNumber:
                       type: string
@@ -2057,6 +2058,8 @@ paths:
                   emails:
                     - value: bjensen@example.com
                       primary: true
+                  'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User':
+                    employeeNumber: 10.164682/g9j6r80
       responses:
         '201':
           description: |
@@ -2081,6 +2084,8 @@ paths:
                     emails:
                       - primary: true
                         value: bjensen@example.com
+                    'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User':
+                      employeeNumber: 10.164682/g9j6r80
                     groups:
                       - value: e9e30dba-f08f-4109-8486-d5c6a331660a
                         type: direct
@@ -2228,6 +2233,8 @@ paths:
                         name:
                           givenName: Barbara
                           familyName: Jensen
+                        'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User':
+                          employeeNumber: 10.1646Q82/g9j6r80
                         meta:
                           created: '2023-04-10T06:08:28Z'
                           lastModified: '2023-04-10T06:08:28Z'
@@ -4395,7 +4402,7 @@ components:
             employeeNumber:
               type: string
               description: |
-                The identifier assigned to a user within the enterprise, often a numerical or alphanumeric code.
+                A string identifier, typically numeric or alphanumeric, assigned to a person, typically based on order of hire or association with an organization as defined in [RFC 7643](https://datatracker.ietf.org/doc/html/rfc7643#section-4.3).
               example: 10.164682/g9j6r80
         groups:
           type: array
