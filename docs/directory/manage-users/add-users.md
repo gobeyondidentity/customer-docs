@@ -2,7 +2,7 @@
 title: Add Users
 id: add-users
 description: "Learn about adding users"
-slug: /directory/manage-users/add
+slug: /directory/manage-users/add-users
 keywords:
   - add users
   - enroll users
