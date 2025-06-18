@@ -2,7 +2,7 @@
 title: Suspend Users
 id: suspend-users
 description: "Learn about suspending users"
-slug: /directory/manage-users/suspend
+slug: /directory/manage-users/suspend-users
 keywords:
   - suspend users
 pagination_next: null

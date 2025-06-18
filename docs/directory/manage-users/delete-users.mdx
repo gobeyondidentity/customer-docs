@@ -2,7 +2,7 @@
 title: Delete Users
 id: delete-users
 description: "Learn about deleting users"
-slug: /directory/manage-users/delete
+slug: /directory/manage-users/delete-users
 keywords:
   - delete users
 pagination_next: null

@@ -2,7 +2,7 @@
 title: Revoke a Passkey
 id: revoke-user-passkey
 description: "Learn about revoking passkey"
-slug: /directory/manage-users/revoke-passkey
+slug: /directory/manage-users/revoke-user-passkey
 keywords:
   - suspend users
 pagination_next: null
