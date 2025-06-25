@@ -58,14 +58,14 @@ const sidebars = {
       items: [
         {
           type: "category",
-          label: "Manage Users",
+          label: "Manage Identities",
           collapsed: true,
           collapsible: true,
           items: [
-            "directory/manage-users/add-users",
-            "directory/manage-users/delete-users",
-            "directory/manage-users/suspend-users",
-            "directory/manage-users/revoke-user-passkey",
+            "directory/manage-identities/add-users",
+            "directory/manage-identities/delete-users",
+            "directory/manage-identities/suspend-users",
+            "directory/manage-identities/revoke-user-passkey",
           ],
         },
         "directory/groups",
