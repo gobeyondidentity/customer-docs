@@ -58,7 +58,6 @@ const sidebars = {
       items: [
         {
           type: "category",
-<<<<<<< HEAD
           label: "Realms",
           collapsed: true,
           collapsible: true,
@@ -69,8 +68,6 @@ const sidebars = {
         },
         {
           type: "category",
-=======
->>>>>>> 5eb03f1333986c8af736188b969905a0f1a7eb92
           label: "Manage Identities",
           collapsed: true,
           collapsible: true,
