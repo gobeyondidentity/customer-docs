@@ -5855,7 +5855,8 @@ paths:
                 Success:
                   value:
                     schemas:
-                      - 'urn:ietf:params:scim:schemas:core:2.0:User'
+                      - 'urn:ietf:params:scim:schemas:core:2.0:User
+                        urn:ietf:params:scim:schemas:extension:enterprise:2.0:User'
                     id: 2819c223-7f76-453a-919d-413861904646
                     externalId: bjensen
                     userName: bjensen
@@ -5873,6 +5874,13 @@ paths:
                       lastModified: '2023-03-30T06:00:03Z'
                       location: Users/2819c223-7f76-453a-919d-413861904646
                       version: W/0
+                    'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User':
+                      employeeNumber: '12345'
+                      costCenter: Finance
+                      department: Accounting
+                      manager:
+                        - value: '54321'
+                          displayName: Jane Doe
         '400':
           description: Bad request.
           content:
@@ -6002,7 +6010,7 @@ paths:
                       - 'urn:ietf:params:scim:api:messages:2.0:ListResponse'
                     Resources:
                       - schemas:
-                          - 'urn:ietf:params:scim:schemas:core:2.0:User'
+                          - 'urn:ietf:params:scim:schemas:core:2.0:User urn:ietf:params:scim:schemas:extension:enterprise:2.0:User'
                         id: 2819c223-7f76-453a-919d-413861904646
                         externalId: bjensen
                         userName: bjensen
@@ -6020,6 +6028,13 @@ paths:
                           lastModified: '2023-03-30T06:00:03Z'
                           location: Users/2819c223-7f76-453a-919d-413861904646
                           version: W/0
+                        'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User':
+                          employeeNumber: '12345'
+                          costCenter: Finance
+                          department: Accounting
+                          manager:
+                            - value: '54321'
+                              displayName: Jane Doe
                     itemsPerPage: 1000
                     startIndex: 1
                     totalResults: 1
@@ -11710,6 +11725,43 @@ components:
               description: |
                 The family name of the user, or last name in most Western languages.
               example: Jensen
+        'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User':
+          title: EnterpriseUserExtension
+          description: |
+            Defines attributes commonly used in representing users that belong to, or act on behalf of, a business or enterprise. The enterprise User extension is identified using the following schema URI: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User".
+          type: object
+          properties:
+            employeeNumber:
+              type: string
+              description: |
+                A string identifier, typically numeric or alphanumeric, assigned to a person, typically based on order of hire or association with an organization as defined in [RFC 7643](https://datatracker.ietf.org/doc/html/rfc7643#section-4.3).
+            costCenter:
+              type: string
+              description: |
+                Identifies the name of a cost center as defined in [RFC 7643](https://datatracker.ietf.org/doc/html/rfc7643#section-4.3).
+            organization:
+              type: string
+              description: |
+                Identifies the name of an organization as defined in [RFC 7643](https://datatracker.ietf.org/doc/html/rfc7643#section-4.3).
+            department:
+              type: string
+              description: |
+                Identifies the name of a department as defined in [RFC 7643](https://datatracker.ietf.org/doc/html/rfc7643#section-4.3).
+            division:
+              type: string
+              description: |
+                Identifies the name of a division as defined in [RFC 7643](https://datatracker.ietf.org/doc/html/rfc7643#section-4.3).
+            manager:
+              type: object
+              properties:
+                value:
+                  type: string
+                  description: |
+                    The "id" of the SCIM resource representing the user's manager as defined in [RFC 7643](https://datatracker.ietf.org/doc/html/rfc7643#section-4.3).
+                displayName:
+                  type: string
+                  description: |
+                    The displayName of the user's manager. This attribute is OPTIONAL, and mutability is "readOnly" as defined in [RFC 7643](https://datatracker.ietf.org/doc/html/rfc7643#section-4.3).
         meta:
           title: Meta
           description: |
