@@ -58,7 +58,17 @@ const sidebars = {
       items: [
         {
           type: "category",
-          label: "Manage Users",
+          label: "Realms",
+          collapsed: true,
+          collapsible: true,
+          items: [
+            "directory/realms/work-realms",
+            "directory/realms/customer-realms",
+          ],
+        },
+        {
+          type: "category",
+          label: "Manage Identities",
           collapsed: true,
           collapsible: true,
           items: [
