@@ -10,7 +10,7 @@ keywords:
 pagination_next: null
 pagination_prev: null
 last_update:
-  date: 2025-06-16
+  date: 2025-06-27
   author: Dolores M Bernal
 doc_type: overview
 displayed_sidebar: mainSidebar
@@ -19,6 +19,79 @@ displayed_sidebar: mainSidebar
 ## Secure Access
 
 Learn more about the latest updates to the Secure Access platform.
+
+
+### June 28, 2025
+
+<details>
+  <summary><p>Secure Access Release Notes</p></summary>
+  
+    Here’s a summary of the latest features and improvements to the Beyond Identity Secure Access platform.
+
+    <br/>
+
+## What's New
+<br/>
+
+
+### New Directory UI Features (**Early Access**)
+We're introducing exciting new features in the **Directory** section of the platform. These features are currently in **Early Access**. If you'd like to try them out, contact Support.
+
+<br/>
+
+  - #### New Enrollment Summary Section
+    A new **Enrollment Summary** now appears at the top of the **Identities** section, offering a quick snapshot of your directory. It displays key metrics such as the total number of identities, those enrolled or not enrolled, pending and failed invite attempts, and more.
+
+      ![ReleaseNotes](../images/new-identities-summary.png)
+<br/>
+
+  - #### Batch Enrollment Feature
+    Administrators can now onboard multiple users with a new **bulk enrollment** feature. This update simplifies enrollments by enabling administrators to send up to **200 invitation emails** at a time to multiple users.
+
+    [View user documentation](https://docs.beyondidentity.com/docs/directory/manage-users/add-users#enrolling-multiple-identities-bulk-enrollment)
+
+<br/>
+
+  - #### Batch Identities Deletion Feature
+    Administrators can now delete multiple identities at once with a new **bulk deletion** feature.
+
+    [View user documentation](https://docs.beyondidentity.com/docs/directory/manage-users/delete-users#deleting-multiple-identities-in-bulk)
+
+<br/>
+
+#### Multi-Realm Management Now Available (**Early Access**)
+The new multi-realm feature allows administrators to manage Secure Work and Secure Customer identity directories within a single tenant, making it seamless to handle both employee and customer authentication workflows.
+
+    View user documentation:  
+    - [Secure Work Realms](https://docs.beyondidentity.com/docs/directory/realms/)  
+    - [Secure Customer Realms](https://docs.beyondidentity.com/docs/directory/realms/customer-realms)
+
+<br/>
+
+#### Granular Role Permission Customization (**Early Access**)
+    
+  Administrators can now create and assign custom roles with granular, least-privilege permissions in the Secure Access Console. Admins can define exactly which actions each role can perform, such as allowing help desk staff to reset credentials or enabling application owners to manage app assignments. This feature minimizes the number of high-privilege accounts, reduces the attack surface, insider risk, and helps meet access control requirements for standards like SOC 2, ISO 27001, HIPAA, and FedRAMP.
+
+     [View user documentation](https://docs.beyondidentity.com/docs/directory/roles#customize-role-permissions)
+
+---
+
+## Bug Fixes
+
+- #### Eliminated Duplicate `USER_AUTHENTICATION` Events on Timeout
+  Timeout scenarios no longer trigger multiple `USER_AUTHENTICATION` events. Events are now reliably emitted once per authentication attempt, improving log accuracy.
+
+<br/>
+
+- #### Corrected Invalid `UNAUTHORIZED` Authentication Events
+  Resolved an issue where failed authentications could produce empty or invalid `USER_AUTHENTICATION - UNAUTHORIZED` events. These events now consistently contain the correct information for auditing and troubleshooting.
+
+  <br/>
+  <br/>
+
+</details>
+
+
 
 
 ### June 27, 2025
