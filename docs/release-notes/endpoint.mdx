@@ -86,6 +86,11 @@ The new multi-realm feature allows administrators to manage Secure Work and Secu
 - #### Corrected Invalid `UNAUTHORIZED` Authentication Events
   Resolved an issue where failed authentications could produce empty or invalid `USER_AUTHENTICATION - UNAUTHORIZED` events. These events now consistently contain the correct information for auditing and troubleshooting.
 
+<br/>
+
+- #### Firefox Private Browsing Login Issue
+  Resolved an issue preventing logins in Firefox Private Browsing mode after configuring Okta as an identity provider (IdP). Authentication payload handling has been improved to ensure reliable login experiences.
+
   <br/>
   <br/>
 
@@ -159,9 +164,6 @@ We addressed a rare timing issue that could cause authentication to fail when th
 
 - **Repeated Logout After “Resume Activity” Prompt**  
   Fixed a bug where users were logged out even after choosing “Resume Activity” during session timeout warnings. Session timers now reset correctly with each interaction.
-
-- **Firefox Private Browsing Login Issue**  
-  Resolved an issue preventing logins in Firefox Private Browsing mode after configuring Okta as an identity provider (IdP). Authentication payload handling has been improved to ensure reliable login experiences.
 
 </details>
 
