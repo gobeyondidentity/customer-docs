@@ -1,0 +1,79 @@
+---
+title: Add Identities to Roles
+id: identities-roles
+description: "Learn about roles in Secure Access."
+slug: /directory/role-management/identities-roles
+keywords:
+  - roles
+  - add identities
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 2025-7-2
+  author: Dolores M. Bernal
+draft: false
+hide_table_of_contents: false
+hide_title: false
+hide_breadcrumbs: false
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+
+### Overview
+
+After creating a new role, you can assign **Directory** identities to it. These identities will inherit the permissions you defined when setting up the role. For example, if the role includes the **Read passkeys** permission, any identities added to the role will automatically have the ability to read passkeys.
+
+<br/>
+
+### What You'll Learn  
+
+This article will guide you through the process of: 
+
+- Adding identities to a role
+- Removing identities from a role
+
+<br/>
+
+### How to Add Identities to a Role
+
+#### Steps
+
+1. To add identities to a role, click **Roles** from the left-hand navigation panel. 
+
+    ![RBAC](../images/roles-lefthand.png)
+
+2. In the **Roles** table, click the name of the role to which you want to add identities.
+
+     ![RBAC](../images/delete-role-click.png)
+
+3. Under the **Identities** tab, click **Add identity**.
+
+      ![RBAC](../images/click-add-identities.png)
+
+4. Select the identities you want to add to the role. You can also use the **Search identities** bar to find identities you may not see listed. When you are finished, click **Add [#] identities**.
+
+      ![RBAC](../images/select-identities.png)
+
+5. The identities you selected to add to the role will now be listed on the **identities** tab. 
+
+      ![RBAC](../images/listed-identities.png)
+
+
+<br/>
+
+### How to Remove Identities from a Role
+
+To remove identities from a role, select them from the **Identities** tab, then click **Remove identities from role**.
+
+      ![RBAC](../images/remove-identities.png)
+
+:::info
+You won’t be prompted to confirm the removal of the selected identities. The process is automatic once you click **Remove identities from role**.
+<br/>
+
+Also, note that removing identities from roles do not delete them from the **Directory**. 
+
+:::
+
+<br/>
+<br/>

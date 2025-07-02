@@ -78,9 +78,20 @@ const sidebars = {
             "directory/manage-identities/revoke-user-passkey",
           ],
         },
+        {
+          type: "category",
+          label: "Role Management",
+          collapsed: true,
+          collapsible: true,
+          items: [
+            "directory/role-management/create-roles",
+            "directory/role-management/delete-roles",
+            "directory/role-management/identities-roles",
+            "directory/role-management/group-roles",
+          ],
+        },
         "directory/groups",
         "directory/devices",
-        "directory/roles",
       ],
     },
     {
