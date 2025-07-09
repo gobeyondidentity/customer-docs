@@ -1,0 +1,155 @@
+---
+title: Roaming Authentication
+id: roaming-authentication
+description: "Learn how to create a log in to a device that is not the primary device."
+slug: /authenticators/roaming-authentication
+keywords:
+  - log in to a device that is not the primary device
+pagination_next: null
+pagination_prev: null
+last_update:
+  date: 07/08/2025
+  author: Dolores M. Bernal
+draft: false
+hide_table_of_contents: false
+hide_title: false
+hide_breadcrumbs: false
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+
+## Overview
+### What is Roaming Authentication
+
+Roaming authentication allows end users to securely authenticate on a device that does not have their passkey installed. This method is especially useful in situations where they need to access resources in shared workstations, kiosks, or virtual desktops, and provides a phishing-resistant way to access resources when a user’s primary device is unavailable, broken, or lost.
+
+<br/>
+
+### What You'll Learn
+
+In this article, you’ll learn how to use a mobile device with the Beyond Identity Authenticator to securely log in to a resource from a device that doesn’t have your passkey setup, using a QR code.
+
+<br/>
+
+### Prerequisites
+
+1. Roaming authentication requires that you already have a passkey set up on your mobile device using the Beyond Identity Platform Authenticator. If you don't have this yet, your IT administrator will need to send you an email invitation with instructions to download the Authenticator and complete the passkey setup.
+
+2. Access to a secondary device (not your primary one) that you want to log in to.
+
+<br/>
+
+### Steps
+
+:::info
+The following steps show screenshots from an iOS device, but the process is similar on Android.
+
+:::
+
+
+
+1. On your mobile device with the Beyond Identity Authenticator already installed and passkey set up, open the **Camera** app.
+
+    ![Authenticator](../images/camera-app.png)
+
+<br/>
+2. Next, point the camera at the QR code displayed on the device you’re trying to log in to. Then, tap **Open in [your default browser name]**.
+
+<img
+  src={require('../images/open-in-chrome.png').default}
+   alt="Authenticator"
+      style={{
+        maxHeight: '500px',
+        width: 'auto',
+        objectFit: 'contain',
+        display: 'block',
+        marginLeft: '2rem',
+        marginTop: '1rem',
+        marginBottom: '1rem'
+      }}
+/>
+
+
+<br/>
+3. When prompted with the message, **This site is trying to open another application**, tap **Allow**.
+
+
+<img
+  src={require('../images/allow-roaming.png').default}
+   alt="Authenticator"
+      style={{
+        maxHeight: '500px',
+        width: 'auto',
+        objectFit: 'contain',
+        display: 'block',
+        marginLeft: '2rem',
+        marginTop: '1rem',
+        marginBottom: '1rem'
+      }}
+/>
+<br/>
+4. Tap **Open** when you see, **[Your default browser name] wants to open Beyond Identity.**
+
+<img
+  src={require('../images/open.png').default}
+     alt="Authenticator"
+      style={{
+        maxHeight: '500px',
+        width: 'auto',
+        objectFit: 'contain',
+        display: 'block',
+        marginLeft: '2rem',
+        marginTop: '1rem',
+        marginBottom: '1rem'
+      }}
+/>
+<br/>
+
+The Beyond Identity Platform Authenticator will authenticate you to use the device.
+
+<img
+  src={require('../images/authenticating-message.png').default}
+   alt="Authenticator"
+      style={{
+        maxHeight: '500px',
+        width: 'auto',
+        objectFit: 'contain',
+        display: 'block',
+        marginLeft: '2rem',
+        marginTop: '1rem',
+        marginBottom: '1rem'
+      }}
+/>
+
+<br/>
+5. Tap **Yes, log me in** to confirm your OS, browser, and nearest location.
+
+<img
+  src={require('../images/yes-log-me-in.png').default}
+   alt="Authenticator"
+      style={{
+        maxHeight: '500px',
+        width: 'auto',
+        objectFit: 'contain',
+        display: 'block',
+        marginLeft: '2rem',
+        marginTop: '1rem',
+        marginBottom: '1rem'
+      }}
+/>
+
+<br/>
+6. If authentication is successful, a banner will appear on your mobile device stating: **Your identity is verified. Return to your app to finish your login.**
+
+    ![Authenticator](../images/success.png)
+
+    You can now use the device you were trying to log in to. 
+
+:::info
+If you're unable to log in to the secondary device after multiple attempts, please contact your IT administrator for assistance.
+
+:::
+
+
+<br/>
+<br/>

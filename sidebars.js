@@ -167,6 +167,15 @@ const sidebars = {
     },
     {
       type: "category",
+      label: "Authenticators",
+      collapsed: false,
+      collapsible: true,
+      items: [
+        "authenticators/roaming-authentication",
+      ],
+    },
+    {
+      type: "category",
       label: "Tools",
       collapsed: false,
       collapsible: true,

@@ -1254,3 +1254,10 @@ html[data-theme="dark"] .card__header h4 {
         vertical-align: top;
     }
 }
+.tall-screenshot {
+    max-height: 500px;   /* or whatever limit fits your layout */
+    width: auto;
+    object-fit: contain;
+    display: block;
+    margin: 1rem auto;  /* optional: center the image */
+    }
