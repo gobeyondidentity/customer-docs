@@ -167,11 +167,11 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Authenticators",
+      label: "Authentication Experience",
       collapsed: false,
       collapsible: true,
-      items: [
-        "authenticators/roaming-authentication",
+      items: [      
+        "authentication-experience/roaming-authentication",
       ],
     },
     {
