@@ -267,11 +267,6 @@ const sidebars = {
         },
         {
           type: "link",
-          label: "Platform Authenticator Proxy Guide",
-          href: "https://docs.beyondidentity.com/docs/resources/proxy-end-user",
-        },
-        {
-          type: "link",
           label: "Service Status",
           href: "https://status.beyondidentity.com/",
         },
