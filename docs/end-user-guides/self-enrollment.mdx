@@ -11,134 +11,49 @@ keywords:
 pagination_next: null
 pagination_prev: null
 last_update:
-  date: 2025-03-31
-  author: Michal Zopp
+  date: July 10, 2025
+  author: Dolores M. Bernal
 doc_type: overview
 displayed_sidebar: mainSidebar
 ---
 
 ## Overview
 
-passkey enrollment is the process of securely creating a passkey on a new (second) device, using an already trusted (first) device for authorization. Users enrolled in Beyond Identity can perform passkey enrollment if permitted by their organization's security policy. This policy is managed by tenant administrators.
+Beyond Identity protects you and your organization from phishing attacks and other threats that come with using traditional passwords. Instead of relying on passwords, you use **passkeys**, which are secure credentials stored directly on your approved devices.
 
-Creating passkeys on new devices allows you to securely access all of your Beyond Identity-protected applications directly from those devices.
+Getting started with passkeys is simple. Here’s how it works:
 
-passkey enrollment helps end users maintain additional devices, passkeys, or both if a primary device no longer has a passkey. This method streamlines enrollment and reduces dependency on external factors. It helps when resources like email or IdP aren't available while still maintaining our high-security standards. 
+1. You will receive an invitation email from your IT team to begin the passkey setup process.
+2. The email will guide you to download and install the Beyond Identity Authenticator for your device. The Authenticator is available for Windows, macOS, iOS, Android, and Linux.
+3. After you install the Authenticator, a passkey will be created on that device. You can then use the app to add/extend passkeys to other devices, such as your smartphone or tablet.
 
-```mermaid
-sequenceDiagram
-    participant User
-    participant Untrusted Device
-    participant Trusted Device
-    participant BeyondIdentity
+Once set up, you will be able to sign in securely from any of your approved devices, without ever needing to enter a password.
 
-    User->>Untrusted Device: Requests passkey enrollment
-    Untrusted Device-->>User: Displays 9-digit code
-    User->>Trusted Device: Enters 9-digit code
-    Trusted Device->>BeyondIdentity: Sends code, requests enrollment
-    BeyondIdentity->>BeyondIdentity: Checks policy for enrollment permission
-    alt Policy allows enrollment
-        BeyondIdentity-->>Untrusted Device: Issues passkey
-        Untrusted Device->>User: Ready to access applications
-    else Policy denies enrollment
-        BeyondIdentity-->>Trusted Device: Enrollment denied
-        Trusted Device->>User: Cannot enroll passkey
-    end
-```
-
-## Prerequisites
-
-To use passkey enrollment in Beyond Identity as an end user, the following conditions are required.
-
-**End users**
-- Beyond Identity Platform Authenticator installed with a passkey on any of these operating systems: macOS, iOS, Windows, Android, Linux
-    - The Beyond Identity Platform Authenticator version `2.103.0` is the most recently supported version
-    - Both trusted and untrusted devices must have the supported Beyond Identity Platform Authenticator version installed
-    - [Download the most recent version of the Beyond Identity Platform Authenticator](https://app.byndid.com/downloads)
-
+<br/>
 :::caution
-Only enroll passkeys on devices you control.
+Only enroll passkeys on devices you control and are approved by your organization.
 :::
+<br/>
 
-### Why initiate self enrollment from an untrusted device?
+### What You'll Learn
 
-In Secure Access, passkey enrollment begins on the new (untrusted) device. The user generates a QR code or a 9-digit code on that device and enters it into an existing trusted device to authorize the creation of a new passkey.
+In this article, you will learn how to enroll your device with a secure passkey using the Beyond Identity Authenticator. 
 
-This flow is more secure than initiating from a trusted device because it ensures the new device must be physically present and under the user’s control during enrollment. The trusted device doesn’t blindly push passkeys out. Instead, it only responds to explicit requests from a device that the user has verified in-person. This prevents scenarios where a malicious actor could trick a trusted device into provisioning passkeys to a remote or spoofed device.
+If you are looking to set up a shared or secondary device, please refer to our [Roaming Authentication guide](https://docs.beyondidentity.com/docs/authentication-experience/roaming-authentication).
 
-:::note
-Coming from Secure Work? See the [Migrating passkey guides](https://support.beyondidentity.com/hc/en-us/sections/6763268099863-Migrating-passkey)
-:::
 
-## Stage summary
+### Steps
 
-The process for passkey enrollment covers different steps for IT administrators and end users. The sections below include sections and steps to complete the setup.
+#### Enroll a Passkey on a Trusted Device
 
-| Stage | Summary | Role |
-| --- | --- | --- |
-| [Beyond Identity Console setup](#beyond-identity-console-setup) | - [Group creation for passkey enrollment](#group-creation-for-passkey-enrollment)<br></br> - [Configure policy for passkey enrollment](#configure-policy-for-passkey-enrollment) | Adminstrator |
-| [Passkey enrollment for devices](#passkey-enrollment-for-devices) | - [Initiate passkey enrollment on trusted device](#initiate-passkey-enrollment-on-trusted-device)<br></br> - [Coordinate enrollment on untrusted device](#coordinate-enrollment-on-untrusted-device) | End user |
+1. When you receive the invitation email from your IT team, follow the instructions to download and install the Beyond Identity Authenticator for your operating system.
 
-### Beyond Identity Console setup
+2. After following installation instructions, at the Welcome screen, click Next.  
 
-The stages below are for administrators to prepare user groups with the ability to enroll their own passkeys on to other devices.
+Welcome screen
 
-#### Group creation for passkey enrollment
+3. Click New to Beyond Identity.
 
-As a security best practice, configure this feature for a smaller number of users within a group. With this functionality available for a smaller number of users at first, you can test this in a more controlled environment first. After successful testing, you can then configure this for a larger group or more groups as needed.
+New to BI
 
-View the Groups document for more information on managing Groups in Beyond Identity. The steps below cover creating a small group of users first to test.
-
-1. On the Beyond Identity Console, navigate to **Groups** under the **Directory** section of the left side navigation.
-1. Click **Add Group**.
-1. Input `Authorize Credential Enrollment` as the name for the Group and add a description.
-1. Click **Add Group**.
-1. Scroll down to the newly added Group at the bottom of the Group table and click on the name to go to group details.
-1. Click **Add group member** to add Identities to the group.
-
-:::note
-As a security best practice, configure this feature for a smaller number of users within a group. With this functionality available for a smaller number of users at first, you can test this in a more controlled environment first. After successful testing, you can then configure this for a larger group or more groups as needed.
-:::
-
-#### Configure policy for passkey enrollment
-
-Before end users are able to use passkey enrollment, use policy rules for the transaction of `Authorize Credential Enrollment` to create protections against passkey abuse.
-
-![Screenshot of rule definition for passkey enrollment in Beyond Identity Console](../images/self-enroll/rule-definition.png)
-
-Learn more about passkey enrollment policies in the [Credential Enrollment Policy Guide](/docs/policy/credential-enrollment)
-
-### Passkey enrollment for devices
-
-End users with existing passkeys can add their passkey to new devices using passkey enrollment. This functionality is available after IT administrators for the organization configure policy for authorized passkey enrollment. The sections below cover the steps to download and install the Beyond Identity Platform Authenticator to the new device, then to initiate the communication between devices for passkey enrollment.
-
-#### Initiate passkey enrollment on trusted device
-
-The steps below are for beginning the passkey enrollment on the trusted device. This involves opening the Beyond Identity Platform Authenticator on that device.
-
-1. On the Beyond Identity Platform Authenticator, select the specific passkey to extend.
-1. Select the **Set up other devices** button at the bottom of the selected passkey.
-![Screenshot of Beyond Identity Platform Authenticator to set up other devices](../images/self-enroll/set-up-other.png)
-1. On the operating system pop up, click **Yes, extend my passkey** to confirm.
-![Screenshot of pop up from Beyond Identity Platform Authenticator to confirm passkey enrollment and extend passkey](../images/self-enroll/cred-confirmation.png)
-1. Follow the steps from the Platform Authenticator and begin the next section of passkey enrollment.
-![Screenshot of Beyond Identity Platform Authenticator instructions](../images/self-enroll/new_instructions.png)
-
-#### Coordinate enrollment on untrusted device
-
-This section is for generating QR codes or nine digit codes to input to the trusted device. When the devices communicate and confirm authentication and authorization, the passkey extends from the trusted device to the new device. Follow the steps below to complete the process.
-
-1. On your new device, Click **+** button or **Enroll with existing device** if you just downloaded the app.\
-![Screenshot of Add passkey button on Platform Authenticator](../images/self-enroll/add_passkey_button.png)
-1. Click **Generate QR/9 Digit Code**.\
-![Screenshot of Decision View on Platform Authenticator](../images/self-enroll/decision_view_generate.png)
-1. You will be presented with a **QR and 9 Digit Code**.\
-![Screenshot of QR code on Platform Authenticator](../images/self-enroll/new_qr_code_add.png)
-1. On the trusted device, use the device's camera to scan this QR code or input the nine digit code.\
-![Screenshot of 9 digit code input from Platform Authenticator](../images/self-enroll/9-digit-code.png)
-
-:::success
-Success! Congratulations, you've completed your passkey enrollment to a new device!
-:::
-
-For `Policy denied` errors, contact your administrator for support.
+4. 
