@@ -21,8 +21,41 @@ hide_table_of_contents: true
 
 Secure Access release notes are published biweekly for commercial deployments in both the US and EU. FedRAMP and government environments receive updates two weeks after features are released to commercial deployments.
 
+
+
+### July 23, 2025
+
+<details>
+  <summary><p>Secure Access Release Notes</p></summary>
+  
+    Here’s a summary of the latest features and improvements to the Beyond Identity Secure Access platform.
+
+    <br/>
+
+<h3>What's New</h3>
 <br/>
 
+- #### Secure Access Roaming Authentication (Early Access)
+
+    End users can now authenticate securely on devices that don’t have their passkey installed. This is ideal for shared workstations, kiosks, or virtual desktops, and provides a fast, phishing-resistant way to log in when a primary device is unavailable, broken, or lost. [More details in our user documentation](https://docs.beyondidentity.com/docs/authentication-experience/roaming-authentication).
+
+---
+
+<h3>Bug Fixes</h3>
+
+- #### "Create Magic Link" Scope is Now Non-sensitive
+
+  The `magic-links:create` scope is no longer classified as sensitive. For customers using the custom roles feature, this means you no longer need to include all scopes when assigning a role that includes this scope.
+
+<br/>
+- #### Documentation Link for Creating Identities
+
+  The **Getting Started** link for creating identities now directs to the correct page in the documentation.
+
+  <br/>
+  <br/>
+
+</details>
 
 
 ### June 28, 2025
@@ -34,11 +67,11 @@ Secure Access release notes are published biweekly for commercial deployments in
 
     <br/>
 
-## What's New
+<h3>What's New</h3>
 <br/>
 
 
-### New Directory UI Features (**Early Access**)
+#### New Directory UI Features (**Early Access**)
 We're introducing exciting new features in the **Directory** section of the platform. These features are currently in **Early Access**. If you'd like to try them out, contact Support.
 
 <br/>
@@ -80,9 +113,9 @@ The new multi-realm feature allows administrators to manage Secure Work and Secu
 
 ---
 
-## Bug Fixes
+<h3>Bug Fixes</h3>
 
-- #### Eliminated Duplicate `USER_AUTHENTICATION` Events on Timeout
+- <h4> Eliminated Duplicate `USER_AUTHENTICATION` Events on Timeout </h4>
   Timeout scenarios no longer trigger multiple `USER_AUTHENTICATION` events. Events are now reliably emitted once per authentication attempt, improving log accuracy.
 
 <br/>
