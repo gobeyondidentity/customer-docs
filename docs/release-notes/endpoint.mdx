@@ -21,6 +21,46 @@ hide_table_of_contents: true
 
 Secure Access release notes are published biweekly for commercial deployments in both the US and EU. FedRAMP and government environments receive updates two weeks after features are released to commercial deployments.
 
+
+
+### July 30, 2025
+
+<details>
+  <summary><p>Version 2.106.0 BI Authenticator Release Notes</p></summary>
+  
+    Here’s a summary of the latest features and improvements to the Beyond Identity Secure Access platform.
+
+    <br/>
+
+<h3>Enhancements</h3>
+<br/>
+
+
+| Operating System | Feature |
+|------------------|---------|
+| Windows, macOS, Android, iOS | **Faster Onboarding for Users with Registration Codes** — We removed an extra step during onboarding for users registering a Secure Access and Secure Work credential. Previously, users with a 9-digit registration code were required to click an additional button to enter the code. This step has been eliminated to streamline the process. |
+| Windows | **Updated Desktop Windows Login Process** — Improved the fingerprint enrollment flow to better align with Windows Hello. The flow now adapts based on whether Windows Hello is enabled, a PIN is created, or a fingerprint reader is available. Also improved access to fingerprint enrollment in passkey settings. [Read more](https://support.beyondidentity.com/hc/en-us/articles/33364910265239-Windows-Desktop-Login-Enrollment-Update). |
+
+<br/>
+
+<h3>Bug Fixes</h3>
+<br/>
+
+| Operating System | Fix |
+|------------------|-----|
+| **Windows** | **Authentication Hang at Startup Resolved**<br />We've fixed an issue that could cause the Windows Platform Authenticator to freeze if launched right after system startup. |
+| **Windows** | **WebViewHelper Resource Usage Optimized**<br />We've resolved an issue where multiple instances of WebViewHelper could run at the same time, unnecessarily consuming system resources. The update improves system performance and stability during authentication. |
+| **Windows** | **Authentication Stability Improved**<br />We addressed a rare timing issue that could cause authentication to fail when the same request was processed by multiple components. This fix improves reliability and reduces the chance of unexpected failures during authentication. |
+| **Android, iOS** | **Roaming QR Code Scanning Fixed**<br />We've resolved an issue that was preventing the app from recognizing and responding to Roaming QR codes. You can now scan these QR codes directly within the app’s camera screen, and it will correctly open the browser to continue the authentication flow, making sign-ins smoother and more reliable. |
+| **Android** | **Android App Crash Message**<br />Resolved a race condition that could cause the Login Service to crash in the background on Android 12+ devices. Although the service would recover automatically, the operating system reported it as a crash and displayed a pop-up notification to users. |
+| **Windows, macOS, Android, iOS, Linux** | **Redundant Passkeys**<br />Resolved an issue where re-importing the same credential on a device could result in multiple redundant passkeys appearing in the Admin Console. The system now deletes the duplicate from the cloud to ensure the number of credentials remains consistent between the device and the cloud. |
+
+
+
+</details>
+
+---
+
 ### July 28, 2025
 
 <details>
