@@ -1628,6 +1628,26 @@ paths:
             - 'users:update'
       parameters:
         - $ref: '#/components/parameters/user_id'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Update User Request
+              description: Request for UpdateUser.
+              type: object
+              properties:
+                user:
+                  $ref: '#/components/schemas/User'
+              required:
+                - user
+            examples:
+              Update User:
+                value:
+                  user:
+                    external_id: 0001f1f460b1ace6
+                    email_address: alice@acmecorp.com
+                    username: alice.acmecorp
+                    display_name: Alice Acmecorp
       responses:
         '200':
           description: |
@@ -2058,8 +2078,6 @@ paths:
                   emails:
                     - value: bjensen@example.com
                       primary: true
-                  'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User':
-                    employeeNumber: 10.164682/g9j6r80
       responses:
         '201':
           description: |
@@ -2084,8 +2102,6 @@ paths:
                     emails:
                       - primary: true
                         value: bjensen@example.com
-                    'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User':
-                      employeeNumber: 10.164682/g9j6r80
                     groups:
                       - value: e9e30dba-f08f-4109-8486-d5c6a331660a
                         type: direct
@@ -2233,8 +2249,6 @@ paths:
                         name:
                           givenName: Barbara
                           familyName: Jensen
-                        'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User':
-                          employeeNumber: 10.1646Q82/g9j6r80
                         meta:
                           created: '2023-04-10T06:08:28Z'
                           lastModified: '2023-04-10T06:08:28Z'
@@ -2387,14 +2401,14 @@ paths:
       summary: Patch a User
       description: |
         To update only specific attributes of an existing user, send a PATCH
-        request to `/Users/$USER_ID`. The PATCH operation is defined by 
+        request to `/Users/$USER_ID`. The PATCH operation is defined by
         [RFC-7644 §3.5.2](https://datatracker.ietf.org/doc/html/rfc7644#section-3.5.2).
 
         The request body MUST contain a valid SCIM PATCH request with a
         "schemas" value of "urn:ietf:params:scim:api:messages:2.0:PatchOp" and
         an "Operations" array with one or more PATCH operations.
 
-        Values in the request body for immutable or read-only fields (as defined in 
+        Values in the request body for immutable or read-only fields (as defined in
         [RFC-7643 §4.1](https://datatracker.ietf.org/doc/html/rfc7643#section-4.1))
         will be ignored. Fields that are omitted from the request body will be left unchanged.
 
@@ -2704,8 +2718,8 @@ paths:
       summary: Delete a User
       description: |
         To delete a user, send a DELETE request to `/Users/$USER_ID`.
-        As specified in [RFC-7644 §3.6](https://datatracker.ietf.org/doc/html/rfc7644#section-3.6), 
-        a successful delete operation returns HTTP status 204 (No Content). 
+        As specified in [RFC-7644 §3.6](https://datatracker.ietf.org/doc/html/rfc7644#section-3.6),
+        a successful delete operation returns HTTP status 204 (No Content).
         If the resource does not exist, HTTP status 404 is returned.
 
         Note that deleting a user:
@@ -3129,7 +3143,7 @@ paths:
       description: |
         To retrieve an existing group, send a GET request to `/Groups/$GROUP_ID`.
         The response will contain a full representation of the Group resource matching
-        the specified identifier. Per [RFC-7644 §3.4.1](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.1), 
+        the specified identifier. Per [RFC-7644 §3.4.1](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.1),
         the server will respond with HTTP status 200 and the resource if found, or 404 if not found.
 
         Note that this method can be used to retrieve RBAC permission groups
@@ -3248,7 +3262,7 @@ paths:
           5. The error response does not indicate which operation failed or which operations were applied
           6. To determine the current state, clients should issue a GET request after receiving an error
 
-        This method can be used to provision roles to a user. 
+        This method can be used to provision roles to a user.
         Role provisioning is performed by adding the user to the appropriate role group as a member.
 
         It is not possible to rename a role group or change its description.
@@ -3423,8 +3437,8 @@ paths:
       summary: Delete a Group
       description: |
         To delete a group, send a DELETE request to `/Groups/$GROUP_ID`.
-        As specified in [RFC-7644 §3.6](https://datatracker.ietf.org/doc/html/rfc7644#section-3.6), 
-        a successful delete operation returns HTTP status 204 (No Content). 
+        As specified in [RFC-7644 §3.6](https://datatracker.ietf.org/doc/html/rfc7644#section-3.6),
+        a successful delete operation returns HTTP status 204 (No Content).
         If the resource does not exist, HTTP status 404 is returned.
 
         Note that this method cannot be used to delete any groups which were not
