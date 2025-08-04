@@ -229,6 +229,18 @@ const sidebars = {
       items: [
         "end-user-guides/proxy-end-user",
         "end-user-guides/self-enrollment",
+        {
+          type: "category",
+          label: "Extend Passkey Credential",
+          collapsed: true,
+          collapsible: true,
+          items: [
+            "end-user-guides/extend-passkey-credential/extend-credential-android",
+            "end-user-guides/extend-passkey-credential/extend-credential-ios",
+            "end-user-guides/extend-passkey-credential/extend-credential-macos",
+            "end-user-guides/extend-passkey-credential/extend-credential-windows",
+          ],
+        },
       ],
     },
     {
