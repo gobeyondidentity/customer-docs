@@ -11,6 +11,15 @@ info:
 
     This API is currently in the early-access stage with limited endpoints implemented. We encourage feedback and suggestions through [support@beyondidentity.com](mailto:support@beyondidentity.com).
 
+    ## Region-specific Base API URL
+
+    The base API URL is determined by the region of the tenant.
+
+    - US region: `https://api.byndid.com`
+    - EU region: `https://api-eu.byndid.com`
+
+    For all the examples in this document, we will use the US region API base URL. You can always replace `https://api.byndid.com` with `https://api-eu.byndid.com` to use the EU region API base URL.
+
     ## Authentication
 
     All Beyond Identity API endpoints require authentication using an access token. The access token is generated through OAuth 2.0, using the client credentials flow. Follow these steps:
@@ -274,6 +283,9 @@ info:
     Choose SCIM APIs when integrating with identity providers and automated provisioning systems. Use native Directory APIs when building custom applications or requiring detailed audit and administrative capabilities.
 servers:
   - url: 'https://api.byndid.com'
+    description: US region API base URL
+  - url: 'https://api-eu.byndid.com'
+    description: EU region API base URL
 tags:
   - name: Users
     description: |
@@ -4015,6 +4027,86 @@ paths:
               examples:
                 Internal Error:
                   $ref: '#/paths/~1scim~1v2~1Users/get/responses/500/content/application~1json/examples/Internal%20Error'
+  /v2/CertificateAuthority/RetireTenantIssuer:
+    patch:
+      tags:
+        - CertificateAuthorityIssuers
+        - WDL
+      operationId: RetireTenantIssuer
+      summary: Retire the intermediate tenant certificate
+      description: |
+        This retires the tenant level intermediate certificate. This is the
+        certificate that currently being used to sign new certificates. Retiring a
+        certificate means that it will no longer be used for signing new
+        certificates without revoke it, and without invalidating a certificate chain.
+        A new certificate will be issued when the next credential is issued.
+      security:
+        - BearerAuth:
+            - 'certificate-authority:retire'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Empty object body
+              description: An empty object body
+              type: object
+      responses:
+        '200':
+          description: |
+            This indicates that the certificate was retired
+          content:
+            application/json:
+              examples:
+                Success:
+                  value:
+                    content: {}
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Invalid Parameters:
+                  $ref: '#/paths/~1v2~1users/get/responses/400/content/application~1json/examples/Invalid%20Parameters'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Insufficient Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/403/content/application~1json/examples/Insufficient%20Authorization'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Tenant Certificate Not Found:
+                  value:
+                    code: not_found
+                    message: Failed to locate tenant certificate
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1v2~1users/get/responses/500/content/application~1json/examples/Internal%20Error'
 components:
   parameters:
     group_id:
