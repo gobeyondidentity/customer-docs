@@ -1,0 +1,69 @@
+---
+title: How Passkeys Are Handled on Mobile and Desktop Devices
+id: how-passkeys-are-handled
+slug: passkey-lifecycle/how-passkeys-are-handled
+description: Learn how passkeys behave when the Authenticator is uninstalled, user profiles change, or devices are reimaged, and how these changes appear in the Admin Console.
+keywords:
+  - passkey deletion
+  - admin console
+  - reimage device
+  - uninstall authenticator
+  - stale credentials
+  - passkey behavior
+  - mobile passkey
+  - desktop passkey
+sidebar_label: How Passkeys Are Handled
+last_update:
+  date: 2025-08-07
+  author: Dolores M. Bernal
+draft: false
+---
+
+## Overview
+
+This article explains how Beyond Identity passkeys are handled when the Authenticator is uninstalled, when user profiles change, when devices are reimaged, or when passkeys are manually deleted. It also outlines how these changes are reflected in the Admin Console.
+
+## Mobile Platforms (Android and iOS)
+
+**What happens if the app is uninstalled?**  
+When the Beyond Identity Authenticator app is uninstalled on an Android or iOS device, the associated passkey is deleted from the device.
+
+**Is this reflected in the Admin Console?**  
+No. The Admin Console does not reflect this deletion. The passkey will continue to appear as if it is still active, even though it has been removed from the device.
+
+## Desktop Platforms (Windows and macOS)
+
+#### Uninstalling the Authenticator
+
+- Uninstalling the Authenticator does **not** delete the passkey.
+- Passkeys are tied to the **user profile**, not to the device or installation mode (User or System install).
+
+**Example:**  
+User X installs the Authenticator and registers a passkey.  
+User Y logs in to the same device using a different user profile. User Y will not see User X’s passkey.
+
+This behavior is consistent across both User and System installation types.
+
+#### Reimaging or Wiping the Device
+
+- If the device is reimaged or the hard drive is wiped, any local passkeys are lost.
+- Because no cloud communication occurs during a reimage, the Admin Console does not detect the loss.
+- As a result, the passkey remains listed in the Admin Console, even though it no longer exists on the device.
+
+> **Note:** Stale or unreachable passkeys must be manually removed by an administrator.
+
+## Manual Deletion Scenarios
+
+- If a user deletes a passkey from the Beyond Identity Authenticator, the change **is reflected** in the Admin Console. The passkey is removed from both the device and the Admin Console.
+- If an admin deletes a passkey from the Admin Console, the passkey is **not removed** from the Authenticator. A red dot will appear on the passkey in the Authenticator, indicating that it is no longer valid.
+
+### Behavior Summary
+
+| Scenario                                | What Happens to the Passkey              | Reflected in Admin Console |
+|-----------------------------------------|-------------------------------------------|-----------------------------|
+| Mobile app uninstalled                  | Passkey is deleted                        | No                          |
+| Authenticator uninstalled (desktop)     | Passkey remains intact                    | Yes                         |
+| Different user logs in (desktop)        | Passkey is not visible to other users     | Yes                         |
+| Device is reimaged                      | Passkey is lost                           | No                          |
+| User deletes passkey in Authenticator   | Passkey is deleted                        | Yes                         |
+| Admin deletes passkey in Admin Console  | Passkey remains on device (marked invalid)| No                          |
