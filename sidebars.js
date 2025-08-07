@@ -231,7 +231,7 @@ const sidebars = {
         "end-user-guides/self-enrollment",
         {
           type: "category",
-          label: "Extend Passkey Credential",
+          label: "Extend Passkey Credential to a Device",
           collapsed: true,
           collapsible: true,
           items: [
