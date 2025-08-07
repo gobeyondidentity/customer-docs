@@ -175,6 +175,14 @@ const sidebars = {
       ],
     },
     {
+      type: 'category',
+      label: 'Passkey Lifecycle',
+      collapsed: false,
+      items: [
+        'passkey-lifecycle/how-passkeys-are-handled',
+      ],
+    },    
+    {
       type: "category",
       label: "Tools",
       collapsed: false,
