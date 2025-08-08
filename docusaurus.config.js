@@ -164,8 +164,8 @@ const config = {
           label: "API (Secure Workforce)",
           position: "left",
           items: [
-            { label: "Admin API (v0)", to: "/api/v0" },
-            { label: "Events (v0)", to: "/api/events/v0" }, // add/remove as needed
+            { label: "Admin API", to: "/api/v0" },
+            { label: "Events", to: "/api/events/v0" },
           ],
         },
       ],
