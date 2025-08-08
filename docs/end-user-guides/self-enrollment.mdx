@@ -11,7 +11,7 @@ keywords:
 pagination_next: null
 pagination_prev: null
 last_update:
-  date: August 6, 2025
+  date: August 8, 2025
   author: Dolores M. Bernal
 doc_type: overview
 displayed_sidebar: mainSidebar
@@ -25,17 +25,20 @@ In this article, you’ll learn how to set up your device with a passkey so you 
 
 There are several ways to set up a passkey on your device:
 
-    - Email with Magic Link – A link sent via email that, when clicked, starts the passkey enrollment process.
-
-    - Magic Link (without email) – A direct link that can be shared to start enrollment.
-
-    - 9-digit code – A numeric code entered to start enrollment.
-
-    - Credential Extension – Extend an existing passkey from one device to another.
-
-    - IDP Authorization – Use your identity provider to authorize the enrollment of a new passkey via the user console.
+- Email with Magic Link – A link sent via email that, when clicked, starts the passkey enrollment process.
+- Magic Link (without email) – A direct link that can be shared to start enrollment.
+- 9-digit code – A numeric code entered to start enrollment.
+- Credential Extension – Extend an existing passkey from one device to another.
+- IDP Authorization – Use your identity provider to authorize the enrollment of a new passkey via the user console.
 
 These flows all achieve the same result: your device will have a new passkey credential bound to your identity, enabling secure, passwordless access.
+
+**Note**: The rest of this article focuses on **enrollment via email**. The *magic link* and *9-digit code* methods work very similarly. If you're looking to extend a credential from one device to another, see:
+
+- [Extend your credential to a Windows Device](https://docs.beyondidentity.com/docs/end-user-guides/extend-passkey-credential/extend-credential-windows)
+- [Extend your credential to a macOS Device](https://docs.beyondidentity.com/docs/end-user-guides/extend-passkey-credential/extend-credential-macos)
+- [Extend your credential to an Android Device](https://docs.beyondidentity.com/docs/end-user-guides/extend-passkey-credential/extend-credential-android)
+- [Extend your credential to an iOS Device](https://docs.beyondidentity.com/docs/end-user-guides/extend-passkey-credential/extend-credential-ios)
 
 
 <br/>
@@ -48,17 +51,15 @@ Only enroll passkeys on devices you control and are approved by your organizatio
 
 ### Steps
 
-#### Enroll a Passkey on a Trusted Device
+#### Enroll a Passkey on Your Device
 
 1. Open the invitation email from your IT team and click **Set up Beyond Identity**. 
 
     ![self-enrollment](../images/invitation-email.png)
 
-
 2. Next, click **Get Started**.
 
     ![self-enrollment](../images/get-started.png)
-
 
 3. Since this is your first time downloading the Authenticator, click **No, I don't have the Authenticator**. 
 
@@ -72,7 +73,6 @@ Only enroll passkeys on devices you control and are approved by your organizatio
 
     ![self-enrollment](../images/installation-process-macos.png)
 
-
 6. Once the Authenticator installation is complete, return to the dialog box and click **I've downloaded the authenticator**.
 
     ![self-enrollment](../images/follow-steps.png)
@@ -85,4 +85,4 @@ Only enroll passkeys on devices you control and are approved by your organizatio
 
     ![self-enrollment](../images/passkey-created.png)
 
-That's it!
+That's it! A new passkey has not been installed in your device. 
