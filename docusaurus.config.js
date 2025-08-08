@@ -7,7 +7,8 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Beyond Identity Next Generation Docs",
-  tagline: "Beyond Identity will be releasing a new, consolidated admin experience that incorporates our existing Secure Workforce product with two new products, Device360 and our Next Gen SSO.",
+  tagline:
+    "Beyond Identity will be releasing a new, consolidated admin experience that incorporates our existing Secure Workforce product with two new products, Device360 and our Next Gen SSO.",
   url: "https://docs.beyondidentity.com",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -19,27 +20,27 @@ const config = {
     mermaid: true,
   },
   themes: [
-    '@docusaurus/theme-mermaid',
-    '@docusaurus/theme-live-codeblock',
-    'docusaurus-theme-redoc',
+    "@docusaurus/theme-mermaid",
+    "@docusaurus/theme-live-codeblock",
+    "docusaurus-theme-redoc",
   ],
-  staticDirectories: ['static'],
+  staticDirectories: ["static"],
 
   presets: [
     [
-      'docusaurus-preset-classic',
+      "docusaurus-preset-classic",
       {
         gtag: {
-          trackingID: 'GTM-K3TCQSV',
+          trackingID: "GTM-K3TCQSV",
           anonymizeIP: false,
         },
         docs: {
           breadcrumbs: true,
-          sidebarPath: require.resolve('./sidebars.js'),
-          path: 'docs',
+          sidebarPath: require.resolve("./sidebars.js"),
+          path: "docs",
           showLastUpdateTime: true,
           editUrl:
-            'https://github.com/gobeyondidentity/customer-docs/edit/main',
+            "https://github.com/gobeyondidentity/customer-docs/edit/main",
           versions: {
             current: {
               label: "Secure Access",
@@ -59,128 +60,135 @@ const config = {
       },
     ],
     [
-      'redocusaurus',
+      "redocusaurus",
       {
         id: "apiv0",
         // Plugin Options for loading OpenAPI files
         specs: [
           {
-            spec: 'static/api/v0/openapi.yaml',
-            url: 'api/v0/openapi.yaml',
-            route: 'api/v0',
+            spec: "static/api/v0/openapi.yaml",
+            url: "api/v0/openapi.yaml",
+            route: "api/v0",
           },
         ],
         // Theme Options for modifying how redoc renders them
         theme: {
           // Change with your site colors
-          primaryColor: '#5077c5',
+          primaryColor: "#5077c5",
         },
       },
     ],
     [
-      'redocusaurus',
+      "redocusaurus",
       {
         id: "apiv0-events",
         // Plugin Options for loading OpenAPI files
         specs: [
           {
-            spec: 'static/api/v0/events.json',
-            url: 'api/v0/events.json',
-            route: 'api/events/v0',
+            spec: "static/api/v0/events.json",
+            url: "api/v0/events.json",
+            route: "api/events/v0",
           },
         ],
         // Theme Options for modifying how redoc renders them
         theme: {
           // Change with your site colors
-          primaryColor: '#5077c5',
+          primaryColor: "#5077c5",
         },
       },
     ],
     [
-      'redocusaurus',
+      "redocusaurus",
       {
         id: "apiv1",
         // Plugin Options for loading OpenAPI files
         specs: [
           {
-            spec: 'static/api/v1/openapi.yaml',
-            url: 'api/v1/openapi.yaml',
-            route: 'api/v1',
+            spec: "static/api/v1/openapi.yaml",
+            url: "api/v1/openapi.yaml",
+            route: "api/v1",
           },
         ],
         // Theme Options for modifying how redoc renders them
         theme: {
           // Change with your site colors
-          primaryColor: '#5077c5',
+          primaryColor: "#5077c5",
         },
       },
     ],
   ],
   plugins: [
     require.resolve("docusaurus-plugin-image-zoom"),
-    ['@grnet/docusaurus-terminology', {
-      termsDir: './docs/terms',
-      docsDir: './docs/',
-      glossaryFilepath: './docs/glossary.mdx'
-    }],
+    [
+      "@grnet/docusaurus-terminology",
+      {
+        termsDir: "./docs/terms",
+        docsDir: "./docs/",
+        glossaryFilepath: "./docs/glossary.mdx",
+      },
+    ],
     require.resolve("@easyops-cn/docusaurus-search-local"),
   ],
   scripts: [],
-  themeConfig:
-    ({
-      docs: {
-        sidebar: {
-          hideable: false,
-          autoCollapseCategories: false,
-        }
+  themeConfig: {
+    docs: {
+      sidebar: {
+        hideable: false,
+        autoCollapseCategories: false,
       },
-      colorMode: {
-        defaultMode: 'dark',
-        disableSwitch: false,
-        respectPrefersColorScheme: true,
+    },
+    colorMode: {
+      defaultMode: "dark",
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
+    },
+    metadata: [
+      {
+        property: "og:description",
+        content: "Customer Docs for passwordless authentication",
       },
-      metadata: [
-        { property: 'og:description', content: 'Customer Docs for passwordless authentication' },
-        { property: 'og:image', content: '/img/og_image.jpg' },
-        { name: 'twitter:card', content: 'Beyond Identity Customer Docs' }
-      ],
-      navbar: {
-        logo: {
-          alt: 'Beyond Identity Logo',
-          src: 'img/docs-logo.svg',
-          className: 'header-logo',
+      { property: "og:image", content: "/img/og_image.jpg" },
+      { name: "twitter:card", content: "Beyond Identity Customer Docs" },
+    ],
+    navbar: {
+      logo: {
+        alt: "Beyond Identity Logo",
+        src: "img/docs-logo.svg",
+        className: "header-logo",
+      },
+      items: [
+        { to: "/docs/", label: "Home", position: "left" },
+        { to: "/docs/release-notes", label: "Release Notes", position: "left" },
+        { to: "/api/v1", label: "API (Secure Access)", position: "left" },
+        {
+          label: "API (Secure Workforce)",
+          position: "left",
+          items: [
+            { label: "Admin API", to: "/api/v0" },
+            { label: "Events", to: "/api/events/v0" },
+          ],
         },
-        items: [
-          { to: "/docs/", label: "Home", position: "left" },
-          { to: "/docs/release-notes", label: "Release Notes", position: "left" },
-          { to: "api/v1", label: "API Reference", position: "left" },
-          {
-            type: "docsVersionDropdown",
-            position: "right",
-            dropdownItemsBefore: [],
-            dropdownActiveClassDisabled: true,
-          },
-        ],
+      ],
+    },
+    footer: {
+      copyright: `© ${new Date().getFullYear()} Beyond Identity&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="https://www.beyondidentity.com/docs/terms-legal">Terms and Conditions</a>`,
+    },
+    prism: {
+      theme: lightCodeTheme,
+      darkTheme: darkCodeTheme,
+      additionalLanguages: ["dart", "gradle", "http", "kotlin", "swift"],
+    },
+    zoom: {
+      selector: ".markdown :not(em) > img",
+      config: {
+        // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
+        background: {
+          light: "rgb(255, 255, 255)",
+          dark: "rgb(50, 50, 50)",
+        },
       },
-      footer: {
-        copyright: `© ${new Date().getFullYear()} Beyond Identity&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="https://www.beyondidentity.com/docs/terms-legal">Terms and Conditions</a>`,
-      },
-      prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
-        additionalLanguages: ['dart','gradle','http','kotlin','swift'],
-      },
-      zoom: {
-        selector: '.markdown :not(em) > img',
-        config: {
-          // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
-          background: {
-            light: 'rgb(255, 255, 255)',
-            dark: 'rgb(50, 50, 50)'
-          }
-        }
-      },
-    }),
+    },
+  },
 };
 
 module.exports = config;

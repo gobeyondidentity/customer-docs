@@ -18,6 +18,33 @@ info:
     to the
     [Beyond Identity Developer Slack Channel](https://join.slack.com/t/byndid/shared_invite/zt-1anns8n83-NQX4JvW7coi9dksADxgeBQ).
 
+    # Base API URLs
+
+    The base API URLs is determined by the region your tenant is hosted in OR if you are a FedRAMP customer. <br><br>
+
+    ### US Region
+
+    If you are a US region customer, your base API URLs will be:
+    - `https://api-us.beyondidentity.com`
+    - `https://auth-us.beyondidentity.com`
+
+    ### EU Region
+
+    If you are a EU region customer, your base API URLs will be:
+    - `https://api-eu.beyondidentity.com`
+    - `https://auth-eu.beyondidentity.com`
+
+    ### US FedRAMP
+
+    **NOTE**: The FedRAMP version of Secure Access is released approximately *two weeks* after the commercial version, so some API endpoints may not be available immediately. <br><br>
+
+    If you are a FedRAMP customer in the US region, your base API URLs will be:
+    - `https://api.us1.beyondidentity-gov.com`
+    - `https://auth.us1.beyondidentity-gov.com`
+
+    For all the examples in this document, we will use the US region API base URL. You can always replace `https://api-us.beyondidentity.com`
+    and `https://auth-us.beyondidentity.com` in the examples to use the proper base URL for your tenant.
+
     # Authentication
 
     All Beyond Identity API endpoints require authentication using an access
@@ -29,7 +56,7 @@ info:
     "Create token".
 
     Alternatively, an access token may also be generated directly via the API by
-    requesting a token for the "Beyond Identity Management API" Application.
+    requesting a token for the "Beyond Identity Management API" Application. <br><br>
 
     ```
     curl https://auth-us.beyondidentity.com/v1/tenants/$TENANT_ID/realms/$REALM_ID/applications/$APPLICATION_ID/token \
@@ -45,7 +72,7 @@ info:
     tenant onboarding process.
 
     The access token must be provided in the `Authorization` header of the
-    API request.
+    API request. <br><br>
 
     ```
     curl https://api-us.beyondidentity.com/v1/... \
@@ -118,15 +145,15 @@ info:
     The API returns standard HTTP statuses and error codes.
 
     Statuses in the 200 range indicate that the request was successfully
-    fulfilled and there were no errors.
+    fulfilled and there were no errors. <br><br>
 
     Statuses in the 400 range indicate that there was an issue with the request
     that may be addressed by the client. For example, client errors may
     indicate that the request was missing proper authorization or that the
-    request was malformed.
+    request was malformed. <br><br>
 
     Statuses in the 500 range indicate that the server encountered an internal
-    issue and was unable to fulfill the request.
+    issue and was unable to fulfill the request. <br><br>
 
     All error responses include a JSON object with a `code` field and a
     `message` field. `code` contains a human-readable name for the HTTP status
@@ -134,13 +161,13 @@ info:
     error object may also contain additional error details which may be used by
     the client to determine the exact cause of the error. Refer to each API
     method's examples to determine the specific error detail types supported
-    for that method.
+    for that method. <br><br>
 
     ### Invalid Access Token Example
 
     If the provided access token is invalid, you will receive a 401 error.
     This error indicates that the token is not recognized and was not generated
-    by Beyond Identity.
+    by Beyond Identity. <br><br>
 
     ```
     HTTP/1.1 401 Unauthorized
@@ -155,7 +182,7 @@ info:
     If the provided access token does not have access to the requested resource,
     you will receive a 403 error. Access tokens are scoped at a minimum to your
     tenant. Any request for resources outside of your tenant will result in this
-    error.
+    error. <br><br>
 
     ```
     HTTP/1.1 403 Forbidden
@@ -169,7 +196,7 @@ info:
 
     If the requested resource does not exist, you will receive a 404 error. The
     specific API method may return additional details about the missing
-    resource.
+    resource. <br><br>
 
     ```
     HTTP/1.1 404 Not Found
@@ -191,7 +218,7 @@ info:
 
     If the request body contains invalid parameters, you will receive a 400
     error. The specific API method may return additional details about the
-    invalid parameter.
+    invalid parameter. <br><br>
 
     ```
     HTTP/1.1 400 Bad Request
@@ -213,6 +240,11 @@ info:
     ```
 servers:
   - url: 'https://api-us.beyondidentity.com'
+    description: US region API base URL
+  - url: 'https://api-eu.beyondidentity.com'
+    description: EU region API base URL
+  - url: 'https://api.us1.beyondidentity-gov.com/'
+    description: US FedRAMP API base URL
 tags:
   - name: Tenants
     description: |
