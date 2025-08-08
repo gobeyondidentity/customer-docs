@@ -7,7 +7,7 @@ keywords:
 pagination_next: null
 pagination_prev: null
 last_update:
-  date: 2025-05-20
+  date: August 8, 2025
   author: Dolores M. Bernal
 doc_type: overview
 displayed_sidebar: mainSidebar
@@ -35,3 +35,31 @@ Session duration and inactivity timeout for the Secure Access Console are set to
 ³ *Session duration - Amount of time before a session expires.*
 
 ⁴ *Session inactivity timeout - Amount of time the user is allowed to be inactive for before they are logged out.*
+
+---
+
+## Session Termination Due to Administrative Changes
+
+In addition to standard timeouts, active sessions are also terminated when a user experiences administrative changes that revoke their access privileges.
+
+The following administrative actions result in immediate logout:
+
+- The user is suspended.
+- The user loses access to a role that grants scopes (privileged access).
+
+This can happen under the following scenarios:
+
+### If the user was directly assigned to the role:
+- The user is unassigned from the role.
+- Scopes are removed from the role.
+- The role is deleted.
+
+### If the user belonged to a group assigned to the role:
+- The user is removed from the group.
+- The group is unassigned from the role.
+- The group is deleted.
+- Scopes are removed from the role.
+- The role is deleted.
+
+After any of these changes, the user must re-authenticate and will only regain access if they are assigned to a role with the appropriate scopes.
+
