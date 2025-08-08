@@ -153,7 +153,8 @@ const config = {
         items: [
           { to: "/docs/", label: "Home", position: "left" },
           { to: "/docs/release-notes", label: "Release Notes", position: "left" },
-          { to: "api/v1", label: "API Reference", position: "left" },
+          { to: "/api/v0", label: "API (Secure Workforce)", position: "left" },
+          { to: "/api/v1", label: "API (Secure Access)", position: "left" },
           {
             type: "docsVersionDropdown",
             position: "right",
