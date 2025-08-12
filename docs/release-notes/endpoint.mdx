@@ -20,6 +20,31 @@ hide_table_of_contents: true
 Secure Access release notes are published biweekly for commercial deployments in both the US and EU. FedRAMP and government environments receive updates two weeks after features are released to commercial deployments.
 
 
+### August 12, 2025
+
+<details>
+  <summary><p>Secure Access Release Notes</p></summary>
+
+## Hot Fix Release 
+
+### Session Termination on Role Permission Changes
+
+Secure Access console sessions are now automatically terminated if a user’s role permissions are downgraded or if the account is suspended. Actions that can trigger session termination include:  <br/>
+<br/>
+  - Removing a user, or a group the user belongs to, from a role  
+  - Removing permission scopes from a role the user is assigned to directly or through a group  
+  - Deleting a role the user is assigned to directly or through a group  <br/>
+<br/>
+When a session is terminated due to a role permission change, the console will redirect to the login screen with a message indicating that the logout was caused by updated role permissions. Users who have not been suspended can log back in immediately, and their new session will reflect the updated role permissions.
+
+
+
+<br/>
+
+<br/>
+</details>
+
+
 ### August 11, 2025
 
 <details>
