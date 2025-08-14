@@ -12,7 +12,7 @@ info:
     - `https://admin.byndid.com` (US region)
     - `https://admin-eu.byndid.com` (EU region)
 
-    If your Admin Console URL does not look like one of the above, you are using the Secure Access Platform. Please refer to the [Secure Access API documentation](https://docs.beyondidentity.com/api/v1).
+    If your Admin Console URL does not look like one of the above, you are using the Secure Access Platform. Please refer to the [Secure Access API documentation](https://docs.beyondidentity.com/api/v1).<br /><br />
 
     The Beyond Identity Secure Workforce Admin API defines methods for administrative duties for your Beyond Identity tenant.<br /><br />
 
