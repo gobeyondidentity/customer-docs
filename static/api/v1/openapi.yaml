@@ -1,11 +1,22 @@
 openapi: 3.0.1
 info:
-  title: Beyond Identity API
+  title: Beyond Identity Secure Access API
   version: 1.7.0
   contact:
     email: support@beyondidentity.com
   description: |
     # Introduction
+
+    **NOTE:** To determine if you are accessing the Secure Access Platform, check the URL of your Admin Console.
+    If it looks like one of the following, you are using the Secure Access Platform:
+    - `https://console.beyondidentity.com`
+    - `https://console-us.beyondidentity.com`
+    - `https://console-eu.beyondidentity.com`
+    - `https://console.us1.beyondidentity-gov.com`
+
+    If your Admin Console URL does not look like one of the above, you are using the Secure Workforce Platform. Please refer to the [Secure Workforce API documentation](https://docs.beyondidentity.com/api/v0).
+
+    The Beyond Identity Secure Access API defines methods for managing resources in the Beyond Identity Secure Access platform.
 
     The Beyond Identity API defines methods for managing realms, directories,
     credentials, and applications.
@@ -9679,8 +9690,10 @@ paths:
               properties:
                 id:
                   description: |
-                    A unique identifier identifying an application within a realm.
+                    A unique identifier identifying an identity provider within a realm. This is
+                    automatically set on creation. This field is immutable and read-only.
                   type: string
+                  readOnly: true
                 tenant_id:
                   type: string
                   description: |
@@ -13452,8 +13465,10 @@ components:
       properties:
         id:
           description: |
-            A unique identifier identifying an identity provider.
+            A unique identifier identifying an identity provider. This is automatically
+            set on creation. This field is immutable and read-only.
           type: string
+          readOnly: true
         tenant_id:
           type: string
           description: |
@@ -13706,8 +13721,10 @@ components:
       properties:
         id:
           description: |
-            A unique identifier identifying an identity provider within a realm.
+            A unique identifier identifying an identity provider within a realm. This is
+            automatically set on creation. This field is immutable and read-only.
           type: string
+          readOnly: true
         tenant_id:
           type: string
           description: |

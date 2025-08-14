@@ -1,11 +1,18 @@
 openapi: 3.0.1
 info:
-  title: Beyond Identity Secure Workforce Admin API
+  title: Beyond Identity Secure Workforce API
   version: 2.4.1
   contact:
     email: support@beyondidentity.com
   description: |
     ## Introduction
+
+    **NOTE:** To determine if you are accessing the Secure Workforce Platform, check the URL of your Admin Console.
+    If it looks like one of the following, you are using the Secure Workforce Platform:
+    - `https://admin.byndid.com`
+    - `https://admin-eu.byndid.com`
+
+    If your Admin Console URL does not look like one of the above, you are using the Secure Access Platform. Please refer to the [Secure Access API documentation](https://docs.beyondidentity.com/api/v1).
 
     The Beyond Identity Secure Workforce Admin API defines methods for administrative duties for your Beyond Identity tenant.<br /><br />
 
