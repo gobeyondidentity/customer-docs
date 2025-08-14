@@ -1,17 +1,25 @@
 openapi: 3.0.1
 info:
-  title: Beyond Identity API
+  title: Beyond Identity Secure Access API
   version: 1.7.0
   contact:
     email: support@beyondidentity.com
   description: |
     # Introduction
 
-    The Beyond Identity API defines methods for managing realms, directories,
-    credentials, and applications.
+    **NOTE:** To determine if you are accessing the Secure Access Platform, check the URL of your Admin Console.
+    If it looks like one of the following, you are using the Secure Access Platform:
+    - `https://console.beyondidentity.com` (Localized to your region)
+    - `https://console-us.beyondidentity.com` (US region)
+    - `https://console-eu.beyondidentity.com` (EU region)
+    - `https://console.us1.beyondidentity-gov.com` (US FedRAMP)
+
+    If your Admin Console URL does not look like one of the above, you are using the Secure Workforce Platform. Please refer to the [Secure Workforce API documentation](https://docs.beyondidentity.com/api/v0). <br /><br />
+
+    The Beyond Identity Secure Access API defines methods for managing resources in the Beyond Identity Secure Access platform.<br /><br />
 
     All of the functionality available in the Beyond Identity Admin Console is
-    also available through the API.
+    also available through the API. <br /><br />
 
     This API is currently in the early-access stage and is under active
     development. Feedback and suggestions are encouraged and should be directed
@@ -49,11 +57,9 @@ info:
 
     All Beyond Identity API endpoints require authentication using an access
     token. The access token is generated through OAuth 2.0 or OIDC, using the
-    authorization code flow or the client credentials flow. The simplest way to
-    acquire an access token is through the Beyond Identity Admin Console. Under
-    the "Applications" tab, select the "Beyond Identity Management API"
-    application, navigate to the "API Tokens" tab, and then click on
-    "Create token".
+    authorization code flow or the client credentials flow. <br /><br />
+
+    The simplest way to acquire an access token is through the Beyond Identity Admin Console. Under the "Applications" tab, select the "Beyond Identity Management API" application, navigate to the "API Tokens" tab, and then click on "Create token". <br /><br />
 
     Alternatively, an access token may also be generated directly via the API by
     requesting a token for the "Beyond Identity Management API" Application. <br><br>
@@ -82,34 +88,34 @@ info:
     ## Requests and Responses
 
     To interact with the Beyond Identity API, all requests should be made over
-    HTTPS.
+    HTTPS. <br /><br />
 
     The Beyond Identity API is generally structured as a resource-oriented API.
     Resources are represented as JSON objects and are used as both inputs to
-    and outputs from API methods.
+    and outputs from API methods. <br /><br />
 
     Resource fields may be described as read-only and immutable. A read-only
     field is only provided on the response. An immutable field is only assigned
     once and may not be changed after. For example, system-generated IDs are
-    described as both read-only and immutable.
+    described as both read-only and immutable. <br /><br />
 
     To create a new resource, requests should use the `POST` method. Create
     requests include all of the necessary attributes to create a new resource.
-    Create operations return the created resource in the response.
+    Create operations return the created resource in the response. <br /><br />
 
     To retrieve a single resource or a collection of resources, requests should
     use the `GET` method. When retrieving a collection of resources, the
     response will include an array of JSON objects keyed on the plural name of
-    the requested resource.
+    the requested resource. <br /><br />
 
     To update an resource, requests should use the `PATCH` method. Update
     operations support partial updating so requests may specify only the
     attributes which should be updated. Update operations return the updated
-    resource in the response.
+    resource in the response. <br /><br />
 
     To delete a resource, requests should use the `DELETE` method. Note that
     delete operations return an empty response instead of returning the
-    resource in the response.
+    resource in the response. <br /><br />
 
     ### Example Response for a Realm
 
@@ -9679,8 +9685,10 @@ paths:
               properties:
                 id:
                   description: |
-                    A unique identifier identifying an application within a realm.
+                    A unique identifier identifying an identity provider within a realm. This is
+                    automatically set on creation. This field is immutable and read-only.
                   type: string
+                  readOnly: true
                 tenant_id:
                   type: string
                   description: |
@@ -13452,8 +13460,10 @@ components:
       properties:
         id:
           description: |
-            A unique identifier identifying an identity provider.
+            A unique identifier identifying an identity provider. This is automatically
+            set on creation. This field is immutable and read-only.
           type: string
+          readOnly: true
         tenant_id:
           type: string
           description: |
@@ -13706,8 +13716,10 @@ components:
       properties:
         id:
           description: |
-            A unique identifier identifying an identity provider within a realm.
+            A unique identifier identifying an identity provider within a realm. This is
+            automatically set on creation. This field is immutable and read-only.
           type: string
+          readOnly: true
         tenant_id:
           type: string
           description: |

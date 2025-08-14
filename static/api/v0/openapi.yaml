@@ -1,11 +1,18 @@
 openapi: 3.0.1
 info:
-  title: Beyond Identity Secure Workforce Admin API
+  title: Beyond Identity Secure Workforce API
   version: 2.4.1
   contact:
     email: support@beyondidentity.com
   description: |
     ## Introduction
+
+    **NOTE:** To determine if you are accessing the Secure Workforce Platform, check the URL of your Admin Console.
+    If it looks like one of the following, you are using the Secure Workforce Platform:
+    - `https://admin.byndid.com` (US region)
+    - `https://admin-eu.byndid.com` (EU region)
+
+    If your Admin Console URL does not look like one of the above, you are using the Secure Access Platform. Please refer to the [Secure Access API documentation](https://docs.beyondidentity.com/api/v1).<br /><br />
 
     The Beyond Identity Secure Workforce Admin API defines methods for administrative duties for your Beyond Identity tenant.<br /><br />
 
@@ -51,9 +58,10 @@ info:
     ## Rate Limiting
 
     The Beyond Identity public API is subject to rate limiting to ensure a consistent quality of service for our customers. Rate limits are enforced per tenant, if you are experiencing
-    issues with the default rate limits provided, please refer to our [support page](https://support.beyondidentity.com/hc/en-us/articles/15689103572759-SCIM-Rate-Limits).
+    issues with the default rate limits provided, please refer to our [support page](https://support.beyondidentity.com/hc/en-us/articles/15689103572759-SCIM-Rate-Limits). <br /><br />
 
-    When a request exceeds a rate limit, our application server returns an HTTP 429 status code and RateLimit-* headers, as described in RateLimit Header Fields for HTTP. Example response:
+    When a request exceeds a rate limit, our application server returns an HTTP 429 status code and RateLimit-* headers, as described in RateLimit Header Fields for HTTP. Example response: <br /><br />
+
     ```
     HTTP/1.1 429 Too Many Requests
     RateLimit-Limit: 30
@@ -70,7 +78,7 @@ info:
 
     When interacting with the Beyond Identity Secure Workforce Admin API, all requests must be made over HTTPS.
 
-    The Beyond Identity API is structured as a resource-oriented API.    Resources are represented as JSON objects and are used as both inputs to and outputs from API methods.
+    The Beyond Identity API is structured as a resource-oriented API.    Resources are represented as JSON objects and are used as both inputs to and outputs from API methods. <br /><br />
 
     Resource fields can be read-only and immutable. For example, system-generated IDs are both read-only and immutable.
 
