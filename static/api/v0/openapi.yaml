@@ -9,8 +9,8 @@ info:
 
     **NOTE:** To determine if you are accessing the Secure Workforce Platform, check the URL of your Admin Console.
     If it looks like one of the following, you are using the Secure Workforce Platform:
-    - `https://admin.byndid.com`
-    - `https://admin-eu.byndid.com`
+    - `https://admin.byndid.com` (US region)
+    - `https://admin-eu.byndid.com` (EU region)
 
     If your Admin Console URL does not look like one of the above, you are using the Secure Access Platform. Please refer to the [Secure Access API documentation](https://docs.beyondidentity.com/api/v1).
 

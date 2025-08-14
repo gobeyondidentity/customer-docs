@@ -9,10 +9,10 @@ info:
 
     **NOTE:** To determine if you are accessing the Secure Access Platform, check the URL of your Admin Console.
     If it looks like one of the following, you are using the Secure Access Platform:
-    - `https://console.beyondidentity.com`
-    - `https://console-us.beyondidentity.com`
-    - `https://console-eu.beyondidentity.com`
-    - `https://console.us1.beyondidentity-gov.com`
+    - `https://console.beyondidentity.com` (Localized to your region)
+    - `https://console-us.beyondidentity.com` (US region)
+    - `https://console-eu.beyondidentity.com` (EU region)
+    - `https://console.us1.beyondidentity-gov.com` (US FedRAMP)
 
     If your Admin Console URL does not look like one of the above, you are using the Secure Workforce Platform. Please refer to the [Secure Workforce API documentation](https://docs.beyondidentity.com/api/v0).
 
