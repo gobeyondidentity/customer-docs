@@ -274,7 +274,7 @@ info:
 
     ## SCIM vs. Native APIs
 
-    Beyond Identity provides two sets of APIs for managing users and groups: SCIM APIs and native Directory APIs. Understanding when to use each API set is important for successful integration:
+    Beyond Identity provides two sets of APIs for managing users and groups: SCIM APIs and native Directory APIs. Understanding when to use each API set is important for successful integration: <br /><br />
 
     ### SCIM APIs (/scim/v2/*)
     - Use SCIM APIs primarily for synchronizing users and groups from your identity provider (IdP) into Beyond Identity's directory
@@ -1823,10 +1823,144 @@ paths:
               examples:
                 Internal Error:
                   $ref: '#/paths/~1v2~1users/get/responses/500/content/application~1json/examples/Internal%20Error'
+  '/v2/users/{user_id}/groups':
+    get:
+      tags:
+        - Users
+      operationId: ListUserGroups
+      summary: List all groups for a user
+      description: |
+        To list all groups for a user, send a GET request to
+        `/v2/users/$USER_ID/groups`.
+
+        **NOTE:** This only returns groups that the user is a direct member of.
+
+        The response will have up to 1000 items. The response will be empty if the
+        page size is not specified (i.e., the default). By default, the list is in
+        ascending order by `create_time`. The maximum and default page sizes are
+        subject to change.
+
+        When paginating, use the `skip` parameter as the offset.
+      security:
+        - BearerAuth:
+            - 'groups:read'
+            - 'users:read'
+      parameters:
+        - $ref: '#/components/parameters/user_id'
+        - $ref: '#/components/parameters/page_size'
+        - $ref: '#/components/parameters/skip'
+      responses:
+        '200':
+          description: |
+            The response is a JSON object with `groups` and `total_size` keys. <br />
+              - `groups` is set to an array of group objects containing standard group
+                attributes.
+              - `total_size` is set to the total number of items matched by the
+                list request. If more items are to be returned by the requested
+                query, make another request using the `skip` query parameter.
+          content:
+            application/json:
+              schema:
+                title: List User Groups Response
+                description: Response for ListUserGroups.
+                type: object
+                properties:
+                  groups:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Group'
+                    maxItems: 1000
+                    description: |
+                      An ordered array of groups corresponding to the request. If the `order_by` query parameter is set, it follows that ordering. If not, groups are ordered by ascending `create_time` by default.
+                  total_size:
+                    type: integer
+                    format: uint32
+                    description: |
+                      The total number of results returned by the operation. This value may be larger than the number of resources returned, such as when returning a single page where multiple pages are available.
+                    example: 1000
+                required:
+                  - groups
+                  - total_size
+              examples:
+                Success:
+                  value:
+                    groups:
+                      - id: 25f94daf-63d8-4b40-b0ea-4843971d1d8e
+                        create_time: '2022-04-12T05:53:07.119Z'
+                        update_time: '2022-06-16T14:31:03.770Z'
+                        tenant_id: acme-corp
+                        name: Acme Group
+                        description: Members of the Acme Group
+                        source: scim
+                        member_count: 10
+                    total_size: 1
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Invalid Parameters:
+                  $ref: '#/paths/~1v2~1users/get/responses/400/content/application~1json/examples/Invalid%20Parameters'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Insufficient Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/403/content/application~1json/examples/Insufficient%20Authorization'
+        '404':
+          description: The resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Group Not Found:
+                  $ref: '#/paths/~1v2~1groups~1%7Bgroup_id%7D/get/responses/404/content/application~1json/examples/Group%20Not%20Found'
+        '429':
+          description: Rate limit exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                description: 'Request limit per time window (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).'
+                example: 1
+            RateLimit-Remaining:
+              schema:
+                type: integer
+                description: The number of requests left for the time window.
+                example: 0
+            RateLimit-Reset:
+              schema:
+                type: integer
+                description: Number of seconds until the current rate limit window resets.
+                example: 30
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1v2~1users/get/responses/500/content/application~1json/examples/Internal%20Error'
   /v2/binding-jobs:
     post:
       tags:
-        - BindingJobs
+        - Binding Jobs
       operationId: CreateBindingJob
       summary: Create a new credential binding job
       description: |
@@ -1893,6 +2027,7 @@ paths:
                     user_id: 11819414-9000-4700-af07-2743c02d68ca
                     issuer_user_id: 4dfb7751-46a9-4bd6-a591-a5941cb24eba
                     delivery_method: SHORT_CODE
+                    state: PENDING
                     short_code_delivery_details:
                       short_code: '123456789'
                       expire_time: '2022-08-12T05:53:07.119Z'
@@ -1963,6 +2098,476 @@ paths:
                 $ref: '#/components/schemas/Error'
               examples:
                 Internal Error:
+                  $ref: '#/paths/~1v2~1users/get/responses/500/content/application~1json/examples/Internal%20Error'
+  /v2/passkeys:
+    get:
+      tags:
+        - Passkeys
+      operationId: ListPasskeys
+      summary: List passkeys
+      description: |
+        To list passkeys, send a GET request to `/v2/passkeys`.
+
+        The response will have up to 1000 items. The response will be empty if the
+        page size is not specified (i.e., the default). By default, the list is in
+        ascending order by `create_time`. The maximum and default page sizes are
+        subject to change.
+
+        When paginating, use the `skip` parameter as the offset.
+
+        When filtering, the response will only show users that satisfy this filter.
+        The syntax follows the SCIM grammar from
+        [RFC7644 Section 3.4.2.2](https:datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2).
+
+        The supported operations are:
+          - pr (present)
+          - eq (equals)
+          - ne (not equals)
+          - co (contains)
+          - sw (starts with)
+          - ew (ends with)
+          - gt (greater than)
+          - lt (less than)
+          - ge (greater than or equal to)
+          - le (less than or equal to)
+
+        The supported fields and their supported operations are:
+          - id (eq, ne, co, sw, ew)
+          - date_last_auth (pr, eq, ne, gt, lt, ge, le)
+          - platform (eq, ne, co, sw, ew)
+          - platform_pr (eq, ne)
+          - sdk (eq, ne, co, sw, ew)
+          - major (eq, ne, co, sw, ew)
+          - minor (eq, ne, co, sw, ew)
+          - patch (eq, ne, co, sw, ew)
+          - is_jailbroken (eq, ne)
+          - is_rooted (eq, ne)
+          - hardware_serial_number (eq, ne, co, sw, ew)
+          - serial_number (eq, ne)
+          - app_version (eq, ne, co, sw, ew)
+          - app_version_pr (eq, ne)
+          - search (text search)
+          - vul_firewall (eq, ne)
+          - vul_rooted (eq, ne)
+          - vul_biometric (eq, ne)
+          - vul_password (eq, ne)
+          - vul_tpm (eq, ne)
+          - user_name (eq, ne, co, sw, ew)
+          - device_name (eq, ne, co, sw, ew)
+          - user_status (eq, ne, co, sw, ew)
+          - hostname (eq, ne, co, sw, ew)
+
+
+        When sorting, use the `order_by` parameter. It's a comma-delimited list of
+        attributes. Currently, the following fields are supported:
+
+          - date_last_auth
+          - device_name
+          - hostname
+          - user_name
+          - platform
+          - sdk
+          - major
+          - minor
+          - patch
+
+        The default sorting order per attribute is ascending. Therefore, if you
+        want descending order, append the " desc" suffix to the attribute name.
+      security:
+        - BearerAuth:
+            - 'passkeys:read'
+      parameters:
+        - $ref: '#/components/parameters/page_size'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/order_by'
+      responses:
+        '200':
+          description: |
+            The response is a JSON object with `passkeys` and `total_size` keys. <br />
+              - `passkeys` is set to an array of passkey objects containing standard passkey
+                attributes.
+              - `total_size` is set to the total number of items matched by the
+                list request.
+            If more items are to be returned by the requested query, make another request using the `skip` query parameter.
+          content:
+            application/json:
+              schema:
+                title: List Passkeys Response
+                description: Response for ListPasskeys.
+                type: object
+                properties:
+                  passkeys:
+                    type: array
+                    maxItems: 1000
+                    items:
+                      title: Passkey
+                      type: object
+                      description: |
+                        A passkey and its associated properties.
+                      properties:
+                        id:
+                          type: string
+                          description: Unique ID of the passkey.
+                        user_id:
+                          type: string
+                          description: ID of the user who owns the passkey.
+                        user_name:
+                          type: string
+                          description: Display name/username of the passkey owner.
+                        device_info:
+                          type: string
+                          description: Device model or descriptor reported by the client.
+                        date_last_auth:
+                          type: string
+                          format: date-time
+                          description: RFC 3339 timestamp of the last successful authentication.
+                        date_created:
+                          type: string
+                          format: date-time
+                          description: RFC 3339 timestamp when the passkey was created/registered.
+                        platform:
+                          type: string
+                          description: 'Client platform (e.g., android, ios, windows, macos, linux).'
+                        serial_number:
+                          type: string
+                          description: Device serial number if available.
+                        hostname:
+                          type: string
+                          description: Hostname of the device at registration or last auth.
+                        major_version:
+                          type: integer
+                          format: int32
+                          minimum: 0
+                          description: Major version of the client/app/OS as reported.
+                        minor_version:
+                          type: integer
+                          format: int32
+                          minimum: 0
+                          description: Minor version of the client/app/OS as reported.
+                        is_rooted:
+                          type: boolean
+                          description: Whether the device is rooted/jailbroken.
+                        vulnerabilities:
+                          type: object
+                          description: |
+                            Key-value map of vulnerability identifiers to details/versions.
+                        app_version:
+                          type: string
+                          description: Application version string.
+                      required:
+                        - id
+                        - user_id
+                        - user_name
+                        - device_info
+                        - date_last_auth
+                        - date_created
+                        - platform
+                        - serial_number
+                        - hostname
+                        - major_version
+                        - minor_version
+                        - is_rooted
+                        - vulnerabilities
+                        - app_version
+                    description: |
+                      An array of passkeys associated with the request.
+                  total_size:
+                    type: integer
+                    description: |
+                      The total number of passkeys associated with the request.
+                required:
+                  - passkeys
+                  - total_size
+              examples:
+                Success:
+                  value:
+                    passkeys:
+                      - id: 8fc35f33-92ed-4c36-b421-93ede7731498
+                        user_id: 149c1995-2f5e-4237-a711-177f2ef12dc3
+                        user_name: arthur.anteater@arthur.com
+                        device_info: 'MacBook Pro (16-inch, 2021), macOS 15.7 (build 24G207)'
+                        date_last_auth: '2025-08-25T17:15:16.392Z'
+                        date_created: '2025-06-23T18:32:42.148613Z'
+                        platform: MACOS
+                        serial_number: LXL9TWDNJK
+                        hostname: Arthur's MacBook Pro
+                        major_version: 15
+                        minor_version: 7
+                        is_rooted: false
+                        vulnerabilities: {}
+                    total_size: 1
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Insufficient Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/403/content/application~1json/examples/Insufficient%20Authorization'
+        '404':
+          description: The resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Passkey Not Found:
+                  value:
+                    code: not_found
+                    message: passkey not found
+                    details:
+                      - type: ResourceInfo
+                        resource_type: Passkey
+                        id: 25f94daf-63d8-4b40-b0ea-4843971d1d8e
+                        description: passkey not found
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Internal Server Error:
+                  $ref: '#/paths/~1v2~1users/get/responses/500/content/application~1json/examples/Internal%20Error'
+  '/v2/passkeys/{passkey_id}':
+    delete:
+      tags:
+        - Passkeys
+      operationId: DeletePasskey
+      summary: Delete a passkey
+      description: |
+        To delete a passkey, send a DELETE request to `/v2/passkeys/$PASSKEY_ID`.
+      security:
+        - BearerAuth:
+            - 'passkeys:delete'
+      parameters:
+        - name: passkey_id
+          in: path
+          description: A unique identifier for a passkey.
+          required: true
+          schema:
+            type: string
+            example: 25f94daf-63d8-4b40-b0ea-4843971d1d8e
+      responses:
+        '200':
+          description: The action was successful and the response body is empty.
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Insufficient Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/403/content/application~1json/examples/Insufficient%20Authorization'
+        '404':
+          description: The resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Passkey Not Found:
+                  $ref: '#/paths/~1v2~1passkeys/get/responses/404/content/application~1json/examples/Passkey%20Not%20Found'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Internal Server Error:
+                  $ref: '#/paths/~1v2~1users/get/responses/500/content/application~1json/examples/Internal%20Error'
+  '/v2/passkeys/{passkey_id}/tags':
+    get:
+      tags:
+        - Passkeys
+      operationId: ListPasskeyTags
+      summary: List passkey tags
+      description: |
+        To list tags associated with a passkey, send a GET request to `/v2/passkeys/$PASSKEY_ID/tags`.
+      security:
+        - BearerAuth:
+            - 'passkey-tags:read'
+      parameters:
+        - $ref: '#/paths/~1v2~1passkeys~1%7Bpasskey_id%7D/delete/parameters/0'
+      responses:
+        '200':
+          description: |
+            The response is a JSON object containing tags associated with the passkey.
+          content:
+            application/json:
+              schema:
+                title: List Passkey Tags Response
+                description: Response for ListPasskeyTags.
+                type: object
+                properties:
+                  tags:
+                    type: array
+                    items:
+                      $ref: '#/paths/~1v2~1passkeys~1%7Bpasskey_id%7D~1tags/put/requestBody/content/application~1json/schema/properties/tags/items'
+                    description: |
+                      An unordered array of tags associated with the passkey.
+                required:
+                  - tags
+              examples:
+                Success:
+                  value:
+                    tags:
+                      - id: 25f94daf-63d8-4b40-b0ea-4843971d1d8e
+                        name: Windows
+                      - id: f7277b07-4a9e-4f84-9839-cd3082a6b8c3
+                        name: BYOD
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Insufficient Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/403/content/application~1json/examples/Insufficient%20Authorization'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Passkey Not Found:
+                  $ref: '#/paths/~1v2~1passkeys/get/responses/404/content/application~1json/examples/Passkey%20Not%20Found'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Internal Server Error:
+                  $ref: '#/paths/~1v2~1users/get/responses/500/content/application~1json/examples/Internal%20Error'
+    put:
+      tags:
+        - Passkeys
+      operationId: SetPasskeyTags
+      summary: Set passkey tags
+      description: |
+        To set tags associated with a passkey, send a PUT request to `/v2/passkeys/$PASSKEY_ID/tags`.
+      security:
+        - BearerAuth:
+            - 'passkey-tags:write'
+      parameters:
+        - $ref: '#/paths/~1v2~1passkeys~1%7Bpasskey_id%7D/delete/parameters/0'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Set Passkey Tags Request
+              description: Request for SetPasskeyTags.
+              type: object
+              properties:
+                tags:
+                  type: array
+                  items:
+                    title: PasskeyTag
+                    type: object
+                    description: |
+                      A tag associated with the passkey.
+                    properties:
+                      id:
+                        type: string
+                        description: |
+                          ID of the tag. This property is unique.
+                      name:
+                        type: string
+                        description: |
+                          Name of the tag. This property is unique within a tenant.
+                    required:
+                      - id
+                      - name
+              required:
+                - tags
+            examples:
+              Set Passkey Tags:
+                value:
+                  tags:
+                    - id: 25f94daf-63d8-4b40-b0ea-4843971d1d8e
+                      name: Windows
+                    - id: f7277b07-4a9e-4f84-9839-cd3082a6b8c3
+                      name: BYOD
+      responses:
+        '200':
+          description: Passkey tags
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v2~1passkeys~1%7Bpasskey_id%7D~1tags/get/responses/200/content/application~1json/schema'
+              examples:
+                Success:
+                  $ref: '#/paths/~1v2~1passkeys~1%7Bpasskey_id%7D~1tags/get/responses/200/content/application~1json/examples/Success'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Insufficient Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/403/content/application~1json/examples/Insufficient%20Authorization'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Passkey Not Found:
+                  $ref: '#/paths/~1v2~1passkeys/get/responses/404/content/application~1json/examples/Passkey%20Not%20Found'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Internal Server Error:
                   $ref: '#/paths/~1v2~1users/get/responses/500/content/application~1json/examples/Internal%20Error'
   /scim/v2/Users:
     post:
@@ -4038,8 +4643,7 @@ paths:
   /v2/CertificateAuthority/RetireTenantIssuer:
     patch:
       tags:
-        - CertificateAuthorityIssuers
-        - WDL
+        - Certificate Authority Issuers
       operationId: RetireTenantIssuer
       summary: Retire the intermediate tenant certificate
       description: |
@@ -4402,6 +5006,11 @@ components:
           type: string
           description: |
             Indicates the state of the binding job. This field is read-only.
+            Possible values are:
+
+            - `PENDING`: The binding job is pending.
+            - `CLAIMED`: The short code has been claimed by the end user. This does NOT mean that the binding job was successful, only that the one time short code was claimed.
+            - `SUCCESS`: The binding job was successful.
           readOnly: true
           example: PENDING
         short_code_delivery_details:
@@ -4413,6 +5022,7 @@ components:
               type: string
               description: |
                 A short, human-readable code that can be used with an authenticator to bind a new credential. This should be carefully protected and only shared with the end user.
+                This field is only present on the `CreateBindingJob` response.
               readOnly: true
             expire_time:
               type: string
