@@ -276,6 +276,17 @@ const sidebars = {
         },
         {
           type: "category",
+          label: "Announcements",
+          link: {
+            type: "doc",
+            id: "resources/announcements/index",
+          },
+          items: [
+            "resources/announcements/chrome-browser",
+          ],
+        },
+        {
+          type: "category",
           label: "Platform Authenticator",
           link: {
             type: "doc",
