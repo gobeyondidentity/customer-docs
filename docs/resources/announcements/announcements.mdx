@@ -1,6 +1,5 @@
 ---
-title: Configure Chrome to Suppress the Local Network Access Prompt for Beyond Identity Secure Access
-id: chrome-browser
+title: Managing the Chrome v141 Local Network Access Prompt
 description: 'Chrome 141 Update'
 slug: /resources/chrome-browser
 keywords:
@@ -17,7 +16,7 @@ displayed_sidebar: mainSidebar
 ### August 26, 2025
 
 ---
-### Configure Chrome to Suppress the Local Network Access Prompt for Beyond Identity Secure Access
+### Managing the Chrome v141 Local Network Access Prompt
 
 #### This Article Applies To
 - Devices running the **Beyond Identity Authenticator**  
@@ -27,9 +26,7 @@ displayed_sidebar: mainSidebar
 ### Overview
 Starting with the release of **Chrome version 141 on September 30, 2025**, Chrome and all Chromium-based browsers will introduce a new **Local Network Access (LNA) permission prompt**.  
 
-When signing in to the Beyond Identity Secure Access console, Chrome will prompt you to grant permission for the sign-in page to securely communicate with the Beyond Identity Authenticator on your device.  
-
-This approval is required only once per device to ensure seamless sign-in going forward. Beyond Identity never connects to other devices on your local network; communication is strictly limited to the device where the Authenticator is installed.  
+When signing in to the Beyond Identity Secure Access console, Chrome will prompt you to grant permission for the sign-in page to securely communicate with the Beyond Identity Authenticator on your device.  This approval is required only once per device to ensure seamless sign-in going forward, ensure you click "**Allow**" at the prompt.
 
         ![Chrome](../images/chrome-141-SA-2.png)
 
@@ -52,7 +49,7 @@ As part of a new security measure, Chrome requires explicit user approval before
 - It's important to communicate this change as soon as possible, as denying the prompt will degrade their user experience and could potentially lead to failed authentications.  
 - Admins should also provide instructions on how to re-enable local network access if a user has already blocked it.  
 
-### Additional Guidance from Google
+### Additional guidance from Google
 Google is introducing new Chrome enterprise policies to give admins greater control over Local Network Access:  
 
 - **Policy controls:** Admins will be able to pre-grant or pre-deny permission for specific sites to make local network requests. This allows managed Chrome environments (such as corporate deployments) to:  
