@@ -2099,6 +2099,88 @@ paths:
               examples:
                 Internal Error:
                   $ref: '#/paths/~1v2~1users/get/responses/500/content/application~1json/examples/Internal%20Error'
+  '/v2/binding-jobs/{binding_job_id}':
+    get:
+      tags:
+        - Binding Jobs
+      operationId: GetBindingJob
+      summary: Get a credential binding job
+      description: |
+        To get a binding job, send a GET request to `/v2/binding-jobs/{binding_job_id}`.
+
+        The response does not include the short code if the delivery method is `SHORT_CODE`.
+        Short codes are only returned when creating a binding job.
+      security:
+        - BearerAuth:
+            - 'binding-jobs:read'
+      responses:
+        '200':
+          description: |
+            The response is a JSON object containing standard group attributes.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BindingJob'
+              examples:
+                Success:
+                  value:
+                    id: 66d36cf5-96df-4fa3-a5d0-36d0aa8487c3
+                    tenant_id: acme-corp
+                    user_id: 11819414-9000-4700-af07-2743c02d68ca
+                    issuer_user_id: 4dfb7751-46a9-4bd6-a591-a5941cb24eba
+                    delivery_method: SHORT_CODE
+                    state: SUCCESS
+                    short_code_delivery_details:
+                      expire_time: '2022-08-12T05:53:07.119Z'
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Insufficient Authorization:
+                  $ref: '#/paths/~1v2~1users/get/responses/403/content/application~1json/examples/Insufficient%20Authorization'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Binding Job Not Found:
+                  value:
+                    code: not_found
+                    message: binding job not found
+                    details:
+                      - type: ResourceInfo
+                        resource_type: BindingJob
+                        id: 37660157-aa4b-4e84-958f-1fdf27777e86
+                        description: binding job not found
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1v2~1users/get/responses/500/content/application~1json/examples/Internal%20Error'
   /v2/passkeys:
     get:
       tags:
