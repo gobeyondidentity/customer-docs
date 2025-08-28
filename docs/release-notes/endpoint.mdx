@@ -28,7 +28,19 @@ Secure Access release notes are published biweekly for commercial deployments in
 ## What's New
 
 #### Realm Management
-- Realms created in the Secure Access console for Secure Work and Secure Customer can now be edited or deleted.
+Realms created in the Secure Access console for Secure Work and Secure Customer can now be edited or deleted.
+<br/>
+
+#### Shortened SAML URLs for Cisco Compatibility  
+
+We’ve added a new option to generate shortened SAML URLs to support Cisco products that enforce a 128-character limit on entity IDs and URLs.
+<br/>
+      - Admins can now enable a toggle to generate shorter **SP-initiated URLs** and **Issuer URLs**.  
+      - This resolves configuration issues when setting up SAML apps for **Cisco VPN** and **WebEx Admin Portal**.  
+<br/>
+With this improvement, you can configure SAML applications for Cisco firewalls and services without hitting the 128-character restriction.  
+
+
 
 <br/>
 ## Bug Fixes
