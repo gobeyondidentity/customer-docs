@@ -19,6 +19,46 @@ hide_table_of_contents: true
 
 Secure Access release notes are published biweekly for commercial deployments in both the US and EU. FedRAMP and government environments receive updates two weeks after features are released to commercial deployments.
 
+### August 27, 2025
+
+<details>
+  <summary><p>Secure Access Release Notes</p></summary>
+
+
+## What's New
+
+#### Realm Management
+- Realms created in the Secure Access console for Secure Work and Secure Customer can now be edited or deleted.
+
+<br/>
+## Bug Fixes
+
+#### Authenticator Download Links (FedRamp)
+- Fixed incorrect download links for the Beyond Identity Authenticator during Secure Access setup in government environments. This change is not needed for commercial environments.
+<br/>
+#### Policy Editor Action Icon
+- Fixed a CSS issue where the Action icon was hidden for policy rules with long descriptions, preventing edits or copies.
+<br/>
+#### Integration Field Validation
+- Added character limits for integration names and descriptions to improve security.
+<br/>
+#### Realm Updates Visibility
+- Fixed an issue where realm updates (create, rename, delete) were not immediately reflected in the console. Changes now appear without requiring a page refresh. **Note**: Multi-realm support for Secure Work realms in Secure Access remains limited.
+<br/>
+#### OIDC Discovery Endpoint
+- Corrected an issue where OIDC applications displayed the wrong discovery endpoint URL.
+<br/>
+#### Integration Input Validation
+- Expanded client-side input validation on integration forms for a more consistent user experience.
+<br/>
+#### Event Log Noise Reduction
+- Removed unnecessary "User Authentication – UNAUTHORIZED" events that contained no meaningful details, reducing noise in admin event logs.
+
+
+<br/>
+
+<br/>
+</details>
 
 ### August 13, 2025
 
