@@ -9,7 +9,7 @@ keywords:
 pagination_next: null
 pagination_prev: null
 last_update:
-  date: 2025-06-25
+  date: 2025-08-29
   author: Dolores M. Bernal
 draft: false
 hide_table_of_contents: false
@@ -35,7 +35,6 @@ The user onboarding workflow is as follows:
 ---
 <br/>
 
-
 ### What You’ll Learn
 
 In this article, you’ll learn how to manually add identities in the Secure Access directory using the admin console. Specifically, we’ll cover:
@@ -44,8 +43,6 @@ In this article, you’ll learn how to manually add identities in the Secure Acc
 - **Viewing User Details** – How to access and review a user's information.  
 - **Manually Assigning a Passkey** – Similar to **Sending Email Invite**.  
 - **Bulk Enrollment of Multiple Users** – How to add up to 100 users at once using the bulk enrollment feature.
-
-
 
 ---
 
@@ -78,8 +75,6 @@ In this article, you’ll learn how to manually add identities in the Secure Acc
 
 5. When you are done click **Add identity**.
 
-
-
 :::info
 After you finish adding the Identity, the user will receive an activation email with instructions to download and install the Beyond Identity Authenticator on their desktop device. Once the Authenticator is set up, the passkey will be securely stored on the device, allowing the user to log in to their organizational accounts and assigned applications. 
 <br/>
@@ -90,6 +85,25 @@ The user will appear in the list of **Identities** showing their **Enrollment st
     ![Identities Status](../images/unenrolled.png)
 :::
 
+### User Enrollment Status Definitions
+
+**Invite Sent**  
+An enrollment invitation was sent to the user, but they haven’t started the process yet.  
+
+**Invite Failed**  
+The enrollment invite is invalid or undeliverable. This can happen if:  
+- The 7-day enrollment link expired  
+- The invite was revoked by the administrator  
+- The system failed to send the invite due to an invalid email address or something else  
+
+**Pending**  
+The user received the invite and started the enrollment process, but hasn’t completed it yet.  
+
+**Enrolled**  
+The user successfully completed the enrollment process and is now onboarded.  
+
+**Unenrolled**  
+The user was previously enrolled but has been removed, either manually or through policy.
 
 ---
 
@@ -104,7 +118,6 @@ Manually adding a passkey is useful in the following scenarios:
 - The user did not receive the original activation email  
 - The user was unable to successfully activate their account  
 - Additional troubleshooting is required
-
 
 ##### Steps
 
@@ -133,7 +146,6 @@ The user will receive an activation email with instructions to download and inst
 
 The user will continue to appear in the list of **Identities** showing their **Enrollment status** as **Unenrolled** until they activate their accounts. 
 <br/>
-
 :::
 
 <br/>
@@ -162,12 +174,9 @@ After adding a new identity, you can view their profile information by clicking 
 
 ---
 
-
 ### **Enrolling Multiple Identities (Bulk Enrollment)**
 
 When adding passkeys, you can select and enroll up to 200 users at a time. This bulk enrollment option is a time-efficient way to manage larger groups of users.
- 
-
 
 ##### Steps
 
@@ -194,10 +203,8 @@ All selected users will receive an activation email with instructions to downloa
 
 Users will continue to appear in the list of **Identities** showing their **Enrollment status** as **Unenrolled** until they activate their accounts. 
 <br/>
-
 :::
 
-
 <br/>
 
 <br/>
@@ -205,4 +212,3 @@ Users will continue to appear in the list of **Identities** showing their **Enro
 <br/>
 
 <br/>
-
