@@ -13,7 +13,8 @@ doc_type: overview
 displayed_sidebar: mainSidebar
 ---
 
-### August 26, 2025
+<br/>
+September 2, 2025
 
 ---
 ### Managing the Chrome v141 Local Network Access Prompt
@@ -28,13 +29,30 @@ Starting with the release of **Chrome version 141 on September 30, 2025**, Chrom
 
 When signing in to the Beyond Identity Secure Access console, Chrome will prompt you to grant permission for the sign-in page to securely communicate with the Beyond Identity Authenticator on your device.  This approval is required only once per device to ensure seamless sign-in going forward, ensure you click "**Allow**" at the prompt.
 
-        ![Chrome](../images/chrome-141-SA-2.png)
+#### Chrome Browser Example 1: **Local Network Access Prompt**
+
+- When the prompt appears, click **Allow**.
+
+    ![Chrome](../images/prompt1.png)
+---
+
+#### Chrome Browser Example 2: **Local Network Access Prompt**
+
+1. When the prompt appears, click **Site settings**.  
+2. In the **Local network access** drop-down menu, select **Allow**.  
+
+    Your changes are saved automatically.  
+
+    ![Chrome](../images/prompt2.png)
+
+
+        
 
 Beyond Identity does not attempt to connect to other devices on your local network; communication is limited to the device where the Beyond Identity Authenticator is installed.  
 
 See Google’s announcement: [New permission prompt for Local Network Access](https://developer.chrome.com/blog/local-network-access)  
  
-
+<br/>
 ### Why is this happening?
 When you sign in to Secure Access via the web, the Beyond Identity sign-in page needs to talk to the Beyond Identity Authenticator app running locally on your device.  
 
