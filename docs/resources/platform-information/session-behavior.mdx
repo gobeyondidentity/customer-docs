@@ -1,13 +1,14 @@
 ---
 title: Session Behavior
-description: How Session Behavior Works
+description: Secure Access Console Session Behavior
 keywords:
   - User Session
+  - Secure Access
   - Platform Timeout
 pagination_next: null
 pagination_prev: null
 last_update:
-  date: August 18, 2025
+  date: September 5, 2025
   author: Dolores M. Bernal
 doc_type: overview
 displayed_sidebar: mainSidebar
@@ -15,34 +16,52 @@ displayed_sidebar: mainSidebar
 
 ## Overview
 
-The Secure Work console controls access to its resources through usage of a session. A session is tied to a user and is created after the user authenticates and logs into the Secure Work console. The session ends when it expires after a set time or the user logs out.
+The Secure Access Console controls access to its resources through usage of a session. A session is tied to a user and is created after the user authenticates and logs into the Secure Access Console. The session ends when it expires after a set time or the user logs out.  
 
-In addition, when a session inactivity timeout is set, the user is logged out after a set period of inactivity. Any activity in the console (such as navigating to another page or using pagination) will reset the inactivity timer, as long as the console is open in at least one browser window. If all console tabs/windows are closed, the timer is not refreshed until the console is reopened.
+In addition, when a session inactivity timeout is set, the user is logged out after a set period of inactivity.  
 
-When a user is logged out of the Secure Work console due to session expiration or inactivity timeout, they must re-authenticate to regain access to the application.
-
----
-
-### Current Timeout Settings
-
-| Setting                    | Time       | Description                                                                 |
-|-----------------------------|-------------|-----------------------------------------------------------------------------|
-| **Session duration**        | 1 hour      | Amount of time before a session expires. This expiration occurs regardless of whether the console is open in a window. |
-| **Session inactivity timeout** | 15 minutes | Amount of time a user can remain inactive in an open console window before being logged out. |
+When a user is logged out of the Secure Access Console due to session expiration or inactivity timeout, they must re-authenticate to regain access to the application.  
 
 ---
 
-### Why We Default to 15 Minutes of Inactivity
+## Timeout Settings
 
-The 15-minute inactivity timeout aligns with common security best practices for administrative consoles, helping to prevent unauthorized access if a user leaves their session unattended. This balance aims to protect security without overly disrupting typical workflows.
+Session duration and inactivity timeout for the Secure Access Console are set to the following values:
+
+| User Type              | Session Duration | Inactivity Timeout | Description                                                                 |
+|-------------------------|------------------|--------------------|-----------------------------------------------------------------------------|
+| **Privileged users**    | 24 hours         | 15 minutes         | Privileged users are users granted scopes through roles that give them access to read or write sensitive data. They can access both the Secure Access Admin Console and Dashboard. |
+| **Non-privileged users**| 24 hours         | None               | Non-privileged users are users with no scopes. They either have no role or have been assigned a role with no scopes. These users can only access the Secure Access Dashboard. |
+
+**Definitions**:  
+- *Session duration*: Amount of time before a session expires.  
+- *Session inactivity timeout*: Amount of time the user can remain inactive before being logged out.  
 
 ---
 
-### Can the Time Be Changed?
+## Session Termination Due to Administrative Changes
 
-- **Currently**: The inactivity timeout for a specific tenant can be changed by Beyond Identity Support through an internal feature flag. Customers cannot change this setting directly in the Secure Work console.  
-- **Self-Service**: A self-service option to configure timeouts within the console is not yet available.  
-- **Note**: Disabling the inactivity timeout altogether is not supported at this time.  
+In addition to standard timeouts, active sessions are also terminated when a user experiences administrative changes that revoke their access privileges.  
+
+The following administrative actions result in immediate logout:  
+- The user is suspended.  
+- The user loses access to a role that grants scopes (privileged access).  
+
+This can happen under the following scenarios:
+
+If the user was directly assigned to the role:  
+- The user is unassigned from the role.  
+- Scopes are removed from the role.  
+- The role is deleted.  
+
+If the user belonged to a group assigned to the role:  
+- The user is removed from the group.  
+- The group is unassigned from the role.  
+- The group is deleted.  
+- Scopes are removed from the role.  
+- The role is deleted.  
+
+After any of these changes, the user must re-authenticate and will only regain access if they are assigned to a role with the appropriate scopes.    
 
 ---
 
