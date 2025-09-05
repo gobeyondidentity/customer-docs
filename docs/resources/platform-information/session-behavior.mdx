@@ -43,3 +43,17 @@ The 15-minute inactivity timeout aligns with common security best practices for 
 - **Currently**: The inactivity timeout for a specific tenant can be changed by Beyond Identity Support through an internal feature flag. Customers cannot change this setting directly in the Secure Work console.  
 - **Self-Service**: A self-service option to configure timeouts within the console is not yet available.  
 - **Note**: Disabling the inactivity timeout altogether is not supported at this time.  
+
+
+### Session Termination on Role Permission Changes
+
+Secure Access console sessions are now automatically terminated if a user’s role permissions are downgraded or if the account is suspended. Actions that can trigger session termination include:
+
+    Removing a user, or a group the user belongs to, from a role
+    Removing permission scopes from a role the user is assigned to directly or through a group
+    Deleting a role the user is assigned to directly or through a group
+
+
+When a session is terminated due to a role permission change, the console will redirect to the login screen with a message indicating that the logout was caused by updated role permissions. Users who have not been suspended can log back in immediately, and their new session will reflect the updated role permissions.
+
+
