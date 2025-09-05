@@ -48,7 +48,7 @@ The 15-minute inactivity timeout aligns with common security best practices for 
 
 ### Session Termination on Role Permission Changes
 
-Secure Access console sessions are now automatically terminated if a user’s role permissions are downgraded or if the account is suspended. Actions that can trigger session termination include:
+Sessions are automatically terminated if a user’s role permissions are downgraded or if the account is suspended. Actions that can trigger session termination include:
 
     Removing a user, or a group the user belongs to, from a role
     Removing permission scopes from a role the user is assigned to directly or through a group
@@ -56,5 +56,9 @@ Secure Access console sessions are now automatically terminated if a user’s ro
 
 
 When a session is terminated due to a role permission change, the console will redirect to the login screen with a message indicating that the logout was caused by updated role permissions. Users who have not been suspended can log back in immediately, and their new session will reflect the updated role permissions.
+
+<br/>
+<br/>
+<br/>
 
 
