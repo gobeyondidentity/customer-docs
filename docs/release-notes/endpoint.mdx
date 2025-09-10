@@ -20,6 +20,68 @@ hide_table_of_contents: true
 Secure Access release notes are published biweekly for commercial deployments in both the US and EU. FedRAMP and government environments receive updates two weeks after features are released to commercial deployments.
 
 
+### September 10, 2025
+
+<details>
+  <summary><p>Version 2.107.0 BI Authenticator Release Notes</p></summary>
+
+Beyond Identity began deploying its Platform Authenticator v2.107.0 on September 10, 2025. 
+
+<br/>
+
+### What's New
+
+<div className="no-bold-table">
+
+| PLATFORM | FEATURE DESCRIPTION |
+| -------- | ------------------- |
+| Windows  | <strong>Desktop login with YubiKeys and Web SSO (Available only in Secure Work)</strong><br /><br />Beyond Identity now integrates with Microsoft Windows to allow secure, passwordless desktop login using YubiKeys, a hardware security key that protects against phishing attacks and other credential-based threats.<br /><br />For a list of approved YubiKeys and configuration steps, [click here](https://support.beyondidentity.com/hc/en-us/articles/32621659512343-How-to-Configure-and-Manage-YubiKey-User-Enrollment-for-Windows-Desktop-Login-2-0-End-User).<br /><br />Users can now leverage phishing-resistant PIV smartcard login to Windows and extend it to SSO and apps, enforcing that access only happens from compliant devices.<br /><br />Note: This feature is available with Beyond Identity Platform Authenticator version 2.107 or later. |
+
+
+</div>
+
+<br/>
+
+### Enhancements
+
+<div className="no-bold-table">
+
+| PLATFORM        | ENHANCEMENT DESCRIPTION |
+| --------------- | ----------------------- |
+| Windows         | **Reduced installer size**<br /><br />The Windows System installer has been optimized to use less disk space and download size. Duplicate .NET 8 libraries were consolidated, and installation now uses the smaller, on-demand WebView2 installer. This makes installation faster and more efficient while keeping all functionality intact. |
+| Windows and macOS | **Auto Proxy enabled by default**<br /><br />The Auto Proxy feature is now enabled by default, simplifying setup for environments that use proxies. |
+
+</div>
+
+
+<br/>
+
+### Bug Fixes
+
+| PLATFORM        | BUG FIX DESCRIPTION |
+| --------------- | ------------------- |
+| All Platforms   | **Credential re-import sync**<br /><br />Fixed an issue where re-importing the same credential did not properly sync with the cloud. Beyond Identity Authenticator now keeps credentials consistent across device and cloud. |
+| Windows         | **High DPI icon fixes**<br /><br />Corrected an issue where TaskBar and TaskTray icons did not display properly on high-DPI monitors and laptops. Icons now scale correctly on high-resolution displays. |
+| Windows         | **System installer stability**<br /><br />Improved reliability of Windows System installers, especially when deployed with MDM tools such as Intune or SCCM. The update prevents incorrect downgrades when only the fourth version digit differs, blocks conflicting installs from multiple channels, and resolves corruption issues caused by partial installs. |
+| Windows         | **Proxy detection reliability**<br /><br />Fixed an issue where proxy detection on Windows could fail intermittently. Proxy settings are now detected and applied more consistently, ensuring stable network connections. |
+| Android         | **Scrollable deny messages**<br /><br />Custom policy deny messages are now scrollable, making long messages easier to read without being cut off. |
+| Android         | **Accessibility Service crash fix**<br /><br />Fixed an issue where WebViews (such as “View third-party licenses” in “About Beyond Identity”) could crash while running on Android 9.0+. WebView now assigns a unique data directory suffix per process, preventing these conflicts and runtime crashes. |
+| Android         | **Login Service stability fix**<br /><br />Fixed an issue where Android’s Login Service could occasionally crash in the background on Android 12+. This was caused by a race condition (a timing conflict between the operating system and the service). Although the service recovered automatically, the OS still displayed a crash pop-up. |
+
+
+
+
+
+
+
+
+
+<br/>
+
+<br/>
+</details>
+
+
 ### September 3, 2025
 
 <details>

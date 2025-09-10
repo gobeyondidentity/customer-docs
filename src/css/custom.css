@@ -1261,3 +1261,19 @@ html[data-theme="dark"] .card__header h4 {
     display: block;
     margin: 1rem auto;  /* optional: center the image */
     }
+
+
+.no-bold-table table td { font-weight: 400 !important; }  /* plain */
+.no-bold-table table td strong { font-weight: 600; }      /* keep title bold */
+
+
+/* Reset table cell text to normal */
+.markdown table td {
+    font-weight: 400 !important;
+  }
+  
+  /* Allow only explicitly bolded text to be bold */
+  .markdown table td strong {
+    font-weight: 700 !important;
+  }
+  
