@@ -20,6 +20,24 @@ hide_table_of_contents: true
 Secure Access release notes are published biweekly for commercial deployments in both the US and EU. FedRAMP and government environments receive updates two weeks after features are released to commercial deployments.
 
 
+### September 15, 2025
+
+<details>
+  <summary><p>Version 2.107.1 BI Authenticator Release Notes</p></summary>
+
+## Hot Fix Release
+
+| Platform | Type | Description |
+| -------- | ---- | ----------- |
+| Windows | Bug | **Windows Platform Authenticator Issue**<br /><br />Beyond Identity Platform Authenticator, version 2.107.0, released earlier this week, was rolled back on September 11 after an installation issue was identified. Version 2.107.1 includes the fix and is now being redeployed to all customers.<br /><br />**What Changed**<br />Resolved an issue affecting **User installs** during upgrades where:<br />• The Platform Authenticator would not automatically start during authentication or user login.<br />• Start Menu items could be missing.<br /><br />**Impact**<br />• Customers with User installs who experienced these issues during upgrades from older versions should see them resolved with v2.107.1.<br />• **System installs were not affected.**<br />• No action is required for customers who remained on the prior stable version. |
+| macOS | Bug | **Alert Dismissal on macOS 26 Beta**<br />Resolved an issue where an alert displayed by the Platform Authenticator could not be dismissed. While macOS 26 is not yet generally available, we are proactively addressing this issue to ensure compatibility when the OS update is released.<br /><br />**Proxy Auto-Detection Behavior**<br />Fixed a case where, in certain scenarios, proxy auto-detection could cause unwanted behavior. The Platform Authenticator now correctly handles cases where the operating system reports an invalid URL for proxy settings. |
+ 
+
+<br/>
+
+<br/>
+</details>
+
 ### September 11, 2025
 
 <details>
