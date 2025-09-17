@@ -29,7 +29,8 @@ Secure Access release notes are published biweekly for commercial deployments in
 
 | Platform | Description |
 | -------- | ----------- |
-| Android | **Android Login Service Crash on Timeout**<br /><br />On Android 15 and 16, an issue was resolved where the Login Service could crash after a timeout, typically following about six hours of inactivity. This behavior is newly required and enforced by Google, and the update ensures compatibility with the latest Android platform requirements. It is recommended that users upgrade to v2.107.1. |
+| Android | **Android Login Service**<br /><br />On Android 15 and 16, an issue was resolved where the Login Service could crash after a timeout, typically following about six hours of inactivity. This behavior is newly required and enforced by Google. In accordance with the latest Android platform requirements, foreground services now require an end-user interaction with the application to be initiated. This update ensures compatibility and a stable user experience. It is recommended that users upgrade to v2.107.1.<br /><br />**Impact on End-Users:**<br />This change may affect authentication flows. In some scenarios, where the app previously launched automatically to detect and handle an authentication flow, end-users may now be required to manually launch the app to complete the process. |
+
 
 <br/>
 
