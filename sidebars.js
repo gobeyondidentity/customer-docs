@@ -22,12 +22,24 @@ const sidebars = {
       label: "Integrations",
       collapsed: false,
       collapsible: true,
-      link: {
-        type: "doc",
-        id: "integrations/integrations",
-      },
+      link: { type: "doc", id: "integrations/integrations" },
       items: [
-        "integrations/crowdstrike",
+        {
+          type: "category",
+          label: "CrowdStrike",
+          collapsed: true,
+          collapsible: true,
+          link: {
+            type: "generated-index",
+            title: "CrowdStrike",
+            slug: "/tools/integrations/crowdstrike",
+            description: "Beyond Identity integrations with CrowdStrike.",
+          },
+          items: [
+            "integrations/crowdstrike/crowdstrike",
+            "integrations/crowdstrike/crowdstrike-itdr",
+          ],
+        },
         "integrations/intune",
         "integrations/jamf",
         {
@@ -35,17 +47,14 @@ const sidebars = {
           label: "Logs",
           collapsed: true,
           collapsible: true,
-          link: {
-            type: "doc",
-            id: "integrations/logs/logs",
-          },
+          link: { type: "doc", id: "integrations/logs/logs" },
           items: [
             "integrations/logs/mdm-edr",
             "integrations/logs/siem",
           ],
         },
-      ],
-    },
+      ],    
+    },    
     {
       type: "category",
       label: "Directory",
