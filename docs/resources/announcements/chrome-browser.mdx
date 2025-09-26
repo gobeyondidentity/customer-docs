@@ -137,11 +137,11 @@ Learn more about configuring custom Chrome policies in Workspace – *link*
 
 ---
 
-# Option 2 – Configure Chrome browser using MDM
+### Option 2 – Configure Chrome browser using MDM
 
 You can use your Mobile Device Management (MDM) solution to deploy a policy that pre-grants LNA permission for your Beyond Identity URL on managed devices. This prevents users from ever seeing the prompt. The configuration varies slightly by operating system.  
 
-## Windows (via Intune)
+### Windows (via Intune)
 
 In the Intune console, create a **custom device configuration profile**:  
 
@@ -167,7 +167,7 @@ In the Intune console, create a **custom device configuration profile**:
 
 3. Assign the profile to the desired groups and proceed to test.
 
-## macOS
+### macOS
 
 For macOS devices managed by an MDM, you'll deploy a configuration profile (`.mobileconfig`) with a custom payload for Chrome. The payload should contain the following keys and values in the `com.google.Chrome` preference domain.
 
@@ -184,7 +184,7 @@ xml
 <true/>
 ```
 
-## Android (via Managed App Configuration)
+### Android (via Managed App Configuration)
 
 For managed Android devices, you can push the policy using your MDM's managed app configuration capabilities for the Google Chrome app.
 
@@ -205,7 +205,7 @@ json
 
 See this link to learn more about the Local Network Access setting – [Chrome Enterprise Policy Reference](https://chromeenterprise.google/policies/#LocalNetworkAccessAllowedForUrls)
 
-## Testing
+### Testing
 
 1. Open a browser where the settings have been assigned.  
 2. Enter `chrome://policy` in the search bar and verify the policy has been applied to the browser.  
@@ -216,7 +216,7 @@ See this link to learn more about the Local Network Access setting – [Chrome E
 
 ---
 
-## Frequently Asked Questions
+### Frequently Asked Questions
 
 **Q: How many times will I see this prompt?**  
 A: You will only need to click **Allow** once per device. After you grant permission, you will not see the prompt again on that device.  
