@@ -246,6 +246,7 @@ const sidebars = {
       items: [
         "end-user-guides/proxy-end-user",
         "end-user-guides/self-enrollment",
+        "end-user-guides/icloud-private-relay",
         {
           type: "category",
           label: "Extend Passkey Credential to a Device",
