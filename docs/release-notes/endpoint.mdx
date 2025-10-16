@@ -19,6 +19,28 @@ hide_table_of_contents: true
 
 Secure Access release notes are published biweekly for commercial deployments in both the US and EU. FedRAMP and government environments receive updates two weeks after features are released to commercial deployments.
 
+### October 15 & 16, 2025
+
+<details>
+  <summary><p>Version 2.107.9 BI Authenticator Release Notes</p></summary>
+
+## Hot Fix Release
+
+| **Platform** | **Type** | **Description** |
+|--------------|-----------|-----------------|
+| Android | Bug | Resolves an issue where Android’s Login Service occasionally timed out during authentication, ensuring stable and consistent login behavior across managed and unmanaged devices. |
+| Android / iOS | Enhancement | Improves markdown support in custom policy messages displayed via toast notifications, ensuring consistent rendering for links, bold, and italic text. |
+| Android / iOS | Enhancement | Standardizes the display of custom policy messages to ensure a uniform look and feel across devices, improving overall user experience and reducing layout inconsistencies. |
+| Android / iOS | Bug | Resolves an issue on Android 15 and 16 where toast messages were not displaying correctly during self-remediation flows. Toasts now appear as expected in all supported Android versions. |
+| Android | Bug | Resolves an issue on Android 15 and 16 where the Login Service could crash after a complete reboot.<br />This change aligns with new startup behavior now required and enforced by Google, improving post-reboot reliability and compliance. |
+| Android / iOS / macOS / Windows | Bug | Standardizes the display of toasts, markdown, and dismiss behavior across all platforms (Windows, macOS, iOS, Android) for improved consistency. |
+| Windows | Bug | Fixed an initialization issue where the Windows Platform Authenticator could hang when attempting to authenticate immediately after logging in. The startup sequence has been improved for stability. |
+
+<br/>
+
+<br/>
+</details>
+
 ### October 2, 2025
 
 <details>
