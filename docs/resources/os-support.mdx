@@ -1,7 +1,7 @@
 ---
-title: Operating System Support Guidelines
+title: Supported Platforms, Authenticator Versions, and Deployment Prerequisites
 id: os-support
-description: 'Beyond Identity guidelines for supported operating systems.'
+description: This article lists the operating systems and versions supported by the Beyond Identity Authenticator, minimum system requirements, and deployment prerequisites for administrators.
 slug: /resources/os-support
 keywords:
   - Platform Authenticator
@@ -16,33 +16,109 @@ doc_type: overview
 displayed_sidebar: mainSidebar
 ---
 
-# Operating system version support
 
-Beyond Identity is not providing ongoing support for the  Platform Authenticator on operating systems the OS vendor has declared `End of Life`. Newer versions of the Platform Authenticator are not tested on unsupported operating systems. 
+*Last updated: October 22, 2025*  
 
-:::note
-This policy is active on March 1st, 2025.
-:::
+This article lists the operating systems and versions supported by the Beyond Identity Authenticator, minimum system requirements, and deployment prerequisites that IT administrators should review before rollout.
 
-As part of our [Secure by Design commitment](https://www.beyondidentity.com/our-difference/secure-by-design), we only support operating systems with ongoing security updates. The following points are impacts to customers.
+---
 
-- Users update to supported operating systems
-- The Platform Authenticator may continue to operate on unsupported operating systems
+### Table of Contents
 
-Updating the operating system to a newer version supported by the OS vendor ensures the Platform Authenticator continues to operate as expected.
+- [Quick Support Matrix](#quick-support-matrix)  
+- [Platform Details and Requirements](#platform-details-and-requirements)  
+  - [Windows](#windows)  
+  - [macOS](#macos)  
+  - [iOS / iPadOS](#ios--ipados)  
+  - [Android](#android)  
+  - [Linux](#linux)  
+- [Authenticator Version Support](#authenticator-version-support)  
+- [Deployment Prerequisites](#deployment-prerequisites)  
+  - [Allow-Listed Processes (Windows and macOS)](#allow-listed-processes-windows-and-macos)  
+  - [Code Signing and Team Identifiers](#code-signing-and-team-identifiers)  
+  - [Network Requirements](#network-requirements)  
+  - [Security Tool Compatibility](#security-tool-compatibility)  
+- [Related Resources](#related-resources)  
+- [Changelog](#changelog)  
 
-:::note
-Secure Access Platform customers can contact their CSM or Support team for guidance.
-:::
+---
 
-## Supported operating system platforms
+### Quick Support Matrix  
+| Platform    | Supported OS Versions                                      | Authenticator Version Support | Notes                                                                 |
+|-------------|------------------------------------------------------------|-------------------------------|-----------------------------------------------------------------------|
+| Windows     | Windows 10 (build 18363 and later), Windows 11             | 2.98.1 and later               | 64-bit only; .NET framework embedded in installer; review deployment prerequisites.  |
+| macOS       | macOS 14, 15, 26                                           | 2.98.1 and later               | Review deployment prerequisites. :contentReference[oaicite:1]{index=1} |
+| iOS / iPadOS| iOS/iPadOS 26                                              | 2.98.1 and later               | iPhone and iPad supported. :contentReference[oaicite:2]{index=2} |
+| Android     | Android 12 (API 32), 13 (API 33), 14 (API 34)              | 2.98.2 and later               | —  |
+| Linux       | Official: Debian/Ubuntu; Unofficial: RPM (RHEL/CentOS)     | See Linux install guide       | Refer to installer article for steps and caveats. |
 
-The following platforms and major versions are supported at this time. Beyond Identity generally follows the support guidelines from [endoflife.date](https://endoflife.date) as a standard for most operating systems. This table applies to the Beyond Identity Platform Authenticator.
+> **End of Life Policy:** Beyond Identity does not currently publish formal EOL dates for operating systems or Authenticator versions. When a platform or version is no longer supported, it will be removed from this page. Administrators should ensure devices are kept on the supported OS versions and Authenticator releases listed above. 
 
-| OS      | Version|
-|---|---|
-| iOS     | 18<br></br>[Apple iOS - endoflife.date](https://endoflife.date/ios) |
-| Android | 12 (API 32), 13 (API 33), and 14 (API 34)<br></br>[Android OS - endoflife.date](https://endoflife.date/android) |
-| Windows | 10, 11<br></br>[Microsoft Windows - endoflife.date](https://endoflife.date/windows) |
-| macOS   | 13, 14, 15<br></br>[Apple macOS - endoflife.date](https://endoflife.date/macos) |
-| Linux   | Ubuntu 20 LTS, 22 LTS, 24 LTS |
+---
+
+### Platform Details and Requirements  
+
+#### Windows  
+- OS version: Windows 10 (build 18363 and later), Windows 11  
+- Architecture: 64-bit and ARM64  
+- .NET Embedded in the installer  
+- Processor: Capable of running supported OS versions  
+- Other: Review deployment prerequisites and allow-list Beyond Identity processes. Windows requires TPM 1.2 for basic authentication, and TPM 2.0 for Windows Desktop Login.  
+
+#### macOS  
+- OS version: macOS 14, 15, 26  
+- Other: Review deployment prerequisites and allow-list Beyond Identity processes. 
+
+#### iOS / iPadOS  
+- OS version: iOS/iPadOS 26  
+
+#### Android  
+- OS version: Android 12 (API 32), 13 (API 33), 14 (API 34)  
+
+#### Linux  
+- Distributions: Official: Ubuntu (v24.04, 22.04, and 20.04). Unofficial: RPM (RHEL/CentOS)  
+- Notes: Refer to installer article for steps and caveats; supported versions listed on this page. 
+
+---
+
+### Authenticator Version Support  
+Minimum supported Authenticator versions:  
+- Windows, macOS / iOS / iPadOS: **2.98.1 and later**  
+- Android: **2.98.2 and later**  
+
+---
+
+## Deployment Prerequisites  
+Before deploying the Beyond Identity Authenticator at scale, administrators must ensure that endpoint security tools, firewalls, and device policies allow the app to run without interference. 
+
+### Allow-Listed Processes (Windows and macOS)  
+The following processes should be allow-listed in endpoint detection and antivirus tools:  
+- `BeyondIdentity.exe` (Windows)  
+- `BeyondIdentityViewHelper.exe` (Windows)  
+- `BIService.exe` (Windows)  
+- `Beyond Identity.app` (macOS)  
+- `com.beyondidentity.*` background services (macOS)   
+
+### Code Signing and Team Identifiers  
+To validate software integrity, ensure these identifiers are recognized:  
+- macOS Team ID: `BZA6SZ8XVQ`  
+- Windows Publisher: `Beyond Identity, Inc.` 
+
+### Network Requirements  
+The Authenticator must be able to reach Beyond Identity’s cloud endpoints. Ensure the following domains and subdomains are allow-listed in firewalls and proxies:  
+- `*.beyondidentity.com`  
+- `*.byndid.com`  
+
+### Security Tool Compatibility  
+Some endpoint security agents may require exclusions for Beyond Identity processes to prevent interference with authentication flows. Consult your EDR/AV documentation for configuring exceptions. 
+
+---
+
+
+## Changelog  
+- Aug 29 2025: Consolidated system requirements, supported OS versions, Authenticator version support, and deployment prerequisites into one unified article.  
+- Oct 7 2025: Updated Authenticator version numbers for all supported platforms.  
+- Oct 22 2025: Updated macOS and iPad/iOS versions supported. Also, updated the macOS Team ID.   
+
+---
+
