@@ -20,6 +20,78 @@ hide_table_of_contents: true
 Secure Access release notes are published biweekly for commercial deployments in both the US and EU. FedRAMP and government environments receive updates two weeks after features are released to commercial deployments.
 
 
+### October 25, 2025
+
+<details>
+  <summary><p>Secure Access Release Notes</p></summary>
+
+Beyond Identity began deployment of a new **Secure Access** software release on October 25, 2025. 
+
+
+<br/>
+
+### What's New
+
+- **Granular Roaming Authentication Configuration**
+  Secure Access now supports granular configuration for roaming authentication. Administrators can define allowed **source IP addresses**, **users**, and **user groups** in addition to existing realm-level enablement. This enhancement offers finer control over authentication behavior for roaming users. For documentation, [click here](https://docs.beyondidentity.com/docs/authentication-experience/roaming-authentication/roaming-authentication-config).
+  <br/>
+
+     ![Release-notes](../images/roaming-auth.png)
+
+<br/>
+- **Tenant Selection Prompt in Secure Access Console**
+  When logging into the Secure Access console, users are now prompted to select a tenant if the tenant name they enter matches more than one tenant. This enhancement helps ensure users are directed to the correct tenant when duplicates exist.
+  <br/>
+
+     ![Release-notes](../images/multiple-tenants.png)
+
+<br/>
+
+- **Support for TPM Policy Rules (AAL3 Compliance)**
+To meet the Authenticator Assurance Level 3 (AAL3) requirements defined by NIST, Secure Access now supports authoring Windows and Linux TPM policy rules. This enhancement enables administrators to build policies that verify Trusted Platform Module (TPM) attestation as part of authentication requirements.
+
+<br/>
+
+
+
+### Enhancements
+
+- **Configurable Launch Mechanisms at Realm Level**  
+  Secure Access now allows configuration of launch mechanisms, such as enabling or disabling **authentication URL copy-paste** and other app behaviors, at the **realm level**. This enhancement gives administrators greater control and parity with the existing tenant-level configuration options in Secure Work. This feature is primarily an **API-first experience**. Default launch mechanism settings are automatically created for each tenant or realm, but administrators can update these configurations through the API.  
+
+  When this mechanism is configured — for example, enabling the **copy** flow type — end-users will see an **authentication URL copy-paste box** (as shown in the authentication link prompt) when verifying their identity via the Beyond Identity Authenticator.  
+
+  **Note:** Copy functionality is **disabled by default** for all tenants, as it is considered a less secure option.
+
+
+    ![Release-notes](../images/copy-paste-url.png)
+
+
+- **Updated CrowdStrike API for Device Posture Data**  
+  Secure Access now uses an updated **CrowdStrike API** designed for improved stability and accuracy in device posture reporting. This enhancement increases the reliability of policy decisions that depend on device health signals.  
+
+- **Restriction on Super Administrator Role Editing**  
+  As part of the upcoming capability for tenants to create custom roles in Secure Access, the initial **Super Administrator** role is now managed exclusively by Beyond Identity and can no longer be edited by end users. This change prevents accidental modifications that could impact platform functionality or access.  
+
+  For full documentation on creating roles, [click here](https://docs.beyondidentity.com/docs/directory/role-management/create-roles).  
+  
+
+
+<br/>
+
+### Bug Fixes
+
+- **Improved Policy Event Logging**  
+  Some previously missing details in policy event logs are now correctly populated. Policy Create, Update, and Delete events now display the actor in the event log. For certain system-initiated events (create and delete), the **Actor** field will display as *system* or *Beyond Identity*, depending on context. This improvement provides clearer visibility into which actions are performed automatically versus manually by administrators.  
+
+- **Fixed Missing Platform Icons on Authenticator Downloads Page**  
+  Resolved an issue where platform icons were not appearing on the **Platform Authenticator downloads** page. Icons now display correctly for all supported platforms.  
+
+
+<br/>
+<br/>
+</details>
+
 ### October 19, 2025
 
 <details>
