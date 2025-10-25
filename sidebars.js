@@ -181,6 +181,7 @@ const sidebars = {
       collapsible: true,
       items: [      
         "authentication-experience/roaming-authentication",
+        "authentication-experience/roaming-authentication-config",
       ],
     },
     {
