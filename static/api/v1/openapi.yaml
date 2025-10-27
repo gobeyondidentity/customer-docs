@@ -252,11 +252,6 @@ servers:
   - url: 'https://api.us1.beyondidentity-gov.com/'
     description: US FedRAMP API base URL
 tags:
-  - name: Launch Mechanisms
-    description: |
-      Launch Mechanisms define how the authenticating user agent communicates with the Platform Authenticator to request access during authentication. They are a critical component of the authentication process that determines the security level of the connection between the browser and the authenticator.
-      There are multiple launch mechanisms with varying levels of phishing resistance. While these mechanisms, or flow types, are automatically defaulted for the tenant/realm, individual mechanisms can be enabled or disabled such as copy-paste.
-      A super admin or a user with appropriate scopes should be able to configure these.
   - name: Tenants
     description: |
       A tenant represents an organization in the Beyond Identity Cloud. Tenants contain all data necessary for that organization to operate.
@@ -290,6 +285,9 @@ tags:
   - name: SSO Configs
     description: |
       An SSO configuration defines how end users interact with supported SSO protocols and related services. Each configuration type represents a protocol or integration (e.g., SAML, WS-Federation, OIDC, SCIM) supported by Beyond Identity. An SSO configuration provides a flexible framework for managing authentication, provisioning, and other integrations. It abstracts application protocols, inbound and outbound provisioning, and supports named integrations. Additionally, it includes features like user or group assignments, visual tiles in the SSO interface, and compatibility with multiple authentication and provisioning standards.  This makes SSO configurations versatile for both authentication and non-authentication use cases.
+  - name: Launch Mechanisms
+    description: |
+      Launch mechanisms, or flow type configurations, define which authentication launch mechanisms are enabled and valid for different platforms (Android, iOS, macOS, Windows, Web, Linux, ChromeOS) within a tenant. These configurations control which authentication methods end users can use on different devices and platforms.
   - name: Resource Servers
     description: |
       A resource server represents an API server that hosts a set of protected resources and is capable of accepting and responding to protected resource requests using access tokens. Clients can enable these APIs to be consumed from authorized applications.
@@ -1745,6 +1743,7 @@ paths:
                     display_name: Test Identity
                     create_time: '2022-04-12T05:53:07.119Z'
                     update_time: '2022-06-16T14:31:03.770Z'
+                    enrollment_status: UNENROLLED
                     traits:
                       type: traits_v0
                       username: test
@@ -1871,6 +1870,7 @@ paths:
                         display_name: Test Identity
                         create_time: '2022-04-12T05:53:07.119Z'
                         update_time: '2022-06-16T14:31:03.770Z'
+                        enrollment_status: ENROLLED
                         traits:
                           type: traits_v0
                           username: test
@@ -1912,6 +1912,95 @@ paths:
               examples:
                 Realm Not Found:
                   $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D/get/responses/404/content/application~1json/examples/Realm%20Not%20Found'
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D/get/responses/500/content/application~1json/examples/Internal%20Error'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/identities:batchDelete':
+    post:
+      tags:
+        - Identities
+      operationId: BatchDeleteIdentities
+      summary: Batch delete identities.
+      description: |
+        To delete multiple identities in a realm, send a POST request to `/v1/tenants/$TENANT_ID/realms/$REALM_ID/identities:batchDelete`.
+        The request must contain at least one and no more than 1000 identity IDs. If there are any repeating identity IDs, the request will fail. If there are any invalid identity IDs, the request will fail and no identities will be deleted.
+        A successful request will receive a 200 status code with no body in the response. This indicates that the request was processed successfully.
+      security:
+        - BearerAuth:
+            - 'identities:delete'
+      parameters:
+        - $ref: '#/components/parameters/tenant_id'
+        - $ref: '#/components/parameters/realm_id'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Batch Delete Identities Request
+              description: Request for BatchDeleteIdentities.
+              type: object
+              properties:
+                ids:
+                  description: IDs of the identities to be deleted.
+                  type: array
+                  items:
+                    type: string
+                  minItems: 1
+                  maxItems: 1000
+              required:
+                - ids
+            examples:
+              Delete Identities:
+                value:
+                  ids:
+                    - e372db224c06e850
+                    - 3a28d4f28b57cc93
+      responses:
+        '200':
+          description: The action was successful and the response body is empty.
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Insufficient Authorization:
+                  $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D/get/responses/403/content/application~1json/examples/Insufficient%20Authorization'
+        '404':
+          description: The resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Identities Not Found:
+                  value:
+                    code: not_found
+                    message: identities not found
+                    details:
+                      - type: BatchOperationErrors
+                        description: errors encountered performing batch operation
+                        errors:
+                          - Description: identities not found
+                            IDs:
+                              - e372db224c06e850
+                              - 3a28d4f28b57cc93
+                            ResourceType: Identity
         '500':
           description: Server error.
           content:
@@ -2098,7 +2187,7 @@ paths:
       operationId: DeleteIdentity
       summary: Delete an Identity
       description: |
-        To delete an identity, send a DELETE request to `/v1/tenants/$TENANT_ID/realms/$REALM_ID/identities/$IDENTITY_ID`. To be deleted, an identity must not be a member of any groups or roles. The identity must must first be removed from all groups and roles or you will receive a 409 error.
+        To delete an identity, send a DELETE request to `/v1/tenants/$TENANT_ID/realms/$REALM_ID/identities/$IDENTITY_ID`.
         A successful request will receive a 200 status code with no body in the response. This indicates that the request was processed successfully.
       security:
         - BearerAuth:
@@ -2137,17 +2226,6 @@ paths:
               examples:
                 Identity Not Found:
                   $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1identities~1%7Bidentity_id%7D/get/responses/404/content/application~1json/examples/Identity%20Not%20Found'
-        '409':
-          description: Conflict.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-              examples:
-                Identity Has Memberships:
-                  value:
-                    code: conflict
-                    message: identity has children
         '500':
           description: Server error.
           content:
@@ -3815,6 +3893,12 @@ paths:
               examples:
                 Internal Error:
                   $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D/get/responses/500/content/application~1json/examples/Internal%20Error'
+        '503':
+          description: Service unavailable.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     get:
       tags:
         - Credential Binding Jobs
@@ -3916,7 +4000,7 @@ paths:
       operationId: GetCredentialBindingJob
       summary: Retrieve an Existing Credential Binding Job
       description: |
-        To retrieve an existing credential binding job, send a GET request to `/v1/tenants/$TENANT_ID/realms/$REALM_ID/identities/$IDENTITY_ID`/credential-binding-jobs/$CREDENTIAL_BINDING_JOB_ID`.
+        To retrieve an existing credential binding job, send a GET request to `/v1/tenants/$TENANT_ID/realms/$REALM_ID/identities/$IDENTITY_ID/credential-binding-jobs/$CREDENTIAL_BINDING_JOB_ID`.
       security:
         - BearerAuth:
             - 'credential-binding-jobs:read'
@@ -3925,6 +4009,14 @@ paths:
         - $ref: '#/components/parameters/realm_id'
         - $ref: '#/components/parameters/identity_id'
         - $ref: '#/components/parameters/credential_binding_job_id'
+        - name: filter
+          in: query
+          description: |
+            Filter to constrain the response. The response will only include resources matching this filter. Filters follow the SCIM grammar from [RFC-7644 Section 3.4.2.2](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2). Supported filters attributes:
+            `state`: the state of the credential binding job.
+            `delivery_method`: the delivery method used for the credential binding job.
+          schema:
+            type: string
       responses:
         '200':
           description: |
@@ -3982,6 +4074,532 @@ paths:
                         resource_type: CredentialBindingJob
                         id: 3103ba9a652b755e
                         description: credential binding job not found
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D/get/responses/500/content/application~1json/examples/Internal%20Error'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/identities/{identity_id}/credential-binding-jobs/{credential_binding_job_id}:revoke':
+    post:
+      tags:
+        - Credential Binding Jobs
+      operationId: SetCredentialBindingJobRevoked
+      summary: Revocation of an active credential binding job.
+      description: |
+        To revoke an active credential binding job, send a POST request to `/v1/tenants/$TENANT_ID/realms/$REALM_ID/identities/$IDENTITY_ID/credential-binding-jobs/$CREDENTIAL_BINDING_JOB_ID:revoke`.
+        This endpoint invalidates a pending credential binding job, preventing a credential from being enrolled for the associated identity. If the specified job has already been completed, the revocation attempt will fail.
+      security:
+        - CredentialAuth:
+            - 'credential-binding-jobs:revoke'
+      parameters:
+        - $ref: '#/components/parameters/tenant_id'
+        - $ref: '#/components/parameters/realm_id'
+        - $ref: '#/components/parameters/identity_id'
+        - $ref: '#/components/parameters/credential_binding_job_id'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Bind Credential Request
+              description: |
+                Request for `SetCredentialBindingJobRevoked`. This request body is empty.
+              type: object
+      responses:
+        '200':
+          description: Credential binding job was successfully revoked.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialBindingJob'
+        '400':
+          description: |
+            Bad request. If the request failed due to invalid fields, the error details will include a FieldViolations.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthenticated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: |
+            Permission denied. The error details will include a ResourceInfo describing the authorization failure.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: |
+            Not found. The error details will include a ResourceInfo describing the required resource that was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: |
+            Conflict. The error details will include a ResourceInfo describing the required resource that is conflicting.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/batch-credential-binding-jobs':
+    post:
+      tags:
+        - Credential Binding Jobs
+      operationId: CreateBatchCredentialBindingJob
+      summary: Create a New Batch Credential Binding Job
+      description: |
+        To create a new batch credential binding job, send a POST request to `/v1/tenants/$TENANT_ID/realms/$REALM_ID/batch-credential-binding-jobs`.
+        Values in the request body for read-only fields will be ignored.
+        A maximum of 1000 credential binding jobs can be created in a single batch.
+        Each realm can have up to 1000 credential binding jobs in the batch queue at any given time.
+      security:
+        - BearerAuth:
+            - 'credential-binding-jobs:create'
+      parameters:
+        - $ref: '#/components/parameters/tenant_id'
+        - $ref: '#/components/parameters/realm_id'
+      requestBody:
+        description: Batch credential binding job to be created.
+        content:
+          application/json:
+            schema:
+              title: Create Batch Credential Binding Job Request
+              description: Request for CreateBatchCredentialBindingJob.
+              type: object
+              properties:
+                batch_credential_binding_job:
+                  $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1batch-credential-binding-jobs/post/responses/200/content/application~1json/schema'
+              required:
+                - batch_credential_binding_job
+            examples:
+              Create Batch Credential Binding Job:
+                value:
+                  batch_credential_binding_job:
+                    identity_ids:
+                      - 3d227b0d5949969d
+                      - a3f28b7c9e6d1234
+                      - 5c90d2af18e47b0e
+                    job_template:
+                      authenticator_config_id: 67bb0acf12e5c899
+                      post_binding_redirect_uri: 'http://example.com/callback'
+      responses:
+        '200':
+          description: |
+            The response will be a JSON object containing the standard attributes associated with a credential binding job.
+          content:
+            application/json:
+              schema:
+                title: BatchCredentialBindingJob
+                description: |
+                  A batch credential binding job manages the binding of credentials for multiple identities in a batch operation.
+                type: object
+                required:
+                  - identity_ids
+                  - job_template
+                properties:
+                  id:
+                    type: string
+                    description: |
+                      ID of the batch credential binding job. This is automatically generated on creation. This field is immutable and output-only.
+                    readOnly: true
+                  tenant_id:
+                    type: string
+                    description: |
+                      ID of the tenant associated with the batch credential binding job. This is automatically set on creation. This field is immutable and output-only.
+                    minLength: 1
+                    readOnly: true
+                  realm_id:
+                    type: string
+                    description: |
+                      ID of the realm associated with the batch credential binding job. This is automatically set on creation. This field is immutable and output-only.
+                    minLength: 1
+                    readOnly: true
+                  identity_ids:
+                    type: array
+                    description: |
+                      The list of identities associated with the batch credential binding job.
+                    items:
+                      type: string
+                      minLength: 1
+                    minItems: 1
+                    maxItems: 1000
+                  state:
+                    type: string
+                    description: |
+                      The current state of the batch credential binding job.
+
+                      `RUNNING` indicates that the batch credential binding job is currently running.
+
+                      `FAILED` indicates that the batch credential binding job has failed.
+
+                      `PARTIAL_SUCCESS` indicates that the batch credential binding job has completed with some failures.
+
+                      `SUCCESS` indicates that the batch credential binding job has completed successfully.
+
+                      This field is immutable and output-only.
+                    readOnly: true
+                  state_commentary:
+                    title: BatchStateCommentary
+                    type: object
+                    description: |
+                      Commentary on the current state of the batch credential binding job. This field provides error information for each identity for which a credential binding job was attempted.
+                      This field is immutable and output-only.
+                    readOnly: true
+                    properties:
+                      errors:
+                        type: object
+                        description: |
+                          Per-identity error information. This contains a mapping of identity ID to error context. It will contain any errors encountered while creating an enrollment job for an entity. This field is immutable and output-only.
+                        additionalProperties:
+                          type: object
+                          required:
+                            - last_error
+                          properties:
+                            last_error:
+                              type: string
+                              description: |
+                                The most recent error encountered while creating a credential binding job for the associated identity.
+                            failed_permanently:
+                              type: boolean
+                              description: |
+                                Indicates whether attempts to create a credential binding job for this identity have reached the maximum retry limit and permanently failed.
+                  create_time:
+                    type: string
+                    format: date-time
+                    description: |
+                      Timestamp of when the batch credential binding job was created. This field is immutable and output-only.
+                    readOnly: true
+                  update_time:
+                    type: string
+                    format: date-time
+                    description: |
+                      Timestamp of when the batch credential binding job was updated. This field is immutable and output-only.
+                    readOnly: true
+                  job_template:
+                    title: BatchCredentialBindingJobTemplate
+                    description: |
+                      A batch credential binding job template provides a template for the credential binding jobs created via a batch.
+                    type: object
+                    properties:
+                      post_binding_redirect_uri:
+                        type: string
+                        description: |
+                          The URI to which the caller will be redirected after successfully binding a credential to an identity. This field is optional. If not specified, the authenticator will not attempt to redirect to a new location after binding.
+                        example: 'http://example.com/callback'
+                      authenticator_config:
+                        type: object
+                        description: |
+                          Representation of an authenticator configuration. This prescribes how an identity may authenticate themselves with Beyond Identity.
+                        properties:
+                          config:
+                            description: |
+                              An object specifying the settings for the supported authenticator type.
+                              The Hosted Web authenticator configuration is not supported in this field. It must be created separately and then referenced by its ID in the `authenticator_config_id` field.
+                            oneOf:
+                              - $ref: '#/components/schemas/AuthenticatorConfig/properties/config/oneOf/0'
+                              - $ref: '#/components/schemas/AuthenticatorConfig/properties/config/oneOf/2'
+                      authenticator_config_id:
+                        type: string
+                        description: |
+                          The ID of the authenticator configuration to be used to build the credential binding job. This field is immutable.
+                        example: 76e9eab521a8b734
+                      expire_time:
+                        type: string
+                        format: date-time
+                        description: |
+                          A timestamp that represents when the credential binding link associated with the credential binding job will expire. This field is immutable and read-only.
+                        readOnly: true
+                        example: '2022-05-12T20:29:47.636497Z'
+              examples:
+                Success:
+                  value:
+                    id: 81490afab171aef0
+                    realm_id: 7df92e4a38ba0993
+                    tenant_id: 0001b42d80372976
+                    identity_ids:
+                      - 3d227b0d5949969d
+                      - a3f28b7c9e6d1234
+                      - 5c90d2af18e47b0e
+                    state: RUNNING
+                    state_commentary:
+                      errors:
+                        a3f28b7c9e6d1234:
+                          last_error: Identity missing email address
+                          failed_permanently: false
+                    job_template:
+                      authenticator_config_id: 67bb0acf12e5c899
+                      post_binding_redirect_uri: 'http://example.com/callback'
+                    create_time: '2022-03-14T03:42:52.905657Z'
+                    update_time: '2022-03-15T05:55:23.823187Z'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Insufficient Authorization:
+                  $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D/get/responses/403/content/application~1json/examples/Insufficient%20Authorization'
+        '429':
+          description: |
+            Too many requests. The error details will include the current total number of enrollments in the batch, the maximum allowed queue size, and the amount by which the limit was exceeded.
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: string
+                example: 1000
+              description: |
+                Request limit (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).
+                Note: This request limit is not based on a time window, but on the number of active requests in the batch queue. It defines the maximum number of credential binding jobs allowed in the queue.
+            RateLimit-Remaining:
+              schema:
+                type: string
+                example: 200
+              description: |
+                Request limit remaining (see https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html#section-toc.1-1.3.2.1.1).
+                The number of additional credential binding job requests that can be submitted in a batch before reaching the maximum queue size. This value reflects the remaining capacity in the batch queue, not a time-based rate limit.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Too Many Requests:
+                  value:
+                    code: too_many_requests
+                    message: 'Maximum queue sized reached. Maximum: 1000 Current Total: 800 Overage: 100'
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D/get/responses/500/content/application~1json/examples/Internal%20Error'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/batch-credential-binding-jobs/{batch_credential_binding_job_id}':
+    get:
+      tags:
+        - Credential Binding Jobs
+      operationId: GetBatchCredentialBindingJob
+      summary: Retrieve an Existing Batch Credential Binding Job
+      description: |
+        To retrieve an existing batch credential binding job, send a GET request to `/v1/tenants/$TENANT_ID/realms/$REALM_ID/identities/$IDENTITY_ID/credential-binding-jobs/batch/$BATCH_CREDENTIAL_BINDING_JOB_ID`.
+      security:
+        - BearerAuth:
+            - 'credential-binding-jobs:read'
+      parameters:
+        - $ref: '#/components/parameters/tenant_id'
+        - $ref: '#/components/parameters/realm_id'
+        - $ref: '#/components/parameters/batch_credential_binding_job_id'
+      responses:
+        '200':
+          description: |
+            The response will be a JSON object containing the standard attributes associated with the batch credential binding job.
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1batch-credential-binding-jobs/post/responses/200/content/application~1json/schema'
+              examples:
+                Success:
+                  $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1batch-credential-binding-jobs/post/responses/200/content/application~1json/examples/Success'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Insufficient Authorization:
+                  $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D/get/responses/403/content/application~1json/examples/Insufficient%20Authorization'
+        '404':
+          description: The resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Batch Credential Binding Job Not Found:
+                  value:
+                    code: not_found
+                    message: batch credential binding job not found
+                    details:
+                      - type: ResourceInfo
+                        resource_type: BatchCredentialBindingJob
+                        id: ea453099-e207-47d1-b24c-b3165a54037a
+                        description: batch credential binding job not found
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Internal Error:
+                  $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D/get/responses/500/content/application~1json/examples/Internal%20Error'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/batch-credential-binding-jobs/{batch_credential_binding_job_id}:listResults':
+    get:
+      tags:
+        - Credential Binding Jobs
+      operationId: ListBatchCredentialBindingJobResults
+      summary: List Results of a Batch Credential Binding Job
+      description: |
+        To list the results of a batch credential binding job, send a GET request to `/v1/tenants/$TENANT_ID/realms/$REALM_ID/batch-credential-binding-jobs/$BATCH_CREDENTIAL_BINDING_JOB_ID:listResults`.
+      security:
+        - BearerAuth:
+            - 'credential-binding-jobs:read'
+      parameters:
+        - $ref: '#/components/parameters/tenant_id'
+        - $ref: '#/components/parameters/realm_id'
+        - $ref: '#/components/parameters/batch_credential_binding_job_id'
+      responses:
+        '200':
+          description: |
+            The response will be a JSON object containing the standard attributes associated with the results of the batch credential binding job.
+          content:
+            application/json:
+              schema:
+                title: ListBatchCredentialBindingJobResultsResponse
+                description: |
+                  A response containing the results of a batch credential binding job.
+                type: object
+                properties:
+                  job_results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CredentialBindingJob'
+                    maxItems: 200
+                    description: |
+                      An unordered array of credential binding jobs corresponding to the batch credential binding job.
+                  total_success_count:
+                    type: integer
+                    format: uint32
+                    description: |
+                      Total number of successful results.
+                  total_failure_count:
+                    type: integer
+                    format: uint32
+                    description: |
+                      Total number of failed results.
+                  total_pending_count:
+                    type: integer
+                    format: uint32
+                    description: |
+                      Total number of pending results.
+                  total_size:
+                    type: integer
+                    format: uint32
+                    description: |
+                      Total number of results for the request. This value may be used to determine subsequent requests to query the remaining results.
+                  next_page_token:
+                    type: string
+                    description: |
+                      Token used to fetch the next set of results. If this field is omitted, there are no subsequent pages.
+                required:
+                  - job_results
+                  - total_size
+                  - total_success_count
+                  - total_failure_count
+                  - total_pending_count
+              examples:
+                Success:
+                  value:
+                    job_results:
+                      - id: 81490afab171aef0
+                        identity_id: a3f28b7c9e6d1234
+                        realm_id: 7df92e4a38ba0993
+                        tenant_id: 0001b42d80372976
+                        delivery_method: EMAIL
+                        state: COMPLETE
+                        post_binding_redirect_uri: 'http://example.com/callback'
+                        authenticator_config_id: 67bb0acf12e5c899
+                        expire_time: '2022-03-21T03:42:52.905657Z'
+                        create_time: '2022-03-14T03:42:52.905657Z'
+                        update_time: '2022-03-15T05:55:23.823187Z'
+                      - id: 81490afab171aef0
+                        identity_id: 5c90d2af18e47b0e
+                        realm_id: 7df92e4a38ba0993
+                        tenant_id: 0001b42d80372976
+                        delivery_method: EMAIL
+                        state: LINK_OPENED
+                        post_binding_redirect_uri: 'http://example.com/callback'
+                        authenticator_config_id: 67bb0acf12e5c899
+                        expire_time: '2022-03-21T03:42:52.905657Z'
+                        create_time: '2022-03-14T03:42:52.905657Z'
+                        update_time: '2022-03-15T05:55:23.823187Z'
+                      - id: 81490afab171aef0
+                        identity_id: e85de356dc78843a
+                        realm_id: 7df92e4a38ba0993
+                        tenant_id: 0001b42d80372976
+                        delivery_method: EMAIL
+                        state: REVOKED
+                        post_binding_redirect_uri: 'http://example.com/callback'
+                        authenticator_config_id: 67bb0acf12e5c899
+                        expire_time: '2022-03-21T03:42:52.905657Z'
+                        create_time: '2022-03-14T03:42:52.905657Z'
+                        update_time: '2022-03-15T05:55:23.823187Z'
+                    total_success_count: 1
+                    total_failure_count: 1
+                    total_pending_count: 1
+                    total_size: 3
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Missing Authorization:
+                  $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D/get/responses/401/content/application~1json/examples/Missing%20Authorization'
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Insufficient Authorization:
+                  $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D/get/responses/403/content/application~1json/examples/Insufficient%20Authorization'
+        '404':
+          description: The resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Batch Credential Binding Job Not Found:
+                  $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1batch-credential-binding-jobs~1%7Bbatch_credential_binding_job_id%7D/get/responses/404/content/application~1json/examples/Batch%20Credential%20Binding%20Job%20Not%20Found'
         '500':
           description: Server error.
           content:
@@ -4937,6 +5555,7 @@ paths:
         - $ref: '#/components/parameters/realm_id'
         - $ref: '#/components/parameters/page_size'
         - $ref: '#/components/parameters/page_token'
+        - $ref: '#/components/parameters/filter'
       responses:
         '200':
           description: |
@@ -5898,8 +6517,7 @@ paths:
                 Success:
                   value:
                     schemas:
-                      - 'urn:ietf:params:scim:schemas:core:2.0:User
-                        urn:ietf:params:scim:schemas:extension:enterprise:2.0:User'
+                      - 'urn:ietf:params:scim:schemas:core:2.0:User urn:ietf:params:scim:schemas:extension:enterprise:2.0:User'
                     id: 2819c223-7f76-453a-919d-413861904646
                     externalId: bjensen
                     userName: bjensen
@@ -7862,6 +8480,16 @@ paths:
                             description: The URL for SP-initiated SSO.
                           inbound_scim:
                             $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/post/responses/200/content/application~1json/schema/properties/payload/oneOf/8/allOf/0'
+                          use_short_url:
+                            default: false
+                            type: boolean
+                            description: Changes the EntityID in the SAML response to a shorter version. This is to support applications with URL restrictions.
+                          short_sp_initiated_url:
+                            type: string
+                            description: This is the shortened URL that will be used to initiate a SAML login from the service provider side. Generated and provided by Beyond Identity. This should only be displayed when `use_short_urls` is true.
+                          short_entity_id_url:
+                            type: string
+                            description: This is the shortened URL that we will use as our issuer inside of a SAML response.
                       - type: object
                         required:
                           - type
@@ -8949,6 +9577,138 @@ paths:
           headers:
             x-correlation-id:
               $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
+  '/v1/tenants/{tenant_id}/realms/{realm_id}/flow-type-config':
+    get:
+      tags:
+        - Launch Mechanisms
+      summary: Get flow type configuration
+      description: Retrieves the flow type configuration for a tenant or creates a default configuration if one does not exist
+      operationId: GetFlowTypeConfig
+      security:
+        - DirectoryAuth:
+            - 'tenants:read'
+            - 'realms:read'
+            - 'flow-type:read'
+            - 'flow-type:create'
+      parameters:
+        - $ref: '#/components/parameters/tenant_id'
+        - $ref: '#/components/parameters/realm_id'
+      responses:
+        '200':
+          description: OK.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlowTypeConfig'
+        '400':
+          description: |
+            Bad request. If the request failed due to invalid fields, the error details will include a FieldViolations.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthenticated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: |
+            Permission denied. The error details will include a ResourceInfo describing the authorization failure.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: |
+            Not found. The error details will include a ResourceInfo describing the required resource that was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: |
+            Already exists. The error details will include a ResourceInfo describing the conflicting resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      tags:
+        - Launch Mechanisms
+      summary: Update flow type configuration
+      description: 'Updates the flow type configuration for a tenant, note that this will also create a default configuration if one does not exist'
+      operationId: UpdateFlowTypeConfig
+      security:
+        - DirectoryAuth:
+            - 'tenants:read'
+            - 'realms:read'
+            - 'flow-type:read'
+            - 'flow-type:create'
+            - 'flow-type:update'
+      parameters:
+        - $ref: '#/components/parameters/tenant_id'
+        - $ref: '#/components/parameters/realm_id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePlatformFlowTypeConfig'
+      responses:
+        '200':
+          description: OK.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlowTypeConfig'
+        '400':
+          description: |
+            Bad request. If the request failed due to invalid fields, the error details will include a FieldViolations.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthenticated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: |
+            Permission denied. The error details will include a ResourceInfo describing the authorization failure.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: |
+            Not found. The error details will include a ResourceInfo describing the required resource that was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: |
+            Already exists. The error details will include a ResourceInfo describing the conflicting resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   '/v1/tenants/{tenant_id}/realms/{realm_id}/sso-configs/{sso_config_id}:addGroups':
     post:
       tags:
@@ -9603,138 +10363,6 @@ paths:
           headers:
             x-correlation-id:
               $ref: '#/paths/~1v1~1tenants~1%7Btenant_id%7D~1realms~1%7Brealm_id%7D~1sso-configs/get/responses/200/headers/x-correlation-id'
-  '/v1/tenants/{tenant_id}/realms/{realm_id}/flow-type-config':
-    get:
-      tags:
-        - Launch Mechanisms
-      summary: Get flow type configuration
-      description: Retrieves the flow type configuration for a given tenant and realm or creates a default configuration if one does not exist and returns that.
-      operationId: GetFlowTypeConfig
-      security:
-        - DirectoryAuth:
-            - 'tenants:read'
-            - 'realms:read'
-            - 'flow-type:read'
-            - 'flow-type:create'
-      parameters:
-        - $ref: '#/components/parameters/tenant_id'
-        - $ref: '#/components/parameters/realm_id'
-      responses:
-        '200':
-          description: OK.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FlowTypeConfig'
-        '400':
-          description: |
-            Bad request. If the request failed due to invalid fields, the error details will include a FieldViolations.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '401':
-          description: Unauthenticated.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '403':
-          description: |
-            Permission denied. The error details will include a ResourceInfo describing the authorization failure.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '404':
-          description: |
-            Not found. The error details will include a ResourceInfo describing the required resource that was not found.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '409':
-          description: |
-            Already exists. The error details will include a ResourceInfo describing the conflicting resource.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '500':
-          description: Internal.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    patch:
-      tags:
-        - Launch Mechanisms
-      summary: Update flow type configuration
-      description: Updates the flow type configuration for a given tenant and realm by enabling or disabling specific launch mechanisms. Note that this will also create a default configuration if one does not exist.
-      operationId: UpdateFlowTypeConfig
-      security:
-        - DirectoryAuth:
-            - 'tenants:read'
-            - 'realms:read'
-            - 'flow-type:read'
-            - 'flow-type:create'
-            - 'flow-type:update'
-      parameters:
-        - $ref: '#/components/parameters/tenant_id'
-        - $ref: '#/components/parameters/realm_id'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdatePlatformFlowTypeConfig'
-      responses:
-        '200':
-          description: OK.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FlowTypeConfig'
-        '400':
-          description: |
-            Bad request. If the request failed due to invalid fields, the error details will include a FieldViolations.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '401':
-          description: Unauthenticated.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '403':
-          description: |
-            Permission denied. The error details will include a ResourceInfo describing the authorization failure.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '404':
-          description: |
-            Not found. The error details will include a ResourceInfo describing the required resource that was not found.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '409':
-          description: |
-            Already exists. The error details will include a ResourceInfo describing the conflicting resource.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '500':
-          description: Internal.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
   '/v1/tenants/{tenant_id}/realms/{realm_id}/identity-providers':
     get:
       operationId: listIdentityProviders
@@ -10178,6 +10806,14 @@ components:
       schema:
         type: string
         example: 5c4137af5e70413a
+    batch_credential_binding_job_id:
+      name: batch_credential_binding_job_id
+      in: path
+      description: A unique identifier for a batch credential binding job.
+      required: true
+      schema:
+        type: string
+        example: c15e004f-a7bc-459b-b035-cec40e07f537
     theme_id:
       name: theme_id
       in: path
@@ -10511,6 +11147,24 @@ components:
             propertyName: type
             mapping:
               traits_v0: '#/components/schemas/Traits_v0'
+        enrollment_status:
+          type: string
+          enum:
+            - ENROLLED
+            - PENDING
+            - INVITE_FAILED
+            - UNENROLLED
+          description: |
+            Indicator for the identity's enrollment status.
+
+            If 'ENROLLED', the identity has 1 or more active passkeys.
+            If 'PENDING', the identity has no active passkeys and 1 or more pending enrollments.
+            If 'INVITE_FAILED', the identity has no active passkeys, no pending enrollments, and 1 or more failed enrollments.
+            If 'UNENROLLED', the identity is not enrolled in the organization.
+
+            May be undefined. This field is output-only.
+          example: ENROLLED
+          readOnly: true
     Traits_v0:
       title: Traits_v0
       description: Set of traits associated with an identity.
@@ -11103,6 +11757,12 @@ components:
           description: |
             A unique identifier for the credential that was bound via the credential binding job. This field will only be populated if the credential binding job has successfully been used to bind a credential to an identity.
           example: 9802966246819b35
+        batch_id:
+          type: string
+          description: |
+            A unique identifier for the batch that this credential binding job is associated with. This field is immutable and read-only. This field will only be populated if the credential binding job was created as part of a batch.
+          readOnly: true
+          example: 9802966246819b35
         delivery_method:
           type: string
           enum:
@@ -11120,25 +11780,29 @@ components:
         state:
           type: string
           enum:
-            - LINK_OPENED
             - LINK_SENT
+            - LINK_OPENED
             - REQUEST_DELIVERED
             - COMPLETE
+            - EXPIRED
+            - FAILED_TO_SEND
+            - REVOKED
           description: |
-            A string representing the current state of the credential binding job.
+            The current state of the credential binding job.
 
-            The value `COMPLETE` indicates that a credential has been successfully
-            bound to an identity.
+            `LINK_SENT` indicates that the credential binding link associated with the job was sent to its target authenticator or identity.
 
-            The value `LINK_OPENED` indicates that the credential binding link
-            associated with the job has been opened by its target identity.
+            `LINK_OPENED` indicates that the credential binding link associated with the job was opened by its target identity.
 
-            The value `LINK_SENT` indicates that the credential binding link
-            associated with the job has been sent to its target authenticator or
-            identity.
+            `REQUEST_DELIVERED` indicates that the credential binding request has been successfully delivered to its target authenticator.
 
-            The value `REQUEST_DELIVERED` indicates that the credential binding
-            request has been successfully delivered to its target authenticator.
+            `COMPLETE` indicates that a credential was successfully bound to an identity.
+
+            `EXPIRED` indicates that the credential binding job has expired.
+
+            `FAILED_TO_SEND` indicates that the credential binding request failed to send via email.
+
+            `REVOKED` indicates that the credential binding job has been revoked.
           readOnly: true
           example: COMPLETE
         post_binding_redirect_uri:
@@ -11146,6 +11810,18 @@ components:
           description: |
             The URI to which the caller will be redirected after successfully binding a credential to an identity. This field is optional. If not specified, the authenticator will not attempt to redirect to a new location after binding.
           example: 'http://example.com/callback'
+        authenticator_config:
+          type: object
+          description: |
+            Representation of an authenticator configuration. This prescribes how an identity may authenticate themselves with Beyond Identity.
+          properties:
+            config:
+              description: |
+                An object specifying the settings for the supported authenticator type.
+                The Hosted Web authenticator configuration is not supported in this field. It must be created separately and then referenced by its ID in the `authenticator_config_id` field.
+              oneOf:
+                - $ref: '#/components/schemas/AuthenticatorConfig/properties/config/oneOf/0'
+                - $ref: '#/components/schemas/AuthenticatorConfig/properties/config/oneOf/2'
         authenticator_config_id:
           type: string
           description: |
@@ -11706,6 +12382,103 @@ components:
                   enum:
                     - hosted_web
                   type: string
+            - title: Console Authenticator
+              description: |
+                Configuration options for credential enrollment, enabling an identity to access the Beyond Identity Console. These options support both IDP-authorized flows and non-verified enrollment pathways.
+              type: object
+              required:
+                - type
+                - onboarding_configuration
+              properties:
+                type:
+                  enum:
+                    - console
+                  type: string
+                onboarding_configuration:
+                  title: Console Onboarding Configuration
+                  description: Configuration options for the console onboarding experience.
+                  type: object
+                  required:
+                    - verification_method
+                  properties:
+                    verification_method:
+                      oneOf:
+                        - title: Console Verification Method IDP
+                          description: Configures IDP verification for identities onboarding.
+                          type: object
+                          required:
+                            - type
+                            - idp_id
+                          properties:
+                            type:
+                              description: |-
+                                The type of verification method to be used for credential onboarding. Currently only `idp` or `none` are supported options.
+                                If set to `none` there will be no verification step performed for the identity selected for credential onboarding.
+                              type: string
+                              enum:
+                                - idp
+                            idp_id:
+                              description: The id of the IDP to use to verify the identity during the onboarding process.
+                              type: string
+                              format: uuid
+                        - title: Console Verification Method None
+                          description: An onboarding configuration with no verification configured. Identities will not be verified during the onboarding operation.
+                          type: object
+                          required:
+                            - type
+                          properties:
+                            type:
+                              description: |-
+                                The type of verification method to be used for credential onboarding. Currently only `idp` or `none` are supported options.
+                                If set to `none` there will be no verification step performed for the identity selected for credential onboard.
+                              type: string
+                              enum:
+                                - none
+            - title: Platform Authenticator
+              description: Configuration options for the platform authenticator.
+              type: object
+              required:
+                - type
+              properties:
+                type:
+                  type: string
+                  enum:
+                    - platform
+                trusted_origins:
+                  description: 'Trusted origins are URLs that will be allowed to make requests from a browser to the Beyond Identity API. This is used with Cross-Origin Resource Sharing (CORS). These may be in the form of `<scheme> "://" <host> [ ":" <port> ],` such as `https://auth.your-domain.com` or `http://localhost:3000`.'
+                  type: array
+                  items:
+                    type: string
+                  nullable: true
+                roaming_auth_config:
+                  description: The roaming_auth_config offers advanced configuration options for the roaming auth feature.
+                  title: RoamingAuthConfig
+                  type: object
+                  required:
+                    - enabled
+                    - allow_unknow_user
+                  properties:
+                    enabled:
+                      description: 'If false, roaming auth is never offered as an available flow during authentication on this Authenticator Config.'
+                      type: boolean
+                    allow_unknown_user:
+                      description: 'If a login_hint is not provided or the login_hint does not match for exactly one user in the directory, the user will be considered "unknown" and the value of allow_unknown_user will be used to determine whether or not to offer roaming auth.'
+                      type: boolean
+                    allowed_source_ips:
+                      description: 'If allowed_source_ips is not null and not empty, roaming auth will only be offered to users who begin the authentication from a specified IP address or range.'
+                      type: array
+                      items:
+                        type: string
+                    allowed_user_group_ids:
+                      description: 'If allowed_user_group_ids is not nil and not empty, roaming auth will only be offered to users if they are part of one of those user groups. Note that the user is determined _before_ authentication using a best effort lookup by login_hint, if provided. If a login_hint is not provided or the login_hint does not match for exactly one user in the directory, the user will be considered \"unknown\" and the value of allow_unknown_user will be used to determine whether or not to offer roaming auth.'
+                      type: array
+                      items:
+                        type: string
+                    allowed_user_ids:
+                      description: 'If allowed_user_ids is not nil and not empty, roaming auth will only be offered to specified users. Note that the user is determined _before_ authentication using a best effort lookup by login_hint, if provided. If a login_hint is not provided or the login_hint does not match for exactly one user in the directory, the user will be considered \"unknown\" and the value of allow_unknown_user will be used to determine whether or not to offer roaming auth.'
+                      type: array
+                      items:
+                        type: string
     ListApplicationsResponse:
       title: List Applications Response
       description: Response for ListApplications.
@@ -11828,196 +12601,6 @@ components:
             example: 'pets:read'
           description: |
             The list of scopes supported by this resource server. For the Beyond Identity Management API, this will include scopes for all publicly available endpoints.  Note that applications may not provide access to scopes that are not defined on a resource server that they reference; this is the superset of all allowable application scopes in a given realm.
-    FlowTypeConfig:
-      title: FlowTypeConfig
-      description: Flow type configuration for a tenant
-      type: object
-      properties:
-        id:
-          type: string
-          description: |
-            ID of the flow type configuration. This is automatically generated on creation. This field is immutable and output-only.
-          minLength: 1
-          readOnly: true
-        tenant_id:
-          type: string
-          description: ID of the tenant this configuration belongs to
-          readOnly: true
-        realm_id:
-          type: string
-          description: ID of the realm this configuration belongs to
-          readOnly: true
-        create_time:
-          type: string
-          format: date-time
-          description: Timestamp when the flow type configuration was created
-          readOnly: true
-        update_time:
-          type: string
-          format: date-time
-          description: Timestamp when the flow type configuration was last updated
-          readOnly: true
-        platform_config:
-          $ref: '#/components/schemas/PlatformFlowTypeConfig'
-      required:
-        - id
-        - tenant_id
-        - realm_id
-        - create_time
-        - update_time
-        - platform_config
-    PlatformFlowTypeConfig:
-      title: PlatformFlowTypeConfig
-      description: Platform-specific flow type configurations
-      type: object
-      properties:
-        android:
-          $ref: '#/components/schemas/FlowTypeSet'
-        macos:
-          $ref: '#/components/schemas/FlowTypeSet'
-        ios:
-          $ref: '#/components/schemas/FlowTypeSet'
-        windows:
-          $ref: '#/components/schemas/FlowTypeSet'
-        web:
-          $ref: '#/components/schemas/FlowTypeSet'
-        linux:
-          $ref: '#/components/schemas/FlowTypeSet'
-        chromeos:
-          $ref: '#/components/schemas/FlowTypeSet'
-        chromeosweb:
-          $ref: '#/components/schemas/FlowTypeSet'
-      required:
-        - android
-        - macos
-        - ios
-        - windows
-        - web
-        - linux
-        - chromeos
-        - chromeosweb
-    FlowTypeSet:
-      title: FlowTypeSet
-      description: Set of flow type configurations for a platform
-      type: object
-      properties:
-        unknown:
-          $ref: '#/components/schemas/FlowTypeConfiguration'
-        scheme:
-          $ref: '#/components/schemas/FlowTypeConfiguration'
-        embedded:
-          $ref: '#/components/schemas/FlowTypeConfiguration'
-        copy:
-          $ref: '#/components/schemas/FlowTypeConfiguration'
-        roaming_auth:
-          $ref: '#/components/schemas/FlowTypeConfiguration'
-        android_autofill:
-          $ref: '#/components/schemas/FlowTypeConfiguration'
-        android_accessibility:
-          $ref: '#/components/schemas/FlowTypeConfiguration'
-        pipe:
-          $ref: '#/components/schemas/FlowTypeConfiguration'
-        localhost:
-          $ref: '#/components/schemas/FlowTypeConfiguration'
-        universal_link:
-          $ref: '#/components/schemas/FlowTypeConfiguration'
-        safari_extension:
-          $ref: '#/components/schemas/FlowTypeConfiguration'
-        layered_auth_qr_code:
-          $ref: '#/components/schemas/FlowTypeConfiguration'
-        secure_localhost:
-          $ref: '#/components/schemas/FlowTypeConfiguration'
-      required:
-        - unknown
-        - scheme
-        - embedded
-        - copy
-        - roaming_auth
-        - android_autofill
-        - android_accessibility
-        - pipe
-        - localhost
-        - universal_link
-        - safari_extension
-        - layered_auth_qr_code
-        - secure_localhost
-    FlowTypeConfiguration:
-      title: FlowTypeConfiguration
-      description: Configuration for a specific flow type
-      type: object
-      properties:
-        enabled:
-          type: boolean
-          description: Whether the this flow type is allowed to be used.
-        valid:
-          type: boolean
-          description: Whether the flow type is valid and expected on a given platform
-      required:
-        - enabled
-        - valid
-    UpdatePlatformFlowTypeConfig:
-      title: UpdatePlatformFlowTypeConfig
-      description: Platform-specific flow type configurations for updates
-      type: object
-      properties:
-        android:
-          $ref: '#/components/schemas/UpdateFlowTypeSet'
-        macos:
-          $ref: '#/components/schemas/UpdateFlowTypeSet'
-        ios:
-          $ref: '#/components/schemas/UpdateFlowTypeSet'
-        windows:
-          $ref: '#/components/schemas/UpdateFlowTypeSet'
-        web:
-          $ref: '#/components/schemas/UpdateFlowTypeSet'
-        linux:
-          $ref: '#/components/schemas/UpdateFlowTypeSet'
-        chromeos:
-          $ref: '#/components/schemas/UpdateFlowTypeSet'
-        chromeosweb:
-          $ref: '#/components/schemas/UpdateFlowTypeSet'
-    UpdateFlowTypeSet:
-      title: UpdateFlowTypeSet
-      description: Set of flow type configurations for a platform (update version)
-      type: object
-      properties:
-        unknown:
-          $ref: '#/components/schemas/UpdateFlowTypeConfiguration'
-        scheme:
-          $ref: '#/components/schemas/UpdateFlowTypeConfiguration'
-        embedded:
-          $ref: '#/components/schemas/UpdateFlowTypeConfiguration'
-        copy:
-          $ref: '#/components/schemas/UpdateFlowTypeConfiguration'
-        roaming_auth:
-          $ref: '#/components/schemas/UpdateFlowTypeConfiguration'
-        android_autofill:
-          $ref: '#/components/schemas/UpdateFlowTypeConfiguration'
-        android_accessibility:
-          $ref: '#/components/schemas/UpdateFlowTypeConfiguration'
-        pipe:
-          $ref: '#/components/schemas/UpdateFlowTypeConfiguration'
-        localhost:
-          $ref: '#/components/schemas/UpdateFlowTypeConfiguration'
-        universal_link:
-          $ref: '#/components/schemas/UpdateFlowTypeConfiguration'
-        safari_extension:
-          $ref: '#/components/schemas/UpdateFlowTypeConfiguration'
-        layered_auth_qr_code:
-          $ref: '#/components/schemas/UpdateFlowTypeConfiguration'
-        secure_localhost:
-          $ref: '#/components/schemas/UpdateFlowTypeConfiguration'
-    UpdateFlowTypeConfiguration:
-      title: UpdateFlowTypeConfiguration
-      description: Configuration for a specific flow type (update version)
-      type: object
-      properties:
-        enabled:
-          type: boolean
-          description: Whether the customer allows this flow type to be used.
-        valid:
-          type: boolean
-          description: Whether the flow type is valid and expected on a given platform
     SCIMUser:
       title: User
       description: |
@@ -13289,6 +13872,10 @@ components:
                       nsCfYvzpEzeLoB2xD3CEmonGzZC+Ij1ZhrWu5V6mnmx6dzUMjOZchRQtfnJZzQ1U
                       2QIDAQAB
                       -----END CERTIFICATE-----
+            use_short_url:
+              default: false
+              type: boolean
+              description: Changes the EntityID in the SAML response to a shorter version. This is to support applications with URL restrictions.
         - type: object
           required:
             - type
@@ -13559,6 +14146,10 @@ components:
         inbound_scim:
           default: null
           type: object
+        use_short_url:
+          default: false
+          type: boolean
+          description: Changes the EntityID in the SAML response to a shorter version. This is to support applications with URL restrictions.
     SsoConfigType:
       description: |
         Describes the type of sso config.
@@ -13785,36 +14376,40 @@ components:
       description: Represents an identity provider.
       type: object
       properties:
-        id:
-          description: |
-            A unique identifier identifying an identity provider. This is automatically
-            set on creation. This field is immutable and read-only.
-          type: string
-          readOnly: true
-        tenant_id:
-          type: string
-          description: |
-            A unique identifier for the identity provider's tenant. This is automatically
-            set on creation. This field is immutable and read-only.
-          readOnly: true
-          example: 0001f1f460b1ace6
-        realm_id:
-          type: string
-          description: |
-            A unique identifier for the identity provider's realm. This is automatically
-            set on creation. This field is immutable and read-only.
-          readOnly: true
-          example: 8f5bec58229e6f29
-        display_name:
-          type: string
-          description: |
-            The human-readable name associated with the identity provider.
-        protocol_config:
-          description: |
-            The kind of protocol we should use to communicate with the identity
-            provider.
-          allOf:
-            - $ref: '#/components/schemas/IdentityProviderUpdateProtocolConfig'
+        identity_provider:
+          type: object
+          description: The identity provider object.
+          properties:
+            id:
+              description: |
+                A unique identifier identifying an identity provider. This is automatically
+                set on creation. This field is immutable and read-only.
+              type: string
+              readOnly: true
+            tenant_id:
+              type: string
+              description: |
+                A unique identifier for the identity provider's tenant. This is automatically
+                set on creation. This field is immutable and read-only.
+              readOnly: true
+              example: 0001f1f460b1ace6
+            realm_id:
+              type: string
+              description: |
+                A unique identifier for the identity provider's realm. This is automatically
+                set on creation. This field is immutable and read-only.
+              readOnly: true
+              example: 8f5bec58229e6f29
+            display_name:
+              type: string
+              description: |
+                The human-readable name associated with the identity provider.
+            protocol_config:
+              description: |
+                The kind of protocol we should use to communicate with the identity
+                provider.
+              allOf:
+                - $ref: '#/components/schemas/IdentityProviderUpdateProtocolConfig'
     IdentityProviderProtocolConfigOidcIdp:
       description: |
         OIDC protocol configuration for connecting to an identity provider, and
@@ -14086,6 +14681,196 @@ components:
           type: string
         error_context:
           type: string
+    FlowTypeConfig:
+      title: FlowTypeConfig
+      description: Flow type configuration for a tenant
+      type: object
+      properties:
+        id:
+          type: string
+          description: |
+            ID of the flow type configuration. This is automatically generated on creation. This field is immutable and output-only.
+          minLength: 1
+          readOnly: true
+        tenant_id:
+          type: string
+          description: ID of the tenant this configuration belongs to
+          readOnly: true
+        realm_id:
+          type: string
+          description: ID of the realm this configuration belongs to
+          readOnly: true
+        create_time:
+          type: string
+          format: date-time
+          description: Timestamp when the flow type configuration was created
+          readOnly: true
+        update_time:
+          type: string
+          format: date-time
+          description: Timestamp when the flow type configuration was last updated
+          readOnly: true
+        platform_config:
+          $ref: '#/components/schemas/PlatformFlowTypeConfig'
+      required:
+        - id
+        - tenant_id
+        - realm_id
+        - create_time
+        - update_time
+        - platform_config
+    PlatformFlowTypeConfig:
+      title: PlatformFlowTypeConfig
+      description: Platform-specific flow type configurations
+      type: object
+      properties:
+        android:
+          $ref: '#/components/schemas/FlowTypeSet'
+        macos:
+          $ref: '#/components/schemas/FlowTypeSet'
+        ios:
+          $ref: '#/components/schemas/FlowTypeSet'
+        windows:
+          $ref: '#/components/schemas/FlowTypeSet'
+        web:
+          $ref: '#/components/schemas/FlowTypeSet'
+        linux:
+          $ref: '#/components/schemas/FlowTypeSet'
+        chromeos:
+          $ref: '#/components/schemas/FlowTypeSet'
+        chromeosweb:
+          $ref: '#/components/schemas/FlowTypeSet'
+      required:
+        - android
+        - macos
+        - ios
+        - windows
+        - web
+        - linux
+        - chromeos
+        - chromeosweb
+    FlowTypeSet:
+      title: FlowTypeSet
+      description: Set of flow type configurations for a platform
+      type: object
+      properties:
+        unknown:
+          $ref: '#/components/schemas/FlowTypeConfiguration'
+        scheme:
+          $ref: '#/components/schemas/FlowTypeConfiguration'
+        embedded:
+          $ref: '#/components/schemas/FlowTypeConfiguration'
+        copy:
+          $ref: '#/components/schemas/FlowTypeConfiguration'
+        roaming_auth:
+          $ref: '#/components/schemas/FlowTypeConfiguration'
+        android_autofill:
+          $ref: '#/components/schemas/FlowTypeConfiguration'
+        android_accessibility:
+          $ref: '#/components/schemas/FlowTypeConfiguration'
+        pipe:
+          $ref: '#/components/schemas/FlowTypeConfiguration'
+        localhost:
+          $ref: '#/components/schemas/FlowTypeConfiguration'
+        universal_link:
+          $ref: '#/components/schemas/FlowTypeConfiguration'
+        safari_extension:
+          $ref: '#/components/schemas/FlowTypeConfiguration'
+        layered_auth_qr_code:
+          $ref: '#/components/schemas/FlowTypeConfiguration'
+        secure_localhost:
+          $ref: '#/components/schemas/FlowTypeConfiguration'
+      required:
+        - unknown
+        - scheme
+        - embedded
+        - copy
+        - roaming_auth
+        - android_autofill
+        - android_accessibility
+        - pipe
+        - localhost
+        - universal_link
+        - safari_extension
+        - layered_auth_qr_code
+        - secure_localhost
+    FlowTypeConfiguration:
+      title: FlowTypeConfiguration
+      description: Configuration for a specific flow type
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: Whether the this flow type is allowed to be used.
+        valid:
+          type: boolean
+          description: Whether the flow type is valid and expected on a given platform
+      required:
+        - enabled
+        - valid
+    UpdatePlatformFlowTypeConfig:
+      title: UpdatePlatformFlowTypeConfig
+      description: Platform-specific flow type configurations for updates
+      type: object
+      properties:
+        android:
+          $ref: '#/components/schemas/UpdateFlowTypeSet'
+        macos:
+          $ref: '#/components/schemas/UpdateFlowTypeSet'
+        ios:
+          $ref: '#/components/schemas/UpdateFlowTypeSet'
+        windows:
+          $ref: '#/components/schemas/UpdateFlowTypeSet'
+        web:
+          $ref: '#/components/schemas/UpdateFlowTypeSet'
+        linux:
+          $ref: '#/components/schemas/UpdateFlowTypeSet'
+        chromeos:
+          $ref: '#/components/schemas/UpdateFlowTypeSet'
+        chromeosweb:
+          $ref: '#/components/schemas/UpdateFlowTypeSet'
+    UpdateFlowTypeSet:
+      title: UpdateFlowTypeSet
+      description: Set of flow type configurations for a platform (update version)
+      type: object
+      properties:
+        unknown:
+          $ref: '#/components/schemas/UpdateFlowTypeConfiguration'
+        scheme:
+          $ref: '#/components/schemas/UpdateFlowTypeConfiguration'
+        embedded:
+          $ref: '#/components/schemas/UpdateFlowTypeConfiguration'
+        copy:
+          $ref: '#/components/schemas/UpdateFlowTypeConfiguration'
+        roaming_auth:
+          $ref: '#/components/schemas/UpdateFlowTypeConfiguration'
+        android_autofill:
+          $ref: '#/components/schemas/UpdateFlowTypeConfiguration'
+        android_accessibility:
+          $ref: '#/components/schemas/UpdateFlowTypeConfiguration'
+        pipe:
+          $ref: '#/components/schemas/UpdateFlowTypeConfiguration'
+        localhost:
+          $ref: '#/components/schemas/UpdateFlowTypeConfiguration'
+        universal_link:
+          $ref: '#/components/schemas/UpdateFlowTypeConfiguration'
+        safari_extension:
+          $ref: '#/components/schemas/UpdateFlowTypeConfiguration'
+        layered_auth_qr_code:
+          $ref: '#/components/schemas/UpdateFlowTypeConfiguration'
+        secure_localhost:
+          $ref: '#/components/schemas/UpdateFlowTypeConfiguration'
+    UpdateFlowTypeConfiguration:
+      title: UpdateFlowTypeConfiguration
+      description: Configuration for a specific flow type (update version)
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: Whether the customer allows this flow type to be used.
+        valid:
+          type: boolean
+          description: Whether the flow type is valid and expected on a given platform
     Error:
       type: object
       properties:
