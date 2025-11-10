@@ -6,18 +6,12 @@ keywords:
   - Announcements
 pagination_next: null
 pagination_prev: null
-last_update:
-  date: 2025-09-02
-  author: Dolores M. Bernal
 doc_type: overview
 displayed_sidebar: mainSidebar
 ---
 
 <br/>
-September 2, 2025
-
-
-### Managing the Chrome v141 Local Network Access Prompt
+November 10, 2025
 
 ### This Article Applies To
 
@@ -40,7 +34,7 @@ When authenticating with Beyond Identity, Chrome will prompt you to grant permis
 
 When the prompt appears, click **Allow**.  
 
-![Chrome](../images/1-1.png)
+![Chrome](../images/secure-access-version.png)
 
 
 ---
@@ -103,9 +97,9 @@ Beyond Identity recommends that admins pre-configure managed Chrome profiles to 
 ### What you will need to configure
 
 - **Allow list:** `LocalNetworkAccessAllowedForUrls`  
-  Add the requesting page origin(s) (`app.byndid.com` or `*.byndid.com`) so they may call `localhost/127.0.0.1` without a prompt.  
+  Add the requesting page origin(s) (`auth-beyondidentity.com` or `*.beyondidentity.com`) so they may call `localhost/127.0.0.1` without a prompt.  
 
-  > Note: You allowlist the origin making the request (e.g., `https://app.byndid.com`), not the local endpoint.
+  > Note: You allowlist the origin making the request (e.g., `https://auth-beyondidentity.com`), not the local endpoint.
 
 - **Global switch:** `LocalNetworkAccessRestrictionsEnabled`  
   Ensures LNA is consistently enforced so that allow/block lists take effect.  
@@ -116,6 +110,13 @@ Beyond Identity recommends that admins pre-configure managed Chrome profiles to 
 
 Blocking the LNA prompt by configuring the Chrome browser allows both MDM-enrolled and BYOD devices a path to a seamless Beyond Identity experience.
 
+### About these URLs
+Your organization may use **one** of two Beyond Identity platforms. Add the URLs for the platform you use:
+- **Secure Work**: https://app.byndid.com, https://[*.]byndid.com 
+- **Secure Access**: https://auth-beyondidentity.com, https://auth-eu.beyondidentity.com
+
+---
+
 ### Step-by-step (Google Admin console)
 
 1. In the Workspace admin console, go to **Chrome Browser > Custom Configurations**.  
@@ -123,16 +124,17 @@ Blocking the LNA prompt by configuring the Chrome browser allows both MDM-enroll
 
     ![Chrome](../images/chrome1.png)
 
-3. In **Configurations**, add the following JSON configuration. Replace "https://[*.]byndid.com" with your own URLs: 
+3. In **Configurations**, add the following JSON configuration. Replace the sample URLs with your own Beyond Identity tenant URLs, depending on the platform you use:
 
-```json
-{
-  "LocalNetworkAccessAllowedForUrls": [
-    "https://app.byndid.com",
-    "https://[*.]byndid.com"
-  ]
-}
-```
+    ```json
+    {
+      "LocalNetworkAccessAllowedForUrls": [
+        "https://auth-beyondidentity.com",
+        "https://auth-eu.beyondidentity.com"
+      ]
+    }
+    ```
+
 4. Click **Save**.  
 5. Open `chrome://policy` and click **Reload policies** to confirm values are applied.  
 
@@ -142,71 +144,81 @@ Learn more about configuring custom Chrome policies in Workspace – *link*
 
 ### Option 2 – Configure Chrome browser using MDM
 
-You can use your Mobile Device Management (MDM) solution to deploy a policy that pre-grants LNA permission for your Beyond Identity URL on managed devices. This prevents users from ever seeing the prompt. The configuration varies slightly by operating system.  
+You can use your Mobile Device Management (MDM) solution to deploy a policy that pre-grants LNA permission for your Beyond Identity URLs on managed devices.  
+
+This prevents users from seeing the prompt. The configuration varies slightly by operating system.
+
+---
 
 ### Windows (via Intune)
 
-In the Intune console, create a **custom device configuration profile**:  
+In the Intune console, create a **custom device configuration profile**:
 
 - Navigate to: **Devices > Configuration > Create profile**  
 - Platform: Windows 10 and later  
 - Profile type: Template  
 - Template name: Custom  
 
-**Add OMA-URI rows:**  
+**Add OMA-URI rows:**
 
 1. Enter the LNA URI in the **OMA-URI** property:  
-```
-./Device/Vendor/MSFT/Registry/HKLM/SOFTWARE/Policies/Google/Chrome/LocalNetworkAccessAllowedForUrls
-```
 
-2. Enter the URL you want to allowlist in the **Value** property:  
-  `https://app.byndid.com`  
+    ```
+    ./Device/Vendor/MSFT/Registry/HKLM/SOFTWARE/Policies/Google/Chrome/LocalNetworkAccessAllowedForUrls
+    ```
+
+2. Enter the URLs you want to allow-list in the **Value** property. Use one or both platform sets as needed:
+
+    https://auth-beyondidentity.com   OR
+    https://auth-eu.beyondidentity.com
+
 
 - If you are entering more than one URL, create a unique row for each URL, and number the OMA-URI accordingly.  
-```
-./Device/Vendor/MSFT…LocalNetworkAccessAllowedForUrls/
-```
+
+    ```
+    ./Device/Vendor/MSFT…LocalNetworkAccessAllowedForUrls/
+    ```
 
 3. Assign the profile to the desired groups and proceed to test.
 
+---
+
 ### macOS
 
-For macOS devices managed by an MDM, you'll deploy a configuration profile (`.mobileconfig`) with a custom payload for Chrome. The payload should contain the following keys and values in the `com.google.Chrome` preference domain.
+For macOS devices managed by an MDM, deploy a configuration profile (`.mobileconfig`) with a custom payload for Chrome in the `com.google.Chrome` preference domain.
 
-Here is an example `.plist` snippet:
+Example `.plist` snippet:
 
-```
-xml
-<key>LocalNetworkAccessAllowedForUrls</key>
-<array>
-    <string>https://app.byndid.com</string>
-    <string>https://[*.]byndid.com</string>
-</array>
-<key>LocalNetworkAccessRestrictionsEnabled</key>
-<true/>
-```
+    ```xml
+    <key>LocalNetworkAccessAllowedForUrls</key>
+    <array>
+        <string>https://auth-beyondidentity.com</string>
+        <string>https://auth-eu.beyondidentity.com</string>
+    </array>
+    <key>LocalNetworkAccessRestrictionsEnabled</key>
+    <true/>
+    ```
+
+---
 
 ### Android (via Managed App Configuration)
 
-For managed Android devices, you can push the policy using your MDM's managed app configuration capabilities for the Google Chrome app.
+For managed Android devices, push the policy using your MDM's managed app configuration for the Google Chrome app.  
+In your MDM console, navigate to the app configuration settings for Google Chrome and add the following JSON configuration.
 
-In your MDM console, navigate to the app configuration settings for Google Chrome.
-
-Add a new configuration using the following keys and values. The format will be a JSON block similar to the one used for Google Workspace.
-
-```
-json
-{
-  "LocalNetworkAccessAllowedForUrls": [
-    "https://app.byndid.com",
-    "https://[*.]byndid.com"
-  ],
-  "LocalNetworkAccessRestrictionsEnabled": true
-}
-```
+    ```json
+    {
+      "LocalNetworkAccessAllowedForUrls": [
+        "https://auth-beyondidentity.com",
+        "https://auth-eu.beyondidentity.com"
+      ],
+      "LocalNetworkAccessRestrictionsEnabled": true
+    }
+    ```
 
 See this link to learn more about the Local Network Access setting – [Chrome Enterprise Policy Reference](https://chromeenterprise.google/policies/#LocalNetworkAccessAllowedForUrls)
+
+
 
 ### Testing
 
