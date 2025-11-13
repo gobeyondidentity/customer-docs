@@ -19,12 +19,50 @@ hide_table_of_contents: true
 
 Secure Access release notes are published biweekly for commercial deployments in both the US and EU. FedRAMP and government environments receive updates two weeks after features are released to commercial deployments.
 
-### November 5, 2025
+
+### November 12, 2025
 
 <details>
   <summary><p>Version 2.108.0 BI Authenticator Release Notes</p></summary>
 
-Beyond Identity began rolling out the new Platform Authenticator v2.108.0 release on November 5, 2025.  
+Beyond Identity began rolling out the new Platform Authenticator v2.108.0 release on November 12, 2025.  
+
+<br/>
+
+### Enhancements
+
+| Platform | Description |
+| --------- | ------------ |
+| **Android** | Updated the app to support 16 KB memory page sizes in line with Google Play policy. This optimization delivers faster load times, smoother performance on modern devices, lower power usage during startup, and full compatibility with the latest Android hardware. |
+| **Android** | Standardized collection of Android OS version and API level across Secure Access and Secure Work, ensuring consistent and accurate device reporting. |
+| **Android** | Improved **Accessibility Settings** detection for Android 13 and later, resolving cases where the Accessibility Service failed to activate on newer devices. |
+| **macOS, iOS, Windows, Android** | Added support for QR code and generated-link launches that open the Authenticator directly for credential import, streamlining setup across all platforms. |
+
+
+<br/>
+<br/>
+### Bug Fixes
+
+| Platform | Description |
+| --------- | ------------ |
+| **Android** | Fixed a tapjacking vulnerability, ensuring users are protected from malicious overlay attacks on Android devices. |
+| **iOS** | Fixed an issue where policy data wasn’t properly collected during Layered Authentication transactions, improving policy accuracy and reliability. |
+
+
+<br/>
+
+<br/>
+</details>
+
+
+
+
+### November 5, 2025
+
+<details>
+  <summary><p>Version 2.108.0-macOS BI Authenticator Release Notes</p></summary>
+
+Beyond Identity began rolling out the new Platform Authenticator v2.108.0-macOS release on November 5, 2025.  
 
 <br/>
 
