@@ -51,10 +51,10 @@ You’ll learn how to configure a Generic OIDC identity provider in the Secure A
 - **Authorization Endpoint**: The URL where Secure Access redirects users to sign in with your identity provider. Example: `https://{yourIdpDomain}/oauth2/v1/authorize`
 - **Token Endpoint**: The URL Secure Access uses to exchange the authorization code for tokens (ID token, access token, refresh token). Example: `https://{yourIdpDomain}/oauth2/v1/token`
 - **JWKS Endpoint**: The URL where Secure Access retrieves your IdP’s JSON Web Key Set (JWKS).
-These keys allow Secure Access to cryptographically verify the signature of the ID token and ensure it was issued by your IdP. Example:` https://{yourIdpDomain}/.well-known/openid-configuration`
+These keys allow Secure Access to cryptographically verify the signature of the ID token and ensure it was issued by your IdP. Example: `https://{yourIdpDomain}/.well-known/openid-configuration`
 - **Identifying Claim Name**: This is the name of the claim in the ID token that Secure Access will use to uniquely identify the user.
 - **Identifying Attribute**: This is a dropdown of attributes Secure Access can match against the user profile inside our system. This determines how the claim above maps to the user record.
-- **Requested Claims**: A JSON string of additional OIDC claims that Secure Access should request from the IdP during the authorization flow. For example: `{ "userinfo": { "name": null } }
+- **Requested Claims**: A JSON string of additional OIDC claims that Secure Access should request from the IdP during the authorization flow. For example: `{ "userinfo": { "name": null } }`
 
     ![OIDC](../images/oidc-4.png)
     ![OIDC](../images/oidc-5.png)
