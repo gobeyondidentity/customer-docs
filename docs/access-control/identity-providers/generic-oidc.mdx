@@ -1,5 +1,5 @@
 ---
-title: Configuring Genetic OIDC
+title: Configuring Generic OIDC
 id: generic-oidc
 description: 'Learn how to configure generic OIDC.'
 slug: /access-control/identity-providers/generic-oidc
@@ -32,7 +32,7 @@ You’ll learn how to configure a Generic OIDC identity provider in the Secure A
 
     ![OIDC](../images/oidc-1.png)
 
-3. Next, click the **Browse Identity Providers** tab, then select the **Genetic OIDC** tile.
+3. Next, click the **Browse Identity Providers** tab, then select the **Generic OIDC** tile.
 
     ![OIDC](../images/oidc-2.png)
 
@@ -54,7 +54,7 @@ You’ll learn how to configure a Generic OIDC identity provider in the Secure A
 These keys allow Secure Access to cryptographically verify the signature of the ID token and ensure it was issued by your IdP. Example:` https://{yourIdpDomain}/.well-known/openid-configuration`
 - **Identifying Claim Name**: This is the name of the claim in the ID token that Secure Access will use to uniquely identify the user.
 - **Identifying Attribute**: This is a dropdown of attributes Secure Access can match against the user profile inside our system. This determines how the claim above maps to the user record.
-- **Requested Claims**: A JSON string of additional OIDC claims that Secure Access should request from the IdP during the authorization flow. For example: `{ "userinfo": { "name": null } }`
+- **Requested Claims**: A JSON string of additional OIDC claims that Secure Access should request from the IdP during the authorization flow. For example: `{ "userinfo": { "name": null } }
 
     ![OIDC](../images/oidc-4.png)
     ![OIDC](../images/oidc-5.png)
