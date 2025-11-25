@@ -22,22 +22,33 @@ doc_type: overview
 displayed_sidebar: mainSidebar
 ---
 
-import Arcade, {Clip} from '@site/src/components/Arcade.tsx';
-
 ## Create a Generic OIDC Identity Provider
 
 This guide is a walkthrough of the steps to add a generic OIDC identity provider. Identity providers enable integration with external systems to support IdP-authorized workflows, such as passkey enrollment.
 
-<Arcade clip={Clip.IdentityProviderIntegrationGuideGenericOIDC} />
+To configure a generic OIDC identity provider, go to **Identity Providers** > **Browse Identity Providers** > **Generic OIDC** > **Add instance**. Then, you need to provide the following information:
 
-Values for the following required fields can be found in your identity provider's configuration.
+### General
 
-- Client ID
-- Client Secret
-- Authorization Endpoint
-- Token Endpoint
-- JWKS Endpoint
+- **Display Name**: The display name of the identity provider as it will appear in the console.
 
+### Security
+
+- **PKCE**: Whether to use Proof Key for Code Exchange (PKCE) for the authentication flow.
+- **OAuth2 PAR**: Whether to use OAuth 2.0 Push Authorization Request for the authentication flow. If enabled, you will need to provide the **OAuth2 PAR Endpoint**.
+
+
+### Configuration
+
+- **Client ID**: The client ID of the identity provider.
+- **Client Secret**: The client secret of the identity provider.
+- **Token Scopes**: The token scopes to request from the identity provider.
+- **Authorization Endpoint**: The authorization endpoint of the identity provider.
+- **Token Endpoint**: The token endpoint of the identity provider.
+- **JWKS Endpoint**: The JWKS endpoint of the identity provider.
+- **Identifying Claim Name**: The name of the claim within the ID token to match against the identity's attribute in Beyond Identity. This is typically the `sub` claim but can be configured to a different claim. Additional examples include `email` or `account.external_id`.
+- **Identity Attribute**: The attribute of the identity that the identifying claim name attribute will be mapped to. This is how we will match the identity returned from the identity provider to the identity in Beyond Identity.
+- **Requested Claims (OPTIONAL)**: Optional additional claims to request from the identity provider.
 
 ## Redirect URI
 
