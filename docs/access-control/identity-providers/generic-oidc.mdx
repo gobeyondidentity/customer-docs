@@ -1,44 +1,75 @@
 ---
-title: Generic OIDC
+title: Configuring Generic OIDC
 id: generic-oidc
-description: "Learn how to create a generic OIDC Identity Provider in Beyond Identity."
+description: 'Learn how to configure generic OIDC.'
 slug: /access-control/identity-providers/generic-oidc
 keywords:
-  - mfa
-  - single device
-  - identity provider
-  - generic OIDC
-  - external sso
+  - generic oidc
 pagination_next: null
 pagination_prev: null
-last_update:
-  date: 04/10/2025
-  author: Ben Bynum
 draft: false
 hide_table_of_contents: false
-hide_title: false
+hide_title: true
 hide_breadcrumbs: false
 doc_type: overview
 displayed_sidebar: mainSidebar
 ---
 
-import Arcade, {Clip} from '@site/src/components/Arcade.tsx';
+## Configuring Generic OIDC
 
-## Create a Generic OIDC Identity Provider
+### Overview
+Configuring Generic OIDC in Secure Access establishes a connection to an external OpenID Connect (OIDC) identity provider (IdP). OIDC is an industry-standard identity layer built on OAuth 2.0 that enables Secure Access to verify a user’s identity, retrieve essential profile attributes, and manage authentication flows using ID tokens. By integrating a third-party OIDC IdP, organizations gain seamless single sign-on (SSO), consistent identity management across applications, and support for secure, phishing-resistant authentication paths. 
 
-This guide is a walkthrough of the steps to add a generic OIDC identity provider. Identity providers enable integration with external systems to support IdP-authorized workflows, such as passkey enrollment.
+Correct configuration ensures that Secure Access can enforce Zero Trust access policies, validate device posture, and guarantee that only properly authenticated users on trusted devices can reach protected resources.
 
-<Arcade clip={Clip.IdentityProviderIntegrationGuideGenericOIDC} />
+### What You'll Learn
+You’ll learn how to configure a Generic OIDC identity provider in the Secure Access Admin Console, including how to establish the connection, map essential settings, and ensure a secure, standards-based authentication flow.
 
-Values for the following required fields can be found in your identity provider's configuration.
+### Steps
 
-- Client ID
-- Client Secret
-- Authorization Endpoint
-- Token Endpoint
-- JWKS Endpoint
+1. Log in to your Secure Access tenant. 
+2. Click **Identity Providers** from the left-hand navigation panel.
+
+    ![OIDC](../images/oidc-1.png)
+
+3. Next, click the **Browse Identity Providers** tab, then select the **Generic OIDC** tile.
+
+    ![OIDC](../images/oidc-2.png)
+
+4. On the next screen, click **Add Instance**.
+
+    ![OIDC](../images/oidc-3.png)
+
+5. Fill in the information for the **General** and **Configuration sections**, including:
+
+- **Display name**: Create a name for this configuration.
+- **PKCE**: Determines whether Proof Key for Code Exchange is used. PKCE protects against authorization code interception attacks. Admin choices likely include: `disabled`, `plain`, `S256` (recommended).
+- **OAuth2 PAR**: Enables Pushed Authorization Requests, where the authorization request payload is sent directly from Secure Access to the IdP. This allows improved security and larger request sizes.
+- **Client ID**: This is the unique identifier assigned to your application by the identity provider (IdP). Secure Access uses the Client ID to identify itself when requesting authorization codes or tokens. Where you get it: From your IdP’s app registration / OIDC client setup page.
+- **Client Secret**: This is the confidential key associated with your OIDC client, used to authenticate Secure Access to the IdP when exchanging authorization codes for tokens.
+- **Token Scopes**: The list of OAuth 2.0/OIDC scopes Secure Access should request during authentication. These scopes determine which claims, permissions, and identity information the IdP returns. Examples: `openid` (mandatory for all OIDC flows), `email`, `profile`, `email`, `phone.`
+- **Authorization Endpoint**: The URL where Secure Access redirects users to sign in with your identity provider. Example: `https://{yourIdpDomain}/oauth2/v1/authorize`
+- **Token Endpoint**: The URL Secure Access uses to exchange the authorization code for tokens (ID token, access token, refresh token). Example: `https://{yourIdpDomain}/oauth2/v1/token`
+- **JWKS Endpoint**: The URL where Secure Access retrieves your IdP’s JSON Web Key Set (JWKS).
+These keys allow Secure Access to cryptographically verify the signature of the ID token and ensure it was issued by your IdP. Example: `https://{yourIdpDomain}/.well-known/openid-configuration`
+- **Identifying Claim Name**: This is the name of the claim in the ID token that Secure Access will use to uniquely identify the user.
+- **Identifying Attribute**: This is a dropdown of attributes Secure Access can match against the user profile inside our system. This determines how the claim above maps to the user record.
+- **Requested Claims**: A JSON string of additional OIDC claims that Secure Access should request from the IdP during the authorization flow. For example: `{ "userinfo": { "name": null } }`
+
+    ![OIDC](../images/oidc-4.png)
+    ![OIDC](../images/oidc-5.png)
+
+6. When you have entered all the values, click **Save Changes** on the top right side of the page.
+
+    ![OIDC](../images/oidc-6.png)
+
+7. If the new generic OIDC connection was configured correctly, it will display under the **Installed Identity Providers** tab. 
+
+    ![OIDC](../images/oidc-7.png)
 
 
-## Redirect URI
+<br/>
+<br/>
+<br/>
+<br/>
 
-Upon creating a generic OIDC identity provider, the Redirect URI is auto-generated. Be sure to copy this and add it to your identity provider's configuration settings. Redirect URIs must match exactly.
