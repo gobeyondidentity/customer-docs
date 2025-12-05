@@ -171,6 +171,7 @@ const sidebars = {
           items: [
             "access-control/identity-providers/generic-oidc",
             "access-control/identity-providers/generic-saml",
+            "access-control/identity-providers/saml-methods",
           ],
         },
       ],

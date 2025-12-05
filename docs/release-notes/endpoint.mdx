@@ -20,7 +20,43 @@ hide_table_of_contents: true
 Secure Access release notes are published biweekly for commercial deployments in both the US and EU. FedRAMP and government environments receive updates two weeks after features are released to commercial deployments.
 
 
+### December 6, 2025
+
+<details>
+  <summary><p>Secure Access Release Notes</p></summary>
+
+Beyond Identity began deployment of a new Secure Access software release on December 6, 2025. 
+
+<br/>
+
+### What's New
+
+| Feature | Feature Description |
+|---------|---------------------|
+| **Granular Roaming Authentication Configuration** *(General Availability)* | Secure Access now supports granular configuration for roaming authentication. Administrators can define allowed source IP addresses, users, and user groups in addition to existing realm-level enablement. This enhancement offers finer control over authentication behavior for roaming users.<br /><br />For documentation, <a href="#">click here</a>. |
+| **PAR and Claims Support for Identity Providers** | Added new fields for Identity Providers to support Pushed Authorization Requests (PAR) and additional Claims. This enables admins to configure PAR endpoints and request richer identity information directly from upstream providers.<br /><br />For full documentation, <a href="https://docs.beyondidentity.com/docs/access-control/identity-providers/generic-oidc">click here</a>. |
+| **Expanded OIDC Claims Handling** | Enhanced the Identity Provider configuration to support claim structures aligned with the OIDC specification, improving compatibility with identity providers like Nametag. PAR fields were added as an enablement flag and endpoint entry for compliant integrations.<br /><br /> |
+| **RealityCheck User Interface Redesign** | RealityCheck has been refreshed with a redesigned interface and updated branding, improving usability and providing a more modern and consistent user experience. |
+| **New SAML Authentication Methods** *(Limited Availability)* | Authentication methods, such as biometrics, OS verification, and roaming authenticators, are now included in SAML responses and activity logs. Admins can also enforce policy decisions based on the availability of biometric sensors, offering greater visibility and control over authentication strength. This feature is optional; to enable it, please contact our Support team.<br /><br />For full documentation, click here (Link private until release day). |
+
+<br/>
+
+### Bug Fixes
+
+| Bug Fix | Description |
+|---------|-------------|
+| **Backend Support for Correlation IDs on Flow Type Updates** | A backend issue was resolved to ensure correlation IDs are properly generated and associated with **Activity** section entries when flow types are updated. This fix prepares the system for future console-driven flows where correlation IDs will appear automatically to improve traceability. |
+
+
+<br/>
+
+<br/>
+</details>
+
+
+
 ### November 12, 2025
+
 
 <details>
   <summary><p>Version 2.108.0 BI Authenticator Release Notes</p></summary>
