@@ -36,7 +36,6 @@ Beyond Identity began deployment of a new Secure Access software release on Dece
 | **Granular Roaming Authentication Configuration** *(General Availability)* | Secure Access now supports granular configuration for roaming authentication. Administrators can define allowed source IP addresses, users, and user groups in addition to existing realm-level enablement. This enhancement offers finer control over authentication behavior for roaming users.<br /><br />For documentation, <a href="#">click here</a>. |
 | **PAR and Claims Support for Identity Providers** | Added new fields for Identity Providers to support Pushed Authorization Requests (PAR) and additional Claims. This enables admins to configure PAR endpoints and request richer identity information directly from upstream providers.<br /><br />For full documentation, <a href="https://docs.beyondidentity.com/docs/access-control/identity-providers/generic-oidc">click here</a>. |
 | **Expanded OIDC Claims Handling** | Enhanced the Identity Provider configuration to support claim structures aligned with the OIDC specification, improving compatibility with identity providers like Nametag. PAR fields were added as an enablement flag and endpoint entry for compliant integrations.<br /><br /> |
-| **RealityCheck User Interface Redesign** | RealityCheck has been refreshed with a redesigned interface and updated branding, improving usability and providing a more modern and consistent user experience. |
 | **New SAML Authentication Methods** *(Limited Availability)* | Authentication methods, such as biometrics, OS verification, and roaming authenticators, are now included in SAML responses and activity logs. Admins can also enforce policy decisions based on the availability of biometric sensors, offering greater visibility and control over authentication strength. This feature is optional; to enable it, please contact our Support team.<br /><br />For full documentation, click here (Link private until release day). |
 
 <br/>
@@ -46,6 +45,8 @@ Beyond Identity began deployment of a new Secure Access software release on Dece
 | Bug Fix | Description |
 |---------|-------------|
 | **Backend Support for Correlation IDs on Flow Type Updates** | A backend issue was resolved to ensure correlation IDs are properly generated and associated with **Activity** section entries when flow types are updated. This fix prepares the system for future console-driven flows where correlation IDs will appear automatically to improve traceability. |
+
+**Important**: An issue affecting the Secure Access Platform **Activity View** will be addressed in the next maintenance window.
 
 
 <br/>
