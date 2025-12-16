@@ -149,8 +149,8 @@ const sidebars = {
             "access-control/applications/wsfed",
             "access-control/applications/realitycheck-for-zoom",
             "access-control/applications/realitycheck-for-teams",
-            "access-control/identity-providers/generic-saml",
-            "access-control/identity-providers/saml-methods",
+            "access-control/applications/generic-saml",
+            "access-control/applications/saml-methods",
           ],
         },
         {
