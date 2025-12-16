@@ -48,13 +48,10 @@ const sidebars = {
           collapsed: true,
           collapsible: true,
           link: { type: "doc", id: "integrations/logs/logs" },
-          items: [
-            "integrations/logs/mdm-edr",
-            "integrations/logs/siem",
-          ],
+          items: ["integrations/logs/mdm-edr", "integrations/logs/siem"],
         },
-      ],    
-    },    
+      ],
+    },
     {
       type: "category",
       label: "Directory",
@@ -112,10 +109,7 @@ const sidebars = {
         type: "doc",
         id: "policy/policy",
       },
-      items: [
-        "policy/rules",
-        "policy/credential-enrollment",
-      ],
+      items: ["policy/rules", "policy/credential-enrollment"],
     },
     {
       type: "category",
@@ -126,9 +120,7 @@ const sidebars = {
         type: "doc",
         id: "reporting/reporting",
       },
-      items: [
-        "reporting/device-query",
-      ],
+      items: ["reporting/device-query"],
     },
     {
       type: "category",
@@ -157,6 +149,8 @@ const sidebars = {
             "access-control/applications/wsfed",
             "access-control/applications/realitycheck-for-zoom",
             "access-control/applications/realitycheck-for-teams",
+            "access-control/applications/generic-saml",
+            "access-control/applications/saml-methods",
           ],
         },
         {
@@ -170,8 +164,6 @@ const sidebars = {
           },
           items: [
             "access-control/identity-providers/generic-oidc",
-            "access-control/identity-providers/generic-saml",
-            "access-control/identity-providers/saml-methods",
           ],
         },
       ],
@@ -181,19 +173,17 @@ const sidebars = {
       label: "Authentication Experience",
       collapsed: false,
       collapsible: true,
-      items: [      
+      items: [
         "authentication-experience/roaming-authentication",
         "authentication-experience/roaming-authentication-config",
       ],
     },
     {
-      type: 'category',
-      label: 'Passkey Lifecycle',
+      type: "category",
+      label: "Passkey Lifecycle",
       collapsed: false,
-      items: [
-        'passkey-lifecycle/how-passkeys-are-handled',
-      ],
-    },    
+      items: ["passkey-lifecycle/how-passkeys-are-handled"],
+    },
     {
       type: "category",
       label: "Tools",
@@ -203,9 +193,7 @@ const sidebars = {
         type: "doc",
         id: "tools/tools",
       },
-      items: [
-        "tools/branding",
-      ],
+      items: ["tools/branding"],
     },
     {
       type: "category",
@@ -216,9 +204,7 @@ const sidebars = {
         type: "doc",
         id: "release-notes/release-notes",
       },
-      items: [
-        "release-notes/endpoint",
-      ],
+      items: ["release-notes/endpoint"],
     },
     {
       type: "category",
@@ -283,9 +269,7 @@ const sidebars = {
             type: "doc",
             id: "resources/platform-information/index",
           },
-          items: [
-            "resources/platform-information/session-behavior",
-          ],
+          items: ["resources/platform-information/session-behavior"],
         },
         {
           type: "category",
@@ -294,9 +278,7 @@ const sidebars = {
             type: "doc",
             id: "resources/announcements/index",
           },
-          items: [
-            "resources/announcements/chrome-browser",
-          ],
+          items: ["resources/announcements/chrome-browser"],
         },
         {
           type: "category",
@@ -305,9 +287,7 @@ const sidebars = {
             type: "doc",
             id: "resources/platform-authenticator/index",
           },
-          items: [
-            "resources/platform-authenticator/kandji",
-          ],
+          items: ["resources/platform-authenticator/kandji"],
         },
         {
           type: "link",
