@@ -1,0 +1,123 @@
+---
+title: Configuring Nametag
+id: nametag
+description: 'Learn how to configure Nametag.'
+slug: /access-control/identity-providers/nametag
+keywords:
+  - nametag
+pagination_next: null
+pagination_prev: null
+draft: false
+hide_table_of_contents: false
+hide_title: true
+hide_breadcrumbs: false
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+
+# Configuring Nametag as an Identity Provider
+
+Nametag provides verified identity authentication using secure government-issued ID verification. It enables organizations to verify users' real-world identities quickly and safely, reducing fraud and improving trust. Nametag's verification process uses strong identity proofing and biometric matching to ensure that each user truly is who they claim to be.
+
+## Configuration Overview
+
+**Legend:**
+- 🟡 Steps performed in the **Nametag Console**
+- 🔵 Steps performed in the **Beyond Identity Console**
+
+There are two steps to configuring Nametag as an Identity Provider:
+
+1. Directory Synchronization: send user information from Beyond Identity to Nametag.
+2. Configure Nametag as an Identity Provider: configure Nametag as an Identity Provider in Beyond Identity.
+
+## Directory Synchronization
+
+1. 🟡 **Select your Nametag Environment**
+
+   Make sure you're in the Nametag Environment that you want to use.
+
+   :::tip
+   It is recommended to create a new Nametag environment for testing.
+   :::
+
+2. 🟡 **Add Beyond Identity as a Directory**
+
+   Navigate to **Configure > Directories > Add a directory > Beyond Identity**
+
+   :::note
+   Stay on this page as you'll need to grab some values from the Beyond Identity side.
+   :::
+
+3. 🔵 **Create a Nametag Application in Beyond Identity**
+
+   Navigate to **Applications > Browse applications > Nametag > Add Nametag**
+
+4. 🟡 🔵 **Configure Directory Connection**
+
+   Use the following fields from the Nametag application you just created in Beyond Identity and input them in the Nametag console:
+
+   - **Base URL**: the API base URL of the Nametag application
+   - **Tenant ID**: Your tenant ID of the Nametag application
+   - **Realm ID**: Your realm ID of the Nametag application
+   - **Application ID**: Application ID of the Nametag application
+   - **Client ID**: Client ID of the Nametag application
+   - **Client Secret**: Client Secret of the Nametag application
+
+5. 🟡 **Complete Directory Synchronization**
+
+   Click **Connect to Beyond Identity** and ensure your identities have properly synchronized over to Nametag.
+
+6. 🟡 **Save the Client ID**
+
+   :::important
+   Note the **Client ID** here and copy it for usage later.
+   :::
+
+## Configure Nametag as an Identity Provider
+
+1. 🔵 **Create a Generic OIDC Identity Provider**
+
+   Navigate to **Identity Providers > Browse identity Providers > Generic OIDC > Add instance**
+
+2. 🟡 🔵 **Configure the Identity Provider**
+
+   Fill out the following fields:
+
+   - **Display Name**: `Nametag`
+   - **PKCE**: `disabled`
+   - **OAuth 2Par**: `ENABLE`
+   - **PAR Endpoint**: `https://nametag.co/oauth2/par`
+   - **Token Endpoint Auth Method**: `client_secret_basic`
+   - **Client ID**: Client ID from Directory Synchronization Step 6
+
+     :::note
+     This is the Client ID from the directory you set up.
+     :::
+
+   - **Client Secret**:
+
+     🟡 In Nametag Console, go to **OAuth > Create new API Key**
+
+     :::caution
+     Do NOT use the Client ID here, ONLY the secret.
+     :::
+
+   - **Token Scopes**: `openid`
+   - **Authorization Endpoint**: `https://nametag.co/oauth2/authorize`
+   - **Token Endpoint**: `https://nametag.co/oauth2/token`
+   - **JWKS Endpoint**: `https://nametag.co/.well-known/jwks`
+   - **Identifying Claim Name**: `account.immutable_external_id`
+   - **Identifying Attribute**: `id`
+   - **Requested Claims**: `{"id_token":{"account":null}}`
+
+3. 🔵 **Save Configuration**
+
+   Press **Save Changes**
+
+4. 🟡 🔵 **Configure Callback URL**
+
+   Copy the **Redirect URI** from Beyond Identity and add it as a **Callback URL** in the OAuth section of Nametag.
+
+## Completion
+
+You're now all set up! You can now create enrollments with IDP authorization using Nametag as an IDP.
