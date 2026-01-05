@@ -1277,3 +1277,12 @@ html[data-theme="dark"] .card__header h4 {
     font-weight: 700 !important;
   }
   
+/* This forces all mobile screenshots to a manageable size */
+.screenshot-mobile {
+    width: 300px !important;
+    height: auto;
+    display: block;
+    margin: 1rem 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }

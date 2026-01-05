@@ -1,0 +1,136 @@
+---
+title: Enable Beyond Identity Safari Extension on iOS Devices
+id: safari-extension
+description: 'Learn about enabling the Beyond Identity extension on Safari.'
+slug: /end-user-guides/safari-extension
+keywords:
+  - Beyond Identity Safari Extension
+pagination_next: null
+pagination_prev: null
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+
+### Enable Beyond Identity Safari Extension on iOS Devices (iOS 26)
+
+You can enable the Beyond Identity Safari Extension to streamline authentication on iPhones and iPads.
+
+**Important**
+- The Safari extension only supports web application logins accessed via the Safari browser.
+- Due to Apple restrictions, extensions do not work in web browsers embedded inside apps.
+
+---
+
+### iOS 26 Configuration Steps
+
+1. On your iOS device, locate and tap **Settings**.
+
+    ![Safari](../images/1a.PNG)
+
+2. Scroll down and tap **Apps**.
+
+    ![Safari](../images/2a.PNG)
+
+3. From the list of apps, tap **Safari**.
+
+    ![Safari](../images/3a.PNG)
+
+4. Tap **Extensions**.
+
+    ![Safari](../images/4a.PNG)
+
+5. Under Safari extensions, tap **Beyond Identity**.
+
+    ![Safari](../images/5a.PNG)
+
+6. Toggle **Allow Extension** to ON.
+
+    ![Safari](../images/6a.png)
+
+7. On the same screen, under **Permissions**, tap **beyondidentity.com**.
+
+    ![Safari](../images/7a.png)
+
+8. Tap **Allow**.
+
+    ![Safari](../images/8a.png)
+
+9. Repeat steps **7** and **8** for **byndid.com**.
+
+### Ask vs Allow (Permission Explanation)
+
+- **Ask**  
+  Temporarily remembers your login preference for 24 hours. After that, you may receive repeated login prompts.
+
+- **Allow**  
+  Permanently streamlines authentication by reducing repeated prompts and enabling seamless access to Beyond Identity and SSO applications such as Okta or Entra ID (Azure).
+
+### Completion
+
+You’re all done. You can now authenticate using your Beyond Identity passkey in the Safari browser when accessing protected applications.
+
+<br/>
+
+### Enable Beyond Identity Safari Extension on iOS Devices (iOS 18)
+
+Follow the steps below to configure the Beyond Identity Safari Extension on devices running iOS 18.
+
+### iOS 18 Configuration Steps
+
+1. On your iOS device, locate and tap **Settings**.
+
+    ![Safari](../images/1-1a.png)
+
+2. Scroll down and tap **Apps**.
+
+    ![Safari](../images/2-2a.png)
+
+3. Tap **Safari**.
+
+    ![Safari](../images/3-3a.png)
+
+4. Tap **Extensions**.
+
+    ![Safari](../images/4-4a.png)
+
+5. From the list of extensions, tap **Beyond Identity**.
+
+    ![Safari](../images/5-5a.png)
+
+6. Toggle **Allow Extension** to ON.
+
+    ![Safari](../images/6-6a.png)
+
+7. Under **Permissions**, tap **byndid.com**.
+
+    ![Safari](../images/7-7a.png)
+
+8. Tap **Allow**.
+
+    ![Safari](../images/8-8a.png)
+
+9. Repeat steps **7** and **8** for **beyondidentity.com**.
+
+---
+
+### Completion
+
+Your iOS device is now configured. Future logins will use an unprompted authentication flow for faster, seamless access to work applications.
+
+---
+
+### Want to Test It?
+
+Open **Safari** and sign in to:
+- The Beyond Identity Admin Console, or
+- Your SSO provider (for example, Okta or Entra ID)
+
+---
+
+### Troubleshooting
+
+If authentication does not work as expected:
+
+- Confirm Safari is set as the default browser
+- Ensure the Beyond Identity extension is turned ON
+- Verify all Beyond Identity domains are set to **Allow** under **Webpage Contents and Browsing History**
