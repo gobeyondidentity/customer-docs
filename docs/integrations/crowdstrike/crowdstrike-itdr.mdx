@@ -21,3 +21,83 @@ doc_type: overview
 displayed_sidebar: mainSidebar
 ---
 
+Step-by-step instructions for integrating **Beyond Identity** with **CrowdStrike ITDR** using OpenID Connect (OIDC) to ensure secure access and seamless identity protection.
+
+## Overview
+
+This guide walks you through configuring OIDC between Beyond Identity and CrowdStrike ITDR.
+
+## Before You Begin
+
+- Ensure you have an administrative account in **CrowdStrike**.
+- Ensure you have administrative rights in **Beyond Identity**.
+- If you have more than one CrowdStrike tenant, the *Windows device* and *Domain Controller* must be linked to the **same** CrowdStrike tenant.
+
+## Configure Beyond Identity – OIDC Client
+
+1. Navigate to: [https://admin.byndid.com/](https://admin.byndid.com/)
+2. Log in to the Admin Console.
+3. Click **Integrations**.
+4. Ensure **OIDC** is selected.
+5. Add an OIDC Client and provide the following:
+   - Name
+   - Redirect URI (per region)
+   - Token Signing Algorithm: `RS256`
+   - Auth Method: `client secret post`
+6. Save changes.
+7. Copy the **Client ID** and **Client Secret** for use in CrowdStrike.
+8. Note the **Metadata URL** for your region (US or EU).
+
+## Configure Beyond Identity – Secure Access (Application)
+
+1. Go to:
+   - [US Console](https://console.beyondidentity.com/)
+   - [EMEA/APAC Console](https://console-eu.beyondidentity.com/)
+2. Enter your Tenant ID and log in.
+3. Click Applications → Browse Applications.
+4. Select Generic OIDC → Add OIDC.
+5. Configure Display Name, Redirect URI, Confidentiality, Login Link.
+6. Assign identities or groups.
+7. Save changes.
+8. Copy the **Client ID**, **Client Secret**, and **Discovery Endpoint URL**.
+
+## Identity Onboarding in CrowdStrike
+
+1. Sign in to your CrowdStrike tenant.
+2. Select Identity protection → Onboarding.
+3. Complete Step 2 – Deploy the Falcon sensor on Domain Controllers.
+
+## Response Policies
+
+Edit the Default (Windows) response policy to enable put, run, and put-and-run:
+
+1. Menu → Host setup and management.
+2. Expand Response and containment → Response policies.
+3. Edit Default (Windows), check put/run/put-and-run, save.
+
+## Configure Connectors (OIDC)
+
+1. Menu → Identity protection → Configure → Connectors.
+2. Select OpenID Connect (OIDC) → Add.
+3. Provider Type: Beyond Identity. Enter Metadata URL, Client ID/Secret, User Identifier (Email), Scope (Default).
+
+## Configure Policy Rules
+
+1. Menu → Identity Protection → Enforce → Policy Rules.
+2. Add rule. Set Trigger: Access, Template: Blank Template.
+3. Audit: Identity Verification.
+4. (Optional) Add test user condition.
+5. Select Connector: Beyond Identity.
+6. Add Protocol condition (include selected protocols).
+7. Advanced: set notifications, prompt frequency, context, fail mode, detection on match. Save.
+
+## Reference Links
+
+- [Beyond Identity Admin Console](https://admin.byndid.com/)
+- [US Console](https://console.beyondidentity.com/)
+- [EMEA/APAC Console](https://console-eu.beyondidentity.com/)
+- [OIDC Discovery (US)](https://auth.byndid.com/v2/.well-known/openid-configuration)
+- [OIDC Discovery (EU)](https://auth-eu.byndid.com/v2/.well-known/openid-configuration)
+- [CrowdStrike Docs](https://falcon.us-2.crowdstrike.com/documentation/page/c5dcbccc/identity-protection-administration#u5e1e33a)
+
+_Source: CrowdStrike Identity Threat Detection and Response (ITDR) integration guide (Beyond Identity)._
