@@ -1,0 +1,146 @@
+---
+title: Splunk Integration
+id: splunk
+description: "Learn how to integrate Intune with Beyond Identity."
+slug: /tools/integrations/splunk
+keywords:
+  - splunk integration
+pagination_next: null
+pagination_prev: null
+draft: false
+hide_table_of_contents: false
+hide_title: false
+hide_breadcrumbs: false
+doc_type: overview
+displayed_sidebar: mainSidebar
+---
+
+# Beyond Identity Secure Work Events Data Integration with Splunk Cloud and Enterprise
+
+This guide provides step-by-step instructions for integrating event data from the Secure Work platform into Splunk Cloud and Splunk Enterprise.
+
+## Overview
+
+This integration allows security teams and administrators to centralize logs, visualize activity, and generate alerts in Splunk using events from Secure Work.  
+
+By following this guide, you will learn how to:
+
+- Configure the Secure Work platform to send event data.
+- Connect and authenticate with Splunk Cloud or Splunk Enterprise.
+- Verify that data is flowing into Splunk. 
+
+## Prerequisites
+
+Before beginning the integration, ensure you have:
+
+- A configured Secure Work tenant with access to the admin console and permissions to generate API keys or configure event forwarding.  
+- An admin-level Splunk Cloud or Splunk Enterprise account.  
+- Network connectivity allowing outbound connections from Secure Work to Splunk. 
+
+## Steps
+
+### Creating an HTTP Event Collector
+
+1. Access your Splunk Cloud or Enterprise admin console and log in with admin privileges.  
+
+    ![Logo](../images/splunk-1-copy.png)
+
+2. On the top navigation menu, click **Settings**.  
+
+    ![Logo](../images/splunk-2-copy.png)
+
+3. From the Settings dropdown, click **Data Inputs**.  
+
+    ![Logo](../images/splunk-3-copy.png)
+
+4. In Data Inputs, find **HTTP Event Collector**, then under **Actions**, click **+Add new**.  
+
+    ![Logo](../images/splunk-4-copy.png)
+
+5. Provide a **Name** for the new token.  
+
+    ![Logo](../images/splunk-5-copy.png)
+
+6. Leave other fields blank and click **Next**.  
+
+    ![Logo](../images/splunk-6-copy.png)
+
+7. In the Input Settings page, in the **Index** section, click **add all**.  
+
+    ![Logo](../images/splunk-7-copy.png)
+
+8. Set the **Default Index** to `main`, then click **Review**.  
+    ![Logo](../images/splunk-8-copy.png)
+
+
+9. Review your configuration and click **Submit**.  
+
+    ![Logo](../images/splunk-9-copy.png)
+
+10. When the token is created, copy its value and store it securely—you’ll need it later.  
+
+    ![Logo](../images/splunk-10-copy.png)
+
+11. Locate the HTTP Event Collector you just created and under Actions click **Edit**. Under Source Type, type beyond_identity_log and click **Save**.
+
+    ![Logo](../images/splunk-11-copy.png)
+
+### Beyond Identity Console Configuration
+
+12. Log in to your Beyond Identity Secure Work tenant.  
+
+13. In the left navigation menu, click **Integrations**.  
+
+    ![Logo](../images/splunk-12-copy.png)
+
+14. Click the **SIEM** tab.  
+
+    ![Logo](../images/splunk-13-copy.png)
+
+15. Click **Add SIEM Integration**.  
+
+    ![Logo](../images/splunk-14-copy.png)
+
+16. In the dialog window, select **Splunk** as the SIEM Provider.  
+
+    ![Logo](../images/splunk-15-copy.png)
+
+17. Enter the following details:
+    - **Name:** A descriptive name for the integration.
+    - **HEC Token:** Paste the token copied from the Splunk console.
+    - **HEC Host:** The URL of your Splunk instance (without `https://`).
+    - **HEC Port:** Enter `8088`.  
+    - **Events:** Select which event types you want forwarded to Splunk.
+    - **Threat Signals:** Choose which threat signals you want forwarded.
+    - **Status:** Toggle to **ACTIVE**.  
+
+    ![Logo](../images/splunk-17-copy.png)
+
+18. Click **Test Configuration** to verify connectivity.  
+
+    ![Logo](../images/splunk-16-copy.png)
+
+19. When you see a confirmation banner that the configuration is valid, click **Save Changes**.  
+
+    ![Logo](../images/splunk-18-copy.png)
+
+### Verify Events in Splunk Cloud
+
+After configuration, verify that events are flowing into Splunk:
+
+1. Log in to your Splunk Cloud instance.
+2. Run a search similar to:
+
+```
+index="main" source="BI_events_http" actor.tenant_id="TENANT_CONFIGURED"
+```
+
+- Replace `source` with the source name you defined.
+- Replace `actor.tenant_id` with your configured tenant ID.
+
+If successful, events matching the search will be returned. 
+
+## Appendix
+
+For developers: refer to the Beyond Identity Developer API Guide for programmatic event retrieval:  
+https://developer.beyondidentity.com/api/v0#tag/Events/operation/getEvents 

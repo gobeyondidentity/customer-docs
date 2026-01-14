@@ -42,6 +42,7 @@ const sidebars = {
         },
         "integrations/intune",
         "integrations/jamf",
+        "integrations/splunk",
         {
           type: "category",
           label: "Logs",
