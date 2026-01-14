@@ -193,7 +193,7 @@ const sidebars = {
         type: "doc",
         id: "tools/tools",
       },
-      items: ["tools/branding"],
+      items: ["tools/branding", "tools/tenant-logo"],
     },
     {
       type: "category",
