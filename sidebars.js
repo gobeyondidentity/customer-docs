@@ -42,6 +42,7 @@ const sidebars = {
         },
         "integrations/intune",
         "integrations/jamf",
+        "integrations/splunk",
         {
           type: "category",
           label: "Logs",
@@ -193,7 +194,7 @@ const sidebars = {
         type: "doc",
         id: "tools/tools",
       },
-      items: ["tools/branding"],
+      items: ["tools/branding", "tools/tenant-logo"],
     },
     {
       type: "category",
