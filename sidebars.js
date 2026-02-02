@@ -165,6 +165,7 @@ const sidebars = {
           },
           items: [
             "access-control/identity-providers/generic-oidc",
+            "access-control/identity-providers/nametag",
           ],
         },
       ],
