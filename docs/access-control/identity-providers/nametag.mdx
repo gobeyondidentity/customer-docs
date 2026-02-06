@@ -1,5 +1,5 @@
 ---
-title: Configuring Nametag
+title: Configuring Nametag as a Delegate Identity Provider (IDP) for Beyond Identity
 id: nametag
 description: 'Learn how to configure Nametag.'
 slug: /access-control/identity-providers/nametag
@@ -15,109 +15,189 @@ doc_type: overview
 displayed_sidebar: mainSidebar
 ---
 
-# Configuring Nametag as an Identity Provider
 
-Nametag provides verified identity authentication using secure government-issued ID verification. It enables organizations to verify users' real-world identities quickly and safely, reducing fraud and improving trust. Nametag's verification process uses strong identity proofing and biometric matching to ensure that each user truly is who they claim to be.
+## Overview
 
-## Configuration Overview
+Nametag provides verified identity authentication using secure, government-issued ID verification. It helps organizations verify users’ real-world identities quickly and safely, reducing fraud and improving risk while increasing trust in identity assertions.
 
-**Legend:**
-- 🟡 Steps performed in the **Nametag Console**
-- 🔵 Steps performed in the **Beyond Identity Console**
+This integration allows you to:
 
-There are two steps to configuring Nametag as an Identity Provider:
+- Synchronize users from the Beyond Identity Directory into a Nametag tenant.  
+- Use Nametag as a **delegate OIDC Identity Provider (IDP)** during enrollment flows that are authorized through another IDP.  
 
-1. Directory Synchronization: send user information from Beyond Identity to Nametag.
-2. Configure Nametag as an Identity Provider: configure Nametag as an Identity Provider in Beyond Identity.
+Once configured, users authenticating through your primary IDP can be additionally verified by Nametag during enrollment.
 
-## Directory Synchronization
+---
 
-1. 🟡 **Select your Nametag Environment**
+### Prerequisites
 
-   Make sure you're in the Nametag Environment that you want to use.
+Before you begin:
 
-   :::tip
-   It is recommended to create a new Nametag environment for testing.
-   :::
+- Administrative access to the Nametag Console.  
+- Administrative access to the Beyond Identity Admin Console.  
+- A working Beyond Identity tenant with Directory enabled.  
+- A working Nametag tenant.  
 
-2. 🟡 **Add Beyond Identity as a Directory**
+> **Recommended:** Create a separate Nametag test environment before configuring in production.
 
-   Navigate to **Configure > Directories > Add a directory > Beyond Identity**
+---
 
-   :::note
-   Stay on this page as you'll need to grab some values from the Beyond Identity side.
-   :::
+## Part 1 — Directory Synchronization
 
-3. 🔵 **Create a Nametag Application in Beyond Identity**
+This section connects Beyond Identity to Nametag so user identities can be shared between systems.
 
-   Navigate to **Applications > Browse applications > Nametag > Add Nametag**
+---
 
-4. 🟡 🔵 **Configure Directory Connection**
+### Step 1 — Select the correct Nametag environment  
+**Where:** Nametag Console  
 
-   Use the following fields from the Nametag application you just created in Beyond Identity and input them in the Nametag console:
+1. Confirm you are in the correct Nametag environment (Test or Production).  
+2. If needed, create or switch to a dedicated test environment.
 
-   - **Base URL**: the API base URL of the Nametag application
-   - **Tenant ID**: Your tenant ID of the Nametag application
-   - **Realm ID**: Your realm ID of the Nametag application
-   - **Application ID**: Application ID of the Nametag application
-   - **Client ID**: Client ID of the Nametag application
-   - **Client Secret**: Client Secret of the Nametag application
 
-5. 🟡 **Complete Directory Synchronization**
+### Step 2 — Create a Beyond Identity directory in Nametag  
+**Where:** Nametag Console  
 
-   Click **Connect to Beyond Identity** and ensure your identities have properly synchronized over to Nametag.
+1. Navigate to **Configure**.  
 
-6. 🟡 **Save the Client ID**
+    ![Nametag](../images/1-nametag.png)
 
-   :::important
-   Note the **Client ID** here and copy it for usage later.
-   :::
+2. Click **Directories** from the left navigation.  
 
-## Configure Nametag as an Identity Provider
+    ![Nametag](../images/2-nametag.png)
 
-1. 🔵 **Create a Generic OIDC Identity Provider**
+3. Click **Add a directory**.  
 
-   Navigate to **Identity Providers > Browse identity Providers > Generic OIDC > Add instance**
+    ![Nametag](../images/3-nametag.png)
 
-2. 🟡 🔵 **Configure the Identity Provider**
+4. Select **Beyond Identity** from the list.
 
-   Fill out the following fields:
+    ![Nametag](../images/4-nametag.png)
 
-   - **Display Name**: `Nametag`
-   - **PKCE**: `disabled`
-   - **OAuth 2Par**: `ENABLE`
-   - **PAR Endpoint**: `https://nametag.co/oauth2/par`
-   - **Token Endpoint Auth Method**: `client_secret_basic`
-   - **Client ID**: Client ID from Directory Synchronization Step 6
+Stay on this page — you will copy values from Beyond Identity into this form in the next steps.
 
-     :::note
-     This is the Client ID from the directory you set up.
-     :::
 
-   - **Client Secret**:
+### Step 3 — Add Nametag in Beyond Identity 
+**Where:** Beyond Identity Admin Console  
 
-     🟡 In Nametag Console, go to **OAuth > Create new API Key**
+1. Go to **Applications**.  
 
-     :::caution
-     Do NOT use the Client ID here, ONLY the secret.
-     :::
+    ![Nametag](../images/SA-4-nametag.png)
 
-   - **Token Scopes**: `openid`
-   - **Authorization Endpoint**: `https://nametag.co/oauth2/authorize`
-   - **Token Endpoint**: `https://nametag.co/oauth2/token`
-   - **JWKS Endpoint**: `https://nametag.co/.well-known/jwks`
-   - **Identifying Claim Name**: `account.immutable_external_id`
-   - **Identifying Attribute**: `id`
-   - **Requested Claims**: `{"id_token":{"account":null}}`
+2. Open the **Browse Applications** tab.  
+3. Select **Nametag** and add it to your tenant.
 
-3. 🔵 **Save Configuration**
+Beyond Identity will generate connection details that you will enter into Nametag.
 
-   Press **Save Changes**
 
-4. 🟡 🔵 **Configure Callback URL**
+### Step 4 — Map Beyond Identity values into Nametag  
+**Where:** Beyond Identity Console 
 
-   Copy the **Redirect URI** from Beyond Identity and add it as a **Callback URL** in the OAuth section of Nametag.
+Enter the following values from Beyond Identity to the new Nametag application:
 
-## Completion
+| Field | Description |
+|-------|-------------|
+| **Base URL** | API base URL for Beyond Identity |
+| **Tenant ID** | Your Beyond Identity tenant ID |
+| **Realm ID** | Your Beyond Identity realm ID |
+| **Application ID** | Beyond Identity application ID for Nametag |
+| **Client ID** | OAuth Client ID issued by Beyond Identity |
+| **Client Secret** | OAuth Client Secret issued by Beyond Identity |
 
-You're now all set up! You can now create enrollments with IDP authorization using Nametag as an IDP.
+Click **Save Changes**.
+
+
+### Step 5 — Connect and validate synchronization  
+**Where:** Nametag Console  
+
+1. Click **Connect to Beyond Identity**.  
+
+    ![Nametag](../images/8-nametag.png)
+
+2. Click **Sync now** and confirm that users from Beyond Identity now appear in Nametag.
+
+    ![Nametag](../images/9-nametag.png)
+
+If synchronization fails, recheck credentials and retry.
+
+
+### Step 6 — Record the Nametag Directory Client ID  
+**Where:** Nametag Console  
+
+Locate and save the **Client ID associated with this directory** — you will need it in Part 2.
+
+
+## Part 2 — Configure Nametag as a Delegate IDP in Beyond Identity  
+
+This section registers Nametag as a Generic OIDC Identity Provider.
+
+
+### Step 1 — Add a Generic OIDC Provider  
+**Where:** Beyond Identity Admin Console  
+
+1. Go to **Identity Providers**.  
+2. Select **Browse identity providers**.  
+3. Choose **Generic OIDC**.
+
+    ![Nametag](../images/SA-9-nametag.png)
+
+Enter the following values:
+
+| Setting | Value |
+|--------|-------|
+| **Display Name** | `Nametag` |
+| **Client ID** | *Client ID from Directory Synchronization Step 6* |
+| **PKCE** | `disabled` |
+| **OAuth 2PAR** | `ENABLE` |
+| **PAR Endpoint** | `https://nametag.co/oauth2/par` |
+| **Token Endpoint Auth Method** | `client_secret_basic` |
+| **Token Scopes** | `openid` |
+| **Authorization Endpoint** | `https://nametag.co/oauth2/authorize` |
+| **Token Endpoint** | `https://nametag.co/oauth2/token` |
+| **JWKS Endpoint** | `https://nametag.co/.well-known/jwks` |
+| **Identifying Claim Name** | `account.immutable_external_id` |
+| **Identifying Attribute** | `id` |
+| **Requested Claims** | `{"id_token":{"account":null}}` |
+
+---
+
+### Step 2 — Create a Nametag API Key (Client Secret)  
+**Where:** Nametag Console  
+
+1. Go to **OAuth → Create new API Key**.  
+
+    ![Nametag](../images/12-nametag.png)
+
+2. Generate a new secret.  
+3. Copy **only the secret** (do **not** reuse the Client ID).
+
+---
+
+### Step 3 — Enter the secret in Beyond Identity  
+**Where:** Beyond Identity Admin Console  
+
+1. Paste the Nametag secret into the **Client Secret** field.  
+2. Click **Save Changes**.
+
+Beyond Identity will generate a Redirect URI for this provider.
+
+---
+
+### Step 4 — Register the Redirect URI in Nametag  
+
+1. Copy the Redirect URI from Beyond Identity.  
+2. In the Nametag Console, go to **OAuth settings**.  
+3. Add this Redirect URI as an **Authorized Callback URL**.  
+4. Save changes.
+
+---
+
+## Final State
+
+After completing these steps:
+
+- Users are synchronized from Beyond Identity into Nametag.  
+- Nametag is registered as a delegate OIDC Identity Provider.  
+- You can now design enrollment flows that require Nametag verification after authentication with another IDP.
+
+🎉 You are ready to use Nametag as part of your identity proofing workflow.
