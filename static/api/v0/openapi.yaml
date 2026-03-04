@@ -2507,7 +2507,22 @@ paths:
                   tags:
                     type: array
                     items:
-                      $ref: '#/paths/~1v2~1passkeys~1%7Bpasskey_id%7D~1tags/put/requestBody/content/application~1json/schema/properties/tags/items'
+                      title: PasskeyTag
+                      type: object
+                      description: |
+                        A tag associated with the passkey.
+                      properties:
+                        id:
+                          type: string
+                          description: |
+                            ID of the tag. This property is unique.
+                        name:
+                          type: string
+                          description: |
+                            Name of the tag. This property is unique within a tenant and is case-insensitive (e.g. "Corp-Device" and "corp-device" refer to the same tag).
+                      required:
+                        - id
+                        - name
                     description: |
                       An unordered array of tags associated with the passkey.
                 required:
@@ -2562,7 +2577,7 @@ paths:
       operationId: SetPasskeyTags
       summary: Set passkey tags
       description: |
-        To set tags associated with a passkey, send a PUT request to `/v2/passkeys/$PASSKEY_ID/tags`.
+        To set tags associated with a passkey, send a PUT request to `/v2/passkeys/$PASSKEY_ID/tags`. This is a full replace — the passkey's tags will be set to exactly the list provided. Omitting a tag removes it from the passkey. Tags are identified by `name` (case-insensitive) and are created automatically if they do not already exist. The `id` field is optional.
       security:
         - BearerAuth:
             - 'passkey-tags:write'
@@ -2578,22 +2593,16 @@ paths:
               properties:
                 tags:
                   type: array
+                  description: |
+                    List of tags to set on the passkey. Tags are identified by name, which is case-insensitive and unique per tenant. Tags are created automatically if they do not already exist.
                   items:
-                    title: PasskeyTag
                     type: object
-                    description: |
-                      A tag associated with the passkey.
                     properties:
-                      id:
-                        type: string
-                        description: |
-                          ID of the tag. This property is unique.
                       name:
                         type: string
                         description: |
-                          Name of the tag. This property is unique within a tenant.
+                          Name of the tag. Case-insensitive.
                     required:
-                      - id
                       - name
               required:
                 - tags
@@ -2601,10 +2610,8 @@ paths:
               Set Passkey Tags:
                 value:
                   tags:
-                    - id: 25f94daf-63d8-4b40-b0ea-4843971d1d8e
-                      name: Windows
-                    - id: f7277b07-4a9e-4f84-9839-cd3082a6b8c3
-                      name: BYOD
+                    - name: Windows
+                    - name: BYOD
       responses:
         '200':
           description: Passkey tags
