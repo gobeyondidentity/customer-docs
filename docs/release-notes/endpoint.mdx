@@ -33,9 +33,10 @@ Beyond Identity began deployment of a new Secure Access software release on **Ma
 
 | Enhancement | Description |
 |-------------|-------------|
-| **Custom Error Messaging for Self-Remediation** | Administrators can now configure custom error messages with a descriptive error title and optional link buttons. End users will see these error messages during registration and authentication on a polished, restyled UI. Settings can be configured in the Secure Work Admin Console. |
-| **Self-Remediation via Credential Extension (GA)** | The self-remediation via credential extension feature is now in General Access and available to all tenants. Administrators can enable a setting to allow end users to self-remediate when they do not have a valid passkey on their device by extending an existing passkey. This guided walkthrough on error is disabled by default and can be toggled per error in the Secure Work Admin Console. |
-| **Branded Interstitial Loading Screen (GA)** | The branded interstitial feature is now in General Access and has been enabled for all tenants, except for those that have chosen to opt out. |
+| **Improved Accessibility** | The branded authentication loading screen now meets WCAG standards for screen reader compatibility, ensuring accessible authentication experiences for all users. |
+| **Support Link Display** | The support link configured in branding settings is now displayed in the branded interstitial for Secure Access tenants, giving end users a direct path to help during authentication. |
+| **Improved Windows Webview Rendering** | Resolved rendering issues with the branded interstitial on Windows webview (Internet Explorer), including missing backgrounds, gradients, spacing, and animations. |
+| **Preloaded Tenant Logos** | Tenant logos are now preloaded in the branded interstitial, eliminating visual flash during authentication. |
 
 <br/>
 
@@ -43,7 +44,11 @@ Beyond Identity began deployment of a new Secure Access software release on **Ma
 
 | Bug Fix | Description |
 |--------|-------------|
-| **Policy Evaluation UI Consistency Fix** | Fixed a UI inconsistency on the policy evaluation page where the "ALLOW - with biometrics" rule incorrectly displayed as "DENY" when users did not provide biometrics. |
+| **Policy Event Logging Inconsistency** | Resolved an issue where Policy Deny events in the Secure Access console incorrectly displayed "Allowed with Biometric Verification" as the matched rule. |
+| **Mobile Passkey Display** | Corrected long text being cut off on the mobile passkey-in-browser selection screen. |
+| **iPhone Safari Extension Suggestion** | Fixed Safari extension suggestion text incorrectly appearing in Chrome, Firefox, and Edge browsers on iPhone. The prompt now only displays in Safari. |
+| **Loading Spinner Alignment** | Fixed the branded interstitial loading spinner not being left-aligned on desktop screens. |
+| **Branded Interstitial Safari Spinner** | Fixed the branded interstitial loading spinner not appearing when using the Safari extension. |
 
 <br/>
 
