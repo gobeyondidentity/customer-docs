@@ -20,6 +20,55 @@ hide_table_of_contents: true
 Secure Access release notes are published biweekly for commercial deployments in both the US and EU. FedRAMP and government environments receive updates two weeks after features are released to commercial deployments.
 
 
+### March 20, 2026
+
+<details>
+  <summary><p>v2.111.0 Beyond Identity Authenticator Release Notes</p></summary>
+
+Beyond Identity began rolling out the new **Platform Authenticator v2.111.0** release on **March 20, 2026**.
+
+<br/>
+
+### What's New
+
+| Platform | Feature | Description |
+|----------|---------|-------------|
+| **Windows** | **YubiKey Credential Provider (GA)** | Windows Desktop Login now supports YubiKey 5 Series for secure, passwordless desktop logins and RDP sessions using smart card–based credentials. Includes PUK reset, enrollment via admin console, and registry-based CP V2 control. |
+| **All Platforms** | **Slashed Zeros & Enlarged Codes** | Credential extension codes now use slashed zeros and enlarged display to reduce confusion between 0 (zero) and O (uppercase O), improving usability for users with vision difficulties. |
+
+<br/>
+
+### Enhancements
+
+| Platform | Enhancement | Description |
+|----------|-------------|-------------|
+| **macOS** | **Menu Bar Icon Update** | Improved the authentication indicator icon in the macOS menu bar for a cleaner appearance during authentication. |
+| **Android** | **About & Feedback in Onboarding** | Added "About Beyond Identity" and "Send Feedback" menu options to the onboarding screen, allowing users to access help and send logs even during enrollment. |
+| **Android** | **Managed Restrictions Logging** | Enhanced logging of all managed restrictions for better troubleshooting of MDM enrollment issues (Omnissa/VMware Workspace ONE). |
+| **All Platforms** | **Login Hint Configuration** | Login hint configuration is now retrieved before the login hint itself, improving the unified OIDC login hint experience across all platforms. |
+| **Windows** | **Credential Provider: Updated UI** | The YubiKey Credential Provider UI has been updated with new Beyond Identity branding and improved user experience based on UX designs. |
+| **Windows** | **Credential Provider: Structured Logging** | Moved from standard logging to the tracing framework for structured logging, improving diagnostics and performance monitoring. |
+| **Windows** | **Credential Provider: Secure PIN Handling** | PIN entry for YubiKey now uses secure string handling to prevent plaintext exposure in memory. |
+| **Windows** | **Credential Provider: Registry Control** | Added a registry entry to selectively enable or disable the Credential Provider V2, giving administrators fine-grained control over deployment. |
+
+<br/>
+
+### Bug Fixes
+
+| Platform | Bug Fix | Description |
+|----------|---------|-------------|
+| **Windows** | **Credential Provider: CREDUI Interaction** | Fixed an issue where registering the Credential Provider V2 interfered with the Windows CREDUI (OS verification dialog). |
+| **Windows** | **Credential Provider: Keyset Not Found** | Resolved a "Keyset does not exist" error that occurred when attempting to log in after installing without restarting the system. |
+| **Linux** | **Linux Package Dependencies** | Fixed missing libgtkwebview package dependency, polkit rules directory error, and webkit software rendering on VMware. |
+| **Linux** | **Missing Credential Cert Chain** | Fixed a bug where batch certificate processing caused all credentials to appear invalid if any single certificate was missing or malformed. Reverted to per-credential cert retrieval. |
+| **Android** | **Override Deleted Credential** | Fixed an issue where extending a passkey to a device that had the same credential recently deleted from the admin console did not properly override the local state. |
+
+<br/>
+
+<br/>
+</details>
+
+
 ### March 13, 2026
 
 <details>
