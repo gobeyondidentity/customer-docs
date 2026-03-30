@@ -429,6 +429,7 @@ Fixed an issue that caused some event signals to not be published to certain SIE
 | Android | Bug | Resolves an issue on Android 15 and 16 where the Login Service could crash after a complete reboot.<br />This change aligns with new startup behavior now required and enforced by Google, improving post-reboot reliability and compliance. |
 | Android / iOS / macOS / Windows | Bug | Standardizes the display of toasts, markdown, and dismiss behavior across all platforms (Windows, macOS, iOS, Android) for improved consistency. |
 | Windows | Bug | Fixed an initialization issue where the Windows Platform Authenticator could hang when attempting to authenticate immediately after logging in. The startup sequence has been improved for stability. |
+| Windows | Enhancement | Changed Azure login when enrolling in Desktop Login to use WebView2. To revert to use older WebView, add the string registry value AzureWebViewType to the registry key HKLM\Software\Policies\BeyondIdentity\Authenticator and set the value to "WebBrowser". |
 
 <br/>
 
