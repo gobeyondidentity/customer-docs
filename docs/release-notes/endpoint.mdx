@@ -20,6 +20,53 @@ hide_table_of_contents: true
 Secure Access release notes are published biweekly for commercial deployments in both the US and EU. FedRAMP and government environments receive updates two weeks after features are released to commercial deployments.
 
 
+### June 19, 2026
+
+<details>
+  <summary><p>v2.112.0 Beyond Identity Authenticator Release Notes</p></summary>
+
+Beyond Identity began rolling out the new **Platform Authenticator v2.112.0** release on **June 19, 2026**.
+
+<br/>
+
+### What's New
+
+| Platform | Feature | Description |
+|----------|---------|-------------|
+| **Android** | **Accessibility-Based Sign-In Disclosure** | Added a clear consent/disclosure dialog before enabling the Accessibility Service for automatic sign-in. The dialog explains that the service only detects a sign-in marker the app places itself and never reads, stores, or transmits other on-screen content. The action has been renamed to "Set up automatic sign-in." |
+| **Android** | **App Links Aligned with iOS Universal Links** | Android sign-in deep links now use dedicated channel-specific subdomains (`android-auth.*`) aligned with the iOS universal-link infrastructure, instead of root domains, for consistent and reliable deep-link handling across platforms. |
+
+<br/>
+
+### Enhancements
+
+| Platform | Enhancement | Description |
+|----------|-------------|-------------|
+| **Windows** | **Faster Device-Compliance Checks** | Significantly improved Windows authentication speed. Device compliance checks for registry keys and Windows services now complete almost instantly, eliminating a delay of up to one to two seconds per policy rule during sign-in. |
+
+<br/>
+
+### Bug Fixes
+
+| Platform | Bug Fix | Description |
+|----------|---------|-------------|
+| **Windows** | **Continuous Authentication Network Freeze** | Resolved an issue where the Platform Authenticator on Windows could freeze indefinitely during continuous authentication when network conditions change, such as during VPN transitions. It now enforces bounded timeouts on network operations and recovers gracefully instead of requiring a force-quit. Administrators can tune these timeouts via Group Policy DWORD values (`ProxyResolveTimeout`, `ProxyConnectTimeout`, `ProxySendTimeout`, `ProxyReceiveTimeout`) under `HKLM\Software\Policies\BeyondIdentity\Authenticator`. |
+| **Windows** | **Startup Crash on Per-Scheme Proxy** | Resolved an issue where the Platform Authenticator on Windows could crash at startup on systems configured with a per-scheme proxy (the format set by tools such as Fiddler, and used by some corporate proxy configurations). The authenticator now interprets these Windows proxy settings correctly, and an unrecognized proxy configuration no longer prevents it from starting. |
+| **Windows** | **Startup Crash When Local Port In Use** | Resolved an issue on Windows where the Beyond Identity application could close unexpectedly at startup if its local communication port was already in use. The authenticator now handles an unavailable port gracefully instead of crashing. |
+| **Windows** | **Authentication Hang on Unresponsive Fingerprint Driver** | Resolved an issue on Windows where authentication could hang (and sometimes fail) when a fingerprint sensor's driver became unresponsive — for example, certain fingerprint drivers after sleep/resume. Fingerprint availability and verification checks are now bounded by a timeout (default 5 seconds, adjustable by administrators via the `BioNotRespondingSec` policy value), so an unresponsive fingerprint driver no longer blocks sign-in; the authenticator warns the user and continues with other available methods. |
+| **Windows** | **Authentication Hang Collecting Device Information** | Resolved an issue on Windows where authentication could hang when collecting certain device details (such as hardware identifiers) if the underlying Windows system-information service was slow or unresponsive. These lookups are now bounded by a timeout, so they can no longer stall sign-in. |
+| **Windows** | **BitLocker Disk-Encryption Policy Deny** | Resolved an issue affecting Secure Access where Windows devices with BitLocker enabled could be incorrectly denied by disk-encryption policy. The Platform Authenticator now reports BitLocker drive-encryption status correctly, so policies that require an encrypted system disk evaluate as expected on Windows. |
+| **Windows** | **Passkey Deletion Notification** | Resolved an issue on Windows where the notification shown after a passkey is deleted incorrectly displayed "An internal error occurred" alongside a "Report" button. The notification now shows a clear, localized message with only a "Dismiss" button. |
+| **Android** | **Passkey List Disappearing After "Add Passkey"** | Closing the Add-passkey flow no longer drops to the welcome/onboarding screen on a transient empty-credentials result. |
+| **Android** | **Credential Not Shown After Fresh-Install Passkey Setup** | Fixed an issue on a fresh install where, after setting up a passkey, the app returned to the first screen and did not show the newly created credential. The credential list now updates correctly after enrollment. |
+| **Android** | **Home Screen Flickering** | Fixed the welcome/onboarding screen flickering when the device has no passkeys enrolled. |
+
+<br/>
+
+<br/>
+</details>
+
+
 ### March 29, 2026
 
 <details>
