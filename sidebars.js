@@ -264,7 +264,6 @@ const sidebars = {
       },
       items: [
         "resources/os-support",
-        "resources/pa-support",
         {
           type: "category",
           label: "Platform Information",
