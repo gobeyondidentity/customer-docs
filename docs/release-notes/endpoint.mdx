@@ -20,6 +20,62 @@ hide_table_of_contents: true
 Secure Access release notes are published biweekly for commercial deployments in both the US and EU. FedRAMP and government environments receive updates two weeks after features are released to commercial deployments.
 
 
+### August 26, 2026
+
+<details>
+  <summary><p>v3.0.0-19 Beyond Identity Authenticator Release Notes</p></summary>
+
+Beyond Identity began rolling out the new **Platform Authenticator v3.0.0-19 (Early Access)** release on **August 26, 2026**.
+
+This release updates Platform Authenticator 3.0.0 (Early Access) — the Universal Platform Authenticator introduced on August 4, 2026 — with the fixes and refinements below.
+
+<br/>
+
+### What's New
+
+| Platform | Feature | Description |
+|----------|---------|-------------|
+| **Windows** | **Face ID and Per-Method Sign-In at Desktop Login** | Windows Desktop Login now supports Face ID, and lets you choose which biometric method to use when signing in at the credential provider. |
+| **All** | **Export Logs from Help & Support** | A Help & Support page returns to the application, with an Export Logs action for gathering diagnostics to attach to a support case. |
+
+<br/>
+
+### Enhancements
+
+| Platform | Enhancement | Description |
+|----------|-------------|-------------|
+| **Windows** | **Desktop Login Enrollment Improvements** | Unenrolling from Desktop Login now asks for confirmation, and an enrolled passkey shows a badge on its card. Enrollment timeouts are capped, so the enrollment screen no longer spins for up to five minutes when a step stalls. |
+| **Windows** | **BIConfigure Command Restored** | The `BIConfigure` command is available again, so existing MDM scripts and deployment documentation written for 2.x keep working unchanged. A command to restart the Beyond Identity service has also been added. |
+| **Android, iOS** | **Swipe to Dismiss Messages** | Error messages can be swiped away instead of waiting on the auto-dismiss timer. |
+
+<br/>
+
+### Bug Fixes
+
+| Platform | Bug Fix | Description |
+|----------|---------|-------------|
+| **All** | **Credentials Incorrectly Marked Invalid** | Fixed a certificate-store lookup that marked a credential Invalid when its certificate serial number began with a zero byte. Affected credentials return to active automatically — no re-enrollment is required. |
+| **All** | **Credential Database Removed on an Unrecognized Version** | An older build could delete the credential database — forcing re-enrollment — when it encountered a newer database schema stamp. Older builds now leave the database in place. |
+| **All** | **Automatic Update Reliability** | Fixed several problems in the background updater: concurrent writes could corrupt the update state file; the updater could repeatedly re-apply its own update; and it could repeatedly uninstall itself. Update status reporting and console output are also corrected. |
+| **All** | **Command-Line Interface Error When Output Is Piped** | The CLI no longer exits with a broken-pipe error when its output is piped to a program that closes early. |
+| **Android, iOS** | **Overflow Menu Cut Off in Landscape** | The three-dot overflow menu is no longer clipped when the device is held in landscape orientation. |
+| **Android, iOS** | **Blank Preview in the QR Code Scanner** | Fixed a blank white area shown while the camera warmed up in the QR code import scanner. |
+| **Android** | **Android 16 Settings Screen and Back Button** | On Android 16 (API 36), the Settings screen is no longer clipped by the system status and navigation bars, and the hardware back button works correctly. |
+| **macOS** | **Smart Card Crash and Idle Resource Use** | Fixed a crash exposure in the PC/SC smart card service and reduced idle smart card polling by roughly 20×. |
+| **macOS** | **Policy Incorrectly Denying Access on Device Posture** | Device posture — including FileVault status — is now read natively instead of through a helper process, fixing policies that incorrectly denied access. |
+| **Windows** | **Desktop Login Failing Offline After a Restart** | Desktop Login no longer reports “user unknown or not enrolled” at the lock screen after restarting off the corporate network. |
+| **Windows** | **Windows Hello Prompt Failing Sign-In** | An invalid-ticket fault from Windows Hello now retries the prompt instead of failing the sign-in. |
+| **Windows** | **Install and Upgrade Reliability** | Fixed updates failing with error 1706 or 1603 when an elevated updater serviced a per-user installation under the wrong scope, along with secure store and installer reliability problems during install and upgrade. |
+| **Windows** | **Device Posture Incomplete at Startup** | Posture collection no longer misses security software state immediately after boot, which could cause policy to deny access incorrectly. |
+| **Windows** | **Desktop Login Badge, PIN Field, and PIV Prompt Issues** | Fixed the Desktop Login badge appearing on the wrong passkey, PIN fields retaining a previous value, and a spinner that could hang after cancelling the PIV PIN prompt. |
+| **Windows** | **Sign-In from Desktop Applications** | The WebView helper’s local named-pipe server is now enabled by default, so signing in from a desktop application works without additional configuration. |
+
+<br/>
+
+<br/>
+</details>
+
+
 ### June 29, 2026
 
 <details>

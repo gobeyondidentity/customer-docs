@@ -14,7 +14,7 @@ displayed_sidebar: mainSidebar
 ---
 
 
-*Last updated: October 22, 2025*  
+*Last updated: September 7, 2026*  
 
 This article lists the operating systems and versions supported by the Beyond Identity Authenticator, minimum system requirements, and deployment prerequisites that IT administrators should review before rollout.
 
@@ -22,7 +22,8 @@ This article lists the operating systems and versions supported by the Beyond Id
 
 ### Table of Contents
 
-- [Quick Support Matrix](#quick-support-matrix)  
+- [Platform Authenticator 3.0.0 (Early Access)](#platform-authenticator-300-early-access)  
+- [Quick Support Matrix (Platform Authenticator 2.x)](#quick-support-matrix-platform-authenticator-2x)  
 - [Platform Details and Requirements](#platform-details-and-requirements)  
   - [Windows](#windows)  
   - [macOS](#macos)  
@@ -40,7 +41,28 @@ This article lists the operating systems and versions supported by the Beyond Id
 
 ---
 
-### Quick Support Matrix  
+### Platform Authenticator 3.0.0 (Early Access)
+
+Platform Authenticator 3.0.0 — the Universal Platform Authenticator — is a
+separate release train from 2.x and supports a different set of minimum operating
+system versions. The 2.x matrix below still applies to the 2.x authenticator.
+
+| Platform     | Minimum OS                                                                       | Notes |
+|--------------|----------------------------------------------------------------------------------|-------|
+| Windows      | Windows 10 or later                                                              | x64 and ARM64. A single MSI covers per-user and system-wide installs. |
+| macOS        | macOS 11 (Big Sur) or later                                                      | Apple Silicon and Intel. A single .pkg covers MDM, system, and user deployments. |
+| Linux        | Ubuntu 22.04 or later, or any distribution with glibc 2.34 or later              | x64 and ARM64. AppImage (self-updating), or native .deb and .rpm packages. |
+| iOS / iPadOS | iOS 13.0 or later                                                                | iPhone and iPad supported. |
+| Android      | Android 9.0 or later                                                             | — |
+
+> **Note:** 3.0.0 is an Early Access release. Existing 2.x installations are not
+automatically migrated during Early Access — 3.0.0 is installed deliberately, either
+by the user or by an IT administrator. See the
+[release notes](/docs/release-notes/release-notes-changelog#august-26-2026) for details.
+
+---
+
+### Quick Support Matrix (Platform Authenticator 2.x)  
 | Platform    | Supported OS Versions                                      | Authenticator Version Support | Notes                                                                 |
 |-------------|------------------------------------------------------------|-------------------------------|-----------------------------------------------------------------------|
 | Windows     | Windows 10 (build 18363 and later), Windows 11             | 2.98.1 and later               | 64-bit only; .NET framework embedded in installer; review deployment prerequisites.  |
@@ -83,6 +105,8 @@ Minimum supported Authenticator versions:
 - Windows, macOS / iOS / iPadOS: **2.98.1 and later**  
 - Android: **2.98.2 and later**  
 
+On the 3.0.0 release train, the minimum supported version is **3.0.0 and later** on all platforms.  
+
 ---
 
 ## Deployment Prerequisites  
@@ -116,6 +140,7 @@ Some endpoint security agents may require exclusions for Beyond Identity process
 - Aug 29 2025: Consolidated system requirements, supported OS versions, Authenticator version support, and deployment prerequisites into one unified article.  
 - Oct 7 2025: Updated Authenticator version numbers for all supported platforms.  
 - Oct 22 2025: Updated macOS and iPad/iOS versions supported. Also, updated the macOS Team ID.   
+- Sep 7 2026: Added the Platform Authenticator 3.0.0 (Early Access) support matrix and labelled the existing matrix as 2.x.  
 
 ---
 
